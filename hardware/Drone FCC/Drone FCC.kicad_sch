@@ -1,0 +1,83 @@
+(kicad_sch (version 20211123) (generator eeschema)
+
+  (uuid 39432b69-424f-4e34-9a5f-8e9cd0d5e3ce)
+
+  (paper "A4")
+
+  (lib_symbols
+  )
+
+
+  (sheet (at 62.23 20.32) (size 29.21 29.21) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid 0ee7de47-20c2-4341-81cd-1c3f43cc8a34)
+    (property "Sheet name" "IMU" (id 0) (at 62.23 19.6084 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "IMU.kicad_sch" (id 1) (at 62.23 50.1146 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (pin "IMU_MOSI" input (at 91.44 35.56 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid 55205e84-7a6b-4823-890f-220904d5520c)
+    )
+    (pin "IMU_MISO" output (at 91.44 38.1 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid 42ee0920-1ea0-4663-936d-484c1afc1c47)
+    )
+    (pin "IMU_CS" input (at 91.44 43.18 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid 3729f3b6-4248-4b7d-9b73-7a48e545ad0e)
+    )
+    (pin "IMU_CLK" input (at 91.44 40.64 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid 260b06ee-a353-488c-ad03-0873d2fb0564)
+    )
+    (pin "IMU_INT_DATA_RDY" output (at 91.44 45.72 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid face10e7-02dd-4320-bdfe-ee6eab55423b)
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34" (page "2"))
+  )
+
+  (symbol_instances
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/10b1f3c4-52e3-47f5-9f0a-8a225025cfe9"
+      (reference "#PWR01") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/45b1047f-6db5-42aa-b2ae-caeabae14be5"
+      (reference "#PWR02") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/aced4e4d-b130-47e3-a3c5-ccf130341fc7"
+      (reference "#PWR03") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/8008ce6a-3977-448f-b975-48eb6890ce57"
+      (reference "#PWR04") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/b2859a25-89f9-471e-ba12-be0b504ffc67"
+      (reference "#PWR05") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/1acf1ca3-aaf6-4369-a9f9-ef4d47a00c4a"
+      (reference "C1") (unit 1) (value "0.10uF") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/93528709-610a-4ffe-a7ef-fc87f8cedaa4"
+      (reference "C2") (unit 1) (value "2.2uF") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/4f25d9d8-41af-4070-b19d-a83da8ddd106"
+      (reference "C3") (unit 1) (value "10nF") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/13e9cb4a-612d-4494-b4d3-c996fd15ec9d"
+      (reference "R1") (unit 1) (value "R") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/0af9a8f2-7530-4405-bcef-089670876b42"
+      (reference "R2") (unit 1) (value "R") (footprint "")
+    )
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/c0a47081-331a-4786-8c58-279f979e2a17"
+      (reference "U1") (unit 1) (value "ICM-42688-P") (footprint "PQFN50P300X250X97-14N")
+    )
+  )
+)
