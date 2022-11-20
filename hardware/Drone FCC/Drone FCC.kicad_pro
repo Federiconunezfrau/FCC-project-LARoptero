@@ -324,6 +324,10 @@
     [
       "0ee7de47-20c2-4341-81cd-1c3f43cc8a34",
       "IMU"
+    ],
+    [
+      "0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a",
+      "Barometro"
     ]
   ],
   "text_variables": {}

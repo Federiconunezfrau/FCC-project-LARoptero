@@ -8,6 +8,26 @@
   )
 
 
+  (sheet (at 99.06 21.59) (size 26.67 27.94) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid 0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a)
+    (property "Sheet name" "Barometro" (id 0) (at 99.06 20.8784 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "Barometro.kicad_sch" (id 1) (at 99.06 50.1146 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (pin "BARO_SCL" input (at 125.73 35.56 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid 0994f715-1a75-46ca-9dfa-c32dedf7ba3d)
+    )
+    (pin "BARO_SDA" bidirectional (at 125.73 40.64 0)
+      (effects (font (size 1.27 1.27)) (justify right))
+      (uuid 3bc4f92e-d514-458b-9155-32174fed3865)
+    )
+  )
+
   (sheet (at 62.23 20.32) (size 29.21 29.21) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 0))
     (fill (color 0 0 0 0.0000))
@@ -43,6 +63,7 @@
   (sheet_instances
     (path "/" (page "1"))
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34" (page "2"))
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a" (page "3"))
   )
 
   (symbol_instances
@@ -61,14 +82,29 @@
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/b2859a25-89f9-471e-ba12-be0b504ffc67"
       (reference "#PWR05") (unit 1) (value "GND") (footprint "")
     )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/10efe182-945f-4d56-a3e4-2e3089e4e28f"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/24bc73d4-61db-4b6c-aef0-b2d81767b669"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/62a5f455-4451-43d5-a9e8-4fa38575ef6c"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/1acf1ca3-aaf6-4369-a9f9-ef4d47a00c4a"
-      (reference "C1") (unit 1) (value "0.10uF") (footprint "")
+      (reference "C1") (unit 1) (value "100n") (footprint "")
     )
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/93528709-610a-4ffe-a7ef-fc87f8cedaa4"
-      (reference "C2") (unit 1) (value "2.2uF") (footprint "")
+      (reference "C2") (unit 1) (value "2.2u") (footprint "")
     )
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/4f25d9d8-41af-4070-b19d-a83da8ddd106"
-      (reference "C3") (unit 1) (value "10nF") (footprint "")
+      (reference "C3") (unit 1) (value "10n") (footprint "")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/50175427-1b07-436b-bc8d-cb51dd9cff8f"
+      (reference "C?") (unit 1) (value "4.7u") (footprint "")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/815e1bf9-e1ca-4561-b37d-c11bdf78b781"
+      (reference "C?") (unit 1) (value "100n") (footprint "")
     )
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/13e9cb4a-612d-4494-b4d3-c996fd15ec9d"
       (reference "R1") (unit 1) (value "R") (footprint "")
@@ -76,8 +112,23 @@
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/0af9a8f2-7530-4405-bcef-089670876b42"
       (reference "R2") (unit 1) (value "R") (footprint "")
     )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/751f292a-e99e-4321-970e-7419a0390e72"
+      (reference "R?") (unit 1) (value "R") (footprint "")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/8a584082-9e74-406b-b17d-56448ae67c81"
+      (reference "R?") (unit 1) (value "R") (footprint "")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/a65f3764-3b76-4212-bfa2-b65823fbc2ce"
+      (reference "R?") (unit 1) (value "R") (footprint "")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/eff94eaf-f3ca-4217-8f58-02be6b3bb012"
+      (reference "R?") (unit 1) (value "R") (footprint "")
+    )
     (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/c0a47081-331a-4786-8c58-279f979e2a17"
       (reference "U1") (unit 1) (value "ICM-42688-P") (footprint "PQFN50P300X250X97-14N")
+    )
+    (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/bfa78c7d-fb84-460e-886c-6bf899fd0853"
+      (reference "U?") (unit 1) (value "ILPS22QSTR") (footprint "HLGA_10L_STM")
     )
   )
 )
