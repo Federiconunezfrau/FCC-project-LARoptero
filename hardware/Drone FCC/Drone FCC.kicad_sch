@@ -124,8 +124,8 @@
     (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/eff94eaf-f3ca-4217-8f58-02be6b3bb012"
       (reference "R?") (unit 1) (value "R") (footprint "")
     )
-    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/c0a47081-331a-4786-8c58-279f979e2a17"
-      (reference "U1") (unit 1) (value "ICM-42688-P") (footprint "PQFN50P300X250X97-14N")
+    (path "/0ee7de47-20c2-4341-81cd-1c3f43cc8a34/356f5059-6fc6-4f0d-8cf2-54e79a3746b9"
+      (reference "U?") (unit 1) (value "ICM-42688-V") (footprint "PQFN50P300X250X97-14N")
     )
     (path "/0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a/bfa78c7d-fb84-460e-886c-6bf899fd0853"
       (reference "U?") (unit 1) (value "ILPS22QSTR") (footprint "HLGA_10L_STM")
