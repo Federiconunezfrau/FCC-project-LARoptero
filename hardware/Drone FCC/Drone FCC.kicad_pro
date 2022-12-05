@@ -328,6 +328,14 @@
     [
       "0a0aeaa0-9fdf-480f-a2c4-a3ed4cfe4b7a",
       "Barometro"
+    ],
+    [
+      "fe95aabf-d6ed-4c3e-86ee-abc4c0be6a8c",
+      "Modulo_GNSS"
+    ],
+    [
+      "dd9839f2-48a6-46c9-b84f-4c2c3431def5",
+      "Motores_servos_PWM"
     ]
   ],
   "text_variables": {}
