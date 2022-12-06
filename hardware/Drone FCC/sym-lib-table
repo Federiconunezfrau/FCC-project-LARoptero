@@ -1,5 +1,5 @@
 (sym_lib_table
-  (lib (name "ICM-42688-P")(type "Legacy")(uri "${KIPRJMOD}/Project_Specific_Libraries/ICM-42688-P/ICM-42688-P.lib")(options "")(descr ""))
-  (lib (name "ILPS22QSTR")(type "Legacy")(uri "${KIPRJMOD}/Project_Specific_Libraries/ILPS22QSTR/KiCAD/2022-11-19_22-22-16/2022-11-19_22-22-16.lib")(options "")(descr ""))
+  (lib (name "ILPS22QSTR")(type "Legacy")(uri "${KIPRJMOD}/Project_Specific_Libraries/ILPS22QSTR/KiCAD/2022-11-19_22-22-16/ILPS22QSTR.lib")(options "")(descr ""))
   (lib (name "ICM-42688-V")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ICM-42688-V/ICM-42688-V.kicad_sym")(options "")(descr ""))
+  (lib (name "TSW-101-08-G-T-RA")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/TSW-101-08-G-T-RA/TSW-101-08-G-T-RA.kicad_sym")(options "")(descr ""))
 )

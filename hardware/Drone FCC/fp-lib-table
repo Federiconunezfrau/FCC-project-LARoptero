@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name "TSW-101-08-G-T-RA")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/TSW-101-08-G-T-RA")(options "")(descr ""))
+  (lib (name "ICM-42688-V")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ICM-42688-V")(options "")(descr ""))
+  (lib (name "ILPS22QSTR")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ILPS22QSTR/KiCAD/2022-11-19_22-22-16/footprints.pretty")(options "")(descr ""))
+  (lib (name "TSW-103-08-G-D-RA")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/TSW-103-08-G-D-RA")(options "")(descr ""))
+)
