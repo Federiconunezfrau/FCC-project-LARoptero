@@ -420,6 +420,10 @@
       "Motores_servos_PWM"
     ],
     [
+      "79e0599a-7098-4a96-b5a2-c7f60ed6c34f",
+      "Debug"
+    ],
+    [
       "f05f239e-e978-4f7d-94d0-b7e31d2fe727",
       "Interfaz_CAN"
     ],

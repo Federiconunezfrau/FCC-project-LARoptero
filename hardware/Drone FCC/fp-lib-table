@@ -3,4 +3,7 @@
   (lib (name "ICM-42688-V")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ICM-42688-V")(options "")(descr ""))
   (lib (name "ILPS22QSTR")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ILPS22QSTR/KiCAD/2022-11-19_22-22-16/footprints.pretty")(options "")(descr ""))
   (lib (name "TSW-103-08-G-D-RA")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/TSW-103-08-G-D-RA")(options "")(descr ""))
+  (lib (name "DM3AT-SF-PEJM5")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DM3AT-SF-PEJM5")(options "")(descr ""))
+  (lib (name "FTSH-105-01-F-DV-K-TR")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/FTSH-105-01-F-DV-P-TR")(options "")(descr ""))
+  (lib (name "47589-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/47589-0001")(options "")(descr ""))
 )
