@@ -428,8 +428,16 @@
       "Interfaz_CAN"
     ],
     [
+      "2e02b919-519b-4cae-a6fb-682f19bf0ab7",
+      "RC control"
+    ],
+    [
       "2dea4649-a03b-4105-a448-fdfd58cb624b",
       "Sensores"
+    ],
+    [
+      "72959738-982c-4565-97f6-d336a978e9e3",
+      "Alimentación"
     ]
   ],
   "text_variables": {}
