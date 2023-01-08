@@ -357,7 +357,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x02_Counter_Clockwise") (at 104.775 75.565 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 9888d426-3a1e-46c9-905c-aefc408436a3)
-    (property "Reference" "J?" (id 0) (at 106.045 68.58 0))
+    (property "Reference" "J25" (id 0) (at 106.045 68.58 0))
     (property "Value" "Conn_02x02_Counter_Clockwise" (id 1) (at 106.045 71.12 0))
     (property "Footprint" "" (id 2) (at 104.775 75.565 0)
       (effects (font (size 1.27 1.27)) hide)
