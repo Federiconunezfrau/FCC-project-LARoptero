@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'ICM_42688_V'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "MOUSER_TESTING_PART_NUMBER", "MOUSER_TESTING_PRICE/STOCK", "DESCRIPTION", "DATASHEET";
+{========================================================================================}
+ "TDK", "ICM-42688-V" (!) = "", "IIM42352", "Other", "410-ICM-42688-V", "https://www.mouser.co.uk/ProductDetail/TDK-InvenSense/ICM-42688-V?qs=iLbezkQI%252Bsj8X%2F1CCh43jQ%3D%3D", "", "", "", "", "High Precision 6-Axis MEMS MotionTracking? Device with Advanced Sensor Fusion Library", "https://3cfeqx1hf82y3xcoull08ihx-wpengine.netdna-ssl.com/wp-content/uploads/2021/04/DS-000439-ICM-42688-V-v1.1.pdf"
+END_PART
+
+END.
