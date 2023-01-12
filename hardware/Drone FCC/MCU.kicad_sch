@@ -885,7 +885,7 @@
   (symbol (lib_id "MCU_ST_STM32F7:STM32F746ZGTx") (at 146.685 78.105 90) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 90b6111d-e183-4fd3-9c15-536660e047e9)
-    (property "Reference" "U?" (id 0) (at 146.685 75.565 90))
+    (property "Reference" "U3" (id 0) (at 146.685 75.565 90))
     (property "Value" "STM32F746ZGTx" (id 1) (at 146.685 78.105 90))
     (property "Footprint" "Package_QFP:LQFP-144_20x20mm_P0.5mm" (id 2) (at 233.045 103.505 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)

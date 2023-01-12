@@ -637,7 +637,7 @@
   (symbol (lib_id "Device:R") (at 152.4 48.895 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 23eb84d1-346d-494f-a7a3-f17e51c94eb4)
-    (property "Reference" "R?" (id 0) (at 154.94 47.6249 0)
+    (property "Reference" "R2" (id 0) (at 154.94 47.6249 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R" (id 1) (at 154.94 50.1649 0)
@@ -709,7 +709,7 @@
   (symbol (lib_id "Device:R") (at 143.51 48.895 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 9bc65728-e237-4f6c-82eb-0920dd4372d2)
-    (property "Reference" "R?" (id 0) (at 146.05 47.6249 0)
+    (property "Reference" "R1" (id 0) (at 146.05 47.6249 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R" (id 1) (at 146.05 50.1649 0)
@@ -752,7 +752,7 @@
   (symbol (lib_id "Device:R") (at 221.615 48.895 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid bf56a9a0-87b8-4975-8c8a-f06525b46212)
-    (property "Reference" "R?" (id 0) (at 219.075 47.6249 0)
+    (property "Reference" "R3" (id 0) (at 219.075 47.6249 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R" (id 1) (at 219.075 50.1649 0)
@@ -771,7 +771,7 @@
   (symbol (lib_id "Device:R") (at 230.505 48.895 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid ec16aef2-cd03-4558-8bbc-13cfd44062fb)
-    (property "Reference" "R?" (id 0) (at 227.965 47.6249 0)
+    (property "Reference" "R4" (id 0) (at 227.965 47.6249 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "R" (id 1) (at 227.965 50.1649 0)
@@ -1181,7 +1181,7 @@
     (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/c6501238-3b47-4bff-b007-9080a3e05c38"
       (reference "#PWR0115") (unit 1) (value "GND") (footprint "")
     )
-    (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/60b3591a-d940-4800-a3ad-e92d28979532"
+    (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/cea69c83-349e-491b-9e3c-64f53b0a2bd7"
       (reference "#PWR0116") (unit 1) (value "GND") (footprint "")
     )
     (path "/72d4edf1-ca5b-4027-8f6a-b54e7e5dfba1"
@@ -1218,10 +1218,10 @@
       (reference "C6") (unit 1) (value "0.1u") (footprint "")
     )
     (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/1ada52bf-3160-4b2e-8e93-ed65b64dff92"
-      (reference "J1") (unit 1) (value "Dupont 2 filas x 3 pines") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal")
+      (reference "J1") (unit 1) (value "Mag Dupont") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal")
     )
     (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/b079b46a-f7fc-473d-a5cf-a695656f1e39"
-      (reference "J2") (unit 1) (value "Conector GPS Auxiliar Dupont") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal")
+      (reference "J2") (unit 1) (value "GPS Dupont") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal")
     )
     (path "/dd9839f2-48a6-46c9-b84f-4c2c3431def5/2c0e7e5c-a396-43ba-a674-e23b0aa3ed8c"
       (reference "J3") (unit 1) (value "Conn_01x03") (footprint "TSW-101-08-G-T-RA:SAMTEC_TSW-101-08-G-T-RA")
@@ -1272,10 +1272,10 @@
       (reference "J18") (unit 1) (value "Conn_01x04") (footprint "DF13-4P-1.25H:HRS_DF13-4P-1.25H(75)")
     )
     (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/b2d2d786-d830-41a8-86bc-a5ceb742f967"
-      (reference "J19") (unit 1) (value "GPS M8N") (footprint "Connector_Hirose:Hirose_DF13C_CL535-0406-3-51_1x06-1MP_P1.25mm_Vertical")
+      (reference "J19") (unit 1) (value "GPS M8N - DF13") (footprint "Connector_Hirose:Hirose_DF13C_CL535-0406-3-51_1x06-1MP_P1.25mm_Vertical")
     )
-    (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/06952a31-81b8-47ac-a344-8aaff0a89059"
-      (reference "J20") (unit 1) (value "Conector Magnetómetro I2C DF13") (footprint "Connector_Hirose:Hirose_DF13C_CL535-0406-3-51_1x06-1MP_P1.25mm_Vertical")
+    (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/2f78d477-9a33-45b7-b681-4c853f159a72"
+      (reference "J20") (unit 1) (value "Mag DF13") (footprint "Connector_Hirose:Hirose_DF13C_CL535-0404-8-51_1x04-1MP_P1.25mm_Vertical")
     )
     (path "/9d87abcb-f095-4bbc-8a62-a00271c99c74"
       (reference "J21") (unit 1) (value "Micro_SD_Card_Det_Hirose_DM3AT") (footprint "DM3AT-SF-PEJM5:HRS_DM3AT-SF-PEJM5")
@@ -1298,17 +1298,17 @@
     (path "/72959738-982c-4565-97f6-d336a978e9e3/35d5ea26-c352-4d8a-b32b-9fae6f111b8f"
       (reference "J28") (unit 1) (value "Conn_01x06") (footprint "Connector_Hirose:Hirose_DF13C_CL535-0406-3-51_1x06-1MP_P1.25mm_Vertical")
     )
-    (path "/23eb84d1-346d-494f-a7a3-f17e51c94eb4"
-      (reference "R?") (unit 1) (value "R") (footprint "")
-    )
     (path "/9bc65728-e237-4f6c-82eb-0920dd4372d2"
-      (reference "R?") (unit 1) (value "R") (footprint "")
+      (reference "R1") (unit 1) (value "R") (footprint "")
+    )
+    (path "/23eb84d1-346d-494f-a7a3-f17e51c94eb4"
+      (reference "R2") (unit 1) (value "R") (footprint "")
     )
     (path "/bf56a9a0-87b8-4975-8c8a-f06525b46212"
-      (reference "R?") (unit 1) (value "R") (footprint "")
+      (reference "R3") (unit 1) (value "R") (footprint "")
     )
     (path "/ec16aef2-cd03-4558-8bbc-13cfd44062fb"
-      (reference "R?") (unit 1) (value "R") (footprint "")
+      (reference "R4") (unit 1) (value "R") (footprint "")
     )
     (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/526c1ffa-b5c3-4a19-b2e6-f432001e1abc"
       (reference "U1") (unit 1) (value "ICM-42688-V") (footprint "ICM-42688-V:PQFN50P300X250X97-14N")
@@ -1316,14 +1316,14 @@
     (path "/2dea4649-a03b-4105-a448-fdfd58cb624b/52ee2f95-c75c-49ae-83bb-79c66a4acbae"
       (reference "U2") (unit 1) (value "ILPS22QSTR") (footprint "ILPS22QSTR:ILPS22QSTR")
     )
+    (path "/7aefb805-1ee8-4c99-a02a-c3e1e1ca7ccb/90b6111d-e183-4fd3-9c15-536660e047e9"
+      (reference "U3") (unit 1) (value "STM32F746ZGTx") (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm")
+    )
     (path "/f05f239e-e978-4f7d-94d0-b7e31d2fe727/0976ceae-974b-4c9d-9c30-da4f63145ad3"
       (reference "U4") (unit 1) (value "SN65HVD230") (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
     )
     (path "/f05f239e-e978-4f7d-94d0-b7e31d2fe727/3cb76064-5421-449d-aca1-da35e09f2ea2"
       (reference "U5") (unit 1) (value "SN65HVD230") (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
-    )
-    (path "/7aefb805-1ee8-4c99-a02a-c3e1e1ca7ccb/90b6111d-e183-4fd3-9c15-536660e047e9"
-      (reference "U?") (unit 1) (value "STM32F746ZGTx") (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm")
     )
   )
 )
