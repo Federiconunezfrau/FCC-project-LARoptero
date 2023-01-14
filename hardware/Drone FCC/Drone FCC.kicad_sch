@@ -1296,7 +1296,7 @@
       (reference "J27") (unit 1) (value "PPM Dupont") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal")
     )
     (path "/72959738-982c-4565-97f6-d336a978e9e3/35d5ea26-c352-4d8a-b32b-9fae6f111b8f"
-      (reference "J28") (unit 1) (value "Conn_01x06") (footprint "Connector_Hirose:Hirose_DF13C_CL535-0406-3-51_1x06-1MP_P1.25mm_Vertical")
+      (reference "J28") (unit 1) (value "PM02 PixHawk") (footprint "Connector_Hirose:Hirose_DF13C_CL535-0406-3-51_1x06-1MP_P1.25mm_Vertical")
     )
     (path "/9bc65728-e237-4f6c-82eb-0920dd4372d2"
       (reference "R1") (unit 1) (value "R") (footprint "")
@@ -1324,6 +1324,9 @@
     )
     (path "/f05f239e-e978-4f7d-94d0-b7e31d2fe727/3cb76064-5421-449d-aca1-da35e09f2ea2"
       (reference "U5") (unit 1) (value "SN65HVD230") (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+    )
+    (path "/72959738-982c-4565-97f6-d336a978e9e3/41bff068-bbe1-47e0-84b3-0ae16f3e3ae4"
+      (reference "U6") (unit 1) (value "ZLDO1117QG33TA") (footprint "Package_TO_SOT_SMD:SOT-223-3_TabPin2")
     )
   )
 )
