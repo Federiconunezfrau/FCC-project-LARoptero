@@ -8,4 +8,5 @@
   (lib (name "47589-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/47589-0001")(options "")(descr ""))
   (lib (name "B3B-ZR-SM4-TF(LF)(SN)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/Conn_JST_B3B-ZR-SM4-TF(LF)(SN)/eec.pretty")(options "")(descr ""))
   (lib (name "DF13-4P-1.25H")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13-4P-1.25H_75_")(options "")(descr ""))
+  (lib (name "105017-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/105017-0001")(options "")(descr ""))
 )

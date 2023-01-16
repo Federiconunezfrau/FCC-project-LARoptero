@@ -1,5 +1,5 @@
 
-(footprint HRS_DM3AT-SF-PEJM5 (layer F.Cu) (tedit 639DE165)
+(footprint HRS_DM3AT-SF-PEJM5 (layer F.Cu) (tedit 63C5DED5)
   (descr "Micro SD card holder with push-to-eject feature.")
   (fp_text reference REF** (at -3.98677 -2.43602 0) (layer F.SilkS)
     (effects (font (size 1.00152755906 1.00152755906) (thickness 0.15)))

@@ -4,4 +4,5 @@
   (lib (name "TSW-101-08-G-T-RA")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/TSW-101-08-G-T-RA/TSW-101-08-G-T-RA.kicad_sym")(options "")(descr ""))
   (lib (name "DM3AT-SF-PEJM5")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DM3AT-SF-PEJM5/DM3AT-SF-PEJM5.kicad_sym")(options "")(descr ""))
   (lib (name "47589-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/47589-0001/47589-0001.kicad_sym")(options "")(descr ""))
+  (lib (name "105017-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/105017-0001/105017-0001.kicad_sym")(options "")(descr ""))
 )
