@@ -416,12 +416,12 @@
       ""
     ],
     [
-      "dd9839f2-48a6-46c9-b84f-4c2c3431def5",
-      "Motores_servos_PWM"
-    ],
-    [
       "79e0599a-7098-4a96-b5a2-c7f60ed6c34f",
       "Debug"
+    ],
+    [
+      "dd9839f2-48a6-46c9-b84f-4c2c3431def5",
+      "Motores_servos_PWM"
     ],
     [
       "f05f239e-e978-4f7d-94d0-b7e31d2fe727",
@@ -432,12 +432,12 @@
       "RC control"
     ],
     [
-      "2dea4649-a03b-4105-a448-fdfd58cb624b",
-      "Sensores"
-    ],
-    [
       "72959738-982c-4565-97f6-d336a978e9e3",
       "Alimentación"
+    ],
+    [
+      "2dea4649-a03b-4105-a448-fdfd58cb624b",
+      "Sensores"
     ],
     [
       "7aefb805-1ee8-4c99-a02a-c3e1e1ca7ccb",
@@ -446,6 +446,10 @@
     [
       "69dfc791-495c-4b9c-b2fd-05bf30e46c19",
       "Micro SD"
+    ],
+    [
+      "ed1e96fa-b1be-4881-8dac-8041c949f89e",
+      "USB"
     ]
   ],
   "text_variables": {}

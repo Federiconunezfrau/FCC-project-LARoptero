@@ -1205,7 +1205,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 424ff2e5-26d4-43a1-a237-6074e4f976c8)
   )
-  (hierarchical_label "MAG_SDA" (shape input) (at 40.64 165.735 0)
+  (hierarchical_label "MAG_SDA" (shape bidirectional) (at 40.64 165.735 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 4b214af7-6497-4ff5-a70f-40d34e7130e3)
   )
