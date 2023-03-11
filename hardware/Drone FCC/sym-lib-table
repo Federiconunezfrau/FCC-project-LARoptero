@@ -5,4 +5,5 @@
   (lib (name "DM3AT-SF-PEJM5")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DM3AT-SF-PEJM5/DM3AT-SF-PEJM5.kicad_sym")(options "")(descr ""))
   (lib (name "47589-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/47589-0001/47589-0001.kicad_sym")(options "")(descr ""))
   (lib (name "105017-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/105017-0001/105017-0001.kicad_sym")(options "")(descr ""))
+  (lib (name "STM32F746")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/my_symbol_STM32F746ZG/STM32F746.kicad_sym")(options "")(descr ""))
 )

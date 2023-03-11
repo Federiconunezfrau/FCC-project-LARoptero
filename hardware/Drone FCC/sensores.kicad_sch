@@ -1249,7 +1249,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid d258bc07-4c66-42ee-ad60-15674b76927c)
   )
-  (hierarchical_label "MAG_INT_DATA_RDY" (shape input) (at 40.64 160.655 0)
+  (hierarchical_label "MAG_INT_DATA_RDY" (shape output) (at 40.64 160.655 0)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid f30feb76-3050-44cd-bea7-84ef56b0e729)
   )

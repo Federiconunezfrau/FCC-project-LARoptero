@@ -888,6 +888,11 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid ceedc0a0-8e0c-41cf-b081-0a27e6525bea)
   )
+  (text "A priori se deja. Si ocupa mucho espacio,\nse puede quitar."
+    (at 39.37 17.145 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid e560693b-58a5-4c88-b83a-c379017e1855)
+  )
 
   (global_label "5V" (shape input) (at 137.795 52.07 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
