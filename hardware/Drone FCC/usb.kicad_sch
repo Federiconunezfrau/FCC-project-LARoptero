@@ -460,6 +460,12 @@
     (uuid f25e3759-f4b7-450f-ab8e-d15f27b4fa2f)
   )
 
+  (text "El pin ID se deja abierto,\nya que solo se utiliza el\nmodo 'device'"
+    (at 74.93 102.87 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 219afd58-52dc-4fc8-8a3a-0274cde659d9)
+  )
+
   (label "VBUS" (at 62.23 86.36 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 03536ff0-2ab6-49a9-8f70-8af5b3dd1fcf)

@@ -450,6 +450,14 @@
     [
       "ed1e96fa-b1be-4881-8dac-8041c949f89e",
       "USB"
+    ],
+    [
+      "d9382f14-7760-40b1-88b8-cbdf6e4f8e8d",
+      "Leds indicadores + pulsadores"
+    ],
+    [
+      "175dcef6-d187-47c0-9dd6-131837115cd6",
+      "Conexiones_extra"
     ]
   ],
   "text_variables": {}
