@@ -11,4 +11,8 @@
   (lib (name "105017-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/105017-0001")(options "")(descr ""))
   (lib (name "DF13A-4P-1.25H(21)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13A-4P-1.25H_21_")(options "")(descr ""))
   (lib (name "DF13A-3P-1.25H(21)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13A-3P-1.25H(51)")(options "")(descr ""))
+  (lib (name "ECS-120-8-33Q-RES-TR")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ECS-120-8-33Q-RES-TR")(options "")(descr ""))
+  (lib (name "ECS-.327-9-34QCS-TR9")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ECS-327-9-34QN-TR/KiCAD/2023-03-18_20-35-54/footprints.pretty")(options "")(descr ""))
+  (lib (name "PMEG60T30ELRX")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/PMEG60T30ELRX")(options "")(descr ""))
+  (lib (name "DF13C-6P-1.25V(51)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13C-6P-1.25V-51")(options "")(descr ""))
 )

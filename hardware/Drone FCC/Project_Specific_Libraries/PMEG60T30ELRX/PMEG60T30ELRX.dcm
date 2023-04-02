@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP PMEG60T30ELRX
+D 60 V, 3 A low leakage current Trench MEGA Schottky barrier rectifier
+K
+F https://assets.nexperia.com/documents/data-sheet/PMEG60T30ELR.pdf
+$ENDCMP
+#
+#End Doc Library

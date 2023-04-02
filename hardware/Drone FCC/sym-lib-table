@@ -6,4 +6,8 @@
   (lib (name "47589-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/47589-0001/47589-0001.kicad_sym")(options "")(descr ""))
   (lib (name "105017-0001")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/105017-0001/105017-0001.kicad_sym")(options "")(descr ""))
   (lib (name "STM32F746")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/my_symbol_STM32F746ZG/STM32F746.kicad_sym")(options "")(descr ""))
+  (lib (name "DF13C-69-1.25v(51)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13C-6P-1.25V-51/DF13C-6P-1.25V_51_.kicad_sym")(options "")(descr ""))
+  (lib (name "DF13C-4P-1.25V(51)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13C-4P-1.25V(51)/DF13C-4P-1.25v(51).kicad_sym")(options "")(descr ""))
+  (lib (name "DF13A-4P-1.25H(21)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13A-4P-1.25H_21_/DF13A-4P-1.25H_21_.kicad_sym")(options "")(descr ""))
+  (lib (name "DF13A-3P-1.25H(21)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13A-3P-1.25H(51)/DF13A-3P-1.25H_21_.kicad_sym")(options "")(descr ""))
 )

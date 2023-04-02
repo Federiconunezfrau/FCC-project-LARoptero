@@ -1,4 +1,4 @@
-20890735077675737
+20902489202287802
 47589-0001
 MOLEX_47589-0001
 
@@ -6,6 +6,13 @@ MOLEX_47589-0001
 0
 11
 11
+105017-0001
+MOLEX_105017-0001
+
+
+0
+13
+7
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -50567,6 +50574,27 @@ HRS_DF13-4P-1.25H(75)
 0
 6
 6
+DF13A-3P-1.25H(21)
+HRS_DF13A-3P-1.25H(21)
+
+
+0
+5
+5
+DF13A-4P-1.25H(21)
+HRS_DF13A-4P-1.25H(21)
+
+
+0
+6
+6
+DF13C-6P-1.25V(51)
+HIROSE_DF13C-6P-1.25V(51)
+
+
+0
+8
+8
 DM3AT-SF-PEJM5
 HRS_DM3AT-SF-PEJM5
 Micro SD card holder with push-to-eject feature.
@@ -52513,6 +52541,20 @@ One digit LED 7 segment SA39-11 SC39-11 SA39-12 SC39-12
 0
 10
 10
+ECS-.327-9-34QCS-TR9
+ECS-.327-9-34QN-TR
+
+
+0
+2
+2
+ECS-120-8-33Q-RES-TR
+XTAL_ECS-120-8-33Q-RES-TR
+
+
+0
+4
+4
 FTSH-105-01-F-DV-K-TR
 SAMTEC_FTSH-105-01-F-DV-P-TR
 
@@ -62208,6 +62250,13 @@ DIL DIP PDIP 2.54mm 7.62mm 300mil
 0
 4
 4
+PMEG60T30ELRX
+SODFL3517X110N
+CFP3 (SOD123W)
+Schottky Diode
+0
+2
+2
 Package_BGA
 Analog_BGA-28_4.0x6.25mm_Layout4x7_P0.8mm_Ball0.45mm_Pad0.4
 Analog BGA-28 4.0mm x 6.25mm package, pitch 0.4mm pad, based on https://www.analog.com/media/en/technical-documentation/data-sheets/8063fa.pdf
