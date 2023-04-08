@@ -808,7 +808,7 @@
     (property "Value" "Power Servo" (id 1) (at 167.64 27.9399 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal" (id 2) (at 165.1 25.4 0)
+    (property "Footprint" "1935161:PHOENIX_1935161" (id 2) (at 165.1 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 165.1 25.4 0)
