@@ -2895,7 +2895,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid d0827f61-860d-4337-b55d-f6932180701c)
   )
-  (hierarchical_label "TIM2_CH3" (shape input) (at 4.445 150.495 180)
+  (hierarchical_label "TIM2_CH3" (shape input) (at 26.67 149.86 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid db3cca86-059b-447a-8a0c-e76eaf2c3cf5)
   )
