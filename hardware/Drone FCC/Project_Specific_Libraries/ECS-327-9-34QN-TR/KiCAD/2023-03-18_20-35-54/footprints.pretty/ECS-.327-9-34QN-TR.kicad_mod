@@ -51,4 +51,9 @@
   (fp_circle (center 0 0) (end 0 0) (layer "F.Fab") (width 0.1) (fill none) (tstamp 14db2950-082a-455a-aef6-e77b29cbffae))
   (pad "1" smd rect (at -1.1938 0) (size 0.6096 1.2954) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp bff91df0-9d9e-4017-bc86-1048b433dc89))
   (pad "2" smd rect (at 1.1938 0) (size 0.6096 1.2954) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp cdf15fc5-c8d2-44b3-b95e-2bf10b4db410))
+  (model "${KIPRJMOD}/Project_Specific_Libraries/ECS-327-9-34QN-TR/KiCAD/2023-03-18_20-35-54/XTAL_ECX-34Q_ECS.step"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

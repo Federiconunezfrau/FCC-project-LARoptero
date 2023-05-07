@@ -139,4 +139,9 @@
   (pad "8" smd rect (at 0.500126 -0.834901) (size 0.3048 0.3302) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 22604585-9167-4ff2-88a2-e58a59ece56a))
   (pad "9" smd rect (at 0 -0.834901) (size 0.3048 0.3302) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp f72fdf73-b22b-43b1-b3e9-d7f8fe892737))
   (pad "10" smd rect (at -0.500126 -0.834901) (size 0.3048 0.3302) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 3fd72675-b70e-4909-bd2d-2ea1e9529871))
+  (model "${KIPRJMOD}/Project_Specific_Libraries/ILPS22QSTR/2022-11-19_22-22-15/STEP/HLGA_10L_STM.step"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

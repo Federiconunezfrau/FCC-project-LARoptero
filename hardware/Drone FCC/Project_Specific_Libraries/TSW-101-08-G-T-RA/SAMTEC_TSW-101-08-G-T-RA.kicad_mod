@@ -30,4 +30,9 @@
   (pad "1" thru_hole circle (at 0 -7.85) (size 1.37 1.37) (drill 1.02) (layers *.Cu *.Mask) (tstamp bdc37ee9-d08d-41b3-8182-b113e9a47624))
   (pad "2" thru_hole circle (at 0 -5.31) (size 1.37 1.37) (drill 1.02) (layers *.Cu *.Mask) (tstamp d2ad8181-e75d-419d-92fd-4ac08ea98714))
   (pad "3" thru_hole rect (at 0 -2.77) (size 1.37 1.37) (drill 1.02) (layers *.Cu *.Mask) (tstamp 232a541d-82c8-4db8-952b-e2b88ae1a3a6))
+  (model "${KIPRJMOD}/Project_Specific_Libraries/TSW-101-08-G-T-RA/TSW-101-08-G-T-RA.step"
+    (offset (xyz 0 1.25 4.25))
+    (scale (xyz 1 1 1))
+    (rotate (xyz -180 0 0))
+  )
 )
