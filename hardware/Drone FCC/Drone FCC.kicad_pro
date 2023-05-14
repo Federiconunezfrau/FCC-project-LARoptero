@@ -364,8 +364,8 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.2,
-        "via_diameter": 0.4,
-        "via_drill": 0.2,
+        "via_diameter": 0.508,
+        "via_drill": 0.254,
         "wire_width": 6.0
       },
       {
@@ -395,14 +395,14 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "Power",
+        "name": "Power_5V",
         "nets": [
           "/Alimentación/5Vin",
           "5V"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 1.2,
+        "track_width": 0.6,
         "via_diameter": 0.4,
         "via_drill": 0.2,
         "wire_width": 6.0

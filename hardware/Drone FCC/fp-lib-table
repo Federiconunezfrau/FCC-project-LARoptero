@@ -16,4 +16,5 @@
   (lib (name "1935161")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/1935161")(options "")(descr ""))
   (lib (name "TL3305AF160QG")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/TL3305AF160QG")(options "")(descr ""))
   (lib (name "DF13C-4P-1.25V(51)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13C-4P-1.25V(51)")(options "")(descr ""))
+  (lib (name "T491A106K016ATAUTO")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/T491A106K016ATAUTO")(options "")(descr ""))
 )
