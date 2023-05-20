@@ -363,7 +363,7 @@
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.2,
+        "track_width": 0.165,
         "via_diameter": 0.508,
         "via_drill": 0.254,
         "wire_width": 6.0
@@ -373,15 +373,18 @@
         "clearance": 0.127,
         "diff_pair_gap": 0.5,
         "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.14,
+        "diff_pair_width": 0.145,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "CAN",
-        "nets": [],
+        "nets": [
+          "/Interfaz_CAN/CAN+",
+          "/Interfaz_CAN/CAN-"
+        ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.14,
+        "track_width": 0.15,
         "via_diameter": 0.4,
         "via_drill": 0.2,
         "wire_width": 6.0

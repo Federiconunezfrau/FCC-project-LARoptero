@@ -1401,8 +1401,8 @@
     (pin "2" (uuid 2aa68dbe-8b08-4d77-acf2-e5d847013de5))
     (pin "3" (uuid 68e7ae2e-af32-46ef-a740-6d1978e1ef30))
     (pin "4" (uuid 5970b58f-5b84-45d4-b00f-08d2b043be5b))
-    (pin "MP" (uuid b022414e-836f-4872-9eee-bc4da8c7b256))
-    (pin "MP" (uuid b022414e-836f-4872-9eee-bc4da8c7b256))
+    (pin "MP" (uuid b022414e-836f-4872-9eee-bc4da8c7b257))
+    (pin "MP" (uuid b022414e-836f-4872-9eee-bc4da8c7b257))
   )
 
   (symbol (lib_id "power:GND") (at 158.115 149.86 0) (mirror y) (unit 1)
