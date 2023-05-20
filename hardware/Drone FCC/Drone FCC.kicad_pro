@@ -398,6 +398,31 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
+        "name": "Micro_SD",
+        "nets": [
+          "/MCU/SDMMC1_CK",
+          "/MCU/SDMMC1_CMD",
+          "/MCU/SDMMC1_D0",
+          "/MCU/SDMMC1_D1",
+          "/MCU/SDMMC1_D2",
+          "/MCU/SDMMC1_D3"
+        ],
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.165,
+        "via_diameter": 0.508,
+        "via_drill": 0.254,
+        "wire_width": 6.0
+      },
+      {
+        "bus_width": 12.0,
+        "clearance": 0.127,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
         "name": "Power_5V",
         "nets": [
           "/Alimentación/5Vin",
