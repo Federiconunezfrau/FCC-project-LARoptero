@@ -614,7 +614,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 1fa1caed-9e26-41cd-858a-d0be5eefc8cf)
   )
-  (text "Para los capacitores de 10nF,\nun modelo acorde es el siguiente:\nhttps://ar.mouser.com/ProductDetail/KEMET/C0402C103M4RACTU?qs=DBJr%252BvBUjU7MjxBP34He0g%3D%3D"
+  (text "Para los capacitores de 10nF,\nun modelo acorde es el siguiente:\nhttps://ar.mouser.com/ProductDetail/KEMET/C0402C103M4RACTU?qs=DBJr%252BvBUjU7MjxBP34He0g%3D%3D\nEntre 50 MHz y 100 MHz, ocurre la resonancia, por\nlo que la impedancia es muy baja en ese rango."
     (at 142.24 151.13 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid c64e6bc6-795b-4efa-a5db-23fefcdad0e7)
