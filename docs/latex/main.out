@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Objetivo}{}% 1
+\BOOKMARK [1][-]{section.2}{Introducci\363n}{}% 2
+\BOOKMARK [1][-]{section.3}{Dise\361o Tolerante a Fallas de Hardware}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Introducci\363n al An\341lisis de Tolerancia a Fallas}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Causales de Fallas de Hardware y Modelo de Fallas Arbitrarias}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Tolerancia a Fallas a Partir de Redundancias}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Redundancia Doble}{subsection.3.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Redundancia Triple}{subsection.3.3}% 8
+\BOOKMARK [2][-]{subsection.3.4}{Algunos Requerimientos de un Sistema Redundante}{section.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Sincronismo de los Nodos}{subsection.3.4}% 10
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Consenso}{subsection.3.4}% 11
+\BOOKMARK [1][-]{section.4}{Conclusiones}{}% 12
+\BOOKMARK [1][-]{section*.8}{Referencias}{}% 13

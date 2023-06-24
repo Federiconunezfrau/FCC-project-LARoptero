@@ -1,0 +1,34 @@
+\documentclass[a4paper,10pt]{article}
+
+% import en preámbulo
+\input{preamble.tex}
+
+%Directorio de imágenes
+\graphicspath{{./img/}}
+
+%Para bibliografía
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{bib_file.bib}
+
+\usepackage{csquotes}
+
+\DeclareRobustCommand*{\ora}{\overrightarrow}
+
+% Comienzo del documento
+\begin{document}
+
+\input{cover.tex}
+\tableofcontents
+\newpage
+
+\input{Objetivo.tex}
+
+\input{Introduccion.tex}
+
+\input{Tolerancia_a_Fallas.tex}
+
+\input{Conclusiones.tex}
+
+\printbibliography[heading=bibintoc]
+
+\end{document}

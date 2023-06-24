@@ -1,0 +1,15 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}Objetivo}{2}{section.1}%
+\contentsline {section}{\numberline {2}Introducción}{2}{section.2}%
+\contentsline {section}{\numberline {3}Diseño Tolerante a Fallas de Hardware}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Introducción al Análisis de Tolerancia a Fallas}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Causales de Fallas de Hardware y Modelo de Fallas Arbitrarias}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Tolerancia a Fallas a Partir de Redundancias}{4}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Redundancia Doble}{4}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Redundancia Triple}{5}{subsubsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.4}Algunos Requerimientos de un Sistema Redundante}{6}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Sincronismo de los Nodos}{6}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Consenso}{7}{subsubsection.3.4.2}%
+\contentsline {section}{\numberline {4}Conclusiones}{7}{section.4}%
+\contentsline {section}{Referencias}{7}{section*.8}%
