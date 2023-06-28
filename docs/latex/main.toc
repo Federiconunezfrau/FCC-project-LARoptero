@@ -11,5 +11,5 @@
 \contentsline {subsection}{\numberline {3.4}Algunos Requerimientos de un Sistema Redundante}{6}{subsection.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}Sincronismo de los Nodos}{6}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Consenso}{7}{subsubsection.3.4.2}%
-\contentsline {section}{\numberline {4}Conclusiones}{7}{section.4}%
-\contentsline {section}{Referencias}{7}{section*.8}%
+\contentsline {section}{\numberline {4}Conclusiones}{9}{section.4}%
+\contentsline {section}{Referencias}{9}{section*.11}%
