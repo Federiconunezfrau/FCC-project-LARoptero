@@ -12,4 +12,4 @@
 \contentsline {subsubsection}{\numberline {3.4.1}Sincronismo de los Nodos}{6}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Consenso}{7}{subsubsection.3.4.2}%
 \contentsline {section}{\numberline {4}Conclusiones}{9}{section.4}%
-\contentsline {section}{Referencias}{9}{section*.11}%
+\contentsline {section}{Referencias}{9}{section*.12}%

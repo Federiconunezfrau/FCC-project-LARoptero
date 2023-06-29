@@ -184,13 +184,25 @@ A continuación se plantea un caso diferente. Se analiza la situación en la que
 
 Como se mencionó en la sección anterior, se requiere lograr una sincronización entre computadoras de vuelo redundantes. De manera de ejecutar un algoritmo de sincronización adecuado, las computadoras de vuelo deben compartir un valor asociado a su propio clock interno, a las demás.
 
-Estos dos últmos escenarios difieren del caso en el que la FCC comparte un valor que puede ser \textit{True} o \textit{False} en que no existe un valor correcto en este caso. En el caso de la figura \ref{fig:3_4_2_consenso_2} el valor correcto es \textit{True}. En estos casos, cada FCC comparte un valor que corresponde a la perspectiva de cada una de ellas. Se muestra un ejemplo para la sincronización de FCCs en la figura \ref{fig:3_4_2_consenso_3}.
+Estos dos últmos escenarios difieren del caso en el que la FCC comparte un valor que puede ser \textit{True} o \textit{False}. Lo que se plantea aquí es un caso en el que cada FCC comparte un valor que corresponde a la propia perspectiva de cada una de ellas. Debido a esto, no existe un valor correcto a transferirle a las demás. Se muestra un ejemplo para la sincronización de FCCs en la figura \ref{fig:3_4_2_consenso_4}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_3.png}
-    \caption{La FCC1 entrega un valor distinto de timing a los \textit{voters}}.
-    \label{fig:3_4_2_consenso_3}
+    \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_4.png}
+    \caption{La FCC1 entrega un valor distinto de timing a las demás FCCs}.
+    \label{fig:3_4_2_consenso_4}
 \end{figure}
 
-Si el \textit{voter} en lugar de realizar una votación, toma el promedio de los tres timers y luego se lo informa a las FCCs, los resultados de 
+En este escenario, la FCC1 entrega dos valores distintos de su \textit{clock} a las demás FCCs. Cada una de ellas luego realiza un promedio para llegar a un único valor. Lo que se observa es que las FCC2 y FCC3 calcularán un valor promedio distinto, es decir, no se sincronizarán.
+Una posible solución podría ser que las FCCs hagan un nuevo intercambio, con los valores promedio calculados. Esto se muestra en la figura \ref{fig:3_4_2_consenso_5}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_5.png}
+    \caption{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.}
+    \label{fig:3_4_2_consenso_5}
+\end{figure}
+
+Esta situación puede llevar a que las computadoras de vuelo no se sincronicen, algo que como ya se mencionó, es crítico para la correcta ejecución del algoritmo de tolerancia a fallas.
+
+Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilida de que ello suceda.
