@@ -8,8 +8,13 @@
 \contentsline {subsection}{\numberline {3.3}Tolerancia a Fallas a Partir de Redundancias}{4}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Redundancia Doble}{4}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Redundancia Triple}{5}{subsubsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.4}Algunos Requerimientos de un Sistema Redundante}{6}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Sincronismo de los Nodos}{6}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Consenso}{7}{subsubsection.3.4.2}%
-\contentsline {section}{\numberline {4}Conclusiones}{9}{section.4}%
-\contentsline {section}{Referencias}{9}{section*.12}%
+\contentsline {subsection}{\numberline {3.4}Algunos Requerimientos de un Sistema Redundante}{7}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Sincronismo de los Nodos}{7}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Consenso}{8}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}Redundancia Cuádruple: \textit {The Byzantine Generals Problem}}{9}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Presentación del Problema}{10}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Solución al Problema}{10}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Relación del Problema con la Tolerancia a Fallas}{12}{subsubsection.3.5.3}%
+\contentsline {section}{\numberline {4}Arquitectura de Redundancia Propuesta}{13}{section.4}%
+\contentsline {section}{\numberline {5}Conclusiones}{13}{section.5}%
+\contentsline {section}{Referencias}{13}{section*.19}%

@@ -9,5 +9,10 @@
 \BOOKMARK [2][-]{subsection.3.4}{Algunos Requerimientos de un Sistema Redundante}{section.3}% 9
 \BOOKMARK [3][-]{subsubsection.3.4.1}{Sincronismo de los Nodos}{subsection.3.4}% 10
 \BOOKMARK [3][-]{subsubsection.3.4.2}{Consenso}{subsection.3.4}% 11
-\BOOKMARK [1][-]{section.4}{Conclusiones}{}% 12
-\BOOKMARK [1][-]{section*.12}{Referencias}{}% 13
+\BOOKMARK [2][-]{subsection.3.5}{Redundancia Cu\341druple: The Byzantine Generals Problem}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Presentaci\363n del Problema}{subsection.3.5}% 13
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Soluci\363n al Problema}{subsection.3.5}% 14
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Relaci\363n del Problema con la Tolerancia a Fallas}{subsection.3.5}% 15
+\BOOKMARK [1][-]{section.4}{Arquitectura de Redundancia Propuesta}{}% 16
+\BOOKMARK [1][-]{section.5}{Conclusiones}{}% 17
+\BOOKMARK [1][-]{section*.19}{Referencias}{}% 18

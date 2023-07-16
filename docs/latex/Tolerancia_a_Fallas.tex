@@ -7,14 +7,14 @@ En los últimos años se ha incrementado mucho la presencia de UAVs en espacio a
 El objetivo del diseño tolerante a fallas consiste en mejorar la confianza (\textit{Dependability}) del sistema, apuntando a que este pueda seguir ejecutando su función de manera correcta a pesar de la presencia de una cierta cantidad de fallas \cite{nelson1990fault}. De esta última expresión se puede tomar una definición de lo que es un sistema tolerante a fallas.
 
 \begin{mydef}
-    \textbf{Sistema Tolerante a Fallas:} es aquel donde una falla no implica necesariamente un error en el funcionamiento. Un sistema tolerante a fallas no es aquel donde no ocurren fallas, sino que más bien, se acepta que las fallas pueden ocurrir en el sistema, pero lo que se pretende es que el sistema pueda cumplir con su función de igual manera.
+    \textbf{Sistema Tolerante a Fallas:} es aquel donde una falla no implica necesariamente un fracaso en el funcionamiento. Un sistema tolerante a fallas no es aquel donde no ocurren fallas, sino que más bien, se acepta que las fallas pueden ocurrir en el sistema, pero lo que se pretende es que el sistema pueda cumplir con su función de igual manera.
 \end{mydef}
 
 De manera de introducir la nomenclatura que se encuentra en la bibliografía \cite{nelson1990fault}, se definen los siguientes términos:
 
 \begin{itemize}
     \item Falla (\textit{Fault}): es alguna condición anómala, no esperada.
-    \item Error: un error ocurre cuando una falla se manifiesta y produce un comportamiento fuera de lo esperado en alguna parte del sistema.
+    \item Error: ocurre cuando una falla se manifiesta y produce un comportamiento fuera de lo esperado en alguna parte del sistema.
     \item Fracaso (\textit{Failure}): quiere decir que el sistema no puede cumplir con su función de manera adecuada.
 \end{itemize}
 
@@ -63,7 +63,7 @@ Una forma de alivianar esta tarea es la de considerar un modelo de falla de hard
 
 Dado que no se asume un modo de falla del hardware, no se requiere un análisis tan exhaustivo como el mencionado FMEA. Considerando el costo y esfuerzo que lleva realizar un análisis de modos de fallas, el hecho de poder contar con un sistema con las características que aquí se mencionan resulta atractivo para alivianar el trabajo relacionado a la validación del sistema tolerante a fallas en cuestión.
 
-A priori, puede parecer que desarrollar un sistema tolerante a fallas arbitrarias representa un trabajo sumamente complejo. La manera de implementar un sistema tolerante a fallas bizantinas es a través del uso de redundancias. Este resultado se toma a partir de un problema teórico denominado \textit{The Byzantine Generals Problem} \cite{lamport2019byzantine}.
+A priori, puede parecer que desarrollar un sistema tolerante a fallas arbitrarias representa un trabajo sumamente complejo. La manera de implementar un sistema tolerante a fallas bizantinas es a través del uso de redundancias. Este resultado se toma a partir de un problema teórico denominado \textit{The Byzantine Generals Problem} \cite{lamport2019byzantine}, el cual se presentará más adelante.
 
 \subsection{Tolerancia a Fallas a Partir de Redundancias}
 
@@ -76,7 +76,7 @@ Una arquitectura simple es la redundancia doble. En este tipo de sistemas, dos n
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{img/3_4_lockstep_architecture.png}
-    \caption{En la figura de la izquierda, dos sistemas ejecutan las mismas operaciones, mientras que otro sistema externo se encarga de compara las salidas de ambos para detectar errores. En la figura de la derecha, el bloque comparador se encuentra integrado en el sistema \textit{checker}. La imagen fue extraida de \cite{nelson1990fault}.}
+    \caption{En la figura de la izquierda, dos sistemas ejecutan las mismas operaciones, mientras que otro sistema externo se encarga de comparar las salidas de ambos para detectar errores. En la figura de la derecha, el bloque comparador se encuentra integrado en el sistema \textit{checker}. La imagen fue extraida de \cite{nelson1990fault}.}
     \label{fig:3_4_lockstep_architecture}
 \end{figure}
 
@@ -98,11 +98,11 @@ Este tipo de arquitectura permite detectar si ocurrió un error, pero no permite
     \label{fig:3_4_lockstep_architecture_2}
 \end{figure}
 
-Debido a que no se puede saber cuál de las dos CPUs cometió el error, esta arquitectura plantea que en el caso en el que la comparación entre ambas CPUs genere una discrepancia en los resultados, cada una de ellas deben ejecutar un algoritmo interno, para detectar si ellas fueron las que cometieron el error o no. En \cite{zhang2015dual} y en \cite{SolanoPerez2019} se pueden encontrar un proyectos de redundancias doble para un UAV.
+Debido a que no se puede saber cuál de las dos CPUs cometió el error, esta arquitectura plantea que en el caso en el que la comparación entre ambas CPUs genere una discrepancia en los resultados, cada una de ellas deben ejecutar un algoritmo interno, para detectar si ellas fueron las que cometieron el error o no. En \cite{zhang2015dual} y en \cite{SolanoPerez2019} se pueden encontrar proyectos de redundancia doble para UAVs.
 
 \subsubsection{Redundancia Triple}
 
-Esta arquitectura puede encontrarse en la literatura con el nombre \textit{Triple Modular Redundant (TMR) Architecture} \cite{baleani2003fault}\cite{nelson1990fault}\cite{prasad1989fault}. Esta arquitectura consiste en utilizar tres computadoras en paralelo, las cuales computan los mismos resultados. Luego, se comparan los resultados. Se asume que solamente 1 de las 3 presentará una falla a la vez. En dicho caso, los resultados de dos computadoras serán iguales y la de la tercera será distinto, por lo que solamente se descarta el resultado erróneo. En la figura \ref{fig:3_5_TMR} se muestra un diagrama con la arquitectura TMR. Una diferencia de esta arquitectura respecto de la doble redundancia, es el hecho de que puede detectarse cuál de las computadoras falló y además, no es necesario que todas las computadoras ejecuten una rutina para verificar si cometieron el error o no. Esto resulta especialmente útil en sistemas de tiempo real, donde no puede detenerse el sistema para realizar una verificación interna. Esto se denomina \textit{Fault Masking}.
+Esta arquitectura puede encontrarse en la literatura con el nombre \textit{Triple Modular Redundant (TMR) Architecture} \cite{baleani2003fault}\cite{nelson1990fault}\cite{prasad1989fault}\cite{lyons1962use}. Esta arquitectura consiste en utilizar tres computadoras en paralelo, las cuales computan los mismos resultados. Luego, se comparan los resultados. Se asume que solamente 1 de las 3 presentará una falla a la vez. En dicho caso, los resultados de dos computadoras serán iguales y la de la tercera será distinto, por lo que solamente se descarta el resultado erróneo. En la figura \ref{fig:3_5_TMR} se muestra un diagrama con la arquitectura TMR. Una diferencia de esta arquitectura respecto de la doble redundancia, es el hecho de que puede detectarse cuál de las computadoras falló y además, no es necesario que todas las computadoras ejecuten una rutina para verificar si cometieron el error o no. Esto resulta especialmente útil en sistemas de tiempo real, donde no puede detenerse el sistema para realizar una verificación interna. Esto se denomina \textit{Fault Masking}.
 
 \begin{figure}[H]
     \centering
@@ -117,17 +117,39 @@ Como indica el texto de la imagen, una cuestión clave de esta arquitectura es e
     \textbf{Single-Point Failure}: si la arquitectura del sistema es tal que una parte del sistema X fracasa en cumplir su trabajo dentro del sistema, luego el sistema completo fracasará en cumplir su función. En dicho caso, X es un punto único de falla.
 \end{mydef}
 
-Una forma de combatir esto es replicar los bloques que realizan la votación \cite{nelson1990fault}. De esta manera, también pueden enmascararse errores de los bloques que realizan la votación.
+Una forma de combatir esto es replicar los bloques que realizan la votación \cite{nelson1990fault}\cite{lyons1962use}. De esta manera, también pueden enmascararse errores de los bloques que realizan la votación. La arquitectura sería como la que se muestra en la figura \ref{fig:3_3_2_consenso_1}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/3_4_2_consenso_1.png}
+    \caption{Arquitectura TMR con redundancia en los elementos votantes.}
+    \label{fig:3_3_2_consenso_1}
+\end{figure}
+
+Los tres elementos \textit{Voter} reciben las mismas entradas y en el caso de que ninguno de los \textit{voters} cometa un error, dado que las entradas de los \textit{Voters} son exactamente iguales, luego los tres decidirán por el mismo resultado como el valor correcto.
+
+Esta arquitectura es más compleja que las anteriores, ya que requiere una gran cantidad de nodos, 3 FCCs + 3 bloques votantes, dando un total de 6. Además, pensando en que se argumentó que los votantes generalmente son más confiables que las FCCs, la triplicación del bloque \textit{Voter} encarece mucho al UAV.
+
+%Otra cuestión que aparece en esta arquitectura, es que si bien los votantes generan cada uno un valor de salida, al fin y al cabo será uno solo el valor a utilizar. En la figura \ref{fig:3_3_2_consenso_1}, cada voter tiene su propia salida, pero en algún punto se deberá decidir cuál de las tres salidas es la que se va a utilizar como correcta. Por ejemplo, si el valor de salida es la señal de actuación de un motor, luego los tres resultados del voter deberan enviarse a algún modulo encargado de controlar dicho motor.
+
+Como medida para evitar esto último, los bloques votantes pueden integrarse dentro de cada una de las FCC. Esto quiere decir, que en lugar de tener 3 bloques votantes, las mismas FCC sean las encargadas de realizar la votación. En el artículo \cite{hiergeist2017internal} se propone que los microcontroladores automotivos ofrecen las interfaces necesarias para implementar una red redundante para tolerar fallas. En el artículo \cite{hiergeist2018implementation}, los mismos autores presentan resultados para una arquitectura con redundancia cuádruple, donde los mismos microcontroladores de cada FCC son los encargados de realizar la votación. Para el caso de una arquitectura de redundancia triple, puede diagramarse como en la figura \ref{fig:3_5_TMR_2}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/3_5_TMR_2.png}
+    \caption{Arquitectura de redundancia trple, donde los bloques votantes son las mismas FCCs. Los votantes se encuentran integrados dentro de cada FCC.}
+    \label{fig:3_5_TMR_2}
+\end{figure}
 
 \subsection{Algunos Requerimientos de un Sistema Redundante}
 
-Si bien el uso de redundancias apunta a incrementar la fiabilidad del sistema y tolerar fallas, es un error pensar que el simple hecho de tener un sistema redundante equivale a un incremento de la fiabilidad \cite{lala1994architectural}. Esto es principalmente por el hecho de que un sistema redundante incluye además las comunicaciones y rutinas necesarias para ejecutar las votaciones. Si estas funcionalidades no son administradas de manera correcta, un sistema redundante solamente solo traerá más fallas.
+Si bien el uso de redundancias apunta a incrementar la fiabilidad del sistema y tolerar fallas, es un error pensar que el simple hecho de tener un sistema redundante equivale a un incremento de la fiabilidad \cite{lala1994architectural}. Esto es principalmente por el hecho de que un sistema redundante incluye además las comunicaciones y rutinas necesarias para ejecutar las votaciones. Si estas funcionalidades no son administradas de manera correcta, un sistema redundante solamente traerá más fallas.
 
 \subsubsection{Sincronismo de los Nodos}
 
 En las arquitecturas antes presentadas, se menciona que se realiza una comparación de los resultados calculados por cada nodo, para detectar/enmascarar errores. Para que el funcionamiento de esta comparación sea adecuado, los nodos deben estar sincronizados. Esto es un requerimiento para sistemas de tiempo real, como el caso de la computadora de vuelo de un UAV.
 
-En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instante $t$, se presenta una nueva medición de un sensor a las tres computadoras de vuelo. Al comienzo de la misión, todas ellas estarán sincronizadas y generán un resultado del cálculo de la ley de control que corresponde al mismo intervalo de tiempo. Luego se realiza la votación para elegir el valor correcto. La figura \ref{fig:3_4_1_sincronizacion_2}, muestra lo que sucede al cabo de un período de tiempo. Se presenta una nueva medición de un sensor en el instante $t$. Debido a la desincronización, es posible que las computadoras de vuelo no presenten sus resultados al \textit{Voter} a tiempo. Este caso suele estar contemplado dentro de las posibilidades y correpsonde al caso en el que una computadora de vuelo presentó un error y debido a ello no respondió con ningún valor (por ejemplo, se reinició su procesador debido a un \textit{watchdog}).
+En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instante $t$, se presenta una nueva medición de un sensor a las tres computadoras de vuelo. Al comienzo de la misión, todas ellas estarán sincronizadas y generarán un resultado del cálculo de la ley de control que corresponde al mismo intervalo de tiempo. Luego se realiza la votación para elegir el valor correcto. La figura \ref{fig:3_4_1_sincronizacion_2}, muestra lo que sucede al cabo de un período de tiempo. Se presenta una nueva medición de un sensor en el instante $t$. Debido a la desincronización, es posible que las computadoras de vuelo no presenten sus resultados al \textit{Voter} a tiempo, por lo que este asumirá que una de las FCCs no presentó ninguna respuesta. Este caso suele estar contemplado dentro de las posibilidades y correpsonde al caso en el que una computadora de vuelo presentó un error y debido a ello no respondió con ningún valor (por ejemplo, se reinició su procesador debido a un \textit{watchdog}). En esos casos el \textit{Voter} simplemente asume algún valor por defecto.
 
 \begin{figure}[H]
     \centering
@@ -141,11 +163,11 @@ En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instant
         \caption{Al cabo de un período de tiempo, se desincronizarán.}
         \label{fig:3_4_1_sincronizacion_2}
     \end{subfigure}
-    \caption{Al cabo de un rato, la desincronización entre FCCs impactará en el sistema redundante.}
+    \caption{A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.}
     \label{fig:3_4_1_sincronizacion}
 \end{figure}
 
-Otra cosa que puede suceder, es que los resultados propuestos por las computadoras de vuelo, $Y_1$, $Y_2$ e $Y_3$ correspondan a intervalos de tiempo distintos. Este caso es todavía peor que el anterior, ya que no se encuentra contemplado. 
+Otra situación que puede presentarse, es que los resultados propuestos por las computadoras de vuelo $Y_1$, $Y_2$ e $Y_3$ correspondan a intervalos de tiempo distintos. Este caso es todavía peor que el anterior, ya que no se encuentra contemplado y los \textit{Voters} simplemente realizarán la votación asumiendo que el dato es válido.
 
 \begin{figure}[H]
     \centering
@@ -158,18 +180,7 @@ Se concluye que es mandatorio utilizar alguna técnica de sincronización entre 
 
 \subsubsection{Consenso}
 
-Antes se mencionó que la arquitectura TMR puede mejorarse si se aplica redundancia para los elementos que realizan la votación. En la figura \ref{fig:3_4_2_consenso_1} se muestra la arquitectura TMR con redundancia de elementos que realizan la votación.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/3_4_2_consenso_1.png}
-    \caption{Arquitectura TMR con redundancia en los elementos votantes.}
-    \label{fig:3_4_2_consenso_1}
-\end{figure}
-
-Los tres elementos \textit{Voter} reciben las mismas entradas y deciden un valor. En el caso de que ninguno de los \textit{voters} cometa un error, dado que las entradas de los \textit{Voters} son exactamente iguales, luego los tres decidirán por el mismo resultado como el valor correcto.
-
-Lo que se plantea en esta sección es que existe la posibilidad de que una de las FCC entregue distintos valores a cada \textit{Voter}. En la figura \ref{fig:3_4_2_consenso_2} se muestra una situación en la que la FCC1 entrega dos valores distintos a los demás \textit{Voters}, siendo los valores posibles \textit{True} y \textit{False}. Esto puede deberse por ejemplo a que la FCC1 así lo quiso, debido a una falla muy compleja de analizar y que se manifiesta como un error de esta manera. Otra posibilidad más realista puede ser el hecho de que, debido a que el dato enviado por la FCC1 llegó más tarde al tercer \textit{Voter} que a los demás, este interpretó mal el valor recibido por la línea de comuniación, generando la situación de la figura \ref{fig:3_4_2_consenso_2}. 
+Lo que se plantea en esta sección, es que existe la posibilidad de que una de las FCC entregue distintos valores a cada \textit{Voter}. En la figura \ref{fig:3_4_2_consenso_2} se muestra una situación en la que la FCC1 entrega dos valores distintos a los demás \textit{Voters}, siendo los valores posibles \textit{True} y \textit{False}. Esto puede deberse por ejemplo a que la FCC1 así lo quiso, debido a una falla muy compleja de analizar y que se manifiesta como un error de esta manera. Otra posibilidad más realista puede ser el hecho de que, debido a que el dato enviado por la FCC1 llegó más tarde al tercer \textit{Voter} que a los demás, este interpretó mal el valor recibido por la línea de comuniación, generando la situación de la figura \ref{fig:3_4_2_consenso_2}. 
 
 \begin{figure}[H]
     \centering
@@ -182,7 +193,7 @@ Este caso a priori parecería no presentar un problema que la arquitectura TMR n
 
 A continuación se plantea un caso diferente. Se analiza la situación en la que cada FCC propone un valor distinto, que fue calculado por su propia observación del escenario en el que se encuentra. Esto podría ser por ejemplo, el valor de algún sensor interno a esta. Las FCC 1, 2 y 3 se encuentran dentro del mismo UAV, por lo que si poseen sensores redundantes, uno esperaría que se obtengan las mismas lecturas (si es que todos los sensores funcionan adecuadamente). Esto puede no ser así, ya que por ejemplo estas pueden presentar pequeñas variaciones por tratarse de lecturas analógicas. De manera de que el algoritmo de control se ejecute de manera consistente en las tres FCCs, ellas deben ponerse de acuerdo en un valor del sensor.
 
-Como se mencionó en la sección anterior, se requiere lograr una sincronización entre computadoras de vuelo redundantes. De manera de ejecutar un algoritmo de sincronización adecuado, las computadoras de vuelo deben compartir un valor asociado a su propio clock interno, a las demás.
+Como se mencionó en la sección anterior, se requiere lograr una sincronización entre computadoras de vuelo redundantes. De manera de ejecutar un algoritmo de sincronización adecuado, las computadoras de vuelo deben compartirle a las demás, un valor asociado a su propio clock interno.
 
 Estos dos últmos escenarios difieren del caso en el que la FCC comparte un valor que puede ser \textit{True} o \textit{False}. Lo que se plantea aquí es un caso en el que cada FCC comparte un valor que corresponde a la propia perspectiva de cada una de ellas. Debido a esto, no existe un valor correcto a transferirle a las demás. Se muestra un ejemplo para la sincronización de FCCs en la figura \ref{fig:3_4_2_consenso_4}.
 
@@ -194,7 +205,7 @@ Estos dos últmos escenarios difieren del caso en el que la FCC comparte un valo
 \end{figure}
 
 En este escenario, la FCC1 entrega dos valores distintos de su \textit{clock} a las demás FCCs. Cada una de ellas luego realiza un promedio para llegar a un único valor. Lo que se observa es que las FCC2 y FCC3 calcularán un valor promedio distinto, es decir, no se sincronizarán.
-Una posible solución podría ser que las FCCs hagan un nuevo intercambio, con los valores promedio calculados. Esto se muestra en la figura \ref{fig:3_4_2_consenso_5}.
+Una posible solución podría ser que las FCCs hagan un nuevo intercambio, con los valores promedio calculados y realicen una votación interna. Esto se muestra en la figura \ref{fig:3_4_2_consenso_5}.
 
 \begin{figure}[H]
     \centering
@@ -203,6 +214,110 @@ Una posible solución podría ser que las FCCs hagan un nuevo intercambio, con l
     \label{fig:3_4_2_consenso_5}
 \end{figure}
 
-Esta situación puede llevar a que las computadoras de vuelo no se sincronicen, algo que como ya se mencionó, es crítico para la correcta ejecución del algoritmo de tolerancia a fallas.
+Esta última situación, donde la FCC1 nuevamente comparte dos valores distintos a las demás, puede llevar a que las computadoras de vuelo no se sincronicen, algo que como ya se mencionó, es crítico para la correcta ejecución del algoritmo de tolerancia a fallas.
 
-Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilida de que ello suceda.
+Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilidad de que ello suceda. Sin embargo, la situación planteada en esta sección puede tratarse como un tipo de falla antes mencionado, la falla bizantina, ya que contempla fallas de hardware que se manifiestan como comportamientos arbitrarios. El ejemplo presentado en esta sección, se corresponde con un comportamiento arbitrario.
+
+\subsection{Redundancia Cuádruple: \textit{The Byzantine Generals Problem}}
+
+En las secciones anteriores se habla de un modelo de falla de hardware arbitraria, denominada falla bizantina. El nombre proviene de un problema denominado \textit{The Byzantine Generals Problem}, formalizado en \cite{lamport2019byzantine}. Este paper plantea un escenario que sirve como base para el análisis de fallas arbitrarias. En esta sección, se presenta brevemente el problema y su relación con la tolerancia a fallas. El análisis completo puede encontrarse en el trabajo original \cite{lamport2019byzantine}. Otros trabajos que tratan el mismo problema son \cite{pease1980reaching} y \cite{wensley1978sift}. Este último, presenta el diseño de una computadora de vuelo tolerante a fallas que utiliza los resultados del \textit{Byzantine Generals Problem} para realizar distintas tareas de redundancia.
+
+\subsubsection{Presentación del Problema}
+
+El secenario que se plantea es el siguiente: un grupo de generales, cada uno liderando su respectivo ejército, se encuentran rodeando una ciudad enemiga. Todos los generales deben ponerse de acuerdo, respecto de si la mejor decisión es atacar la ciudad o retirarse. Independientemente de cuál sea la decisión, todos deben tomar la misma decisión. 
+
+%El escenario que se plantea es el siguiente: se tiene una serie de nodos interconectados (que pueden ser computadoras, microcontroladores, etc...) de los cuales una cierta cantidad pueden llegar a presentar comportamientos con fallas. Estos nodos deben tomar una decisión respecto de alguna acción común a todos. Los nodos que funcionan correctamente deben tomar la misma decisión, mientras que los nodos con fallas pueden comportarse de cualquier manera. El paper presenta todo el análisis del problema reemplazando los nodos por generales de un ejército (particularmente del ejército bizantino, de ahí el nombre del paper). Cada uno de estos generales lidera un ejército. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/Byzantine_Generals_Problem.png}
+    \caption{La situación que se presenta, donde los generales deben tomar una decisión común. La figura de la derecha muestra la situación donde algunos generales atacan mientras que los generales traidores no lo hacen. La imagen se extrajo de \cite{wikipedia-contributors-2023}.}
+    \label{fig:Byzantine_Generales_Problem}    
+\end{figure}
+
+%Una serie de ejércitos se encuentran rodeando una ciudad y sus generales deben ponerse de acuerdo respecto de si la mejor decisión es atacar la ciudad o retirarse. El paper además reemplaza a los nodos con fallas por generales que pueden ser traidores. El problema se convierte en que los generales leales deben ponerse de acuerdo en la misma decisión, ya sea atacar o retirarse, a pesar de la existencia de los traidores. Debido a que los generales se encuentran alejados unos de otros, estos solo pueden comunicarse con mensajes uno a uno, por ejemplo con un soldado que lleve un mensaje a caballo, desde un ejército a otro ejército.
+
+Debido a que los generales se encuentran alejados unos de otros, estos solo pueden comunicarse con mensajes uno a uno, por ejemplo con un soldado que lleve un mensaje a caballo, desde un ejército a otro ejército. Por ejemplo, si el general 1 decide que lo mejor es atacar, este enviará un mensaje a cada uno de los otros generales para informarlse que su voto es por atacar la ciudad.
+
+Además, el problema plantea la posibilidad de que algunos de los generales sean traidores. Esto quiere decir que ellos pueden actuar de manera independiente a la decisión común.
+
+Cada general vota por atacar o por retirarse, y la decisión final será la que tenga más votos. \textbf{Esto quiere decir que cada general debe conocer la opinión de los demás generales, para así poder coincidir en el resultado final, es decir, atacar o retirarse}. El problema, es que los generales traidores pueden mentir o enviar información diferente a cada general. Esto último se refiere a que un traidor puede decirle a un general que su opinión es ``atacar'' y a otro general decirle que su opinón es ``retirarse''. \textbf{Esto último implica que todos los generales deben disponer de la misma información para así poder tomar la misma decisión y que los traidores no perjudiquen el consenso al que deben llegar los generales}. Por ejemplo, si se tienen 3 generales y los generales 1 y 2 reciben los votos:
+
+\begin{flushleft}
+    General 1 = $\begin{bmatrix}
+        Atacar\\
+        Retirarse\\
+        Atacar
+    \end{bmatrix}$
+\end{flushleft}
+
+\begin{flushleft}
+    General 2 = $\begin{bmatrix}
+        Atacar\\
+        Retirarse\\
+        Retirarse
+    \end{bmatrix}$
+\end{flushleft}
+
+Esto llevará a que el General 1 ataque mientras que el General 2 se retire. El error fue causado por la presencia del traidor, el General 3.
+
+\subsubsection{Solución al Problema}
+
+El paper plantea una solución para este problema, pero que solamente es válida en el caso en el que se tienen $m$ traidores y al menos $3m + 1$ generales en total. En la figura \ref{fig:Byzantine_Generals_Problem_2} se muestra un caso para 4 generales y 1 traidor. El General 1 es el traidor y le envía información diferente a cada general.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/Byzantine_Generals_Problem_2.png}
+    \caption{El general 1 es un traidor y le envía información conflictiva a los demás generales.}
+    \label{fig:Byzantine_Generals_Problem_2}
+\end{figure}
+
+Como fue mencionado, para llegar a una decisión común, todos los generales deben conocer la opinión de los demás. El problema en este caso es que el General 1 envió una información difernte a sus pares. Para resolver esto, el algoritmo plantea realizar un segundo intercambio de mensajes como el de la figura \ref{fig:Byzantine_Generals_Problem_3}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/Byzantine_Generals_Problem_3.png}
+    \caption{Se produce un intercambio entre los demás generales, para ponerse de acuerdo respecto de si el General 1 dijo ``Atacar'' o ``Retirarse''.}
+    \label{fig:Byzantine_Generals_Problem_3}
+\end{figure}
+
+Al lado de cada General, se muestra un vector que contiene los mensajes informados por los otros Generales, respecto del voto del General 1. Lo que se muestra es que en este caso, los Generales leales logran ponerse de acuerdo en que el General 1 dijo ``Atacar'', es decir, llegan a un consenso. Para continuar con el algoritmo, se debe repetir el mismo procedimiento de intercambio de mensajes para los otros tres generales. Al finalizar todos los intercambios de mensajes, los Generales leales tendrán la misma información respecto a los votos de sus pares y llegarán a la misma decisión final.
+
+\subsubsection{Relación del Problema con la Tolerancia a Fallas}
+
+Si bien el análisis del problema se plantea como un juego, la motivación surge de realizar un análisis de tolerancia a fallas a partir de redundancias. En \cite{wensley1978sift}, los mismos autores de \textit{The Byzantine Generals Problem} presentan un trabajo de diseño y análisis de una computadora de vuelo tolerante a fallas. Este es anterior a la formalización del problema, pero menciona que la necesidad del consenso entre cada nodo de la red redundante, es un requerimiento para aplicar los mecanismos de tolerancia a fallas correctamente.
+
+Se traza un paralelismo entre los generales que deben llegar a un consenso con una serie de computadoras interconectadas, cuyo objetivo es también generar consenso respecto de alguna variable.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/Byzantine_Generals_Problem_4.png}
+    \caption{En el problema, un general leal representa un nodo, en este caso una computadora de vuelo, que funciona correctamente. Un General traidor es equivalente a una computadora de vuelo que presenta fallas.}
+    \label{fig:Byzantine_Generals_Problem_4}
+\end{figure}
+
+Los generales traidores representan a las computadoras de vuelo que presentan fallas. En \cite{wensley1978sift} se presenta un ejemplo de la aplicación del algoritmo de \textit{The Byzantine Generals Problem} para lograr sincronizar a los nodos. A continuación, se analiza brevemente este problema, con motivo de demostrar su importancia en los sistemas redundantes tolerantes a fallas.
+
+Se plantea una situación como la de la figura \ref{fig:Byzantine_Generals_Problem_2}, pero se reemplazan a los generales por computadoras de vuelo. En este caso, las computadoras de vuelo deben sincronizarse. Para lograrlo, ellas comparten un valor de \textit{timestamp}, que pueden utilizar para ajustar sus clocks. En la figura \ref{fig:Byzantine_Generals_Problem_5} se muestra un escenario en el que una de las computadoras de vuelo presenta una falla tal que le informa un valor distinto a cada una de las computadoras de vuelo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/Byzantine_Generals_Problem_5.png}
+    \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
+    \label{fig:Byzantine_Generals_Problem_5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/Byzantine_Generals_Problem_6.png}
+    \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
+    \label{fig:Byzantine_Generals_Problem_6}
+\end{figure}
+
+A través de un segundo intercambio, las FCC 2, 3 y 4 llegan a la conclusión de que el \textit{timestamp} de la FCC1 no es claro. En este caso, descartan el valor. Luego de hacer todos los intercambios de \textit{timestamp}, las FCCs podrán aplicar internamente la sincronización, por ejemplo, calculando un promedio de todos los timestamp. \textbf{Dado que todas las FCCs tendrán la misma información de \textit{timestamp} entregado por las demás FCCs, luego todas llegarán al mismo promedio y se sincronizarán}.
+
+Un aspecto interesante es el hecho de que en el paper original, se compara a un general traidor con una computadora con fallas. Como se mencionó, los generales traidores pueden tener cualquier comportamiento. Esto lo que quiere decir es que las fallas presentadas por las computadoras de vuelo pueden ser justamente de cualquier característica, incluso al extremo de presentar un comportamiento malicioso, con el objetivo de perjudicar al sistema \cite{lala1994architectural}. Esto sienta las bases para la tolerancia a fallas de hardware arbitrarias.
+
+La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso. Para poder tolerar fallas provenientes de una FCC se requiere un total de 4 computadoras de vuelo. Además, debe haber una interconexión entre las 4 computadoras y ellas deben intercambiar información continuamente para poder detectar y enmascarar la falla. 
+
+En las próximas secciones, se analizará el caso propuesto en este trabajo y se mostrará que bajo ciertas condiciones, puede no ser necesario utilizar 4 computadoras de vuelo para tolerar fallas provenientes de 1 de ellas.

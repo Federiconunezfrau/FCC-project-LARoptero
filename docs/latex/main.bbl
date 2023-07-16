@@ -70,6 +70,62 @@
     \field{year}{2003}
   \endentry
 
+  \entry{wikipedia-contributors-2023}{article}{}
+    \name{author}{1}{}{%
+      {{hash=cW}{%
+         family={contributors},
+         familyi={c\bibinitperiod},
+         given={Wikipedia},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{cW1}
+    \strng{fullhash}{cW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{{Byzantine fault}}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/Byzantine_fault#
+    \endverb
+    \field{journaltitle}{Wikipedia}
+    \field{month}{07}
+    \field{year}{2023}
+  \endentry
+
+  \entry{hiergeist2018implementation}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Hiergeist},
+         familyi={H\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Seifert},
+         familyi={S\bibinitperiod},
+         given={Georg},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HSSG1}
+    \strng{fullhash}{HSSG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{booktitle}{2018 IEEE/AIAA 37th Digital Avionics Systems Conference
+  (DASC)}
+    \field{pages}{1\bibrangedash 10}
+    \field{title}{Implementation of a SPI based redundancy network for SoC
+  based UAV FCCs and achieving synchronization}
+    \field{year}{2018}
+  \endentry
+
   \entry{hiergeist2017internal}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=HS}{%
@@ -168,6 +224,39 @@
     \field{year}{2019}
   \endentry
 
+  \entry{lyons1962use}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LRE}{%
+         family={Lyons},
+         familyi={L\bibinitperiod},
+         given={Robert\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=VW}{%
+         family={Vanderkulk},
+         familyi={V\bibinitperiod},
+         given={Wouter},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IBM}%
+    }
+    \strng{namehash}{LREVW1}
+    \strng{fullhash}{LREVW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{number}{2}
+    \field{pages}{200\bibrangedash 209}
+    \field{title}{The use of triple-modular redundancy to improve computer
+  reliability}
+    \field{volume}{6}
+    \field{journaltitle}{IBM journal of research and development}
+    \field{year}{1962}
+  \endentry
+
   \entry{nelson1990fault}{article}{}
     \name{author}{1}{}{%
       {{hash=NVP}{%
@@ -192,6 +281,44 @@
     \field{volume}{23}
     \field{journaltitle}{Computer}
     \field{year}{1990}
+  \endentry
+
+  \entry{pease1980reaching}{article}{}
+    \name{author}{3}{}{%
+      {{hash=PM}{%
+         family={Pease},
+         familyi={P\bibinitperiod},
+         given={Marshall},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM New York, NY, USA}%
+    }
+    \strng{namehash}{PMSRLL1}
+    \strng{fullhash}{PMSRLL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{number}{2}
+    \field{pages}{228\bibrangedash 234}
+    \field{title}{Reaching agreement in the presence of faults}
+    \field{volume}{27}
+    \field{journaltitle}{Journal of the ACM (JACM)}
+    \field{year}{1980}
   \endentry
 
   \entry{prasad1989fault}{article}{}
@@ -279,6 +406,75 @@
     \verb https://www.layerzero.com/Innovations/Industry-Firsts/Triple-Modular-
     \verb Redundancy.html
     \endverb
+  \endentry
+
+  \entry{wensley1978sift}{article}{}
+    \name{author}{8}{}{%
+      {{hash=WJH}{%
+         family={Wensley},
+         familyi={W\bibinitperiod},
+         given={John\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Goldberg},
+         familyi={G\bibinitperiod},
+         given={Jack},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GMW}{%
+         family={Green},
+         familyi={G\bibinitperiod},
+         given={Milton\bibnamedelima W},
+         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=LKN}{%
+         family={Levitt},
+         familyi={L\bibinitperiod},
+         given={Karl\bibnamedelima N},
+         giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=MSPM}{%
+         family={Melliar-Smith},
+         familyi={M\bibinithyphendelim S\bibinitperiod},
+         given={Po\bibnamedelima Mo},
+         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=SRE}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=WCB}{%
+         family={Weinstock},
+         familyi={W\bibinitperiod},
+         given={Charles\bibnamedelima B},
+         giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{WJH+1}
+    \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{number}{10}
+    \field{pages}{1240\bibrangedash 1255}
+    \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
+  aircraft control}
+    \field{volume}{66}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1978}
   \endentry
 
   \entry{zhang2015dual}{inproceedings}{}
