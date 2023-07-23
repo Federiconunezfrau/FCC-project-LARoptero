@@ -14,5 +14,9 @@
 \BOOKMARK [3][-]{subsubsection.3.5.2}{Soluci\363n al Problema}{subsection.3.5}% 14
 \BOOKMARK [3][-]{subsubsection.3.5.3}{Relaci\363n del Problema con la Tolerancia a Fallas}{subsection.3.5}% 15
 \BOOKMARK [1][-]{section.4}{Arquitectura de Redundancia Propuesta}{}% 16
-\BOOKMARK [1][-]{section.5}{Conclusiones}{}% 17
-\BOOKMARK [1][-]{section*.19}{Referencias}{}% 18
+\BOOKMARK [2][-]{subsection.4.1}{Simplificaci\363n del Problema de Tolerancia a Fallas Arbitrarias de Hardware}{section.4}% 17
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Consenso}{subsection.4.1}% 18
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Sincronismo de los nodos}{subsection.4.1}% 19
+\BOOKMARK [2][-]{subsection.4.2}{Arquitectura Utilizada: The Time-Triggered Architecture}{section.4}% 20
+\BOOKMARK [1][-]{section.5}{Conclusiones}{}% 21
+\BOOKMARK [1][-]{section*.24}{Referencias}{}% 22

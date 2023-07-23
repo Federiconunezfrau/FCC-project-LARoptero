@@ -149,6 +149,7 @@
 \newlabel{fig:3_5_TMR_2}{{5}{6}{Arquitectura de redundancia trple, donde los bloques votantes son las mismas FCCs. Los votantes se encuentran integrados dentro de cada FCC.\relax }{figure.caption.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Algunos Requerimientos de un Sistema Redundante}{7}{subsection.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Sincronismo de los Nodos}{7}{subsubsection.3.4.1}\protected@file@percent }
+\newlabel{sec:sincronismo_TMR}{{3.4.1}{7}{Sincronismo de los Nodos}{subsubsection.3.4.1}{}}
 \newlabel{fig:3_4_1_sincronizacion_1}{{6a}{7}{Computadoras de vuelo al inicio de la misión.\relax }{figure.caption.8}{}}
 \newlabel{sub@fig:3_4_1_sincronizacion_1}{{a}{7}{Computadoras de vuelo al inicio de la misión.\relax }{figure.caption.8}{}}
 \newlabel{fig:3_4_1_sincronizacion_2}{{6b}{7}{Al cabo de un período de tiempo, se desincronizarán.\relax }{figure.caption.8}{}}
@@ -158,6 +159,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.\relax }}{7}{figure.caption.9}\protected@file@percent }
 \newlabel{fig:3_4_1_sincronizacion_3}{{7}{7}{La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.\relax }{figure.caption.9}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Consenso}{8}{subsubsection.3.4.2}\protected@file@percent }
+\newlabel{sec:consenso_TMR}{{3.4.2}{8}{Consenso}{subsubsection.3.4.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces La FCC1 entrega el valor de \textit  {True} a un \textit  {Voter} y \textit  {False} a otro. Los vectores representan los valores sobre los que cada \textit  {Voter} debe decidir y votar por un único valor.\relax }}{8}{figure.caption.10}\protected@file@percent }
 \newlabel{fig:3_4_2_consenso_2}{{8}{8}{La FCC1 entrega el valor de \textit {True} a un \textit {Voter} y \textit {False} a otro. Los vectores representan los valores sobre los que cada \textit {Voter} debe decidir y votar por un único valor.\relax }{figure.caption.10}{}}
 \citation{lamport2019byzantine}
@@ -205,24 +207,66 @@
 \citation{lala1994architectural}
 \abx@aux@cite{lala1994architectural}
 \abx@aux@segm{0}{0}{lala1994architectural}
+\citation{lamport2019byzantine}
+\abx@aux@cite{lamport2019byzantine}
+\abx@aux@segm{0}{0}{lamport2019byzantine}
+\citation{roth2021not}
+\abx@aux@cite{roth2021not}
+\abx@aux@segm{0}{0}{roth2021not}
+\citation{specification1991bosch}
+\abx@aux@cite{specification1991bosch}
+\abx@aux@segm{0}{0}{specification1991bosch}
+\citation{nxpAN12233}
+\abx@aux@cite{nxpAN12233}
+\abx@aux@segm{0}{0}{nxpAN12233}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.\relax }}{13}{figure.caption.18}\protected@file@percent }
 \newlabel{fig:Byzantine_Generals_Problem_6}{{16}{13}{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.\relax }{figure.caption.18}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Arquitectura de Redundancia Propuesta}{13}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusiones}{13}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Referencias}{13}{section*.19}\protected@file@percent }
+\citation{texasSLOA101B}
+\abx@aux@cite{texasSLOA101B}
+\abx@aux@segm{0}{0}{texasSLOA101B}
+\citation{texasSLOA101B}
+\abx@aux@cite{texasSLOA101B}
+\abx@aux@segm{0}{0}{texasSLOA101B}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}{14}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }}{14}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:red_CAN}{{17}{14}{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }}{14}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:byzantine_bus_1}{{18}{14}{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }{figure.caption.20}{}}
+\citation{hiergeist2018implementation}
+\abx@aux@cite{hiergeist2018implementation}
+\abx@aux@segm{0}{0}{hiergeist2018implementation}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Consenso}{15}{subsubsection.4.1.1}\protected@file@percent }
+\newlabel{fig:byzantine_bus_2}{{19a}{15}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.21}{}}
+\newlabel{sub@fig:byzantine_bus_2}{{a}{15}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.21}{}}
+\newlabel{fig:byzantine_bus_3}{{19b}{15}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.21}{}}
+\newlabel{sub@fig:byzantine_bus_3}{{b}{15}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit  {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }}{15}{figure.caption.21}\protected@file@percent }
+\newlabel{}{{19}{15}{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Sincronismo de los nodos}{15}{subsubsection.4.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }}{16}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:task_scheduling_1}{{20}{16}{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref  {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }}{17}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:task_scheduling_2}{{21}{17}{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Arquitectura Utilizada: \textit  {The Time-Triggered Architecture}}{17}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusiones}{17}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Referencias}{17}{section*.24}\protected@file@percent }
 \abx@aux@refcontextdefaultsdone
 \abx@aux@defaultrefcontext{0}{baleani2003fault}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{wikipedia-contributors-2023}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{hiergeist2018implementation}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{hiergeist2017internal}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{texasSLOA101B}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{lala1994architectural}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{lamport2019byzantine}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{lyons1962use}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{nxpAN12233}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{nelson1990fault}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{pease1980reaching}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{prasad1989fault}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{roth2021not}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{SolanoPerez2019}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{specification1991bosch}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{TMRwebPage}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{wensley1978sift}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{zhang2015dual}{nty/global//global/global}
@@ -230,14 +274,17 @@
 \abx@aux@defaultlabelprefix{0}{wikipedia-contributors-2023}{}
 \abx@aux@defaultlabelprefix{0}{hiergeist2018implementation}{}
 \abx@aux@defaultlabelprefix{0}{hiergeist2017internal}{}
+\abx@aux@defaultlabelprefix{0}{texasSLOA101B}{}
 \abx@aux@defaultlabelprefix{0}{lala1994architectural}{}
 \abx@aux@defaultlabelprefix{0}{lamport2019byzantine}{}
 \abx@aux@defaultlabelprefix{0}{lyons1962use}{}
+\abx@aux@defaultlabelprefix{0}{nxpAN12233}{}
 \abx@aux@defaultlabelprefix{0}{nelson1990fault}{}
 \abx@aux@defaultlabelprefix{0}{pease1980reaching}{}
 \abx@aux@defaultlabelprefix{0}{prasad1989fault}{}
 \abx@aux@defaultlabelprefix{0}{roth2021not}{}
 \abx@aux@defaultlabelprefix{0}{SolanoPerez2019}{}
+\abx@aux@defaultlabelprefix{0}{specification1991bosch}{}
 \abx@aux@defaultlabelprefix{0}{TMRwebPage}{}
 \abx@aux@defaultlabelprefix{0}{wensley1978sift}{}
 \abx@aux@defaultlabelprefix{0}{zhang2015dual}{}

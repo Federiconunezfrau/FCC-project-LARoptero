@@ -145,7 +145,7 @@ Como medida para evitar esto último, los bloques votantes pueden integrarse den
 
 Si bien el uso de redundancias apunta a incrementar la fiabilidad del sistema y tolerar fallas, es un error pensar que el simple hecho de tener un sistema redundante equivale a un incremento de la fiabilidad \cite{lala1994architectural}. Esto es principalmente por el hecho de que un sistema redundante incluye además las comunicaciones y rutinas necesarias para ejecutar las votaciones. Si estas funcionalidades no son administradas de manera correcta, un sistema redundante solamente traerá más fallas.
 
-\subsubsection{Sincronismo de los Nodos}
+\subsubsection{Sincronismo de los Nodos}\label{sec:sincronismo_TMR}
 
 En las arquitecturas antes presentadas, se menciona que se realiza una comparación de los resultados calculados por cada nodo, para detectar/enmascarar errores. Para que el funcionamiento de esta comparación sea adecuado, los nodos deben estar sincronizados. Esto es un requerimiento para sistemas de tiempo real, como el caso de la computadora de vuelo de un UAV.
 
@@ -178,7 +178,7 @@ Otra situación que puede presentarse, es que los resultados propuestos por las 
 
 Se concluye que es mandatorio utilizar alguna técnica de sincronización entre los nodos. Como detalle de la figura \ref{fig:3_4_1_sincronizacion_3}, se muestra que la sincronización entre nodos presupone otro canal de comuniación más. Otra forma podría ser relegar la tarea de la sincronización al bloque \textit{Voter}, aunque esto nuevamente presenta un punto singular de falla. Como se demostró en esta sección, el sincronismo es un aspecto crítico en el sistema redundante, por lo que se prefiere evitar esto último.
 
-\subsubsection{Consenso}
+\subsubsection{Consenso}\label{sec:consenso_TMR}
 
 Lo que se plantea en esta sección, es que existe la posibilidad de que una de las FCC entregue distintos valores a cada \textit{Voter}. En la figura \ref{fig:3_4_2_consenso_2} se muestra una situación en la que la FCC1 entrega dos valores distintos a los demás \textit{Voters}, siendo los valores posibles \textit{True} y \textit{False}. Esto puede deberse por ejemplo a que la FCC1 así lo quiso, debido a una falla muy compleja de analizar y que se manifiesta como un error de esta manera. Otra posibilidad más realista puede ser el hecho de que, debido a que el dato enviado por la FCC1 llegó más tarde al tercer \textit{Voter} que a los demás, este interpretó mal el valor recibido por la línea de comuniación, generando la situación de la figura \ref{fig:3_4_2_consenso_2}. 
 
@@ -318,6 +318,4 @@ A través de un segundo intercambio, las FCC 2, 3 y 4 llegan a la conclusión de
 
 Un aspecto interesante es el hecho de que en el paper original, se compara a un general traidor con una computadora con fallas. Como se mencionó, los generales traidores pueden tener cualquier comportamiento. Esto lo que quiere decir es que las fallas presentadas por las computadoras de vuelo pueden ser justamente de cualquier característica, incluso al extremo de presentar un comportamiento malicioso, con el objetivo de perjudicar al sistema \cite{lala1994architectural}. Esto sienta las bases para la tolerancia a fallas de hardware arbitrarias.
 
-La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso. Para poder tolerar fallas provenientes de una FCC se requiere un total de 4 computadoras de vuelo. Además, debe haber una interconexión entre las 4 computadoras y ellas deben intercambiar información continuamente para poder detectar y enmascarar la falla. 
-
-En las próximas secciones, se analizará el caso propuesto en este trabajo y se mostrará que bajo ciertas condiciones, puede no ser necesario utilizar 4 computadoras de vuelo para tolerar fallas provenientes de 1 de ellas.
+La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso. Para poder tolerar fallas provenientes de 1 FCC se requiere un total de 4 computadoras de vuelo. Además, debe haber una interconexión entre las 4 computadoras y ellas deben intercambiar información continuamente para poder detectar y enmascarar la falla. A todo esto se le debe sumar, la necesidad de la sincronización.

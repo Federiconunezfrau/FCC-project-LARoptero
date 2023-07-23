@@ -158,6 +158,20 @@
     \field{year}{2017}
   \endentry
 
+  \entry{texasSLOA101B}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \field{note}{Rev. B}
+    \field{number}{SLOA101B}
+    \field{title}{Introduction to the Controller Area Network (CAN)}
+    \field{month}{05}
+    \field{year}{2016}
+  \endentry
+
   \entry{lala1994architectural}{article}{}
     \name{author}{2}{}{%
       {{hash=LJH}{%
@@ -255,6 +269,20 @@
     \field{volume}{6}
     \field{journaltitle}{IBM journal of research and development}
     \field{year}{1962}
+  \endentry
+
+  \entry{nxpAN12233}{manual}{}
+    \list{organization}{1}{%
+      {NXP Semiconductors}%
+    }
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{note}{Rev. 0}
+    \field{number}{AN12233}
+    \field{title}{MPC5744P FlexRay Interface in Pictures}
+    \field{month}{05}
+    \field{year}{2021}
   \endentry
 
   \entry{nelson1990fault}{article}{}
@@ -395,6 +423,28 @@
     \field{sortinithash}{S}
     \field{title}{Development of a Redundancy System for Autopilots}
     \field{year}{2019}
+  \endentry
+
+  \entry{specification1991bosch}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SC}{%
+         family={Specification},
+         familyi={S\bibinitperiod},
+         given={CAN},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SC1}
+    \strng{fullhash}{SC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{pages}{75}
+    \field{title}{Bosch}
+    \field{volume}{50}
+    \field{journaltitle}{Robert Bosch GmbH, Postfach}
+    \field{year}{1991}
   \endentry
 
   \entry{TMRwebPage}{online}{}
