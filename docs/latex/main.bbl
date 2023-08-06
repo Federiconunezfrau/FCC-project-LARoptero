@@ -17,6 +17,35 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{anceaume1998performance}{thesis}{}
+    \name{author}{2}{}{%
+      {{hash=AE}{%
+         family={Anceaume},
+         familyi={A\bibinitperiod},
+         given={Emmanuelle},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=PI}{%
+         family={Puaut},
+         familyi={P\bibinitperiod},
+         given={Isabelle},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AEPI1}
+    \strng{fullhash}{AEPI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{Performance evaluation of clock synchronization algorithms}
+    \list{institution}{1}{%
+      {INRIA}%
+    }
+    \field{type}{phdthesis}
+    \field{year}{1998}
+  \endentry
+
   \entry{baleani2003fault}{inproceedings}{}
     \name{author}{6}{}{%
       {{hash=BM}{%
@@ -172,6 +201,92 @@
     \field{year}{2016}
   \endentry
 
+  \entry{kopetz-2011}{book}{}
+    \name{author}{1}{}{%
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Science+Business Media}%
+    }
+    \strng{namehash}{KH1}
+    \strng{fullhash}{KH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \verb{doi}
+    \verb 10.1007/978-1-4419-8237-7
+    \endverb
+    \field{title}{{Real-Time systems}}
+    \verb{url}
+    \verb https://doi.org/10.1007/978-1-4419-8237-7
+    \endverb
+    \field{month}{01}
+    \field{year}{2011}
+  \endentry
+
+  \entry{kopetz1998time}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{KH1}
+    \strng{fullhash}{KH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{booktitle}{Proceedings 19th IEEE Real-Time Systems Symposium (Cat.
+  No. 98CB36279)}
+    \field{pages}{168\bibrangedash 177}
+    \field{title}{The time-triggered model of computation}
+    \field{year}{1998}
+  \endentry
+
+  \entry{kopetz2003time}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=BG}{%
+         family={Bauer},
+         familyi={B\bibinitperiod},
+         given={G{\"u}nther},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{KHBG1}
+    \strng{fullhash}{KHBG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{1}
+    \field{pages}{112\bibrangedash 126}
+    \field{title}{The time-triggered architecture}
+    \field{volume}{91}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{2003}
+  \endentry
+
   \entry{lala1994architectural}{article}{}
     \name{author}{2}{}{%
       {{hash=LJH}{%
@@ -236,6 +351,38 @@
     \field{pages}{203\bibrangedash 226}
     \field{title}{The Byzantine generals problem}
     \field{year}{2019}
+  \endentry
+
+  \entry{leen2002ttcan}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LG}{%
+         family={Leen},
+         familyi={L\bibinitperiod},
+         given={Gabriel},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Heffernan},
+         familyi={H\bibinitperiod},
+         given={Donal},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{LGHD1}
+    \strng{fullhash}{LGHD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{number}{2}
+    \field{pages}{77\bibrangedash 94}
+    \field{title}{TTCAN: a new time-triggered controller area network}
+    \field{volume}{26}
+    \field{journaltitle}{Microprocessors and Microsystems}
+    \field{year}{2002}
   \endentry
 
   \entry{lyons1962use}{article}{}
@@ -311,6 +458,40 @@
     \field{year}{1990}
   \endentry
 
+  \entry{de2013overview}{article}{}
+    \name{author}{2}{}{%
+      {{hash=dOJEM}{%
+         prefix={de},
+         prefixi={d\bibinitperiod},
+         family={Oliveira\bibnamedelima Junior},
+         familyi={O\bibinitperiod\bibinitdelim J\bibinitperiod},
+         given={Eloy\bibnamedelima Martins},
+         giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=eSMLdO}{%
+         prefix={e},
+         prefixi={e},
+         family={Souza},
+         familyi={S\bibinitperiod},
+         given={Marcelo Lopes de\bibnamedelima Oliveira},
+         giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim
+  d\bibinitperiod\bibinitdelim O\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {SAE Technical Paper}%
+    }
+    \strng{namehash}{OJEMdSMLdOe1}
+    \strng{fullhash}{OJEMdSMLdOe1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{title}{An Overview of Clock Synchronization Algorithms and their
+  Uses in Aerospace and Automotive Systems}
+    \field{year}{2013}
+  \endentry
+
   \entry{pease1980reaching}{article}{}
     \name{author}{3}{}{%
       {{hash=PM}{%
@@ -347,6 +528,28 @@
     \field{volume}{27}
     \field{journaltitle}{Journal of the ACM (JACM)}
     \field{year}{1980}
+  \endentry
+
+  \entry{pont2008patterns}{book}{}
+    \name{author}{1}{}{%
+      {{hash=PMJ}{%
+         family={Pont},
+         familyi={P\bibinitperiod},
+         given={Michael\bibnamedelima J},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {TTE System, Ltd}%
+    }
+    \strng{namehash}{PMJ1}
+    \strng{fullhash}{PMJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{Patterns for time-triggered embedded systems}
+    \field{year}{2008}
   \endentry
 
   \entry{prasad1989fault}{article}{}

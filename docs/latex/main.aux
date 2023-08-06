@@ -246,23 +246,95 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Sincronismo de los nodos}{15}{subsubsection.4.1.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }}{16}{figure.caption.22}\protected@file@percent }
 \newlabel{fig:task_scheduling_1}{{20}{16}{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }{figure.caption.22}{}}
+\citation{kopetz2003time}
+\abx@aux@cite{kopetz2003time}
+\abx@aux@segm{0}{0}{kopetz2003time}
 \@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref  {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }}{17}{figure.caption.23}\protected@file@percent }
 \newlabel{fig:task_scheduling_2}{{21}{17}{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Arquitectura Utilizada: \textit  {The Time-Triggered Architecture}}{17}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusiones}{17}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Referencias}{17}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Arquitectura Del Sistema: \textit  {The Time-Triggered Architecture}}{17}{subsection.4.2}\protected@file@percent }
+\citation{kopetz2003time}
+\abx@aux@cite{kopetz2003time}
+\abx@aux@segm{0}{0}{kopetz2003time}
+\citation{kopetz1998time}
+\abx@aux@cite{kopetz1998time}
+\abx@aux@segm{0}{0}{kopetz1998time}
+\citation{kopetz-2011}
+\abx@aux@cite{kopetz-2011}
+\abx@aux@segm{0}{0}{kopetz-2011}
+\citation{kopetz-2011}
+\abx@aux@cite{kopetz-2011}
+\abx@aux@segm{0}{0}{kopetz-2011}
+\citation{kopetz-2011}
+\abx@aux@cite{kopetz-2011}
+\abx@aux@segm{0}{0}{kopetz-2011}
+\citation{kopetz2003time}
+\abx@aux@cite{kopetz2003time}
+\abx@aux@segm{0}{0}{kopetz2003time}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit  {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit  {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }}{18}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:diagrama_TTA}{{22}{18}{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }{figure.caption.24}{}}
+\citation{kopetz2003time}
+\abx@aux@cite{kopetz2003time}
+\abx@aux@segm{0}{0}{kopetz2003time}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Bus de Comunicaciones}{19}{subsubsection.4.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }}{19}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:TDMA_esquema}{{23}{19}{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }{figure.caption.25}{}}
+\citation{pont2008patterns}
+\abx@aux@cite{pont2008patterns}
+\abx@aux@segm{0}{0}{pont2008patterns}
+\citation{leen2002ttcan}
+\abx@aux@cite{leen2002ttcan}
+\abx@aux@segm{0}{0}{leen2002ttcan}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Misma imagen que \ref  {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }}{20}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:TTA_Bus}{{24}{20}{Misma imagen que \ref {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Nodos}{20}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Scheduler}{20}{subsubsection.4.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Global Time y Sincronización}{20}{subsubsection.4.2.4}\protected@file@percent }
+\citation{kopetz-2011}
+\abx@aux@cite{kopetz-2011}
+\abx@aux@segm{0}{0}{kopetz-2011}
+\citation{kopetz-2011}
+\abx@aux@cite{kopetz-2011}
+\abx@aux@segm{0}{0}{kopetz-2011}
+\citation{kopetz-2011}
+\abx@aux@cite{kopetz-2011}
+\abx@aux@segm{0}{0}{kopetz-2011}
+\citation{anceaume1998performance}
+\abx@aux@cite{anceaume1998performance}
+\abx@aux@segm{0}{0}{anceaume1998performance}
+\citation{de2013overview}
+\abx@aux@cite{de2013overview}
+\abx@aux@segm{0}{0}{de2013overview}
+\citation{de2013overview}
+\abx@aux@cite{de2013overview}
+\abx@aux@segm{0}{0}{de2013overview}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite [p.~67]{kopetz-2011}.\relax }}{21}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion}{{25}{21}{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite [p.~67]{kopetz-2011}.\relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite {de2013overview}.\relax }}{21}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion_building_blocks}{{26}{21}{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite {de2013overview}.\relax }{figure.caption.28}{}}
+\citation{kopetz-2011}
+\abx@aux@cite{kopetz-2011}
+\abx@aux@segm{0}{0}{kopetz-2011}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusiones}{22}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Referencias}{22}{section*.29}\protected@file@percent }
 \abx@aux@refcontextdefaultsdone
+\abx@aux@defaultrefcontext{0}{anceaume1998performance}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{baleani2003fault}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{wikipedia-contributors-2023}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{hiergeist2018implementation}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{hiergeist2017internal}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{texasSLOA101B}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{kopetz-2011}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{kopetz1998time}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{kopetz2003time}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{lala1994architectural}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{lamport2019byzantine}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{leen2002ttcan}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{lyons1962use}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{nxpAN12233}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{nelson1990fault}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{de2013overview}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{pease1980reaching}{nty/global//global/global}
+\abx@aux@defaultrefcontext{0}{pont2008patterns}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{prasad1989fault}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{roth2021not}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{SolanoPerez2019}{nty/global//global/global}
@@ -270,17 +342,24 @@
 \abx@aux@defaultrefcontext{0}{TMRwebPage}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{wensley1978sift}{nty/global//global/global}
 \abx@aux@defaultrefcontext{0}{zhang2015dual}{nty/global//global/global}
+\abx@aux@defaultlabelprefix{0}{anceaume1998performance}{}
 \abx@aux@defaultlabelprefix{0}{baleani2003fault}{}
 \abx@aux@defaultlabelprefix{0}{wikipedia-contributors-2023}{}
 \abx@aux@defaultlabelprefix{0}{hiergeist2018implementation}{}
 \abx@aux@defaultlabelprefix{0}{hiergeist2017internal}{}
 \abx@aux@defaultlabelprefix{0}{texasSLOA101B}{}
+\abx@aux@defaultlabelprefix{0}{kopetz-2011}{}
+\abx@aux@defaultlabelprefix{0}{kopetz1998time}{}
+\abx@aux@defaultlabelprefix{0}{kopetz2003time}{}
 \abx@aux@defaultlabelprefix{0}{lala1994architectural}{}
 \abx@aux@defaultlabelprefix{0}{lamport2019byzantine}{}
+\abx@aux@defaultlabelprefix{0}{leen2002ttcan}{}
 \abx@aux@defaultlabelprefix{0}{lyons1962use}{}
 \abx@aux@defaultlabelprefix{0}{nxpAN12233}{}
 \abx@aux@defaultlabelprefix{0}{nelson1990fault}{}
+\abx@aux@defaultlabelprefix{0}{de2013overview}{}
 \abx@aux@defaultlabelprefix{0}{pease1980reaching}{}
+\abx@aux@defaultlabelprefix{0}{pont2008patterns}{}
 \abx@aux@defaultlabelprefix{0}{prasad1989fault}{}
 \abx@aux@defaultlabelprefix{0}{roth2021not}{}
 \abx@aux@defaultlabelprefix{0}{SolanoPerez2019}{}

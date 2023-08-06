@@ -17,6 +17,10 @@
 \BOOKMARK [2][-]{subsection.4.1}{Simplificaci\363n del Problema de Tolerancia a Fallas Arbitrarias de Hardware}{section.4}% 17
 \BOOKMARK [3][-]{subsubsection.4.1.1}{Consenso}{subsection.4.1}% 18
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Sincronismo de los nodos}{subsection.4.1}% 19
-\BOOKMARK [2][-]{subsection.4.2}{Arquitectura Utilizada: The Time-Triggered Architecture}{section.4}% 20
-\BOOKMARK [1][-]{section.5}{Conclusiones}{}% 21
-\BOOKMARK [1][-]{section*.24}{Referencias}{}% 22
+\BOOKMARK [2][-]{subsection.4.2}{Arquitectura Del Sistema: The Time-Triggered Architecture}{section.4}% 20
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Bus de Comunicaciones}{subsection.4.2}% 21
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Nodos}{subsection.4.2}% 22
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Scheduler}{subsection.4.2}% 23
+\BOOKMARK [3][-]{subsubsection.4.2.4}{Global Time y Sincronizaci\363n}{subsection.4.2}% 24
+\BOOKMARK [1][-]{section.5}{Conclusiones}{}% 25
+\BOOKMARK [1][-]{section*.29}{Referencias}{}% 26

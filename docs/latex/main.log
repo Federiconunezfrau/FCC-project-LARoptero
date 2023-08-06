@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.5.31)  22 JUL 2023 23:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.5.31)  6 AUG 2023 16:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1011,7 +1011,7 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 18.
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/cover.tex
-<./img/logo-fiuba.png, id=92, 186.2157pt x 186.2157pt>
+<./img/logo-fiuba.png, id=108, 186.2157pt x 186.2157pt>
 File: ./img/logo-fiuba.png Graphic file (type png)
 <use ./img/logo-fiuba.png>
 Package pdftex.def Info: ./img/logo-fiuba.png  used on input line 6.
@@ -1030,140 +1030,168 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.22 \newpage
               [1] (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/Objetivo.tex) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/Introduccion.tex) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/Tolerancia_a_Fallas.tex [2] [3]
-<img/3_4_lockstep_architecture.png, id=173, 622.325pt x 346.29375pt>
+<img/3_4_lockstep_architecture.png, id=194, 622.325pt x 346.29375pt>
 File: img/3_4_lockstep_architecture.png Graphic file (type png)
 <use img/3_4_lockstep_architecture.png>
 Package pdftex.def Info: img/3_4_lockstep_architecture.png  used on input line 78.
 (pdftex.def)             Requested size: 273.14923pt x 151.99455pt.
  [4 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_lockstep_architecture.png>]
-<./img/3_4_lockstep_dual_core.png, id=191, 582.175pt x 379.4175pt>
+<./img/3_4_lockstep_dual_core.png, id=211, 582.175pt x 379.4175pt>
 File: ./img/3_4_lockstep_dual_core.png Graphic file (type png)
 <use ./img/3_4_lockstep_dual_core.png>
 Package pdftex.def Info: ./img/3_4_lockstep_dual_core.png  used on input line 88.
 (pdftex.def)             Requested size: 223.07211pt x 145.37856pt.
-<./img/3_4_loosely_synchronized_dual_processor_architecture.png, id=192, 595.22375pt x 548.0475pt>
+<./img/3_4_loosely_synchronized_dual_processor_architecture.png, id=212, 595.22375pt x 548.0475pt>
 File: ./img/3_4_loosely_synchronized_dual_processor_architecture.png Graphic file (type png)
 <use ./img/3_4_loosely_synchronized_dual_processor_architecture.png>
 Package pdftex.def Info: ./img/3_4_loosely_synchronized_dual_processor_architecture.png  used on input line 93.
 (pdftex.def)             Requested size: 223.07211pt x 205.39186pt.
-<./img/3_5_TMR.png, id=202, 1003.75pt x 307.1475pt>
+<./img/3_5_TMR.png, id=222, 1003.75pt x 307.1475pt>
 File: ./img/3_5_TMR.png Graphic file (type png)
 <use ./img/3_5_TMR.png>
 Package pdftex.def Info: ./img/3_5_TMR.png  used on input line 109.
 (pdftex.def)             Requested size: 364.19667pt x 111.44473pt.
  [5 <./img/3_4_lockstep_dual_core.png> <./img/3_4_loosely_synchronized_dual_processor_architecture.png> <./img/3_5_TMR.png>]
-<img/3_4_2_consenso_1.png, id=223, 648.4225pt x 284.06125pt>
+<img/3_4_2_consenso_1.png, id=243, 648.4225pt x 284.06125pt>
 File: img/3_4_2_consenso_1.png Graphic file (type png)
 <use img/3_4_2_consenso_1.png>
 Package pdftex.def Info: img/3_4_2_consenso_1.png  used on input line 124.
 (pdftex.def)             Requested size: 318.66948pt x 139.60298pt.
-<img/3_5_TMR_2.png, id=227, 462.72874pt x 204.765pt>
+<img/3_5_TMR_2.png, id=247, 462.72874pt x 204.765pt>
 File: img/3_5_TMR_2.png Graphic file (type png)
 <use img/3_5_TMR_2.png>
 Package pdftex.def Info: img/3_5_TMR_2.png  used on input line 139.
 (pdftex.def)             Requested size: 227.62206pt x 100.72627pt.
  [6 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_2_consenso_1.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_5_TMR_2.png>]
-<img/3_4_1_sincronizacion_1.png, id=242, 530.98375pt x 261.97874pt>
+<img/3_4_1_sincronizacion_1.png, id=262, 530.98375pt x 261.97874pt>
 File: img/3_4_1_sincronizacion_1.png Graphic file (type png)
 <use img/3_4_1_sincronizacion_1.png>
 Package pdftex.def Info: img/3_4_1_sincronizacion_1.png  used on input line 157.
 (pdftex.def)             Requested size: 223.07211pt x 110.0623pt.
-<img/3_4_1_sincronizacion_2.png, id=243, 529.98pt x 261.97874pt>
+<img/3_4_1_sincronizacion_2.png, id=263, 529.98pt x 261.97874pt>
 File: img/3_4_1_sincronizacion_2.png Graphic file (type png)
 <use img/3_4_1_sincronizacion_2.png>
 Package pdftex.def Info: img/3_4_1_sincronizacion_2.png  used on input line 162.
 (pdftex.def)             Requested size: 223.07211pt x 110.27016pt.
-<img/3_4_1_sincronizacion_3.png, id=244, 530.98375pt x 261.97874pt>
+<img/3_4_1_sincronizacion_3.png, id=264, 530.98375pt x 261.97874pt>
 File: img/3_4_1_sincronizacion_3.png Graphic file (type png)
 <use img/3_4_1_sincronizacion_3.png>
 Package pdftex.def Info: img/3_4_1_sincronizacion_3.png  used on input line 174.
 (pdftex.def)             Requested size: 318.66948pt x 157.22842pt.
  [7 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_1_sincronizacion_1.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_1_sincronizacion_2.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_1_sincronizacion_3.png>]
-<img/3_4_2_consenso_2.png, id=257, 731.73375pt x 308.15125pt>
+<img/3_4_2_consenso_2.png, id=277, 731.73375pt x 308.15125pt>
 File: img/3_4_2_consenso_2.png Graphic file (type png)
 <use img/3_4_2_consenso_2.png>
 Package pdftex.def Info: img/3_4_2_consenso_2.png  used on input line 187.
 (pdftex.def)             Requested size: 364.19667pt x 153.37463pt.
-<img/3_4_2_consenso_4.png, id=259, 558.085pt x 316.18124pt>
+<img/3_4_2_consenso_4.png, id=279, 558.085pt x 316.18124pt>
 File: img/3_4_2_consenso_4.png Graphic file (type png)
 <use img/3_4_2_consenso_4.png>
 Package pdftex.def Info: img/3_4_2_consenso_4.png  used on input line 202.
 (pdftex.def)             Requested size: 273.14923pt x 154.75647pt.
  [8 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_2_consenso_2.png>]
-<img/3_4_2_consenso_5.png, id=268, 532.99126pt x 373.395pt>
+<img/3_4_2_consenso_5.png, id=288, 532.99126pt x 373.395pt>
 File: img/3_4_2_consenso_5.png Graphic file (type png)
 <use img/3_4_2_consenso_5.png>
 Package pdftex.def Info: img/3_4_2_consenso_5.png  used on input line 212.
 (pdftex.def)             Requested size: 273.14923pt x 191.36333pt.
  [9 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_2_consenso_4.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/3_4_2_consenso_5.png>]
-<img/Byzantine_Generals_Problem.png, id=283, 462.528pt x 231.264pt>
+<img/Byzantine_Generals_Problem.png, id=303, 462.528pt x 231.264pt>
 File: img/Byzantine_Generals_Problem.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem.png  used on input line 233.
 (pdftex.def)             Requested size: 318.66948pt x 159.34296pt.
-<img/Byzantine_Generals_Problem_2.png, id=287, 462.72874pt x 337.26pt>
+<img/Byzantine_Generals_Problem_2.png, id=307, 462.72874pt x 337.26pt>
 File: img/Byzantine_Generals_Problem_2.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_2.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_2.png  used on input line 270.
 (pdftex.def)             Requested size: 273.14923pt x 199.0846pt.
  [10 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/Byzantine_Generals_Problem.png>]
-<img/Byzantine_Generals_Problem_3.png, id=298, 709.65125pt x 447.6725pt>
+<img/Byzantine_Generals_Problem_3.png, id=318, 709.65125pt x 447.6725pt>
 File: img/Byzantine_Generals_Problem_3.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_3.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_3.png  used on input line 279.
 (pdftex.def)             Requested size: 409.71692pt x 258.46848pt.
  [11 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/Byzantine_Generals_Problem_2.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/Byzantine_Generals_Problem_3.png>]
-<img/Byzantine_Generals_Problem_4.png, id=307, 372.39125pt x 303.1325pt>
+<img/Byzantine_Generals_Problem_4.png, id=328, 372.39125pt x 303.1325pt>
 File: img/Byzantine_Generals_Problem_4.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_4.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_4.png  used on input line 294.
 (pdftex.def)             Requested size: 227.62206pt x 185.29446pt.
-<img/Byzantine_Generals_Problem_5.png, id=311, 463.7325pt x 337.26pt>
+<img/Byzantine_Generals_Problem_5.png, id=332, 463.7325pt x 337.26pt>
 File: img/Byzantine_Generals_Problem_5.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_5.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_5.png  used on input line 305.
 (pdftex.def)             Requested size: 227.62206pt x 165.54703pt.
-<img/Byzantine_Generals_Problem_6.png, id=312, 709.65125pt x 447.6725pt>
+<img/Byzantine_Generals_Problem_6.png, id=333, 709.65125pt x 447.6725pt>
 File: img/Byzantine_Generals_Problem_6.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_6.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_6.png  used on input line 312.
 (pdftex.def)             Requested size: 318.66948pt x 201.03407pt.
  [12 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/Byzantine_Generals_Problem_4.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/Byzantine_Generals_Problem_5.png>]) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/Arquitectura_Propuesta.tex [13 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/Byzantine_Generals_Problem_6.png>]
-<img/red_CAN.png, id=334, 928.46875pt x 378.41376pt>
+<img/red_CAN.png, id=354, 928.46875pt x 378.41376pt>
 File: img/red_CAN.png Graphic file (type png)
 <use img/red_CAN.png>
 Package pdftex.def Info: img/red_CAN.png  used on input line 17.
 (pdftex.def)             Requested size: 455.24411pt x 185.54561pt.
-<img/byzantine_bus_1.png, id=339, 433.62pt x 181.67876pt>
+<img/byzantine_bus_1.png, id=359, 433.62pt x 181.67876pt>
 File: img/byzantine_bus_1.png Graphic file (type png)
 <use img/byzantine_bus_1.png>
 Package pdftex.def Info: img/byzantine_bus_1.png  used on input line 26.
 (pdftex.def)             Requested size: 273.14923pt x 114.44989pt.
  [14 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/red_CAN.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/byzantine_bus_1.png>]
-<img/byzantine_bus_2.png, id=354, 322.20375pt x 181.67876pt>
+<img/byzantine_bus_2.png, id=374, 322.20375pt x 181.67876pt>
 File: img/byzantine_bus_2.png Graphic file (type png)
 <use img/byzantine_bus_2.png>
 Package pdftex.def Info: img/byzantine_bus_2.png  used on input line 44.
 (pdftex.def)             Requested size: 154.78133pt x 87.27687pt.
-<img/byzantine_bus_3.png, id=355, 512.91624pt x 208.78pt>
+<img/byzantine_bus_3.png, id=375, 512.91624pt x 208.78pt>
 File: img/byzantine_bus_3.png Graphic file (type png)
 <use img/byzantine_bus_3.png>
 Package pdftex.def Info: img/byzantine_bus_3.png  used on input line 49.
 (pdftex.def)             Requested size: 223.07211pt x 90.79944pt.
-<img/task_scheduling_1.png, id=359, 626.34pt x 552.0625pt>
+<img/task_scheduling_1.png, id=379, 626.34pt x 552.0625pt>
 File: img/task_scheduling_1.png Graphic file (type png)
 <use img/task_scheduling_1.png>
 Package pdftex.def Info: img/task_scheduling_1.png  used on input line 75.
 (pdftex.def)             Requested size: 318.66948pt x 280.88266pt.
  [15 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/byzantine_bus_2.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/byzantine_bus_3.png>]
-<img/task_scheduling_2.png, id=373, 604.2575pt x 374.39874pt>
+<img/task_scheduling_2.png, id=393, 604.2575pt x 374.39874pt>
 File: img/task_scheduling_2.png Graphic file (type png)
 <use img/task_scheduling_2.png>
 Package pdftex.def Info: img/task_scheduling_2.png  used on input line 86.
 (pdftex.def)             Requested size: 318.66948pt x 197.44777pt.
- [16 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/task_scheduling_1.png>]) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/Conclusiones.tex) [17 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/task_scheduling_2.png>]
+ [16 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/task_scheduling_1.png>] [17 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/task_scheduling_2.png>]
+<img/diagrama_TTA.png, id=417, 877.2775pt x 515.9275pt>
+File: img/diagrama_TTA.png Graphic file (type png)
+<use img/diagrama_TTA.png>
+Package pdftex.def Info: img/diagrama_TTA.png  used on input line 120.
+(pdftex.def)             Requested size: 455.24411pt x 267.73277pt.
+ [18 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/diagrama_TTA.png>]
+<img/TDMA_esquema.png, id=433, 460.72125pt x 357.335pt>
+File: img/TDMA_esquema.png Graphic file (type png)
+<use img/TDMA_esquema.png>
+Package pdftex.def Info: img/TDMA_esquema.png  used on input line 139.
+(pdftex.def)             Requested size: 318.66948pt x 247.15573pt.
+<img/TTA_Bus.png, id=435, 447.6725pt x 227.85126pt>
+File: img/TTA_Bus.png Graphic file (type png)
+<use img/TTA_Bus.png>
+Package pdftex.def Info: img/TTA_Bus.png  used on input line 150.
+(pdftex.def)             Requested size: 273.14923pt x 139.0273pt.
+ [19 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/TDMA_esquema.png>] [20 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/TTA_Bus.png>]
+<img/TTA_resincronizacion.png, id=456, 645.41125pt x 495.8525pt>
+File: img/TTA_resincronizacion.png Graphic file (type png)
+<use img/TTA_resincronizacion.png>
+Package pdftex.def Info: img/TTA_resincronizacion.png  used on input line 181.
+(pdftex.def)             Requested size: 318.66948pt x 244.82353pt.
+<img/TTA_resincronizacion_building_blocks.png, id=461, 611.28375pt x 164.615pt>
+File: img/TTA_resincronizacion_building_blocks.png Graphic file (type png)
+<use img/TTA_resincronizacion_building_blocks.png>
+Package pdftex.def Info: img/TTA_resincronizacion_building_blocks.png  used on input line 190.
+(pdftex.def)             Requested size: 364.19667pt x 98.07397pt.
+ [21 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/TTA_resincronizacion.png> </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/img/TTA_resincronizacion_building_blocks.png>]) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/Conclusiones.tex) [22]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 36.
- [18]
+ [23]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 36.
  (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/main.aux
 LaTeX Info: Redefining \. on input line 32.
@@ -1172,7 +1200,7 @@ LaTeX Info: Redefining \% on input line 32.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 36.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 36.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2E6E0FD16742DF6B589736AFB767C011;1816.
+(rerunfilecheck)             Checksum: DD9AFBAC9D569CE010C8EF463FAC2798;2124.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1183,18 +1211,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 36.
  ) 
 Here is how much of TeX's memory you used:
- 22759 strings out of 481239
- 423142 string characters out of 5920377
- 936704 words of memory out of 5000000
- 37537 multiletter control sequences out of 15000+600000
+ 22852 strings out of 481239
+ 425613 string characters out of 5920377
+ 940413 words of memory out of 5000000
+ 37598 multiletter control sequences out of 15000+600000
  550276 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,13n,52p,1295b,1902s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,13n,57p,1491b,1902s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on /home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/main.pdf (19 pages, 988575 bytes).
+Output written on /home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/latex/main.pdf (24 pages, 1083518 bytes).
 PDF statistics:
- 495 PDF objects out of 1000 (max. 8388607)
- 392 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 302 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 597 PDF objects out of 1000 (max. 8388607)
+ 475 compressed objects within 5 object streams
+ 118 named destinations out of 1000 (max. 500000)
+ 359 words of extra memory for PDF output out of 10000 (max. 10000000)
 
