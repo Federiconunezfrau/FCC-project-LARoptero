@@ -1,0 +1,17 @@
+.EVQ-PNF05M :1 ;Natural Push Plate Tactile Switch, Single Pole Single Throw (SPST) 20 mA @ 15 V dc 3mm Surface Mount
+EVQPNF05M
+*STM S
+*NGS
+*PNM 1=A1 2=B1
+*PLB 1="NO" 2="COM"
+*MXP 2
+*DFN EVQ-PNF05M
+~!Mouser Part Number (667-EVQ-PNF05M)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Panasonic/EVQ-PNF05M?qs=whhzBCqEXCurM07rIvhu9w%3D%3D)
+~!Manufacturer_Name (Panasonic)
+~!Manufacturer_Part_Number (EVQ-PNF05M)
+~!Link Datasheet (https://na.industrial.panasonic.com/file-download/245140)
+~!Height (5mm)
+~!3D_Model (EVQ-PNF05M)
+EVQ-PNF05M
+1.1!U 2.1!U 

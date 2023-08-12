@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'EVQ_PNF05M'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Panasonic", "EVQ-PNF05M" (!) = "", "EVQPNF05M", "Other", "667-EVQ-PNF05M", "https://www.mouser.co.uk/ProductDetail/Panasonic/EVQ-PNF05M?qs=whhzBCqEXCurM07rIvhu9w%3D%3D", "Natural Push Plate Tactile Switch, Single Pole Single Throw (SPST) 20 mA @ 15 V dc 3mm Surface Mount", "https://na.industrial.panasonic.com/file-download/245140", "5 mm"
+END_PART
+
+END.
