@@ -567,8 +567,8 @@
     (pin "4" (uuid 6ec8dd2a-0c41-4238-9bcd-6142d7128c53))
     (pin "5" (uuid c35f8528-8117-4d82-a53a-6a581cd3a3ff))
     (pin "6" (uuid 6f37f21c-3b87-4da1-a40e-854b81c92743))
-    (pin "7" (uuid 79ca66a9-aa03-45be-8596-2613cd10b2f8))
-    (pin "7" (uuid 79ca66a9-aa03-45be-8596-2613cd10b2f8))
+    (pin "7" (uuid 79ca66a9-aa03-45be-8596-2613cd10b2fa))
+    (pin "7" (uuid 79ca66a9-aa03-45be-8596-2613cd10b2fa))
   )
 
   (symbol (lib_id "power:GND") (at 102.235 104.775 0) (mirror y) (unit 1)

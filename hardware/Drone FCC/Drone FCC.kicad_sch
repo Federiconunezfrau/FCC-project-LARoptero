@@ -2852,14 +2852,14 @@
     (path "/d9382f14-7760-40b1-88b8-cbdf6e4f8e8d/7385f3e0-c2ca-4d4a-b0e4-d78e43257e78"
       (reference "R1128") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder")
     )
-    (path "/7aefb805-1ee8-4c99-a02a-c3e1e1ca7ccb/97c08ce5-0620-478c-ba01-9cffe41f0b32"
-      (reference "SW101") (unit 1) (value "SW RESET") (footprint "TL3305AF160QG:SW_TL3305AF160QG")
+    (path "/7aefb805-1ee8-4c99-a02a-c3e1e1ca7ccb/febdf3de-efc7-4703-85f5-8482343502eb"
+      (reference "SW101") (unit 1) (value "SW Proposito General") (footprint "434121043816:434121043816")
     )
-    (path "/d9382f14-7760-40b1-88b8-cbdf6e4f8e8d/5813019e-b2b2-49b6-9621-10baeab8c949"
-      (reference "SW1101") (unit 1) (value "SW Proposito General") (footprint "TL3305AF160QG:SW_TL3305AF160QG")
+    (path "/d9382f14-7760-40b1-88b8-cbdf6e4f8e8d/a3ab106f-7181-4da0-83e7-f45884294633"
+      (reference "SW1101") (unit 1) (value "SW Proposito General") (footprint "434121043816:434121043816")
     )
-    (path "/d9382f14-7760-40b1-88b8-cbdf6e4f8e8d/ecbdd12d-33a5-491d-b09d-2e25ba6fc1ce"
-      (reference "SW1102") (unit 1) (value "SW Proposito General") (footprint "TL3305AF160QG:SW_TL3305AF160QG")
+    (path "/d9382f14-7760-40b1-88b8-cbdf6e4f8e8d/9b75e1e9-f355-433f-877c-07061a1accb8"
+      (reference "SW1102") (unit 1) (value "SW Proposito General") (footprint "434121043816:434121043816")
     )
     (path "/7aefb805-1ee8-4c99-a02a-c3e1e1ca7ccb/57da9507-be27-455d-88d3-29771fa37402"
       (reference "U101") (unit 1) (value "STM32F746ZGTx") (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm")
