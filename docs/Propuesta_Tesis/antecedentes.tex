@@ -1,0 +1,18 @@
+\section{Antecedentes}
+
+El Laboratorio de Automática y Robótica de la FIUBA (LAR) cuenta consigo con plataformas de computadoras de vuelo desarrolladas en el mismo laboratorio, que se utilizan con distintos fines de investigación. Estas computadoras de vuelo han ido incorporando distintas mejoras a lo largo de los años, y se han ido actualizando con nuevos componentes como sensores o microcontroladores. La primera de las versiones cuenta con un microcontrolador ARM Cortex M3, mientras que la última de estas cuenta un ARM Cortex M7 y sensores con mejor rendimiento \cite{garberoglio2019diseno}.\\
+
+
+En este contexto, el LAR plantea diseñar un vehículo multi-rotor de seis rotores, con capacidad de tolerancia a fallas totales en uno de sus motores, y a fallas que puedan ocurrir en sensores redundantes. En este contexto, en el presente trabajo se quiere diseñar una computadora de vuelo que incorpore sensores de orientación y posición redundantes, con el objetivo de implementar técnicas de tolerancia a fallas a partir de redundancias de hardware.
+
+
+
+%Los sistemas tolerantes a fallas aceptan que estas puedan ocurrir, pero implementan mecanismos que permiten continuar con su normal funcionamiento. La principal técnica de tolerancia a fallas es el uso de redundancias \cite{lala1994architectural}. Esto quiere decir que se replica el hardware en el sistema y cada réplica realiza la misma tarea en paralelo. Típicamente, existe una comparación entre los resultados calculados por cada una de las réplicas, con el objetivo de detectar y enmascarar las fallas. El hecho de duplicar o hasta triplicar el hardware trae consigo un incremento en el costo del vehículo. Debido a esto, se buscaron trabajos similares que preferentemente utilicen componentes COTS. Dos de los trabajos que se tendrán en cuenta para el desarrollo de esta Tesis son \cite{hiergeist2018implementation} y \cite{zhang2020architecture}. Ambos implementan mecanismos de tolerancia a fallas, utilizando componentes COTS, a través del intercambio de información entre los nodos redundantes, buscando llegar a un consenso respecto a algún dato, como puede ser una medición de un sensor. {\color{red} agregar que esto es común en aviones. Citar algo}.\\
+
+
+
+%En \cite{hiergeist2018implementation} se implementa una arquitectura con redundancia cuádruple para un UAV. Cada uno de estos nodos se comunica con los demás a través de un periférico SPI. En \cite{zhang2020architecture}, el esquema de redundancias comprende nodos que realizan distintas tareas, lo que vuelve más complejo al sistema. Además, este utiliza un bus de comunicación, común a todos los nodos.
+
+%En \cite{hiergeist2018implementation} se implementa una arquitectura con redundancia cuádruple para un UAV. Estos típicamente realizan las tareas de relevamiento de datos de sensores, cálculo de la ley de control y aplicación de resultados a sus actuadores, de manera periódica. La tolerancia a fallas se implementa a través del intercambio de información entre los 4 nodos, buscando lograr un consenso. Esto quiere decir que todos los nodos deben coincidir por ejemplo, en el valor de la medición de un sensor o en el resultado de un cálculo de la ley de control\\
+
+%En \cite{zhang2020architecture}, el trabajo también implementa la tolerancia a fallas a través del intercambio de sus nodos. Este tiene la particularidad de hacer énfasis en una arquitectura gobernada por el tiempo, es decir que el vehículo funciona de una forma predefinida, lo que le da mayor determinismo y seguridad al sistema.

@@ -1,0 +1,53 @@
+\usepackage[spanish]{babel} % Idioma
+\usepackage[utf8]{inputenc} % Codificación
+\usepackage{comment} % Permite utilizar el entorno comment
+\usepackage{amsmath}
+\usepackage{amsthm}
+\pagestyle {plain} % Configuración de página
+\usepackage{graphicx} % Gráficos
+\usepackage{titling}
+\usepackage{amsfonts}
+%\usepackage{subfigure}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.4em}%
+}
+\usepackage{mathrsfs}
+\usepackage[T1]{fontenc}
+\usepackage[htt]{hyphenat}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage[a4paper,top=2cm,bottom=3cm,left=2.5cm,right=2.5cm,marginparwidth=1.75cm]{geometry}
+\usepackage{multirow}
+\usepackage{siunitx} % For \num and \SI
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+\usepackage{blindtext}
+\usepackage{scrextend}
+\usepackage[table]{xcolor}
+\usepackage{pdfpages} % Para incluir PDF
+%\addtokomafont{labelinglabel}{\sffamily} % For labeling lists
+\renewcommand{\labelitemi}{$\bullet$}
+
+\usepackage{hyperref} % Index con hipervinculos :)
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+%\captionsetup[figure]{labelfont={bf},name={Figura},labelsep=period}
+%\captionsetup[table]{labelfont={bf},name={Tabla},labelsep=period}
+\renewcommand{\spanishtablename}{Tabla}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makecaption}
+  {\scshape}
+  {}
+  {}
+  {}
+\makeatother
+
+
+\usepackage{cancel}
+
+\usepackage{empheq}
+
+%\usepackage{minipage}
