@@ -3,7 +3,9 @@
 \usepackage{comment} % Permite utilizar el entorno comment
 \usepackage{amsmath}
 \usepackage{amsthm}
-\pagestyle {plain} % Configuración de página
+%\pagestyle {plain} % Configuración de página
+\usepackage{fancyhdr}
+
 \usepackage{graphicx} % Gráficos
 \usepackage{titling}
 \usepackage{amsfonts}
@@ -51,3 +53,9 @@
 \usepackage{empheq}
 
 %\usepackage{minipage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Tesis de Ingeniería Electrónica}
+\fancyhead[R]{FIUBA}
+\fancyfoot[C]{\thepage}

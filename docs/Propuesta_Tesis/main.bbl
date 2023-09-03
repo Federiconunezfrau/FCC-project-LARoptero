@@ -189,5 +189,25 @@
     \field{journaltitle}{IEEE Sensors Journal}
     \field{year}{2020}
   \endentry
+
+  \entry{collinson2023introduction}{book}{}
+    \name{author}{1}{}{%
+      {{hash=CRP}{%
+         family={Collinson},
+         familyi={C\bibinitperiod},
+         given={Richard\bibnamedelima PG},
+         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Nature}%
+    }
+    \strng{namehash}{CRP1}
+    \strng{fullhash}{CRP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Introduction to avionics systems}
+    \field{year}{2023}
+  \endentry
 \enddatalist
 \endinput

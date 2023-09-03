@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.5.31)  2 SEP 2023 16:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.5.31)  3 SEP 2023 19:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -113,6 +113,17 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@postskip=\skip53
 \thm@headsep=\skip54
 \dth@everypar=\toks27
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footers
+\f@nch@headwidth=\skip55
+\f@nch@O@elh=\skip56
+\f@nch@O@erh=\skip57
+\f@nch@O@olh=\skip58
+\f@nch@O@orh=\skip59
+\f@nch@O@elf=\skip60
+\f@nch@O@erf=\skip61
+\f@nch@O@olf=\skip62
+\f@nch@O@orf=\skip63
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
@@ -133,9 +144,9 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@width=\dimen146
 ) (/usr/share/texlive/texmf-dist/tex/latex/titling/titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip55
-\thanksmargin=\skip56
-\droptitle=\skip57
+\thanksmarkwidth=\skip64
+\thanksmargin=\skip65
+\droptitle=\skip66
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
@@ -210,9 +221,9 @@ Package: iftex 2019/11/07 v1.0c TeX engine tests
 \Gm@dimlist=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip58
+\multirow@colwidth=\skip67
 \multirow@cntb=\count198
-\multirow@dima=\skip59
+\multirow@dima=\skip68
 \bigstrutjot=\dimen162
 ) (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2020-02-14 L3 programming layer (loader) 
@@ -234,8 +245,8 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \ar@mcellbox=\box50
 \extrarowheight=\dimen164
 \NC@list=\toks32
-\extratabsurround=\skip60
-\backup@length=\skip61
+\extratabsurround=\skip69
+\backup@length=\skip70
 \ar@cellbox=\box51
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 Package: l3keys2e 2020-02-14 LaTeX2e option processing using LaTeX3 keys
@@ -263,8 +274,8 @@ Package: l3keys2e 2020-02-14 LaTeX2e option processing using LaTeX3 keys
 \l__siunitx_unit_prefix_base_int=\count284
 \l__siunitx_unit_prefix_gram_int=\count285
 \l__siunitx_number_product_int=\count286
-\c__siunitx_one_fill_skip=\skip62
-\l__siunitx_table_unit_align_skip=\skip63
+\c__siunitx_one_fill_skip=\skip71
+\l__siunitx_table_unit_align_skip=\skip72
 \l__siunitx_table_exponent_dim=\dimen168
 \l__siunitx_table_integer_dim=\dimen169
 \l__siunitx_table_mantissa_dim=\dimen170
@@ -278,8 +289,8 @@ Package: l3keys2e 2020-02-14 LaTeX2e option processing using LaTeX3 keys
 \l__siunitx_table_post_box=\box56
 \l__siunitx_table_mantissa_box=\box57
 \l__siunitx_table_result_box=\box58
-\l__siunitx_table_number_align_skip=\skip64
-\l__siunitx_table_text_align_skip=\skip65
+\l__siunitx_table_number_align_skip=\skip73
+\l__siunitx_table_text_align_skip=\skip74
  (/usr/share/texlive/texmf-dist/tex/latex/translator/translator.sty
 Package: translator 2019-05-31 v1.12a Easy translation of strings in LaTeX
 )) (/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
@@ -322,7 +333,7 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
  (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
 \everycr=\toks33
-\minrowclearance=\skip66
+\minrowclearance=\skip75
 )
 \rownum=\count305
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
@@ -344,12 +355,12 @@ Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count307
 \calc@Adimen=\dimen177
 \calc@Bdimen=\dimen178
-\calc@Askip=\skip67
-\calc@Bskip=\skip68
+\calc@Askip=\skip76
+\calc@Bskip=\skip77
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count308
-\calc@Cskip=\skip69
+\calc@Cskip=\skip78
 ) (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
  (/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty
@@ -457,9 +468,9 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
-\Hy@SectionHShift=\skip70
+\Hy@SectionHShift=\skip79
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 34.
+Package hyperref Info: Option `colorlinks' set `true' on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count322
@@ -477,7 +488,7 @@ LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \g_MT_multlinerow_int=\count323
 \l_MT_multwidth_dim=\dimen185
-\origjot=\skip71
+\origjot=\skip80
 \l_MT_shortvdotswithinadjustabove_dim=\dimen186
 \l_MT_shortvdotswithinadjustbelow_dim=\dimen187
 \l_MT_above_intertext_sep=\dimen188
@@ -549,14 +560,14 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \blx@parenlevel@foot=\count367
 \blx@sectionciteorder@0=\count368
 \blx@entrysetcounter=\count369
-\labelnumberwidth=\skip72
-\labelalphawidth=\skip73
-\biblabelsep=\skip74
-\bibitemsep=\skip75
-\bibnamesep=\skip76
-\bibinitsep=\skip77
-\bibparsep=\skip78
-\bibhang=\skip79
+\labelnumberwidth=\skip81
+\labelalphawidth=\skip82
+\biblabelsep=\skip83
+\bibitemsep=\skip84
+\bibnamesep=\skip85
+\bibinitsep=\skip86
+\bibparsep=\skip87
+\bibhang=\skip88
 \blx@bcfin=\read3
 \blx@bcfout=\write4
 \blx@langwohyphens=\language86
@@ -640,20 +651,20 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@savedoriglanguage=\count438
 \c@pageref=\count439
 \c@savedpageref=\count440
-\shorthandwidth=\skip80
-\shortjournalwidth=\skip81
-\shortserieswidth=\skip82
-\shorttitlewidth=\skip83
-\shortauthorwidth=\skip84
-\shorteditorwidth=\skip85
-\locallabelnumberwidth=\skip86
-\locallabelalphawidth=\skip87
-\localshorthandwidth=\skip88
-\localshortjournalwidth=\skip89
-\localshortserieswidth=\skip90
-\localshorttitlewidth=\skip91
-\localshortauthorwidth=\skip92
-\localshorteditorwidth=\skip93
+\shorthandwidth=\skip89
+\shortjournalwidth=\skip90
+\shortserieswidth=\skip91
+\shorttitlewidth=\skip92
+\shortauthorwidth=\skip93
+\shorteditorwidth=\skip94
+\locallabelnumberwidth=\skip95
+\locallabelalphawidth=\skip96
+\localshorthandwidth=\skip97
+\localshortjournalwidth=\skip98
+\localshortserieswidth=\skip99
+\localshorttitlewidth=\skip100
+\localshortauthorwidth=\skip101
+\localshorteditorwidth=\skip102
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
  (/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
@@ -1025,10 +1036,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/areas_profesionales_de_relevancia.tex) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/objetivos.tex [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/areas_profesionales_de_relevancia.tex) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/objetivos.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
 
@@ -1037,19 +1053,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/alcance.tex [2]) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/entregables.tex
-<img/plan_de_actividades_tentativo.png, id=60, 885.3075pt x 548.0475pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+) [2] (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/alcance.tex) (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/entregables.tex
+<img/plan_de_actividades_tentativo.png, id=63, 885.3075pt x 548.0475pt>
 File: img/plan_de_actividades_tentativo.png Graphic file (type png)
 <use img/plan_de_actividades_tentativo.png>
 Package pdftex.def Info: img/plan_de_actividades_tentativo.png  used on input line 14.
 (pdftex.def)             Requested size: 409.71692pt x 253.63524pt.
-) [3 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/img/plan_de_actividades_tentativo.png>]
+) [3]
 Overfull \hbox (9.06812pt too wide) in paragraph at lines 36--36
 \T1/cmr/m/n/10 pu-ter ba-sed on time-triggered bu-ses for UAVs^^T. En: \T1/cmr/m/it/10 IEEE Sen-sors Jour-nal \T1/cmr/m/n/10 21.3 (2020), págs. 3944[]3954. 
  []
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 38.
-[4]
+[4 </home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/img/plan_de_actividades_tentativo.png>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 38.
  (/home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/main.aux
 LaTeX Info: Redefining \. on input line 38.
@@ -1069,18 +1090,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 38.
  ) 
 Here is how much of TeX's memory you used:
- 22417 strings out of 481239
- 414795 string characters out of 5920377
- 929502 words of memory out of 5000000
- 37300 multiletter control sequences out of 15000+600000
+ 22554 strings out of 481239
+ 416556 string characters out of 5920377
+ 933732 words of memory out of 5000000
+ 37432 multiletter control sequences out of 15000+600000
  542407 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,7n,50p,1774b,1835s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,11n,50p,2083b,1835s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on /home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/main.pdf (4 pages, 144040 bytes).
+Output written on /home/fede/Documents/FIUBA/Tesis/Computadora_de_Vuelo/Repositorio_GitHub/FCC-project-LARoptero/docs/Propuesta_Tesis/main.pdf (4 pages, 146183 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
- 18 named destinations out of 1000 (max. 500000)
+ 110 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
  70 words of extra memory for PDF output out of 10000 (max. 10000000)
 
