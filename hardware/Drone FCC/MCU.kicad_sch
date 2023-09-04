@@ -2493,7 +2493,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid df1e4733-7ce1-4949-ad24-5afaac458cf0)
   )
-  (text "Timers:\nAdvanced-control timers:\n- Timer 1: ESCs\n- Timer 8: not assigned\n\nGeneral purpose timers:\n- Timer 2 : PPS(GPS), 32 bits\n- Timer 5 : not assigned\n- Timer 3 : ESCs\n- Timer 4 : servos\n- Timer 9 : PPM\n- Timer 10: not assigned\n- Timer 11: not assigned\n- Timer 12: not assigned\n- Timer 13: not assigned\n- Timer 14: not assigned\n\nBasic timers:\n- Timer 6: not assigned\n- Timer 7: not assigned"
+  (text "Timers:\nAdvanced-control timers:\n- Timer 1: ESCs\n- Timer 8: PPM\n\nGeneral purpose timers:\n- Timer 2 : PPS(GPS), 32 bits\n- Timer 5 : sin uso.\n- Timer 3 : ESCs\n- Timer 4 : servos\n- Timer 9 : sin uso.\n- Timer 10: sin uso.\n- Timer 11: sin uso.\n- Timer 12: sin uso.\n- Timer 13: sin uso.\n- Timer 14: sin uso.\n\nBasic timers:\n- Timer 6: sin uso.\n- Timer 7: sin uso."
     (at 13.335 194.945 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid ea7e891a-c3f8-4ca2-8c38-d6841d5bf346)
