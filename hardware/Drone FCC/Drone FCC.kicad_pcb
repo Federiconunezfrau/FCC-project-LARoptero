@@ -8660,7 +8660,7 @@
     (pad "7" thru_hole circle (at -2.5 -2.7 90) (size 1.45 1.45) (drill 0.85) (layers *.Cu *.Mask)
       (net 1 "GND") (pinfunction "MOUNT_1") (pintype "unspecified") (tstamp 4ab91682-03b8-4be7-af68-25cbf5dadf62))
     (model "${KIPRJMOD}/Project_Specific_Libraries/105017-0001/1050170001.stp"
-      (offset (xyz 0 0.25 1.4))
+      (offset (xyz 0 0.25 1.2))
       (scale (xyz 1 1 1))
       (rotate (xyz -90 0 0))
     )
