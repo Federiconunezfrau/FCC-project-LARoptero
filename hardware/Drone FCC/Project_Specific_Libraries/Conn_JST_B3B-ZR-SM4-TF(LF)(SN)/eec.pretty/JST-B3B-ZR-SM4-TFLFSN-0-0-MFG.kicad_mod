@@ -6,7 +6,7 @@
     (effects (font (size 1 1) (thickness 0.15)) (justify left))
     (tstamp ca94b628-6f9e-4d3c-bd26-a9df57ae590a)
   )
-  (fp_text value "Val**" (at 0 0) (layer "F.SilkS")
+  (fp_text value "Val**" (at 0 0) (layer "F.SilkS") hide
     (effects (font (size 1.27 1.27) (thickness 0.15)))
     (tstamp 526d0b1b-aef0-4d43-bfc1-45b76f6fbdf8)
   )
@@ -17,7 +17,7 @@
   (fp_line (start -3.75 1.85) (end -3.75 1.425) (layer "F.SilkS") (width 0.15) (tstamp 96a8cc05-f093-4178-af72-f4222ba9dd0b))
   (fp_line (start -3.75 -1.85) (end 3.75 -1.85) (layer "F.SilkS") (width 0.15) (tstamp e6ea5285-c4e1-4665-98c0-ef89398fed86))
   (fp_line (start -3.75 -1.625) (end -3.75 -1.85) (layer "F.SilkS") (width 0.15) (tstamp f9a99d1f-1dfc-49bc-a9ea-6d2b86156299))
-  (fp_circle (center -1.5 4.35) (end -1.375 4.35) (layer "F.SilkS") (width 0.25) (fill none) (tstamp 84360dae-33ed-4498-a353-e8749623e170))
+  (fp_circle (center 2.286 4.318) (end 2.411 4.318) (layer "F.SilkS") (width 0.25) (fill none) (tstamp 84360dae-33ed-4498-a353-e8749623e170))
   (fp_line (start 4.325 -1.875) (end -4.325 -1.875) (layer "F.CrtYd") (width 0.15) (tstamp 33107bc6-2b82-4250-a937-488e80d9217b))
   (fp_line (start 4.325 -1.875) (end 4.325 -1.875) (layer "F.CrtYd") (width 0.15) (tstamp 7406261c-f7b6-446f-8451-94bb438b160b))
   (fp_line (start -4.325 -1.875) (end -4.325 3.775) (layer "F.CrtYd") (width 0.15) (tstamp b8f3d855-b2c9-41b4-8338-2b93fa3ed6d7))
