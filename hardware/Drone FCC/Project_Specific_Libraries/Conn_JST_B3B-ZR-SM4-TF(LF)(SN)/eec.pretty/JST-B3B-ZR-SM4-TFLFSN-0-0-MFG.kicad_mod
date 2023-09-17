@@ -27,9 +27,9 @@
   (fp_line (start -3.75 1.85) (end -3.75 -1.85) (layer "F.Fab") (width 0.15) (tstamp 42104547-a5e1-4e34-a12b-98b001eef12f))
   (fp_line (start 3.75 1.85) (end -3.75 1.85) (layer "F.Fab") (width 0.15) (tstamp 4e3047c0-3619-402b-9e5a-f483596b58fe))
   (fp_line (start 3.75 -1.85) (end 3.75 1.85) (layer "F.Fab") (width 0.15) (tstamp ec8f980e-9118-4744-b7c1-92c5c772ecf0))
-  (pad "1" smd rect (at -1.5 1.95) (size 0.7 3.6) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp f501c4e9-e5b0-4730-a208-7614484fc739))
+  (pad "1" smd rect (at 1.5 1.95) (size 0.7 3.6) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 4f67cb63-ff06-45ff-855f-37ad8b26a35a))
   (pad "2" smd rect (at 0 1.95) (size 0.7 3.6) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 3f099d94-10f6-4f69-8329-d5c9053a6d37))
-  (pad "3" smd rect (at 1.5 1.95) (size 0.7 3.6) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 4f67cb63-ff06-45ff-855f-37ad8b26a35a))
+  (pad "3" smd rect (at -1.5 1.95) (size 0.7 3.6) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp f501c4e9-e5b0-4730-a208-7614484fc739))
   (pad "4" smd rect (at -3.55 -0.1) (size 1.5 2.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 03e784c3-1d21-42f7-84ed-2f23106e6e1e))
   (pad "5" smd rect (at 3.55 -0.1) (size 1.5 2.3) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 294ecc73-a2d5-4d79-8aa0-94d8e0a46d43))
   (model "${KIPRJMOD}/Project_Specific_Libraries/Conn_JST_B3B-ZR-SM4-TF(LF)(SN)/eec.models/JST_-_B3B-ZR-SM4-TF(LF)(SN).step"
