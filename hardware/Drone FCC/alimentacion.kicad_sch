@@ -349,7 +349,6 @@
     )
   )
 
-
   (junction (at 173.355 66.04) (diameter 0) (color 0 0 0 0)
     (uuid 00c91891-e875-4ad0-a5b3-ae02e6eebc7e)
   )
@@ -843,7 +842,7 @@
   (symbol (lib_id "power:PWR_FLAG") (at 235.585 75.565 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 42e00763-cb6d-441f-869e-f109a1c8399a)
-    (property "Reference" "#FLG?" (id 0) (at 235.585 73.66 0)
+    (property "Reference" "#FLG01" (id 0) (at 235.585 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "PWR_FLAG" (id 1) (at 235.585 71.755 0))
