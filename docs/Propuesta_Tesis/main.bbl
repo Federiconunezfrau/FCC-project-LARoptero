@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -87,6 +87,33 @@
     \field{volume}{7}
     \field{journaltitle}{IEEE Access}
     \field{year}{2019}
+  \endentry
+
+  \entry{EASAcots}{report}{}
+    \name{author}{2}{}{%
+      {{hash=FF}{%
+         family={Faubladier},
+         familyi={F\bibinitperiod},
+         given={Frédéric},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Rambaud},
+         familyi={R\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FFRD1}
+    \strng{fullhash}{FFRD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Safety Implications of the use of system-on-chip (SoC) on
+  commercial off-the-shelf (COTS) devices in airborne critical applications}
+    \list{institution}{1}{%
+      {EASA}%
+    }
+    \field{year}{2008}
   \endentry
 
   \entry{garberoglio2019diseno}{article}{}
