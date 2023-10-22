@@ -1545,7 +1545,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid a74c43b9-fd80-46d8-b821-e800792cb7f4)
     (property "Reference" "R11" (id 0) (at 34.925 44.45 90))
-    (property "Value" "50" (id 1) (at 34.925 46.99 90))
+    (property "Value" "0" (id 1) (at 34.925 46.99 90))
     (property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder" (id 2) (at 34.925 51.943 90)
       (effects (font (size 1.27 1.27)) hide)
     )
