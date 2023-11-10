@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -17,6 +17,300 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{ICM42688pDatasheet}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{ICM-42688-P | TDK InvenSense}}
+    \verb{url}
+    \verb https://invensense.tdk.com/products/motion-tracking/6-axis/icm-42688-
+    \verb p/
+    \endverb
+    \field{month}{10}
+    \field{year}{2023}
+  \endentry
+
+  \entry{zhang2010sensing}{article}{}
+    \name{author}{1}{}{%
+      {{hash=ZK}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Kai},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ZK1}
+    \strng{fullhash}{ZK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Sensing and control of mems accelerometers using Kalman
+  filter}
+    \field{year}{2010}
+  \endentry
+
+  \entry{borodacz2022review}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BK}{%
+         family={Borodacz},
+         familyi={B\bibinitperiod},
+         given={Krystian},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Szczepa{\'n}ski},
+         familyi={S\bibinitperiod},
+         given={Cezary},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=PS}{%
+         family={Popowski},
+         familyi={P\bibinitperiod},
+         given={Stanis{\l}aw},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Emerald Publishing Limited}%
+    }
+    \strng{namehash}{BKSCPS1}
+    \strng{fullhash}{BKSCPS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{45\bibrangedash 59}
+    \field{title}{Review and selection of commercially available IMU for a
+  short time inertial navigation}
+    \field{volume}{94}
+    \field{journaltitle}{Aircraft Engineering and Aerospace Technology}
+    \field{year}{2022}
+  \endentry
+
+  \entry{baro_1}{manual}{}
+    \list{organization}{1}{%
+      {AMSYS}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{How to measure absolute pressure using piezoresistive sensing
+  elements}
+    \field{month}{07}
+    \field{year}{2009}
+  \endentry
+
+  \entry{baro_2}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LAC}{%
+         family={Lapadatu},
+         familyi={L\bibinitperiod},
+         given={A.\bibnamedelima C.},
+         giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=JH}{%
+         family={Jakobsen},
+         familyi={J\bibinitperiod},
+         given={H.},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {William Andrew Publishing}%
+    }
+    \strng{namehash}{LACJH1}
+    \strng{fullhash}{LACJH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{599\bibrangedash 610}
+    \field{title}{Anodic Bonding}
+    \field{journaltitle}{Handbook of Silicon Based MEMS Materials and
+  Technologies (pp. 599-610)}
+    \field{year}{2015}
+  \endentry
+
+  \entry{baro_3}{online}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={Avnet},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{MEMS pressure sensors}
+    \verb{url}
+    \verb https://www.avnet.com/wps/portal/abacus/solutions/technologies/sensor
+    \verb s/pressure-sensors/core-technologies/mems/
+    \endverb
+    \field{urlday}{31}
+    \field{urlmonth}{10}
+    \field{urlyear}{2023}
+  \endentry
+
+  \entry{cavcar2000international}{article}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Cavcar},
+         familyi={C\bibinitperiod},
+         given={Mustafa},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{9}
+    \field{pages}{1\bibrangedash 6}
+    \field{title}{The international standard atmosphere (ISA)}
+    \field{volume}{30}
+    \field{journaltitle}{Anadolu University, Turkey}
+    \field{year}{2000}
+  \endentry
+
+  \entry{baro_4}{manual}{}
+    \list{organization}{1}{%
+      {Infineon}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN-201610-PL38-01}
+    \field{title}{Choosing the Right Pressure Sensor}
+    \field{year}{2016}
+  \endentry
+
+  \entry{baro_5}{online}{}
+    \name{author}{1}{}{%
+      {{hash=MS}{%
+         family={Microelectronics},
+         familyi={M\bibinitperiod},
+         given={ST},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MS1}
+    \strng{fullhash}{MS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Product Longevity}
+    \verb{url}
+    \verb https://www.st.com/content/st_com/en/about/quality-and-reliability/pr
+    \verb oduct-longevity.html#10-year-longevity
+    \endverb
+    \field{urlday}{11}
+    \field{urlmonth}{05}
+    \field{urlyear}{2023}
+  \endentry
+
+  \entry{specification1991bosch}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SC}{%
+         family={Specification},
+         familyi={S\bibinitperiod},
+         given={CAN},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SC1}
+    \strng{fullhash}{SC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{75}
+    \field{title}{Bosch}
+    \field{volume}{50}
+    \field{journaltitle}{Robert Bosch GmbH, Postfach}
+    \field{year}{1991}
+  \endentry
+
+  \entry{AN228}{manual}{}
+    \list{organization}{1}{%
+      {Microchip}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN 228}
+    \field{title}{A CAN Physical Layer Discussion}
+    \field{year}{2002}
+  \endentry
+
+  \entry{STM32F746ZG}{misc}{}
+    \list{organization}{1}{%
+      {STMicroelectronics}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{{ARM based Cortex M7 32b MCU+FPU, 462DMIPS, up to 1MB
+  Flash/320+16+ 4KB RAM, USB OTG HS/FS, ethernet, 18 TIMs, 3 ADCs, 25 com itf,
+  cam and LCD.}}
+    \verb{url}
+    \verb https://www.st.com/en/microcontrollers-microprocessors/stm32f746zg.ht
+    \verb ml#documentation
+    \endverb
+    \field{month}{02}
+    \field{year}{2016}
+  \endentry
+
+  \entry{SN65VHD230}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{SN65HVD23x 3.3-V CAN Bus Transceivers}}
+    \verb{url}
+    \verb https://www.ti.com/product/es-mx/SN65HVD230
+    \endverb
+    \field{month}{04}
+    \field{year}{2018}
+  \endentry
+
+  \entry{CiAconnector}{manual}{}
+    \list{organization}{1}{%
+      {CAN in Automation}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{CiA 106}
+    \field{title}{Connector Pin Assignment Recommendations}
+    \field{month}{06}
+    \field{year}{2022}
+  \endentry
+
+  \entry{DroneCAN}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{DroneCAN}
+    \verb{url}
+    \verb https://dronecan.github.io/
+    \endverb
+    \field{urlday}{11}
+    \field{urlmonth}{09}
+    \field{urlyear}{2023}
+  \endentry
+
+  \entry{IMUpcb_1}{manual}{}
+    \list{organization}{1}{%
+      {TDK Invensense}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN-000262}
+    \field{title}{PCB Design Guidelines For ICM-40607x, ICM-40608, ICM-42xxx,
+  ICM-43xxx and ICM-45xxx Products}
+    \field{month}{01}
+    \field{year}{2021}
+  \endentry
+
+  \entry{IMUpcb_2}{manual}{}
+    \list{organization}{1}{%
+      {ST}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{TN0019}
+    \field{title}{Surface Mounting Guidelines for MEMS Sensors in a QFPN
+  Package}
+    \field{month}{03}
+    \field{year}{2020}
+  \endentry
+
+  \entry{IMUpcb_3}{manual}{}
+    \list{organization}{1}{%
+      {Maxim Integrated}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{APP 5604}
+    \field{title}{Soldering Guidelines for MEMS Inertial Sensors}
+    \field{month}{03}
+    \field{year}{2013}
+  \endentry
+
   \entry{nelson1990fault}{article}{}
     \name{author}{1}{}{%
       {{hash=NVP}{%
@@ -513,26 +807,6 @@
     \field{journaltitle}{Wikipedia}
     \field{month}{07}
     \field{year}{2023}
-  \endentry
-
-  \entry{specification1991bosch}{article}{}
-    \name{author}{1}{}{%
-      {{hash=SC}{%
-         family={Specification},
-         familyi={S\bibinitperiod},
-         given={CAN},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SC1}
-    \strng{fullhash}{SC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{75}
-    \field{title}{Bosch}
-    \field{volume}{50}
-    \field{journaltitle}{Robert Bosch GmbH, Postfach}
-    \field{year}{1991}
   \endentry
 
   \entry{nxpAN12233}{manual}{}

@@ -1,0 +1,196 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Arquitectura de Redundancia Propuesta RE ACOMODAR EN OTRA SECCIÓN}{32}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}{32}{subsection.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{32}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:red_CAN}{{30}{32}{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }}{33}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:byzantine_bus_1}{{31}{33}{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.1}Consenso}{33}{subsubsection.7.1.1}\protected@file@percent }
+\newlabel{fig:byzantine_bus_2}{{32a}{33}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.37}{}}
+\newlabel{sub@fig:byzantine_bus_2}{{a}{33}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.37}{}}
+\newlabel{fig:byzantine_bus_3}{{32b}{33}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.37}{}}
+\newlabel{sub@fig:byzantine_bus_3}{{b}{33}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit  {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }}{33}{figure.caption.37}\protected@file@percent }
+\newlabel{}{{32}{33}{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.2}Sincronismo de los nodos}{34}{subsubsection.7.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }}{34}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:task_scheduling_1}{{33}{34}{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }{figure.caption.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref  {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }}{35}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:task_scheduling_2}{{34}{35}{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Arquitectura Del Sistema: \textit  {The Time-Triggered Architecture}}{35}{subsection.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit  {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit  {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }}{36}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:diagrama_TTA}{{35}{36}{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }{figure.caption.40}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Bus de Comunicaciones}{37}{subsubsection.7.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }}{37}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:TDMA_esquema}{{36}{37}{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Misma imagen que \ref  {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }}{38}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:TTA_Bus}{{37}{38}{Misma imagen que \ref {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }{figure.caption.42}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Nodos}{38}{subsubsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.3}Scheduler}{38}{subsubsection.7.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.4}Global Time y Sincronización}{38}{subsubsection.7.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite [p.~67]{kopetz-2011}.\relax }}{39}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion}{{38}{39}{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite [p.~67]{kopetz-2011}.\relax }{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite {de2013overview}.\relax }}{39}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion_building_blocks}{{39}{39}{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite {de2013overview}.\relax }{figure.caption.44}{}}
+\@setckpt{Arquitectura_Propuesta}{
+\setcounter{page}{41}
+\setcounter{equation}{15}
+\setcounter{enumi}{3}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{section}{7}
+\setcounter{subsection}{2}
+\setcounter{subsubsection}{4}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{39}
+\setcounter{table}{3}
+\setcounter{parentequation}{11}
+\setcounter{float@type}{4}
+\setcounter{caption@flags}{0}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{blindtext}{1}
+\setcounter{Blindtext}{5}
+\setcounter{blind@countparstart}{0}
+\setcounter{blindlist}{0}
+\setcounter{blindlistlevel}{0}
+\setcounter{blindlist@level}{0}
+\setcounter{blind@listcount}{0}
+\setcounter{blind@levelcount}{0}
+\setcounter{blind@randomcount}{0}
+\setcounter{blind@randommax}{0}
+\setcounter{blind@pangramcount}{0}
+\setcounter{blind@pangrammax}{0}
+\setcounter{AM@survey}{0}
+\setcounter{Item}{16}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{45}
+\setcounter{mydef}{3}
+\setcounter{@pps}{0}
+\setcounter{@ppsavesec}{0}
+\setcounter{@ppsaveapp}{0}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{98}
+\setcounter{maxnames}{3}
+\setcounter{minnames}{1}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{0}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{0}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{blx@maxsection}{0}
+\setcounter{blx@maxsegment@0}{0}
+\setcounter{blx@sectionciteorder@0}{98}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{section@level}{3}
+}
