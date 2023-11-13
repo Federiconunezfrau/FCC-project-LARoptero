@@ -56,18 +56,30 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Se muestran los estados recessive y dominant del bus CAN y sus equivalentes lógicos.\relax }}{17}{figure.caption.17}\protected@file@percent }
 \newlabel{fig:CAN_recessive_dominant}{{12}{17}{Se muestran los estados recessive y dominant del bus CAN y sus equivalentes lógicos.\relax }{figure.caption.17}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.6}Circuito de Alimentación}{18}{subsubsection.4.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.7}Micro SD}{18}{subsubsection.4.3.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.8}Interfaz USB}{18}{subsubsection.4.3.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.9}Micro Switch}{18}{subsubsection.4.3.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.10}LEDs Indicadores}{18}{subsubsection.4.3.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Desarrollo del PCB}{18}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Requerimientos de Manufacturabilidad}{18}{subsubsection.4.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Requerimientos de layout del sensor IMU}{18}{subsubsection.4.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Se muestran dos ejemplos de layout de una IMU. El layout U2 no sigue las recomendaciones mencionadas, mientras que U1 sí. La imagen se extrajo de \blx@tocontentsinit {0}\cite {IMUpcb_3}.\relax }}{19}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:IMU_recomendaciones_layout}{{13}{19}{Se muestran dos ejemplos de layout de una IMU. El layout U2 no sigue las recomendaciones mencionadas, mientras que U1 sí. La imagen se extrajo de \cite {IMUpcb_3}.\relax }{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Encapsulado SOT-223-3 seleccionado para el regulador lineal. El terminal de mayor tamaño se encuentra conectado al terminal de tensión de salida, $3.3 \ V$.\relax }}{18}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:sot_223_3}{{13}{18}{Encapsulado SOT-223-3 seleccionado para el regulador lineal. El terminal de mayor tamaño se encuentra conectado al terminal de tensión de salida, $3.3 \ V$.\relax }{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Diagrama en bloques de un regulador lineal. Este se compone de un transistor de paso, un amplificador de error, una tensión de referencia y un bloque realimentador, formado por $R_1$ y $R_2$. En el diagrama además se muestra $R_L$ que simboliza una carga resistiva y dos capacitores $C_o$ y $C_b$. Estos elementos forman un circuito a lazo cerrado que estabiliza la tensión de salida $V_{out}$.\relax }}{19}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:LDO_diagrama_bloques}{{14}{19}{Diagrama en bloques de un regulador lineal. Este se compone de un transistor de paso, un amplificador de error, una tensión de referencia y un bloque realimentador, formado por $R_1$ y $R_2$. En el diagrama además se muestra $R_L$ que simboliza una carga resistiva y dos capacitores $C_o$ y $C_b$. Estos elementos forman un circuito a lazo cerrado que estabiliza la tensión de salida $V_{out}$.\relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Circuito equivalente para analizar la realimentación del regulador lineal. La tensión $v_{in}$ se pasiva ya que se analiza el circuito en el punto de operación.\relax }}{19}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:LDO_esquema_realimentacion}{{15}{19}{Circuito equivalente para analizar la realimentación del regulador lineal. La tensión $v_{in}$ se pasiva ya que se analiza el circuito en el punto de operación.\relax }{figure.caption.20}{}}
+\newlabel{eq:LDO_bloque_f}{{13b}{19}{Circuito de Alimentación}{equation.4.13alph2}{}}
+\newlabel{eq:LDO_bloque_a}{{14b}{20}{Circuito de Alimentación}{equation.4.14alph2}{}}
+\newlabel{eq:LDO_ganancia_lazo}{{15}{20}{Circuito de Alimentación}{equation.4.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Se muestra un gráfico representativo de la ganancia de lazo de un LDO. En rojo se destaca cómo varía la ganancia de lazo con el agregado de un polo y un cero.\relax }}{20}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:LDO_ganancia_lazo_1}{{16}{20}{Se muestra un gráfico representativo de la ganancia de lazo de un LDO. En rojo se destaca cómo varía la ganancia de lazo con el agregado de un polo y un cero.\relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.7}Micro SD}{21}{subsubsection.4.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.8}Interfaz USB}{21}{subsubsection.4.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.9}Micro Switch}{21}{subsubsection.4.3.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.10}LEDs Indicadores}{21}{subsubsection.4.3.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Desarrollo del PCB}{21}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Requerimientos de Manufacturabilidad}{21}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Requerimientos de layout del sensor IMU}{21}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Se muestran dos ejemplos de layout de una IMU. El layout U2 no sigue las recomendaciones mencionadas, mientras que U1 sí. La imagen se extrajo de \blx@tocontentsinit {0}\cite {IMUpcb_3}.\relax }}{22}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:IMU_recomendaciones_layout}{{17}{22}{Se muestran dos ejemplos de layout de una IMU. El layout U2 no sigue las recomendaciones mencionadas, mientras que U1 sí. La imagen se extrajo de \cite {IMUpcb_3}.\relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Layout del Regulador Lineal}{22}{subsubsection.4.4.3}\protected@file@percent }
 \@setckpt{Diseno_y_Construccion_de_la_Computadora_de_Vuelo}{
-\setcounter{page}{20}
-\setcounter{equation}{12}
+\setcounter{page}{23}
+\setcounter{equation}{15}
 \setcounter{enumi}{7}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -77,12 +89,12 @@
 \setcounter{part}{0}
 \setcounter{section}{4}
 \setcounter{subsection}{4}
-\setcounter{subsubsection}{2}
+\setcounter{subsubsection}{3}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{13}
+\setcounter{figure}{17}
 \setcounter{table}{3}
-\setcounter{parentequation}{11}
+\setcounter{parentequation}{14}
 \setcounter{float@type}{4}
 \setcounter{caption@flags}{0}
 \setcounter{continuedfloat}{0}
@@ -103,7 +115,7 @@
 \setcounter{AM@survey}{0}
 \setcounter{Item}{7}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{22}
+\setcounter{bookmark@seq@number}{23}
 \setcounter{mydef}{0}
 \setcounter{@pps}{0}
 \setcounter{@ppsavesec}{0}
@@ -117,7 +129,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{34}
+\setcounter{instcount}{41}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -141,7 +153,7 @@
 \setcounter{parenlevel}{0}
 \setcounter{blx@maxsection}{0}
 \setcounter{blx@maxsegment@0}{0}
-\setcounter{blx@sectionciteorder@0}{34}
+\setcounter{blx@sectionciteorder@0}{41}
 \setcounter{mincomprange}{10}
 \setcounter{maxcomprange}{100000}
 \setcounter{mincompwidth}{1}

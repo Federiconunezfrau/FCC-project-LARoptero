@@ -443,7 +443,76 @@ En cuanto al circuito implementado, se tomó como punto de partida las recomenda
 
 \subsubsection{Circuito de Alimentación}
 
-\textbf{{\color{red} COMPLETAR}}
+Para alimentar el microcontrolador y los demás componentes, se incluye una fuente de alimentación de $3.3 \ V$. En las primeras dos versiones de la computadora de vuelo, desarrolladas por el LAR en trabajos anteriores, se integró una fuente conmutada de salida $5 \ V$ junto con un regulador lineal de $3.3 \ V$. A partir de la tercera versión, esta fuente conmutada se eliminó dejando solamente el regulador lineal de $3.3 \ V$ \cite{garberoglio2019diseno}. El motivo principal fue reducir las dimensiones de la placa y simplificar el diseño. Siguiendo esta misma línea, la fuente conmutada tampoco se incluyó en este trabajo. Se incorporó un conector, de manera de poder alimentar la placa utilizando una fuente externa de $5 \ V$.\\
+
+El circuito implementado se comprende del regulador lineal, junto con capacitores de entrada y de salida. Para la selección del componente se buscó un regulador que sea de grado automotriz, por cuestiones de confiabilidad ya mencionadas, pero además se buscó un componente con un encapsulado SOT-223-3, figura \ref{fig:sot_223_3}. En el mercado local puede encontrarse una gran variedad de reguladores con este encapsulado, pensando en la necesidad de modificar el circuito, utilizando otro regulador o en caso de que haya que reemplazarlo.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/sot_223_3.png}
+    \caption{Encapsulado SOT-223-3 seleccionado para el regulador lineal. El terminal de mayor tamaño se encuentra conectado al terminal de tensión de salida, $3.3 \ V$.}
+    \label{fig:sot_223_3}
+\end{figure}
+
+El chip seleccionado es el ZLDO1117QG33TA de DIODES Incorporated \cite{ZLDO1117QG33TA}, un regulador low-dropout de grado automotriz. Se siguió el circuito recomendado por la hoja de datos del fabricante, donde se coloca un capacitor a la entrada del regulador y otro en su salida.\\
+
+La principal función del capacitor de entrada es la de proveer corriente al regulador, en caso de que ocurra un escalón en la corriente consumida por la carga del regulador \cite{TOSHIBALDO}. Este capacitor ayuda a mantener la tensión de entrada del regulador, en caso de que la fuente conectada a la entrada del regulador presente un drop-out. Se seleccionó un capacitor cerámico multicapa de valor $4.7 \ \mu F$. Este tipo de capacitores tienen una ESR muy baja, lo que permite que se descarguen rápido, en caso de que tengan que entregar carga para mantener la tensión de entrada en el regulador.\\
+
+En cuanto al capacitor de salida, este cumple una doble función. Por un lado, aportar a la regulación de línea. Este parámetro es importante teniendo en cuenta que el regulador se utiliza para alimentar un circuito digital, donde aparecen muchas variaciones de corriente. En el caso en el que ocurra un cambio brusco de la corriente de salida del regulador, el capacitor de salida se descargará en parte, para intentar mantener la tensión de salida en un valor constante. Por otro lado, este capacitor también es utilizado para la compensación del regulador \cite{TOSHIBALDO}. En la figura \ref{fig:LDO_diagrama_bloques} se muestra un diagrama en bloques simplificado para un regulador lineal, donde puede verse que se trata de un sistema a lazo cerrado.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/LDO_diagrama_bloques.png}
+    \caption{Diagrama en bloques de un regulador lineal. Este se compone de un transistor de paso, un amplificador de error, una tensión de referencia y un bloque realimentador, formado por $R_1$ y $R_2$. En el diagrama además se muestra $R_L$ que simboliza una carga resistiva y dos capacitores $C_o$ y $C_b$. Estos elementos forman un circuito a lazo cerrado que estabiliza la tensión de salida $V_{out}$.}
+    \label{fig:LDO_diagrama_bloques}    
+\end{figure}
+
+Para analizar la ganancia de lazo, se plantea el esquema de realimentación en la figura \ref{fig:LDO_esquema_realimentacion}. Para el transistor de paso, se utiliza su modelo de pequeña señal. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/LDO_esquema_realimentacion.png}
+    \caption{Circuito equivalente para analizar la realimentación del regulador lineal. La tensión $v_{in}$ se pasiva ya que se analiza el circuito en el punto de operación.}
+    \label{fig:LDO_esquema_realimentacion}    
+\end{figure}
+
+Se trata de un esquema que muestrea tensión y suma tensión. El bloque \textit{f} es tal que cumple con la relación de la ecuación \eqref{eq:LDO_bloque_f}. En cuanto al bloque \textit{a}, la transferencia corresponde a la ecuación \eqref{eq:LDO_bloque_a}, donde se ha asumido que $R_b \rightarrow 0$ por ser la ESR de un capacitor cerámico multicapa, $R_L \ll r_o$ y $R_L \ll (R_1+R_2)$. Además, se asume que $R_o \ll R_L$.
+
+\begin{subequations}
+    \begin{align}
+        v_f &= f \ v_o\\
+        f &= \frac{R_2}{R_1 + R_2} \label{eq:LDO_bloque_f}
+    \end{align}
+\end{subequations}
+
+\begin{subequations}
+    \begin{align}
+        v_o &= a \ v_{ref}\\
+        a &= A_v(s) g_m  R_L \frac{1 + s C_o R_o}{\left( 1 + s C_o  R_L \right)  \left( 1 + s C_b R_o \right)} \label{eq:LDO_bloque_a}
+    \end{align}
+\end{subequations}
+
+La transferencia $A_v(s)$ corresponde al amplificador de error y se modela como de un polo simple. Juntando los bloques $a$ y $f$ puede obtenerse la ganancia de lazo para analizar la estabilidad, ecuación \eqref{eq:LDO_ganancia_lazo}. Esta se compone de 3 polos y 1 cero. Este último junto con uno de los polos dependen directamente del valor $R_o$, es decir, la ESR del capacitor de salida $C_o$. En caso de que la ESR sea muy pequeña, se obtiene un sistema con dos polos. Si bien este es estable, su margen de fase es muy pequeño. Esto se traduce en respuestas a transitorios con oscilaciones, por ejemplo causados por variaciones en la corriente de salida del LDO. En la figura \ref{fig:LDO_ganancia_lazo_1} se muestra la comparación entre el sistema compensado y sin compensación.
+
+\begin{equation}
+    af = \frac{R_2}{R_1+R_2} A_v(s) g_m  R_L \frac{1 + s C_o R_o}{\left( 1 + s C_o R_L \right) \left( 1 + s C_b R_o \right)}
+    \label{eq:LDO_ganancia_lazo}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/LDO_ganancia_lazo_1.png}
+    \caption{Se muestra un gráfico representativo de la ganancia de lazo de un LDO. En rojo se destaca cómo varía la ganancia de lazo con el agregado de un polo y un cero.}
+    \label{fig:LDO_ganancia_lazo_1}    
+\end{figure}
+
+Al agregar los capacitores de salida $C_o$ y $C_b$, se forma un compensador en adelanto que incrementa el margen de fase. De este gráfico se desprende que si la resistencia ESR del capacitor de salida $C_o$ es muy pequeña, luego tanto el polo en $1/(C_b R_o)$ como el cero $1/(C_o R_o)$ se desplazan hacia la derecha en frecuencia y no funcionan como compensador en adelanto. Por otro lado, si la ESR es muy grande, el polo y el cero se desplazan a la izquierda y tampoco funcionarán como compensador \cite{SLVA072}. De aquí se desprende el hecho de que la elección del valor de ESR debe ser adecuada.\\
+
+El fabricante recomienda un valor de ESR entre $0.05 \ \Omega$ y $0.5 \  \Omega$, de un valor de por lo menos $4.7 \ \mu F$. Los capacitores MLCC típicamente tienen ESR muy bajas, del orden de unos pocos $m \Omega$. Debido a esto, se selecciona un capacitor de tantalio para el capacitor de salida \cite{AN1482}, que suelen excibir una ESR mayor a la de los MLCC. El componente seleccionado es el T491A106K016ATAUTO de KEMET. Al igual que Murata, este proveedor ofrece curvas de las características del componente.\\
+
+Como fue ya fue mencionado, se incorpora un conector que permite adosar una fuente externa. El conector se seleccionó pensando en utilizar algunos módulos típicos para drones y vehículos aéreos \cite{HolybroPM02PowerModule}. Estos módulos, además de las líneas de tensión y de retorno, tienen dos líneas más que entregan información del estado de la batería. Estas son señales analógicas que informan acerca de la tensión y la corriente de la batería. La computadora de vuelo sensa dicha información utilizando entradas analógicas. Además, se incluyen dos filtros pasa bajos, uno por cada señal analógica. Estos pueden encontrarse en el apéndice.\\
+
+La placa además cuenta con un puerto micro USB B a través del cual también puede alimentarse la placa. Tanto la línea de $5 \ V$ del conector USB, como la del conector de alimentación principal, tienen en serie un diodo schottky. Estos diodos fuerzan a que las corrientes solamente fluyan desde las entradas de $5 \ V$ hacia el regulador. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.\\
 
 \subsubsection{Micro SD}
 
@@ -492,3 +561,7 @@ La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de es
     \caption{Se muestran dos ejemplos de layout de una IMU. El layout U2 no sigue las recomendaciones mencionadas, mientras que U1 sí. La imagen se extrajo de \cite{IMUpcb_3}.}
     \label{fig:IMU_recomendaciones_layout}
 \end{figure}
+
+\subsubsection{Layout del Regulador Lineal}
+
+\textbf{{\color{red} COMPLETAR}}

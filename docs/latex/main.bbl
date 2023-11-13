@@ -276,6 +276,100 @@
     \field{urlyear}{2023}
   \endentry
 
+  \entry{garberoglio2019diseno}{article}{}
+    \name{author}{4}{}{%
+      {{hash=GL}{%
+         family={Garberoglio},
+         familyi={G\bibinitperiod},
+         given={Leonardo},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=PC}{%
+         family={Pose},
+         familyi={P\bibinitperiod},
+         given={Claudio},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MI}{%
+         family={Mas},
+         familyi={M\bibinitperiod},
+         given={Ignacio},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=GJI}{%
+         family={Giribet},
+         familyi={G\bibinitperiod},
+         given={Juan\bibnamedelima Ignacio},
+         giveni={J\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GL+1}
+    \strng{fullhash}{GLPCMIGJI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{29\bibrangedash 38}
+    \field{title}{Dise{\~n}o de un autopiloto para peque{\~n}os veh{\'\i}culos
+  no tripulados}
+    \field{volume}{3}
+    \field{journaltitle}{Elektron}
+    \field{year}{2019}
+  \endentry
+
+  \entry{ZLDO1117QG33TA}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Automotive Compliant 1A Low Dropout Positive Regulator with
+  Fixed and Ajdustable Outputs.}
+    \verb{url}
+    \verb https://www.diodes.com/assets/Datasheets/ZLDO1117Q.pdf
+    \endverb
+    \field{month}{10}
+    \field{year}{2016}
+  \endentry
+
+  \entry{TOSHIBALDO}{manual}{}
+    \list{organization}{1}{%
+      {TOSHIBA}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{Basics of Low-Dropout (LDO) Regulator ICs}
+    \field{month}{03}
+    \field{year}{2021}
+  \endentry
+
+  \entry{SLVA072}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{Technical Review of Low Dropout Voltage Regulator Operation
+  and Performance}
+    \field{month}{08}
+    \field{year}{1999}
+  \endentry
+
+  \entry{AN1482}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{AN-1482 LDO Regulator Stability Using Ceramic Output
+  Capacitors}
+    \field{month}{04}
+    \field{year}{2013}
+  \endentry
+
+  \entry{HolybroPM02PowerModule}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Holybro PM02 V3 Power Module}
+    \verb{url}
+    \verb https://docs.px4.io/main/en/power_module/holybro_pm02.html
+    \endverb
+    \field{urlday}{13}
+    \field{urlmonth}{09}
+    \field{urlyear}{2023}
+  \endentry
+
   \entry{IMUpcb_1}{manual}{}
     \list{organization}{1}{%
       {TDK Invensense}%

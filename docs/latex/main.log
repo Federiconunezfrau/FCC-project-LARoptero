@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.22)  10 NOV 2023 20:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.22)  13 NOV 2023 18:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1004,7 +1004,7 @@ Package biblatex Info: ... file 'main.bbl' found.
 Package biblatex Info: Reference section=0 on input line 18.
 Package biblatex Info: Reference segment=0 on input line 18.
  (./cover.tex
-<./img//logo-fiuba.png, id=205, 186.2157pt x 186.2157pt>
+<./img//logo-fiuba.png, id=209, 186.2157pt x 186.2157pt>
 File: ./img//logo-fiuba.png Graphic file (type png)
 <use ./img//logo-fiuba.png>
 Package pdftex.def Info: ./img//logo-fiuba.png  used on input line 6.
@@ -1029,7 +1029,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ...ne {section}{Referencias}{45}{section*.47}
+l.52 ...ne {section}{Referencias}{48}{section*.51}
                                                   % [1])
 \tf@toc=\write6
 \openout6 = `main.toc'.
@@ -1057,7 +1057,7 @@ l.51 ...ne {section}{Referencias}{45}{section*.47}
 \openout2 = `Diseno_y_Construccion_de_la_Computadora_de_Vuelo.aux'.
 
  (./Diseno_y_Construccion_de_la_Computadora_de_Vuelo.tex
-<img/diagrama_en_bloques_computadora_de_vuelo.png, id=293, 914.41624pt x 764.8575pt>
+<img/diagrama_en_bloques_computadora_de_vuelo.png, id=298, 914.41624pt x 764.8575pt>
 File: img/diagrama_en_bloques_computadora_de_vuelo.png Graphic file (type png)
 <use img/diagrama_en_bloques_computadora_de_vuelo.png>
 Package pdftex.def Info: img/diagrama_en_bloques_computadora_de_vuelo.png  used on input line 40.
@@ -1067,13 +1067,13 @@ Package pdftex.def Info: img/diagrama_en_bloques_computadora_de_vuelo.png  used 
 
 
  <./img/diagrama_en_bloques_computadora_de_vuelo.png>]
-<img/IMU_ejes.png, id=310, 325.215pt x 221.32687pt>
+<img/IMU_ejes.png, id=315, 325.215pt x 221.32687pt>
 File: img/IMU_ejes.png Graphic file (type png)
 <use img/IMU_ejes.png>
 Package pdftex.def Info: img/IMU_ejes.png  used on input line 85.
 (pdftex.def)             Requested size: 182.09486pt x 123.92868pt.
  [7 <./img/IMU_ejes.png>]
-<img/MEMS_acelerometro.png, id=321, 465.23813pt x 323.70938pt>
+<img/MEMS_acelerometro.png, id=327, 465.23813pt x 323.70938pt>
 File: img/MEMS_acelerometro.png Graphic file (type png)
 <use img/MEMS_acelerometro.png>
 Package pdftex.def Info: img/MEMS_acelerometro.png  used on input line 94.
@@ -1083,13 +1083,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
-<img/acelerometro_modelo.png, id=326, 392.96812pt x 280.04625pt>
+<img/acelerometro_modelo.png, id=332, 392.96812pt x 280.04625pt>
 File: img/acelerometro_modelo.png Graphic file (type png)
 <use img/acelerometro_modelo.png>
 Package pdftex.def Info: img/acelerometro_modelo.png  used on input line 105.
 (pdftex.def)             Requested size: 227.62206pt x 162.21754pt.
 [8 <./img/MEMS_acelerometro.png> <./img/acelerometro_modelo.png>]
-<img/acelerometro_sensado_capacitivo.png, id=346, 307.90031pt x 167.87718pt>
+<img/acelerometro_sensado_capacitivo.png, id=351, 307.90031pt x 167.87718pt>
 File: img/acelerometro_sensado_capacitivo.png Graphic file (type png)
 <use img/acelerometro_sensado_capacitivo.png>
 Package pdftex.def Info: img/acelerometro_sensado_capacitivo.png  used on input line 132.
@@ -1100,7 +1100,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 159--160
  []
 
 [9 <./img/acelerometro_sensado_capacitivo.png>]
-<img/ICM_42688_datasheet.png, id=362, 761.09344pt x 204.01219pt>
+<img/ICM_42688_datasheet.png, id=367, 761.09344pt x 204.01219pt>
 File: img/ICM_42688_datasheet.png Graphic file (type png)
 <use img/ICM_42688_datasheet.png>
 Package pdftex.def Info: img/ICM_42688_datasheet.png  used on input line 165.
@@ -1131,17 +1131,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 248--249
  []
 
 [11]
-<img/IMU_SPI.png, id=386, 523.9575pt x 202.7575pt>
+<img/IMU_SPI.png, id=391, 523.9575pt x 202.7575pt>
 File: img/IMU_SPI.png Graphic file (type png)
 <use img/IMU_SPI.png>
 Package pdftex.def Info: img/IMU_SPI.png  used on input line 254.
 (pdftex.def)             Requested size: 364.19667pt x 140.93925pt.
-<img/MEMS_barometro.png, id=390, 284.56313pt x 267.24844pt>
+<img/MEMS_barometro.png, id=395, 284.56313pt x 267.24844pt>
 File: img/MEMS_barometro.png Graphic file (type png)
 <use img/MEMS_barometro.png>
 Package pdftex.def Info: img/MEMS_barometro.png  used on input line 265.
 (pdftex.def)             Requested size: 182.09486pt x 171.0221pt.
-<img/barometro_wheatstone.png, id=395, 496.85625pt x 244.66406pt>
+<img/barometro_wheatstone.png, id=400, 496.85625pt x 244.66406pt>
 File: img/barometro_wheatstone.png Graphic file (type png)
 <use img/barometro_wheatstone.png>
 Package pdftex.def Info: img/barometro_wheatstone.png  used on input line 274.
@@ -1171,7 +1171,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 389--390
 
  []
 
-<img/conxeion_al_bus_CAN.png, id=470, 512.66531pt x 309.40594pt>
+<img/conxeion_al_bus_CAN.png, id=475, 512.66531pt x 309.40594pt>
 File: img/conxeion_al_bus_CAN.png Graphic file (type png)
 <use img/conxeion_al_bus_CAN.png>
 Package pdftex.def Info: img/conxeion_al_bus_CAN.png  used on input line 403.
@@ -1191,12 +1191,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
 
-<img/microcontrolador_transciever.png, id=486, 593.21625pt x 302.12875pt>
+<img/microcontrolador_transciever.png, id=491, 593.21625pt x 302.12875pt>
 File: img/microcontrolador_transciever.png Graphic file (type png)
 <use img/microcontrolador_transciever.png>
 Package pdftex.def Info: img/microcontrolador_transciever.png  used on input line 418.
 (pdftex.def)             Requested size: 227.62206pt x 115.93036pt.
-<img/CAN_recessive_dominant.png, id=488, 506.6428pt x 366.61969pt>
+<img/CAN_recessive_dominant.png, id=493, 506.6428pt x 366.61969pt>
 File: img/CAN_recessive_dominant.png Graphic file (type png)
 <use img/CAN_recessive_dominant.png>
 Package pdftex.def Info: img/CAN_recessive_dominant.png  used on input line 427.
@@ -1222,222 +1222,284 @@ Underfull \hbox (badness 10000) in paragraph at lines 438--439
  []
 
 [17 <./img/CAN_recessive_dominant.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 474--475
+Underfull \hbox (badness 10000) in paragraph at lines 446--447
 
  []
 
-[18]
-<img/IMU_recomendaciones_layout.png, id=521, 426.09187pt x 204.01219pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 448--449
+
+ []
+
+<img/sot_223_3.png, id=516, 642.4pt x 642.4pt>
+File: img/sot_223_3.png Graphic file (type png)
+<use img/sot_223_3.png>
+Package pdftex.def Info: img/sot_223_3.png  used on input line 452.
+(pdftex.def)             Requested size: 136.57462pt x 136.57436pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
+ []
+
+[18 <./img/sot_223_3.png>]
+<img/LDO_diagrama_bloques.png, id=530, 758.835pt x 374.39874pt>
+File: img/LDO_diagrama_bloques.png Graphic file (type png)
+<use img/LDO_diagrama_bloques.png>
+Package pdftex.def Info: img/LDO_diagrama_bloques.png  used on input line 465.
+(pdftex.def)             Requested size: 318.66948pt x 157.22925pt.
+<img/LDO_esquema_realimentacion.png, id=532, 625.33624pt x 404.51125pt>
+File: img/LDO_esquema_realimentacion.png Graphic file (type png)
+<use img/LDO_esquema_realimentacion.png>
+Package pdftex.def Info: img/LDO_esquema_realimentacion.png  used on input line 474.
+(pdftex.def)             Requested size: 364.19667pt x 235.5919pt.
+ [19 <./img/LDO_diagrama_bloques.png> <./img/LDO_esquema_realimentacion.png>]
+<img/LDO_ganancia_lazo_1.png, id=549, 620.3175pt x 500.87125pt>
+File: img/LDO_ganancia_lazo_1.png Graphic file (type png)
+<use img/LDO_ganancia_lazo_1.png>
+Package pdftex.def Info: img/LDO_ganancia_lazo_1.png  used on input line 504.
+(pdftex.def)             Requested size: 318.66948pt x 257.30576pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 509--510
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 511--512
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--514
+
+ []
+
+[20 <./img/LDO_ganancia_lazo_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 515--516
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
+
+ []
+
+[21]
+<img/IMU_recomendaciones_layout.png, id=577, 426.09187pt x 204.01219pt>
 File: img/IMU_recomendaciones_layout.png Graphic file (type png)
 <use img/IMU_recomendaciones_layout.png>
-Package pdftex.def Info: img/IMU_recomendaciones_layout.png  used on input line 491.
+Package pdftex.def Info: img/IMU_recomendaciones_layout.png  used on input line 560.
 (pdftex.def)             Requested size: 227.62206pt x 108.98824pt.
-) [19 <./img/IMU_recomendaciones_layout.png>]
+) [22 <./img/IMU_recomendaciones_layout.png>]
 \openout2 = `Demostracion_del_Funcionamiento_de_la_Computadora_de_Vuelo.aux'.
 
- (./Demostracion_del_Funcionamiento_de_la_Computadora_de_Vuelo.tex) [20
+ (./Demostracion_del_Funcionamiento_de_la_Computadora_de_Vuelo.tex) [23
 
 
 
 ]
 \openout2 = `Tolerancia_a_Fallas.aux'.
 
- (./Tolerancia_a_Fallas.tex [21
+ (./Tolerancia_a_Fallas.tex [24
 
 
 
-] [22]
-<img/3_4_lockstep_architecture.png, id=573, 622.325pt x 346.29375pt>
+] [25]
+<img/3_4_lockstep_architecture.png, id=631, 622.325pt x 346.29375pt>
 File: img/3_4_lockstep_architecture.png Graphic file (type png)
 <use img/3_4_lockstep_architecture.png>
 Package pdftex.def Info: img/3_4_lockstep_architecture.png  used on input line 78.
 (pdftex.def)             Requested size: 273.14923pt x 151.99455pt.
-<./img//3_4_lockstep_dual_core.png, id=579, 582.175pt x 379.4175pt>
+<./img//3_4_lockstep_dual_core.png, id=637, 582.175pt x 379.4175pt>
 File: ./img//3_4_lockstep_dual_core.png Graphic file (type png)
 <use ./img//3_4_lockstep_dual_core.png>
 Package pdftex.def Info: ./img//3_4_lockstep_dual_core.png  used on input line 88.
 (pdftex.def)             Requested size: 223.07211pt x 145.37856pt.
-<./img//3_4_loosely_synchronized_dual_processor_architecture.png, id=580, 595.22375pt x 548.0475pt>
+<./img//3_4_loosely_synchronized_dual_processor_architecture.png, id=638, 595.22375pt x 548.0475pt>
 File: ./img//3_4_loosely_synchronized_dual_processor_architecture.png Graphic file (type png)
 <use ./img//3_4_loosely_synchronized_dual_processor_architecture.png>
 Package pdftex.def Info: ./img//3_4_loosely_synchronized_dual_processor_architecture.png  used on input line 93.
 (pdftex.def)             Requested size: 223.07211pt x 205.39186pt.
- [23 <./img/3_4_lockstep_architecture.png> <./img//3_4_lockstep_dual_core.png> <./img//3_4_loosely_synchronized_dual_processor_architecture.png>]
-<./img//3_5_TMR.png, id=601, 1003.75pt x 307.1475pt>
+ [26 <./img/3_4_lockstep_architecture.png> <./img//3_4_lockstep_dual_core.png> <./img//3_4_loosely_synchronized_dual_processor_architecture.png>]
+<./img//3_5_TMR.png, id=659, 1003.75pt x 307.1475pt>
 File: ./img//3_5_TMR.png Graphic file (type png)
 <use ./img//3_5_TMR.png>
 Package pdftex.def Info: ./img//3_5_TMR.png  used on input line 109.
 (pdftex.def)             Requested size: 364.19667pt x 111.44473pt.
-<img/3_4_2_consenso_1.png, id=608, 648.4225pt x 284.06125pt>
+<img/3_4_2_consenso_1.png, id=666, 648.4225pt x 284.06125pt>
 File: img/3_4_2_consenso_1.png Graphic file (type png)
 <use img/3_4_2_consenso_1.png>
 Package pdftex.def Info: img/3_4_2_consenso_1.png  used on input line 124.
 (pdftex.def)             Requested size: 318.66948pt x 139.60298pt.
- [24 <./img//3_5_TMR.png> <./img/3_4_2_consenso_1.png>]
-<img/3_5_TMR_2.png, id=626, 462.72874pt x 204.765pt>
+ [27 <./img//3_5_TMR.png> <./img/3_4_2_consenso_1.png>]
+<img/3_5_TMR_2.png, id=682, 462.72874pt x 204.765pt>
 File: img/3_5_TMR_2.png Graphic file (type png)
 <use img/3_5_TMR_2.png>
 Package pdftex.def Info: img/3_5_TMR_2.png  used on input line 139.
 (pdftex.def)             Requested size: 227.62206pt x 100.72627pt.
-<img/3_4_1_sincronizacion_1.png, id=630, 530.98375pt x 261.97874pt>
+<img/3_4_1_sincronizacion_1.png, id=686, 530.98375pt x 261.97874pt>
 File: img/3_4_1_sincronizacion_1.png Graphic file (type png)
 <use img/3_4_1_sincronizacion_1.png>
 Package pdftex.def Info: img/3_4_1_sincronizacion_1.png  used on input line 157.
 (pdftex.def)             Requested size: 223.07211pt x 110.0623pt.
-<img/3_4_1_sincronizacion_2.png, id=631, 529.98pt x 261.97874pt>
+<img/3_4_1_sincronizacion_2.png, id=687, 529.98pt x 261.97874pt>
 File: img/3_4_1_sincronizacion_2.png Graphic file (type png)
 <use img/3_4_1_sincronizacion_2.png>
 Package pdftex.def Info: img/3_4_1_sincronizacion_2.png  used on input line 162.
 (pdftex.def)             Requested size: 223.07211pt x 110.27016pt.
- [25 <./img/3_5_TMR_2.png>]
-<img/3_4_1_sincronizacion_3.png, id=640, 530.98375pt x 261.97874pt>
+ [28 <./img/3_5_TMR_2.png>]
+<img/3_4_1_sincronizacion_3.png, id=696, 530.98375pt x 261.97874pt>
 File: img/3_4_1_sincronizacion_3.png Graphic file (type png)
 <use img/3_4_1_sincronizacion_3.png>
 Package pdftex.def Info: img/3_4_1_sincronizacion_3.png  used on input line 174.
 (pdftex.def)             Requested size: 318.66948pt x 157.22842pt.
-<img/3_4_2_consenso_2.png, id=644, 731.73375pt x 308.15125pt>
+<img/3_4_2_consenso_2.png, id=700, 731.73375pt x 308.15125pt>
 File: img/3_4_2_consenso_2.png Graphic file (type png)
 <use img/3_4_2_consenso_2.png>
 Package pdftex.def Info: img/3_4_2_consenso_2.png  used on input line 187.
 (pdftex.def)             Requested size: 364.19667pt x 153.37463pt.
- [26 <./img/3_4_1_sincronizacion_1.png> <./img/3_4_1_sincronizacion_2.png> <./img/3_4_1_sincronizacion_3.png>]
-<img/3_4_2_consenso_4.png, id=655, 558.085pt x 316.18124pt>
+ [29 <./img/3_4_1_sincronizacion_1.png> <./img/3_4_1_sincronizacion_2.png> <./img/3_4_1_sincronizacion_3.png>]
+<img/3_4_2_consenso_4.png, id=711, 558.085pt x 316.18124pt>
 File: img/3_4_2_consenso_4.png Graphic file (type png)
 <use img/3_4_2_consenso_4.png>
 Package pdftex.def Info: img/3_4_2_consenso_4.png  used on input line 202.
 (pdftex.def)             Requested size: 273.14923pt x 154.75647pt.
-<img/3_4_2_consenso_5.png, id=657, 532.99126pt x 373.395pt>
+<img/3_4_2_consenso_5.png, id=713, 532.99126pt x 373.395pt>
 File: img/3_4_2_consenso_5.png Graphic file (type png)
 <use img/3_4_2_consenso_5.png>
 Package pdftex.def Info: img/3_4_2_consenso_5.png  used on input line 212.
 (pdftex.def)             Requested size: 273.14923pt x 191.36333pt.
- [27 <./img/3_4_2_consenso_2.png> <./img/3_4_2_consenso_4.png>]
-<img/Byzantine_Generals_Problem.png, id=670, 462.528pt x 231.264pt>
+ [30 <./img/3_4_2_consenso_2.png> <./img/3_4_2_consenso_4.png>]
+<img/Byzantine_Generals_Problem.png, id=727, 462.528pt x 231.264pt>
 File: img/Byzantine_Generals_Problem.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem.png  used on input line 233.
 (pdftex.def)             Requested size: 318.66948pt x 159.34296pt.
- [28 <./img/3_4_2_consenso_5.png>]
-<img/Byzantine_Generals_Problem_2.png, id=682, 462.72874pt x 337.26pt>
+ [31 <./img/3_4_2_consenso_5.png>]
+<img/Byzantine_Generals_Problem_2.png, id=739, 462.72874pt x 337.26pt>
 File: img/Byzantine_Generals_Problem_2.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_2.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_2.png  used on input line 270.
 (pdftex.def)             Requested size: 273.14923pt x 199.0846pt.
- [29 <./img/Byzantine_Generals_Problem.png>]
-<img/Byzantine_Generals_Problem_3.png, id=692, 709.65125pt x 447.6725pt>
+ [32 <./img/Byzantine_Generals_Problem.png>]
+<img/Byzantine_Generals_Problem_3.png, id=750, 709.65125pt x 447.6725pt>
 File: img/Byzantine_Generals_Problem_3.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_3.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_3.png  used on input line 279.
 (pdftex.def)             Requested size: 409.71692pt x 258.46848pt.
- [30 <./img/Byzantine_Generals_Problem_2.png> <./img/Byzantine_Generals_Problem_3.png>]
-<img/Byzantine_Generals_Problem_4.png, id=702, 372.39125pt x 303.1325pt>
+ [33 <./img/Byzantine_Generals_Problem_2.png> <./img/Byzantine_Generals_Problem_3.png>]
+<img/Byzantine_Generals_Problem_4.png, id=759, 372.39125pt x 303.1325pt>
 File: img/Byzantine_Generals_Problem_4.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_4.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_4.png  used on input line 294.
 (pdftex.def)             Requested size: 227.62206pt x 185.29446pt.
-<img/Byzantine_Generals_Problem_5.png, id=706, 463.7325pt x 337.26pt>
+<img/Byzantine_Generals_Problem_5.png, id=763, 463.7325pt x 337.26pt>
 File: img/Byzantine_Generals_Problem_5.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_5.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_5.png  used on input line 305.
 (pdftex.def)             Requested size: 227.62206pt x 165.54703pt.
-<img/Byzantine_Generals_Problem_6.png, id=707, 709.65125pt x 447.6725pt>
+<img/Byzantine_Generals_Problem_6.png, id=764, 709.65125pt x 447.6725pt>
 File: img/Byzantine_Generals_Problem_6.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_6.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_6.png  used on input line 312.
 (pdftex.def)             Requested size: 318.66948pt x 201.03407pt.
- [31 <./img/Byzantine_Generals_Problem_4.png> <./img/Byzantine_Generals_Problem_5.png>]) [32 <./img/Byzantine_Generals_Problem_6.png>]
+ [34 <./img/Byzantine_Generals_Problem_4.png> <./img/Byzantine_Generals_Problem_5.png>]) [35 <./img/Byzantine_Generals_Problem_6.png>]
 \openout2 = `Arquitectura_Propuesta.aux'.
 
  (./Arquitectura_Propuesta.tex
-<img/red_CAN.png, id=727, 928.46875pt x 378.41376pt>
+<img/red_CAN.png, id=784, 928.46875pt x 378.41376pt>
 File: img/red_CAN.png Graphic file (type png)
 <use img/red_CAN.png>
 Package pdftex.def Info: img/red_CAN.png  used on input line 17.
 (pdftex.def)             Requested size: 455.24411pt x 185.54561pt.
-<img/byzantine_bus_1.png, id=732, 433.62pt x 181.67876pt>
+<img/byzantine_bus_1.png, id=789, 433.62pt x 181.67876pt>
 File: img/byzantine_bus_1.png Graphic file (type png)
 <use img/byzantine_bus_1.png>
 Package pdftex.def Info: img/byzantine_bus_1.png  used on input line 26.
 (pdftex.def)             Requested size: 273.14923pt x 114.44989pt.
- [33
+ [36
 
 
 
  <./img/red_CAN.png>]
-<img/byzantine_bus_2.png, id=745, 322.20375pt x 181.67876pt>
+<img/byzantine_bus_2.png, id=803, 322.20375pt x 181.67876pt>
 File: img/byzantine_bus_2.png Graphic file (type png)
 <use img/byzantine_bus_2.png>
 Package pdftex.def Info: img/byzantine_bus_2.png  used on input line 44.
 (pdftex.def)             Requested size: 154.78133pt x 87.27687pt.
-<img/byzantine_bus_3.png, id=746, 512.91624pt x 208.78pt>
+<img/byzantine_bus_3.png, id=804, 512.91624pt x 208.78pt>
 File: img/byzantine_bus_3.png Graphic file (type png)
 <use img/byzantine_bus_3.png>
 Package pdftex.def Info: img/byzantine_bus_3.png  used on input line 49.
 (pdftex.def)             Requested size: 223.07211pt x 90.79944pt.
- [34 <./img/byzantine_bus_1.png> <./img/byzantine_bus_2.png> <./img/byzantine_bus_3.png>]
-<img/task_scheduling_1.png, id=760, 626.34pt x 552.0625pt>
+ [37 <./img/byzantine_bus_1.png> <./img/byzantine_bus_2.png> <./img/byzantine_bus_3.png>]
+<img/task_scheduling_1.png, id=817, 626.34pt x 552.0625pt>
 File: img/task_scheduling_1.png Graphic file (type png)
 <use img/task_scheduling_1.png>
 Package pdftex.def Info: img/task_scheduling_1.png  used on input line 75.
 (pdftex.def)             Requested size: 318.66948pt x 280.88266pt.
-<img/task_scheduling_2.png, id=762, 604.2575pt x 374.39874pt>
+<img/task_scheduling_2.png, id=819, 604.2575pt x 374.39874pt>
 File: img/task_scheduling_2.png Graphic file (type png)
 <use img/task_scheduling_2.png>
 Package pdftex.def Info: img/task_scheduling_2.png  used on input line 86.
 (pdftex.def)             Requested size: 318.66948pt x 197.44777pt.
- [35 <./img/task_scheduling_1.png>] [36 <./img/task_scheduling_2.png>]
-<img/diagrama_TTA.png, id=789, 877.2775pt x 515.9275pt>
+ [38 <./img/task_scheduling_1.png>] [39 <./img/task_scheduling_2.png>]
+<img/diagrama_TTA.png, id=845, 877.2775pt x 515.9275pt>
 File: img/diagrama_TTA.png Graphic file (type png)
 <use img/diagrama_TTA.png>
 Package pdftex.def Info: img/diagrama_TTA.png  used on input line 120.
 (pdftex.def)             Requested size: 455.24411pt x 267.73277pt.
- [37 <./img/diagrama_TTA.png>]
-<img/TDMA_esquema.png, id=804, 460.72125pt x 357.335pt>
+ [40 <./img/diagrama_TTA.png>]
+<img/TDMA_esquema.png, id=860, 460.72125pt x 357.335pt>
 File: img/TDMA_esquema.png Graphic file (type png)
 <use img/TDMA_esquema.png>
 Package pdftex.def Info: img/TDMA_esquema.png  used on input line 139.
 (pdftex.def)             Requested size: 318.66948pt x 247.15573pt.
-<img/TTA_Bus.png, id=806, 447.6725pt x 227.85126pt>
+<img/TTA_Bus.png, id=862, 447.6725pt x 227.85126pt>
 File: img/TTA_Bus.png Graphic file (type png)
 <use img/TTA_Bus.png>
 Package pdftex.def Info: img/TTA_Bus.png  used on input line 150.
 (pdftex.def)             Requested size: 273.14923pt x 139.0273pt.
- [38 <./img/TDMA_esquema.png>] [39 <./img/TTA_Bus.png>]
-<img/TTA_resincronizacion.png, id=827, 645.41125pt x 495.8525pt>
+ [41 <./img/TDMA_esquema.png>] [42 <./img/TTA_Bus.png>]
+<img/TTA_resincronizacion.png, id=884, 645.41125pt x 495.8525pt>
 File: img/TTA_resincronizacion.png Graphic file (type png)
 <use img/TTA_resincronizacion.png>
 Package pdftex.def Info: img/TTA_resincronizacion.png  used on input line 181.
 (pdftex.def)             Requested size: 318.66948pt x 244.82353pt.
-<img/TTA_resincronizacion_building_blocks.png, id=832, 611.28375pt x 164.615pt>
+<img/TTA_resincronizacion_building_blocks.png, id=889, 611.28375pt x 164.615pt>
 File: img/TTA_resincronizacion_building_blocks.png Graphic file (type png)
 <use img/TTA_resincronizacion_building_blocks.png>
 Package pdftex.def Info: img/TTA_resincronizacion_building_blocks.png  used on input line 190.
 (pdftex.def)             Requested size: 364.19667pt x 98.07397pt.
- [40 <./img/TTA_resincronizacion.png> <./img/TTA_resincronizacion_building_blocks.png>]) [41]
+ [43 <./img/TTA_resincronizacion.png> <./img/TTA_resincronizacion_building_blocks.png>]) [44]
 \openout2 = `Conclusiones.aux'.
 
- (./Conclusiones.tex) [42
+ (./Conclusiones.tex) [45
 
 
 
 ]
 \openout2 = `Agradecimientos.aux'.
 
- (./Agradecimientos.tex) [43
+ (./Agradecimientos.tex) [46
 
 
 
 ]
 \openout2 = `Apendices.aux'.
 
- (./Apendices.tex) [44
+ (./Apendices.tex) [47
 
 
 
-] [45
+] [48
 
 
-] [46] (./main.aux
+] [49] (./main.aux
 LaTeX Info: Redefining \sptext on input line 30.
 LaTeX Info: Redefining \. on input line 30.
 LaTeX Info: Redefining \% on input line 30.
@@ -1449,7 +1511,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3A80DA3030BA6F0E3327175FC6EB7DAE;10729.
+(rerunfilecheck)             Checksum: 7FCD3160E5DB40A76FB064C0A601F8DE;10941.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -1460,18 +1522,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 28720 strings out of 478287
- 564211 string characters out of 5849289
- 1103638 words of memory out of 5000000
- 46199 multiletter control sequences out of 15000+600000
+ 28801 strings out of 478287
+ 566641 string characters out of 5849289
+ 1106186 words of memory out of 5000000
+ 46255 multiletter control sequences out of 15000+600000
  488177 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,13n,109p,1953b,2646s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (47 pages, 2282374 bytes).
+Output written on main.pdf (50 pages, 2392635 bytes).
 PDF statistics:
- 1067 PDF objects out of 1200 (max. 8388607)
- 854 compressed objects within 9 object streams
- 235 named destinations out of 1000 (max. 500000)
- 616 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1132 PDF objects out of 1200 (max. 8388607)
+ 908 compressed objects within 10 object streams
+ 256 named destinations out of 1000 (max. 500000)
+ 644 words of extra memory for PDF output out of 10000 (max. 10000000)
 
