@@ -1,40 +1,40 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Arquitectura de Redundancia Propuesta RE ACOMODAR EN OTRA SECCIÓN}{36}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}{36}{subsection.7.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{36}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:red_CAN}{{34}{36}{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.39}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }}{37}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:byzantine_bus_1}{{35}{37}{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }{figure.caption.40}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.1}Consenso}{37}{subsubsection.7.1.1}\protected@file@percent }
-\newlabel{fig:byzantine_bus_2}{{36a}{37}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.41}{}}
-\newlabel{sub@fig:byzantine_bus_2}{{a}{37}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.41}{}}
-\newlabel{fig:byzantine_bus_3}{{36b}{37}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.41}{}}
-\newlabel{sub@fig:byzantine_bus_3}{{b}{37}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit  {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }}{37}{figure.caption.41}\protected@file@percent }
-\newlabel{}{{36}{37}{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }{figure.caption.41}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.2}Sincronismo de los nodos}{38}{subsubsection.7.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }}{38}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:task_scheduling_1}{{37}{38}{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }{figure.caption.42}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref  {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }}{39}{figure.caption.43}\protected@file@percent }
-\newlabel{fig:task_scheduling_2}{{38}{39}{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }{figure.caption.43}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Arquitectura Del Sistema: \textit  {The Time-Triggered Architecture}}{39}{subsection.7.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit  {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit  {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }}{40}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:diagrama_TTA}{{39}{40}{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }{figure.caption.44}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Bus de Comunicaciones}{41}{subsubsection.7.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }}{41}{figure.caption.45}\protected@file@percent }
-\newlabel{fig:TDMA_esquema}{{40}{41}{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }{figure.caption.45}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces Misma imagen que \ref  {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }}{42}{figure.caption.46}\protected@file@percent }
-\newlabel{fig:TTA_Bus}{{41}{42}{Misma imagen que \ref {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }{figure.caption.46}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Nodos}{42}{subsubsection.7.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.3}Scheduler}{42}{subsubsection.7.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.4}Global Time y Sincronización}{42}{subsubsection.7.2.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite [p.~67]{kopetz-2011}.\relax }}{43}{figure.caption.47}\protected@file@percent }
-\newlabel{fig:TTA_resincronizacion}{{42}{43}{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite [p.~67]{kopetz-2011}.\relax }{figure.caption.47}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite {de2013overview}.\relax }}{43}{figure.caption.48}\protected@file@percent }
-\newlabel{fig:TTA_resincronizacion_building_blocks}{{43}{43}{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite {de2013overview}.\relax }{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Arquitectura de Redundancia Propuesta RE ACOMODAR EN OTRA SECCIÓN}{39}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}{39}{subsection.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{39}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:red_CAN}{{38}{39}{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }}{40}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:byzantine_bus_1}{{39}{40}{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }{figure.caption.44}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.1}Consenso}{40}{subsubsection.7.1.1}\protected@file@percent }
+\newlabel{fig:byzantine_bus_2}{{40a}{40}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.45}{}}
+\newlabel{sub@fig:byzantine_bus_2}{{a}{40}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.45}{}}
+\newlabel{fig:byzantine_bus_3}{{40b}{40}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.45}{}}
+\newlabel{sub@fig:byzantine_bus_3}{{b}{40}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit  {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }}{40}{figure.caption.45}\protected@file@percent }
+\newlabel{}{{40}{40}{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }{figure.caption.45}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.2}Sincronismo de los nodos}{41}{subsubsection.7.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }}{41}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:task_scheduling_1}{{41}{41}{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }{figure.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref  {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }}{42}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:task_scheduling_2}{{42}{42}{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }{figure.caption.47}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Arquitectura Del Sistema: \textit  {The Time-Triggered Architecture}}{42}{subsection.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit  {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit  {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }}{43}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:diagrama_TTA}{{43}{43}{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Bus de Comunicaciones}{44}{subsubsection.7.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }}{44}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:TDMA_esquema}{{44}{44}{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }{figure.caption.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces Misma imagen que \ref  {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }}{45}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:TTA_Bus}{{45}{45}{Misma imagen que \ref {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }{figure.caption.50}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Nodos}{45}{subsubsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.3}Scheduler}{45}{subsubsection.7.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.4}Global Time y Sincronización}{45}{subsubsection.7.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite [p.~67]{kopetz-2011}.\relax }}{46}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion}{{46}{46}{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite [p.~67]{kopetz-2011}.\relax }{figure.caption.51}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite {de2013overview}.\relax }}{46}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion_building_blocks}{{47}{46}{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite {de2013overview}.\relax }{figure.caption.52}{}}
 \@setckpt{Arquitectura_Propuesta}{
-\setcounter{page}{45}
+\setcounter{page}{48}
 \setcounter{equation}{18}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -48,7 +48,7 @@
 \setcounter{subsubsection}{4}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{43}
+\setcounter{figure}{47}
 \setcounter{table}{3}
 \setcounter{parentequation}{14}
 \setcounter{float@type}{4}
@@ -71,7 +71,7 @@
 \setcounter{AM@survey}{0}
 \setcounter{Item}{16}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{46}
+\setcounter{bookmark@seq@number}{50}
 \setcounter{mydef}{3}
 \setcounter{@pps}{0}
 \setcounter{@ppsavesec}{0}
@@ -85,7 +85,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{105}
+\setcounter{instcount}{117}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -109,7 +109,7 @@
 \setcounter{parenlevel}{0}
 \setcounter{blx@maxsection}{0}
 \setcounter{blx@maxsegment@0}{0}
-\setcounter{blx@sectionciteorder@0}{105}
+\setcounter{blx@sectionciteorder@0}{117}
 \setcounter{mincomprange}{10}
 \setcounter{maxcomprange}{100000}
 \setcounter{mincompwidth}{1}

@@ -17,6 +17,85 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{kopetz-2011}{book}{}
+    \name{author}{1}{}{%
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Science+Business Media}%
+    }
+    \strng{namehash}{KH1}
+    \strng{fullhash}{KH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1007/978-1-4419-8237-7
+    \endverb
+    \field{title}{{Real-Time systems}}
+    \verb{url}
+    \verb https://doi.org/10.1007/978-1-4419-8237-7
+    \endverb
+    \field{month}{01}
+    \field{year}{2011}
+  \endentry
+
+  \entry{FBWNASA}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Fly-by-Wire Systems Enable Safer, More Efficient Flight |
+  NASA Spinoff}}
+    \verb{url}
+    \verb https://spinoff.nasa.gov/Spinoff2011/t_5.html
+    \endverb
+  \endentry
+
+  \entry{collinson2023introduction}{book}{}
+    \name{author}{1}{}{%
+      {{hash=CRP}{%
+         family={Collinson},
+         familyi={C\bibinitperiod},
+         given={Richard\bibnamedelima PG},
+         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Nature}%
+    }
+    \strng{namehash}{CRP1}
+    \strng{fullhash}{CRP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Introduction to avionics systems}
+    \field{year}{2023}
+  \endentry
+
+  \entry{yeh1996triple}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=YYC}{%
+         family={Yeh},
+         familyi={Y\bibinitperiod},
+         given={Ying\bibnamedelima C},
+         giveni={Y\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{YYC1}
+    \strng{fullhash}{YYC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{1996 IEEE Aerospace Applications Conference. Proceedings}
+    \field{pages}{293\bibrangedash 307}
+    \field{title}{Triple-triple redundant 777 primary flight computer}
+    \field{volume}{1}
+    \field{year}{1996}
+  \endentry
+
   \entry{ICM42688pDatasheet}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{{ICM-42688-P | TDK InvenSense}}
@@ -948,33 +1027,6 @@
     \field{pages}{168\bibrangedash 177}
     \field{title}{The time-triggered model of computation}
     \field{year}{1998}
-  \endentry
-
-  \entry{kopetz-2011}{book}{}
-    \name{author}{1}{}{%
-      {{hash=KH}{%
-         family={Kopetz},
-         familyi={K\bibinitperiod},
-         given={Hermann},
-         giveni={H\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer Science+Business Media}%
-    }
-    \strng{namehash}{KH1}
-    \strng{fullhash}{KH1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1007/978-1-4419-8237-7
-    \endverb
-    \field{title}{{Real-Time systems}}
-    \verb{url}
-    \verb https://doi.org/10.1007/978-1-4419-8237-7
-    \endverb
-    \field{month}{01}
-    \field{year}{2011}
   \endentry
 
   \entry{pont2008patterns}{book}{}
