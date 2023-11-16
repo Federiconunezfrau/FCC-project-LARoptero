@@ -96,6 +96,154 @@
     \field{year}{1996}
   \endentry
 
+  \entry{zhang2020architecture}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ZX}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Xunying},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=ZX}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Xiaodong},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{ZXZX1}
+    \strng{fullhash}{ZXZX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{3944\bibrangedash 3954}
+    \field{title}{Architecture design of distributed redundant flight control
+  computer based on time-triggered buses for UAVs}
+    \field{volume}{21}
+    \field{journaltitle}{IEEE Sensors Journal}
+    \field{year}{2020}
+  \endentry
+
+  \entry{embention-2023}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={Embention},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{Veronte Autopilot 4x - Products Veronte Embention}}
+    \verb{url}
+    \verb https://www.embention.com/product/veronte-autopilot-4x/
+    \endverb
+    \field{month}{10}
+    \field{year}{2023}
+  \endentry
+
+  \entry{uav-navigation-vector-600}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{VECTOR-600 -Autopilot for UAV | UAV Navigation}}
+    \verb{url}
+    \verb https://www.uavnavigation.com/products/autopilots/vector-600
+    \endverb
+  \endentry
+
+  \entry{wwwmicropilotcom-no-date}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=w}{%
+         family={www.micropilot.com},
+         familyi={w\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{w1}
+    \strng{fullhash}{w1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{MicroPilot - World leader in professional UAV autopilots |
+  Product Page - MP2128 3x Triple Redundant Autopilots}}
+    \verb{url}
+    \verb https://www.micropilot.com/products-mp21283x.htm
+    \endverb
+  \endentry
+
+  \entry{hiergeist2018implementation}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Hiergeist},
+         familyi={H\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Seifert},
+         familyi={S\bibinitperiod},
+         given={Georg},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HSSG1}
+    \strng{fullhash}{HSSG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2018 IEEE/AIAA 37th Digital Avionics Systems Conference
+  (DASC)}
+    \field{pages}{1\bibrangedash 10}
+    \field{title}{Implementation of a SPI based redundancy network for SoC
+  based UAV FCCs and achieving synchronization}
+    \field{year}{2018}
+  \endentry
+
+  \entry{hiergeist2017internal}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Hiergeist},
+         familyi={H\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Seifert},
+         familyi={S\bibinitperiod},
+         given={Georg},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HSSG1}
+    \strng{fullhash}{HSSG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2017 IEEE/AIAA 36th Digital Avionics Systems Conference
+  (DASC)}
+    \field{pages}{1\bibrangedash 9}
+    \field{title}{Internal redundancy in future UAV FCCs and the challenge of
+  synchronization}
+    \field{year}{2017}
+  \endentry
+
+  \entry{nxpAN12233}{manual}{}
+    \list{organization}{1}{%
+      {NXP Semiconductors}%
+    }
+    \field{labeltitlesource}{title}
+    \field{note}{Rev. 0}
+    \field{number}{AN12233}
+    \field{title}{MPC5744P FlexRay Interface in Pictures}
+    \field{month}{05}
+    \field{year}{2021}
+  \endentry
+
   \entry{ICM42688pDatasheet}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{{ICM-42688-P | TDK InvenSense}}
@@ -568,36 +716,6 @@
     \field{year}{2021}
   \endentry
 
-  \entry{hiergeist2017internal}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=HS}{%
-         family={Hiergeist},
-         familyi={H\bibinitperiod},
-         given={Sebastian},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=SG}{%
-         family={Seifert},
-         familyi={S\bibinitperiod},
-         given={Georg},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{HSSG1}
-    \strng{fullhash}{HSSG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{2017 IEEE/AIAA 36th Digital Avionics Systems Conference
-  (DASC)}
-    \field{pages}{1\bibrangedash 9}
-    \field{title}{Internal redundancy in future UAV FCCs and the challenge of
-  synchronization}
-    \field{year}{2017}
-  \endentry
-
   \entry{lamport2019byzantine}{incollection}{}
     \name{author}{3}{}{%
       {{hash=LL}{%
@@ -827,36 +945,6 @@
     \endverb
   \endentry
 
-  \entry{hiergeist2018implementation}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=HS}{%
-         family={Hiergeist},
-         familyi={H\bibinitperiod},
-         given={Sebastian},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=SG}{%
-         family={Seifert},
-         familyi={S\bibinitperiod},
-         given={Georg},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{HSSG1}
-    \strng{fullhash}{HSSG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{2018 IEEE/AIAA 37th Digital Avionics Systems Conference
-  (DASC)}
-    \field{pages}{1\bibrangedash 10}
-    \field{title}{Implementation of a SPI based redundancy network for SoC
-  based UAV FCCs and achieving synchronization}
-    \field{year}{2018}
-  \endentry
-
   \entry{pease1980reaching}{article}{}
     \name{author}{3}{}{%
       {{hash=PM}{%
@@ -980,18 +1068,6 @@
     \field{journaltitle}{Wikipedia}
     \field{month}{07}
     \field{year}{2023}
-  \endentry
-
-  \entry{nxpAN12233}{manual}{}
-    \list{organization}{1}{%
-      {NXP Semiconductors}%
-    }
-    \field{labeltitlesource}{title}
-    \field{note}{Rev. 0}
-    \field{number}{AN12233}
-    \field{title}{MPC5744P FlexRay Interface in Pictures}
-    \field{month}{05}
-    \field{year}{2021}
   \endentry
 
   \entry{texasSLOA101B}{manual}{}
