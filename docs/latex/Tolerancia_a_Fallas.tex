@@ -141,82 +141,82 @@ Como medida para evitar esto último, los bloques votantes pueden integrarse den
     \label{fig:3_5_TMR_2}
 \end{figure}
 
-\subsection{Algunos Requerimientos de un Sistema Redundante}
+% \subsection{Algunos Requerimientos de un Sistema Redundante}
 
-Si bien el uso de redundancias apunta a incrementar la fiabilidad del sistema y tolerar fallas, es un error pensar que el simple hecho de tener un sistema redundante equivale a un incremento de la fiabilidad \cite{lala1994architectural}. Esto es principalmente por el hecho de que un sistema redundante incluye además las comunicaciones y rutinas necesarias para ejecutar las votaciones. Si estas funcionalidades no son administradas de manera correcta, un sistema redundante solamente traerá más fallas.
+% Si bien el uso de redundancias apunta a incrementar la fiabilidad del sistema y tolerar fallas, es un error pensar que el simple hecho de tener un sistema redundante equivale a un incremento de la fiabilidad \cite{lala1994architectural}. Esto es principalmente por el hecho de que un sistema redundante incluye además las comunicaciones y rutinas necesarias para ejecutar las votaciones. Si estas funcionalidades no son administradas de manera correcta, un sistema redundante solamente traerá más fallas.
 
-\subsubsection{Sincronismo de los Nodos}\label{sec:sincronismo_TMR}
+% \subsubsection{Sincronismo de los Nodos}\label{sec:sincronismo_TMR}
 
-En las arquitecturas antes presentadas, se menciona que se realiza una comparación de los resultados calculados por cada nodo, para detectar/enmascarar errores. Para que el funcionamiento de esta comparación sea adecuado, los nodos deben estar sincronizados. Esto es un requerimiento para sistemas de tiempo real, como el caso de la computadora de vuelo de un UAV.
+% En las arquitecturas antes presentadas, se menciona que se realiza una comparación de los resultados calculados por cada nodo, para detectar/enmascarar errores. Para que el funcionamiento de esta comparación sea adecuado, los nodos deben estar sincronizados. Esto es un requerimiento para sistemas de tiempo real, como el caso de la computadora de vuelo de un UAV.
 
-En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instante $t$, se presenta una nueva medición de un sensor a las tres computadoras de vuelo. Al comienzo de la misión, todas ellas estarán sincronizadas y generarán un resultado del cálculo de la ley de control que corresponde al mismo intervalo de tiempo. Luego se realiza la votación para elegir el valor correcto. La figura \ref{fig:3_4_1_sincronizacion_2}, muestra lo que sucede al cabo de un período de tiempo. Se presenta una nueva medición de un sensor en el instante $t$. Debido a la desincronización, es posible que las computadoras de vuelo no presenten sus resultados al \textit{Voter} a tiempo, por lo que este asumirá que una de las FCCs no presentó ninguna respuesta. Este caso suele estar contemplado dentro de las posibilidades y correpsonde al caso en el que una computadora de vuelo presentó un error y debido a ello no respondió con ningún valor (por ejemplo, se reinició su procesador debido a un \textit{watchdog}). En esos casos el \textit{Voter} simplemente asume algún valor por defecto.
+% En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instante $t$, se presenta una nueva medición de un sensor a las tres computadoras de vuelo. Al comienzo de la misión, todas ellas estarán sincronizadas y generarán un resultado del cálculo de la ley de control que corresponde al mismo intervalo de tiempo. Luego se realiza la votación para elegir el valor correcto. La figura \ref{fig:3_4_1_sincronizacion_2}, muestra lo que sucede al cabo de un período de tiempo. Se presenta una nueva medición de un sensor en el instante $t$. Debido a la desincronización, es posible que las computadoras de vuelo no presenten sus resultados al \textit{Voter} a tiempo, por lo que este asumirá que una de las FCCs no presentó ninguna respuesta. Este caso suele estar contemplado dentro de las posibilidades y correpsonde al caso en el que una computadora de vuelo presentó un error y debido a ello no respondió con ningún valor (por ejemplo, se reinició su procesador debido a un \textit{watchdog}). En esos casos el \textit{Voter} simplemente asume algún valor por defecto.
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_1.png}
-        \caption{Computadoras de vuelo al inicio de la misión.}
-        \label{fig:3_4_1_sincronizacion_1}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_2.png}
-        \caption{Al cabo de un período de tiempo, se desincronizarán.}
-        \label{fig:3_4_1_sincronizacion_2}
-    \end{subfigure}
-    \caption{A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.}
-    \label{fig:3_4_1_sincronizacion}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_1.png}
+%         \caption{Computadoras de vuelo al inicio de la misión.}
+%         \label{fig:3_4_1_sincronizacion_1}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_2.png}
+%         \caption{Al cabo de un período de tiempo, se desincronizarán.}
+%         \label{fig:3_4_1_sincronizacion_2}
+%     \end{subfigure}
+%     \caption{A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.}
+%     \label{fig:3_4_1_sincronizacion}
+% \end{figure}
 
-Otra situación que puede presentarse, es que los resultados propuestos por las computadoras de vuelo $Y_1$, $Y_2$ e $Y_3$ correspondan a intervalos de tiempo distintos. Este caso es todavía peor que el anterior, ya que no se encuentra contemplado y los \textit{Voters} simplemente realizarán la votación asumiendo que el dato es válido.
+% Otra situación que puede presentarse, es que los resultados propuestos por las computadoras de vuelo $Y_1$, $Y_2$ e $Y_3$ correspondan a intervalos de tiempo distintos. Este caso es todavía peor que el anterior, ya que no se encuentra contemplado y los \textit{Voters} simplemente realizarán la votación asumiendo que el dato es válido.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/3_4_1_sincronizacion_3.png}
-    \caption{La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.}
-    \label{fig:3_4_1_sincronizacion_3}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/3_4_1_sincronizacion_3.png}
+%     \caption{La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.}
+%     \label{fig:3_4_1_sincronizacion_3}
+% \end{figure}
 
-Se concluye que es mandatorio utilizar alguna técnica de sincronización entre los nodos. Como detalle de la figura \ref{fig:3_4_1_sincronizacion_3}, se muestra que la sincronización entre nodos presupone otro canal de comuniación más. Otra forma podría ser relegar la tarea de la sincronización al bloque \textit{Voter}, aunque esto nuevamente presenta un punto singular de falla. Como se demostró en esta sección, el sincronismo es un aspecto crítico en el sistema redundante, por lo que se prefiere evitar esto último.
+% Se concluye que es mandatorio utilizar alguna técnica de sincronización entre los nodos. Como detalle de la figura \ref{fig:3_4_1_sincronizacion_3}, se muestra que la sincronización entre nodos presupone otro canal de comuniación más. Otra forma podría ser relegar la tarea de la sincronización al bloque \textit{Voter}, aunque esto nuevamente presenta un punto singular de falla. Como se demostró en esta sección, el sincronismo es un aspecto crítico en el sistema redundante, por lo que se prefiere evitar esto último.
 
-\subsubsection{Consenso}\label{sec:consenso_TMR}
+% \subsubsection{Consenso}\label{sec:consenso_TMR}
 
-Lo que se plantea en esta sección, es que existe la posibilidad de que una de las FCC entregue distintos valores a cada \textit{Voter}. En la figura \ref{fig:3_4_2_consenso_2} se muestra una situación en la que la FCC1 entrega dos valores distintos a los demás \textit{Voters}, siendo los valores posibles \textit{True} y \textit{False}. Esto puede deberse por ejemplo a que la FCC1 así lo quiso, debido a una falla muy compleja de analizar y que se manifiesta como un error de esta manera. Otra posibilidad más realista puede ser el hecho de que, debido a que el dato enviado por la FCC1 llegó más tarde al tercer \textit{Voter} que a los demás, este interpretó mal el valor recibido por la línea de comuniación, generando la situación de la figura \ref{fig:3_4_2_consenso_2}. 
+% Lo que se plantea en esta sección, es que existe la posibilidad de que una de las FCC entregue distintos valores a cada \textit{Voter}. En la figura \ref{fig:3_4_2_consenso_2} se muestra una situación en la que la FCC1 entrega dos valores distintos a los demás \textit{Voters}, siendo los valores posibles \textit{True} y \textit{False}. Esto puede deberse por ejemplo a que la FCC1 así lo quiso, debido a una falla muy compleja de analizar y que se manifiesta como un error de esta manera. Otra posibilidad más realista puede ser el hecho de que, debido a que el dato enviado por la FCC1 llegó más tarde al tercer \textit{Voter} que a los demás, este interpretó mal el valor recibido por la línea de comuniación, generando la situación de la figura \ref{fig:3_4_2_consenso_2}. 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{img/3_4_2_consenso_2.png}
-    \caption{La FCC1 entrega el valor de \textit{True} a un \textit{Voter} y \textit{False} a otro. Los vectores representan los valores sobre los que cada \textit{Voter} debe decidir y votar por un único valor.}
-    \label{fig:3_4_2_consenso_2}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{img/3_4_2_consenso_2.png}
+%     \caption{La FCC1 entrega el valor de \textit{True} a un \textit{Voter} y \textit{False} a otro. Los vectores representan los valores sobre los que cada \textit{Voter} debe decidir y votar por un único valor.}
+%     \label{fig:3_4_2_consenso_2}
+% \end{figure}
 
-Este caso a priori parecería no presentar un problema que la arquitectura TMR no pueda resolver. El primer y segundo \textit{Voter} decidirán por el valor \textit{True}, ya que todas sus entradas son iguales a este valor. El tercer \textit{Voter} también decidirá por el valor \textit{True} ya que 2 de 3 de sus valores son \textit{True}. En definitiva, la arquitectura TMR resuelve el problema del consenso para este caso.
+% Este caso a priori parecería no presentar un problema que la arquitectura TMR no pueda resolver. El primer y segundo \textit{Voter} decidirán por el valor \textit{True}, ya que todas sus entradas son iguales a este valor. El tercer \textit{Voter} también decidirá por el valor \textit{True} ya que 2 de 3 de sus valores son \textit{True}. En definitiva, la arquitectura TMR resuelve el problema del consenso para este caso.
 
-A continuación se plantea un caso diferente. Se analiza la situación en la que cada FCC propone un valor distinto, que fue calculado por su propia observación del escenario en el que se encuentra. Esto podría ser por ejemplo, el valor de algún sensor interno a esta. Las FCC 1, 2 y 3 se encuentran dentro del mismo UAV, por lo que si poseen sensores redundantes, uno esperaría que se obtengan las mismas lecturas (si es que todos los sensores funcionan adecuadamente). Esto puede no ser así, ya que por ejemplo estas pueden presentar pequeñas variaciones por tratarse de lecturas analógicas. De manera de que el algoritmo de control se ejecute de manera consistente en las tres FCCs, ellas deben ponerse de acuerdo en un valor del sensor.
+% A continuación se plantea un caso diferente. Se analiza la situación en la que cada FCC propone un valor distinto, que fue calculado por su propia observación del escenario en el que se encuentra. Esto podría ser por ejemplo, el valor de algún sensor interno a esta. Las FCC 1, 2 y 3 se encuentran dentro del mismo UAV, por lo que si poseen sensores redundantes, uno esperaría que se obtengan las mismas lecturas (si es que todos los sensores funcionan adecuadamente). Esto puede no ser así, ya que por ejemplo estas pueden presentar pequeñas variaciones por tratarse de lecturas analógicas. De manera de que el algoritmo de control se ejecute de manera consistente en las tres FCCs, ellas deben ponerse de acuerdo en un valor del sensor.
 
-Como se mencionó en la sección anterior, se requiere lograr una sincronización entre computadoras de vuelo redundantes. De manera de ejecutar un algoritmo de sincronización adecuado, las computadoras de vuelo deben compartirle a las demás, un valor asociado a su propio clock interno.
+% Como se mencionó en la sección anterior, se requiere lograr una sincronización entre computadoras de vuelo redundantes. De manera de ejecutar un algoritmo de sincronización adecuado, las computadoras de vuelo deben compartirle a las demás, un valor asociado a su propio clock interno.
 
-Estos dos últmos escenarios difieren del caso en el que la FCC comparte un valor que puede ser \textit{True} o \textit{False}. Lo que se plantea aquí es un caso en el que cada FCC comparte un valor que corresponde a la propia perspectiva de cada una de ellas. Debido a esto, no existe un valor correcto a transferirle a las demás. Se muestra un ejemplo para la sincronización de FCCs en la figura \ref{fig:3_4_2_consenso_4}.
+% Estos dos últmos escenarios difieren del caso en el que la FCC comparte un valor que puede ser \textit{True} o \textit{False}. Lo que se plantea aquí es un caso en el que cada FCC comparte un valor que corresponde a la propia perspectiva de cada una de ellas. Debido a esto, no existe un valor correcto a transferirle a las demás. Se muestra un ejemplo para la sincronización de FCCs en la figura \ref{fig:3_4_2_consenso_4}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_4.png}
-    \caption{La FCC1 entrega un valor distinto de timing a las demás FCCs}.
-    \label{fig:3_4_2_consenso_4}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_4.png}
+%     \caption{La FCC1 entrega un valor distinto de timing a las demás FCCs}.
+%     \label{fig:3_4_2_consenso_4}
+% \end{figure}
 
-En este escenario, la FCC1 entrega dos valores distintos de su \textit{clock} a las demás FCCs. Cada una de ellas luego realiza un promedio para llegar a un único valor. Lo que se observa es que las FCC2 y FCC3 calcularán un valor promedio distinto, es decir, no se sincronizarán.
-Una posible solución podría ser que las FCCs hagan un nuevo intercambio, con los valores promedio calculados y realicen una votación interna. Esto se muestra en la figura \ref{fig:3_4_2_consenso_5}.
+% En este escenario, la FCC1 entrega dos valores distintos de su \textit{clock} a las demás FCCs. Cada una de ellas luego realiza un promedio para llegar a un único valor. Lo que se observa es que las FCC2 y FCC3 calcularán un valor promedio distinto, es decir, no se sincronizarán.
+% Una posible solución podría ser que las FCCs hagan un nuevo intercambio, con los valores promedio calculados y realicen una votación interna. Esto se muestra en la figura \ref{fig:3_4_2_consenso_5}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_5.png}
-    \caption{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.}
-    \label{fig:3_4_2_consenso_5}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_5.png}
+%     \caption{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.}
+%     \label{fig:3_4_2_consenso_5}
+% \end{figure}
 
-Esta última situación, donde la FCC1 nuevamente comparte dos valores distintos a las demás, puede llevar a que las computadoras de vuelo no se sincronicen, algo que como ya se mencionó, es crítico para la correcta ejecución del algoritmo de tolerancia a fallas.
+% Esta última situación, donde la FCC1 nuevamente comparte dos valores distintos a las demás, puede llevar a que las computadoras de vuelo no se sincronicen, algo que como ya se mencionó, es crítico para la correcta ejecución del algoritmo de tolerancia a fallas.
 
-Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilidad de que ello suceda. Sin embargo, la situación planteada en esta sección puede tratarse como un tipo de falla antes mencionado, la falla bizantina, ya que contempla fallas de hardware que se manifiestan como comportamientos arbitrarios. El ejemplo presentado en esta sección, se corresponde con un comportamiento arbitrario.
+% Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilidad de que ello suceda. Sin embargo, la situación planteada en esta sección puede tratarse como un tipo de falla antes mencionado, la falla bizantina, ya que contempla fallas de hardware que se manifiestan como comportamientos arbitrarios. El ejemplo presentado en esta sección, se corresponde con un comportamiento arbitrario.
 
 \subsection{Redundancia Cuádruple: \textit{The Byzantine Generals Problem}}
 

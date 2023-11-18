@@ -4,7 +4,8 @@ The top-level auxiliary file: main.aux
 The style file: biblatex.bst
 A level-1 auxiliary file: Objetivo.aux
 A level-1 auxiliary file: Introduccion.aux
-A level-1 auxiliary file: Analisis_de_Sistemas_Criticos_y_Tolerancia_a_Fallas.aux
+A level-1 auxiliary file: Estado_del_Arte.aux
+A level-1 auxiliary file: Requerimientos_Tolerancia_Fallas.aux
 A level-1 auxiliary file: Diseno_y_Construccion_de_la_Computadora_de_Vuelo.aux
 A level-1 auxiliary file: Demostracion_del_Funcionamiento_de_la_Computadora_de_Vuelo.aux
 A level-1 auxiliary file: Tolerancia_a_Fallas.aux
@@ -35,7 +36,7 @@ Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 You've used 60 entries,
             6399 wiz_defined-function locations,
-            1526 strings with 17654 characters,
+            1527 strings with 17654 characters,
 and the built_in function-call counts, 311654 in all, are:
 = -- 23139
 > -- 5305
