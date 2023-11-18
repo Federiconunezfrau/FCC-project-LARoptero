@@ -244,6 +244,150 @@
     \field{year}{2021}
   \endentry
 
+  \entry{zhang2015dual}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=ZX}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Xiaolin},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=LH}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Haisheng},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=YD}{%
+         family={Yuan},
+         familyi={Y\bibinitperiod},
+         given={Dandan},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {Atlantis Press}%
+    }
+    \strng{namehash}{ZXLHYD1}
+    \strng{fullhash}{ZXLHYD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2015 2nd International Conference on Electrical, Computer
+  Engineering and Electronics}
+    \field{pages}{785\bibrangedash 791}
+    \field{title}{Dual redundant flight control system design for
+  microminiature UAV}
+    \field{year}{2015}
+  \endentry
+
+  \entry{chen2015design}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=CJ}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Junhua},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Cao},
+         familyi={C\bibinitperiod},
+         given={Dong},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=LX}{%
+         family={Lv},
+         familyi={L\bibinitperiod},
+         given={Xunhong},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{CJCDLX1}
+    \strng{fullhash}{CJCDLX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2015 Chinese Automation Congress (CAC)}
+    \field{pages}{1969\bibrangedash 1974}
+    \field{title}{Design of FlexRay-based communication on triplex redundancy
+  flight control computer}
+    \field{year}{2015}
+  \endentry
+
+  \entry{wang2008development}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=WJA}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Jun\bibnamedelima An},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=LZS}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Zhen\bibnamedelima Shui},
+         giveni={Z\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WJALZS1}
+    \strng{fullhash}{WJALZS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{26th International Congress of the Aeronautical Sciences}
+    \field{pages}{1\bibrangedash 5}
+    \field{title}{Development of flight control system Using embedded computer
+  PC-104}
+    \field{year}{2008}
+  \endentry
+
+  \entry{thesis_redundant_ROS}{thesis}{}
+    \name{author}{1}{}{%
+      {{hash=PMFFS}{%
+         family={Pérez},
+         familyi={P\bibinitperiod},
+         given={M.E. Fernando Fidencio\bibnamedelima Solano},
+         giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim
+  F\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {Faculty of Fachhochschule Aachen, Germany}%
+      {Centro de Ingenieria y Desarrollo Industrial, Mexico}%
+    }
+    \strng{namehash}{PMFFS1}
+    \strng{fullhash}{PMFFS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Development of a Redundancy System for Autopilots}
+    \list{location}{1}{%
+      {Santiago de Querétaro, México}%
+    }
+    \field{type}{mathesis}
+    \field{year}{2019}
+  \endentry
+
+  \entry{dronecode-foundation-2023}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=FD}{%
+         family={Foundation},
+         familyi={F\bibinitperiod},
+         given={Dronecode},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FD1}
+    \strng{fullhash}{FD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{Homepage - PIXHawk}}
+    \verb{url}
+    \verb https://pixhawk.org/
+    \endverb
+    \field{month}{06}
+    \field{year}{2023}
+  \endentry
+
   \entry{ICM42688pDatasheet}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{{ICM-42688-P | TDK InvenSense}}
@@ -850,42 +994,6 @@
     \field{title}{Fault-tolerant platforms for automotive safety-critical
   applications}
     \field{year}{2003}
-  \endentry
-
-  \entry{zhang2015dual}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=ZX}{%
-         family={Zhang},
-         familyi={Z\bibinitperiod},
-         given={Xiaolin},
-         giveni={X\bibinitperiod},
-      }}%
-      {{hash=LH}{%
-         family={Li},
-         familyi={L\bibinitperiod},
-         given={Haisheng},
-         giveni={H\bibinitperiod},
-      }}%
-      {{hash=YD}{%
-         family={Yuan},
-         familyi={Y\bibinitperiod},
-         given={Dandan},
-         giveni={D\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {Atlantis Press}%
-    }
-    \strng{namehash}{ZXLHYD1}
-    \strng{fullhash}{ZXLHYD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{2015 2nd International Conference on Electrical, Computer
-  Engineering and Electronics}
-    \field{pages}{785\bibrangedash 791}
-    \field{title}{Dual redundant flight control system design for
-  microminiature UAV}
-    \field{year}{2015}
   \endentry
 
   \entry{SolanoPerez2019}{thesis}{}
