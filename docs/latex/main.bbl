@@ -388,6 +388,232 @@
     \field{year}{2023}
   \endentry
 
+  \entry{roth2021not}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=RE}{%
+         family={Roth},
+         familyi={R\bibinitperiod},
+         given={Edo},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Haeberlen},
+         familyi={H\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{REHA1}
+    \strng{fullhash}{REHA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
+  Applications Symposium (RTAS)}
+    \field{pages}{374\bibrangedash 386}
+    \field{title}{Do Not Overpay for Fault Tolerance!}
+    \field{year}{2021}
+  \endentry
+
+  \entry{lala1994architectural}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LJH}{%
+         family={Lala},
+         familyi={L\bibinitperiod},
+         given={Jaynarayan\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=HRE}{%
+         family={Harper},
+         familyi={H\bibinitperiod},
+         given={Richard\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{LJHHRE1}
+    \strng{fullhash}{LJHHRE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{25\bibrangedash 40}
+    \field{title}{Architectural principles for safety-critical real-time
+  applications}
+    \field{volume}{82}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1994}
+  \endentry
+
+  \entry{lamport2019byzantine}{incollection}{}
+    \name{author}{3}{}{%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Pease},
+         familyi={P\bibinitperiod},
+         given={Marshall},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LLSRPM1}
+    \strng{fullhash}{LLSRPM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Concurrency: the works of leslie lamport}
+    \field{pages}{203\bibrangedash 226}
+    \field{title}{The Byzantine generals problem}
+    \field{year}{2019}
+  \endentry
+
+  \entry{pease1980reaching}{article}{}
+    \name{author}{3}{}{%
+      {{hash=PM}{%
+         family={Pease},
+         familyi={P\bibinitperiod},
+         given={Marshall},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM New York, NY, USA}%
+    }
+    \strng{namehash}{PMSRLL1}
+    \strng{fullhash}{PMSRLL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{2}
+    \field{pages}{228\bibrangedash 234}
+    \field{title}{Reaching agreement in the presence of faults}
+    \field{volume}{27}
+    \field{journaltitle}{Journal of the ACM (JACM)}
+    \field{year}{1980}
+  \endentry
+
+  \entry{wensley1978sift}{article}{}
+    \name{author}{8}{}{%
+      {{hash=WJH}{%
+         family={Wensley},
+         familyi={W\bibinitperiod},
+         given={John\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Goldberg},
+         familyi={G\bibinitperiod},
+         given={Jack},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GMW}{%
+         family={Green},
+         familyi={G\bibinitperiod},
+         given={Milton\bibnamedelima W},
+         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=LKN}{%
+         family={Levitt},
+         familyi={L\bibinitperiod},
+         given={Karl\bibnamedelima N},
+         giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=MSPM}{%
+         family={Melliar-Smith},
+         familyi={M\bibinithyphendelim S\bibinitperiod},
+         given={Po\bibnamedelima Mo},
+         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=SRE}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=WCB}{%
+         family={Weinstock},
+         familyi={W\bibinitperiod},
+         given={Charles\bibnamedelima B},
+         giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{WJH+1}
+    \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{10}
+    \field{pages}{1240\bibrangedash 1255}
+    \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
+  aircraft control}
+    \field{volume}{66}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1978}
+  \endentry
+
+  \entry{specification1991bosch}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SC}{%
+         family={Specification},
+         familyi={S\bibinitperiod},
+         given={CAN},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SC1}
+    \strng{fullhash}{SC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{75}
+    \field{title}{Bosch}
+    \field{volume}{50}
+    \field{journaltitle}{Robert Bosch GmbH, Postfach}
+    \field{year}{1991}
+  \endentry
+
+  \entry{texasSLOA101B}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{note}{Rev. B}
+    \field{number}{SLOA101B}
+    \field{title}{Introduction to the Controller Area Network (CAN)}
+    \field{month}{05}
+    \field{year}{2016}
+  \endentry
+
   \entry{ICM42688pDatasheet}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{{ICM-42688-P | TDK InvenSense}}
@@ -567,26 +793,6 @@
     \field{urlday}{11}
     \field{urlmonth}{05}
     \field{urlyear}{2023}
-  \endentry
-
-  \entry{specification1991bosch}{article}{}
-    \name{author}{1}{}{%
-      {{hash=SC}{%
-         family={Specification},
-         familyi={S\bibinitperiod},
-         given={CAN},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SC1}
-    \strng{fullhash}{SC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{75}
-    \field{title}{Bosch}
-    \field{volume}{50}
-    \field{journaltitle}{Robert Bosch GmbH, Postfach}
-    \field{year}{1991}
   \endentry
 
   \entry{AN228}{manual}{}
@@ -800,97 +1006,6 @@
     \field{year}{1990}
   \endentry
 
-  \entry{lala1994architectural}{article}{}
-    \name{author}{2}{}{%
-      {{hash=LJH}{%
-         family={Lala},
-         familyi={L\bibinitperiod},
-         given={Jaynarayan\bibnamedelima H},
-         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=HRE}{%
-         family={Harper},
-         familyi={H\bibinitperiod},
-         given={Richard\bibnamedelima E},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{LJHHRE1}
-    \strng{fullhash}{LJHHRE1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{1}
-    \field{pages}{25\bibrangedash 40}
-    \field{title}{Architectural principles for safety-critical real-time
-  applications}
-    \field{volume}{82}
-    \field{journaltitle}{Proceedings of the IEEE}
-    \field{year}{1994}
-  \endentry
-
-  \entry{roth2021not}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=RE}{%
-         family={Roth},
-         familyi={R\bibinitperiod},
-         given={Edo},
-         giveni={E\bibinitperiod},
-      }}%
-      {{hash=HA}{%
-         family={Haeberlen},
-         familyi={H\bibinitperiod},
-         given={Andreas},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{REHA1}
-    \strng{fullhash}{REHA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
-  Applications Symposium (RTAS)}
-    \field{pages}{374\bibrangedash 386}
-    \field{title}{Do Not Overpay for Fault Tolerance!}
-    \field{year}{2021}
-  \endentry
-
-  \entry{lamport2019byzantine}{incollection}{}
-    \name{author}{3}{}{%
-      {{hash=LL}{%
-         family={Lamport},
-         familyi={L\bibinitperiod},
-         given={Leslie},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=SR}{%
-         family={Shostak},
-         familyi={S\bibinitperiod},
-         given={Robert},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=PM}{%
-         family={Pease},
-         familyi={P\bibinitperiod},
-         given={Marshall},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{LLSRPM1}
-    \strng{fullhash}{LLSRPM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Concurrency: the works of leslie lamport}
-    \field{pages}{203\bibrangedash 226}
-    \field{title}{The Byzantine generals problem}
-    \field{year}{2019}
-  \endentry
-
   \entry{prasad1989fault}{article}{}
     \name{author}{1}{}{%
       {{hash=PVB}{%
@@ -1053,109 +1168,6 @@
     \endverb
   \endentry
 
-  \entry{pease1980reaching}{article}{}
-    \name{author}{3}{}{%
-      {{hash=PM}{%
-         family={Pease},
-         familyi={P\bibinitperiod},
-         given={Marshall},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=SR}{%
-         family={Shostak},
-         familyi={S\bibinitperiod},
-         given={Robert},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=LL}{%
-         family={Lamport},
-         familyi={L\bibinitperiod},
-         given={Leslie},
-         giveni={L\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {ACM New York, NY, USA}%
-    }
-    \strng{namehash}{PMSRLL1}
-    \strng{fullhash}{PMSRLL1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{2}
-    \field{pages}{228\bibrangedash 234}
-    \field{title}{Reaching agreement in the presence of faults}
-    \field{volume}{27}
-    \field{journaltitle}{Journal of the ACM (JACM)}
-    \field{year}{1980}
-  \endentry
-
-  \entry{wensley1978sift}{article}{}
-    \name{author}{8}{}{%
-      {{hash=WJH}{%
-         family={Wensley},
-         familyi={W\bibinitperiod},
-         given={John\bibnamedelima H},
-         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=LL}{%
-         family={Lamport},
-         familyi={L\bibinitperiod},
-         given={Leslie},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=GJ}{%
-         family={Goldberg},
-         familyi={G\bibinitperiod},
-         given={Jack},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=GMW}{%
-         family={Green},
-         familyi={G\bibinitperiod},
-         given={Milton\bibnamedelima W},
-         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
-      }}%
-      {{hash=LKN}{%
-         family={Levitt},
-         familyi={L\bibinitperiod},
-         given={Karl\bibnamedelima N},
-         giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod},
-      }}%
-      {{hash=MSPM}{%
-         family={Melliar-Smith},
-         familyi={M\bibinithyphendelim S\bibinitperiod},
-         given={Po\bibnamedelima Mo},
-         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
-      }}%
-      {{hash=SRE}{%
-         family={Shostak},
-         familyi={S\bibinitperiod},
-         given={Robert\bibnamedelima E},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-      {{hash=WCB}{%
-         family={Weinstock},
-         familyi={W\bibinitperiod},
-         given={Charles\bibnamedelima B},
-         giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{WJH+1}
-    \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{10}
-    \field{pages}{1240\bibrangedash 1255}
-    \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
-  aircraft control}
-    \field{volume}{66}
-    \field{journaltitle}{Proceedings of the IEEE}
-    \field{year}{1978}
-  \endentry
-
   \entry{wikipedia-contributors-2023}{article}{}
     \name{author}{1}{}{%
       {{hash=cW}{%
@@ -1176,18 +1188,6 @@
     \field{journaltitle}{Wikipedia}
     \field{month}{07}
     \field{year}{2023}
-  \endentry
-
-  \entry{texasSLOA101B}{manual}{}
-    \list{organization}{1}{%
-      {Texas Instruments}%
-    }
-    \field{labeltitlesource}{title}
-    \field{note}{Rev. B}
-    \field{number}{SLOA101B}
-    \field{title}{Introduction to the Controller Area Network (CAN)}
-    \field{month}{05}
-    \field{year}{2016}
   \endentry
 
   \entry{kopetz1998time}{inproceedings}{}

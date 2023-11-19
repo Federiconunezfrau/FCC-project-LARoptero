@@ -298,24 +298,24 @@ Se traza un paralelismo entre los generales que deben llegar a un consenso con u
 
 Los generales traidores representan a las computadoras de vuelo que presentan fallas. En \cite{wensley1978sift} se presenta un ejemplo de la aplicación del algoritmo de \textit{The Byzantine Generals Problem} para lograr sincronizar a los nodos. A continuación, se analiza brevemente este problema, con motivo de demostrar su importancia en los sistemas redundantes tolerantes a fallas.
 
-Se plantea una situación como la de la figura \ref{fig:Byzantine_Generals_Problem_2}, pero se reemplazan a los generales por computadoras de vuelo. En este caso, las computadoras de vuelo deben sincronizarse. Para lograrlo, ellas comparten un valor de \textit{timestamp}, que pueden utilizar para ajustar sus clocks. En la figura \ref{fig:Byzantine_Generals_Problem_5} se muestra un escenario en el que una de las computadoras de vuelo presenta una falla tal que le informa un valor distinto a cada una de las computadoras de vuelo.
+% Se plantea una situación como la de la figura \ref{fig:Byzantine_Generals_Problem_2}, pero se reemplazan a los generales por computadoras de vuelo. En este caso, las computadoras de vuelo deben sincronizarse. Para lograrlo, ellas comparten un valor de \textit{timestamp}, que pueden utilizar para ajustar sus clocks. En la figura \ref{fig:Byzantine_Generals_Problem_5} se muestra un escenario en el que una de las computadoras de vuelo presenta una falla tal que le informa un valor distinto a cada una de las computadoras de vuelo.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{img/Byzantine_Generals_Problem_5.png}
-    \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
-    \label{fig:Byzantine_Generals_Problem_5}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{img/Byzantine_Generals_Problem_5.png}
+%     \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
+%     \label{fig:Byzantine_Generals_Problem_5}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/Byzantine_Generals_Problem_6.png}
-    \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
-    \label{fig:Byzantine_Generals_Problem_6}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/Byzantine_Generals_Problem_6.png}
+%     \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
+%     \label{fig:Byzantine_Generals_Problem_6}
+% \end{figure}
 
-A través de un segundo intercambio, las FCC 2, 3 y 4 llegan a la conclusión de que el \textit{timestamp} de la FCC1 no es claro. En este caso, descartan el valor. Luego de hacer todos los intercambios de \textit{timestamp}, las FCCs podrán aplicar internamente la sincronización, por ejemplo, calculando un promedio de todos los timestamp. \textbf{Dado que todas las FCCs tendrán la misma información de \textit{timestamp} entregado por las demás FCCs, luego todas llegarán al mismo promedio y se sincronizarán}.
+% A través de un segundo intercambio, las FCC 2, 3 y 4 llegan a la conclusión de que el \textit{timestamp} de la FCC1 no es claro. En este caso, descartan el valor. Luego de hacer todos los intercambios de \textit{timestamp}, las FCCs podrán aplicar internamente la sincronización, por ejemplo, calculando un promedio de todos los timestamp. \textbf{Dado que todas las FCCs tendrán la misma información de \textit{timestamp} entregado por las demás FCCs, luego todas llegarán al mismo promedio y se sincronizarán}.
 
-Un aspecto interesante es el hecho de que en el paper original, se compara a un general traidor con una computadora con fallas. Como se mencionó, los generales traidores pueden tener cualquier comportamiento. Esto lo que quiere decir es que las fallas presentadas por las computadoras de vuelo pueden ser justamente de cualquier característica, incluso al extremo de presentar un comportamiento malicioso, con el objetivo de perjudicar al sistema \cite{lala1994architectural}. Esto sienta las bases para la tolerancia a fallas de hardware arbitrarias.
+% Un aspecto interesante es el hecho de que en el paper original, se compara a un general traidor con una computadora con fallas. Como se mencionó, los generales traidores pueden tener cualquier comportamiento. Esto lo que quiere decir es que las fallas presentadas por las computadoras de vuelo pueden ser justamente de cualquier característica, incluso al extremo de presentar un comportamiento malicioso, con el objetivo de perjudicar al sistema \cite{lala1994architectural}. Esto sienta las bases para la tolerancia a fallas de hardware arbitrarias.
 
-La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso. Para poder tolerar fallas provenientes de 1 FCC se requiere un total de 4 computadoras de vuelo. Además, debe haber una interconexión entre las 4 computadoras y ellas deben intercambiar información continuamente para poder detectar y enmascarar la falla. A todo esto se le debe sumar, la necesidad de la sincronización.
+% La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso. Para poder tolerar fallas provenientes de 1 FCC se requiere un total de 4 computadoras de vuelo. Además, debe haber una interconexión entre las 4 computadoras y ellas deben intercambiar información continuamente para poder detectar y enmascarar la falla. A todo esto se le debe sumar, la necesidad de la sincronización.
