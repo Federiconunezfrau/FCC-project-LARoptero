@@ -1,4 +1,4 @@
-\section{Requerimientos de un Sistema con Tolerancia a Fallas}
+\section{Requerimientos de un Sistema con Tolerancia a Fallas}\label{sec:requerimentos_sistema_tolerancia_fallas}
 
 A partir de los distintos casos presentados, en esta sección se busca relevar cuáles son las características comunes en sistemas con tolerancia a fallas. Se analizan las distintas alternativas y luego se mencionan los criterios tenidos en cuenta para el desarrollo de la computadora de vuelo. En este trabajo no se define a priori cuál es la arquitectura del sistema en cuanto al uso de redundancias, por lo que la computadora de vuelo debe tener cierta diversidad en cuanto a sus capacidades.\\
 
@@ -158,4 +158,57 @@ A partir de este análisis, se puede ver que para el caso de un sistema de tiemp
 
 \subsection{Selección del Bus de Comunicaciones de la Computadora de Vuelo}
 
-\textbf{{\color{red} COMPLETAR}}
+Como ya fue mencionado, la computadora de vuelo requiere de una interfaz para un bus de comunicaciones. A partir de lo presentado hasta aquí el único requerimiento es el método de acceso al medio, el cual debe ser controlado por el tiempo. Teniendo en cuenta que se trata de un trabajo realizado con componentes COTS, el hardware a utilizar debe ser de fácil acceso y con precios razonables.\\
+
+En las próximas secciones se explica un inconveniente, en cuanto a la selección del microcontrolador. Para el desarrollo de este trabajo, se seleccionó el bus \textit{Controller Area Network} (CAN)\cite{specification1991bosch}. El microcontrolador que se utiliza cuenta con un periférico que permite utilizar una interfaz con este bus. A continuación se presentan brevemente algunas características. Si bien el método de acceso al medio no es TDMA, existe una extensión del protocolo que justamente busca incorporar esta funcionalidad en otra capa superior.
+
+%\subsubsection{Descripción del Protocolo CAN}
+
+El protocolo CAN fue desarrollado para ser usado en la industria automotriz, como bus de comunicación que conecta distintos módulos dentro de un vehículo. El objetivo de su desarrollo fue similiar al motivo por el cual se desarrolló el bus ARINC 629, reemplazar la gran cantidad de cables dentro del vehículo por un bus simple. El protocolo se corresponde con el modelo OSI y la especificación origianl define las capas física y de enlace, ISO 11898.\\
+
+Cada nodo de un bus CAN se conecta a este a través de 2 cables, los cuales llevan la señal diferencial. Esto se muestra en la figura \ref{fig:conxeion_al_bus_CAN}. Todo el bus CAN se compone de 2 cables que llevan los mensajes a todos los nodos de la red. El hecho de que se trate de una señal diferencial hace que la comunicación sea robusta, reduciendo las emisiones electromagnéticas generadas por este. A su vez, es común que el bus sea cableado como un par trenzado, lo que atenúa señales de modo común, producto de cualquier acoplamiento. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/conxeion_al_bus_CAN.png}
+    \caption{La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \cite{AN228}.}
+    \label{fig:conxeion_al_bus_CAN}    
+\end{figure}
+
+Existen muchas versiones del protocolo CAN, en este trabajo se utiliza la versión CAN High Speed. Esta define una velocidad máxima de transferencia de 1 Mbps, para un bus de hasta 40 m de longitud y 30 nodos conectados al mismo bus. Se recomienda que la conexión entre cada nodo y el bus no sea de más de 30 cm. El hecho de poder tener hasta 30 nodos expande las posibilidades de uso del bus, más allá de ser el medio principal de comunicación utilizado para el sistema redundante. Por ejemplo, distintos sensores o incluso actuadores como los motores del vehículo podrían conectarse al bus. {\color{red} Acá tendría que agregar alguna referencia a este uso del bus CAN}.\\
+
+La impedancia característica del bus debe ser de $120 \ \Omega$. Es común agregar resistores de terminación en ambos extremos, para evitar reflexiones. En algunos casos pueden llegar a encontrarse aplicaciones donde los resistores de terminación se incluyen dentro de alguno de los nodos del bus. Esto no es recomendable, ya que si este se desconecta de forma accidental del bus, todas las comunicaciones entre los demás nodos se verán perjudicadas.\\
+
+En la figura \ref{fig:conxeion_al_bus_CAN} se muestran 2 elementos que forman parte del nodo, el \textit{trasnciever} y el \textit{controller}. El primero de ellos forma parte de la capa física y es un circuito que convierte las señales diferenciales del bus en señales de modo común, que luego son transferidas al elemento \textit{controller}. Este componente sirve como interfaz física con el bus.\\
+
+CAN es un protocolo donde no hay un nodo master, sino que todos pueden utilizar el medio para transmitir mensajes, mientras el bus no esté en uso. El método de acceso al medio que se utiliza es \textit{Carrer Sense Multiple Access with Collision Detection and Arbitration on Message Priority} (CSMA/CD+AMP). Antes de transmitir un mensaje, el nodo sensa el medio físico y en caso de que esté libre, intenta utilizarlo. En caso de que más de un nodo quiera enviar un mensaje a la vez, la colisión se detcta a través de un campo de la trama CAN, el campo ID. Se definen 2 tipos de tramas, estándar, figura \ref{fig:CAN_frame_standard} y extended, figura \ref{fig:CAN_frame_extended}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/CAN_frame_standard.png}
+    \caption{Se muestran los campos de una trama CAN estándar. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite{texasSLOA101B}.}
+    \label{fig:CAN_frame_standard}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/CAN_frame_extended.png}
+    \caption{Se muestran los campos de una trama CAN extendida. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite{texasSLOA101B}.}
+    \label{fig:CAN_frame_extended}
+\end{figure}
+
+En el eventual caso en que más de un nodo detecte el medio sin uso, estos querrán transmitir a través del bus. Esta situación se encuentra contemplada por el protocolo y se implementa un mecanismo que resuelve la colisión asegurando la transmisión del mensaje con la prioridad más baja. El primer bit es el campo SOF, seguido del identificador. En la figura \ref{fig:CAN_arbitration} se muestra un ejemplo de este escenario. Tanto el nodo 1 como el nodo 2 quieren utilizar el bus CAN. Ambos comienzan a inyectar su ID correspondiente. En algún momento, ocurre una discrepancia entre el ID inyectado por ambos nodos. Aquel con el campo dominant, es decir 0, gana y completa su transmisión, en este caso el nodo 2. El nodo 1 que quiso envar un 1 por su lado, detecta un 0. Esto genera que detenga su transmisión, dejando que los demás nodos utilicen el medio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/CAN_arbitration.png}
+    \caption{Mecanismo para la detección de colisiones. El nodo 2 gana por prioridad y completa su transmisión, mientras que el nodo 1 deja de usar el bus, aguardando a que el nodo 2 finalice.}
+    \label{fig:CAN_arbitration}
+\end{figure}
+
+En las figuras \ref{fig:CAN_frame_standard} y \ref{fig:CAN_frame_extended} se puede ver que las tramas tienen un campo CRC, el cual es utilizado para que el receptor pueda verificar la integridad del mensaje. Además, se muestra otro campo, el ACK. Cada vez que un nodo recibe un mensaje correctamente, este sobreescribe el bit de ACK con un dominant, es decir un 0.\\
+
+El protocolo CAN base no tiene un acceso al medio controlado por el tiempo, sino que es dominado por eventos (\textit{event-triggered}), ya que varios nodos pueden querer transmitir varios mensajes a la vez, de manera consecutiva. En el estándar ISO 11898-4\cite{ISO11898_4} se define una extensión denominada \textit{Time-Triggered CAN} (TTCAN). A través de una capa de sesión, puede implementarse un acceso al medio dominado por el tiempo.\\
+
+Como se mencionó al principio de la sección \ref{sec:requerimentos_sistema_tolerancia_fallas}, la arquitectura para la tolerancia a fallas no está definida. La elección del protocolo CAN le da versatilidad al uso del bus, ya que puede utilizarse con un acceso al medio tanto controlado por el tiempo como por eventos.

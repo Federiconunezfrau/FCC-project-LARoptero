@@ -614,6 +614,28 @@
     \field{year}{2016}
   \endentry
 
+  \entry{AN228}{manual}{}
+    \list{organization}{1}{%
+      {Microchip}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN 228}
+    \field{title}{A CAN Physical Layer Discussion}
+    \field{year}{2002}
+  \endentry
+
+  \entry{ISO11898_4}{report}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Road vehicles — Controller area network (CAN) — Part 4:
+  Time-triggeredcommunication}}
+    \list{institution}{1}{%
+      {International Organization for Standardization}%
+    }
+    \field{type}{Standard}
+    \field{month}{08}
+    \field{year}{2004}
+  \endentry
+
   \entry{ICM42688pDatasheet}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{{ICM-42688-P | TDK InvenSense}}
@@ -793,16 +815,6 @@
     \field{urlday}{11}
     \field{urlmonth}{05}
     \field{urlyear}{2023}
-  \endentry
-
-  \entry{AN228}{manual}{}
-    \list{organization}{1}{%
-      {Microchip}%
-    }
-    \field{labeltitlesource}{title}
-    \field{number}{AN 228}
-    \field{title}{A CAN Physical Layer Discussion}
-    \field{year}{2002}
   \endentry
 
   \entry{STM32F746ZG}{misc}{}
