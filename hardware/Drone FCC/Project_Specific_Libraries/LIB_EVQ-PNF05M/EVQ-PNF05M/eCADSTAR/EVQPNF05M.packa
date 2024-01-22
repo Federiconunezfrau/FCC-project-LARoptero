@@ -1,0 +1,13 @@
+(unit MM)
+
+(package "EVQ-PNF05M"
+    (type UNDEF)
+    (uver 2)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (utime 2021-09-06-14:41:17)
+    (mountForm default
+        (footprintRef "EVQPNF05M")
+        (spec "System")
+    )
+)

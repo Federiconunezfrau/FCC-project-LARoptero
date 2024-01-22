@@ -18,4 +18,5 @@
   (lib (name "DF13C-4P-1.25V(51)")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/DF13C-4P-1.25V(51)")(options "")(descr ""))
   (lib (name "T491A106K016ATAUTO")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/T491A106K016ATAUTO")(options "")(descr ""))
   (lib (name "ESDALC6V1-1U2")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/ESDALC6V1-1U2/KiCADv6/2023-05-29_01-49-51/footprints.pretty")(options "")(descr ""))
+  (lib (name "EVQ-PNF05M")(type "KiCad")(uri "${KIPRJMOD}/Project_Specific_Libraries/LIB_EVQ-PNF05M/EVQ-PNF05M/KiCad")(options "")(descr ""))
 )

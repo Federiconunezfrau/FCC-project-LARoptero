@@ -1,0 +1,9 @@
+Manufacturer=Panasonic
+PartNumber=EVQ-PNF05M
+PartCategory=Switch
+PackageCategory=Other
+PinCount=2
+Version=1.2
+Released=2021-09-06 14:41:17
+Downloaded=2023-06-10 14:52:53
+3D=Y
