@@ -80,21 +80,101 @@ En el caso particular de sistemas críticos, el aspecto más importante y fundam
 
 \subsubsection{Requerimientos de Conectores}
 
-La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de módulos externos. Algunos de esos conectores fueron seleccionados por una necesidad del LAR, con el objetivo de tener compatibilidad con distintos módulos que son comúnmente utilizados con otras computadoras de vuelo que fueron desarrolladas en el laboratorio.
+La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de módulos externos. Algunos de esos conectores fueron seleccionados por una necesidad del LAR, con el objetivo de tener compatibilidad con distintos módulos que son comúnmente utilizados con otras computadoras de vuelo que fueron desarrolladas en el laboratorio. Estos serán mencionados en las secciones correspondientes.
 
-\subsection{Circuitos Implementados}
+%\subsection{Circuitos Implementados}
+\subsection{Microcontrolador}
 
 % Acá sí, va una subsubsection por cada bloque, por ejemplo microcontrolador, IMU, Barómetro, bus CAN, Tarjeta Micro SD, Interfaz USB, etc.
 
-A continuación se describe cada una de las partes del circuito que conforman a la computadora de vuelo. Además de los criterios generales ya mencionados, se mencionan criterios particulares tenidos en cuenta para cada circuito.
+A continuación se describe cada una de las partes del circuito que conforman a la computadora de vuelo. Además de los criterios generales ya mencionados, se mencionan los criterios particulares tenidos en cuenta para cada parte del circuito.
 
-\subsubsection{Microcontrolador}
+%\subsubsection{Microcontrolador}
+\subsubsection{Selección del Componente}
+
+En la versión anterior de la computadora de vuelo, se utilizó un microcontrolador del fabricante ST, en particular el modelo STM32F722. Este cuenta con un procesador ARM Cortex-M7, que puede utilizarse con una frecuencia máxima de 216 MHz. Cuenta con unidad de punto flotante integrada. Además, cuenta con 512 KB de memoria flash y 256 KB de memoria RAM.
+
+A todas las funcionalidades de la computadora de vuelo, en este trabajo se le suman los aspectos relacionados a la tolerancia a fallas. A su vez, se tiene la necesidad de integrar otras funcionalidades que llevan consigo una gran carga computacional. Estas pueden ser propias de la aplicación del vehículo o bien relacionadas a mejorar los algoritmos de navegación y control. Para la versión desarrollada en este trabajo, se buscó actualizar el microcontrolador a uno con mayor rendimiento, sin perder de vista la necesidad de mantener un costo reducido.
+
+Se buscó un microcontrolador del mismo fabricante ST, de manera de tener retrocompatibilidad en el desarrollo del firmware con la versión anterior. De esta forma, muchos de los módulos de firmware que ya se encuentran desarrollados pueden reutilizarse en esta nueva versión. Con estos requerimientos, se analizaron las distintas ofertas del mercado. Además de los aspectos mencionados, se tuvieron en cuenta los periféricos que ofrecía cada modelo, junto con las capacidades de memorias flash y RAM. Se buscó mantener las capacidades de estas memorias en valores similares a las de la versión anterior de la computadora de vuelo.
+
+Como primera opción surgió la posibilidad de seleccionar alguno de los microcontroladores de la serie STM32H7. Estos cuentan con procesdaores ARM Cotex-M7, además de que pueden llegar a velocidades entre 400 MHz y 550 MHz \cite{AN5293} y por ende llegar hasta a duplicar la performance respecto de la versión anterior de la computadora de vuelo. En la tabla \ref{tab:comparacion_MCUs} se muestran distintos modelos que fueron considerados durante la selección del microcontrolador.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c||c|c|c|c|c|c|}
+        \hline
+                        & STM32F722 & STM32H723ZG & STM32H743 & STM32H753 & STM32H735ZG \\
+        \hline
+        Flash [kB] & 512 & 1024 & \cellcolor{green!25}1024/2048 & \cellcolor{green!25}2048 & 1024\\
+        \hline
+        SRAM [kB]  & 256 & 564 & \cellcolor{green!25}1024 & \cellcolor{green!25}1024 & 564\\
+        \hline
+        Freq [MHz] & 216 & \cellcolor{green!25}550 & 480 & 480 & \cellcolor{green!25}550\\
+        \hline
+        UART & 4 & \cellcolor{green!25}6 & 4 & \cellcolor{green!25}6 & \cellcolor{green!25}6\\
+        \hline
+        USART & 4 & \cellcolor{green!25}5 & 4 & \cellcolor{green!25}5 & \cellcolor{green!25}5\\
+        \hline
+        SPI & 5 & \cellcolor{green!25}6 & \cellcolor{green!25}5/6 & \cellcolor{green!25}6 & \cellcolor{green!25}6\\
+        \hline
+        I2C & 3 & \cellcolor{green!25}5 & 4 & 4 & \cellcolor{green!25}5\\
+        \hline
+        CAN & 1 & \cellcolor{green!25}3 & 2 & \cellcolor{green!25}3 & \cellcolor{green!25}3\\
+        \hline
+        ADC & 3x12b, 24ch & \makecell{2x16b, 22 ch; \\ 1x12b, 12 ch} & \cellcolor{green!25}\makecell{3x16b, \\ 16/28/32ch} & \makecell{1x12b, 12ch \\ 2x16b, 18ch} & \makecell{1x12b, 12ch \\ 2x16b, 16ch}\\
+        \hline
+        Timers & \makecell{18: 16b x 16, \\ 32b x 2} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} & \makecell{14: 16b x 12, \\ 32b x 2} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} &\cellcolor{green!25} \makecell{21: 16b x 17, \\ 32b x 4}\\
+        \hline
+        SDMMC & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2\\
+        \hline
+        longevidad & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033\\
+        \hline
+        AEC-Q100 & No & No & No & No & No\\
+        \hline       
+    \end{tabular}
+    \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del mircocontrolador. En verde se destaca el componente que tiene las mejores características para cada fila. El modelo STM32F722 corresponde al modelo utilizado en la versión 3 de la computadora de vuelo.}
+    \label{tab:comparacion_MCUs}
+\end{table}
+
+Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a frecuencia de operación, memoria flash y RAM. Sumado a esto, la gran mayoría de estos microcontroladores se encuentran dentro del programa \textit{Longevity Commitment} \cite{longevity_ST}. El fabricante ST se compromete a mantener la producción de los componentes que se encuentren dentro de este programa durante un período determinado. Todos los microcontroladores de la tabla \ref{tab:comparacion_MCUs} tienen un periódo de fabricación de 10 años asegurado por ST, finalizando en 01/2033. Este aspecto es de especial interés teniendo en cuenta la posible necesidad futura de fabricar nuevas placas de la computadora de vuelo.\\
+
+\textbf{{\color{red} COMPLETAR POR QUÉ NO SE ELEIGIÓ UNO AEC-Q100, QUE ES PORQUE NO HABÍA CORTEX M7 DE ST QUE SEA AEC-Q100}}
+
+\textbf{{\color{red} COMPLETAR LA JUSTIFICACIÓN DE QUE SE ELIGIÓ UN MICROCONTROLADOR DIFERENTE DEBIDO A LA CRISIS Y FALTANTE DE CHIPS}}
 
 % Acá lo importante es decir que se quería elegir un controlador más potente que la choriboard III, algún STM32H7. Mencionar por qué STM32, que es porque ellos vienen trabajando con esos microcontroladores. Luego explicar que debido al faltante y la crisis, se tuvo que elegir otro controlador. También, mencionar que el que se eligió tiene 10 años de garantía de fabricación, lo que favorece la longevidad.
 
+La selección del microcontrolador utilizado se vio limitada por la disponibilidad de componentes encontrada durante el período de desarrollo del circuito. El microcontrolador seleccionado fue el STM32F746ZG. Este cuenta con un procesador ARM-Cortex M7, 1024 kB de memoria flash y 320 kB de memoria SRAM. Un aspecto relevante de este microcontrolador es que cuenta con 2 interfaces CAN. El bus CAN se utilizará para establecer las comunicaciones relevantes a los algoritmos de tolerancia a fallas. La posibilidad de contar con 2 interfaces CAN trae consigo el hecho de que el bus no sea un punto singular de falla.
+
+% Mencionar cómo se asignaron los distintos timers para su uso en la aplicación.
+
+
+% Mencionar cómo se asignaron las interrupciones externas de gpios.
+
+% Acá también hay que mencioanr todos los cálculos y justificaciones para la selección del cristal, tanto de 12 MHz como el de 32 kHz. Poner todo lo que tengo, esta sección tiene muchísimo para mostrar.
+
 \textbf{{\color{red} COMPLETAR}}
 
-\subsubsection{Sensor IMU}
+%\subsection{Otros Circuitos Implementados}
+
+%\subsubsection{Sensor IMU}
+
+\subsubsection{Requerimientos del Componente}
+
+\textbf{{\color{red} COMPLETAR}}
+
+% acá van todos los capacitores de desacople, etc
+
+\subsubsection{Cristal Externo}
+
+\textbf{{\color{red} COMPLETAR}}
+
+\subsubsection{Cristal para RTC}
+
+\textbf{{\color{red} COMPLETAR}}
+
+\subsection{Sensor IMU}
 
 La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor principal utilizado por la computadora de vuelo. Este consiste en un circuito integrado que contiene una serie de sensores inerciales, en particular acelerómetros y giróscopos. Los acelerómetros se utilizan para realizar mediciones de aceleración lineal y los giróscopos para medir velocidad angular. A partir de estas mediciones, se pueden aplicar distintos algoritmos de procesamiento para obtener una estimación de la posición y orientación del vehículo. Las mediciones de aceleración lineal y de velocidad angular que entrega la IMU son referidas a una terna solidaria al componente, como se muestra en la figura \ref{fig:IMU_ejes}.
 
@@ -274,7 +354,8 @@ Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede co
     \label{fig:IMU_SPI}    
 \end{figure}
 
-\subsubsection{Barómetro}
+%\subsubsection{Barómetro}
+\subsection{Barómetro}
 
 Al igual que la IMU, el barómetro que se utiliza corresponde a un sistema MEMS. Este sensor se utiliza para estimar la altura del vehículo respecto del suelo, a partir de mediciones de presión. En particular, los barómetros MEMS cuentan con un sistema capaz de medir la presión absoluta, es decir respecto al 0 de presión. Estos cuentan con una cavidad integrada dentro del chip que se encuentra (idealmente) a presión 0. A través de un proceso llamado \textit{anodic bonding} \cite{baro_1}\cite{baro_2} se construye esta cavidad dentro del chip, la cual se encuentra sellada a una presión muy baja, en comparación con las presiones que se esperan medir utilizando el componente. Para medir la presión, se coloca una membrana sobre la cavidad. En la figura \ref{fig:MEMS_barometro} se puede apreciar el efecto de la presión externa sobre la membrana, la presión atmosférica. Sobre las zonas de color violeta, se colocan resistores de efecto piezoresistivo. En consecuencia, la deformación de la membrana genera tensión sobre estos, modificando su resistencia.
 
@@ -408,11 +489,13 @@ Las dos alternativas que se evaluaron son los sensores ICP-20100 y el ILPS22QSTR
 
 En cuanto al circuito, en este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C es más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de a IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma peródica. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
-\subsubsection{Magnetómetro}
+%\subsubsection{Magnetómetro}
+\subsection{Magnetómetro}
 
 \textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Interfaz de Comunicación CAN}
+\subsection{Interfaz de Comunicación CAN}
 
 % Como fue mencionado, la computadora de vuelo cuenta con la capacidad de conexión a un bus CAN. La especificación original del protocolo \cite{specification1991bosch} incluye dentro de sus definiciones, la capa física. Cada nodo de un bus CAN se conecta a este a través de 2 cables, los cuales llevan la señal diferencial. Esto se muestra en la figura \ref{fig:conxeion_al_bus_CAN}. Todo el bus CAN se compone de 2 cables que llevan los mensajes a todos los nodos de la red. Esto es así debido a que el bus CAN originalmente fue diseñado para utilizarse en automóviles y reemplazar la enorme cantidad de conexiones entre módulos. El hecho de que se trate de una señal diferencial hace que la comunicación sea robusta, reduciendo las emisiones electromagnéticas generadas por este. A su vez, es común que el bus sea cableado como un par trenzado, lo que atenúa señales de modo común, producto de cualquier acoplamiento. 
 
@@ -459,7 +542,8 @@ En cuanto al circuito implementado, se tomó como punto de partida las recomenda
 
 \textbf{{\color{red} COMPLETAR EL ANÁLISIS DEL MODELO DE PARÁMETROS CONCENTRADOS, PARA LAS PISTAS CAN-TX Y CAN-RX, PARA CALCULAR EL EVENTUAL RESISTOR EN SERIE.}}
 
-\subsubsection{Circuito de Alimentación}
+%\subsubsection{Circuito de Alimentación}
+\subsection{Circuito de Alimentación}
 
 Para alimentar el microcontrolador y los demás componentes, se incluye una fuente de alimentación de $3.3 \ V$. En las primeras dos versiones de la computadora de vuelo, desarrolladas por el LAR en trabajos anteriores, se integró una fuente conmutada de salida $5 \ V$ junto con un regulador lineal de $3.3 \ V$. A partir de la tercera versión, esta fuente conmutada se eliminó dejando solamente el regulador lineal de $3.3 \ V$ \cite{garberoglio2019diseno}. El motivo principal fue reducir las dimensiones de la placa y simplificar el diseño. Siguiendo esta misma línea, la fuente conmutada tampoco se incluyó en este trabajo. Se incorporó un conector, de manera de poder alimentar la placa utilizando una fuente externa de $5 \ V$.\\
 
@@ -532,19 +616,43 @@ Como fue ya fue mencionado, se incorpora un conector que permite adosar una fuen
 
 La placa además cuenta con un puerto micro USB B a través del cual también puede alimentarse la placa. Tanto la línea de $5 \ V$ del conector USB, como la del conector de alimentación principal, tienen en serie un diodo schottky. Estos diodos fuerzan a que las corrientes solamente fluyan desde las entradas de $5 \ V$ hacia el regulador. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.\\
 
-\subsubsection{Micro SD}
+%\subsubsection{Micro SD}
+\subsection{Micro SD}
 
 \textbf{{\color{red} COMPLETAR}}
 
-\subsubsection{Interfaz USB}
+%\subsubsection{Interfaz USB}
+\subsection{Interfaz USB}
 
 \textbf{{\color{red} COMPLETAR}}
 
-\subsubsection{Micro Switch}
+%\subsubsection{Micro Switch}
+\subsection{Micro Switch}
 
 \textbf{{\color{red} COMPLETAR}}
 
-\subsubsection{LEDs Indicadores}
+%\subsubsection{LEDs Indicadores}
+\subsection{LEDs Indicadores}
+
+\textbf{{\color{red} COMPLETAR}}
+
+%\subsubsection{Conector para Módulo GPS}
+\subsection{Conector para Módulo GPS}
+
+\textbf{{\color{red} COMPLETAR}}
+
+%\subsubsection{Conectores para Salidas de PWM}
+\subsection{Conectores para Salidas de PWM}
+
+\textbf{{\color{red} COMPLETAR}}
+
+%\subsubsection{Conector para Programación por SWD}
+\subsection{Conector para Programación por SWD}
+
+\textbf{{\color{red} COMPLETAR}}
+
+%\subsubsection{Conector para Control por Radio}
+\subsection{Conector para Control por Radio}
 
 \textbf{{\color{red} COMPLETAR}}
 
@@ -556,9 +664,13 @@ La placa además cuenta con un puerto micro USB B a través del cual también pu
 
 \textbf{{\color{red} COMPLETAR}}
 
+% Acá poner el motivo por el que está todo en una sola cara.
+
+% También justificar el espesor del cobre y las vías pasantes en ves de vías ciegas.
+
 \subsubsection{Requerimientos de layout del sensor IMU}
 
-El sensor IMU tiene ciertos requerimientos particulares que deben cumplirse. En primera instancia se buscó ubicar al componente lo más centrado posible en el PCB. De esta forma, la terna solidaria al sensor coincidirá con la terna solidaria a todo el vehículo en el que se utilice la placa. Esto ahorra cuestiones de cómputo que modifiquen la terna de referencia de las lecturas.\\
+El sensor IMU tiene ciertos requerimientos particulares que deben cumplirse. En primera instancia se buscó ubicar al componente lo más centrado posible en el PCB. De esta forma, la terna solidaria al sensor coincidirá con la terna solidaria a todo el vehículo en el que se utilice la placa. Esto ahorra cuestiones de cómputo que modifiquen la terna de referencia respsecto de la cual se obtengan las lecturas. \textbf{{\color{red} Completar qué tan corrida quedó la IMU del centro de la placa}}\\
 
 Se siguieron una serie de guías y recomendaciones que tienen como objetivo minimizar el estrés sobre el componente \cite{IMUpcb_1} \cite{IMUpcb_2} \cite{IMUpcb_3}. Esto debido a que, como la IMU es un sistema electromecánico, el estrés puede alterar las mediciones que esta realice, o incluso un alto nivel de estrés puede llegar a dañar el componente. Se enumeran algunas de esas recomendaciones:
 
@@ -581,5 +693,17 @@ La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de es
 \end{figure}
 
 \subsubsection{Layout del Regulador Lineal}
+
+\textbf{{\color{red} COMPLETAR}}
+
+\subsubsection{Comunicación con el Slot para Tarjeta Micro SD}
+
+% Length matching e impedancia característica. Mencionar todo lo que tengo de la especificación de microSD. Tengo muchísimo de esto.
+
+\textbf{{\color{red} COMPLETAR}}
+
+\subsubsection{Comunicación USB}
+
+% Impedancia característica de la pista diferencial, de la especificación.
 
 \textbf{{\color{red} COMPLETAR}}

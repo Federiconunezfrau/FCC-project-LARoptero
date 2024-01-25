@@ -636,6 +636,26 @@
     \field{year}{2004}
   \endentry
 
+  \entry{AN5293}{misc}{}
+    \list{organization}{1}{%
+      {STMicroelectronics}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{{Migration guide from STM32F7 Series to STMH74x/75x,
+  STM32H72x/73x and STMH7A3/7Bx devices}}
+    \field{month}{08}
+    \field{year}{2022}
+  \endentry
+
+  \entry{longevity_ST}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Product Longevity - STMicroelectronics}}
+    \verb{url}
+    \verb https://www.st.com/content/st_com/en/about/quality-and-reliability/pr
+    \verb oduct-longevity.html#10-year-longevity
+    \endverb
+  \endentry
+
   \entry{ICM42688pDatasheet}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{{ICM-42688-P | TDK InvenSense}}
