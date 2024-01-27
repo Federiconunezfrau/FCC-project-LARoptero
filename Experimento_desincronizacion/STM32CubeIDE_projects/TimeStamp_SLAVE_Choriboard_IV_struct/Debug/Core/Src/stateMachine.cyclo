@@ -1,0 +1,4 @@
+../Core/Src/stateMachine.cpp:12:6:void stateMachine_constructor(stateMachine_t*, stateHandler_t)	1
+../Core/Src/stateMachine.cpp:17:6:void stateMachine_init(stateMachine_t*)	1
+../Core/Src/stateMachine.cpp:25:6:void stateMachine_dispatch(stateMachine_t*, event_t)	2
+../Core/Src/stateMachine.cpp:37:9:state_t stateMachine_transition(stateMachine_t*, stateHandler_t)	1
