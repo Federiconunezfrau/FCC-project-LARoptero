@@ -1,0 +1,2 @@
+../Core/Src/timeTriggeredTask.cpp:10:6:void timeTriggeredTask_constructor(timeTriggeredTask_t*, taskHandler_t, taskHandler_t, uint32_t, uint32_t, uint32_t, uint32_t)	1
+../Core/Src/timeTriggeredTask.cpp:21:6:void timeTriggeredTask_destructor(timeTriggeredTask_t*)	1

@@ -1,0 +1,169 @@
+/*
+ * CNI.cpp
+ *
+ *  Created on: Feb 13, 2024
+ *      Author: fede
+ */
+
+
+#include "CNI.h"
+#include "utils.h"
+
+/** Cantidad máxima de bytes de datos útiles para la trama CAN */
+#define MAX_LEN_PAYLOAD_CAN 8
+
+enum serviceID : uint32_t
+{
+	IMUdata = 0x01
+};
+
+typedef struct
+{
+	serviceID mServiceID_;
+	uint32_t  mNodeID_;
+	uint8_t   mPayload_[MAX_LEN_PAYLOAD_CAN];
+	uint32_t  mLenPayload_;
+} CANmsg_t;
+
+static CANmsg_t CANmsgList[] =
+{
+	// id    , nodeID   , payload, lenPayload
+	{ IMUdata, NODE_ID_0, {}     , 0 },
+	{ IMUdata, NODE_ID_0, {}     , 0 },
+	{ IMUdata, NODE_ID_0, {}     , 0 }
+};
+
+static uint32_t lenCANmsgList = sizeof(CANmsgList/CANmsgList[0]);
+
+static uint8_t CNI_check_msg_handle_is_valid(uint32_t msgHandle)
+{
+	if(msgHandle > (lenCANmsgList - 1))
+	{
+		return 0;
+	}
+
+	return 1;
+}
+
+static uint8_t CNI_check_msg_node_id_tx_allowed(uint32_t msgHandle)
+{
+	if(CANmsgList[msgHandle].mNodeID_ != MY_NODE_ID)
+	{
+		return 0;
+	}
+
+	return 1;
+}
+
+static CNI_status_t CNI_check_msg_node_id_rx_allowed(uint32_t msgHandle)
+{
+	if(CANmsgList[msgHandle].mNodeID_ == MY_NODE_ID)
+	{
+		return CNI_MSG_HANDLE_RX_NOT_ALLOWED;
+	}
+
+	return CNI_OK;
+}
+
+void CNI_constructor(CNI_t *me, CAN_HandleTypeDef *hcan)
+{
+	me->mHcan_ = hcan;
+}
+
+void CNI_destructor(CNI_t *me)
+{
+
+}
+
+void CNI_init(CNI_t *me)
+{
+
+}
+
+void CNI_start(CNI_t *me)
+{
+	HAL_CAN_Start(me->mHcan_);
+}
+
+CNI_status_t CNI_send_msg(CNI_t *me, uint32_t msgHandle)
+{
+	CAN_TxHeaderTypeDef auxCANtxHeader;
+	uint32_t txMailbox;
+	serviceID currentMsgServiceID;
+	uint32_t i;
+	uint32_t freeMailBoxes;
+
+
+	if(msgHandle >= lenCANmsgList)
+	{
+		return CNI_MSG_HANDLE_NOT_VALID;
+	}
+
+	if(CANmsgList[msgHandle].mNodeID_ != MY_NODE_ID)
+	{
+		return CNI_MSG_HANDLE_TX_NOT_ALLOWED;
+	}
+
+	// Armar el mensaje
+	currentMsgServiceID = CANmsgList[msgHandle].mServiceID_;
+	auxCANtxHeader.StdId = CAN_MSG_MAKE_STD_ID_TX(currentMsgServiceID);
+
+	// Pasarle el msj al periférico
+
+	// Limpia todos los mensajes pendientes (no debería haber ninguno, pero por las dudas)
+	HAL_CAN_AbortTxRequest(me->mHcan_,CAN_TX_MAILBOX0|CAN_TX_MAILBOX1|CAN_TX_MAILBOX2);
+
+	// Comenzando por la posición "msgHandle" se recorre la lista de mensajes. Esto es debido
+	// a que es posible que se requiera enviar más de un mensaje.
+	i = msgHandle;
+	while( (i < lenCANmsgList) && (CANmsgList[i].mServiceID_ == currentMsgServiceID) && (CANmsgList[i].mNodeID_ == MY_NODE_ID) )
+	{
+		while(HAL_CAN_GetTxMailboxesFreeLevel(me->mHcan_) == 0);
+
+		auxCANtxHeader.DLC = CANmsgList[i].mLenPayload_;
+		HAL_CAN_AddTxMessage(me->mHcan_, &auxCANtxHeader, CANmsgList[i].mPayload_, &txMailbox);
+		i++;
+	}
+
+	// Antes de retornar, se queda esperando a que se terminen de enviar todos los mensajes
+	while(HAL_CAN_GetTxMailboxesFreeLevel(me->mHcan_) == 0);
+
+	return CNI_OK;
+}
+
+CNI_status_t CNI_receive_msg(CNI_t *me, uint32_t msgHandle)
+{
+	CAN_RxHeaderTypeDef auxCANrxHeader;
+	uint8_t auxRxData[MAX_LEN_PAYLOAD_CAN];
+	serviceID rxMsgServiceID;
+	uint32_t rxNodeID;
+	uint32_t i;
+
+	// Chequear si el msgHandle es válido
+	if(msgHandle >= lenCANmsgList)
+	{
+		return CNI_MSG_HANDLE_NOT_VALID;
+	}
+
+	if(CANmsgList[msgHandle].mNodeID_ == MY_NODE_ID)
+	{
+		return CNI_MSG_HANDLE_RX_NOT_ALLOWED;
+	}
+
+	i = msgHandle;
+	rxMsgServiceID = CANmsgList[msgHandle].mServiceID_;
+	rxNodeID = CANmsgList[msgHandle].mNodeID_;
+
+	while((i < lenCANmsgList) && (CANmsgList[i].mServiceID_ == rxMsgServiceID) && (CANmsgList[i].mNodeID_ == rxNodeID))
+	{
+		while( (HAL_CAN_GetRxFifoFillLevel(me->mHcan, CAN_RX_FIFO0) == 0) );
+		HAL_CAN_GetRxMessage(me->mHcan_, CAN_RX_FIFO0, &auxCANrxHeader, CANmsgList[i].mPayload_);
+		if( (rxMsgServiceID == CAN_MSG_GET_SERVICE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) && (rxNodeID == CAN_MSG_GET_NODE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) )
+		{
+			CANmsgList[i].mLenPayload_ = auxCANrxHeader.DLC;
+		}
+		i++;
+	}
+
+	return CNI_OK;
+}

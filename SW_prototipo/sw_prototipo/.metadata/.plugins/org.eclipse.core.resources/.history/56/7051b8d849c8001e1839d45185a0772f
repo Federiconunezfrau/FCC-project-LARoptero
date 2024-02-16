@@ -1,0 +1,29 @@
+/*
+ * observer.cpp
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#include "observer.h"
+
+void subject_constructor(subject_t *me)
+{
+
+}
+
+void subject_destructor(subject_t *me)
+{
+
+}
+
+void subject_attach(subject_t *me, void *observer, notificationHandle_t notificationHandle)
+{
+
+}
+
+void subject_dettach(subject_t *me, void *observer, notificationHandle_t notificationHandle)
+{
+
+}
+

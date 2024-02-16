@@ -1,0 +1,30 @@
+/*
+ * taskCNIsendData.cpp
+ *
+ *  Created on: Feb 15, 2024
+ *      Author: fede
+ */
+
+#include "taskCNIsendData.h"
+
+void taskCNIsendData_constructor(taskCNIsendData_t *me, uint32_t delayTicks, uint32_t periodTicks, uint32_t wcetMicroSeconds, uint32_t bcetMicroSeconds, CNI_t *CNI, uint32_t handleMsg)
+{
+	timeTriggeredTask_constructor(&me->super, (taskHandler_t)&taskCNIsendData_update, (taskHandler_t)&taskCNIsendData_start, delayTicks, periodTicks, wcetMicroSeconds, bcetMicroSeconds);
+}
+
+void taskCNIsendData_destructor(taskCNIsendData_t *me)
+{
+
+}
+
+void taskCNIsendData_start(taskCNIsendData_t *me)
+{
+
+}
+
+void taskCNIsendData_update(taskCNIsendData_t *me)
+{
+
+}
+
+

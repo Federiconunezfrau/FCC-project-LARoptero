@@ -1,0 +1,9 @@
+../Core/Src/myUART.c:12:6:myUART_constructor	16	static
+../Core/Src/myUART.c:20:6:myUART_enable_rx	16	static
+../Core/Src/myUART.c:29:6:myUART_disable_rx	16	static
+../Core/Src/myUART.c:38:10:myUART_read	32	static
+../Core/Src/myUART.c:57:10:myUART_read_blocking	32	static
+../Core/Src/myUART.c:74:10:myUART_send	32	static
+../Core/Src/myUART.c:88:10:myUART_bytes_in_rx_buffer	16	static
+../Core/Src/myUART.c:94:6:myUART_flush_buffer	16	static
+../Core/Src/myUART.c:100:6:myUART_IRQ_handler	16	static

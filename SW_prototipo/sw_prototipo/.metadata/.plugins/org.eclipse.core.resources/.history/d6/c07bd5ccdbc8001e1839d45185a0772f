@@ -1,0 +1,73 @@
+#include <circularBuffer.h>
+
+/**
+ * @Brief Inicializa el Buffer cicular.
+ * @param Buffer
+ * @param Block
+ * @param size
+ * @param OffsetWrite
+ * @param OffsetRead
+ */
+void Init_Buffer(CircularBuffer* Buffer , uint8_t* Block, uint8_t size, uint8_t OffsetWrite, uint8_t OffsetRead)
+{
+    Buffer->buf = Block;
+    Buffer->size = size;
+    Buffer->write = OffsetWrite;
+    Buffer->read = OffsetRead;
+}
+
+/**
+ * @Brief Toma como parametro el buffer cicular y devuelve el tamanio util para escribir
+ * @param Buffer
+ * @return 
+ */
+uint8_t BufferLenghtData(CircularBuffer* Buffer)
+{
+    uint8_t length = 0;
+    length = ((Buffer->write - Buffer->read) & (Buffer->size - 1));
+    return length;
+}
+
+/**
+ * @Brief Escribe en el buffer "Buffer" el dato "data"
+ * @param Buffer
+ * @param data
+ * @return 
+ */
+ErrorBuffer BufferWrite(CircularBuffer* Buffer, uint8_t data)
+{
+    if(BufferLenghtData(Buffer) == Buffer->size - 1)
+    {
+        return ErrorBufferFull;
+    }
+    
+    Buffer->buf[Buffer->write] = data;
+    Buffer->write = (Buffer->write +1) & (Buffer->size -1);
+    return NoErrorBuffer;
+}
+
+/**
+ * @Brief Lee del buffer "Buffer" el dato "data"
+ * @param Buffer
+ * @param data
+ * @return 
+ */
+ErrorBuffer BufferRead(CircularBuffer* Buffer, uint8_t *data)
+{
+    uint8_t length = 0;
+    
+    length = BufferLenghtData(Buffer);
+    //if(BufferLenghtData(Buffer) == 0)
+    if(length == 0)
+    {
+        return ErrorBufferEmpty;
+    }
+    
+    *data = Buffer->buf[Buffer->read];
+    Buffer->read = (Buffer->read + 1) & (Buffer->size -1);
+    return NoErrorBuffer;
+}
+
+
+
+

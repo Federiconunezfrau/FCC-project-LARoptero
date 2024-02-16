@@ -1,0 +1,4 @@
+../Core/Src/taskIMUgetData.cpp:10:6:void taskIMUgetData_constructor(taskIMUgetData_t*, uint32_t, uint32_t, uint32_t, uint32_t, ICM42688::icm42688*)	1
+../Core/Src/taskIMUgetData.cpp:17:6:void taskIMUgetData_destructor(taskIMUgetData_t*)	1
+../Core/Src/taskIMUgetData.cpp:25:6:void taskIMUgetData_start(taskIMUgetData_t*)	1
+../Core/Src/taskIMUgetData.cpp:30:6:void taskIMUgetData_update(taskIMUgetData_t*)	1

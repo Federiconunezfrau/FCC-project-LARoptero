@@ -1,0 +1,27 @@
+/*
+ * CNI.h
+ *
+ *  Created on: Feb 13, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_CNI_H_
+#define INC_CNI_H_
+
+#include "stm32f7xx_hal.h"
+
+/** Cantidad máxima de bytes de datos útiles para la trama CAN */
+#define MAX_LEN_PAYLOAD_CAN 8
+
+typedef struct
+{
+	CAN_HandleTypeDef *mHcan_;
+} CNI_t;
+
+void CNI_constructor ( CNI_t*, CAN_HandleTypeDef*);
+void CNI_destructor  ( CNI_t* );
+
+void CNI_send_msg    ( CNI_t*, uint32_t );
+void CNI_receive_msg ( CNI_t*, uint32_t );
+
+#endif /* INC_CNI_H_ */

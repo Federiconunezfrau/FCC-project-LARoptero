@@ -1,0 +1,23 @@
+/*
+ * taskWatchdog.h
+ *
+ *  Created on: Feb 11, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_TASKWATCHDOG_H_
+#define INC_TASKWATCHDOG_H_
+
+#include "timeTriggeredTask.h"
+
+typedef struct
+{
+	timeTriggeredTask_t super;
+} taskWatchdog_t;
+
+void taskWatchdog_constructor ( taskWatchdog_t *, uint32_t, uint32_t, uint32_t, uint32_t);
+void taskWatchdog_destructor  ( taskWatchdog_t * );
+void taskWatchdog_start       ( taskWatchdog_t * );
+void taskWatchdog_update      ( taskWatchdog_t * );
+
+#endif /* INC_TASKWATCHDOG_H_ */

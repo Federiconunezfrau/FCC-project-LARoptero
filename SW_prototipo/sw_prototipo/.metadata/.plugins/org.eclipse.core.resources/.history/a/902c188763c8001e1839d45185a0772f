@@ -1,0 +1,20 @@
+/*
+ * myTimer.cpp
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#include "myTimer.h"
+
+void myTimer_constructor(myTimer_t *myTimer, TIM_HandleTypeDef *htim)
+{
+
+}
+
+void myTimer_destructor(myTimer_t *myTimer)
+{
+
+}
+
+

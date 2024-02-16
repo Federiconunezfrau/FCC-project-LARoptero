@@ -1,0 +1,37 @@
+/*
+ * timeTriggeredSchedulerSettings.h
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_TIMETRIGGEREDSCHEDULERSETTINGS_H_
+#define INC_TIMETRIGGEREDSCHEDULERSETTINGS_H_
+
+// Task Heartbeat ===================================
+/** Time period for task heartbeat, in ticks */
+#define PERIOD_TASK_HEARTBEAT_TICKS_NORMAL 10
+
+/** Time delay for task heartbeat, in ticks */
+#define DELAY_TASK_HEARTBEAT_TICKS_NORMAL  0
+
+/** Worst case execution time for task heartbeat, in us */
+#define WCET_TASK_HEARTBEAT_US 100
+
+/** Best case execution time for task heartbeat, in us */
+#define BCET_TASK_HEARTBEAT_US 0
+
+// Task Watchdog ===================================
+/** Time period for task watchdog, in ticks */
+#define PERIOD_TASK_WATCHDOG_TICKS_NORMAL 1
+
+/** Time delay for task watchdog, in ticks */
+#define DELAY_TASK_WATCHDOG_TICKS_NORMAL  0
+
+/** Worst case execution time for task watchdog, in us */
+#define WCET_TASK_WATCHDOG_US 100
+
+/** Best case execution time for task watchdog, in us */
+#define BCET_TASK_WATCHDOG_US 0
+
+#endif /* INC_TIMETRIGGEREDSCHEDULERSETTINGS_H_ */

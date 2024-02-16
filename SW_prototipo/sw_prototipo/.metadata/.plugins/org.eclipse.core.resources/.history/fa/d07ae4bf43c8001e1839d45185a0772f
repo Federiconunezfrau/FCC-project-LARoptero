@@ -1,0 +1,22 @@
+/*
+ * myTimer.h
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_MYTIMER_H_
+#define INC_MYTIMER_H_
+
+
+
+typedef struct
+{
+	TIM_HandleTypeDef *mHtim_;
+	subject_t mSubject_;
+} myTimer_t;
+
+void myTimer_constructor ( myTimer_t*, TIM_HandleTypeDef* );
+void myTimer_destructor  ( myTimer_t* );
+
+#endif /* INC_MYTIMER_H_ */

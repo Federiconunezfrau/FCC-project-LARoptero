@@ -1,0 +1,45 @@
+/*
+ * CNI.h
+ *
+ *  Created on: Feb 13, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_CNI_H_
+#define INC_CNI_H_
+
+#include "stm32f7xx_hal.h"
+
+/** Cantidad máxima de bytes de datos útiles para la trama CAN */
+#define MAX_LEN_PAYLOAD_CAN 8
+
+/** Cantidad máxima de mensajes que se pueden almacenar */
+#define MAX_NUM_CAN_MSG_LIST 10
+
+typedef struct
+{
+	uint8_t  payload[MAX_LEN_PAYLOAD_CAN];
+	uint32_t lenPayload;
+	uint32_t id;
+	uint32_t nodeID;
+
+	uint8_t isFree;
+} CANmsg_t;
+
+typedef CANmsg_t CANmsgMatrix_t[];
+
+typedef struct
+{
+	CAN_HandleTypeDef *mHcan_;
+	CANmsg_t mMsgList_[MAX_NUM_CAN_MSG_LIST];
+	uint32_t mNodeID_;
+} CNI_t;
+
+
+void CNI_constructor ( CNI_t*, CAN_HandleTypeDef*, uint32_t );
+void CNI_destructor  ( CNI_t* );
+
+void CNI_send_msg    ( CNI_t*, uint32_t );
+void CNI_receive_msg ( CNI_t*, uint32_t );
+
+#endif /* INC_CNI_H_ */

@@ -1,0 +1,48 @@
+/*
+ * observer.cpp
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#include "observer.h"
+
+void subject_constructor(subject_t *me)
+{
+
+}
+
+void subject_destructor(subject_t *me)
+{
+
+}
+
+void subject_attach(subject_t *me, void *observer, notificationHandle_t notificationHandle)
+{
+	uint32_t i = 0;
+	uint8_t found = 0;
+
+	while( (i < MAX_NUM_OBSERVERS) && (found == 0) )
+	{
+		if(me->mObservers_[i])
+		{
+			found = 1;
+			me->mObservers_[i] = observer;
+			me->mObserversHandle_[i] = notificationHandle;
+			observersUart3[i].mCallback_ = callback;
+			observersUart3[i].mInUse_ = 1;
+		}
+		else
+		{
+			i++;
+		}
+	}
+
+	return found;
+}
+
+void subject_dettach(subject_t *me, void *observer, notificationHandle_t notificationHandle)
+{
+
+}
+

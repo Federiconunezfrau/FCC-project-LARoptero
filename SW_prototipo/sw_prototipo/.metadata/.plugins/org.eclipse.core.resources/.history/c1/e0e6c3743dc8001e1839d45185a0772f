@@ -1,0 +1,20 @@
+/*
+ * observer.h
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_OBSERVER_H_
+#define INC_OBSERVER_H_
+
+
+typedef struct
+{
+
+} subject_t;
+
+void subject_constructor ( subject_t *me );
+void subject_destructor  ( subject_t *me );
+
+#endif /* INC_OBSERVER_H_ */

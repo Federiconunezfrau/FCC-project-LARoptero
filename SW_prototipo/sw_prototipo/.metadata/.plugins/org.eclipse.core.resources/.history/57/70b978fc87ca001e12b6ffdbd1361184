@@ -1,0 +1,24 @@
+/*
+ * CNI.h
+ *
+ *  Created on: Feb 13, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_CAN_CNI_H_
+#define INC_CAN_CNI_H_
+
+typedef struct
+{
+
+} CANmsg_t;
+
+typedef struct
+{
+	CAN_HandleTypeDef *m_canHandler;
+
+
+} CANcni_t;
+
+
+#endif /* INC_CAN_CNI_H_ */

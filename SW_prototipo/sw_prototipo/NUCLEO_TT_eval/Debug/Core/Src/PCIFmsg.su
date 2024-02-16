@@ -1,0 +1,2 @@
+../Core/Src/PCIFmsg.cpp:12:10:status_t PCIFmsg_from_bytes(PCIFmsg_t*, uint8_t*, uint32_t)	32	static
+../Core/Src/PCIFmsg.cpp:39:10:status_t PCIFmsg_to_bytes(PCIFmsg_t*, uint8_t*, uint32_t, uint32_t*)	32	static

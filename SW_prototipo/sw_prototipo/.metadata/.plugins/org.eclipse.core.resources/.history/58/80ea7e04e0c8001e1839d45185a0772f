@@ -1,0 +1,20 @@
+/*
+ * myUART.c
+ *
+ *  Created on: Feb 11, 2024
+ *      Author: fede
+ */
+
+#include "myUART.h"
+
+void myUART_constructor(myUART_t *me, UART_HandleTypeDef *huart)
+{
+	me->mHuart_ = huart;
+	circularBuffer_constructor(&me->cbuf, me->rxBuf, LEN_RX_BUFFER);
+
+}
+void myUART_enable      ( myUART_t* );
+void myUART_disable     ( myUART_t* );
+void myUART_read        ( myUART_t*, uint8_t *, uint32_t );
+void myUART_send        ( myUART_t*, uint8_t*, uint32_t );
+void myUART_IRQ_handler ( myUART_t* );

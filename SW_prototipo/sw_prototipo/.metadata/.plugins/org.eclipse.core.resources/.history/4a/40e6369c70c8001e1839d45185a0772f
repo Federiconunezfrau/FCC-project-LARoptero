@@ -1,0 +1,24 @@
+/*
+ * myUART.h
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_MYUART_H_
+#define INC_MYUART_H_
+
+#include "stm32f7xx_hal.h"
+#include "observer.h"
+
+typedef struct
+{
+	UART_HandleTypeDef *mHuart_;
+} myUART_t;
+
+void myUART_constructor ( myUART_t*, UART_HandleTypeDef* );
+void myUART_enable ( myUART_t* );
+void myUART_disable ( myUART_t* );
+void myUART_read ( uint8_t *, uint32_t );
+
+#endif /* INC_MYUART_H_ */
