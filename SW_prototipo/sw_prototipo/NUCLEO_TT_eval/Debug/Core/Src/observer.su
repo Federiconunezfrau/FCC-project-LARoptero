@@ -1,5 +1,0 @@
-../Core/Src/observer.cpp:10:6:void subject_constructor(subject_t*)	24	static
-../Core/Src/observer.cpp:21:6:void subject_destructor(subject_t*)	24	static
-../Core/Src/observer.cpp:32:9:uint8_t subject_attach(subject_t*, void*, notificationHandle_t)	32	static
-../Core/Src/observer.cpp:54:9:uint8_t subject_dettach(subject_t*, void*, notificationHandle_t)	32	static
-../Core/Src/observer.cpp:75:6:void subject_notify(subject_t*)	24	static

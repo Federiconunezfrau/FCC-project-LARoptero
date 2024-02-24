@@ -1,0 +1,122 @@
+/*
+ * modeNormal.cpp
+ *
+ *  Created on: Feb 17, 2024
+ *      Author: fede
+ */
+
+#include "modeNormal.h"
+
+#include "taskHeartbeat.h"
+#include "taskWatchdog.h"
+#include "taskIMUgetData.h"
+#include "taskCNIsendData.h"
+
+#include "timeTriggeredScheduler.h"
+
+#include "main.h"
+
+#define HANDLE_MSG_CNI_SEND_IMU_DATA 1
+
+#define ICM42688_CS_GPIO_Port IMU_CS_GPIO_Port
+#define ICM42688_CS_Pin       IMU_CS_Pin
+
+#define LED_HEARTBEAT_GPIO_Port LD1_GPIO_Port
+#define LED_HEARTBEAT_GPIO_Pin  LD1_Pin
+
+void normal_mode_run(void)
+{
+	taskHeartbeat_t taskHeartbeat;
+	taskWatchdog_t taskWatchdog;
+	taskIMUgetData_t taskIMUgetData;
+	taskCNIsendData_t taskCNIsendIMUdata;
+
+	// Inicialización de la IMU =====================================
+	gpio imuCS(ICM42688_CS_GPIO_Port, ICM42688_CS_Pin);
+
+	phandler_spi<> spi2(&hspi2, &imuCS, COMM_MODE::BLCK);
+
+	ICM42688::config_FIFO icmFifoCnf =
+	{
+		  .watermark = 1,
+		  .mode = ICM42688::FIFO_MODE::BYPASS,
+	};
+
+	ICM42688::config_INT icmIntCnf =
+	{
+			.int1Source = ICM42688::INT_SOURCE::DISABLED,
+			.int1Mode = ICM42688::INT_MODE::DISABLED,
+			//.int1Source = ICM42688::INT_SOURCE::DATA_RDY,
+			//.int1Mode = ICM42688::INT_MODE::PULSED_PP_HIGH,
+			.int2Source = ICM42688::INT_SOURCE::DISABLED,
+			.int2Mode = ICM42688::INT_MODE::DISABLED,
+	};
+
+	ICM42688::Config icmCnf =
+	{
+		.gyroFSR 					= ICM42688::GYRO_CNF::FSR::FSR_250,
+		.gyroODR 					= ICM42688::GYRO_CNF::ODR::ODR_1000,
+		.accelFSR 					= ICM42688::ACCEL_CNF::FSR::FSR_4,
+		.accelODR 					= ICM42688::ACCEL_CNF::ODR::ODR_1000,
+		.fifoCnf					= icmFifoCnf,
+		.intCnf						= icmIntCnf,
+	};
+
+	ICM42688::icm42688 imu(icmCnf, &spi2, &imuCS);
+
+	// Inicialización del LED heartbeat==============================
+	gpio ledHeartbeat(LED_HEARTBEAT_GPIO_Port, LED_HEARTBEAT_GPIO_Pin);
+
+	// Creación de las tareas========================================
+	taskWatchdog_constructor(&taskWatchdog,
+			DELAY_TASK_WATCHDOG_TICKS_NORMAL,
+			PERIOD_TASK_WATCHDOG_TICKS_NORMAL,
+			WCET_TASK_WATCHDOG_US,
+			BCET_TASK_WATCHDOG_US,
+			&hiwdg);
+
+	taskHeartbeat_constructor(&taskHeartbeat,
+		  DELAY_TASK_HEARTBEAT_TICKS_NORMAL,
+		  PERIOD_TASK_HEARTBEAT_TICKS_NORMAL,
+		  WCET_TASK_HEARTBEAT_US,
+		  BCET_TASK_HEARTBEAT_US,
+		  &ledHeartbeat);
+
+	taskIMUgetData_constructor(&taskIMUgetData,
+		  DELAY_TASK_IMU_TICKS_NORMAL,
+		  PERIOD_TASK_IMU_TICKS_NORMAL,
+		  WCET_TASK_IMU_US,
+		  BCET_TASK_IMU_US,
+		  &imu, HANDLE_MSG_CNI_SEND_IMU_DATA);
+
+	taskCNIsendData_constructor(&taskCNIsendIMUdata,
+		  DELAY_TASK_CNI_SEND_IMU_TICKS_NORMAL,
+		  PERIOD_TASK_CNI_SEND_IMU_TICKS_NORMAL,
+		  WCET_TASK_CNI_SEND_IMU_US,
+		  BCET_TASK_CNI_SEND_IMU_US,
+		  HANDLE_MSG_CNI_SEND_IMU_DATA);
+
+	// Inicialización del scheduler =================================
+	timeTriggeredScheduler_constructor(&htim5, &hcan1);
+	timeTriggeredScheduler_init();
+
+	taskHeartbeat_start(&taskHeartbeat);
+	taskIMUgetData_start(&taskIMUgetData);
+	taskCNIsendData_start(&taskCNIsendIMUdata);
+
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskHeartbeat);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskWatchdog);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskIMUgetData);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendIMUdata);
+
+	CNI_start();
+	CNI_send_msg(HANDLE_MSG_CNI_SYNC);
+
+
+	timeTriggeredScheduler_start();
+
+	while(1)
+	{
+		timeTriggeredScheduler_dispatch();
+	}
+}

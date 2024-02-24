@@ -8,6 +8,8 @@
 #include "timeTriggeredScheduler.h"
 #include "CNI.h"
 
+#define HANDLE_MSG_CNI_SYNC 0
+
 static void timeTriggeredScheduler_tick(timeTriggeredScheduler_t *me, myTimer_t *timer)
 {
 	me->mTicks_++;
@@ -47,6 +49,8 @@ void timeTriggeredScheduler_start(timeTriggeredScheduler_t *me)
 	}
 
 	CNI_start();
+
+	CNI_send_msg(HANDLE_MSG_CNI_SYNC);
 
 	HAL_TIM_Base_Start_IT(me->mTimer_->mHtim_);
 }

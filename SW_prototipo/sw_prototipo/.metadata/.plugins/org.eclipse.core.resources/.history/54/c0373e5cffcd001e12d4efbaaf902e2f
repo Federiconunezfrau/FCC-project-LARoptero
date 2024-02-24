@@ -1,0 +1,137 @@
+/*
+ * timeTriggeredScheduler.cpp
+ *
+ *  Created on: Feb 10, 2024
+ *      Author: fede
+ */
+
+#include "timeTriggeredScheduler.h"
+
+#define HANDLE_MSG_CNI_SYNC 0
+
+static timeTriggeredScheduler_t _instance;
+volatile uint32_t _ticks;
+
+static void timeTriggeredScheduler_tick(TIM_HandleTypeDef *htim)
+{
+	//_instance.mTicks_++;
+	_ticks++;
+}
+
+void timeTriggeredScheduler_constructor(TIM_HandleTypeDef *timer, CAN_HandleTypeDef *can)
+{
+	uint32_t i;
+
+	_instance.mTimer_ = timer;
+
+	for(i = 0; i < MAX_NUM_TASKS ; i++)
+	{
+		_instance.mTaskList_[i] = 0;
+	}
+
+	//_instance.mTicks_ = 0;
+	_ticks = 0;
+
+	CNI_constructor(can);
+}
+
+void timeTriggeredScheduler_init(void)
+{
+	HAL_TIM_Base_Stop_IT(_instance.mTimer_);
+	HAL_TIM_RegisterCallback(_instance.mTimer_, HAL_TIM_PERIOD_ELAPSED_CB_ID, timeTriggeredScheduler_tick);
+
+	CNI_init();
+}
+
+void timeTriggeredScheduler_start(void)
+{
+	uint32_t i;
+	timeTriggeredTask_t *task;
+
+	for(i = 0; i < MAX_NUM_TASKS; i++)
+	{
+		if( (task = _instance.mTaskList_[i]) )
+		{
+			(*(task->mHandlerStart_))(task);
+		}
+	}
+
+	CNI_start();
+
+	CNI_send_msg(HANDLE_MSG_CNI_SYNC);
+	HAL_TIM_Base_Start_IT(_instance.mTimer_);
+}
+
+void timeTriggeredScheduler_stop(void)
+{
+	HAL_TIM_Base_Stop_IT(_instance.mTimer_);
+}
+
+void timeTriggeredScheduler_dispatch(void)
+{
+	uint8_t updateRequired = 0;
+	uint32_t i;
+	timeTriggeredTask_t *task;
+
+	__disable_irq();
+	if(_ticks > 0)
+	{
+		_ticks--;
+		updateRequired = 1;
+	}
+	__enable_irq();
+
+	while(updateRequired)
+	{
+		for(i = 0; i < MAX_NUM_TASKS; i++)
+		{
+			if((task = _instance.mTaskList_[i]))
+			{
+				//if( (--(me->mTaskList_[i]->mDelayTicks_)) == 0 )
+				if( (--(task->mDelayTicks_)) == 0 )
+				{
+					//timeTriggeredTask_update((timeTriggeredTask_t*)(me->mTaskList_[i]));
+					(*(task->mTaskHandler_))(task);
+					//me->mTaskList_[i]->mDelayTicks_ = me->mTaskList_[i]->mPeriodTicks_;
+					task->mDelayTicks_ = task->mPeriodTicks_;
+				}
+			}
+		}
+
+		__disable_irq();
+
+		if(_ticks > 0)
+		{
+			_ticks--;
+			updateRequired = 1;
+		}
+		else
+		{
+			updateRequired = 0;
+		}
+
+		__enable_irq();
+	}
+	__asm__("wfi");
+}
+
+TTschStatus_t timeTriggeredScheduler_add_task(timeTriggeredTask_t *task)
+{
+	uint32_t i = 0;
+
+	while( (_instance.mTaskList_[i] ) && (i < MAX_NUM_TASKS) )
+	{
+		i++;
+	}
+
+	if(i == MAX_NUM_TASKS)
+	{
+		return TTsch_ERROR_MAX_TASKS_REACHED;
+	}
+
+	_instance.mTaskList_[i] = task;
+
+	return TTsch_OK;
+}
+
+

@@ -1,0 +1,56 @@
+/*
+ * system.cpp
+ *
+ *  Created on: Feb 2, 2024
+ *      Author: fede
+ */
+
+#include <cstdint>
+#include "system.h"
+#include "modeNormal.h"
+#include "modeFailSilent.h"
+#include "stm32f7xx_hal.h"
+
+
+
+#define MSG_WHO_AM_I "Ingrese un comando"
+
+#define LEN_AUX_BUFFER MAX_PACKET_SIZE_PCIF
+
+enum systemMode : uint32_t
+{
+	FAIL_SILENT = 0,
+	NORMAL
+};
+
+static systemMode theSystemMode = FAIL_SILENT;
+
+void system_init(void)
+{
+	if(__HAL_RCC_GET_FLAG(RCC_FLAG_IWDGRST))
+	{
+		__HAL_RCC_CLEAR_RESET_FLAGS();
+
+		theSystemMode = FAIL_SILENT;
+	}
+	else
+	{
+		theSystemMode = NORMAL;
+	}
+}
+
+void system_run_active_mode(peripherals_t *peripherals)
+{
+	switch(theSystemMode)
+	{
+		case NORMAL:
+			normal_mode_run(peripherals);
+			break;
+
+		default:
+		case FAIL_SILENT:
+			fail_silent_mode_run();
+			break;
+	}
+}
+

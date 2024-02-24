@@ -1,5 +1,0 @@
-../Core/Src/CNI.cpp:54:6:void CNI_constructor(CAN_HandleTypeDef*)	1
-../Core/Src/CNI.cpp:64:6:void CNI_init()	2
-../Core/Src/CNI.cpp:74:6:void CNI_start()	1
-../Core/Src/CNI.cpp:79:14:CNI_status_t CNI_send_msg(uint32_t)	8
-../Core/Src/CNI.cpp:124:14:CNI_status_t CNI_receive_msg(uint32_t)	9

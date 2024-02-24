@@ -1,4 +1,0 @@
-Period,Execution,Deadline,Offset,Jitter,CPU ID,Fixed Start,Name,Function
-10000 ,5        ,10      ,0     ,0     ,0     ,None       ,Heartbeat, &task_1
-10    ,5        ,10      ,0     ,0     ,0     ,None       ,Watchdog , &task_2
-10000 ,5        ,10      ,0     ,0     ,0     ,None       ,IMU      , &task_3

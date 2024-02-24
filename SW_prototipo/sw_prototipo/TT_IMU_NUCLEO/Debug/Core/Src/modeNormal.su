@@ -1,0 +1,11 @@
+../Core/Inc/iPHandler.hpp:52:20:static uint8_t iPHandler::add_read_bit(uint8_t, bool, bool)	16	static
+../Core/Inc/iPHandler.hpp:61:20:static uint8_t iPHandler::add_write_bit(uint8_t, bool, bool)	16	static
+../Core/Src/modeNormal.cpp:32:6:void normal_mode_run()	992	static,ignoring_inline_asm
+../Core/Src/modeNormal.cpp:144:6:void HAL_GPIO_EXTI_Callback(uint16_t)	16	static
+../Core/Inc/iPHandler.hpp:40:7:iPHandler::iPHandler()	16	static
+../Core/Inc/handler_spi.hpp:146:2:STM32::PHandlerSPI<BufferSize>::PHandlerSPI(SPI_HandleTypeDef*, STM32::gpio*, COMM_MODE) [with unsigned char BufferSize = 32]	24	static
+../Core/Inc/handler_spi.hpp:166:15:iPHANDLER_ST STM32::PHandlerSPI<BufferSize>::read_registers(const PHandlerOpt&) [with unsigned char BufferSize = 32]	16	static
+../Core/Inc/handler_spi.hpp:189:15:iPHANDLER_ST STM32::PHandlerSPI<BufferSize>::write_registers(uint8_t*, const PHandlerOpt&) [with unsigned char BufferSize = 32]	24	static
+../Core/Inc/handler_spi.hpp:214:15:iPHANDLER_ST STM32::PHandlerSPI<BufferSize>::start_transmition(void*) [with unsigned char BufferSize = 32]	24	static
+../Core/Inc/handler_spi.hpp:310:17:iPHANDLER_ST STM32::PHandlerSPI<BufferSize>::transmit(uint8_t*, uint8_t*, uint16_t) [with unsigned char BufferSize = 32]	40	static
+../Core/Inc/handler_spi.hpp:359:17:iPHANDLER_ST STM32::PHandlerSPI<BufferSize>::map_hal_st_to_handler_st(HAL_StatusTypeDef) [with unsigned char BufferSize = 32]	16	static

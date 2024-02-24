@@ -45,7 +45,7 @@
 #define LED_FAIL_SILENT_GPIO_Port LD3_GPIO_Port
 #define LED_FAIL_SILENT_GPIO_Pin LD3_Pin
 
-#define HANDLE_MSG_CNI_SEND_IMU_DATA 0
+#define HANDLE_MSG_CNI_SEND_IMU_DATA 1
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -199,7 +199,7 @@ int main(void)
 		  PERIOD_TASK_IMU_TICKS_NORMAL,
 		  WCET_TASK_IMU_US,
 		  BCET_TASK_IMU_US,
-		  &imu);
+		  &imu, HANDLE_MSG_CNI_SEND_IMU_DATA);
 
   taskCNIsendData_constructor(&taskCNIsendIMUdata,
 		  DELAY_TASK_CNI_SEND_IMU_TICKS_NORMAL,
@@ -577,7 +577,7 @@ static void watchdog_config(void)
 	hiwdg.Instance = IWDG;
 	hiwdg.Init.Prescaler = IWDG_PRESCALER_4;
 	hiwdg.Init.Window = 4095;
-	hiwdg.Init.Reload = 11;
+	hiwdg.Init.Reload = 8;
 }
 
 static void timer_5_period_elapsed_callback(TIM_HandleTypeDef *htim)

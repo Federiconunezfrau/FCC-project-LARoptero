@@ -1,5 +1,0 @@
-../Core/Src/circularBuffer.c:7:6:circularBuffer_constructor	1
-../Core/Src/circularBuffer.c:20:10:circularBuffer_length_data	1
-../Core/Src/circularBuffer.c:31:9:circularBuffer_write	2
-../Core/Src/circularBuffer.c:50:9:circularBuffer_read	2
-../Core/Src/circularBuffer.c:61:6:circularBuffer_flush	1

@@ -1,0 +1,7 @@
+../Core/Src/timeTriggeredScheduler.cpp:15:13:void timeTriggeredScheduler_tick(TIM_HandleTypeDef*)	16	static
+../Core/Src/timeTriggeredScheduler.cpp:21:6:void timeTriggeredScheduler_constructor(TIM_HandleTypeDef*)	24	static
+../Core/Src/timeTriggeredScheduler.cpp:36:6:void timeTriggeredScheduler_init()	8	static
+../Core/Src/timeTriggeredScheduler.cpp:42:6:void timeTriggeredScheduler_start()	8	static
+../Core/Src/timeTriggeredScheduler.cpp:47:6:void timeTriggeredScheduler_stop()	8	static
+../Core/Src/timeTriggeredScheduler.cpp:52:6:void timeTriggeredScheduler_dispatch()	24	static,ignoring_inline_asm
+../Core/Src/timeTriggeredScheduler.cpp:100:15:TTschStatus_t timeTriggeredScheduler_add_task(timeTriggeredTask_t*)	24	static
