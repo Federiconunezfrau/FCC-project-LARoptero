@@ -6,17 +6,16 @@
  */
 
 #include "timeTriggeredScheduler.h"
+#include "CNI.h"
 
 static timeTriggeredScheduler_t _instance;
-//volatile uint32_t _ticks;
 
 static void timeTriggeredScheduler_tick(TIM_HandleTypeDef *htim)
 {
 	_instance.mTicks_++;
-	//_ticks++;
 }
 
-void timeTriggeredScheduler_constructor(TIM_HandleTypeDef *timer)
+void timeTriggeredScheduler_constructor(TIM_HandleTypeDef *timer, uint32_t macroTick)
 {
 	uint32_t i;
 
@@ -28,13 +27,16 @@ void timeTriggeredScheduler_constructor(TIM_HandleTypeDef *timer)
 	}
 
 	_instance.mTicks_ = 0;
-	//_ticks = 0;
+	_instance.mMacroTick_ = macroTick;
+	_instance.mSyncExecuted_ = 0;
 }
 
 void timeTriggeredScheduler_init(void)
 {
 	HAL_TIM_Base_Stop_IT(_instance.mTimer_);
 	HAL_TIM_RegisterCallback(_instance.mTimer_, HAL_TIM_PERIOD_ELAPSED_CB_ID, timeTriggeredScheduler_tick);
+
+	_instance.mSyncExecuted_ = 0;
 }
 
 void timeTriggeredScheduler_start(void)
@@ -58,7 +60,15 @@ void timeTriggeredScheduler_dispatch(void)
 	{
 		_instance.mTicks_--;
 		updateRequired = 1;
+#if !IS_MASTER
+		if(_instance.mSyncExecuted_ == 1)
+		{
+			_instance.mSyncExecuted_ = 0;
+			__HAL_TIM_SET_AUTORELOAD(_instance.mTimer_, _instance.mMacroTick_);
+		}
+#endif
 	}
+
 	__enable_irq();
 
 	while(updateRequired)
@@ -84,6 +94,13 @@ void timeTriggeredScheduler_dispatch(void)
 		{
 			_instance.mTicks_--;
 			updateRequired = 1;
+#if !IS_MASTER
+			if(_instance.mSyncExecuted_ == 1)
+			{
+				_instance.mSyncExecuted_ = 0;
+				__HAL_TIM_SET_AUTORELOAD(_instance.mTimer_, _instance.mMacroTick_);
+			}
+#endif
 		}
 		else
 		{
@@ -114,4 +131,65 @@ TTschStatus_t timeTriggeredScheduler_add_task(timeTriggeredTask_t *task)
 	return TTsch_OK;
 }
 
+void taskTimeTriggeredSync_constructor(taskTimeTriggeredSync_t *me, uint32_t delayTicks, uint32_t periodTicks, uint32_t wcetMicroSeconds, uint32_t bcetMicroSeconds, uint32_t handleMsg, uint32_t expectedTimestamp, uint32_t delaySync)
+{
+	timeTriggeredTask_constructor(&me->super, (taskHandler_t)&taskTimeTriggeredSync_update, delayTicks, periodTicks, wcetMicroSeconds, bcetMicroSeconds);
+	me->mHandleMsg_ = handleMsg;
+	me->mExpectedTimestamp_ = expectedTimestamp;
+	me->mDelaySync_ = delaySync;
+}
 
+void taskTimeTriggeredSync_destructor(taskTimeTriggeredSync_t *me)
+{
+	timeTriggeredTask_destructor(&me->super);
+}
+
+void taskTimeTriggeredSync_start(taskTimeTriggeredSync_t *me)
+{
+	// Por ahora no hace nada
+}
+
+void taskTimeTriggeredSync_update(taskTimeTriggeredSync_t *me)
+{
+#if !IS_MASTER
+	uint32_t timestamp;
+	uint32_t deltaTime;
+
+	// Espero a que me llegue el mensaje de sincronización
+	if( CNI_receive_msg(me->mHandleMsg_) == CNI_OK )
+	{
+		// Tomo un timestamp del mensaje recibido
+		timestamp = __HAL_TIM_GET_COUNTER(_instance.mTimer_);
+
+		// Comparo ese valor con el valor esperado
+		if(timestamp > me->mExpectedTimestamp_)
+		{
+			deltaTime = timestamp - me->mExpectedTimestamp_;
+			if(deltaTime > MAX_DELTA_TIME_MICRO_TICKS)
+			{
+				deltaTime = MAX_DELTA_TIME_MICRO_TICKS;
+			}
+			// Actualizo el timer
+			__HAL_TIM_SET_AUTORELOAD(_instance.mTimer_, _instance.mMacroTick_ + deltaTime);
+		}
+		else
+		{
+			deltaTime = me->mExpectedTimestamp_ - timestamp;
+			if(deltaTime > MAX_DELTA_TIME_MICRO_TICKS)
+			{
+				deltaTime = MAX_DELTA_TIME_MICRO_TICKS;
+			}
+			// Actualizo el timer
+			__HAL_TIM_SET_AUTORELOAD(_instance.mTimer_, _instance.mMacroTick_ - deltaTime);
+		}
+
+		// Le aviso al scheduler que en el próximo tick, vuelva a dejar el timer como estaba antes
+		_instance.mSyncExecuted_ = 1;
+	}
+#else
+	// Espero un rato
+	while(__HAL_TIM_GET_COUNTER(_instance.mTimer_) < me->mDelaySync_);
+	// Envío el mensaje de sync
+	CNI_send_msg(me->mHandleMsg_);
+#endif
+}

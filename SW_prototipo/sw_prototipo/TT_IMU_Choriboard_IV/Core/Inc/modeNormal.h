@@ -10,6 +10,17 @@
 
 #include "stm32f7xx_hal.h"
 
+// Configuraciones del scheduler
+#define MICROTICKS_IN_MACROTICK 1000-1
+#define EXPECTED_SYNC_TIMESTAMP_TICKS 300
+#define DELAY_SYNC_TICKS 300
+
+// Task Sync ===================================
+#define PERIOD_TASK_SYNC_TICKS_NORMAL 1000
+#define DELAY_TASK_SYNC_TICKS_NORMAL 500
+#define WCET_TASK_SYNC_US 100
+#define BCET_TASK_SYNC_US 0
+
 // Task Heartbeat ===================================
 #define PERIOD_TASK_HEARTBEAT_TICKS_NORMAL 1000
 #define DELAY_TASK_HEARTBEAT_TICKS_NORMAL  0

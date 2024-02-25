@@ -6,7 +6,7 @@
  */
 
 #include "modeFailSilent.h"
-#include "port.hpp"
+#include "gpio_STM32.hpp"
 #include "main.h"
 
 #define LED_FAIL_SILENT_GPIO_Port LD3_GPIO_Port
@@ -14,7 +14,7 @@
 
 void fail_silent_mode_run(void)
 {
-	gpio ledFailSilent(LED_FAIL_SILENT_GPIO_Port, LED_FAIL_SILENT_GPIO_Pin);
+	STM32::gpio ledFailSilent(LED_FAIL_SILENT_GPIO_Port, LED_FAIL_SILENT_GPIO_Pin);
 
 
 	ledFailSilent.write(GPIO_ST::HIGH);

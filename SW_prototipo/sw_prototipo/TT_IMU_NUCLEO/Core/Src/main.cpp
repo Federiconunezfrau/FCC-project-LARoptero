@@ -90,9 +90,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART3_UART_Init();
-  MX_SPI2_Init();
   MX_TIM5_Init();
   MX_CAN1_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
   system_init();

@@ -1,6 +1,5 @@
 Core/Src/modeFailSilent.o: ../Core/Src/modeFailSilent.cpp \
- ../Core/Inc/modeFailSilent.h ../Core/Inc/port.hpp \
- ../Core/Inc/gpio_STM32.hpp \
+ ../Core/Inc/modeFailSilent.h ../Core/Inc/gpio_STM32.hpp \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/Inc/stm32f7xx_hal_conf.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h \
@@ -35,10 +34,8 @@ Core/Src/modeFailSilent.o: ../Core/Src/modeFailSilent.cpp \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
- ../Core/Inc/handler_spi.hpp ../Core/Inc/iPHandler.hpp \
- ../Core/Inc/handler_i2c.hpp ../Core/Inc/main.h
+ ../Core/Inc/main.h
 ../Core/Inc/modeFailSilent.h:
-../Core/Inc/port.hpp:
 ../Core/Inc/gpio_STM32.hpp:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
@@ -74,7 +71,4 @@ Core/Src/modeFailSilent.o: ../Core/Src/modeFailSilent.cpp \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h:
-../Core/Inc/handler_spi.hpp:
-../Core/Inc/iPHandler.hpp:
-../Core/Inc/handler_i2c.hpp:
 ../Core/Inc/main.h:

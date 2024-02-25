@@ -9,15 +9,15 @@
 #define INC_TASKHEARTBEAT_H_
 
 #include "timeTriggeredTask.h"
-#include "port.hpp"
+#include "gpio_STM32.hpp"
 
 typedef struct
 {
 	timeTriggeredTask_t super;
-	gpio *mLED_;
+	STM32::gpio *mLED_;
 } taskHeartbeat_t;
 
-void taskHeartbeat_constructor ( taskHeartbeat_t *, uint32_t, uint32_t, uint32_t, uint32_t, gpio *);
+void taskHeartbeat_constructor ( taskHeartbeat_t *, uint32_t, uint32_t, uint32_t, uint32_t, STM32::gpio* );
 void taskHeartbeat_destructor  ( taskHeartbeat_t * );
 void taskHeartbeat_start       ( taskHeartbeat_t * );
 void taskHeartbeat_update      ( taskHeartbeat_t * );

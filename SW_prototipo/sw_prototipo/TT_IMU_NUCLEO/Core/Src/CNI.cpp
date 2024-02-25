@@ -46,6 +46,16 @@ static CANmsg_t CANmsgList[] =
 	{ IMUdata, 0        , {}     , 0 },
 	{ IMUdata, 0        , {}     , 0 },
 
+	// Mensaje con datos de la IMU enviada por el slave de nodeID = 1
+	{ IMUdata, 1        , {}     , 0 },
+	{ IMUdata, 1        , {}     , 0 },
+	{ IMUdata, 1        , {}     , 0 },
+
+	// Mensaje con datos de la IMU enviada por el slave de nodeID = 2
+	{ IMUdata, 2        , {}     , 0 },
+	{ IMUdata, 2        , {}     , 0 },
+	{ IMUdata, 2        , {}     , 0 },
+
 	// Mensaje con datos de la IMU enviado por el slave de nodeID = 3
 	{ IMUdata, 3        , {}     , 0 },
 	{ IMUdata, 3        , {}     , 0 },

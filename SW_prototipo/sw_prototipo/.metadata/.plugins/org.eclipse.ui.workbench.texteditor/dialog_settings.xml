@@ -5,16 +5,18 @@
 		<item key="DIALOG_Y_ORIGIN" value="395"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="HAL_TIM_RegisterCallback"/>
+		<item key="selection" value="read_data"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="HAL_TIM_RegisterCallback"/>
-			<item value="TIM_Base_SetConfig"/>
 			<item value="read_data"/>
+			<item value="IMUData"/>
+			<item value="MODIFY_REG"/>
+			<item value="TIM_Base_SetConfig"/>
+			<item value="HAL_TIM_RegisterCallback"/>
 			<item value="enable"/>
 			<item value="read_registers"/>
 			<item value="save_data"/>
@@ -25,8 +27,6 @@
 			<item value="pUART_RxEventCallbackTypeDef"/>
 			<item value="HAL_UART_RegisterRxEventCallback"/>
 			<item value="pTIM_CallbackTypeDef"/>
-			<item value="HAL_UART_RxCpltCallback"/>
-			<item value="IMU"/>
 		</list>
 		<list key="replacehistory">
 		</list>

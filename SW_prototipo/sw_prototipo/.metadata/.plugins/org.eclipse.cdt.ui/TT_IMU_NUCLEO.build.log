@@ -1,10 +1,10 @@
-14:44:42 **** Incremental Build of configuration Debug for project TT_IMU_NUCLEO ****
+18:56:44 **** Incremental Build of configuration Debug for project TT_IMU_NUCLEO ****
 make -j8 all 
 arm-none-eabi-size  TT_IMU_NUCLEO.elf 
    text	   data	    bss	    dec	    hex	filename
-  38900	    288	   2520	  41708	   a2ec	TT_IMU_NUCLEO.elf
+  39100	    408	   2528	  42036	   a434	TT_IMU_NUCLEO.elf
 Finished building: default.size.stdout
  
 
-14:44:42 Build Finished. 0 errors, 0 warnings. (took 204ms)
+18:56:44 Build Finished. 0 errors, 0 warnings. (took 258ms)
 

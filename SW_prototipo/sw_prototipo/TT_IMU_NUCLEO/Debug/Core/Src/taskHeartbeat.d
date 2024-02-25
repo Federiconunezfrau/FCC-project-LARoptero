@@ -1,6 +1,6 @@
 Core/Src/taskHeartbeat.o: ../Core/Src/taskHeartbeat.cpp \
  ../Core/Inc/taskHeartbeat.h ../Core/Inc/timeTriggeredTask.h \
- ../Core/Inc/port.hpp ../Core/Inc/gpio_STM32.hpp \
+ ../Core/Inc/gpio_STM32.hpp \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/Inc/stm32f7xx_hal_conf.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h \
@@ -34,12 +34,9 @@ Core/Src/taskHeartbeat.o: ../Core/Src/taskHeartbeat.cpp \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h \
- ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
- ../Core/Inc/handler_spi.hpp ../Core/Inc/iPHandler.hpp \
- ../Core/Inc/handler_i2c.hpp
+ ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h
 ../Core/Inc/taskHeartbeat.h:
 ../Core/Inc/timeTriggeredTask.h:
-../Core/Inc/port.hpp:
 ../Core/Inc/gpio_STM32.hpp:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
@@ -75,6 +72,3 @@ Core/Src/taskHeartbeat.o: ../Core/Src/taskHeartbeat.cpp \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h:
-../Core/Inc/handler_spi.hpp:
-../Core/Inc/iPHandler.hpp:
-../Core/Inc/handler_i2c.hpp:

@@ -7,7 +7,7 @@
 
 #include "taskHeartbeat.h"
 
-void taskHeartbeat_constructor(taskHeartbeat_t *me , uint32_t delayTicks, uint32_t periodTicks, uint32_t wcetMicroSeconds, uint32_t bcetMicroSeconds, gpio *led)
+void taskHeartbeat_constructor(taskHeartbeat_t *me , uint32_t delayTicks, uint32_t periodTicks, uint32_t wcetMicroSeconds, uint32_t bcetMicroSeconds, STM32::gpio *led)
 {
 	timeTriggeredTask_constructor(&me->super, (taskHandler_t)&taskHeartbeat_update, delayTicks, periodTicks, wcetMicroSeconds, bcetMicroSeconds);
 	me->mLED_ = led;

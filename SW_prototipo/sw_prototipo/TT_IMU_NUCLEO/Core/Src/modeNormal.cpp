@@ -19,7 +19,7 @@
 #include "CNI.h"
 
 #define HANDLE_MSG_CNI_SYNC 0
-#define HANDLE_MSG_CNI_SEND_IMU_DATA 1
+#define HANDLE_MSG_CNI_SEND_IMU_DATA MSG_CNI_SEND_IMU_DATA_POS_IN_TABLE
 
 #define ICM42688_CS_GPIO_Port IMU_CS_GPIO_Port
 #define ICM42688_CS_Pin       IMU_CS_Pin
@@ -35,6 +35,7 @@ void normal_mode_run(void)
 	taskWatchdog_t taskWatchdog;
 	taskIMUgetData_t taskIMUgetData;
 	taskCNIsendData_t taskCNIsendIMUdata;
+	taskTimeTriggeredSync_t taskPeriodicSync;
 
 	// Inicialización de la IMU =====================================
 	gpio imuCS(ICM42688_CS_GPIO_Port, ICM42688_CS_Pin);
@@ -70,7 +71,7 @@ void normal_mode_run(void)
 	ICM42688::icm42688 imu(icmCnf, &spi2, &imuCS);
 
 	// Inicialización del LED heartbeat==============================
-	gpio ledHeartbeat(LED_HEARTBEAT_GPIO_Port, LED_HEARTBEAT_GPIO_Pin);
+	STM32::gpio ledHeartbeat(LED_HEARTBEAT_GPIO_Port, LED_HEARTBEAT_GPIO_Pin);
 
 	// Inicialización de la CNI ==============================
 	CNI_constructor(&hcan1);
@@ -104,8 +105,17 @@ void normal_mode_run(void)
 		  BCET_TASK_CNI_SEND_IMU_US,
 		  HANDLE_MSG_CNI_SEND_IMU_DATA);
 
+	taskTimeTriggeredSync_constructor(&taskPeriodicSync,
+		  DELAY_TASK_SYNC_TICKS_NORMAL,
+		  PERIOD_TASK_SYNC_TICKS_NORMAL,
+		  WCET_TASK_SYNC_US,
+		  BCET_TASK_SYNC_US,
+		  HANDLE_MSG_CNI_SYNC,
+		  EXPECTED_SYNC_TIMESTAMP_TICKS,
+		  DELAY_SYNC_TICKS);
+
 	// Inicialización del scheduler =================================
-	timeTriggeredScheduler_constructor(&htim5);
+	timeTriggeredScheduler_constructor(&htim5, MICROTICKS_IN_MACROTICK);
 	timeTriggeredScheduler_init();
 
 	CNI_init();
@@ -116,6 +126,7 @@ void normal_mode_run(void)
 
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskHeartbeat);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskWatchdog);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskPeriodicSync);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskIMUgetData);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendIMUdata);
 
@@ -124,7 +135,7 @@ void normal_mode_run(void)
 	// Se queda acá esperando hasta que se cumpla la condición para comenzar
 	while(!run)
 	{
-		__asm__("wfi");
+		//__asm__("wfi");
 	}
 
 #if IS_MASTER
@@ -157,5 +168,3 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 }
 
 #endif
-
-

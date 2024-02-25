@@ -1,0 +1,25 @@
+/*
+ * taskTimeTriggeredSync.h
+ *
+ *  Created on: Feb 24, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_TASKTIMETRIGGEREDSYNC_H_
+#define INC_TASKTIMETRIGGEREDSYNC_H_
+
+#include "timeTriggeredTask.h"
+
+typedef struct
+{
+	timeTriggeredTask_t super;
+} taskTimeTriggeredSync_t;
+
+void taskIMUgetData_constructor ( taskTimeTriggeredSync_t *, uint32_t, uint32_t, uint32_t, uint32_t );
+void taskIMUgetData_destructor  ( taskTimeTriggeredSync_t * );
+void taskIMUgetData_start       ( taskTimeTriggeredSync_t * );
+void taskIMUgetData_update      ( taskTimeTriggeredSync_t * );
+
+
+
+#endif /* INC_TASKTIMETRIGGEREDSYNC_H_ */

@@ -9,6 +9,7 @@
 #define INC_CNI_H_
 
 #include "can.h"
+#include "config.h"
 
 #define NODE_ID_MASTER 0
 
