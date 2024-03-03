@@ -109,6 +109,16 @@ int main(void)
   CANmsgSyncHeader.TransmitGlobalTime = DISABLE;
   CANmsgSyncHeader.StdId = 0x00000008;
 
+  uint8_t accelX[] = {0x00, 0x00, 0x2C, 0xBC};
+  uint8_t accelY[] = {0x00, 0x00, 0x80, 0x3C};
+  uint8_t accelZ[] = {0x00, 0x48, 0x80, 0x3F};
+  uint8_t gyroX[] = {0x00, 0xD0, 0x04, 0xBF};
+  uint8_t gyroY[] = {0x00, 0x3A, 0x9D, 0xBF};
+  uint8_t gyroZ[] = {0x00, 0xC0, 0xDA, 0x3D};
+
+  float accelX_f, accelY_f, accelZ_f;
+  float gyroX_f, gyroY_f, gyroZ_f;
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -137,6 +147,15 @@ int main(void)
   HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
 
   HAL_UART_Receive_IT(&huart2, UARTrxBuffer, 1);
+
+  // Prueba de convertir arreglo de uint8_t en un float
+  memcpy(&accelX_f, accelX, 4);
+  memcpy(&accelY_f, accelY, 4);
+  memcpy(&accelZ_f, accelZ, 4);
+  memcpy(&gyroX_f, gyroX, 4);
+  memcpy(&gyroY_f, gyroY, 4);
+  memcpy(&gyroZ_f, gyroZ, 4);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

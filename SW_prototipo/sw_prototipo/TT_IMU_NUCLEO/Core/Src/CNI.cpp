@@ -41,11 +41,6 @@ static CANmsg_t CANmsgList[] =
 	// Mensaje de sincronización
 	{ sync   , 0        , {}     , 0 },
 
-	// Mensaje con datos de la IMU enviada por el master de nodeID = 0
-	{ IMUdata, 0        , {}     , 0 },
-	{ IMUdata, 0        , {}     , 0 },
-	{ IMUdata, 0        , {}     , 0 },
-
 	// Mensaje con datos de la IMU enviada por el slave de nodeID = 1
 	{ IMUdata, 1        , {}     , 0 },
 	{ IMUdata, 1        , {}     , 0 },
@@ -232,6 +227,33 @@ CNI_status_t CNI_update_msg_content(uint32_t msgHandle, uint8_t *payload, uint32
 			CANmsgList[i].mLenPayload_ = auxLenPayload;
 			auxLenPayload = 0;
 		}
+		i++;
+	}
+
+	return CNI_OK;
+}
+
+CNI_status_t CNI_get_msg_content(uint32_t msgHandle, uint8_t *buffer, uint32_t lenBuffer, uint32_t *lenPayload)
+{
+	uint32_t i;
+	serviceID msgServiceID;
+	uint32_t nodeID;
+
+	// Chequear si el msgHandle es válido
+	if(msgHandle >= lenCANmsgList)
+	{
+		return CNI_MSG_HANDLE_NOT_VALID;
+	}
+
+	i = msgHandle;
+	msgServiceID = CANmsgList[msgHandle].mServiceID_;
+	nodeID = CANmsgList[msgHandle].mNodeID_;
+	(*lenPayload) = 0;
+
+	while((i < lenCANmsgList) && (CANmsgList[i].mServiceID_ == msgServiceID) && (CANmsgList[i].mNodeID_ == nodeID) && ( (*lenPayload) < lenBuffer) )
+	{
+		my_copy_array_of_uint8(&buffer[*lenPayload], CANmsgList[i].mPayload_, CANmsgList[i].mLenPayload_);
+		(*lenPayload) += CANmsgList[i].mLenPayload_;
 		i++;
 	}
 

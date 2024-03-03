@@ -1,0 +1,21 @@
+/*
+ * timeTriggeredUART.cpp
+ *
+ *  Created on: Feb 26, 2024
+ *      Author: fede
+ */
+
+#include "timeTriggeredUART.h"
+
+
+void timeTriggeredUART_constructor(timeTriggeredUART_t *me, uint8_t bytesToPush)
+{
+
+}
+
+TTUART_status_t timeTriggeredUART_add_to_queue ( timeTriggeredUART_t*, uint8_t, uint8_t, uint8_t* );
+TTUART_status_t timeTriggeredUART_send         ( timeTriggeredUART_t* )
+{
+
+}
+

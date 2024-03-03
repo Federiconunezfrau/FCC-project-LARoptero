@@ -28,22 +28,18 @@ Core/Src/modeNormal.o: ../Core/Src/modeNormal.cpp \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_iwdg.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr_ex.h \
- ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi.h \
- ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
  ../Core/Inc/taskHeartbeat.h ../Core/Inc/timeTriggeredTask.h \
  ../Core/Inc/gpio_STM32.hpp ../Core/Inc/taskWatchdog.h ../Core/Inc/iwdg.h \
- ../Core/Inc/main.h ../Core/Inc/taskIMUgetData.h ../Core/Inc/icm42688.hpp \
- ../Core/Inc/iIMU.hpp ../Core/Inc/icm42688_utils.hpp \
- ../Core/Inc/utils.hpp ../Core/Inc/iPHandler.hpp \
- ../Core/Inc/handler_spi.hpp ../Core/Inc/handler_i2c.hpp \
- ../Core/Inc/port.hpp ../Core/Inc/spi.h ../Core/Inc/taskCNIsendData.h \
+ ../Core/Inc/main.h ../Core/Inc/taskCNIsendData.h \
+ ../Core/Inc/taskCNIreceiveData.h ../Core/Inc/taskUARTsendData.h \
  ../Core/Inc/timeTriggeredScheduler.h ../Core/Inc/tim.h \
  ../Core/Inc/main.h ../Core/Inc/CNI.h ../Core/Inc/can.h \
- ../Core/Inc/config.h
+ ../Core/Inc/config.h ../Core/Inc/timeTriggeredUART.h ../Core/Inc/usart.h \
+ ../Core/Inc/utils.hpp
 ../Core/Inc/modeNormal.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
@@ -73,8 +69,6 @@ Core/Src/modeNormal.o: ../Core/Src/modeNormal.cpp \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_iwdg.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr_ex.h:
-../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi.h:
-../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi_ex.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h:
@@ -85,20 +79,15 @@ Core/Src/modeNormal.o: ../Core/Src/modeNormal.cpp \
 ../Core/Inc/taskWatchdog.h:
 ../Core/Inc/iwdg.h:
 ../Core/Inc/main.h:
-../Core/Inc/taskIMUgetData.h:
-../Core/Inc/icm42688.hpp:
-../Core/Inc/iIMU.hpp:
-../Core/Inc/icm42688_utils.hpp:
-../Core/Inc/utils.hpp:
-../Core/Inc/iPHandler.hpp:
-../Core/Inc/handler_spi.hpp:
-../Core/Inc/handler_i2c.hpp:
-../Core/Inc/port.hpp:
-../Core/Inc/spi.h:
 ../Core/Inc/taskCNIsendData.h:
+../Core/Inc/taskCNIreceiveData.h:
+../Core/Inc/taskUARTsendData.h:
 ../Core/Inc/timeTriggeredScheduler.h:
 ../Core/Inc/tim.h:
 ../Core/Inc/main.h:
 ../Core/Inc/CNI.h:
 ../Core/Inc/can.h:
 ../Core/Inc/config.h:
+../Core/Inc/timeTriggeredUART.h:
+../Core/Inc/usart.h:
+../Core/Inc/utils.hpp:

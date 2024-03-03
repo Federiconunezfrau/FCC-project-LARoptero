@@ -31,5 +31,3 @@ void taskCNIsendData_update(taskCNIsendData_t *me)
 {
 	CNI_send_msg(me->mHandleMsg_);
 }
-
-

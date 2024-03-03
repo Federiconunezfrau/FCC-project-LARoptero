@@ -5298,3 +5298,105 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-25 09:15:57.131
 !MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-26 20:06:30.327 -----------------------------------------------
+eclipse.buildId=Version 1.14.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-26 20:06:36.844
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-26 20:06:36.846
+!MESSAGE Log4j2 initialized with config file /home/fede/Documents/FIUBA/Tesis/Codigo/sw_prototipo/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-26 20:06:43.650
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-27 21:51:43.016 -----------------------------------------------
+eclipse.buildId=Version 1.14.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-27 21:51:50.499
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-27 21:51:50.501
+!MESSAGE Log4j2 initialized with config file /home/fede/Documents/FIUBA/Tesis/Codigo/sw_prototipo/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-27 21:51:55.313
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-02-28 20:42:18.703 -----------------------------------------------
+eclipse.buildId=Version 1.14.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-02-28 20:42:23.460
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-02-28 20:42:23.461
+!MESSAGE Log4j2 initialized with config file /home/fede/Documents/FIUBA/Tesis/Codigo/sw_prototipo/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-02-28 20:42:27.740
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-03-01 20:03:50.007 -----------------------------------------------
+eclipse.buildId=Version 1.14.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-03-01 20:03:57.317
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-03-01 20:03:57.318
+!MESSAGE Log4j2 initialized with config file /home/fede/Documents/FIUBA/Tesis/Codigo/sw_prototipo/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-03-01 20:04:07.498
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-03-02 08:23:29.449 -----------------------------------------------
+eclipse.buildId=Version 1.14.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-03-02 08:23:35.140
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-03-02 08:23:35.140
+!MESSAGE Log4j2 initialized with config file /home/fede/Documents/FIUBA/Tesis/Codigo/sw_prototipo/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-03-02 08:23:43.394
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2024-03-03 14:29:08.477 -----------------------------------------------
+eclipse.buildId=Version 1.14.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-03-03 14:29:14.391
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-03-03 14:29:14.392
+!MESSAGE Log4j2 initialized with config file /home/fede/Documents/FIUBA/Tesis/Codigo/sw_prototipo/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-03-03 14:29:22.309
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-03 16:13:32.340
+!MESSAGE Indexed 'NUCLEO_pruebas_dsp_library' (31 sources, 93 headers) in 6.5 sec: 7,823 declarations; 58,540 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.003%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-03 16:51:34.167
+!MESSAGE Indexed 'NUCLEO_pruebas_dsp_library' (31 sources, 99 headers) in 1.56 sec: 10,578 declarations; 61,477 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0028%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-03 18:26:22.453
+!MESSAGE Indexed 'NUCLEO_pruebas_dsp_library' (59 sources, 122 headers) in 1.51 sec: 11,531 declarations; 62,007 references; 565 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0027%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-03 18:31:20.646
+!MESSAGE Indexed 'NUCLEO_pruebas_dsp_library' (31 sources, 122 headers) in 1.45 sec: 11,531 declarations; 61,962 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0027%)
