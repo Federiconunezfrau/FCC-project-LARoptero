@@ -23,8 +23,9 @@
 
 enum serviceID : uint32_t
 {
-	sync = 0x01, // STD = 00000001|XXX = 0x00000008
-	IMUdata = 0x02 // STD = 00000010|XXX = 0x00000010
+	sync = 0x01,        // STD = 00000001|XXX = 0x00000008
+	IMUdata = 0x02,     // STD = 00000010|XXX = 0x00000010
+	attitudeData = 0x03 // STD = 00000011|XXX = 0x00000018
 };
 
 typedef struct
@@ -39,31 +40,44 @@ static CANmsg_t CANmsgList[] =
 {
 	// id    , nodeID   , payload, lenPayload
 	// Mensaje de sincronización
-	{ sync   , 0        , {}     , 0 },
+	{ sync        , 0        , {}     , 0 },
 
 	// Mensaje con datos de la IMU enviada por el slave de nodeID = 1
-	{ IMUdata, 1        , {}     , 0 },
-	{ IMUdata, 1        , {}     , 0 },
-	{ IMUdata, 1        , {}     , 0 },
+	{ IMUdata     , 1        , {}     , 0 },
+	{ IMUdata     , 1        , {}     , 0 },
+	{ IMUdata     , 1        , {}     , 0 },
 
 	// Mensaje con datos de la IMU enviada por el slave de nodeID = 2
-	{ IMUdata, 2        , {}     , 0 },
-	{ IMUdata, 2        , {}     , 0 },
-	{ IMUdata, 2        , {}     , 0 },
+	{ IMUdata     , 2        , {}     , 0 },
+	{ IMUdata     , 2        , {}     , 0 },
+	{ IMUdata     , 2        , {}     , 0 },
 
 	// Mensaje con datos de la IMU enviado por el slave de nodeID = 3
-	{ IMUdata, 3        , {}     , 0 },
-	{ IMUdata, 3        , {}     , 0 },
-	{ IMUdata, 3        , {}     , 0 }
+	{ IMUdata     , 3        , {}     , 0 },
+	{ IMUdata     , 3        , {}     , 0 },
+	{ IMUdata     , 3        , {}     , 0 },
+
+	// Mensaje con datos de la estimación de altitud, por el slave de nodeID = 1
+	{ attitudeData, 1        , {}     , 0 },
+
+	// Mensaje con datos de la estimación de altitud, por el slave de nodeID = 2
+	{ attitudeData, 2        , {}     , 0 },
+
+	// Mensaje con datos de la estimación de altitud, por el slave de nodeID = 3
+	{ attitudeData, 3        , {}     , 0 },
 };
 
 static CAN_FilterTypeDef CANfiltersList[] =
 {
 #if !IS_MASTER
-	{ CAN_MAKE_FILTER_HIGH(sync), 0x0000, 0xFF00, 0x0000, CAN_RX_FIFO0, 0, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK },
+	// FIltro para recibir el mensaje de sincronización
+	{ CAN_MAKE_FILTER_HIGH(sync)        , 0x0000, 0xFF00, 0x0000, CAN_RX_FIFO0, 0, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK },
 #endif
-	{ CAN_MAKE_FILTER_HIGH(IMUdata), 0x0000, 0xFF00, 0x0000, CAN_RX_FIFO0, 1, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK }
-//	{ 0x0000 , 0x0000, 0x0000, 0x0000, CAN_RX_FIFO0, 0, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK }
+	// FIltro para recibir datos crudos de IMUs
+	{ CAN_MAKE_FILTER_HIGH(IMUdata)     , 0x0000, 0xFF00, 0x0000, CAN_RX_FIFO0, 1, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK },
+	// FIltro para recibir datos de estimación de altitud
+	{ CAN_MAKE_FILTER_HIGH(attitudeData), 0x0000, 0xFF00, 0x0000, CAN_RX_FIFO0, 2, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK }
+	//	{ 0x0000 , 0x0000, 0x0000, 0x0000, CAN_RX_FIFO0, 0, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK }
 };
 
 static uint32_t lenCANmsgList = sizeof(CANmsgList)/sizeof(CANmsgList[0]);

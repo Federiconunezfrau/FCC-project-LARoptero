@@ -16,7 +16,7 @@ typedef struct
 {
 	timeTriggeredTask_t super;
 	ICM42688::icm42688 *mIMU_;
-	IMUData mIMUdata_;
+	//IMUData mIMUdata_;
 	uint32_t mHandleMsg_;
 } taskIMUgetData_t;
 

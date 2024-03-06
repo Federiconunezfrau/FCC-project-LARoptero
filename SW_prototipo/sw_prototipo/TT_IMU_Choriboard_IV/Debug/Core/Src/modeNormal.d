@@ -39,9 +39,9 @@ Core/Src/modeNormal.o: ../Core/Src/modeNormal.cpp \
  ../Core/Inc/utils.hpp ../Core/Inc/iPHandler.hpp \
  ../Core/Inc/handler_spi.hpp ../Core/Inc/handler_i2c.hpp \
  ../Core/Inc/port.hpp ../Core/Inc/spi.h ../Core/Inc/taskCNIsendData.h \
- ../Core/Inc/timeTriggeredScheduler.h ../Core/Inc/tim.h \
- ../Core/Inc/main.h ../Core/Inc/CNI.h ../Core/Inc/can.h \
- ../Core/Inc/config.h
+ ../Core/Inc/taskEstimateAttitude.h ../Core/Inc/timeTriggeredScheduler.h \
+ ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/CNI.h ../Core/Inc/can.h \
+ ../Core/Inc/config.h ../Core/Inc/attitudeEstimator.h
 ../Core/Inc/modeNormal.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
@@ -92,9 +92,11 @@ Core/Src/modeNormal.o: ../Core/Src/modeNormal.cpp \
 ../Core/Inc/port.hpp:
 ../Core/Inc/spi.h:
 ../Core/Inc/taskCNIsendData.h:
+../Core/Inc/taskEstimateAttitude.h:
 ../Core/Inc/timeTriggeredScheduler.h:
 ../Core/Inc/tim.h:
 ../Core/Inc/main.h:
 ../Core/Inc/CNI.h:
 ../Core/Inc/can.h:
 ../Core/Inc/config.h:
+../Core/Inc/attitudeEstimator.h:

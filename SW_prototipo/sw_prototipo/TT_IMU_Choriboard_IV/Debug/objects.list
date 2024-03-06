@@ -1,4 +1,5 @@
 "./Core/Src/CNI.o"
+"./Core/Src/attitudeEstimator.o"
 "./Core/Src/can.o"
 "./Core/Src/gpio.o"
 "./Core/Src/gpio_STM32.o"
@@ -18,6 +19,7 @@
 "./Core/Src/system.o"
 "./Core/Src/system_stm32f7xx.o"
 "./Core/Src/taskCNIsendData.o"
+"./Core/Src/taskEstimateAttitude.o"
 "./Core/Src/taskHeartbeat.o"
 "./Core/Src/taskIMUgetData.o"
 "./Core/Src/taskWatchdog.o"

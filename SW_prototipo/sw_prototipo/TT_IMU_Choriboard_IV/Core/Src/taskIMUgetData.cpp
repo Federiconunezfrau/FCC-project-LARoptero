@@ -5,7 +5,8 @@
  *      Author: fede
  */
 
-#include <taskIMUgetData.h>
+#include "taskIMUgetData.h"
+#include "attitudeEstimator.h"
 #include "CNI.h"
 
 
@@ -37,12 +38,18 @@ void taskIMUgetData_start(taskIMUgetData_t *me)
 void taskIMUgetData_update(taskIMUgetData_t *me)
 {
 	uint8_t dataForCni[LEN_IMU_CNI_DATA];
+	IMUData imuData;
 
 	me->mIMU_->save_data();
-	me->mIMU_->read_data(&(me->mIMUdata_));
+	//me->mIMU_->read_data(&(me->mIMUdata_));
+	me->mIMU_->read_data(&imuData);
+
+	// Se le pasan las mediciones del sensor al attitude estimator
+	attitudeEstimator_set_imu_data(imuData);
 
 	// Convertir los datos de la IMU en bytes
-	make_imu_data_for_cni(me->mIMUdata_, dataForCni);
+	//make_imu_data_for_cni(me->mIMUdata_, dataForCni);
+	make_imu_data_for_cni(imuData, dataForCni);
 
 	// Actualizarlos en la CNI
 	CNI_update_msg_content(me->mHandleMsg_, dataForCni, LEN_IMU_CNI_DATA);

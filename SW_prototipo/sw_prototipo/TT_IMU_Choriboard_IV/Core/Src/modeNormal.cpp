@@ -11,6 +11,7 @@
 #include "taskWatchdog.h"
 #include "taskIMUgetData.h"
 #include "taskCNIsendData.h"
+#include "taskEstimateAttitude.h"
 
 #include "timeTriggeredScheduler.h"
 
@@ -18,8 +19,11 @@
 
 #include "CNI.h"
 
+#include "attitudeEstimator.h"
+
 #define HANDLE_MSG_CNI_SYNC 0
 #define HANDLE_MSG_CNI_SEND_IMU_DATA MSG_CNI_SEND_IMU_DATA_POS_IN_TABLE
+#define HANDLE_MSG_CNI_SEND_ATTITUDE_DATA MSG_CNI_SEND_ATTITUDE_DATA_POS_IN_TABLE
 
 #define ICM42688_CS_GPIO_Port IMU_CS_GPIO_Port
 #define ICM42688_CS_Pin       IMU_CS_Pin
@@ -27,15 +31,23 @@
 #define LED_HEARTBEAT_GPIO_Port LED2_GPIO_Port
 #define LED_HEARTBEAT_GPIO_Pin  LED2_Pin
 
+#define ALPHA_ATTITUDE_ESTIMATOR 0.025
+#define DELTA_T_ATTITUDE_ESTIMATOR_S 0.1
+
 static bool run = false;
 
 void normal_mode_run(void)
 {
-	taskHeartbeat_t taskHeartbeat;
-	taskWatchdog_t taskWatchdog;
-	taskIMUgetData_t taskIMUgetData;
-	taskCNIsendData_t taskCNIsendIMUdata;
+	taskHeartbeat_t  taskHeartbeat;
+	taskWatchdog_t   taskWatchdog;
 	taskTimeTriggeredSync_t taskPeriodicSync;
+
+	taskIMUgetData_t  taskIMUgetData;
+	taskCNIsendData_t taskCNIsendIMUdata;
+
+	taskEstimateAttitude_t taskEstimateAttitude;
+	taskCNIsendData_t      taskCNIsendAttitudeData;
+
 
 	// Inicialización de la IMU =====================================
 	gpio imuCS(ICM42688_CS_GPIO_Port, ICM42688_CS_Pin);
@@ -76,6 +88,9 @@ void normal_mode_run(void)
 	// Inicialización de la CNI ==============================
 	CNI_constructor(&hcan1);
 
+	// Inicialización del attitude estimator ==============================
+	attitudeEstimator_constructor(ALPHA_ATTITUDE_ESTIMATOR, DELTA_T_ATTITUDE_ESTIMATOR_S);
+
 	// Creación de las tareas========================================
 	taskWatchdog_constructor(&taskWatchdog,
 			DELAY_TASK_WATCHDOG_TICKS_NORMAL,
@@ -105,6 +120,20 @@ void normal_mode_run(void)
 			BCET_TASK_CNI_SEND_IMU_US,
 			HANDLE_MSG_CNI_SEND_IMU_DATA);
 
+	taskEstimateAttitude_constructor(&taskEstimateAttitude,
+			DELAY_TASK_ESTIMATE_ATTITUDE_TICKS_NORMAL,
+			PERIOD_TASK_ESTIMATE_ATTITUDE_TICKS_NORMAL,
+			WCET_TASK_ESTIMATE_ATTITUDE_US,
+			BCET_TASK_ESTIMATE_ATTITUDE_US,
+			HANDLE_MSG_CNI_SEND_ATTITUDE_DATA);
+
+	taskCNIsendData_constructor(&taskCNIsendAttitudeData,
+			DELAY_TASK_CNI_SEND_ATTITUDE_TICKS_NORMAL,
+			PERIOD_TASK_CNI_SEND_ATTITUDE_TICKS_NORMAL,
+			WCET_TASK_CNI_SEND_ATTITUDE_US,
+			BCET_TASK_CNI_SEND_ATTITUDE_US,
+			HANDLE_MSG_CNI_SEND_ATTITUDE_DATA);
+
 	taskTimeTriggeredSync_constructor(&taskPeriodicSync,
 			DELAY_TASK_SYNC_TICKS_NORMAL,
 			PERIOD_TASK_SYNC_TICKS_NORMAL,
@@ -129,6 +158,8 @@ void normal_mode_run(void)
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskPeriodicSync);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskIMUgetData);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendIMUdata);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskEstimateAttitude);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendAttitudeData);
 
 	CNI_start();
 
