@@ -11,7 +11,7 @@
 #include "timeTriggeredTask.h"
 #include "tim.h"
 
-#define MAX_NUM_TASKS 10
+#define MAX_NUM_TASKS 20
 
 #define MAX_DELTA_TIME_MICRO_TICKS 100
 

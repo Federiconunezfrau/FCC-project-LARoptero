@@ -16,11 +16,12 @@ typedef struct
 {
 	timeTriggeredTask_t super;
 	ICM42688::icm42688 *mIMU_;
-	//IMUData mIMUdata_;
+	IMUData mIMUoffsetData_;
+	STM32::gpio *mLED_;
 	uint32_t mHandleMsg_;
 } taskIMUgetData_t;
 
-void taskIMUgetData_constructor ( taskIMUgetData_t *, uint32_t, uint32_t, uint32_t, uint32_t, ICM42688::icm42688*, uint32_t );
+void taskIMUgetData_constructor ( taskIMUgetData_t *, uint32_t, uint32_t, uint32_t, uint32_t, ICM42688::icm42688*, STM32::gpio*, uint32_t );
 void taskIMUgetData_destructor  ( taskIMUgetData_t * );
 void taskIMUgetData_start       ( taskIMUgetData_t * );
 void taskIMUgetData_update      ( taskIMUgetData_t * );

@@ -1,0 +1,4 @@
+../Core/Src/taskCompareAttitude.cpp:16:6:void taskCompareAttitude_constructor(taskCompareAttitude_t*, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)	32	static
+../Core/Src/taskCompareAttitude.cpp:27:6:void taskCompareAttitude_destructor(taskCompareAttitude_t*)	16	static
+../Core/Src/taskCompareAttitude.cpp:33:6:void taskCompareAttitude_start(taskCompareAttitude_t*)	16	static
+../Core/Src/taskCompareAttitude.cpp:39:6:void taskCompareAttitude_update(taskCompareAttitude_t*)	104	static

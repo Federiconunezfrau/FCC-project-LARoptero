@@ -140,6 +140,8 @@ void normal_mode_run(void)
 //	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskSendIMUUART2);
 //	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskSendIMUUART3);
 
+
+
 	CNI_start();
 
 	// Se queda acá esperando hasta que se cumpla la condición para comenzar

@@ -1,5 +1,5 @@
-../Core/Src/taskIMUgetData.cpp:17:6:void taskIMUgetData_constructor(taskIMUgetData_t*, uint32_t, uint32_t, uint32_t, uint32_t, ICM42688::icm42688*, uint32_t)	32	static
-../Core/Src/taskIMUgetData.cpp:25:6:void taskIMUgetData_destructor(taskIMUgetData_t*)	16	static
-../Core/Src/taskIMUgetData.cpp:33:6:void taskIMUgetData_start(taskIMUgetData_t*)	16	static
-../Core/Src/taskIMUgetData.cpp:38:6:void taskIMUgetData_update(taskIMUgetData_t*)	96	static
-../Core/Src/taskIMUgetData.cpp:58:13:void make_imu_data_for_cni(IMUData, uint8_t*)	8	static
+../Core/Src/taskIMUgetData.cpp:19:6:void taskIMUgetData_constructor(taskIMUgetData_t*, uint32_t, uint32_t, uint32_t, uint32_t, ICM42688::icm42688*, STM32::gpio*, uint32_t)	32	static
+../Core/Src/taskIMUgetData.cpp:28:6:void taskIMUgetData_destructor(taskIMUgetData_t*)	16	static
+../Core/Src/taskIMUgetData.cpp:37:6:void taskIMUgetData_start(taskIMUgetData_t*)	48	static
+../Core/Src/taskIMUgetData.cpp:81:6:void taskIMUgetData_update(taskIMUgetData_t*)	96	static
+../Core/Src/taskIMUgetData.cpp:114:13:void make_imu_data_for_cni(IMUData, uint8_t*)	8	static
