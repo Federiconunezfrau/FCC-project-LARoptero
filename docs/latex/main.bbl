@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,111 +16,160 @@
   {}
 \endgroup
 
-\datalist[entry]{nty/global//global/global}
-  \entry{anceaume1998performance}{thesis}{}
-    \name{author}{2}{}{%
-      {{hash=AE}{%
-         family={Anceaume},
-         familyi={A\bibinitperiod},
-         given={Emmanuelle},
-         giveni={E\bibinitperiod},
-      }}%
-      {{hash=PI}{%
-         family={Puaut},
-         familyi={P\bibinitperiod},
-         given={Isabelle},
-         giveni={I\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{AEPI1}
-    \strng{fullhash}{AEPI1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{A}
-    \field{sortinithash}{A}
-    \field{title}{Performance evaluation of clock synchronization algorithms}
-    \list{institution}{1}{%
-      {INRIA}%
-    }
-    \field{type}{phdthesis}
-    \field{year}{1998}
-  \endentry
-
-  \entry{baleani2003fault}{inproceedings}{}
-    \name{author}{6}{}{%
-      {{hash=BM}{%
-         family={Baleani},
-         familyi={B\bibinitperiod},
-         given={Massimo},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=FA}{%
-         family={Ferrari},
-         familyi={F\bibinitperiod},
-         given={Alberto},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=ML}{%
-         family={Mangeruca},
-         familyi={M\bibinitperiod},
-         given={Leonardo},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=SVA}{%
-         family={Sangiovanni-Vincentelli},
-         familyi={S\bibinithyphendelim V\bibinitperiod},
-         given={Alberto},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=PM}{%
-         family={Peri},
-         familyi={P\bibinitperiod},
-         given={Maurizio},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=PS}{%
-         family={Pezzini},
-         familyi={P\bibinitperiod},
-         given={Saverio},
-         giveni={S\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{BM+1}
-    \strng{fullhash}{BMFAMLSVAPMPS1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{B}
-    \field{sortinithash}{B}
-    \field{booktitle}{Proceedings of the 2003 international conference on
-  Compilers, architecture and synthesis for embedded systems}
-    \field{pages}{170\bibrangedash 177}
-    \field{title}{Fault-tolerant platforms for automotive safety-critical
-  applications}
-    \field{year}{2003}
-  \endentry
-
-  \entry{wikipedia-contributors-2023}{article}{}
+\datalist[entry]{none/global//global/global}
+  \entry{kopetz-2011}{book}{}
     \name{author}{1}{}{%
-      {{hash=cW}{%
-         family={contributors},
-         familyi={c\bibinitperiod},
-         given={Wikipedia},
-         giveni={W\bibinitperiod},
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
       }}%
     }
-    \strng{namehash}{cW1}
-    \strng{fullhash}{cW1}
+    \list{publisher}{1}{%
+      {Springer Science+Business Media}%
+    }
+    \strng{namehash}{KH1}
+    \strng{fullhash}{KH1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{C}
-    \field{sortinithash}{C}
-    \field{title}{{Byzantine fault}}
-    \verb{url}
-    \verb https://en.wikipedia.org/wiki/Byzantine_fault#
+    \verb{doi}
+    \verb 10.1007/978-1-4419-8237-7
     \endverb
-    \field{journaltitle}{Wikipedia}
-    \field{month}{07}
+    \field{title}{{Real-Time systems}}
+    \verb{url}
+    \verb https://doi.org/10.1007/978-1-4419-8237-7
+    \endverb
+    \field{month}{01}
+    \field{year}{2011}
+  \endentry
+
+  \entry{FBWNASA}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Fly-by-Wire Systems Enable Safer, More Efficient Flight |
+  NASA Spinoff}}
+    \verb{url}
+    \verb https://spinoff.nasa.gov/Spinoff2011/t_5.html
+    \endverb
+  \endentry
+
+  \entry{collinson2023introduction}{book}{}
+    \name{author}{1}{}{%
+      {{hash=CRP}{%
+         family={Collinson},
+         familyi={C\bibinitperiod},
+         given={Richard\bibnamedelima PG},
+         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Nature}%
+    }
+    \strng{namehash}{CRP1}
+    \strng{fullhash}{CRP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Introduction to avionics systems}
     \field{year}{2023}
+  \endentry
+
+  \entry{yeh1996triple}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=YYC}{%
+         family={Yeh},
+         familyi={Y\bibinitperiod},
+         given={Ying\bibnamedelima C},
+         giveni={Y\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{YYC1}
+    \strng{fullhash}{YYC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{1996 IEEE Aerospace Applications Conference. Proceedings}
+    \field{pages}{293\bibrangedash 307}
+    \field{title}{Triple-triple redundant 777 primary flight computer}
+    \field{volume}{1}
+    \field{year}{1996}
+  \endentry
+
+  \entry{zhang2020architecture}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ZX}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Xunying},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=ZX}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Xiaodong},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{ZXZX1}
+    \strng{fullhash}{ZXZX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{3944\bibrangedash 3954}
+    \field{title}{Architecture design of distributed redundant flight control
+  computer based on time-triggered buses for UAVs}
+    \field{volume}{21}
+    \field{journaltitle}{IEEE Sensors Journal}
+    \field{year}{2020}
+  \endentry
+
+  \entry{embention-2023}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={Embention},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{Veronte Autopilot 4x - Products Veronte Embention}}
+    \verb{url}
+    \verb https://www.embention.com/product/veronte-autopilot-4x/
+    \endverb
+    \field{month}{10}
+    \field{year}{2023}
+  \endentry
+
+  \entry{uav-navigation-vector-600}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{VECTOR-600 -Autopilot for UAV | UAV Navigation}}
+    \verb{url}
+    \verb https://www.uavnavigation.com/products/autopilots/vector-600
+    \endverb
+  \endentry
+
+  \entry{wwwmicropilotcom-no-date}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=w}{%
+         family={www.micropilot.com},
+         familyi={w\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{w1}
+    \strng{fullhash}{w1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{MicroPilot - World leader in professional UAV autopilots |
+  Product Page - MP2128 3x Triple Redundant Autopilots}}
+    \verb{url}
+    \verb https://www.micropilot.com/products-mp21283x.htm
+    \endverb
   \endentry
 
   \entry{hiergeist2018implementation}{inproceedings}{}
@@ -145,8 +194,6 @@
     \strng{fullhash}{HSSG1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{H}
-    \field{sortinithash}{H}
     \field{booktitle}{2018 IEEE/AIAA 37th Digital Avionics Systems Conference
   (DASC)}
     \field{pages}{1\bibrangedash 10}
@@ -177,8 +224,6 @@
     \strng{fullhash}{HSSG1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{H}
-    \field{sortinithash}{H}
     \field{booktitle}{2017 IEEE/AIAA 36th Digital Avionics Systems Conference
   (DASC)}
     \field{pages}{1\bibrangedash 9}
@@ -187,104 +232,189 @@
     \field{year}{2017}
   \endentry
 
-  \entry{texasSLOA101B}{manual}{}
+  \entry{nxpAN12233}{manual}{}
     \list{organization}{1}{%
-      {Texas Instruments}%
+      {NXP Semiconductors}%
     }
     \field{labeltitlesource}{title}
-    \field{sortinit}{I}
-    \field{sortinithash}{I}
-    \field{note}{Rev. B}
-    \field{number}{SLOA101B}
-    \field{title}{Introduction to the Controller Area Network (CAN)}
+    \field{note}{Rev. 0}
+    \field{number}{AN12233}
+    \field{title}{MPC5744P FlexRay Interface in Pictures}
     \field{month}{05}
-    \field{year}{2016}
+    \field{year}{2021}
   \endentry
 
-  \entry{kopetz-2011}{book}{}
-    \name{author}{1}{}{%
-      {{hash=KH}{%
-         family={Kopetz},
-         familyi={K\bibinitperiod},
-         given={Hermann},
+  \entry{zhang2015dual}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=ZX}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Xiaolin},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=LH}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Haisheng},
          giveni={H\bibinitperiod},
       }}%
+      {{hash=YD}{%
+         family={Yuan},
+         familyi={Y\bibinitperiod},
+         given={Dandan},
+         giveni={D\bibinitperiod},
+      }}%
     }
-    \list{publisher}{1}{%
-      {Springer Science+Business Media}%
+    \list{organization}{1}{%
+      {Atlantis Press}%
     }
-    \strng{namehash}{KH1}
-    \strng{fullhash}{KH1}
+    \strng{namehash}{ZXLHYD1}
+    \strng{fullhash}{ZXLHYD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{K}
-    \field{sortinithash}{K}
-    \verb{doi}
-    \verb 10.1007/978-1-4419-8237-7
-    \endverb
-    \field{title}{{Real-Time systems}}
-    \verb{url}
-    \verb https://doi.org/10.1007/978-1-4419-8237-7
-    \endverb
-    \field{month}{01}
-    \field{year}{2011}
+    \field{booktitle}{2015 2nd International Conference on Electrical, Computer
+  Engineering and Electronics}
+    \field{pages}{785\bibrangedash 791}
+    \field{title}{Dual redundant flight control system design for
+  microminiature UAV}
+    \field{year}{2015}
   \endentry
 
-  \entry{kopetz1998time}{inproceedings}{}
-    \name{author}{1}{}{%
-      {{hash=KH}{%
-         family={Kopetz},
-         familyi={K\bibinitperiod},
-         given={Hermann},
-         giveni={H\bibinitperiod},
+  \entry{chen2015design}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=CJ}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Junhua},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Cao},
+         familyi={C\bibinitperiod},
+         given={Dong},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=LX}{%
+         family={Lv},
+         familyi={L\bibinitperiod},
+         given={Xunhong},
+         giveni={X\bibinitperiod},
       }}%
     }
     \list{organization}{1}{%
       {IEEE}%
     }
-    \strng{namehash}{KH1}
-    \strng{fullhash}{KH1}
+    \strng{namehash}{CJCDLX1}
+    \strng{fullhash}{CJCDLX1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{K}
-    \field{sortinithash}{K}
-    \field{booktitle}{Proceedings 19th IEEE Real-Time Systems Symposium (Cat.
-  No. 98CB36279)}
-    \field{pages}{168\bibrangedash 177}
-    \field{title}{The time-triggered model of computation}
-    \field{year}{1998}
+    \field{booktitle}{2015 Chinese Automation Congress (CAC)}
+    \field{pages}{1969\bibrangedash 1974}
+    \field{title}{Design of FlexRay-based communication on triplex redundancy
+  flight control computer}
+    \field{year}{2015}
   \endentry
 
-  \entry{kopetz2003time}{article}{}
+  \entry{wang2008development}{inproceedings}{}
     \name{author}{2}{}{%
-      {{hash=KH}{%
-         family={Kopetz},
-         familyi={K\bibinitperiod},
-         given={Hermann},
-         giveni={H\bibinitperiod},
+      {{hash=WJA}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Jun\bibnamedelima An},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
       }}%
-      {{hash=BG}{%
-         family={Bauer},
-         familyi={B\bibinitperiod},
-         given={G{\"u}nther},
-         giveni={G\bibinitperiod},
+      {{hash=LZS}{%
+         family={Li},
+         familyi={L\bibinitperiod},
+         given={Zhen\bibnamedelima Shui},
+         giveni={Z\bibinitperiod\bibinitdelim S\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{KHBG1}
-    \strng{fullhash}{KHBG1}
+    \strng{namehash}{WJALZS1}
+    \strng{fullhash}{WJALZS1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{K}
-    \field{sortinithash}{K}
-    \field{number}{1}
-    \field{pages}{112\bibrangedash 126}
-    \field{title}{The time-triggered architecture}
-    \field{volume}{91}
-    \field{journaltitle}{Proceedings of the IEEE}
-    \field{year}{2003}
+    \field{booktitle}{26th International Congress of the Aeronautical Sciences}
+    \field{pages}{1\bibrangedash 5}
+    \field{title}{Development of flight control system Using embedded computer
+  PC-104}
+    \field{year}{2008}
+  \endentry
+
+  \entry{thesis_redundant_ROS}{thesis}{}
+    \name{author}{1}{}{%
+      {{hash=PMFFS}{%
+         family={Pérez},
+         familyi={P\bibinitperiod},
+         given={M.E. Fernando Fidencio\bibnamedelima Solano},
+         giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim
+  F\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {Faculty of Fachhochschule Aachen, Germany}%
+      {Centro de Ingenieria y Desarrollo Industrial, Mexico}%
+    }
+    \strng{namehash}{PMFFS1}
+    \strng{fullhash}{PMFFS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Development of a Redundancy System for Autopilots}
+    \list{location}{1}{%
+      {Santiago de Querétaro, México}%
+    }
+    \field{type}{mathesis}
+    \field{year}{2019}
+  \endentry
+
+  \entry{dronecode-foundation-2023}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=FD}{%
+         family={Foundation},
+         familyi={F\bibinitperiod},
+         given={Dronecode},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FD1}
+    \strng{fullhash}{FD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{Homepage - PIXHawk}}
+    \verb{url}
+    \verb https://pixhawk.org/
+    \endverb
+    \field{month}{06}
+    \field{year}{2023}
+  \endentry
+
+  \entry{roth2021not}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=RE}{%
+         family={Roth},
+         familyi={R\bibinitperiod},
+         given={Edo},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Haeberlen},
+         familyi={H\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{REHA1}
+    \strng{fullhash}{REHA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
+  Applications Symposium (RTAS)}
+    \field{pages}{374\bibrangedash 386}
+    \field{title}{Do Not Overpay for Fault Tolerance!}
+    \field{year}{2021}
   \endentry
 
   \entry{lala1994architectural}{article}{}
@@ -309,8 +439,6 @@
     \strng{fullhash}{LJHHRE1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{L}
-    \field{sortinithash}{L}
     \field{number}{1}
     \field{pages}{25\bibrangedash 40}
     \field{title}{Architectural principles for safety-critical real-time
@@ -345,151 +473,10 @@
     \strng{fullhash}{LLSRPM1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{L}
-    \field{sortinithash}{L}
     \field{booktitle}{Concurrency: the works of leslie lamport}
     \field{pages}{203\bibrangedash 226}
     \field{title}{The Byzantine generals problem}
     \field{year}{2019}
-  \endentry
-
-  \entry{leen2002ttcan}{article}{}
-    \name{author}{2}{}{%
-      {{hash=LG}{%
-         family={Leen},
-         familyi={L\bibinitperiod},
-         given={Gabriel},
-         giveni={G\bibinitperiod},
-      }}%
-      {{hash=HD}{%
-         family={Heffernan},
-         familyi={H\bibinitperiod},
-         given={Donal},
-         giveni={D\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Elsevier}%
-    }
-    \strng{namehash}{LGHD1}
-    \strng{fullhash}{LGHD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{L}
-    \field{sortinithash}{L}
-    \field{number}{2}
-    \field{pages}{77\bibrangedash 94}
-    \field{title}{TTCAN: a new time-triggered controller area network}
-    \field{volume}{26}
-    \field{journaltitle}{Microprocessors and Microsystems}
-    \field{year}{2002}
-  \endentry
-
-  \entry{lyons1962use}{article}{}
-    \name{author}{2}{}{%
-      {{hash=LRE}{%
-         family={Lyons},
-         familyi={L\bibinitperiod},
-         given={Robert\bibnamedelima E},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-      {{hash=VW}{%
-         family={Vanderkulk},
-         familyi={V\bibinitperiod},
-         given={Wouter},
-         giveni={W\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IBM}%
-    }
-    \strng{namehash}{LREVW1}
-    \strng{fullhash}{LREVW1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{L}
-    \field{sortinithash}{L}
-    \field{number}{2}
-    \field{pages}{200\bibrangedash 209}
-    \field{title}{The use of triple-modular redundancy to improve computer
-  reliability}
-    \field{volume}{6}
-    \field{journaltitle}{IBM journal of research and development}
-    \field{year}{1962}
-  \endentry
-
-  \entry{nxpAN12233}{manual}{}
-    \list{organization}{1}{%
-      {NXP Semiconductors}%
-    }
-    \field{labeltitlesource}{title}
-    \field{sortinit}{M}
-    \field{sortinithash}{M}
-    \field{note}{Rev. 0}
-    \field{number}{AN12233}
-    \field{title}{MPC5744P FlexRay Interface in Pictures}
-    \field{month}{05}
-    \field{year}{2021}
-  \endentry
-
-  \entry{nelson1990fault}{article}{}
-    \name{author}{1}{}{%
-      {{hash=NVP}{%
-         family={Nelson},
-         familyi={N\bibinitperiod},
-         given={Victor\bibnamedelima P.},
-         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{NVP1}
-    \strng{fullhash}{NVP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{N}
-    \field{sortinithash}{N}
-    \field{number}{7}
-    \field{pages}{19\bibrangedash 25}
-    \field{title}{Fault-tolerant computing: Fundamental concepts}
-    \field{volume}{23}
-    \field{journaltitle}{Computer}
-    \field{year}{1990}
-  \endentry
-
-  \entry{de2013overview}{article}{}
-    \name{author}{2}{}{%
-      {{hash=dOJEM}{%
-         prefix={de},
-         prefixi={d\bibinitperiod},
-         family={Oliveira\bibnamedelima Junior},
-         familyi={O\bibinitperiod\bibinitdelim J\bibinitperiod},
-         given={Eloy\bibnamedelima Martins},
-         giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
-      }}%
-      {{hash=eSMLdO}{%
-         prefix={e},
-         prefixi={e},
-         family={Souza},
-         familyi={S\bibinitperiod},
-         given={Marcelo Lopes de\bibnamedelima Oliveira},
-         giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim
-  d\bibinitperiod\bibinitdelim O\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {SAE Technical Paper}%
-    }
-    \strng{namehash}{OJEMdSMLdOe1}
-    \strng{fullhash}{OJEMdSMLdOe1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{O}
-    \field{sortinithash}{O}
-    \field{title}{An Overview of Clock Synchronization Algorithms and their
-  Uses in Aerospace and Automotive Systems}
-    \field{year}{2013}
   \endentry
 
   \entry{pease1980reaching}{article}{}
@@ -520,145 +507,12 @@
     \strng{fullhash}{PMSRLL1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{P}
-    \field{sortinithash}{P}
     \field{number}{2}
     \field{pages}{228\bibrangedash 234}
     \field{title}{Reaching agreement in the presence of faults}
     \field{volume}{27}
     \field{journaltitle}{Journal of the ACM (JACM)}
     \field{year}{1980}
-  \endentry
-
-  \entry{pont2008patterns}{book}{}
-    \name{author}{1}{}{%
-      {{hash=PMJ}{%
-         family={Pont},
-         familyi={P\bibinitperiod},
-         given={Michael\bibnamedelima J},
-         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {TTE System, Ltd}%
-    }
-    \strng{namehash}{PMJ1}
-    \strng{fullhash}{PMJ1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{P}
-    \field{sortinithash}{P}
-    \field{title}{Patterns for time-triggered embedded systems}
-    \field{year}{2008}
-  \endentry
-
-  \entry{prasad1989fault}{article}{}
-    \name{author}{1}{}{%
-      {{hash=PVB}{%
-         family={Prasad},
-         familyi={P\bibinitperiod},
-         given={Vinod\bibnamedelima B},
-         giveni={V\bibinitperiod\bibinitdelim B\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{PVB1}
-    \strng{fullhash}{PVB1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{P}
-    \field{sortinithash}{P}
-    \field{number}{1}
-    \field{pages}{17\bibrangedash 21}
-    \field{title}{Fault tolerant digital systems}
-    \field{volume}{8}
-    \field{journaltitle}{IEEE Potentials}
-    \field{year}{1989}
-  \endentry
-
-  \entry{roth2021not}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=RE}{%
-         family={Roth},
-         familyi={R\bibinitperiod},
-         given={Edo},
-         giveni={E\bibinitperiod},
-      }}%
-      {{hash=HA}{%
-         family={Haeberlen},
-         familyi={H\bibinitperiod},
-         given={Andreas},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{REHA1}
-    \strng{fullhash}{REHA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{R}
-    \field{sortinithash}{R}
-    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
-  Applications Symposium (RTAS)}
-    \field{pages}{374\bibrangedash 386}
-    \field{title}{Do Not Overpay for Fault Tolerance!}
-    \field{year}{2021}
-  \endentry
-
-  \entry{SolanoPerez2019}{thesis}{}
-    \name{author}{1}{}{%
-      {{hash=SPFF}{%
-         family={Solano\bibnamedelima Pérez},
-         familyi={S\bibinitperiod\bibinitdelim P\bibinitperiod},
-         given={Federico\bibnamedelima Fidencio},
-         giveni={F\bibinitperiod\bibinitdelim F\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SPFF1}
-    \strng{fullhash}{SPFF1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{S}
-    \field{sortinithash}{S}
-    \field{title}{Development of a Redundancy System for Autopilots}
-    \field{year}{2019}
-  \endentry
-
-  \entry{specification1991bosch}{article}{}
-    \name{author}{1}{}{%
-      {{hash=SC}{%
-         family={Specification},
-         familyi={S\bibinitperiod},
-         given={CAN},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SC1}
-    \strng{fullhash}{SC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{S}
-    \field{sortinithash}{S}
-    \field{pages}{75}
-    \field{title}{Bosch}
-    \field{volume}{50}
-    \field{journaltitle}{Robert Bosch GmbH, Postfach}
-    \field{year}{1991}
-  \endentry
-
-  \entry{TMRwebPage}{online}{}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{T}
-    \field{sortinithash}{T}
-    \field{title}{Triple Modular Redundancy}
-    \verb{url}
-    \verb https://www.layerzero.com/Innovations/Industry-Firsts/Triple-Modular-
-    \verb Redundancy.html
-    \endverb
   \endentry
 
   \entry{wensley1978sift}{article}{}
@@ -719,8 +573,6 @@
     \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{W}
-    \field{sortinithash}{W}
     \field{number}{10}
     \field{pages}{1240\bibrangedash 1255}
     \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
@@ -730,42 +582,776 @@
     \field{year}{1978}
   \endentry
 
-  \entry{zhang2015dual}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=ZX}{%
+  \entry{specification1991bosch}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SC}{%
+         family={Specification},
+         familyi={S\bibinitperiod},
+         given={CAN},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SC1}
+    \strng{fullhash}{SC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{75}
+    \field{title}{Bosch}
+    \field{volume}{50}
+    \field{journaltitle}{Robert Bosch GmbH, Postfach}
+    \field{year}{1991}
+  \endentry
+
+  \entry{texasSLOA101B}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{note}{Rev. B}
+    \field{number}{SLOA101B}
+    \field{title}{Introduction to the Controller Area Network (CAN)}
+    \field{month}{05}
+    \field{year}{2016}
+  \endentry
+
+  \entry{AN228}{manual}{}
+    \list{organization}{1}{%
+      {Microchip}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN 228}
+    \field{title}{A CAN Physical Layer Discussion}
+    \field{year}{2002}
+  \endentry
+
+  \entry{ISO11898_4}{report}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Road vehicles — Controller area network (CAN) — Part 4:
+  Time-triggeredcommunication}}
+    \list{institution}{1}{%
+      {International Organization for Standardization}%
+    }
+    \field{type}{Standard}
+    \field{month}{08}
+    \field{year}{2004}
+  \endentry
+
+  \entry{AN5293}{misc}{}
+    \list{organization}{1}{%
+      {STMicroelectronics}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{{Migration guide from STM32F7 Series to STMH74x/75x,
+  STM32H72x/73x and STMH7A3/7Bx devices}}
+    \field{month}{08}
+    \field{year}{2022}
+  \endentry
+
+  \entry{longevity_ST}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Product Longevity - STMicroelectronics}}
+    \verb{url}
+    \verb https://www.st.com/content/st_com/en/about/quality-and-reliability/pr
+    \verb oduct-longevity.html#10-year-longevity
+    \endverb
+  \endentry
+
+  \entry{ICM42688pDatasheet}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{ICM-42688-P | TDK InvenSense}}
+    \verb{url}
+    \verb https://invensense.tdk.com/products/motion-tracking/6-axis/icm-42688-
+    \verb p/
+    \endverb
+    \field{month}{10}
+    \field{year}{2023}
+  \endentry
+
+  \entry{zhang2010sensing}{article}{}
+    \name{author}{1}{}{%
+      {{hash=ZK}{%
          family={Zhang},
          familyi={Z\bibinitperiod},
-         given={Xiaolin},
-         giveni={X\bibinitperiod},
+         given={Kai},
+         giveni={K\bibinitperiod},
       }}%
-      {{hash=LH}{%
-         family={Li},
+    }
+    \strng{namehash}{ZK1}
+    \strng{fullhash}{ZK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Sensing and control of mems accelerometers using Kalman
+  filter}
+    \field{year}{2010}
+  \endentry
+
+  \entry{borodacz2022review}{article}{}
+    \name{author}{3}{}{%
+      {{hash=BK}{%
+         family={Borodacz},
+         familyi={B\bibinitperiod},
+         given={Krystian},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Szczepa{\'n}ski},
+         familyi={S\bibinitperiod},
+         given={Cezary},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=PS}{%
+         family={Popowski},
+         familyi={P\bibinitperiod},
+         given={Stanis{\l}aw},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Emerald Publishing Limited}%
+    }
+    \strng{namehash}{BKSCPS1}
+    \strng{fullhash}{BKSCPS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{45\bibrangedash 59}
+    \field{title}{Review and selection of commercially available IMU for a
+  short time inertial navigation}
+    \field{volume}{94}
+    \field{journaltitle}{Aircraft Engineering and Aerospace Technology}
+    \field{year}{2022}
+  \endentry
+
+  \entry{baro_1}{manual}{}
+    \list{organization}{1}{%
+      {AMSYS}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{How to measure absolute pressure using piezoresistive sensing
+  elements}
+    \field{month}{07}
+    \field{year}{2009}
+  \endentry
+
+  \entry{baro_2}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LAC}{%
+         family={Lapadatu},
          familyi={L\bibinitperiod},
-         given={Haisheng},
+         given={A.\bibnamedelima C.},
+         giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=JH}{%
+         family={Jakobsen},
+         familyi={J\bibinitperiod},
+         given={H.},
          giveni={H\bibinitperiod},
       }}%
-      {{hash=YD}{%
-         family={Yuan},
-         familyi={Y\bibinitperiod},
-         given={Dandan},
-         giveni={D\bibinitperiod},
+    }
+    \list{publisher}{1}{%
+      {William Andrew Publishing}%
+    }
+    \strng{namehash}{LACJH1}
+    \strng{fullhash}{LACJH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{599\bibrangedash 610}
+    \field{title}{Anodic Bonding}
+    \field{journaltitle}{Handbook of Silicon Based MEMS Materials and
+  Technologies (pp. 599-610)}
+    \field{year}{2015}
+  \endentry
+
+  \entry{baro_3}{online}{}
+    \name{author}{1}{}{%
+      {{hash=A}{%
+         family={Avnet},
+         familyi={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{MEMS pressure sensors}
+    \verb{url}
+    \verb https://www.avnet.com/wps/portal/abacus/solutions/technologies/sensor
+    \verb s/pressure-sensors/core-technologies/mems/
+    \endverb
+    \field{urlday}{31}
+    \field{urlmonth}{10}
+    \field{urlyear}{2023}
+  \endentry
+
+  \entry{cavcar2000international}{article}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Cavcar},
+         familyi={C\bibinitperiod},
+         given={Mustafa},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{9}
+    \field{pages}{1\bibrangedash 6}
+    \field{title}{The international standard atmosphere (ISA)}
+    \field{volume}{30}
+    \field{journaltitle}{Anadolu University, Turkey}
+    \field{year}{2000}
+  \endentry
+
+  \entry{baro_4}{manual}{}
+    \list{organization}{1}{%
+      {Infineon}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN-201610-PL38-01}
+    \field{title}{Choosing the Right Pressure Sensor}
+    \field{year}{2016}
+  \endentry
+
+  \entry{baro_5}{online}{}
+    \name{author}{1}{}{%
+      {{hash=MS}{%
+         family={Microelectronics},
+         familyi={M\bibinitperiod},
+         given={ST},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MS1}
+    \strng{fullhash}{MS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Product Longevity}
+    \verb{url}
+    \verb https://www.st.com/content/st_com/en/about/quality-and-reliability/pr
+    \verb oduct-longevity.html#10-year-longevity
+    \endverb
+    \field{urlday}{11}
+    \field{urlmonth}{05}
+    \field{urlyear}{2023}
+  \endentry
+
+  \entry{STM32F746ZG}{misc}{}
+    \list{organization}{1}{%
+      {STMicroelectronics}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{{ARM based Cortex M7 32b MCU+FPU, 462DMIPS, up to 1MB
+  Flash/320+16+ 4KB RAM, USB OTG HS/FS, ethernet, 18 TIMs, 3 ADCs, 25 com itf,
+  cam and LCD.}}
+    \verb{url}
+    \verb https://www.st.com/en/microcontrollers-microprocessors/stm32f746zg.ht
+    \verb ml#documentation
+    \endverb
+    \field{month}{02}
+    \field{year}{2016}
+  \endentry
+
+  \entry{SN65VHD230}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{SN65HVD23x 3.3-V CAN Bus Transceivers}}
+    \verb{url}
+    \verb https://www.ti.com/product/es-mx/SN65HVD230
+    \endverb
+    \field{month}{04}
+    \field{year}{2018}
+  \endentry
+
+  \entry{CiAconnector}{manual}{}
+    \list{organization}{1}{%
+      {CAN in Automation}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{CiA 106}
+    \field{title}{Connector Pin Assignment Recommendations}
+    \field{month}{06}
+    \field{year}{2022}
+  \endentry
+
+  \entry{DroneCAN}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{DroneCAN}
+    \verb{url}
+    \verb https://dronecan.github.io/
+    \endverb
+    \field{urlday}{11}
+    \field{urlmonth}{09}
+    \field{urlyear}{2023}
+  \endentry
+
+  \entry{garberoglio2019diseno}{article}{}
+    \name{author}{4}{}{%
+      {{hash=GL}{%
+         family={Garberoglio},
+         familyi={G\bibinitperiod},
+         given={Leonardo},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=PC}{%
+         family={Pose},
+         familyi={P\bibinitperiod},
+         given={Claudio},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MI}{%
+         family={Mas},
+         familyi={M\bibinitperiod},
+         given={Ignacio},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=GJI}{%
+         family={Giribet},
+         familyi={G\bibinitperiod},
+         given={Juan\bibnamedelima Ignacio},
+         giveni={J\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GL+1}
+    \strng{fullhash}{GLPCMIGJI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{29\bibrangedash 38}
+    \field{title}{Dise{\~n}o de un autopiloto para peque{\~n}os veh{\'\i}culos
+  no tripulados}
+    \field{volume}{3}
+    \field{journaltitle}{Elektron}
+    \field{year}{2019}
+  \endentry
+
+  \entry{ZLDO1117QG33TA}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Automotive Compliant 1A Low Dropout Positive Regulator with
+  Fixed and Ajdustable Outputs.}
+    \verb{url}
+    \verb https://www.diodes.com/assets/Datasheets/ZLDO1117Q.pdf
+    \endverb
+    \field{month}{10}
+    \field{year}{2016}
+  \endentry
+
+  \entry{TOSHIBALDO}{manual}{}
+    \list{organization}{1}{%
+      {TOSHIBA}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{Basics of Low-Dropout (LDO) Regulator ICs}
+    \field{month}{03}
+    \field{year}{2021}
+  \endentry
+
+  \entry{SLVA072}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{Technical Review of Low Dropout Voltage Regulator Operation
+  and Performance}
+    \field{month}{08}
+    \field{year}{1999}
+  \endentry
+
+  \entry{AN1482}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{AN-1482 LDO Regulator Stability Using Ceramic Output
+  Capacitors}
+    \field{month}{04}
+    \field{year}{2013}
+  \endentry
+
+  \entry{HolybroPM02PowerModule}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Holybro PM02 V3 Power Module}
+    \verb{url}
+    \verb https://docs.px4.io/main/en/power_module/holybro_pm02.html
+    \endverb
+    \field{urlday}{13}
+    \field{urlmonth}{09}
+    \field{urlyear}{2023}
+  \endentry
+
+  \entry{IMUpcb_1}{manual}{}
+    \list{organization}{1}{%
+      {TDK Invensense}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN-000262}
+    \field{title}{PCB Design Guidelines For ICM-40607x, ICM-40608, ICM-42xxx,
+  ICM-43xxx and ICM-45xxx Products}
+    \field{month}{01}
+    \field{year}{2021}
+  \endentry
+
+  \entry{IMUpcb_2}{manual}{}
+    \list{organization}{1}{%
+      {ST}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{TN0019}
+    \field{title}{Surface Mounting Guidelines for MEMS Sensors in a QFPN
+  Package}
+    \field{month}{03}
+    \field{year}{2020}
+  \endentry
+
+  \entry{IMUpcb_3}{manual}{}
+    \list{organization}{1}{%
+      {Maxim Integrated}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{APP 5604}
+    \field{title}{Soldering Guidelines for MEMS Inertial Sensors}
+    \field{month}{03}
+    \field{year}{2013}
+  \endentry
+
+  \entry{nelson1990fault}{article}{}
+    \name{author}{1}{}{%
+      {{hash=NVP}{%
+         family={Nelson},
+         familyi={N\bibinitperiod},
+         given={Victor\bibnamedelima P.},
+         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{NVP1}
+    \strng{fullhash}{NVP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{7}
+    \field{pages}{19\bibrangedash 25}
+    \field{title}{Fault-tolerant computing: Fundamental concepts}
+    \field{volume}{23}
+    \field{journaltitle}{Computer}
+    \field{year}{1990}
+  \endentry
+
+  \entry{prasad1989fault}{article}{}
+    \name{author}{1}{}{%
+      {{hash=PVB}{%
+         family={Prasad},
+         familyi={P\bibinitperiod},
+         given={Vinod\bibnamedelima B},
+         giveni={V\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{PVB1}
+    \strng{fullhash}{PVB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{17\bibrangedash 21}
+    \field{title}{Fault tolerant digital systems}
+    \field{volume}{8}
+    \field{journaltitle}{IEEE Potentials}
+    \field{year}{1989}
+  \endentry
+
+  \entry{kopetz2003time}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=BG}{%
+         family={Bauer},
+         familyi={B\bibinitperiod},
+         given={G{\"u}nther},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{KHBG1}
+    \strng{fullhash}{KHBG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{112\bibrangedash 126}
+    \field{title}{The time-triggered architecture}
+    \field{volume}{91}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{2003}
+  \endentry
+
+  \entry{baleani2003fault}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=BM}{%
+         family={Baleani},
+         familyi={B\bibinitperiod},
+         given={Massimo},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Ferrari},
+         familyi={F\bibinitperiod},
+         given={Alberto},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=ML}{%
+         family={Mangeruca},
+         familyi={M\bibinitperiod},
+         given={Leonardo},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=SVA}{%
+         family={Sangiovanni-Vincentelli},
+         familyi={S\bibinithyphendelim V\bibinitperiod},
+         given={Alberto},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Peri},
+         familyi={P\bibinitperiod},
+         given={Maurizio},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=PS}{%
+         family={Pezzini},
+         familyi={P\bibinitperiod},
+         given={Saverio},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BM+1}
+    \strng{fullhash}{BMFAMLSVAPMPS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 2003 international conference on
+  Compilers, architecture and synthesis for embedded systems}
+    \field{pages}{170\bibrangedash 177}
+    \field{title}{Fault-tolerant platforms for automotive safety-critical
+  applications}
+    \field{year}{2003}
+  \endentry
+
+  \entry{SolanoPerez2019}{thesis}{}
+    \name{author}{1}{}{%
+      {{hash=SPFF}{%
+         family={Solano\bibnamedelima Pérez},
+         familyi={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+         given={Federico\bibnamedelima Fidencio},
+         giveni={F\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SPFF1}
+    \strng{fullhash}{SPFF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Development of a Redundancy System for Autopilots}
+    \field{year}{2019}
+  \endentry
+
+  \entry{lyons1962use}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LRE}{%
+         family={Lyons},
+         familyi={L\bibinitperiod},
+         given={Robert\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=VW}{%
+         family={Vanderkulk},
+         familyi={V\bibinitperiod},
+         given={Wouter},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IBM}%
+    }
+    \strng{namehash}{LREVW1}
+    \strng{fullhash}{LREVW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{2}
+    \field{pages}{200\bibrangedash 209}
+    \field{title}{The use of triple-modular redundancy to improve computer
+  reliability}
+    \field{volume}{6}
+    \field{journaltitle}{IBM journal of research and development}
+    \field{year}{1962}
+  \endentry
+
+  \entry{TMRwebPage}{online}{}
+    \field{labeltitlesource}{title}
+    \field{title}{Triple Modular Redundancy}
+    \verb{url}
+    \verb https://www.layerzero.com/Innovations/Industry-Firsts/Triple-Modular-
+    \verb Redundancy.html
+    \endverb
+  \endentry
+
+  \entry{wikipedia-contributors-2023}{article}{}
+    \name{author}{1}{}{%
+      {{hash=cW}{%
+         family={contributors},
+         familyi={c\bibinitperiod},
+         given={Wikipedia},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{cW1}
+    \strng{fullhash}{cW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{{Byzantine fault}}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/Byzantine_fault#
+    \endverb
+    \field{journaltitle}{Wikipedia}
+    \field{month}{07}
+    \field{year}{2023}
+  \endentry
+
+  \entry{kopetz1998time}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
       }}%
     }
     \list{organization}{1}{%
-      {Atlantis Press}%
+      {IEEE}%
     }
-    \strng{namehash}{ZXLHYD1}
-    \strng{fullhash}{ZXLHYD1}
+    \strng{namehash}{KH1}
+    \strng{fullhash}{KH1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{Z}
-    \field{sortinithash}{Z}
-    \field{booktitle}{2015 2nd International Conference on Electrical, Computer
-  Engineering and Electronics}
-    \field{pages}{785\bibrangedash 791}
-    \field{title}{Dual redundant flight control system design for
-  microminiature UAV}
-    \field{year}{2015}
+    \field{booktitle}{Proceedings 19th IEEE Real-Time Systems Symposium (Cat.
+  No. 98CB36279)}
+    \field{pages}{168\bibrangedash 177}
+    \field{title}{The time-triggered model of computation}
+    \field{year}{1998}
+  \endentry
+
+  \entry{pont2008patterns}{book}{}
+    \name{author}{1}{}{%
+      {{hash=PMJ}{%
+         family={Pont},
+         familyi={P\bibinitperiod},
+         given={Michael\bibnamedelima J},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {TTE System, Ltd}%
+    }
+    \strng{namehash}{PMJ1}
+    \strng{fullhash}{PMJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Patterns for time-triggered embedded systems}
+    \field{year}{2008}
+  \endentry
+
+  \entry{leen2002ttcan}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LG}{%
+         family={Leen},
+         familyi={L\bibinitperiod},
+         given={Gabriel},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=HD}{%
+         family={Heffernan},
+         familyi={H\bibinitperiod},
+         given={Donal},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{LGHD1}
+    \strng{fullhash}{LGHD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{2}
+    \field{pages}{77\bibrangedash 94}
+    \field{title}{TTCAN: a new time-triggered controller area network}
+    \field{volume}{26}
+    \field{journaltitle}{Microprocessors and Microsystems}
+    \field{year}{2002}
+  \endentry
+
+  \entry{anceaume1998performance}{thesis}{}
+    \name{author}{2}{}{%
+      {{hash=AE}{%
+         family={Anceaume},
+         familyi={A\bibinitperiod},
+         given={Emmanuelle},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=PI}{%
+         family={Puaut},
+         familyi={P\bibinitperiod},
+         given={Isabelle},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AEPI1}
+    \strng{fullhash}{AEPI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Performance evaluation of clock synchronization algorithms}
+    \list{institution}{1}{%
+      {INRIA}%
+    }
+    \field{type}{phdthesis}
+    \field{year}{1998}
+  \endentry
+
+  \entry{de2013overview}{article}{}
+    \name{author}{2}{}{%
+      {{hash=dOJEM}{%
+         prefix={de},
+         prefixi={d\bibinitperiod},
+         family={Oliveira\bibnamedelima Junior},
+         familyi={O\bibinitperiod\bibinitdelim J\bibinitperiod},
+         given={Eloy\bibnamedelima Martins},
+         giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=eSMLdO}{%
+         prefix={e},
+         prefixi={e},
+         family={Souza},
+         familyi={S\bibinitperiod},
+         given={Marcelo Lopes de\bibnamedelima Oliveira},
+         giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim
+  d\bibinitperiod\bibinitdelim O\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {SAE Technical Paper}%
+    }
+    \strng{namehash}{OJEMdSMLdOe1}
+    \strng{fullhash}{OJEMdSMLdOe1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{An Overview of Clock Synchronization Algorithms and their
+  Uses in Aerospace and Automotive Systems}
+    \field{year}{2013}
   \endentry
 \enddatalist
 \endinput

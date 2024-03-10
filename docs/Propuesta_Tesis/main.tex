@@ -1,0 +1,38 @@
+\documentclass[a4paper,10pt]{article}
+
+% import en preámbulo
+\input{preamble.tex}
+
+%Directorio de imágenes
+\graphicspath{{./img/}}
+
+%Para bibliografía
+\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+\addbibresource{bib_file.bib}
+
+\usepackage{csquotes}
+
+\DeclareRobustCommand*{\ora}{\overrightarrow}
+
+% Comienzo del documento
+\begin{document}
+
+\input{cover.tex}
+
+\input{descripcion_del_proyecto.tex}
+
+\input{antecedentes.tex}
+
+\input{areas_profesionales_de_relevancia.tex}
+
+\input{objetivos.tex}
+
+\input{necesidad_y_soluciones_existentes.tex}
+
+\input{alcance.tex}
+
+\input{entregables.tex}
+
+\printbibliography[heading=bibintoc]
+
+\end{document}

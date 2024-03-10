@@ -7,7 +7,7 @@
 \graphicspath{{./img/}}
 
 %Para bibliografía
-\usepackage[backend=bibtex]{biblatex}
+\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
 \addbibresource{bib_file.bib}
 
 \usepackage{csquotes}
@@ -21,15 +21,27 @@
 \tableofcontents
 \newpage
 
-\input{Objetivo.tex}
+\include{Objetivo.tex}
 
-\input{Introduccion.tex}
+\include{Introduccion.tex}
 
-\input{Tolerancia_a_Fallas.tex}
+\include{Estado_del_Arte.tex}
 
-\input{Arquitectura_Propuesta.tex}
+\include{Requerimientos_Tolerancia_Fallas.tex}
 
-\input{Conclusiones.tex}
+\include{Diseno_y_Construccion_de_la_Computadora_de_Vuelo.tex}
+
+\include{Demostracion_del_Funcionamiento_de_la_Computadora_de_Vuelo.tex}
+
+\include{Tolerancia_a_Fallas.tex}
+
+\include{Arquitectura_Propuesta.tex}
+
+\include{Conclusiones.tex}
+
+\include{Agradecimientos.tex}
+
+\include{Apendices.tex}
 
 \printbibliography[heading=bibintoc]
 

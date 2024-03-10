@@ -1,0 +1,193 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Estado del Arte}{5}{section.3}\protected@file@percent }
+\newlabel{sec:estado_del_arte}{{3}{5}{Estado del Arte}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{5}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Arquitectura del sistema principal de vuelo, conformado por varias computadoras en una configuración redundante. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{5}{figure.caption.3}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:Boeing_777_diagrama}{{1}{5}{Arquitectura del sistema principal de vuelo, conformado por varias computadoras en una configuración redundante. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo típico en aviones. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{6}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:diagrama_general_fly_by_wire}{{2}{6}{Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo típico en aviones. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Bus de Comunicaciones}{7}{subsubsection.3.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {yeh1996triple}.\relax }}{7}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:ARINC_629_bus}{{3}{7}{Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \cite {yeh1996triple}.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Comparación de Resultados y Tolerancia a Fallas}{8}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:votacion_sensores}{{4}{8}{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{8}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{8}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \blx@tocontentsinit {0}\cite {embention-2023}.\relax }}{9}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:Veronte_Embention}{{5}{9}{Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \cite {embention-2023}.\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{9}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Imagen que demuestra la sincronización entre 3 microcontroladores que realizan las mismas tareas en paralelo. La imagen se extrajo de \blx@tocontentsinit {0}\cite {hiergeist2017internal}.\relax }}{10}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:frame_lock_approach}{{6}{10}{Imagen que demuestra la sincronización entre 3 microcontroladores que realizan las mismas tareas en paralelo. La imagen se extrajo de \cite {hiergeist2017internal}.\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A pesar de que los 3 módulos redundantes funcionen correctamente, una falla del árbitro se traduce directamente en un error en el sistema. Esto lo vuelve un punto singular de falla.\relax }}{11}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:falla_arbitro}{{7}{11}{A pesar de que los 3 módulos redundantes funcionen correctamente, una falla del árbitro se traduce directamente en un error en el sistema. Esto lo vuelve un punto singular de falla.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Diagrama en bloques del sistema de redundancia doble. Las CPU1 y CPU2 comparan sus resultados y envían sus salidas al bloque \textit  {Output control}. A través de un bloque árbitro se selecciona a cuál de las dos CPU será la que controle los actuadores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {zhang2015dual}.\relax }}{11}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:FCC_dual_FPGA}{{8}{11}{Diagrama en bloques del sistema de redundancia doble. Las CPU1 y CPU2 comparan sus resultados y envían sus salidas al bloque \textit {Output control}. A través de un bloque árbitro se selecciona a cuál de las dos CPU será la que controle los actuadores. La imagen se extrajo de \cite {zhang2015dual}.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Diagrama en bloques del sistema redundante de \blx@tocontentsinit {0}\cite {wang2008development}. Cada uno de los nodos tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit  {Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.\relax }}{12}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:RS_485_sync}{{9}{12}{Diagrama en bloques del sistema redundante de \cite {wang2008development}. Cada uno de los nodos tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit {Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Arquitectura de la computadora de vuelo utilizada en \blx@tocontentsinit {0}\cite {thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit  {Electronic Speed Controller} (ESC).\relax }}{12}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:ROS_redundancy}{{10}{12}{Arquitectura de la computadora de vuelo utilizada en \cite {thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit {Electronic Speed Controller} (ESC).\relax }{figure.caption.12}{}}
+\@setckpt{Estado_del_Arte}{
+\setcounter{page}{13}
+\setcounter{equation}{0}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{section}{3}
+\setcounter{subsection}{2}
+\setcounter{subsubsection}{2}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{10}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{float@type}{4}
+\setcounter{caption@flags}{0}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{blindtext}{1}
+\setcounter{Blindtext}{5}
+\setcounter{blind@countparstart}{0}
+\setcounter{blindlist}{0}
+\setcounter{blindlistlevel}{0}
+\setcounter{blindlist@level}{0}
+\setcounter{blind@listcount}{0}
+\setcounter{blind@levelcount}{0}
+\setcounter{blind@randomcount}{0}
+\setcounter{blind@randommax}{0}
+\setcounter{blind@pangramcount}{0}
+\setcounter{blind@pangrammax}{0}
+\setcounter{AM@survey}{0}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{0}
+\setcounter{bookmark@seq@number}{9}
+\setcounter{nlinenum}{0}
+\setcounter{mydef}{0}
+\setcounter{@pps}{0}
+\setcounter{@ppsavesec}{0}
+\setcounter{@ppsaveapp}{0}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{39}
+\setcounter{maxnames}{3}
+\setcounter{minnames}{1}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{0}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{0}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{blx@maxsection}{0}
+\setcounter{blx@maxsegment@0}{0}
+\setcounter{blx@sectionciteorder@0}{39}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{section@level}{3}
+}
