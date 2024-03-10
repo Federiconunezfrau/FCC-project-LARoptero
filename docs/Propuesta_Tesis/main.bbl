@@ -1,0 +1,240 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{8682048}{article}{}
+    \name{author}{9}{}{%
+      {{hash=SH}{%
+         family={Shakhatreh},
+         familyi={S\bibinitperiod},
+         given={Hazim},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=SAH}{%
+         family={Sawalmeh},
+         familyi={S\bibinitperiod},
+         given={Ahmad\bibnamedelima H.},
+         giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=AFA}{%
+         family={Al-Fuqaha},
+         familyi={A\bibinithyphendelim F\bibinitperiod},
+         given={Ala},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=DZ}{%
+         family={Dou},
+         familyi={D\bibinitperiod},
+         given={Zuochao},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=AE}{%
+         family={Almaita},
+         familyi={A\bibinitperiod},
+         given={Eyad},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=KI}{%
+         family={Khalil},
+         familyi={K\bibinitperiod},
+         given={Issa},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=ONS}{%
+         family={Othman},
+         familyi={O\bibinitperiod},
+         given={Noor\bibnamedelima Shamsiah},
+         giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Khreishah},
+         familyi={K\bibinitperiod},
+         given={Abdallah},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GM}{%
+         family={Guizani},
+         familyi={G\bibinitperiod},
+         given={Mohsen},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SH+1}
+    \strng{fullhash}{SHSAHAFADZAEKIONSKAGM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/ACCESS.2019.2909530
+    \endverb
+    \field{pages}{48572\bibrangedash 48634}
+    \field{title}{Unmanned Aerial Vehicles (UAVs): A Survey on Civil
+  Applications and Key Research Challenges}
+    \field{volume}{7}
+    \field{journaltitle}{IEEE Access}
+    \field{year}{2019}
+  \endentry
+
+  \entry{EASAcots}{report}{}
+    \name{author}{2}{}{%
+      {{hash=FF}{%
+         family={Faubladier},
+         familyi={F\bibinitperiod},
+         given={Frédéric},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=RD}{%
+         family={Rambaud},
+         familyi={R\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FFRD1}
+    \strng{fullhash}{FFRD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Safety Implications of the use of system-on-chip (SoC) on
+  commercial off-the-shelf (COTS) devices in airborne critical applications}
+    \list{institution}{1}{%
+      {EASA}%
+    }
+    \field{year}{2008}
+  \endentry
+
+  \entry{garberoglio2019diseno}{article}{}
+    \name{author}{4}{}{%
+      {{hash=GL}{%
+         family={Garberoglio},
+         familyi={G\bibinitperiod},
+         given={Leonardo},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=PC}{%
+         family={Pose},
+         familyi={P\bibinitperiod},
+         given={Claudio},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=MI}{%
+         family={Mas},
+         familyi={M\bibinitperiod},
+         given={Ignacio},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=GJI}{%
+         family={Giribet},
+         familyi={G\bibinitperiod},
+         given={Juan\bibnamedelima Ignacio},
+         giveni={J\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GL+1}
+    \strng{fullhash}{GLPCMIGJI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{29\bibrangedash 38}
+    \field{title}{Dise{\~n}o de un autopiloto para peque{\~n}os veh{\'\i}culos
+  no tripulados}
+    \field{volume}{3}
+    \field{journaltitle}{Elektron}
+    \field{year}{2019}
+  \endentry
+
+  \entry{hiergeist2018implementation}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Hiergeist},
+         familyi={H\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SG}{%
+         family={Seifert},
+         familyi={S\bibinitperiod},
+         given={Georg},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HSSG1}
+    \strng{fullhash}{HSSG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2018 IEEE/AIAA 37th Digital Avionics Systems Conference
+  (DASC)}
+    \field{pages}{1\bibrangedash 10}
+    \field{title}{Implementation of a SPI based redundancy network for SoC
+  based UAV FCCs and achieving synchronization}
+    \field{year}{2018}
+  \endentry
+
+  \entry{zhang2020architecture}{article}{}
+    \name{author}{2}{}{%
+      {{hash=ZX}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Xunying},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=ZX}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Xiaodong},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{ZXZX1}
+    \strng{fullhash}{ZXZX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{3944\bibrangedash 3954}
+    \field{title}{Architecture design of distributed redundant flight control
+  computer based on time-triggered buses for UAVs}
+    \field{volume}{21}
+    \field{journaltitle}{IEEE Sensors Journal}
+    \field{year}{2020}
+  \endentry
+
+  \entry{collinson2023introduction}{book}{}
+    \name{author}{1}{}{%
+      {{hash=CRP}{%
+         family={Collinson},
+         familyi={C\bibinitperiod},
+         given={Richard\bibnamedelima PG},
+         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Nature}%
+    }
+    \strng{namehash}{CRP1}
+    \strng{fullhash}{CRP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Introduction to avionics systems}
+    \field{year}{2023}
+  \endentry
+\enddatalist
+\endinput
