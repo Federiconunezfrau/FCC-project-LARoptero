@@ -1,0 +1,4 @@
+../Core/Src/localClock.cpp:20:6:void localClock_constructor(localClock_t*, TIM_HandleTypeDef*, STM32::gpio*)	24	static
+../Core/Src/localClock.cpp:26:6:void localClock_start(localClock_t*)	16	static
+../Core/Src/localClock.cpp:34:6:void localClock_stop(localClock_t*)	16	static
+../Core/Src/localClock.cpp:40:13:timestamp_t localClock_get_timestamp(localClock_t*)	24	static
