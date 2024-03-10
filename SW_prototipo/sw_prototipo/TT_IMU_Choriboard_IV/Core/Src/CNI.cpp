@@ -182,7 +182,6 @@ CNI_status_t CNI_send_msg(uint32_t msgHandle)
 CNI_status_t CNI_receive_msg(uint32_t msgHandle)
 {
 	CAN_RxHeaderTypeDef auxCANrxHeader;
-	//uint8_t auxRxData[MAX_LEN_PAYLOAD_CAN];
 	serviceID rxMsgServiceID;
 	uint32_t rxNodeID;
 	uint32_t i;

@@ -8985,7 +8985,7 @@ LOAD /opt/st/stm32cubeide_1.14.0/plugins/com.st.stm32cube.ide.mcu.externaltools.
  .debug_rnglists
                 0x00000000000013bd      0x131 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
 
-.debug_macro    0x0000000000000000    0x2ec42
+.debug_macro    0x0000000000000000    0x2ec54
  .debug_macro   0x0000000000000000      0x267 ./Core/Src/CNI.o
  .debug_macro   0x0000000000000267      0xb80 ./Core/Src/CNI.o
  .debug_macro   0x0000000000000de7      0x29f ./Core/Src/CNI.o
@@ -9145,26 +9145,26 @@ LOAD /opt/st/stm32cubeide_1.14.0/plugins/com.st.stm32cube.ide.mcu.externaltools.
  .debug_macro   0x000000000002ba9c      0x3b5 ./Core/Src/taskCompareAttitude.o
  .debug_macro   0x000000000002be51      0x328 ./Core/Src/taskEstimateAttitude.o
  .debug_macro   0x000000000002c179      0x3bf ./Core/Src/taskHeartbeat.o
- .debug_macro   0x000000000002c538      0x52c ./Core/Src/taskIMUgetData.o
- .debug_macro   0x000000000002ca64      0x229 ./Core/Src/taskWatchdog.o
- .debug_macro   0x000000000002cc8d      0x210 ./Core/Src/tim.o
- .debug_macro   0x000000000002ce9d      0x250 ./Core/Src/timeTriggeredScheduler.o
- .debug_macro   0x000000000002d0ed       0x72 ./Core/Src/timeTriggeredTask.o
- .debug_macro   0x000000000002d15f      0x21b ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
- .debug_macro   0x000000000002d37a      0x1ff ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o
- .debug_macro   0x000000000002d579      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
- .debug_macro   0x000000000002d770      0x1fd ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
- .debug_macro   0x000000000002d96d      0x2c3 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o
- .debug_macro   0x000000000002dc30      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o
- .debug_macro   0x000000000002de27      0x205 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.o
- .debug_macro   0x000000000002e02c      0x20f ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
- .debug_macro   0x000000000002e23b      0x21b ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
- .debug_macro   0x000000000002e456      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
- .debug_macro   0x000000000002e64d      0x206 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
- .debug_macro   0x000000000002e853      0x1f8 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
- .debug_macro   0x000000000002ea4b      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
+ .debug_macro   0x000000000002c538      0x53e ./Core/Src/taskIMUgetData.o
+ .debug_macro   0x000000000002ca76      0x229 ./Core/Src/taskWatchdog.o
+ .debug_macro   0x000000000002cc9f      0x210 ./Core/Src/tim.o
+ .debug_macro   0x000000000002ceaf      0x250 ./Core/Src/timeTriggeredScheduler.o
+ .debug_macro   0x000000000002d0ff       0x72 ./Core/Src/timeTriggeredTask.o
+ .debug_macro   0x000000000002d171      0x21b ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
+ .debug_macro   0x000000000002d38c      0x1ff ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o
+ .debug_macro   0x000000000002d58b      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
+ .debug_macro   0x000000000002d782      0x1fd ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
+ .debug_macro   0x000000000002d97f      0x2c3 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o
+ .debug_macro   0x000000000002dc42      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o
+ .debug_macro   0x000000000002de39      0x205 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.o
+ .debug_macro   0x000000000002e03e      0x20f ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
+ .debug_macro   0x000000000002e24d      0x21b ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
+ .debug_macro   0x000000000002e468      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
+ .debug_macro   0x000000000002e65f      0x206 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
+ .debug_macro   0x000000000002e865      0x1f8 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
+ .debug_macro   0x000000000002ea5d      0x1f7 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
 
-.debug_line     0x0000000000000000    0x24943
+.debug_line     0x0000000000000000    0x24945
  .debug_line    0x0000000000000000      0x9be ./Core/Src/CNI.o
  .debug_line    0x00000000000009be      0x90c ./Core/Src/attitudeEstimator.o
  .debug_line    0x00000000000012ca      0x7fc ./Core/Src/can.o
@@ -9176,41 +9176,41 @@ LOAD /opt/st/stm32cubeide_1.14.0/plugins/com.st.stm32cube.ide.mcu.externaltools.
  .debug_line    0x00000000000067de      0x6f9 ./Core/Src/iwdg.o
  .debug_line    0x0000000000006ed7      0x7b6 ./Core/Src/main.o
  .debug_line    0x000000000000768d      0xf68 ./Core/Src/modeFailSilent.o
- .debug_line    0x00000000000085f5     0x137b ./Core/Src/modeNormal.o
- .debug_line    0x0000000000009970      0x3a1 ./Core/Src/myUtils.o
- .debug_line    0x0000000000009d11      0x764 ./Core/Src/spi.o
- .debug_line    0x000000000000a475      0x6ec ./Core/Src/stm32f7xx_hal_msp.o
- .debug_line    0x000000000000ab61      0x7de ./Core/Src/stm32f7xx_it.o
- .debug_line    0x000000000000b33f      0x7e7 ./Core/Src/syscalls.o
- .debug_line    0x000000000000bb26      0x4b8 ./Core/Src/sysmem.o
- .debug_line    0x000000000000bfde      0x73c ./Core/Src/system.o
- .debug_line    0x000000000000c71a      0x76b ./Core/Src/system_stm32f7xx.o
- .debug_line    0x000000000000ce85      0x77d ./Core/Src/taskCNIreceiveData.o
- .debug_line    0x000000000000d602      0x777 ./Core/Src/taskCNIsendData.o
- .debug_line    0x000000000000dd79      0xcad ./Core/Src/taskCompareAttitude.o
- .debug_line    0x000000000000ea26      0x901 ./Core/Src/taskEstimateAttitude.o
- .debug_line    0x000000000000f327      0xe2a ./Core/Src/taskHeartbeat.o
- .debug_line    0x0000000000010151     0x118a ./Core/Src/taskIMUgetData.o
- .debug_line    0x00000000000112db      0x77a ./Core/Src/taskWatchdog.o
- .debug_line    0x0000000000011a55      0x759 ./Core/Src/tim.o
- .debug_line    0x00000000000121ae      0x97f ./Core/Src/timeTriggeredScheduler.o
- .debug_line    0x0000000000012b2d      0x3b3 ./Core/Src/timeTriggeredTask.o
- .debug_line    0x0000000000012ee0       0x7a ./Core/Startup/startup_stm32f746zgtx.o
- .debug_line    0x0000000000012f5a      0x9fc ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
- .debug_line    0x0000000000013956     0x1136 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o
- .debug_line    0x0000000000014a8c      0xc82 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
- .debug_line    0x000000000001570e      0xb70 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
- .debug_line    0x000000000001627e     0x36d3 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o
- .debug_line    0x0000000000019951      0x827 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o
- .debug_line    0x000000000001a178      0x777 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.o
- .debug_line    0x000000000001a8ef      0x968 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
- .debug_line    0x000000000001b257      0xe3a ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
- .debug_line    0x000000000001c091      0xdf0 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
- .debug_line    0x000000000001ce81     0x1f52 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
- .debug_line    0x000000000001edd3     0x404e ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
- .debug_line    0x0000000000022e21     0x1b22 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
+ .debug_line    0x00000000000085f5     0x137d ./Core/Src/modeNormal.o
+ .debug_line    0x0000000000009972      0x3a1 ./Core/Src/myUtils.o
+ .debug_line    0x0000000000009d13      0x764 ./Core/Src/spi.o
+ .debug_line    0x000000000000a477      0x6ec ./Core/Src/stm32f7xx_hal_msp.o
+ .debug_line    0x000000000000ab63      0x7de ./Core/Src/stm32f7xx_it.o
+ .debug_line    0x000000000000b341      0x7e7 ./Core/Src/syscalls.o
+ .debug_line    0x000000000000bb28      0x4b8 ./Core/Src/sysmem.o
+ .debug_line    0x000000000000bfe0      0x73c ./Core/Src/system.o
+ .debug_line    0x000000000000c71c      0x76b ./Core/Src/system_stm32f7xx.o
+ .debug_line    0x000000000000ce87      0x77d ./Core/Src/taskCNIreceiveData.o
+ .debug_line    0x000000000000d604      0x777 ./Core/Src/taskCNIsendData.o
+ .debug_line    0x000000000000dd7b      0xcad ./Core/Src/taskCompareAttitude.o
+ .debug_line    0x000000000000ea28      0x901 ./Core/Src/taskEstimateAttitude.o
+ .debug_line    0x000000000000f329      0xe2a ./Core/Src/taskHeartbeat.o
+ .debug_line    0x0000000000010153     0x118a ./Core/Src/taskIMUgetData.o
+ .debug_line    0x00000000000112dd      0x77a ./Core/Src/taskWatchdog.o
+ .debug_line    0x0000000000011a57      0x759 ./Core/Src/tim.o
+ .debug_line    0x00000000000121b0      0x97f ./Core/Src/timeTriggeredScheduler.o
+ .debug_line    0x0000000000012b2f      0x3b3 ./Core/Src/timeTriggeredTask.o
+ .debug_line    0x0000000000012ee2       0x7a ./Core/Startup/startup_stm32f746zgtx.o
+ .debug_line    0x0000000000012f5c      0x9fc ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
+ .debug_line    0x0000000000013958     0x1136 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o
+ .debug_line    0x0000000000014a8e      0xc82 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
+ .debug_line    0x0000000000015710      0xb70 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
+ .debug_line    0x0000000000016280     0x36d3 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o
+ .debug_line    0x0000000000019953      0x827 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o
+ .debug_line    0x000000000001a17a      0x777 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.o
+ .debug_line    0x000000000001a8f1      0x968 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
+ .debug_line    0x000000000001b259      0xe3a ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
+ .debug_line    0x000000000001c093      0xdf0 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
+ .debug_line    0x000000000001ce83     0x1f52 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
+ .debug_line    0x000000000001edd5     0x404e ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
+ .debug_line    0x0000000000022e23     0x1b22 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
 
-.debug_str      0x0000000000000000   0x102c7d
+.debug_str      0x0000000000000000   0x102cad
  .debug_str     0x0000000000000000    0xe90df ./Core/Src/CNI.o
                                       0xe997b (size before relaxing)
  .debug_str     0x00000000000e90df     0x5a65 ./Core/Src/attitudeEstimator.o
@@ -9261,43 +9261,43 @@ LOAD /opt/st/stm32cubeide_1.14.0/plugins/com.st.stm32cube.ide.mcu.externaltools.
                                       0xec5ed (size before relaxing)
  .debug_str     0x00000000000fea82       0xa6 ./Core/Src/taskHeartbeat.o
                                       0xec224 (size before relaxing)
- .debug_str     0x00000000000feb28      0x106 ./Core/Src/taskIMUgetData.o
-                                      0xf00d4 (size before relaxing)
- .debug_str     0x00000000000fec2e       0xb0 ./Core/Src/taskWatchdog.o
+ .debug_str     0x00000000000feb28      0x136 ./Core/Src/taskIMUgetData.o
+                                      0xf0104 (size before relaxing)
+ .debug_str     0x00000000000fec5e       0xb0 ./Core/Src/taskWatchdog.o
                                       0xe8de6 (size before relaxing)
- .debug_str     0x00000000000fecde      0x151 ./Core/Src/tim.o
+ .debug_str     0x00000000000fed0e      0x151 ./Core/Src/tim.o
                                       0xe95f9 (size before relaxing)
- .debug_str     0x00000000000fee2f      0x5d4 ./Core/Src/timeTriggeredScheduler.o
+ .debug_str     0x00000000000fee5f      0x5d4 ./Core/Src/timeTriggeredScheduler.o
                                       0xea3ed (size before relaxing)
- .debug_str     0x00000000000ff403       0x2e ./Core/Src/timeTriggeredTask.o
+ .debug_str     0x00000000000ff433       0x2e ./Core/Src/timeTriggeredTask.o
                                        0x4325 (size before relaxing)
- .debug_str     0x00000000000ff431       0x34 ./Core/Startup/startup_stm32f746zgtx.o
+ .debug_str     0x00000000000ff461       0x34 ./Core/Startup/startup_stm32f746zgtx.o
                                          0x84 (size before relaxing)
- .debug_str     0x00000000000ff465      0x399 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
+ .debug_str     0x00000000000ff495      0x399 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o
                                       0xe8fc6 (size before relaxing)
- .debug_str     0x00000000000ff7fe      0x350 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o
+ .debug_str     0x00000000000ff82e      0x350 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o
                                       0xe8c63 (size before relaxing)
- .debug_str     0x00000000000ffb4e      0x323 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
+ .debug_str     0x00000000000ffb7e      0x323 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o
                                       0xe8fb1 (size before relaxing)
- .debug_str     0x00000000000ffe71       0xe1 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
+ .debug_str     0x00000000000ffea1       0xe1 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o
                                       0xe871b (size before relaxing)
- .debug_str     0x00000000000fff52      0xdf2 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o
+ .debug_str     0x00000000000fff82      0xdf2 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o
                                       0xe9873 (size before relaxing)
- .debug_str     0x0000000000100d44       0x89 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o
+ .debug_str     0x0000000000100d74       0x89 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o
                                       0xe8b19 (size before relaxing)
- .debug_str     0x0000000000100dcd       0xe2 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.o
+ .debug_str     0x0000000000100dfd       0xe2 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.o
                                       0xe853f (size before relaxing)
- .debug_str     0x0000000000100eaf      0x1d1 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
+ .debug_str     0x0000000000100edf      0x1d1 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o
                                       0xe88cc (size before relaxing)
- .debug_str     0x0000000000101080      0x247 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
+ .debug_str     0x00000000001010b0      0x247 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o
                                       0xe89bf (size before relaxing)
- .debug_str     0x00000000001012c7      0x147 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
+ .debug_str     0x00000000001012f7      0x147 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o
                                       0xe88f7 (size before relaxing)
- .debug_str     0x000000000010140e      0x56d ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
+ .debug_str     0x000000000010143e      0x56d ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.o
                                       0xe8e9d (size before relaxing)
- .debug_str     0x000000000010197b      0xe83 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
+ .debug_str     0x00000000001019ab      0xe83 ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o
                                       0xea007 (size before relaxing)
- .debug_str     0x00000000001027fe      0x47f ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
+ .debug_str     0x000000000010282e      0x47f ./Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o
                                       0xe9431 (size before relaxing)
 
 .debug_frame    0x0000000000000000     0x7994

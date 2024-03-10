@@ -40,6 +40,6 @@ typedef enum
 void attitudeEstimator_constructor  ( float, float );
 void attitudeEstimator_set_imu_data ( IMUData );
 void attitudeEstimator_update       ( void );
-void attitudeEstimator_read_data     ( attitudeData_t* );
+void attitudeEstimator_read_data    ( attitudeData_t* );
 
 #endif /* INC_ATTITUDEESTIMATOR_H_ */

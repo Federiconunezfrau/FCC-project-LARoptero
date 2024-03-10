@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_rnglists 000014ee  00000000  00000000  0004b580  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0002ec42  00000000  00000000  0004ca6e  2**0
+ 17 .debug_macro  0002ec54  00000000  00000000  0004ca6e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00024943  00000000  00000000  0007b6b0  2**0
+ 18 .debug_line   00024945  00000000  00000000  0007b6c2  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00102c7d  00000000  00000000  0009fff3  2**0
+ 19 .debug_str    00102cad  00000000  00000000  000a0007  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  00007994  00000000  00000000  001a2c70  2**2
+ 20 .debug_frame  00007994  00000000  00000000  001a2cb4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000078  00000000  00000000  001aa604  2**0
+ 21 .debug_line_str 00000078  00000000  00000000  001aa648  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1293,7 +1293,7 @@ CNI_status_t CNI_send_msg(uint32_t msgHandle)
  8000f1a:	440b      	add	r3, r1
  8000f1c:	3304      	adds	r3, #4
  8000f1e:	681b      	ldr	r3, [r3, #0]
- 8000f20:	2b01      	cmp	r3, #1
+ 8000f20:	2b03      	cmp	r3, #3
  8000f22:	d001      	beq.n	8000f28 <_Z12CNI_send_msgm+0x30>
 	{
 		return CNI_MSG_HANDLE_TX_NOT_ALLOWED;
@@ -1315,7 +1315,7 @@ CNI_status_t CNI_send_msg(uint32_t msgHandle)
 	_instance.mCANtxHeader_.StdId = CAN_MSG_MAKE_STD_ID_TX(currentMsgServiceID);
  8000f3a:	693b      	ldr	r3, [r7, #16]
  8000f3c:	00db      	lsls	r3, r3, #3
- 8000f3e:	f043 0301 	orr.w	r3, r3, #1
+ 8000f3e:	f043 0303 	orr.w	r3, r3, #3
  8000f42:	4a34      	ldr	r2, [pc, #208]	; (8001014 <_Z12CNI_send_msgm+0x11c>)
  8000f44:	6093      	str	r3, [r2, #8]
 
@@ -1408,7 +1408,7 @@ CNI_status_t CNI_send_msg(uint32_t msgHandle)
  8000fda:	440b      	add	r3, r1
  8000fdc:	3304      	adds	r3, #4
  8000fde:	681b      	ldr	r3, [r3, #0]
- 8000fe0:	2b01      	cmp	r3, #1
+ 8000fe0:	2b03      	cmp	r3, #3
  8000fe2:	d0b9      	beq.n	8000f58 <_Z12CNI_send_msgm+0x60>
 	}
 
@@ -1477,7 +1477,7 @@ CNI_status_t CNI_receive_msg(uint32_t msgHandle)
  800103e:	440b      	add	r3, r1
  8001040:	3304      	adds	r3, #4
  8001042:	681b      	ldr	r3, [r3, #0]
- 8001044:	2b01      	cmp	r3, #1
+ 8001044:	2b03      	cmp	r3, #3
  8001046:	d101      	bne.n	800104c <_Z15CNI_receive_msgm+0x30>
 	{
 		return CNI_MSG_HANDLE_RX_NOT_ALLOWED;
@@ -1664,7 +1664,7 @@ CNI_status_t CNI_update_msg_content(uint32_t msgHandle, uint8_t *payload, uint32
  800116e:	440b      	add	r3, r1
  8001170:	3304      	adds	r3, #4
  8001172:	681b      	ldr	r3, [r3, #0]
- 8001174:	2b01      	cmp	r3, #1
+ 8001174:	2b03      	cmp	r3, #3
  8001176:	d001      	beq.n	800117c <_Z22CNI_update_msg_contentmPhm+0x34>
 	{
 		return CNI_MSG_HANDLE_TX_NOT_ALLOWED;
@@ -10140,7 +10140,7 @@ void normal_mode_run(void)
 // ==================== Datos IMU raw ====================
 	taskIMUgetData_constructor(&taskIMUgetData, DELAY_TASK_IMU_TICKS_NORMAL, PERIOD_TASK_IMU_TICKS_NORMAL, WCET_TASK_IMU_US, BCET_TASK_IMU_US,
  8004be8:	f207 400c 	addw	r0, r7, #1036	; 0x40c
- 8004bec:	2301      	movs	r3, #1
+ 8004bec:	2307      	movs	r3, #7
  8004bee:	9303      	str	r3, [sp, #12]
  8004bf0:	f107 031c 	add.w	r3, r7, #28
  8004bf4:	9302      	str	r3, [sp, #8]
@@ -10156,20 +10156,20 @@ void normal_mode_run(void)
 
 	taskCNIsendData_constructor(&taskCNIsendIMUdata, DELAY_TASK_CNI_SEND_IMU_TICKS_NORMAL, PERIOD_TASK_CNI_SEND_IMU_TICKS_NORMAL, WCET_TASK_CNI_SEND_IMU_US, BCET_TASK_CNI_SEND_IMU_US,
  8004c0a:	f507 707d 	add.w	r0, r7, #1012	; 0x3f4
- 8004c0e:	2301      	movs	r3, #1
+ 8004c0e:	2307      	movs	r3, #7
  8004c10:	9301      	str	r3, [sp, #4]
  8004c12:	2300      	movs	r3, #0
  8004c14:	9300      	str	r3, [sp, #0]
  8004c16:	2364      	movs	r3, #100	; 0x64
  8004c18:	2264      	movs	r2, #100	; 0x64
- 8004c1a:	2102      	movs	r1, #2
+ 8004c1a:	2104      	movs	r1, #4
  8004c1c:	f000 fbe6 	bl	80053ec <_Z27taskCNIsendData_constructorP17taskCNIsendData_tmmmmm>
 			HANDLE_MSG_CNI_SEND_IMU_DATA);
 // =======================================================
 // =================== Datos attitude  ===================
 	taskEstimateAttitude_constructor(&taskEstimateAttitude, DELAY_TASK_ESTIMATE_ATTITUDE_TICKS_NORMAL, PERIOD_TASK_ESTIMATE_ATTITUDE_TICKS_NORMAL, WCET_TASK_ESTIMATE_ATTITUDE_US, BCET_TASK_ESTIMATE_ATTITUDE_US,
  8004c20:	f507 7077 	add.w	r0, r7, #988	; 0x3dc
- 8004c24:	230a      	movs	r3, #10
+ 8004c24:	230c      	movs	r3, #12
  8004c26:	9301      	str	r3, [sp, #4]
  8004c28:	2300      	movs	r3, #0
  8004c2a:	9300      	str	r3, [sp, #0]
@@ -10181,49 +10181,47 @@ void normal_mode_run(void)
 
 	taskCNIsendData_constructor(&taskCNIsendAttitudeData, DELAY_TASK_CNI_SEND_ATTITUDE_TICKS_NORMAL, PERIOD_TASK_CNI_SEND_ATTITUDE_TICKS_NORMAL, WCET_TASK_CNI_SEND_ATTITUDE_US, BCET_TASK_CNI_SEND_ATTITUDE_US,
  8004c36:	f507 7071 	add.w	r0, r7, #964	; 0x3c4
- 8004c3a:	230a      	movs	r3, #10
+ 8004c3a:	230c      	movs	r3, #12
  8004c3c:	9301      	str	r3, [sp, #4]
  8004c3e:	2300      	movs	r3, #0
  8004c40:	9300      	str	r3, [sp, #0]
  8004c42:	2364      	movs	r3, #100	; 0x64
  8004c44:	2264      	movs	r2, #100	; 0x64
- 8004c46:	2106      	movs	r1, #6
+ 8004c46:	2108      	movs	r1, #8
  8004c48:	f000 fbd0 	bl	80053ec <_Z27taskCNIsendData_constructorP17taskCNIsendData_tmmmmm>
+			HANDLE_MSG_CNI_SEND_ATTITUDE_DATA);
 #if SETTINGS_NODE_ID!=1
 	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData1, DELAY_TASK_CNI_RECEIVE_ATTITUDE_1_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_1_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_1_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_1_US,
-			HANDLE_MSG_CNI_ATTITUDE_1);
-#endif
-#if SETTINGS_NODE_ID!=2
-	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData2, DELAY_TASK_CNI_RECEIVE_ATTITUDE_2_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_2_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_2_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_2_US,
  8004c4c:	f507 705c 	add.w	r0, r7, #880	; 0x370
- 8004c50:	230b      	movs	r3, #11
+ 8004c50:	230a      	movs	r3, #10
  8004c52:	9301      	str	r3, [sp, #4]
  8004c54:	2300      	movs	r3, #0
  8004c56:	9300      	str	r3, [sp, #0]
  8004c58:	2364      	movs	r3, #100	; 0x64
  8004c5a:	2264      	movs	r2, #100	; 0x64
- 8004c5c:	2107      	movs	r1, #7
+ 8004c5c:	2106      	movs	r1, #6
  8004c5e:	f000 fb9d 	bl	800539c <_Z30taskCNIreceiveData_constructorP20taskCNIreceiveData_tmmmmm>
-			HANDLE_MSG_CNI_ATTITUDE_2);
+			HANDLE_MSG_CNI_ATTITUDE_1);
 #endif
-#if SETTINGS_NODE_ID!=3
-	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData3, DELAY_TASK_CNI_RECEIVE_ATTITUDE_3_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_3_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_3_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_3_US,
+#if SETTINGS_NODE_ID!=2
+	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData2, DELAY_TASK_CNI_RECEIVE_ATTITUDE_2_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_2_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_2_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_2_US,
  8004c62:	f507 7056 	add.w	r0, r7, #856	; 0x358
- 8004c66:	230c      	movs	r3, #12
+ 8004c66:	230b      	movs	r3, #11
  8004c68:	9301      	str	r3, [sp, #4]
  8004c6a:	2300      	movs	r3, #0
  8004c6c:	9300      	str	r3, [sp, #0]
  8004c6e:	2364      	movs	r3, #100	; 0x64
  8004c70:	2264      	movs	r2, #100	; 0x64
- 8004c72:	2108      	movs	r1, #8
+ 8004c72:	2107      	movs	r1, #7
  8004c74:	f000 fb92 	bl	800539c <_Z30taskCNIreceiveData_constructorP20taskCNIreceiveData_tmmmmm>
+	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData3, DELAY_TASK_CNI_RECEIVE_ATTITUDE_3_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_3_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_3_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_3_US,
 			HANDLE_MSG_CNI_ATTITUDE_3);
 #endif
 // =======================================================
 //================== Comparacion attitude ================
 	taskCompareAttitude_constructor(&taskCompareAttitudeData, DELAY_TASK_COMPARE_ATTITUDE_TICKS_NORMAL, PERIOD_TASK_COMPARE_ATTITUDE_TICKS_NORMAL, WCET_TASK_COMPARE_ATTITUDE_US, BCET_TASK_COMPARE_ATTITUDE_US,
  8004c78:	f507 7068 	add.w	r0, r7, #928	; 0x3a0
- 8004c7c:	230d      	movs	r3, #13
+ 8004c7c:	2313      	movs	r3, #19
  8004c7e:	9304      	str	r3, [sp, #16]
  8004c80:	230c      	movs	r3, #12
  8004c82:	9303      	str	r3, [sp, #12]
@@ -10241,13 +10239,13 @@ void normal_mode_run(void)
 
 	taskCNIsendData_constructor(&taskCNIsendCompareAttitudeData, DELAY_TASK_CNI_SEND_COMPARE_ATTITUDE_TICKS_NORMAL, PERIOD_TASK_CNI_SEND_COMPARE_ATTITUDE_TICKS_NORMAL, WCET_TASK_CNI_SEND_COMPARE_ATTITUDE_US, BCET_TASK_CNI_SEND_COMPARE_ATTITUDE_US,
  8004c9a:	f507 7062 	add.w	r0, r7, #904	; 0x388
- 8004c9e:	230d      	movs	r3, #13
+ 8004c9e:	2313      	movs	r3, #19
  8004ca0:	9301      	str	r3, [sp, #4]
  8004ca2:	2300      	movs	r3, #0
  8004ca4:	9300      	str	r3, [sp, #0]
  8004ca6:	2364      	movs	r3, #100	; 0x64
  8004ca8:	2264      	movs	r2, #100	; 0x64
- 8004caa:	210a      	movs	r1, #10
+ 8004caa:	210c      	movs	r1, #12
  8004cac:	f000 fb9e 	bl	80053ec <_Z27taskCNIsendData_constructorP17taskCNIsendData_tmmmmm>
 			HANDLE_MSG_CNI_COMPARE_ATTITUDE);
 // =======================================================
@@ -10324,18 +10322,18 @@ void normal_mode_run(void)
  8004d48:	f000 ffd8 	bl	8005cfc <_Z31timeTriggeredScheduler_add_taskP19timeTriggeredTask_t>
 #if SETTINGS_NODE_ID!=1
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIreceiveAttitudeData1);
-#endif
-#if SETTINGS_NODE_ID!=2
-	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIreceiveAttitudeData2);
  8004d4c:	f507 735c 	add.w	r3, r7, #880	; 0x370
  8004d50:	4618      	mov	r0, r3
  8004d52:	f000 ffd3 	bl	8005cfc <_Z31timeTriggeredScheduler_add_taskP19timeTriggeredTask_t>
 #endif
-#if SETTINGS_NODE_ID!=3
-	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIreceiveAttitudeData3);
+#if SETTINGS_NODE_ID!=2
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIreceiveAttitudeData2);
  8004d56:	f507 7356 	add.w	r3, r7, #856	; 0x358
  8004d5a:	4618      	mov	r0, r3
  8004d5c:	f000 ffce 	bl	8005cfc <_Z31timeTriggeredScheduler_add_taskP19timeTriggeredTask_t>
+#endif
+#if SETTINGS_NODE_ID!=3
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIreceiveAttitudeData3);
 #endif
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCompareAttitudeData);
  8004d60:	f507 7368 	add.w	r3, r7, #928	; 0x3a0
@@ -12296,6 +12294,8 @@ void taskIMUgetData_start(taskIMUgetData_t *me)
  800583c:	687b      	ldr	r3, [r7, #4]
  800583e:	edc3 7a09 	vstr	s15, [r3, #36]	; 0x24
 
+
+
 	me->mLED_->write(GPIO_ST::LOW);
  8005842:	687b      	ldr	r3, [r7, #4]
  8005844:	6b5b      	ldr	r3, [r3, #52]	; 0x34
@@ -12379,9 +12379,9 @@ void taskIMUgetData_update(taskIMUgetData_t *me)
  80058ea:	edd3 7a09 	vldr	s15, [r3, #36]	; 0x24
  80058ee:	ee77 7a67 	vsub.f32	s15, s14, s15
  80058f2:	edc7 7a06 	vstr	s15, [r7, #24]
-//	imuData.gyroX  -= 1.9228363;
-//	imuData.gyroY  -= -0.710372925;
-//	imuData.gyroZ  -= 0.3465271;
+	//imuData.accelZ += BIAS_ACCEL_Z;
+// ================================================
+#endif
 
 	// Se le pasan las mediciones del sensor al attitude estimator
 	attitudeEstimator_set_imu_data(imuData);

@@ -10,6 +10,11 @@
 #include "CNI.h"
 
 
+//#define SIMULATE_FAULT_IMU
+#define BIAS_GYRO_X 2
+#define BIAS_ACCEL_Z 0.5
+#define BIAS_ACCEL_X 0.5
+
 #define LEN_IMU_CNI_DATA 24
 
 #define N_CALIBRATION_SAMPLES 100
@@ -75,6 +80,8 @@ void taskIMUgetData_start(taskIMUgetData_t *me)
 	me->mIMUoffsetData_.gyroY  /= N_CALIBRATION_SAMPLES;
 	me->mIMUoffsetData_.gyroZ  /= N_CALIBRATION_SAMPLES;
 
+
+
 	me->mLED_->write(GPIO_ST::LOW);
 }
 
@@ -94,12 +101,17 @@ void taskIMUgetData_update(taskIMUgetData_t *me)
 	imuData.gyroY  -= me->mIMUoffsetData_.gyroY;
 	imuData.gyroZ  -= me->mIMUoffsetData_.gyroZ;
 
-//	imuData.accelX -= -0.011428223;
-//	imuData.accelY -= -0.00600830093;
-//	imuData.accelZ -= 0.0048828125;
-//	imuData.gyroX  -= 1.9228363;
-//	imuData.gyroY  -= -0.710372925;
-//	imuData.gyroZ  -= 0.3465271;
+#ifdef SIMULATE_FAULT_IMU
+// BIAS GYRO X ====================================
+	//imuData.gyroX += BIAS_GYRO_X;
+// ================================================
+// BIAS ACCEL X ===================================
+	imuData.accelX += BIAS_ACCEL_X;
+// ================================================
+// BIAS ACCEL Z ===================================
+	//imuData.accelZ += BIAS_ACCEL_Z;
+// ================================================
+#endif
 
 	// Se le pasan las mediciones del sensor al attitude estimator
 	attitudeEstimator_set_imu_data(imuData);
