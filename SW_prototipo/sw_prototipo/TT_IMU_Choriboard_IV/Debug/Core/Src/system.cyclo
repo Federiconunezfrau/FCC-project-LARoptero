@@ -1,0 +1,2 @@
+../Core/Src/system.cpp:24:6:void system_init()	2
+../Core/Src/system.cpp:38:6:void system_run_active_mode()	2

@@ -1,0 +1,4 @@
+../Core/Src/taskEstimateAttitude.cpp:15:6:void taskEstimateAttitude_constructor(taskEstimateAttitude_t*, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)	32	static
+../Core/Src/taskEstimateAttitude.cpp:22:6:void taskEstimateAttitude_destructor(taskEstimateAttitude_t*)	16	static
+../Core/Src/taskEstimateAttitude.cpp:28:6:void taskEstimateAttitude_start(taskEstimateAttitude_t*)	16	static
+../Core/Src/taskEstimateAttitude.cpp:34:6:void taskEstimateAttitude_update(taskEstimateAttitude_t*)	32	static

@@ -1,0 +1,4 @@
+../Core/taskUARTsendData.cpp:14:6:void taskUARTsendData_constructor(taskUARTsendData_t*, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint8_t)	32	static
+../Core/taskUARTsendData.cpp:22:6:void taskUARTsendData_destructor(taskUARTsendData_t*)	16	static
+../Core/taskUARTsendData.cpp:28:6:void taskUARTsendData_start(taskUARTsendData_t*)	16	static
+../Core/taskUARTsendData.cpp:34:6:void taskUARTsendData_update(taskUARTsendData_t*)	48	static
