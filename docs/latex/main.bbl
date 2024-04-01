@@ -17,6 +17,255 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{collinson2023introduction}{book}{}
+    \name{author}{1}{}{%
+      {{hash=CRP}{%
+         family={Collinson},
+         familyi={C\bibinitperiod},
+         given={Richard\bibnamedelima PG},
+         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Nature}%
+    }
+    \strng{namehash}{CRP1}
+    \strng{fullhash}{CRP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Introduction to avionics systems}
+    \field{year}{2023}
+  \endentry
+
+  \entry{adams2011survey}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=ASM}{%
+         family={Adams},
+         familyi={A\bibinitperiod},
+         given={Stuart\bibnamedelima M},
+         giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=FCJ}{%
+         family={Friedland},
+         familyi={F\bibinitperiod},
+         given={Carol\bibnamedelima J},
+         giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ASMFCJ1}
+    \strng{fullhash}{ASMFCJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{9th international workshop on remote sensing for disaster
+  response}
+    \field{pages}{1\bibrangedash 8}
+    \field{title}{A survey of unmanned aerial vehicle (UAV) usage for imagery
+  collection in disaster research and management}
+    \field{volume}{8}
+    \field{year}{2011}
+  \endentry
+
+  \entry{villa2016overview}{article}{}
+    \name{author}{5}{}{%
+      {{hash=VTF}{%
+         family={Villa},
+         familyi={V\bibinitperiod},
+         given={Tommaso\bibnamedelima Francesco},
+         giveni={T\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=GF}{%
+         family={Gonzalez},
+         familyi={G\bibinitperiod},
+         given={Felipe},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=MB}{%
+         family={Miljievic},
+         familyi={M\bibinitperiod},
+         given={Branka},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=RZD}{%
+         family={Ristovski},
+         familyi={R\bibinitperiod},
+         given={Zoran\bibnamedelima D},
+         giveni={Z\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=ML}{%
+         family={Morawska},
+         familyi={M\bibinitperiod},
+         given={Lidia},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MDPI}%
+    }
+    \strng{namehash}{VTF+1}
+    \strng{fullhash}{VTFGFMBRZDML1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{7}
+    \field{pages}{1072}
+    \field{title}{An overview of small unmanned aerial vehicles for air quality
+  measurements: Present applications and future prospectives}
+    \field{volume}{16}
+    \field{journaltitle}{Sensors}
+    \field{year}{2016}
+  \endentry
+
+  \entry{mcgonigle2008unmanned}{article}{}
+    \name{author}{6}{}{%
+      {{hash=MA}{%
+         family={McGonigle},
+         familyi={M\bibinitperiod},
+         given={AJS},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=AA}{%
+         family={Aiuppa},
+         familyi={A\bibinitperiod},
+         given={A},
+         giveni={A},
+      }}%
+      {{hash=GG}{%
+         family={Giudice},
+         familyi={G\bibinitperiod},
+         given={G},
+         giveni={G},
+      }}%
+      {{hash=TG}{%
+         family={Tamburello},
+         familyi={T\bibinitperiod},
+         given={G},
+         giveni={G},
+      }}%
+      {{hash=HA}{%
+         family={Hodson},
+         familyi={H\bibinitperiod},
+         given={AJ},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Gurrieri},
+         familyi={G\bibinitperiod},
+         given={S},
+         giveni={S},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Wiley Online Library}%
+    }
+    \strng{namehash}{MA+1}
+    \strng{fullhash}{MAAAGGTGHAGS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{6}
+    \field{title}{Unmanned aerial vehicle measurements of volcanic carbon
+  dioxide fluxes}
+    \field{volume}{35}
+    \field{journaltitle}{Geophysical research letters}
+    \field{year}{2008}
+  \endentry
+
+  \entry{luque2014power}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=LVLF}{%
+         family={Luque-Vega},
+         familyi={L\bibinithyphendelim V\bibinitperiod},
+         given={Luis\bibnamedelima F},
+         giveni={L\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=CTB}{%
+         family={Castillo-Toledo},
+         familyi={C\bibinithyphendelim T\bibinitperiod},
+         given={Bernardino},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=LA}{%
+         family={Loukianov},
+         familyi={L\bibinitperiod},
+         given={Alexander},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=GJLE}{%
+         family={Gonzalez-Jimenez},
+         familyi={G\bibinithyphendelim J\bibinitperiod},
+         given={Luis\bibnamedelima Enrique},
+         giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{LVLF+1}
+    \strng{fullhash}{LVLFCTBLAGJLE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{MELECON 2014-2014 17th IEEE Mediterranean
+  electrotechnical conference}
+    \field{pages}{393\bibrangedash 397}
+    \field{title}{Power line inspection via an unmanned aerial system based on
+  the quadrotor helicopter}
+    \field{year}{2014}
+  \endentry
+
+  \entry{nelson1990fault}{article}{}
+    \name{author}{1}{}{%
+      {{hash=NVP}{%
+         family={Nelson},
+         familyi={N\bibinitperiod},
+         given={Victor\bibnamedelima P.},
+         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{NVP1}
+    \strng{fullhash}{NVP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{7}
+    \field{pages}{19\bibrangedash 25}
+    \field{title}{Fault-tolerant computing: Fundamental concepts}
+    \field{volume}{23}
+    \field{journaltitle}{Computer}
+    \field{year}{1990}
+  \endentry
+
+  \entry{FBWNASA}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Fly-by-Wire Systems Enable Safer, More Efficient Flight |
+  NASA Spinoff}}
+    \verb{url}
+    \verb https://spinoff.nasa.gov/Spinoff2011/t_5.html
+    \endverb
+  \endentry
+
+  \entry{yeh1996triple}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=YYC}{%
+         family={Yeh},
+         familyi={Y\bibinitperiod},
+         given={Ying\bibnamedelima C},
+         giveni={Y\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{YYC1}
+    \strng{fullhash}{YYC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{1996 IEEE Aerospace Applications Conference. Proceedings}
+    \field{pages}{293\bibrangedash 307}
+    \field{title}{Triple-triple redundant 777 primary flight computer}
+    \field{volume}{1}
+    \field{year}{1996}
+  \endentry
+
   \entry{kopetz-2011}{book}{}
     \name{author}{1}{}{%
       {{hash=KH}{%
@@ -42,58 +291,6 @@
     \endverb
     \field{month}{01}
     \field{year}{2011}
-  \endentry
-
-  \entry{FBWNASA}{misc}{}
-    \field{labeltitlesource}{title}
-    \field{title}{{Fly-by-Wire Systems Enable Safer, More Efficient Flight |
-  NASA Spinoff}}
-    \verb{url}
-    \verb https://spinoff.nasa.gov/Spinoff2011/t_5.html
-    \endverb
-  \endentry
-
-  \entry{collinson2023introduction}{book}{}
-    \name{author}{1}{}{%
-      {{hash=CRP}{%
-         family={Collinson},
-         familyi={C\bibinitperiod},
-         given={Richard\bibnamedelima PG},
-         giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer Nature}%
-    }
-    \strng{namehash}{CRP1}
-    \strng{fullhash}{CRP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Introduction to avionics systems}
-    \field{year}{2023}
-  \endentry
-
-  \entry{yeh1996triple}{inproceedings}{}
-    \name{author}{1}{}{%
-      {{hash=YYC}{%
-         family={Yeh},
-         familyi={Y\bibinitperiod},
-         given={Ying\bibnamedelima C},
-         giveni={Y\bibinitperiod\bibinitdelim C\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{YYC1}
-    \strng{fullhash}{YYC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{1996 IEEE Aerospace Applications Conference. Proceedings}
-    \field{pages}{293\bibrangedash 307}
-    \field{title}{Triple-triple redundant 777 primary flight computer}
-    \field{volume}{1}
-    \field{year}{1996}
   \endentry
 
   \entry{zhang2020architecture}{article}{}
@@ -386,254 +583,6 @@
     \endverb
     \field{month}{06}
     \field{year}{2023}
-  \endentry
-
-  \entry{roth2021not}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=RE}{%
-         family={Roth},
-         familyi={R\bibinitperiod},
-         given={Edo},
-         giveni={E\bibinitperiod},
-      }}%
-      {{hash=HA}{%
-         family={Haeberlen},
-         familyi={H\bibinitperiod},
-         given={Andreas},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \list{organization}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{REHA1}
-    \strng{fullhash}{REHA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
-  Applications Symposium (RTAS)}
-    \field{pages}{374\bibrangedash 386}
-    \field{title}{Do Not Overpay for Fault Tolerance!}
-    \field{year}{2021}
-  \endentry
-
-  \entry{lala1994architectural}{article}{}
-    \name{author}{2}{}{%
-      {{hash=LJH}{%
-         family={Lala},
-         familyi={L\bibinitperiod},
-         given={Jaynarayan\bibnamedelima H},
-         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=HRE}{%
-         family={Harper},
-         familyi={H\bibinitperiod},
-         given={Richard\bibnamedelima E},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{LJHHRE1}
-    \strng{fullhash}{LJHHRE1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{1}
-    \field{pages}{25\bibrangedash 40}
-    \field{title}{Architectural principles for safety-critical real-time
-  applications}
-    \field{volume}{82}
-    \field{journaltitle}{Proceedings of the IEEE}
-    \field{year}{1994}
-  \endentry
-
-  \entry{lamport2019byzantine}{incollection}{}
-    \name{author}{3}{}{%
-      {{hash=LL}{%
-         family={Lamport},
-         familyi={L\bibinitperiod},
-         given={Leslie},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=SR}{%
-         family={Shostak},
-         familyi={S\bibinitperiod},
-         given={Robert},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=PM}{%
-         family={Pease},
-         familyi={P\bibinitperiod},
-         given={Marshall},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{LLSRPM1}
-    \strng{fullhash}{LLSRPM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Concurrency: the works of leslie lamport}
-    \field{pages}{203\bibrangedash 226}
-    \field{title}{The Byzantine generals problem}
-    \field{year}{2019}
-  \endentry
-
-  \entry{pease1980reaching}{article}{}
-    \name{author}{3}{}{%
-      {{hash=PM}{%
-         family={Pease},
-         familyi={P\bibinitperiod},
-         given={Marshall},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=SR}{%
-         family={Shostak},
-         familyi={S\bibinitperiod},
-         given={Robert},
-         giveni={R\bibinitperiod},
-      }}%
-      {{hash=LL}{%
-         family={Lamport},
-         familyi={L\bibinitperiod},
-         given={Leslie},
-         giveni={L\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {ACM New York, NY, USA}%
-    }
-    \strng{namehash}{PMSRLL1}
-    \strng{fullhash}{PMSRLL1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{2}
-    \field{pages}{228\bibrangedash 234}
-    \field{title}{Reaching agreement in the presence of faults}
-    \field{volume}{27}
-    \field{journaltitle}{Journal of the ACM (JACM)}
-    \field{year}{1980}
-  \endentry
-
-  \entry{wensley1978sift}{article}{}
-    \name{author}{8}{}{%
-      {{hash=WJH}{%
-         family={Wensley},
-         familyi={W\bibinitperiod},
-         given={John\bibnamedelima H},
-         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=LL}{%
-         family={Lamport},
-         familyi={L\bibinitperiod},
-         given={Leslie},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=GJ}{%
-         family={Goldberg},
-         familyi={G\bibinitperiod},
-         given={Jack},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=GMW}{%
-         family={Green},
-         familyi={G\bibinitperiod},
-         given={Milton\bibnamedelima W},
-         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
-      }}%
-      {{hash=LKN}{%
-         family={Levitt},
-         familyi={L\bibinitperiod},
-         given={Karl\bibnamedelima N},
-         giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod},
-      }}%
-      {{hash=MSPM}{%
-         family={Melliar-Smith},
-         familyi={M\bibinithyphendelim S\bibinitperiod},
-         given={Po\bibnamedelima Mo},
-         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
-      }}%
-      {{hash=SRE}{%
-         family={Shostak},
-         familyi={S\bibinitperiod},
-         given={Robert\bibnamedelima E},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-      {{hash=WCB}{%
-         family={Weinstock},
-         familyi={W\bibinitperiod},
-         given={Charles\bibnamedelima B},
-         giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{WJH+1}
-    \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{10}
-    \field{pages}{1240\bibrangedash 1255}
-    \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
-  aircraft control}
-    \field{volume}{66}
-    \field{journaltitle}{Proceedings of the IEEE}
-    \field{year}{1978}
-  \endentry
-
-  \entry{specification1991bosch}{article}{}
-    \name{author}{1}{}{%
-      {{hash=SC}{%
-         family={Specification},
-         familyi={S\bibinitperiod},
-         given={CAN},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{SC1}
-    \strng{fullhash}{SC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{75}
-    \field{title}{Bosch}
-    \field{volume}{50}
-    \field{journaltitle}{Robert Bosch GmbH, Postfach}
-    \field{year}{1991}
-  \endentry
-
-  \entry{texasSLOA101B}{manual}{}
-    \list{organization}{1}{%
-      {Texas Instruments}%
-    }
-    \field{labeltitlesource}{title}
-    \field{note}{Rev. B}
-    \field{number}{SLOA101B}
-    \field{title}{Introduction to the Controller Area Network (CAN)}
-    \field{month}{05}
-    \field{year}{2016}
-  \endentry
-
-  \entry{AN228}{manual}{}
-    \list{organization}{1}{%
-      {Microchip}%
-    }
-    \field{labeltitlesource}{title}
-    \field{number}{AN 228}
-    \field{title}{A CAN Physical Layer Discussion}
-    \field{year}{2002}
-  \endentry
-
-  \entry{ISO11898_4}{report}{}
-    \field{labeltitlesource}{title}
-    \field{title}{{Road vehicles — Controller area network (CAN) — Part 4:
-  Time-triggeredcommunication}}
-    \list{institution}{1}{%
-      {International Organization for Standardization}%
-    }
-    \field{type}{Standard}
-    \field{month}{08}
-    \field{year}{2004}
   \endentry
 
   \entry{AN5293}{misc}{}
@@ -1014,28 +963,252 @@
     \field{year}{2013}
   \endentry
 
-  \entry{nelson1990fault}{article}{}
-    \name{author}{1}{}{%
-      {{hash=NVP}{%
-         family={Nelson},
-         familyi={N\bibinitperiod},
-         given={Victor\bibnamedelima P.},
-         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
+  \entry{roth2021not}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=RE}{%
+         family={Roth},
+         familyi={R\bibinitperiod},
+         given={Edo},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Haeberlen},
+         familyi={H\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{REHA1}
+    \strng{fullhash}{REHA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
+  Applications Symposium (RTAS)}
+    \field{pages}{374\bibrangedash 386}
+    \field{title}{Do Not Overpay for Fault Tolerance!}
+    \field{year}{2021}
+  \endentry
+
+  \entry{lala1994architectural}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LJH}{%
+         family={Lala},
+         familyi={L\bibinitperiod},
+         given={Jaynarayan\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=HRE}{%
+         family={Harper},
+         familyi={H\bibinitperiod},
+         given={Richard\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
       {IEEE}%
     }
-    \strng{namehash}{NVP1}
-    \strng{fullhash}{NVP1}
+    \strng{namehash}{LJHHRE1}
+    \strng{fullhash}{LJHHRE1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{number}{7}
-    \field{pages}{19\bibrangedash 25}
-    \field{title}{Fault-tolerant computing: Fundamental concepts}
-    \field{volume}{23}
-    \field{journaltitle}{Computer}
-    \field{year}{1990}
+    \field{number}{1}
+    \field{pages}{25\bibrangedash 40}
+    \field{title}{Architectural principles for safety-critical real-time
+  applications}
+    \field{volume}{82}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1994}
+  \endentry
+
+  \entry{lamport2019byzantine}{incollection}{}
+    \name{author}{3}{}{%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=PM}{%
+         family={Pease},
+         familyi={P\bibinitperiod},
+         given={Marshall},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LLSRPM1}
+    \strng{fullhash}{LLSRPM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Concurrency: the works of leslie lamport}
+    \field{pages}{203\bibrangedash 226}
+    \field{title}{The Byzantine generals problem}
+    \field{year}{2019}
+  \endentry
+
+  \entry{pease1980reaching}{article}{}
+    \name{author}{3}{}{%
+      {{hash=PM}{%
+         family={Pease},
+         familyi={P\bibinitperiod},
+         given={Marshall},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM New York, NY, USA}%
+    }
+    \strng{namehash}{PMSRLL1}
+    \strng{fullhash}{PMSRLL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{2}
+    \field{pages}{228\bibrangedash 234}
+    \field{title}{Reaching agreement in the presence of faults}
+    \field{volume}{27}
+    \field{journaltitle}{Journal of the ACM (JACM)}
+    \field{year}{1980}
+  \endentry
+
+  \entry{wensley1978sift}{article}{}
+    \name{author}{8}{}{%
+      {{hash=WJH}{%
+         family={Wensley},
+         familyi={W\bibinitperiod},
+         given={John\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Goldberg},
+         familyi={G\bibinitperiod},
+         given={Jack},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GMW}{%
+         family={Green},
+         familyi={G\bibinitperiod},
+         given={Milton\bibnamedelima W},
+         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=LKN}{%
+         family={Levitt},
+         familyi={L\bibinitperiod},
+         given={Karl\bibnamedelima N},
+         giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=MSPM}{%
+         family={Melliar-Smith},
+         familyi={M\bibinithyphendelim S\bibinitperiod},
+         given={Po\bibnamedelima Mo},
+         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=SRE}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=WCB}{%
+         family={Weinstock},
+         familyi={W\bibinitperiod},
+         given={Charles\bibnamedelima B},
+         giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{WJH+1}
+    \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{10}
+    \field{pages}{1240\bibrangedash 1255}
+    \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
+  aircraft control}
+    \field{volume}{66}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1978}
+  \endentry
+
+  \entry{specification1991bosch}{article}{}
+    \name{author}{1}{}{%
+      {{hash=SC}{%
+         family={Specification},
+         familyi={S\bibinitperiod},
+         given={CAN},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SC1}
+    \strng{fullhash}{SC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{75}
+    \field{title}{Bosch}
+    \field{volume}{50}
+    \field{journaltitle}{Robert Bosch GmbH, Postfach}
+    \field{year}{1991}
+  \endentry
+
+  \entry{texasSLOA101B}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{note}{Rev. B}
+    \field{number}{SLOA101B}
+    \field{title}{Introduction to the Controller Area Network (CAN)}
+    \field{month}{05}
+    \field{year}{2016}
+  \endentry
+
+  \entry{AN228}{manual}{}
+    \list{organization}{1}{%
+      {Microchip}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN 228}
+    \field{title}{A CAN Physical Layer Discussion}
+    \field{year}{2002}
+  \endentry
+
+  \entry{ISO11898_4}{report}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Road vehicles — Controller area network (CAN) — Part 4:
+  Time-triggeredcommunication}}
+    \list{institution}{1}{%
+      {International Organization for Standardization}%
+    }
+    \field{type}{Standard}
+    \field{month}{08}
+    \field{year}{2004}
   \endentry
 
   \entry{prasad1989fault}{article}{}
