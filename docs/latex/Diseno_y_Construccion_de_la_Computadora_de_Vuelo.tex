@@ -9,7 +9,9 @@
 % - Circuitos que implementan cada funcionalidad: selección de componentes, interfaz de comunicación con el micro y circuito diseñado.
 % - Circuito completo y PCB <- Acá mencionar el motivo por el que se hizo el PCB de 4 layers y el motivo por el que todos los componentes van de un solo lado.
 
-En esta sección se presentan los criterios tenidos en cuenta para el diseño y la construcción de la computadora de vuelo. Se presentan cuáles son las funcionalidades de la placa y los circuitos que se implementaron para cumplir con estas. Además, se muestra el análisis de la selección de distintos componentes como sensores y circuitos integrados.
+Como se mencionó en la sección \ref{sec:Introduccion}, la computadora de vuelo es el elemento central de un vehículo aéreo no tripulado. Su tarea principal y la más importante es la de ejecutar los algoritmos de guiado, navegación y control para mantener estable al vehículo y guiarlo en su trayectoria.
+
+En esta sección se presentan los criterios tenidos en cuenta para el diseño y la construcción de la computadora de vuelo. Se presentan las distintas funcionalidades y el análisis de la selección de distintos componentes como sensores y circuitos integrados. Finalmente, se describe el circuito implementado y el diseño del PCB.
 
 %\subsection{Requerimientos y Diseño General}
 
@@ -28,6 +30,135 @@ En esta sección se presentan los criterios tenidos en cuenta para el diseño y 
 %\subsubsection{Funcionalidades Generales}
 
 %\textbf{{\color{red} COMPLETAR}}
+
+\subsection{Funcionalidades de la Computadora de Vuelo}
+
+%El Laboratorio de Automática y Robótica de la FIUBA (LAR) cuenta con plataformas de computadoras de vuelo desarrolladas en el mismo laboratorio, que se utilizan con distintos fines de investigación. Estas computadoras de vuelo han ido incorporando distintas mejoras a lo largo de los años, y se han ido actualizando con nuevos componentes como sensores o microcontroladores. La primera de las versiones cuenta con un microcontrolador ARM Cortex M3, mientras que la última de estas cuenta un ARM Cortex M7 y sensores con mejor rendimiento \cite{garberoglio2019diseno}.
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.5\textwidth]{choriboards_anteriores.png}
+%    \caption{}    
+%\end{figure}
+
+%Hablar un poco de los sensores y componentes que tenían las computadoras anteriores y cómo fueron evolucionando.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Todas las computadoras cuentan con un sistema de navegación inercial INS. Explicar brevemente qué es y por qué es importante.
+
+% Tesis de Claudio:
+%Los sensores inerciales son un tipo de sensores que permiten medir fuerzas específicas y velocidades de giro, mediante el uso de acelerómetros y giróscopos, generalmente ordenados en grupos de tres para medir dichos valores sobre cada eje de la terna. Este tipo de sensores permiten obtener datos a altas frecuencias, y se verá que cumplen un papel vital en la determinación de los ángulos de navegación.
+%
+%Dentro de los instrumentos de medición, pueden identificarse dos grupos. Por un lado, están los sensores cuyos datos son de gran importancia para la estabilidad del UAV, que son los que proveen las mediciones de los acelerómetros y giróscopos. Como ya fue mencionado, éste tipo de datos necesitan una alta frecuencia de actualización, y la demora en adquirir los datos debe ser la mínima posible.
+
+% Tesis de Tournour
+%Uno de los sistemas de navegación utilizados son los sistemas inerciales (INS por sus siglas en inglés). Estos sistemas resuelven las ecuaciones inerciales de la navegación integrando la información de los sensores. Los sensores inerciales utilizados comúnmente son los acelerómetros, para medir aceleraciones, y los giróscopos, para medir velocidades angulares. Existe una amplia variedad de sensores inerciales, pero dados los requerimientos de la aplicación en Vehículo Aéreo No Tripulado (VANT)s los que mejor se adaptan son los sensores microelectromecánicos o MEMS (del inglés Microelectromechanical MEMS Systems). Estos sensores permiten medir una amplia variedad de magnitudes, con las ventajas de su bajo costo, bajo peso, su pequeño tamaño, y su amplio ancho de banda (1kHz aprox.). En la Figura 1.2 se puede observar dos de estos sensores.
+
+Un sistema de navegación permite realizar estimaciones de la pose del vehículo, es decir de la posición y orientación. En la figura \ref{fig:angles_drone} se muestra un UAV con una terna solidaria a este. La forma de indicar la orientación del vehículo es a través de los ángulos denominados \textit{yaw}, \textit{pitch} y \textit{roll}. Estos expresan las rotaciones entre la terna solidaria al vehículo en su posición actual, y una terna inercial, fija en el espacio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{angles_drone.png}
+    \caption{Se utiliza una terna solidaria al vehículo para conocer su orientación en el espacio. Los ángulos \textit{yaw}, \textit{pitch} y \textit{roll} indican rotaciones respecto de una terna inercial.}
+    \label{fig:angles_drone}    
+\end{figure}
+
+El principal sistema utilizado en UAVs es el sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. Por ejemplo, podrían conocerse los ángulos de la figura \ref{fig:angles_drone} a partir de mediciones de velocidad angular. Estos sitemas no solo se utilizan en UAV sino que también en vehículos tripulados y aviones comerciales.
+
+El hecho de integrar las mediciones de velocidad y aceleración en el tiempo, trae consigo que cualquier error de los acelerómetros y los giróscopos decante en errores de posición y de orientación que crecerán con el paso del tiempo a un ritmo acelerado. Típicamente esto se corrige utilizando otro sistema de navegación auxiliar (como por ejemplo a través de GPS) junto con un filtro de Kalman o un sistema equivalente. %En la figura \ref{fig:kalman} se muestra un diagrama en bloques que relaciona al sistema inercial con el sistema auxiliar a través del filtro de Kalman para corregir las salidas del sistema de navegación inercial.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{kalman.png}
+%     \caption{Diagrama en bloques del INS junto con un sistema de navegación auxiliar de GPS. Ambos se complementan a partir del filtro de Kalman.}
+%     \label{fig:kalman}
+% \end{figure}
+
+Para obtener las mediciones de aceleración y velocidad angular en la computadora de vuelo, se utilizará una Unidad de Medición Inercial (IMU). Esta comprende acelerómetros y giróscopos triaxiales, los cuales se denominan sensores inerciales. La IMU ofrece una alta tasa de adquisición de datos, en el orden de las decenas de kHz. Esto es de gran importancia para mantener la estabilidad del vehículo, ya que utilizando acelerómetros y giróscopos es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% El sistema de navegación inercial requiere que se resuelvan muchas ecuaciones. Para eso se incorpora una unidad de procesamiento:
+%
+% Por qué se usa un microcontrolador COTS?
+% - Bajo costo
+% - Tamaño reducido.
+% - La gran cantidad de interfaces que integran.
+% - Necesidad de una respuesta con determinismo temporal.
+
+Para realizar todos los cálculos involucrados en el INS, se utiliza una unidad de procesamiento. Todas las tareas involucradas en navegación y control de vuelo son ejecutadas de forma periódica por la computadora de vuelo. Se requiere asegurar un determinismo temporal, del orden de los milisegundos o decenas de milisegundos. La unidad de procesamiento que mejor se ajusta a las necesidades de este trabajo es un microcontrolador de 32 bits, siendo el principal motivo la gran variedad que pueden encontrarse en el mercado, los cuales ofrecen una muy buena performance por un bajo costo. La gran capacidad de cómputo que ofrecen permite que sea utilizado para otras tareas más, encargándose de la tolerancia a fallas, el almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
+
+Otro factor importante es el gran nivel de integración que han alcanzado en los últimos años, incorporando una gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño de dimensiones pequeñas. 
+
+%Se aprovechan las distintas interfaces que ofrecen estos componentes para 
+
+%Para realizar los cálculos se integra una unidad de procesamiento. Teniendo en cuenta versiones anteriores de la computadora de vuelo, se utiliza un microcontrolador ARM. Además de la retrocompatibilidad con versiones anteriores. Esta también será la unidad central de la placa, encargándose de las tareas de tolerancia a fallas, almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
+
+%Es un sistema de tiempo real, se requiere determinismo en el cálculo.
+
+%Necesidad de tener un tamaño reducido.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La computadora debe ser versátil, en el sentido de que no está pensada para usarse en un único tipo de vehículo, sino que puede utilizarse en vehículos con distintas arquitecturas. Esto implica la necesidad de interfaces varias para conectar módulos y sensores.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La computadora de vuelo debe tener cierta versatilidad para implementar distintas arquitecturas redundantes para la implementación de la tolerancia a fallas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Otras de las funcionalidades son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos, tanto de sensores como de datos pertinentes a la misión del vehículo. A lo largo de esta sección se irán mencionando otras funcionalidades secundarias.
+
+
+
+% El modelo de este componente se ha ido actualizando con las distintas versiones. Con el pasar de los años, los modelos de las primeras versiones se han ido disconinuando, dando paso a nuevos sensores que ofrecen mejores prestaciones, como por ejemplo en cuanto a ruido, offset, sensibilidad, entre otros.
+
+% Los componentes comunes son la IMU, el uso de un microcontrolador cortex MX, salidas PWM para control de motores, tienen muchos puertos auxiliares para conectar varias cosas externas. 
+
+% La placa desarrollada en este trabajo es una nueva versión de la computadora de vuelo. Se busca tal cosa...
+
+
+
+%Mencionar que ya existían otras placas previas del LAR y que ahora se está haciendo una versión nueva.
+
+
+
+
+
+%La computadora debe ser versátil, en el sentido de que no está pensada para usarse en un único tipo de vehículo, sino que puede utilizarse en vehículos con distintas arquitecturas.
+
+%Actualización de los componentes y sensores para mejorar el rendimiento y reemplazar dispositivos obsoletos y/o discontinuados.
+
+%Retrocompatibilidad con módulos de firmware desarrollados para la versión anterior. También retrocompatibilidad en los conectores, de manera de conectar módulos que se utilizaron en la versión anterior.
+
+Electrical transmission of signals and commands is a key element in a FBW system. Modern systems use a serial digital data transmission system with time division multiplexing. The signals can then be transmitted along a network or highway comprising two wires only, as only one set of data is being transmitted at any particular time. Figure 4.2 shows how a digital flight control system is interconnected using a digital data bus.
+
+Entrada de programación
+Debugger
+Botón reset
+IMU (SPI)
+Barómetro Integrado (I2C)
+Magnetómetro Externo (I2C)
+GPS externo (UART)
+Salidas PWM para motores + servos para otra cosa
+DSM para Spektrum
+PPM para radios en general
+Conector fuente externa tipo pixhawk
+microSD
+LEDs Integrados para indicadores
+UARTs adicionales para conectar cosas externas
+I2C adicional
+SPI adicionales
+salidas de 5V y 3V3
+switches para distintas funcionalidades
+
+
+\subsection{Criterios Generales Para la Selección de Componentes}
+
+\subsection{Circuitos y Componentes Seleccionados}
+
+\subsection{Diseño de PCB}
 
 \subsection{Funcionalidades y Diagrama en Bloques}
 

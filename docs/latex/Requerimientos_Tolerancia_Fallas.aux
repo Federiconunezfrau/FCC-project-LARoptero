@@ -1,54 +1,54 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Requerimientos de un Sistema con Tolerancia a Fallas}{38}{section.5}\protected@file@percent }
-\newlabel{sec:requerimentos_sistema_tolerancia_fallas}{{5}{38}{Requerimientos de un Sistema con Tolerancia a Fallas}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Requerimientos Comunes en Sistemas con Redundancias}{38}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Sincronismo de los Nodos}{38}{subsubsection.5.1.1}\protected@file@percent }
-\newlabel{fig:3_4_1_sincronizacion_1}{{27a}{38}{Computadoras de vuelo al inicio de la misión.\relax }{figure.caption.33}{}}
-\newlabel{sub@fig:3_4_1_sincronizacion_1}{{a}{38}{Computadoras de vuelo al inicio de la misión.\relax }{figure.caption.33}{}}
-\newlabel{fig:3_4_1_sincronizacion_2}{{27b}{38}{Al cabo de un período de tiempo, se desincronizarán.\relax }{figure.caption.33}{}}
-\newlabel{sub@fig:3_4_1_sincronizacion_2}{{b}{38}{Al cabo de un período de tiempo, se desincronizarán.\relax }{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.\relax }}{38}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:3_4_1_sincronizacion}{{27}{38}{A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.\relax }{figure.caption.33}{}}
-\newlabel{fig:3_4_1_sincronizacion_3}{{28a}{39}{Las mismas computadoras de vuelo se encargan de la sincronización.\relax }{figure.caption.34}{}}
-\newlabel{sub@fig:3_4_1_sincronizacion_3}{{a}{39}{Las mismas computadoras de vuelo se encargan de la sincronización.\relax }{figure.caption.34}{}}
-\newlabel{fig:3_4_1_sincronizacion_4}{{28b}{39}{En este caso, la sincronización es administrada por el árbitro.\relax }{figure.caption.34}{}}
-\newlabel{sub@fig:3_4_1_sincronizacion_4}{{b}{39}{En este caso, la sincronización es administrada por el árbitro.\relax }{figure.caption.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.\relax }}{39}{figure.caption.34}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Consenso}{39}{subsubsection.5.1.2}\protected@file@percent }
-\newlabel{sec:consenso}{{5.1.2}{39}{Consenso}{subsubsection.5.1.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces La FCC1 entrega un valor distinto de timing a las demás FCCs\relax }}{39}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:3_4_2_consenso_4}{{29}{39}{La FCC1 entrega un valor distinto de timing a las demás FCCs\relax }{figure.caption.35}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.\relax }}{40}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:3_4_2_consenso_5}{{30}{40}{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.\relax }{figure.caption.36}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.\relax }}{41}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:Byzantine_Generals_Problem_5}{{31}{41}{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.\relax }{figure.caption.37}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Las FCC2, 3 y 4 comparten entre sí lo que les dijo la FCC1 a cada una y llegan a la conclusión de que la información es inconsistente.\relax }}{41}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:Byzantine_Generals_Problem_6}{{32}{41}{Las FCC2, 3 y 4 comparten entre sí lo que les dijo la FCC1 a cada una y llegan a la conclusión de que la información es inconsistente.\relax }{figure.caption.38}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Simplificación del Problema}{42}{subsection.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{42}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:red_CAN}{{33}{42}{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.39}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }}{43}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:byzantine_bus_1}{{34}{43}{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }{figure.caption.40}{}}
-\newlabel{fig:byzantine_bus_2}{{35a}{43}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.41}{}}
-\newlabel{sub@fig:byzantine_bus_2}{{a}{43}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.41}{}}
-\newlabel{fig:byzantine_bus_3}{{35b}{43}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.41}{}}
-\newlabel{sub@fig:byzantine_bus_3}{{b}{43}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit  {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }}{43}{figure.caption.41}\protected@file@percent }
-\newlabel{}{{35}{43}{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }{figure.caption.41}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Uso de Componentes COTS}{44}{subsection.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Selección del Bus de Comunicaciones de la Computadora de Vuelo}{44}{subsection.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Descripción del Protocolo CAN}{44}{subsubsection.5.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \blx@tocontentsinit {0}\cite {AN228}.\relax }}{44}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:conxeion_al_bus_CAN}{{36}{44}{La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \cite {AN228}.\relax }{figure.caption.42}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Se muestran los campos de una trama CAN estándar. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{45}{figure.caption.43}\protected@file@percent }
-\newlabel{fig:CAN_frame_standard}{{37}{45}{Se muestran los campos de una trama CAN estándar. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.43}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Se muestran los campos de una trama CAN extendida. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{45}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:CAN_frame_extended}{{38}{45}{Se muestran los campos de una trama CAN extendida. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.44}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Mecanismo para la detección de colisiones. El nodo 2 gana por prioridad y completa su transmisión, mientras que el nodo 1 deja de usar el bus, aguardando a que el nodo 2 finalice.\relax }}{46}{figure.caption.45}\protected@file@percent }
-\newlabel{fig:CAN_arbitration}{{39}{46}{Mecanismo para la detección de colisiones. El nodo 2 gana por prioridad y completa su transmisión, mientras que el nodo 1 deja de usar el bus, aguardando a que el nodo 2 finalice.\relax }{figure.caption.45}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Requerimientos de un Sistema con Tolerancia a Fallas}{39}{section.5}\protected@file@percent }
+\newlabel{sec:requerimentos_sistema_tolerancia_fallas}{{5}{39}{Requerimientos de un Sistema con Tolerancia a Fallas}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Requerimientos Comunes en Sistemas con Redundancias}{39}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Sincronismo de los Nodos}{39}{subsubsection.5.1.1}\protected@file@percent }
+\newlabel{fig:3_4_1_sincronizacion_1}{{28a}{39}{Computadoras de vuelo al inicio de la misión.\relax }{figure.caption.34}{}}
+\newlabel{sub@fig:3_4_1_sincronizacion_1}{{a}{39}{Computadoras de vuelo al inicio de la misión.\relax }{figure.caption.34}{}}
+\newlabel{fig:3_4_1_sincronizacion_2}{{28b}{39}{Al cabo de un período de tiempo, se desincronizarán.\relax }{figure.caption.34}{}}
+\newlabel{sub@fig:3_4_1_sincronizacion_2}{{b}{39}{Al cabo de un período de tiempo, se desincronizarán.\relax }{figure.caption.34}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.\relax }}{39}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:3_4_1_sincronizacion}{{28}{39}{A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.\relax }{figure.caption.34}{}}
+\newlabel{fig:3_4_1_sincronizacion_3}{{29a}{40}{Las mismas computadoras de vuelo se encargan de la sincronización.\relax }{figure.caption.35}{}}
+\newlabel{sub@fig:3_4_1_sincronizacion_3}{{a}{40}{Las mismas computadoras de vuelo se encargan de la sincronización.\relax }{figure.caption.35}{}}
+\newlabel{fig:3_4_1_sincronizacion_4}{{29b}{40}{En este caso, la sincronización es administrada por el árbitro.\relax }{figure.caption.35}{}}
+\newlabel{sub@fig:3_4_1_sincronizacion_4}{{b}{40}{En este caso, la sincronización es administrada por el árbitro.\relax }{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.\relax }}{40}{figure.caption.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Consenso}{40}{subsubsection.5.1.2}\protected@file@percent }
+\newlabel{sec:consenso}{{5.1.2}{40}{Consenso}{subsubsection.5.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces La FCC1 entrega un valor distinto de timing a las demás FCCs\relax }}{40}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:3_4_2_consenso_4}{{30}{40}{La FCC1 entrega un valor distinto de timing a las demás FCCs\relax }{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.\relax }}{41}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:3_4_2_consenso_5}{{31}{41}{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.\relax }{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.\relax }}{42}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:Byzantine_Generals_Problem_5}{{32}{42}{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.\relax }{figure.caption.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Las FCC2, 3 y 4 comparten entre sí lo que les dijo la FCC1 a cada una y llegan a la conclusión de que la información es inconsistente.\relax }}{42}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:Byzantine_Generals_Problem_6}{{33}{42}{Las FCC2, 3 y 4 comparten entre sí lo que les dijo la FCC1 a cada una y llegan a la conclusión de que la información es inconsistente.\relax }{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Simplificación del Problema}{43}{subsection.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{43}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:red_CAN}{{34}{43}{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }}{44}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:byzantine_bus_1}{{35}{44}{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }{figure.caption.41}{}}
+\newlabel{fig:byzantine_bus_2}{{36a}{44}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.42}{}}
+\newlabel{sub@fig:byzantine_bus_2}{{a}{44}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.42}{}}
+\newlabel{fig:byzantine_bus_3}{{36b}{44}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.42}{}}
+\newlabel{sub@fig:byzantine_bus_3}{{b}{44}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit  {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }}{44}{figure.caption.42}\protected@file@percent }
+\newlabel{}{{36}{44}{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }{figure.caption.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Uso de Componentes COTS}{45}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Selección del Bus de Comunicaciones de la Computadora de Vuelo}{45}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Descripción del Protocolo CAN}{45}{subsubsection.5.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \blx@tocontentsinit {0}\cite {AN228}.\relax }}{45}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:conxeion_al_bus_CAN}{{37}{45}{La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \cite {AN228}.\relax }{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Se muestran los campos de una trama CAN estándar. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{46}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:CAN_frame_standard}{{38}{46}{Se muestran los campos de una trama CAN estándar. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.44}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Se muestran los campos de una trama CAN extendida. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{46}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:CAN_frame_extended}{{39}{46}{Se muestran los campos de una trama CAN extendida. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Mecanismo para la detección de colisiones. El nodo 2 gana por prioridad y completa su transmisión, mientras que el nodo 1 deja de usar el bus, aguardando a que el nodo 2 finalice.\relax }}{47}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:CAN_arbitration}{{40}{47}{Mecanismo para la detección de colisiones. El nodo 2 gana por prioridad y completa su transmisión, mientras que el nodo 1 deja de usar el bus, aguardando a que el nodo 2 finalice.\relax }{figure.caption.46}{}}
 \@setckpt{Requerimientos_Tolerancia_Fallas}{
-\setcounter{page}{47}
+\setcounter{page}{48}
 \setcounter{equation}{15}
 \setcounter{enumi}{7}
 \setcounter{enumii}{0}
@@ -62,7 +62,7 @@
 \setcounter{subsubsection}{1}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{39}
+\setcounter{figure}{40}
 \setcounter{table}{4}
 \setcounter{parentequation}{14}
 \setcounter{float@type}{4}
@@ -85,7 +85,7 @@
 \setcounter{AM@survey}{0}
 \setcounter{Item}{7}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{49}
+\setcounter{bookmark@seq@number}{53}
 \setcounter{nlinenum}{0}
 \setcounter{mydef}{0}
 \setcounter{@pps}{0}

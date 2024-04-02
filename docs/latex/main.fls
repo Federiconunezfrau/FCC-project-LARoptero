@@ -1334,6 +1334,11 @@ INPUT ./Diseno_y_Construccion_de_la_Computadora_de_Vuelo.tex
 INPUT Diseno_y_Construccion_de_la_Computadora_de_Vuelo.tex
 INPUT ./Diseno_y_Construccion_de_la_Computadora_de_Vuelo.tex
 INPUT Diseno_y_Construccion_de_la_Computadora_de_Vuelo.tex
+INPUT ./img//angles_drone.png
+INPUT ./img//angles_drone.png
+INPUT ./img//angles_drone.png
+INPUT ./img//angles_drone.png
+INPUT ./img//angles_drone.png
 INPUT ./img/diagrama_en_bloques_computadora_de_vuelo.png
 INPUT ./img/diagrama_en_bloques_computadora_de_vuelo.png
 INPUT img/diagrama_en_bloques_computadora_de_vuelo.png
