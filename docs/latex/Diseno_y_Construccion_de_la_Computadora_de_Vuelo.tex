@@ -63,7 +63,7 @@ Un sistema de navegación permite realizar estimaciones de la pose del vehículo
     \label{fig:angles_drone}    
 \end{figure}
 
-El principal sistema utilizado en UAVs es el sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. Por ejemplo, podrían conocerse los ángulos de la figura \ref{fig:angles_drone} a partir de mediciones de velocidad angular. Estos sitemas no solo se utilizan en UAV sino que también en vehículos tripulados y aviones comerciales.
+El principal sistema utilizado en UAVs es el sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. Por ejemplo, podrían conocerse los ángulos de la figura \ref{fig:angles_drone} a partir de mediciones de velocidad angular. Estos sistemas no solo se utilizan en UAV sino que también en vehículos tripulados y aviones comerciales.
 
 El hecho de integrar las mediciones de velocidad y aceleración en el tiempo, trae consigo que cualquier error de los acelerómetros y los giróscopos decante en errores de posición y de orientación que crecerán con el paso del tiempo a un ritmo acelerado. Típicamente esto se corrige utilizando otro sistema de navegación auxiliar (como por ejemplo a través de GPS) junto con un filtro de Kalman o un sistema equivalente. %En la figura \ref{fig:kalman} se muestra un diagrama en bloques que relaciona al sistema inercial con el sistema auxiliar a través del filtro de Kalman para corregir las salidas del sistema de navegación inercial.
 
@@ -86,9 +86,11 @@ Para obtener las mediciones de aceleración y velocidad angular en la computador
 % - La gran cantidad de interfaces que integran.
 % - Necesidad de una respuesta con determinismo temporal.
 
-Para realizar todos los cálculos involucrados en el INS, se utiliza una unidad de procesamiento. Todas las tareas involucradas en navegación y control de vuelo son ejecutadas de forma periódica por la computadora de vuelo. Se requiere asegurar un determinismo temporal, del orden de los milisegundos o decenas de milisegundos. La unidad de procesamiento que mejor se ajusta a las necesidades de este trabajo es un microcontrolador de 32 bits, siendo el principal motivo la gran variedad que pueden encontrarse en el mercado, los cuales ofrecen una muy buena performance por un bajo costo. La gran capacidad de cómputo que ofrecen permite que sea utilizado para otras tareas más, encargándose de la tolerancia a fallas, el almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
+Para realizar todos los cálculos involucrados en el INS, se utiliza una unidad de procesamiento. Todas las tareas involucradas en navegación y control de vuelo son ejecutadas de forma periódica por la computadora de vuelo. Se requiere asegurar un determinismo temporal en la ejecución de las tareas, del orden de los milisegundos o decenas de milisegundos. La unidad de procesamiento que mejor se ajusta a las necesidades de este trabajo es un microcontrolador de 32 bits, siendo el principal motivo la gran variedad que pueden encontrarse en el mercado, los cuales ofrecen una muy buena performance por un bajo costo. La gran capacidad de cómputo que ofrecen permite que este además puede realizar otras tareas más, como encargarse de la tolerancia a fallas, el almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
 
-Otro factor importante es el gran nivel de integración que han alcanzado en los últimos años, incorporando una gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño de dimensiones pequeñas. 
+Otro factor importante es el gran nivel de integración que ofrecen, incorporando gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño de dimensiones pequeñas.
+
+Algunas de las funcionalidades secundarias que se implementan son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos en una memoria externa, tanto de sensores como de datos pertinentes a la misión del vehículo. Además, de manera de ampliar las capacidades, se incorpora una gran variedad de conectores que facilitan la comunicación con dispositivos y sensores externos. Esto le da una gran versatilidad, en el sentido de que permite su utilización en distintas aplicaciones de UAVs y vehículos no tripulados en general.
 
 %Se aprovechan las distintas interfaces que ofrecen estos componentes para 
 
@@ -100,17 +102,15 @@ Otro factor importante es el gran nivel de integración que han alcanzado en los
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La computadora debe ser versátil, en el sentido de que no está pensada para usarse en un único tipo de vehículo, sino que puede utilizarse en vehículos con distintas arquitecturas. Esto implica la necesidad de interfaces varias para conectar módulos y sensores.
+%no está pensada para usarse en un único tipo de vehículo, sino que puede utilizarse en vehículos con distintas arquitecturas. Esto implica la necesidad de interfaces varias para conectar módulos y sensores.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-La computadora de vuelo debe tener cierta versatilidad para implementar distintas arquitecturas redundantes para la implementación de la tolerancia a fallas.
+%La computadora de vuelo debe tener cierta versatilidad para implementar distintas arquitecturas redundantes para la implementación de la tolerancia a fallas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Otras de las funcionalidades son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos, tanto de sensores como de datos pertinentes a la misión del vehículo. A lo largo de esta sección se irán mencionando otras funcionalidades secundarias.
-
-
+%Otras de las funcionalidades son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos, tanto de sensores como de datos pertinentes a la misión del vehículo. A lo largo de esta sección se irán mencionando otras funcionalidades secundarias.
 
 % El modelo de este componente se ha ido actualizando con las distintas versiones. Con el pasar de los años, los modelos de las primeras versiones se han ido disconinuando, dando paso a nuevos sensores que ofrecen mejores prestaciones, como por ejemplo en cuanto a ruido, offset, sensibilidad, entre otros.
 
@@ -118,13 +118,7 @@ Otras de las funcionalidades son el control de LEDs indicadores de propósito ge
 
 % La placa desarrollada en este trabajo es una nueva versión de la computadora de vuelo. Se busca tal cosa...
 
-
-
 %Mencionar que ya existían otras placas previas del LAR y que ahora se está haciendo una versión nueva.
-
-
-
-
 
 %La computadora debe ser versátil, en el sentido de que no está pensada para usarse en un único tipo de vehículo, sino que puede utilizarse en vehículos con distintas arquitecturas.
 
@@ -132,26 +126,26 @@ Otras de las funcionalidades son el control de LEDs indicadores de propósito ge
 
 %Retrocompatibilidad con módulos de firmware desarrollados para la versión anterior. También retrocompatibilidad en los conectores, de manera de conectar módulos que se utilizaron en la versión anterior.
 
-Electrical transmission of signals and commands is a key element in a FBW system. Modern systems use a serial digital data transmission system with time division multiplexing. The signals can then be transmitted along a network or highway comprising two wires only, as only one set of data is being transmitted at any particular time. Figure 4.2 shows how a digital flight control system is interconnected using a digital data bus.
+%Electrical transmission of signals and commands is a key element in a FBW system. Modern systems use a serial digital data transmission system with time division multiplexing. The signals can then be transmitted along a network or highway comprising two wires only, as only one set of data is being transmitted at any particular time. Figure 4.2 shows how a digital flight control system is interconnected using a digital data bus.
 
-Entrada de programación
-Debugger
-Botón reset
-IMU (SPI)
-Barómetro Integrado (I2C)
-Magnetómetro Externo (I2C)
-GPS externo (UART)
-Salidas PWM para motores + servos para otra cosa
-DSM para Spektrum
-PPM para radios en general
-Conector fuente externa tipo pixhawk
-microSD
-LEDs Integrados para indicadores
-UARTs adicionales para conectar cosas externas
-I2C adicional
-SPI adicionales
-salidas de 5V y 3V3
-switches para distintas funcionalidades
+% Entrada de programación
+% Debugger
+% Botón reset
+% IMU (SPI)
+% Barómetro Integrado (I2C)
+% Magnetómetro Externo (I2C)
+% GPS externo (UART)
+% Salidas PWM para motores + servos para otra cosa
+% DSM para Spektrum
+% PPM para radios en general
+% Conector fuente externa tipo pixhawk
+% microSD
+% LEDs Integrados para indicadores
+% UARTs adicionales para conectar cosas externas
+% I2C adicional
+% SPI adicionales
+% salidas de 5V y 3V3
+% switches para distintas funcionalidades
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -159,7 +153,9 @@ switches para distintas funcionalidades
 
 % Acá no se dan justificaciones de algún circuito en particular, sino que se dan justificaciones que aplican a todos los bloques. Por ejemplo, el tema del AEC-Q100 y los pedidos del laboratorio, como los pines dupont, etc.
 
-Para el diseño y la implementación de cada circuito, se tuvieron en cuenta distintas necesidades particulares para cada uno de ellos. A su vez, hay ciertos criterios y que son comunes a todos los circuitos. Estos se mencionan a continuación.
+Para el diseño y construcción de la computadora de vuelo, se tuvieron en cuenta algunos criterios comunes a todos los componentes. Estos se mencionan a continuación.
+
+% de cada circuito, se tuvieron en cuenta distintas necesidades particulares para cada uno de ellos. A su vez, hay ciertos criterios y que son comunes a todos los circuitos. Estos se mencionan a continuación.
 
 \subsubsection{Uso de Componentes de Grado Automotriz}
 
@@ -173,31 +169,37 @@ En el caso particular de sistemas críticos, el aspecto más importante y fundam
 
 \subsubsection{Longevidad}
 
-\textbf{{\color{red} COMPLETAR}}
+%Quizás uno de los criterios más importantes es el de la longevidad de los componentes. En un desarrollo de electrónica se seleccionan componentes de muchos fabricantes. 
+
+Para el desarrollo de la placa se buscaron componentes para los cuales el fabricante garantice la longevidad antes de entrar en fin de vida útil. En el eventual caso de que un componente deje de ser fabricado, a futuro esto impactará en el diseño, ya que será necesario buscar un reemplazo del mismo, para poder fabricar nuevas unidades. Algunas veces esto es directo, ya que algunos fabricantes ofrecen compatibilidad en los terminales de componentes de mismas funcionalidades. Sin embargo en otros casos, esto puede traer consecuencias como la necesidad de modificar el diseño original, además de volver a realizar pruebas del circuito, utilizando el nuevo componente. En el caso de que se trate de un sensor, incluso puede requerir la modificación del driver utilizado para interactuar con este.
+
+Para la computadora de vuelo de este trabajo, se buscó tener una longevidad de 10 años.
+
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Requerimientos de Conectores}
 
-La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de módulos externos. Algunos de esos conectores fueron seleccionados por una necesidad del LAR, con el objetivo de tener compatibilidad con distintos módulos que son comúnmente utilizados con otras computadoras de vuelo que fueron desarrolladas en el laboratorio. Estos serán mencionados en las secciones correspondientes.
+La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de módulos externos. Algunos de esos conectores fueron seleccionados por una necesidad de tener compatibilidad con distintos módulos que son comúnmente utilizados con otras computadoras de vuelo. Estos serán mencionados en las secciones correspondientes.
 
 \subsection{Circuitos y Componentes Seleccionados}
+
+A continuación se describe cada una de las partes del circuito que conforman a la computadora de vuelo. Además de los criterios generales ya mencionados, se mencionan los criterios particulares tenidos en cuenta para cada parte del circuito.
 
 %\subsection{Circuitos Implementados}
 \subsubsection{Microcontrolador}
 
 % Acá sí, va una subsubsection por cada bloque, por ejemplo microcontrolador, IMU, Barómetro, bus CAN, Tarjeta Micro SD, Interfaz USB, etc.
 
-A continuación se describe cada una de las partes del circuito que conforman a la computadora de vuelo. Además de los criterios generales ya mencionados, se mencionan los criterios particulares tenidos en cuenta para cada parte del circuito.
-
 %\subsubsection{Microcontrolador}
 %\subsubsection{Selección del Componente}
 
-En la versión anterior de la computadora de vuelo, se utilizó un microcontrolador del fabricante ST, en particular el modelo STM32F722. Este cuenta con un procesador ARM Cortex-M7, que puede utilizarse con una frecuencia máxima de 216 MHz. Cuenta con unidad de punto flotante integrada. Además, cuenta con 512 KB de memoria flash y 256 KB de memoria RAM.
+En la versión anterior de la computadora de vuelo, se utilizó un microcontrolador del fabricante ST, en particular el modelo STM32F722. Este cuenta con un procesador ARM Cortex-M7, que puede utilizarse con una frecuencia máxima de 216 MHz. Cuenta con unidad de punto flotante integrada, además de una memoria flash con 512 KB y una memoria RAM de 256 KB.
 
 A todas las funcionalidades de la computadora de vuelo, en este trabajo se le suman los aspectos relacionados a la tolerancia a fallas. A su vez, se tiene la necesidad de integrar otras funcionalidades que llevan consigo una gran carga computacional. Estas pueden ser propias de la aplicación del vehículo o bien relacionadas a mejorar los algoritmos de navegación y control. Para la versión desarrollada en este trabajo, se buscó actualizar el microcontrolador a uno con mayor rendimiento, sin perder de vista la necesidad de mantener un costo reducido.
 
-Se buscó un microcontrolador del mismo fabricante ST, de manera de tener retrocompatibilidad en el desarrollo del firmware con la versión anterior. De esta forma, muchos de los módulos de firmware que ya se encuentran desarrollados pueden reutilizarse en esta nueva versión. Con estos requerimientos, se analizaron las distintas ofertas del mercado. Además de los aspectos mencionados, se tuvieron en cuenta los periféricos que ofrecía cada modelo, junto con las capacidades de memorias flash y RAM. Se buscó mantener las capacidades de estas memorias en valores similares a las de la versión anterior de la computadora de vuelo.
+Se buscó un microcontrolador del mismo fabricante ST, de manera de tener retrocompatibilidad en el desarrollo del firmware con la versión anterior. De esta forma, muchos de los módulos de firmware que ya se encuentran desarrollados pueden reutilizarse en esta nueva versión. Con estos requerimientos, se analizaron las distintas ofertas del mercado. Además de los aspectos mencionados, se tuvieron en cuenta los periféricos presentes en cada modelo, junto con las capacidades de memorias flash y RAM. Se buscó mantener las capacidades de estas memorias en valores similares a las de la versión anterior de la computadora de vuelo.
 
-Como primera opción surgió la posibilidad de seleccionar alguno de los microcontroladores de la serie STM32H7. Estos cuentan con procesdaores ARM Cotex-M7, además de que pueden llegar a velocidades entre 400 MHz y 550 MHz \cite{AN5293} y por ende llegar hasta a duplicar la performance respecto de la versión anterior de la computadora de vuelo. En la tabla \ref{tab:comparacion_MCUs} se muestran distintos modelos que fueron considerados durante la selección del microcontrolador.
+Como primera opción surgió la posibilidad de seleccionar alguno de los microcontroladores de la serie STM32H7. Estos cuentan con procesadores ARM Cotex-M7, y pueden llegar a velocidades entre 400 MHz y 550 MHz \cite{AN5293}, es decir, pueden llegar hasta a duplicar la performance respecto de la versión anterior de la computadora de vuelo. En la tabla \ref{tab:comparacion_MCUs} se muestran distintos modelos que fueron considerados durante la selección del microcontrolador.
 
 \begin{table}[H]
     \centering
@@ -232,19 +234,27 @@ Como primera opción surgió la posibilidad de seleccionar alguno de los microco
         AEC-Q100 & No & No & No & No & No\\
         \hline       
     \end{tabular}
-    \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del mircocontrolador. En verde se destaca el componente que tiene las mejores características para cada fila. El modelo STM32F722 corresponde al modelo utilizado en la versión 3 de la computadora de vuelo.}
+    \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del mircocontrolador. En verde se destaca el componente que tiene las mejores características para cada fila. El modelo STM32F722 corresponde al modelo utilizado en la versión anterior de la computadora de vuelo.}
     \label{tab:comparacion_MCUs}
 \end{table}
 
-Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a frecuencia de operación, memoria flash y RAM. Sumado a esto, la gran mayoría de estos microcontroladores se encuentran dentro del programa \textit{Longevity Commitment} \cite{longevity_ST}. El fabricante ST se compromete a mantener la producción de los componentes que se encuentren dentro de este programa durante un período determinado. Todos los microcontroladores de la tabla \ref{tab:comparacion_MCUs} tienen un periódo de fabricación de 10 años asegurado por ST, finalizando en 01/2033. Este aspecto es de especial interés teniendo en cuenta la posible necesidad futura de fabricar nuevas placas de la computadora de vuelo.\\
+Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a frecuencia de operación, memoria flash y RAM. Sumado a esto, la gran mayoría de estos microcontroladores se encuentran dentro del programa \textit{Longevity Commitment} \cite{longevity_ST}. El fabricante ST se compromete a mantener la producción de los componentes que se encuentren dentro de este programa durante un período determinado. Todos los microcontroladores de la tabla \ref{tab:comparacion_MCUs} tienen un periódo de fabricación de 10 años asegurado por ST, finalizando en 01/2033. Este aspecto es de especial interés teniendo en cuenta la posible necesidad futura de fabricar nuevas placas de la computadora de vuelo.
 
 \textbf{{\color{red} COMPLETAR POR QUÉ NO SE ELEIGIÓ UNO AEC-Q100, QUE ES PORQUE NO HABÍA CORTEX M7 DE ST QUE SEA AEC-Q100}}
 
-\textbf{{\color{red} COMPLETAR LA JUSTIFICACIÓN DE QUE SE ELIGIÓ UN MICROCONTROLADOR DIFERENTE DEBIDO A LA CRISIS Y FALTANTE DE CHIPS}}
+%\textbf{{\color{red} COMPLETAR LA JUSTIFICACIÓN DE QUE SE ELIGIÓ UN MICROCONTROLADOR DIFERENTE DEBIDO A LA CRISIS Y FALTANTE DE CHIPS}}
 
 % Acá lo importante es decir que se quería elegir un controlador más potente que la choriboard III, algún STM32H7. Mencionar por qué STM32, que es porque ellos vienen trabajando con esos microcontroladores. Luego explicar que debido al faltante y la crisis, se tuvo que elegir otro controlador. También, mencionar que el que se eligió tiene 10 años de garantía de fabricación, lo que favorece la longevidad.
 
-La selección del microcontrolador utilizado se vio limitada por la disponibilidad de componentes encontrada durante el período de desarrollo del circuito. El microcontrolador seleccionado fue el STM32F746ZG. Este cuenta con un procesador ARM-Cortex M7, 1024 kB de memoria flash y 320 kB de memoria SRAM. Un aspecto relevante de este microcontrolador es que cuenta con 2 interfaces CAN. El bus CAN se utilizará para establecer las comunicaciones relevantes a los algoritmos de tolerancia a fallas. La posibilidad de contar con 2 interfaces CAN trae consigo el hecho de que el bus no sea un punto singular de falla.
+A pesar del análisis y de las comparaciones entre microcontroladores de la serie STM32H7, la selección del microcontrolador se vio limitada por la disponibilidad de componentes encontrada durante el período de desarrollo del circuito.
+
+\textbf{{\color{red} SE PUEDE SIMPLEMENTE MENCIONAR LA CRISIS DE CHIPS COMO CAUSA DE LA FALTA DE DISPONIBILIDAD.}}
+
+El microcontrolador seleccionado fue el STM32F746ZG. Este cuenta con un procesador ARM-Cortex M7, 1024 kB de memoria flash y 320 kB de memoria SRAM. Un aspecto relevante de este microcontrolador es que cuenta con 2 interfaces para uso de un bus denominado Controller Area Network (CAN), el cual se utilizará para establecer las comunicaciones relevantes a los algoritmos de tolerancia a fallas. La posibilidad de contar con dos de estas interfaces permite implementar un sistema donde este bus no sea un punto singular de falla.
+
+Suamdo a las prestaciones, este micocontrolador cuenta con un encapsulado LQFP de 144 terminales, lo que permite realizar muchas conexiones con sensores y componentes a través de distintas interfaces comunes, como SPI, I2C, además de terminales GPIO comunes para interrupciones y manejo de otros módulos.
+
+\textbf{{\color{red} SE PUEDE EXPLICAR LA SELECCIÓN DE LOS CRISTALES Y EL USO DE LOS CAPACIOTRES DE DESACOPLE, SIGUIENDO LA APP NOTE DE ST.}}
 
 % Mencionar cómo se asignaron los distintos timers para su uso en la aplicación.
 
@@ -253,7 +263,7 @@ La selección del microcontrolador utilizado se vio limitada por la disponibilid
 
 % Acá también hay que mencioanr todos los cálculos y justificaciones para la selección del cristal, tanto de 12 MHz como el de 32 kHz. Poner todo lo que tengo, esta sección tiene muchísimo para mostrar.
 
-\textbf{{\color{red} COMPLETAR}}
+%\textbf{{\color{red} COMPLETAR}}
 
 %\subsection{Otros Circuitos Implementados}
 
@@ -275,7 +285,7 @@ La selección del microcontrolador utilizado se vio limitada por la disponibilid
 
 \subsubsection{Sensor IMU}
 
-La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor principal utilizado por la computadora de vuelo. Este consiste en un circuito integrado que contiene una serie de sensores inerciales, en particular acelerómetros y giróscopos. Los acelerómetros se utilizan para realizar mediciones de aceleración lineal y los giróscopos para medir velocidad angular. A partir de estas mediciones, se pueden aplicar distintos algoritmos de procesamiento para obtener una estimación de la posición y orientación del vehículo. Las mediciones de aceleración lineal y de velocidad angular que entrega la IMU son referidas a una terna solidaria al componente, como se muestra en la figura \ref{fig:IMU_ejes}.
+La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor principal utilizado por la computadora de vuelo. Este consiste en un circuito integrado que contiene una serie de sensores inerciales, en particular acelerómetros y giróscopos triaxiales. Los acelerómetros se utilizan para realizar mediciones de aceleración lineal y los giróscopos para medir velocidad angular. A partir de estas mediciones, se pueden aplicar distintos algoritmos de procesamiento para obtener una estimación de la posición y orientación del vehículo. Las mediciones de aceleración lineal y de velocidad angular que entrega la IMU son referidas a una terna solidaria al componente, como se muestra en la figura \ref{fig:IMU_ejes}.
 
 \begin{figure}[H]
     \centering
@@ -283,6 +293,8 @@ La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor pri
     \caption{Todas las mediciones que entrega el sensor son realtivas a una terna solidaria a este. La imagen se extrajo de \cite{ICM42688pDatasheet}.}
     \label{fig:IMU_ejes}
 \end{figure}
+
+\textbf{{\color{red} REEMPLAZAR LO QUE SIGUE POR UNA SIMPLE MENCIÓN DE SENSORES MEMS, DESDE ACÁ:}}
 
 Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se construyen utilizando la tecnología MEMS: \textit{Microelectromechanical Systems}. Utilizando técnicas de fabricación de circuitos integrados, se construyen los acelerómetros y giróscopos, integrando en el silicio partes que son móviles. En la figura \ref{fig:MEMS_acelerometro}, se muestra una imagen tomada con un microscopio electrónico de un acelerómetro MEMS. Lo que se observa en este caso, es que en el mismo silicio se integra una masa llamada \textit{proof-mass}, la cual se encuentra sujeta al sustrato a través de dos resortes.
 
@@ -338,7 +350,9 @@ Se puede resolver este circuito y llegar a que existe una relación lineal entre
     \label{eq:tension_salida_acelerometro}
 \end{equation}
 
-\textbf{{\color{red} COMPLETAR UN ANÁLISIS SIMILAR PARA EL GIRÓSCOPO}}
+\textbf{{\color{red} HASTA ACÁ}}
+
+%\textbf{{\color{red} COMPLETAR UN ANÁLISIS SIMILAR PARA EL GIRÓSCOPO}}
 
 Se hizo una búsqueda de las distintas alternativas existentes para este tipo de sensores. A partir de leer las hojas de datos de distintos fabricantes, se encontró que los parámetros típicamente especificados, tanto para los acelerómetros como para los giróscopos, son los siguientes:
 
@@ -392,7 +406,7 @@ Se buscaron modelos de IMUs de distintos fabricantes, para comparar característ
         \hline
                         & ICM42688 & LSM6DSR & IIM-42652 & BMI088 & ASM330LHHX\\
         \hline
-        $b_{accel}a(t)$ & N/A      & N/A     & N/A       & N/A    & \cellcolor{green!25}40 $\mu$ g\\
+        $b_{accel}(t)$ & N/A      & N/A     & N/A       & N/A    & \cellcolor{green!25}40 $\mu$ g\\
         $b_{gyro}(t)$   & N/A      & N/A     & N/A       & \cellcolor{green!25}2°/h    & 3°/h\\
         $\eta_{gyro}$   & \cellcolor{green!25}$2.8 mdps/\sqrt{Hz}$ & $5 mdps/\sqrt{Hz}$ & $3.8 mdps/\sqrt{Hz}$ & $14 mdps/\sqrt{Hz}$ & $5 - 12 mdps/\sqrt{Hz}$\\
         $S_{gyro}$ & \cellcolor{green!25}$0.5 \%$ & $1 \%$ & \cellcolor{green!25}$0.5 \%$ & $1 \%$ & $2 \%$\\
@@ -405,7 +419,7 @@ Se buscaron modelos de IMUs de distintos fabricantes, para comparar característ
     \label{tab:comparacion_IMUs}
 \end{table}
 
-Lo primero que llama la atención es el hecho de que muchos de los sensores no especifican estos parámetros. Solamente una de las alternativas consideradas tiene disponible toda la información en su hoja de datos. Esto dificulta mucho la selección de un componente. A priori, se selecciona el sensor ASM330LHHX por el hecho de ser el único que ofrece toda la información en su hoja de datos, además de ser de grado automotriz y tener una longevidad garantizada de 15 años. Teniendo en cuenta aspectos de confiabilidad, resulta esencial el hecho de conocer los parámetros del sensor.\\
+Lo primero que llama la atención es el hecho de que muchos de los sensores no especifican todos sus parámetros. Una sola de las alternativas consideradas tiene disponible toda la información en su hoja de datos. Esto dificulta mucho la selección de un componente. A priori, se seleccionó el sensor ASM330LHHX por el hecho de ser el único que ofrece toda la información en su hoja de datos, además de ser de grado automotriz y tener una longevidad garantizada de 15 años. Teniendo en cuenta aspectos de confiabilidad, resulta esencial el hecho de conocer los parámetros del sensor.
 
 Durante la selección del sensor hubo otro aspecto importante que se tuvo en cuenta y es el hecho de la compatibilidad con el software desarrollado por el laboratorio, para computadoras de vuelo anteriores a la de este trabajo. La versión anterior contaba con un sensor IMU ICM20602, del fabricante TDK. El laboratorio cuenta con bibliotecas de código ya desarrolladas para este sensor. Este presentó excelentes resultados, lo que sienta un antecedente importante en la selección de componentes del mismo fabricante. En la tabla \ref{tab:comparacion_IMUs_TDK} se muestra una comparación entre el sensor anterior ICM20602 y el sensor seleccionado ICM42688.
 
@@ -442,9 +456,9 @@ Durante la selección del sensor hubo otro aspecto importante que se tuvo en cue
     \label{tab:comparacion_IMUs_TDK}
 \end{table}
 
-Para el diseño del circuito se siguieron las recomendaciones en la hoja de datos del componente. Este sugiere incluir una serie de capacitores de desacople en los terminales de alimentación del componente. Se elige utilizar una comunicación SPI en modo esclavo, donde el maestro es el microcontrolador. La interfaz SPI permite obtener velocidades de transferencia más altas que utilizando otras interfaces como I2C. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.\\
+Para el diseño del circuito se siguieron las recomendaciones en la hoja de datos del componente. Este sugiere incluir una serie de capacitores de desacople en los terminales de alimentación del componente. Se elige utilizar una comunicación SPI en modo esclavo, donde el maestro es el microcontrolador, ya que pueden obtenerse mayores velocidades de comunicación, respecto de otros protocolos como I2C. De esta forma se logra una alta tasa de adquisición de datos de acelerómetros y giróscopos. Como ya fue mencionado, esto resulta clave para mantener la estabilidad del vehículo. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
-Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede comunicarse con el microcontrolador, el maestro, cuando este último le solicite la información. La IMU genera lecturas de sus aceleróemtros y giróscopos de manera periódica. De manera de que la IMU pueda informar al microcontrolador el momento en el que generó una nueva lectura, el sensor dispone de una salida digital que puede conectarse a una entrada digital del microcontroldor. De esta forma, cuando el microcontrolador detecta un cambio de nivel en esa entrada digital, procede a pedirle el dato generado a través de la comunicación SPI. En la figura \ref{fig:IMU_SPI} se muestra un esquema de la conexión entre el controlador y el sensor IMU.
+Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede comunicarse con el microcontrolador cuando este último le permita hacerlo. Para que la IMU pueda informar el momento en el que se obtuvo una nueva lectura, el sensor dispone de una salida digital la cual puede conectarse a una entrada digital del microcontroldor. Cuando el microcontrolador detecta un cambio de nivel en esta entrada, el mismo procede a solicitar el dato a través de la comunicación SPI. En la figura \ref{fig:IMU_SPI} se muestra un esquema de la conexión entre el controlador y el sensor IMU.
 
 \begin{figure}[H]
     \centering
@@ -453,18 +467,11 @@ Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede co
     \label{fig:IMU_SPI}    
 \end{figure}
 
-
-
-
-
-
-
-
-
 \subsubsection{Barómetro}
 %\subsection{Barómetro}
 
-Al igual que la IMU, el barómetro que se utiliza corresponde a un sistema MEMS. Este sensor se utiliza para estimar la altura del vehículo respecto del suelo, a partir de mediciones de presión. En particular, los barómetros MEMS cuentan con un sistema capaz de medir la presión absoluta, es decir respecto al 0 de presión. Estos cuentan con una cavidad integrada dentro del chip que se encuentra (idealmente) a presión 0. A través de un proceso llamado \textit{anodic bonding} \cite{baro_1}\cite{baro_2} se construye esta cavidad dentro del chip, la cual se encuentra sellada a una presión muy baja, en comparación con las presiones que se esperan medir utilizando el componente. Para medir la presión, se coloca una membrana sobre la cavidad. En la figura \ref{fig:MEMS_barometro} se puede apreciar el efecto de la presión externa sobre la membrana, la presión atmosférica. Sobre las zonas de color violeta, se colocan resistores de efecto piezoresistivo. En consecuencia, la deformación de la membrana genera tensión sobre estos, modificando su resistencia.
+El barómetro se utiliza para obtener una estimación precisa de la altitud a la que está operando el UAV, a partir de mediciones de presión. Este es uno de los sensores complementarios al INS que se incorporan en la computadora de vuelo. Al igual que la IMU, el barómetro que se utiliza corresponde a un sensor de tecnología MEMS. En particular, los barómetros MEMS cuentan con un sistema capaz de medir la presión absoluta, es decir respecto al 0 de presión. Estos cuentan con una cavidad integrada dentro del chip que se encuentra (idealmente) a presión 0. %A través de un proceso llamado \textit{anodic bonding} \cite{baro_1}\cite{baro_2} se construye esta cavidad dentro del chip, la cual se encuentra sellada a una presión muy baja, en comparación con las presiones que se esperan medir utilizando el componente.
+Para medir la presión, se coloca una membrana sobre la cavidad. En la figura \ref{fig:MEMS_barometro} se puede apreciar el efecto de la presión externa. 
 
 \begin{figure}[H]
     \centering
@@ -473,79 +480,89 @@ Al igual que la IMU, el barómetro que se utiliza corresponde a un sistema MEMS.
     \label{fig:MEMS_barometro}
 \end{figure}
 
-Los resistores se conectan en configuración puente de Wheatstone, de manera tal de que la presión comprime a dos de los resistores y estira a los otros dos \cite{baro_3}. En \eqref{eq:barometro_wheatstone} se despeja la relación entre la variación de tensión y la variación de la resistencia. Como se observa, la realación es proporcional.
+Sobre esta membrana se colocan resistores de efecto piezoresistivo en configuración puente de Wheatstone. El efecto de la presión genera compresiones y deformaciones en los resistores \cite{baro_3}, lo que se traduce en un desbalance del puente. A partir del sensado de la diferencia de potencial, se mide la presión aplicada sobre la membrana.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/barometro_wheatstone.png}
-    \caption{Puente de Wheatstone conformado por los resistores del sensor de presión. La imagen se extrajo de \cite{baro_3}.}
-    \label{fig:barometro_wheatstone}
-\end{figure}
 
-\begin{subequations}
-    \begin{align}
-        \Delta V &= (V_d^+ - V_d^-) \left[ \frac{R_2}{R_2 + R_1} - \frac{R_3}{R_3 + R_4} \right]\\
-        R_1 &= R_3 = R - \Delta R\\
-        R_2 &= R_4 = R + \Delta R\\
-        \Delta V &= (V_d^+ - V_d^-) \frac{\Delta R}{R}
-    \end{align}
-    \label{eq:barometro_wheatstone}
-\end{subequations}
+% En \eqref{eq:barometro_wheatstone} se despeja la relación entre la variación de tensión y la variación de la resistencia. Como se observa, la realación es proporcional.
 
-En la aplicación del vehículo aéreo, el barómetro se utiliza con el fin de medir la altura del vehículo, respecto de una altura inicial. La forma de medir la altitud a través de la presión es utilizando la ecuación de los gases nobles para el aire \cite{cavcar2000international}. En las ecuaciones \eqref{eq:gases_nobles} se obtiene una expresión para la presión, en función de la densidad del aire, la constantes de los gases y la masa molar del aire.
+% La deformación de la membrana genera tensión sobre estos, modificando su resistencia, de manera tal de que la presión comprime a dos de los resistores y estira a los otros dos \cite{baro_3}.
 
-\begin{subequations}
-    \begin{align}
-        P V &= n R T\\
-        n &= \frac{m}{M}\\
-        P V &= \frac{m}{M} R T\\
-        P &= \frac{m}{V} \frac{R T}{M}\\
-        P &= \rho \frac{R T}{M} \label{eq:presion_gas_nobles}
-    \end{align}
-    \label{eq:gases_nobles}
-\end{subequations}
 
-Luego, utilizando la condición hidrostática, la presión es la ejercida por la columna de aire \cite{cavcar2000international}. En la condición hidrostática de la ecuación \ref{eq:condicion_hidrostatica} se puede despejar la densidad del aire y reemplazarla en \eqref{eq:presion_gas_nobles}. Finalmente, se obtiene la ecuación diferencial de \eqref{eq:presion_diferencial}.
+% Sobre las zonas de color violeta, se colocan resistores de efecto piezoresistivo. En consecuencia, la deformación de la membrana genera tensión sobre estos, modificando su resistencia, de manera tal de que la presión comprime a dos de los resistores y estira a los otros dos \cite{baro_3}.
 
-\begin{equation}
-    dp = -\rho g dh
-    \label{eq:condicion_hidrostatica}
-\end{equation}
+% Los resistores se conectan en configuración puente de Wheatstone, de manera tal de que la presión comprime a dos de los resistores y estira a los otros dos \cite{baro_3}. En \eqref{eq:barometro_wheatstone} se despeja la relación entre la variación de tensión y la variación de la resistencia. Como se observa, la realación es proporcional.
 
-\begin{equation}
-    \frac{dP}{P} = - \frac{g M}{R T} dh
-    \label{eq:presion_diferencial}
-\end{equation}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/barometro_wheatstone.png}
+%     \caption{Puente de Wheatstone conformado por los resistores del sensor de presión. La imagen se extrajo de \cite{baro_3}.}
+%     \label{fig:barometro_wheatstone}
+% \end{figure}
 
-Esta ecuación puede integrarse a ambos lados para hallar la relación entre la presión y la altura. Todos los términos de la ecuación \eqref{eq:presion_diferencial} son constantes, a excepción de la temperatura. Según el modelo \textit{International Standard Atmosphere} (ISA), se modela la relación entre la temperatura y la altitud, según la ecuación \eqref{eq:ISA_temperatura}. Esta relación es válida solamente hasta la estratósfera.
+% \begin{subequations}
+%     \begin{align}
+%         \Delta V &= (V_d^+ - V_d^-) \left[ \frac{R_2}{R_2 + R_1} - \frac{R_3}{R_3 + R_4} \right]\\
+%         R_1 &= R_3 = R - \Delta R\\
+%         R_2 &= R_4 = R + \Delta R\\
+%         \Delta V &= (V_d^+ - V_d^-) \frac{\Delta R}{R}
+%     \end{align}
+%     \label{eq:barometro_wheatstone}
+% \end{subequations}
 
-\begin{subequations}
-    \begin{align}
-        T(h) &= T_0 + L \ h\\
-        T(h) &= 288.15 K - h \ 6.5 \ 10^{-3} m/K
-    \end{align}
-    \label{eq:ISA_temperatura}
-\end{subequations}
+% En la aplicación del vehículo aéreo, el barómetro se utiliza con el fin de medir la altura del vehículo, respecto de una altura inicial. La forma de medir la altitud a través de la presión es utilizando la ecuación de los gases nobles para el aire \cite{cavcar2000international}. En las ecuaciones \eqref{eq:gases_nobles} se obtiene una expresión para la presión, en función de la densidad del aire, la constantes de los gases y la masa molar del aire.
 
-Finalmente, se obtiene una expresión de la presión en función de la altura, ecuación \eqref{eq:ISA_presion}. 
+% \begin{subequations}
+%     \begin{align}
+%         P V &= n R T\\
+%         n &= \frac{m}{M}\\
+%         P V &= \frac{m}{M} R T\\
+%         P &= \frac{m}{V} \frac{R T}{M}\\
+%         P &= \rho \frac{R T}{M} \label{eq:presion_gas_nobles}
+%     \end{align}
+%     \label{eq:gases_nobles}
+% \end{subequations}
 
-\begin{subequations}
-    \begin{align}
-        P(h) &= P_0 \left[ 1 + \frac{L h}{T_0} \right]^{-\frac{M g}{R L}}\\
-        P(h) &= 1013.25 \ hPa \left[ 1 - 0.0065 \frac{h}{288.15 K} \right]^{5.2561}
-    \end{align}
-    \label{eq:ISA_presion}
-\end{subequations}
+% Luego, utilizando la condición hidrostática, la presión es la ejercida por la columna de aire \cite{cavcar2000international}. En la condición hidrostática de la ecuación \ref{eq:condicion_hidrostatica} se puede despejar la densidad del aire y reemplazarla en \eqref{eq:presion_gas_nobles}. Finalmente, se obtiene la ecuación diferencial de \eqref{eq:presion_diferencial}.
 
-Se puede obtener un modelo más simplificado si se asume una temperatura constante, independiente de la altitud. Se reemplaza en \eqref{eq:presion_diferencial} y resolviendo la ecuación diferencial se obtiene la ecuación \eqref{eq:presion_temp_constante}.
+% \begin{equation}
+%     dp = -\rho g dh
+%     \label{eq:condicion_hidrostatica}
+% \end{equation}
 
-\begin{subequations}
-    \begin{align}
-        P(h) &= P_0 \ e^{-\frac{g M h}{R T}}\\
-        P(h) &= 1013.25 \ hPa \ e^{-\frac{h}{8840.2 m} }
-    \end{align}
-    \label{eq:presion_temp_constante}
-\end{subequations}
+% \begin{equation}
+%     \frac{dP}{P} = - \frac{g M}{R T} dh
+%     \label{eq:presion_diferencial}
+% \end{equation}
+
+% Esta ecuación puede integrarse a ambos lados para hallar la relación entre la presión y la altura. Todos los términos de la ecuación \eqref{eq:presion_diferencial} son constantes, a excepción de la temperatura. Según el modelo \textit{International Standard Atmosphere} (ISA), se modela la relación entre la temperatura y la altitud, según la ecuación \eqref{eq:ISA_temperatura}. Esta relación es válida solamente hasta la estratósfera.
+
+% \begin{subequations}
+%     \begin{align}
+%         T(h) &= T_0 + L \ h\\
+%         T(h) &= 288.15 K - h \ 6.5 \ 10^{-3} m/K
+%     \end{align}
+%     \label{eq:ISA_temperatura}
+% \end{subequations}
+
+% Finalmente, se obtiene una expresión de la presión en función de la altura, ecuación \eqref{eq:ISA_presion}. 
+
+% \begin{subequations}
+%     \begin{align}
+%         P(h) &= P_0 \left[ 1 + \frac{L h}{T_0} \right]^{-\frac{M g}{R L}}\\
+%         P(h) &= 1013.25 \ hPa \left[ 1 - 0.0065 \frac{h}{288.15 K} \right]^{5.2561}
+%     \end{align}
+%     \label{eq:ISA_presion}
+% \end{subequations}
+
+% Se puede obtener un modelo más simplificado si se asume una temperatura constante, independiente de la altitud. Se reemplaza en \eqref{eq:presion_diferencial} y resolviendo la ecuación diferencial se obtiene la ecuación \eqref{eq:presion_temp_constante}.
+
+% \begin{subequations}
+%     \begin{align}
+%         P(h) &= P_0 \ e^{-\frac{g M h}{R T}}\\
+%         P(h) &= 1013.25 \ hPa \ e^{-\frac{h}{8840.2 m} }
+%     \end{align}
+%     \label{eq:presion_temp_constante}
+% \end{subequations}
 
 Al igual que con el sensor IMU, se hizo una búsqueda de las distintas alternativas. Los parámetros típicamente especificados son los siguientes:
 
@@ -580,26 +597,72 @@ Se buscaron modelos de barómetros de distintos fabricantes, para comparar carac
         \hline
           & BMP390 & BMP581 & ICP-20100 & LPS22HH & ILPS22QSTR & DPS368\\
         \hline
-        Full scale range [hPa] & 300 - 1250 & 300 - 1250 & 260 - 1260 & 260 - 1260 & 260 - 1260 ; 260 - 4060 & 300 - 1200\\ 
-        absolute acc [hPa] & $\pm 0.5$ & $\pm 0.3$ & $\pm 0.2$ & $\pm 0.5$ & $\pm 0.5$ & $\pm 1$\\
-        realtive acc [hPa] & $\pm 0.03$ & $\pm 0.06$ & $\pm 0.01$ & $\pm 0.025$ & $\pm 0.015$ & $\pm 0.06$\\
+        Full scale range [hPa] & 300 - 1250 & 300 - 1250 & 260 - 1260 & 260 - 1260 & \cellcolor{green!25}\makecell{260 - 1260 \\ 260 - 4060} & 300 - 1200\\ 
+        absolute acc [hPa] & $\pm 0.5$ & $\pm 0.3$ & \cellcolor{green!25}$\pm 0.2$ & $\pm 0.5$ & $\pm 0.5$ & $\pm 1$\\
+        realtive acc [hPa] & $\pm 0.03$ & $\pm 0.06$ & \cellcolor{green!25}$\pm 0.01$ & $\pm 0.025$ & $\pm 0.015$ & $\pm 0.06$\\
         \hline
-        longevidad & N/A & N/A & N/A & N/A & 10 años, enero 2023 & N/A \\
-        AEC-Q100 & No & No & No & No & No & No\\
-        \hline       
+        longevidad & N/A & N/A & N/A & N/A & \cellcolor{green!25}\makecell{10 años \\ enero 2023} & N/A \\
+        \hline
+        %AEC-Q100 & No & No & No & No & No & No\\
+        %\hline       
     \end{tabular}
     \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del sensor.}
     \label{tab:comparacion_baros}
 \end{table}
 
-Las dos alternativas que se evaluaron son los sensores ICP-20100 y el ILPS22QSTR. El primero de ellos presenta las \textit{absolute accuracy} y \textit{relative accuracy} más bajas de entre todas las opciones evaluadas. El sensor ILPS22QSTR presenta características similares y además tiene la particularidad de que el fabricante garantiza su fabricación por 10 años, hasta enero de 2033 \cite{baro_5}. Finalmente el sensor seleccionado fue este último.\\
+Las dos alternativas que se evaluaron son los sensores ICP-20100 y el ILPS22QSTR. El primero de ellos presenta las \textit{absolute accuracy} y \textit{relative accuracy} más bajas de entre todas las opciones evaluadas. El sensor ILPS22QSTR presenta características similares y además tiene la particularidad de que el fabricante garantiza su fabricación por 10 años, hasta enero de 2033 \cite{baro_5}. Finalmente el sensor seleccionado fue este último.
 
-En cuanto al circuito, en este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C es más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de a IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma peródica. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+En este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C tiene un funcionamiento más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de la IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma peródica. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 \subsubsection{Magnetómetro}
 %\subsection{Magnetómetro}
 
-\textbf{{\color{red} COMPLETAR}}
+El magnetómetro es otro de los sensores complementarios al INS. Este se utiliza para obtener estimaciones del ángulo de \textit{yaw} del vehículo, a partir de mediciones del campo magnético terrestre. Estas mediciones son relativas a una terna solidaria al sensor. Esto se muestra en la figura  . Luego el ángulo de \textit{yaw} puede obtenerse a partir del ángulo entre las componentes en $H_y$ y $H_x$.
+
+\textbf{{\color{red} AGREGAR UNA IMAGEN DEL CAMPO MAGNÉTICO MEDIDO POR EL MAGNETÓMETRO CON SUS COMPONENTES}}
+
+Para medir las componentes del campo magnético, el sensor utiliza una serie de materiales resistivos que son sensibles al campo magnético aplicado sobre estos. Se colocan 4 resistores en configuración puente de Wheatstone y se estiman las componentes del campo magnético a partir del desbalance de este.
+
+Los parámetros típicamente especificados para el magnetómetro son los siguientes:
+
+\begin{itemize}
+    \item \textit{Full-scale range}
+    \item \textit{Scale Factor Error}
+    \item \textit{Scale Factor Error vs Temp}
+    \item \textit{Offset}
+    \item \textit{Offset vs temp}
+    \item \textit{Noise}
+\end{itemize}
+
+Se buscaron modelos de magnetómetros disponibles. Al igual que con el resto de componentes, se redujo la búsqueda a aquellos que sean de bajo costo. En la tabla  se muestra una comparativa de los modelos considerados para la selección final.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c||c|c|c|c|}
+        \hline
+          & HMC5883L & BMM150 & RM3100 & MMC5983MA\\
+        \hline
+        %Full scale range [uT] & \makecell{$\pm$88;130;190;250;\\400;470;560;810} & \makecell{x,y: $\pm$1200;\\z: $\pm$2000} & $\pm$800 & $\pm$800\\
+        Scale Factor Error & $\pm$0,1 \% @ $\pm$200 uT & 1\% & $\pm$0,5\% @ $\pm$200 uT & \cellcolor{green!25}0,1\% @ $\pm$400uT\\
+        \hline
+        \makecell{Scale Factor Error\\Over Temp} & \makecell{0.3\%/C \\@ -40°C - 125 °C} & N/A & N/A & \cellcolor{green!25}\makecell{0.07 \%/°C \\@ -40°C - 105°C}\\
+        \hline
+        Offset @25°C & N/A & \cellcolor{green!25}$\pm$ 40 uT & N/A & $\pm$50 uT\\
+        \hline
+        Offset Over Temp & N/A & N/A & N/A & \cellcolor{green!25}$\pm$2nT/°C @ -40°C - 105°C\\
+        \hline
+        Noise & \makecell{200 nT \\@ FSR = $\pm$88 uT} & \makecell{300 nT @ 25°C,\\ ODR = 20 Hz} & \cellcolor{green!25}30 nT & \makecell{40nT @ ODR = 50 Hz\\60 nT @ ODR = 100 Hz\\80 nT @ ODR = 200 Hz\\120 nT @ ODR = 400 Hz}\\
+        \hline
+        AEC-Q100 & No & No & No & \cellcolor{green!25}Sí\\
+        \hline
+    \end{tabular}
+    \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del magnetómetro. En verde se destaca el modelo con las mejores prestaciones para cada especificación.}
+    \label{tab:comparacion_mags}
+\end{table}
+
+El modelo RM3100 es el que posee el nivel más bajo de ruido. Este componente se utiliza en computadoras de vuelo comerciales, pero además este fue utilizado con éxito en el proyceto Artemis de la NASA. Sin embargo, el costo de este componente en el momento de la selección era de entre 5 a 10 veces superior con respecto a los otros. Finalmente el sensor elegido fue el modelo MMC5983MA. Este es el único de todas las alternativas consideradas que contiene información de todos los parámetros. Además de ofrecer muy buenas especificaciones, este tiene la característica de ser de grado automotriz, lo que le da todavía más robustez.
+
+\textbf{{\color{red} EXPLICAR EL POR QUÉ EL SENSOR SE UBICA FUERA DE LA PLACA}}
 
 \subsubsection{Interfaz de Comunicación CAN}
 %\subsection{Interfaz de Comunicación CAN}
@@ -648,6 +711,65 @@ La especificación de la capa física de CAN no define un conector. Se buscó se
 En cuanto al circuito implementado, se tomó como punto de partida las recomendaciones de la hoja de datos del trasnciever SN65HVD230. Este recomienda el agregado de capacitores de desacople en las líneas de alimentación. Además, se agregaron resistores en serie con las líneas de CAN RX y CAN TX, es decir, en las pistas que llevan las señales que van desde el controller al transciever y viceversa. Esto se hizo como medida preventiva para amortiguar las señales, en caso de que estas presenten sobrepicos en las conmutaciones. A priori se fijan en $0 \ \Omega$ y se modificarán de ser necesario. El circuito completo de la interfaz CAN puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 \textbf{{\color{red} COMPLETAR EL ANÁLISIS DEL MODELO DE PARÁMETROS CONCENTRADOS, PARA LAS PISTAS CAN-TX Y CAN-RX, PARA CALCULAR EL EVENTUAL RESISTOR EN SERIE.}}
+
+%\subsection{Selección del Bus de Comunicaciones de la Computadora de Vuelo}
+
+Como ya fue mencionado, la computadora de vuelo requiere de una interfaz para un bus de comunicaciones. A partir de lo presentado hasta aquí el único requerimiento es el método de acceso al medio, el cual debe ser controlado por el tiempo. Teniendo en cuenta que se trata de un trabajo realizado con componentes COTS, el hardware a utilizar debe ser de fácil acceso y con costos razonables. Para el desarrollo de este trabajo, se seleccionó el bus \textit{Controller Area Network} (CAN)\cite{specification1991bosch}. 
+
+%En las secciones siguientes se explica un inconveniente, en cuanto a la selección del microcontrolador. 
+
+El microcontrolador que se utiliza cuenta con un periférico que permite utilizar una interfaz con este bus. A continuación se presentan brevemente algunas características. Si bien el método de acceso al medio no es TDMA, existe una extensión del protocolo que justamente busca incorporar esta funcionalidad en otra capa superior.
+
+%\subsubsection{Descripción del Protocolo CAN}
+
+El protocolo CAN fue desarrollado para ser usado en la industria automotriz, como bus de comunicación que conecta distintos módulos dentro de un automóvil. El objetivo de su desarrollo fue similiar al motivo por el cual se desarrolló el bus ARINC 629, reemplazar la gran cantidad de cables dentro del vehículo por un bus simple. El protocolo se corresponde con el modelo OSI y la especificación original define las capas física y de enlace, ISO 11898.\\
+
+Cada nodo de un bus CAN se conecta a este a través de 2 cables, los cuales llevan la señal diferencial. Esto se muestra en la figura \ref{fig:conxeion_al_bus_CAN}. Todo el bus CAN se compone de 2 cables que llevan los mensajes a todos los nodos de la red. El hecho de que se trate de una señal diferencial hace que la comunicación sea robusta, reduciendo las emisiones electromagnéticas generadas por este. A su vez, es común que el bus sea cableado como un par trenzado, lo que atenúa señales de modo común, producto de cualquier acoplamiento. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/conxeion_al_bus_CAN.png}
+    \caption{La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \cite{AN228}.}
+    \label{fig:conxeion_al_bus_CAN}    
+\end{figure}
+
+Existen muchas versiones del protocolo CAN, en este trabajo se utiliza la versión CAN High Speed. Esta define una velocidad máxima de transferencia de 1 Mbps, para un bus de hasta 40 m de longitud y 30 nodos conectados al mismo bus. Se recomienda que la conexión entre cada nodo y el bus no sea de más de 30 cm. El hecho de poder tener hasta 30 nodos expande las posibilidades de uso del bus, más allá de ser el medio principal de comunicación utilizado para el sistema redundante. Por ejemplo, distintos sensores o incluso actuadores como los motores del vehículo podrían conectarse al bus. {\color{red} Acá tendría que agregar alguna referencia a este uso del bus CAN}.\\
+
+La impedancia característica del bus debe ser de $120 \ \Omega$. Es común agregar resistores de terminación en ambos extremos, para evitar reflexiones. En algunos casos pueden llegar a encontrarse aplicaciones donde los resistores de terminación se incluyen dentro de alguno de los nodos del bus. Esto no es recomendable, ya que si este se desconecta de forma accidental del bus, todas las comunicaciones entre los demás nodos se verán perjudicadas.\\
+
+En la figura \ref{fig:conxeion_al_bus_CAN} se muestran 2 elementos que forman parte del nodo, el \textit{trasnciever} y el \textit{controller}. El primero de ellos forma parte de la capa física y es un circuito que convierte las señales diferenciales del bus en señales de modo común, que luego son transferidas al elemento \textit{controller}. Este componente sirve como interfaz física con el bus.\\
+
+CAN es un protocolo donde no hay un nodo master, sino que todos pueden utilizar el medio para transmitir mensajes, mientras el bus no esté en uso. El método de acceso al medio que se utiliza es \textit{Carrer Sense Multiple Access with Collision Detection and Arbitration on Message Priority} (CSMA/CD+AMP). Antes de transmitir un mensaje, el nodo sensa el medio físico y en caso de que esté libre, intenta utilizarlo. En caso de que más de un nodo quiera enviar un mensaje a la vez, la colisión se detcta a través de un campo de la trama CAN, el campo ID. Se definen 2 tipos de tramas, estándar, figura \ref{fig:CAN_frame_standard} y extended, figura \ref{fig:CAN_frame_extended}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/CAN_frame_standard.png}
+    \caption{Se muestran los campos de una trama CAN estándar. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite{texasSLOA101B}.}
+    \label{fig:CAN_frame_standard}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/CAN_frame_extended.png}
+    \caption{Se muestran los campos de una trama CAN extendida. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite{texasSLOA101B}.}
+    \label{fig:CAN_frame_extended}
+\end{figure}
+
+En el eventual caso en que más de un nodo detecte el medio sin uso, estos querrán transmitir a través del bus. Esta situación se encuentra contemplada por el protocolo y se implementa un mecanismo que resuelve la colisión asegurando la transmisión del mensaje con la prioridad más baja. El primer bit es el campo SOF, seguido del identificador. En la figura \ref{fig:CAN_arbitration} se muestra un ejemplo de este escenario. Tanto el nodo 1 como el nodo 2 quieren utilizar el bus CAN. Ambos comienzan a inyectar su ID correspondiente. En algún momento, ocurre una discrepancia entre el ID inyectado por ambos nodos. Aquel con el campo dominant, es decir 0, gana y completa su transmisión, en este caso el nodo 2. El nodo 1 que quiso envar un 1 por su lado, detecta un 0. Esto genera que detenga su transmisión, dejando que los demás nodos utilicen el medio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/CAN_arbitration.png}
+    \caption{Mecanismo para la detección de colisiones. El nodo 2 gana por prioridad y completa su transmisión, mientras que el nodo 1 deja de usar el bus, aguardando a que el nodo 2 finalice.}
+    \label{fig:CAN_arbitration}
+\end{figure}
+
+En las figuras \ref{fig:CAN_frame_standard} y \ref{fig:CAN_frame_extended} se puede ver que las tramas tienen un campo CRC, el cual es utilizado para que el receptor pueda verificar la integridad del mensaje. Además, se muestra otro campo, el ACK. Cada vez que un nodo recibe un mensaje correctamente, este sobreescribe el bit de ACK con un dominant, es decir un 0.\\
+
+El protocolo CAN base no tiene un acceso al medio controlado por el tiempo, sino que es dominado por eventos (\textit{event-triggered}), ya que varios nodos pueden querer transmitir varios mensajes a la vez, de manera consecutiva. En el estándar ISO 11898-4\cite{ISO11898_4} se define una extensión denominada \textit{Time-Triggered CAN} (TTCAN). A través de una capa de sesión, puede implementarse un acceso al medio dominado por el tiempo.\\
+
+Como se mencionó al principio de la sección \ref{sec:requerimentos_sistema_tolerancia_fallas}, la arquitectura para la tolerancia a fallas no está definida. La elección del protocolo CAN le da versatilidad al uso del bus, ya que puede utilizarse con un acceso al medio tanto controlado por el tiempo como por eventos.
 
 \subsubsection{Circuito de Alimentación}
 %\subsection{Circuito de Alimentación}

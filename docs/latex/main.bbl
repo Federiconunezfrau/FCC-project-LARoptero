@@ -973,28 +973,6 @@
     \field{year}{2016}
   \endentry
 
-  \entry{AN228}{manual}{}
-    \list{organization}{1}{%
-      {Microchip}%
-    }
-    \field{labeltitlesource}{title}
-    \field{number}{AN 228}
-    \field{title}{A CAN Physical Layer Discussion}
-    \field{year}{2002}
-  \endentry
-
-  \entry{ISO11898_4}{report}{}
-    \field{labeltitlesource}{title}
-    \field{title}{{Road vehicles — Controller area network (CAN) — Part 4:
-  Time-triggeredcommunication}}
-    \list{institution}{1}{%
-      {International Organization for Standardization}%
-    }
-    \field{type}{Standard}
-    \field{month}{08}
-    \field{year}{2004}
-  \endentry
-
   \entry{AN5293}{misc}{}
     \list{organization}{1}{%
       {STMicroelectronics}%
@@ -1092,35 +1070,6 @@
     \field{year}{2009}
   \endentry
 
-  \entry{baro_2}{article}{}
-    \name{author}{2}{}{%
-      {{hash=LAC}{%
-         family={Lapadatu},
-         familyi={L\bibinitperiod},
-         given={A.\bibnamedelima C.},
-         giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod},
-      }}%
-      {{hash=JH}{%
-         family={Jakobsen},
-         familyi={J\bibinitperiod},
-         given={H.},
-         giveni={H\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {William Andrew Publishing}%
-    }
-    \strng{namehash}{LACJH1}
-    \strng{fullhash}{LACJH1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{599\bibrangedash 610}
-    \field{title}{Anodic Bonding}
-    \field{journaltitle}{Handbook of Silicon Based MEMS Materials and
-  Technologies (pp. 599-610)}
-    \field{year}{2015}
-  \endentry
-
   \entry{baro_3}{online}{}
     \name{author}{1}{}{%
       {{hash=A}{%
@@ -1140,27 +1089,6 @@
     \field{urlday}{31}
     \field{urlmonth}{10}
     \field{urlyear}{2023}
-  \endentry
-
-  \entry{cavcar2000international}{article}{}
-    \name{author}{1}{}{%
-      {{hash=CM}{%
-         family={Cavcar},
-         familyi={C\bibinitperiod},
-         given={Mustafa},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{CM1}
-    \strng{fullhash}{CM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{9}
-    \field{pages}{1\bibrangedash 6}
-    \field{title}{The international standard atmosphere (ISA)}
-    \field{volume}{30}
-    \field{journaltitle}{Anadolu University, Turkey}
-    \field{year}{2000}
   \endentry
 
   \entry{baro_4}{manual}{}
@@ -1242,6 +1170,28 @@
     \field{urlday}{11}
     \field{urlmonth}{09}
     \field{urlyear}{2023}
+  \endentry
+
+  \entry{AN228}{manual}{}
+    \list{organization}{1}{%
+      {Microchip}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN 228}
+    \field{title}{A CAN Physical Layer Discussion}
+    \field{year}{2002}
+  \endentry
+
+  \entry{ISO11898_4}{report}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Road vehicles — Controller area network (CAN) — Part 4:
+  Time-triggeredcommunication}}
+    \list{institution}{1}{%
+      {International Organization for Standardization}%
+    }
+    \field{type}{Standard}
+    \field{month}{08}
+    \field{year}{2004}
   \endentry
 
   \entry{garberoglio2019diseno}{article}{}
