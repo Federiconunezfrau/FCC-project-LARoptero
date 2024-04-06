@@ -153,45 +153,7 @@ SPI adicionales
 salidas de 5V y 3V3
 switches para distintas funcionalidades
 
-
-\subsection{Criterios Generales Para la Selección de Componentes}
-
-\subsection{Circuitos y Componentes Seleccionados}
-
-\subsection{Diseño de PCB}
-
-\subsection{Funcionalidades y Diagrama en Bloques}
-
-% Acá lo que hago es mencionar cuáles son las necesidades con las que tengo que cumplir con la placa y después muestro un diagrama en bloques. Todavía no doy ningún circuito, es todo a nivel de sistema.
-
-% Procesa datos de los sensores
-% Actúa sobre los motores
-% Administra interfaces de comunicación externa (CAN, UART, I2C, SPI, USB, SWD)
-% Calcular la ley de control
-% Almacenamiento de datos recolectados por la computadora de vuelo, ya sea del vuelo o de la aplicación.
-% LEDs indicadores de propósito general.
-% Pulsadores para debugging y pruebas de propósito general.
-
-La computadora de vuelo tiene la tarea esencial de adquirir las mediciones de los sensores, procesar dichos datos, y realizar el control de los diversos aspectos del vehículo, fundamentalmente de los motores. Las funcionalidades de la computadora de vuelo son las siguientes:
-
-\begin{enumerate}
-    \item Adquirir datos de sensores.
-    \item Cálculo de la estimación de la pose y de la ley de control.
-    \item Actuación sobre los motores.
-    \item \textbf{{\color{red} FALTA ALGUNA FUNCIONALIDAD DE TOLERANCIA A FALLAS}}
-    \item Control de LEDs indicadores de propósito general.
-    \item Comunicación a través de distintas interfaces, con módulos y sensores externos a la placa.
-    \item Loggeo de datos.
-\end{enumerate}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/diagrama_en_bloques_computadora_de_vuelo.png}
-    \caption{Diagrama en bloques de la computadora de vuelo.}
-    \label{fig:diagrama_en_bloques_computadora_de_vuelo}
-\end{figure}
-
-\textbf{{\color{red} COMPLETAR}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Criterios Generales Para la Selección de Componentes}
 
@@ -209,19 +171,25 @@ En el caso particular de sistemas críticos, el aspecto más importante y fundam
 
 \textbf{{\color{red} COMPLETAR}}
 
+\subsubsection{Longevidad}
+
+\textbf{{\color{red} COMPLETAR}}
+
 \subsubsection{Requerimientos de Conectores}
 
 La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de módulos externos. Algunos de esos conectores fueron seleccionados por una necesidad del LAR, con el objetivo de tener compatibilidad con distintos módulos que son comúnmente utilizados con otras computadoras de vuelo que fueron desarrolladas en el laboratorio. Estos serán mencionados en las secciones correspondientes.
 
+\subsection{Circuitos y Componentes Seleccionados}
+
 %\subsection{Circuitos Implementados}
-\subsection{Microcontrolador}
+\subsubsection{Microcontrolador}
 
 % Acá sí, va una subsubsection por cada bloque, por ejemplo microcontrolador, IMU, Barómetro, bus CAN, Tarjeta Micro SD, Interfaz USB, etc.
 
 A continuación se describe cada una de las partes del circuito que conforman a la computadora de vuelo. Además de los criterios generales ya mencionados, se mencionan los criterios particulares tenidos en cuenta para cada parte del circuito.
 
 %\subsubsection{Microcontrolador}
-\subsubsection{Selección del Componente}
+%\subsubsection{Selección del Componente}
 
 En la versión anterior de la computadora de vuelo, se utilizó un microcontrolador del fabricante ST, en particular el modelo STM32F722. Este cuenta con un procesador ARM Cortex-M7, que puede utilizarse con una frecuencia máxima de 216 MHz. Cuenta con unidad de punto flotante integrada. Además, cuenta con 512 KB de memoria flash y 256 KB de memoria RAM.
 
@@ -291,21 +259,21 @@ La selección del microcontrolador utilizado se vio limitada por la disponibilid
 
 %\subsubsection{Sensor IMU}
 
-\subsubsection{Requerimientos del Componente}
+%\subsubsection{Requerimientos del Componente}
 
-\textbf{{\color{red} COMPLETAR}}
+%\textbf{{\color{red} COMPLETAR}}
 
 % acá van todos los capacitores de desacople, etc
 
-\subsubsection{Cristal Externo}
+%\subsubsection{Cristal Externo}
 
-\textbf{{\color{red} COMPLETAR}}
+%\textbf{{\color{red} COMPLETAR}}
 
-\subsubsection{Cristal para RTC}
+%\subsubsection{Cristal para RTC}
 
-\textbf{{\color{red} COMPLETAR}}
+%\textbf{{\color{red} COMPLETAR}}
 
-\subsection{Sensor IMU}
+\subsubsection{Sensor IMU}
 
 La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor principal utilizado por la computadora de vuelo. Este consiste en un circuito integrado que contiene una serie de sensores inerciales, en particular acelerómetros y giróscopos. Los acelerómetros se utilizan para realizar mediciones de aceleración lineal y los giróscopos para medir velocidad angular. A partir de estas mediciones, se pueden aplicar distintos algoritmos de procesamiento para obtener una estimación de la posición y orientación del vehículo. Las mediciones de aceleración lineal y de velocidad angular que entrega la IMU son referidas a una terna solidaria al componente, como se muestra en la figura \ref{fig:IMU_ejes}.
 
@@ -485,8 +453,16 @@ Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede co
     \label{fig:IMU_SPI}    
 \end{figure}
 
-%\subsubsection{Barómetro}
-\subsection{Barómetro}
+
+
+
+
+
+
+
+
+\subsubsection{Barómetro}
+%\subsection{Barómetro}
 
 Al igual que la IMU, el barómetro que se utiliza corresponde a un sistema MEMS. Este sensor se utiliza para estimar la altura del vehículo respecto del suelo, a partir de mediciones de presión. En particular, los barómetros MEMS cuentan con un sistema capaz de medir la presión absoluta, es decir respecto al 0 de presión. Estos cuentan con una cavidad integrada dentro del chip que se encuentra (idealmente) a presión 0. A través de un proceso llamado \textit{anodic bonding} \cite{baro_1}\cite{baro_2} se construye esta cavidad dentro del chip, la cual se encuentra sellada a una presión muy baja, en comparación con las presiones que se esperan medir utilizando el componente. Para medir la presión, se coloca una membrana sobre la cavidad. En la figura \ref{fig:MEMS_barometro} se puede apreciar el efecto de la presión externa sobre la membrana, la presión atmosférica. Sobre las zonas de color violeta, se colocan resistores de efecto piezoresistivo. En consecuencia, la deformación de la membrana genera tensión sobre estos, modificando su resistencia.
 
@@ -620,13 +596,13 @@ Las dos alternativas que se evaluaron son los sensores ICP-20100 y el ILPS22QSTR
 
 En cuanto al circuito, en este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C es más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de a IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma peródica. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
-%\subsubsection{Magnetómetro}
-\subsection{Magnetómetro}
+\subsubsection{Magnetómetro}
+%\subsection{Magnetómetro}
 
 \textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Interfaz de Comunicación CAN}
-\subsection{Interfaz de Comunicación CAN}
+%\subsection{Interfaz de Comunicación CAN}
 
 % Como fue mencionado, la computadora de vuelo cuenta con la capacidad de conexión a un bus CAN. La especificación original del protocolo \cite{specification1991bosch} incluye dentro de sus definiciones, la capa física. Cada nodo de un bus CAN se conecta a este a través de 2 cables, los cuales llevan la señal diferencial. Esto se muestra en la figura \ref{fig:conxeion_al_bus_CAN}. Todo el bus CAN se compone de 2 cables que llevan los mensajes a todos los nodos de la red. Esto es así debido a que el bus CAN originalmente fue diseñado para utilizarse en automóviles y reemplazar la enorme cantidad de conexiones entre módulos. El hecho de que se trate de una señal diferencial hace que la comunicación sea robusta, reduciendo las emisiones electromagnéticas generadas por este. A su vez, es común que el bus sea cableado como un par trenzado, lo que atenúa señales de modo común, producto de cualquier acoplamiento. 
 
@@ -673,8 +649,8 @@ En cuanto al circuito implementado, se tomó como punto de partida las recomenda
 
 \textbf{{\color{red} COMPLETAR EL ANÁLISIS DEL MODELO DE PARÁMETROS CONCENTRADOS, PARA LAS PISTAS CAN-TX Y CAN-RX, PARA CALCULAR EL EVENTUAL RESISTOR EN SERIE.}}
 
-%\subsubsection{Circuito de Alimentación}
-\subsection{Circuito de Alimentación}
+\subsubsection{Circuito de Alimentación}
+%\subsection{Circuito de Alimentación}
 
 Para alimentar el microcontrolador y los demás componentes, se incluye una fuente de alimentación de $3.3 \ V$. En las primeras dos versiones de la computadora de vuelo, desarrolladas por el LAR en trabajos anteriores, se integró una fuente conmutada de salida $5 \ V$ junto con un regulador lineal de $3.3 \ V$. A partir de la tercera versión, esta fuente conmutada se eliminó dejando solamente el regulador lineal de $3.3 \ V$ \cite{garberoglio2019diseno}. El motivo principal fue reducir las dimensiones de la placa y simplificar el diseño. Siguiendo esta misma línea, la fuente conmutada tampoco se incluyó en este trabajo. Se incorporó un conector, de manera de poder alimentar la placa utilizando una fuente externa de $5 \ V$.\\
 
@@ -747,43 +723,43 @@ Como fue ya fue mencionado, se incorpora un conector que permite adosar una fuen
 
 La placa además cuenta con un puerto micro USB B a través del cual también puede alimentarse la placa. Tanto la línea de $5 \ V$ del conector USB, como la del conector de alimentación principal, tienen en serie un diodo schottky. Estos diodos fuerzan a que las corrientes solamente fluyan desde las entradas de $5 \ V$ hacia el regulador. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.\\
 
-%\subsubsection{Micro SD}
-\subsection{Micro SD}
+\subsubsection{Micro SD}
+%\subsection{Micro SD}
 
 \textbf{{\color{red} COMPLETAR}}
 
-%\subsubsection{Interfaz USB}
-\subsection{Interfaz USB}
+\subsubsection{Interfaz USB}
+%\subsection{Interfaz USB}
 
 \textbf{{\color{red} COMPLETAR}}
 
-%\subsubsection{Micro Switch}
-\subsection{Micro Switch}
+\subsubsection{Micro Switch}
+%\subsection{Micro Switch}
 
 \textbf{{\color{red} COMPLETAR}}
 
-%\subsubsection{LEDs Indicadores}
-\subsection{LEDs Indicadores}
+\subsubsection{LEDs Indicadores}
+%\subsection{LEDs Indicadores}
 
 \textbf{{\color{red} COMPLETAR}}
 
-%\subsubsection{Conector para Módulo GPS}
-\subsection{Conector para Módulo GPS}
+\subsubsection{Conector para Módulo GPS}
+%\subsection{Conector para Módulo GPS}
 
 \textbf{{\color{red} COMPLETAR}}
 
-%\subsubsection{Conectores para Salidas de PWM}
-\subsection{Conectores para Salidas de PWM}
+\subsubsection{Conectores para Salidas de PWM}
+%\subsection{Conectores para Salidas de PWM}
 
 \textbf{{\color{red} COMPLETAR}}
 
-%\subsubsection{Conector para Programación por SWD}
-\subsection{Conector para Programación por SWD}
+\subsubsection{Conector para Programación por SWD}
+%\subsection{Conector para Programación por SWD}
 
 \textbf{{\color{red} COMPLETAR}}
 
-%\subsubsection{Conector para Control por Radio}
-\subsection{Conector para Control por Radio}
+\subsubsection{Conector para Control por Radio}
+%\subsection{Conector para Control por Radio}
 
 \textbf{{\color{red} COMPLETAR}}
 
@@ -795,9 +771,11 @@ La placa además cuenta con un puerto micro USB B a través del cual también pu
 
 \textbf{{\color{red} COMPLETAR}}
 
-% Acá poner el motivo por el que está todo en una sola cara.
+Acá poner el motivo por el que está todo en una sola cara.
 
-% También justificar el espesor del cobre y las vías pasantes en ves de vías ciegas.
+También justificar el espesor del cobre y las vías pasantes en ves de vías ciegas.
+
+Justificar tamaño de las pistas, dimensiones de la placa por costos de fabricación.
 
 \subsubsection{Requerimientos de layout del sensor IMU}
 
@@ -836,5 +814,38 @@ La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de es
 \subsubsection{Comunicación USB}
 
 % Impedancia característica de la pista diferencial, de la especificación.
+
+\textbf{{\color{red} COMPLETAR}}
+
+\subsection{Funcionalidades y Diagrama en Bloques}
+
+% Acá lo que hago es mencionar cuáles son las necesidades con las que tengo que cumplir con la placa y después muestro un diagrama en bloques. Todavía no doy ningún circuito, es todo a nivel de sistema.
+
+% Procesa datos de los sensores
+% Actúa sobre los motores
+% Administra interfaces de comunicación externa (CAN, UART, I2C, SPI, USB, SWD)
+% Calcular la ley de control
+% Almacenamiento de datos recolectados por la computadora de vuelo, ya sea del vuelo o de la aplicación.
+% LEDs indicadores de propósito general.
+% Pulsadores para debugging y pruebas de propósito general.
+
+La computadora de vuelo tiene la tarea esencial de adquirir las mediciones de los sensores, procesar dichos datos, y realizar el control de los diversos aspectos del vehículo, fundamentalmente de los motores. Las funcionalidades de la computadora de vuelo son las siguientes:
+
+\begin{enumerate}
+    \item Adquirir datos de sensores.
+    \item Cálculo de la estimación de la pose y de la ley de control.
+    \item Actuación sobre los motores.
+    \item \textbf{{\color{red} FALTA ALGUNA FUNCIONALIDAD DE TOLERANCIA A FALLAS}}
+    \item Control de LEDs indicadores de propósito general.
+    \item Comunicación a través de distintas interfaces, con módulos y sensores externos a la placa.
+    \item Loggeo de datos.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/diagrama_en_bloques_computadora_de_vuelo.png}
+    \caption{Diagrama en bloques de la computadora de vuelo.}
+    \label{fig:diagrama_en_bloques_computadora_de_vuelo}
+\end{figure}
 
 \textbf{{\color{red} COMPLETAR}}

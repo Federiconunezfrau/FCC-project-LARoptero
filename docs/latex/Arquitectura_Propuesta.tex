@@ -1,4 +1,8 @@
-\section*{Arquitectura de Redundancia Propuesta RE ACOMODAR EN OTRA SECCIÓN}
+%\section{Arquitectura de Redundancia Propuesta RE ACOMODAR EN OTRA SECCIÓN}
+
+%\section{Arquitectura de Redundancia Propuesta}
+
+\section{Implementación del Sistema Tolerante a Fallas}
 
 % En esta sección, se presenta la arquitectura implementada para la tolerancia a fallas de hardware. Como se mostró en la sección anterior, \textit{The Byzantine Generals Problem} sienta las bases para la tolerancia a fallas arbitrarias de hardware. A través de una serie de intercambios de mensajes entre los nodos de la red, estos pueden llegar a un consenso, para tomar la misma decisión. Además, se mostró que para poder tolerar una falla arbitraria, se requiere por lo menos de 4 nodos interconectados.
 
@@ -8,55 +12,27 @@
 
 % En esta sección se muestra que, si el sistema tiene ciertas características, en particular ser un sistema de tiempo real y contar con un bus común a los nodos para las comunicaciones, luego el problema del consenso se simplifica mucho.
 
-\subsection*{Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}
+En esta sección se presenta la arquitectura de sistema propuesta, para la tarea de tolerancia a fallas. Esta consiste en un sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo. Para demostrar las capacidades de toleranca a fallas, se hicieron una serie de pruebas simulando fallas en un sensor. Además, se describen las características del firmware desarrollado para implementar el sistema propuesto. Finalmente, se muestran los resultados obtenidos sobre las pruebas realizadas.
 
-% En sistemas de tiempo real para aplicaciones \textit{safety-critical}, es común encontrar sistemas distribuidos con comunicación a través de un bus. Por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=\textwidth]{img/red_CAN.png}
-%     \caption{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite{texasSLOA101B}.}
-%     \label{fig:red_CAN}
-% \end{figure}
+%Para esto, se desarrolló un firmware con una arquitectura de sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo.
 
-% Esto presenta una diferencia respecto de lo planteado en \textit{The Byzantine Generals Problem}, ya que la existencia de un bus común a todos los nodos automáticamente elimina la posibilidad de que uno de los miembros de la red pueda enviar información diferente a sus pares. Puede compararse la figura \ref{fig:byzantine_bus_1} con la figura \ref{fig:Byzantine_Generals_Problem_5}.
+%En esta sección se presentan una serie de pruebas que demuestran las capacidades de tolerancia a fallas de la computadora de vuelo. Para ello, se desarrolló un firmware con una arquitectura de sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{img/byzantine_bus_1.png}
-%     \caption{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.}
-%     \label{fig:byzantine_bus_1}    
-% \end{figure}
 
-% Como contrapartida, debido a que los nodos comparten canal de comunicación, estos deben tomar turnos para enviar la información a sus pares. De otra forma, habría una colisión en el bus y la información nunca llegaría a su destino. Sumado a esto, el bus se convierte en un punto singular de falla, ya que es posible que un problema en el bus deje a los nodos incomunicados.
 
-{\Large \textbf{{\color{red} ACÁ AGREGAR EJEMPLOS DE USO DE DOBLE BUS. POR EJEMPLO LOS AUTOS CON DOBLE CAN O DOBLE FLEX RAY, EL PAPER QUE USA DOBLE TIME TRIGGERED BUS, ETC}}}
+%Estas consistieron en simular una serie de fallas y, a partir de la comparación entre placas, detectar las diferencias obtenidas para distintos cálculos realizados. Además, se describe el firmware desarrollado
 
-% \subsubsection{Consenso}
 
-% Al igual que como se hizo en la sección \ref{sec:consenso_TMR}, se analiza el problema del consenso para la arquitectura propuesta en esta sección. El ejemplo que se presentó anteriormente fue el necesario para lograr una sincronización entre las FCCs y se mostró que el enviar información distinta a cada computadora de vuelo, puede romper el sincronismo muy fácilmente.
 
-% Para el caso en el que se utiliza un bus de comunicación, como se mencionó, las FCCs deben tomar turnos para utilizar el medio físico. En las próximas secciones se explicará cómo se puede lograr esto, aquí se asume que las FCCs respetan sus turnos para utilizar el medio físico compartido. En la figura \ref{fig:byzantine_bus_2}, la FCC1 accede al medio y envía su valor de \textit{timestamp}. Las demás FCCs reciben el mismo valor, por estar conectadas al mismo bus de comunicación. Luego, las FCC2 y 3 repiten esto mismo. En la figura \ref{fig:byzantine_bus_3} se muestra que todas tienen la misma información respecto de sus pares. Luego por ejemplo, si calculan un promedio, llegarán al mismo resultado y se sincronizarán correctamente.
 
-% \begin{figure}[H]
-%     \centering
-%     \begin{subfigure}[b]{0.34\textwidth}
-%         \includegraphics[width=\textwidth]{img/byzantine_bus_2.png}
-%         \caption{La FCC1 envía su \textit{timestamp} hacia las demás.}
-%         \label{fig:byzantine_bus_2}
-%     \end{subfigure}\hfill
-%     \begin{subfigure}[b]{0.49\textwidth}
-%         \includegraphics[width=\textwidth]{img/byzantine_bus_3.png}
-%         \caption{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit{timestamp} para sincronizarse.}
-%         \label{fig:byzantine_bus_3}
-%     \end{subfigure}
-%     \caption{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit{timestamp}. Luego, todas llegan a un consenso de manera casi trivial.}
-%     \label{}
-% \end{figure}
+%, por lSe utilizan tres réplicas de la computadora de vuelo
 
-% A partir de este análisis, se puede ver que para el caso de un sistema de tiempo real con un único bus de comunicaciones, el problema del consenso es mucho más sencillo que lo que se muestra en \textit{The Byzantine Generals Problem}. De todas maneras, lo que se presenta aquí es un primer análisis, ya que se ha asumido que no hay colisiones en el bus y que los nodos se encuentran sincronizados.
+% Para implementar la tolerancia a fallas, se optó por un esquema distribuido, el cual se compone de tres unidades de la CNGC, conectadas entre sí a través del bus CAN, cada una de ellas alimentadas de manera independiente. Una imagen del stack de nodos puede observarse en la Fig. 3. Cada nodo funciona de manera independiente ejecutando exactament
 
-\subsubsection*{Sincronismo de los nodos}
+\subsection{Arquitectura Propuesta: \textit{The Time-Triggered Architecture}}
+
+%\subsubsection{Sincronismo de los nodos}
 
 En la sección \ref{sec:sincronismo_TMR} se mencionó la necesidad del sincronismo entre los nodos y que esta se logra a partir de un intercambio de mensajes. Para la arquitectura propuesta, ese intercambio de mensajes se hace a través del mismo bus. Debido a que el medio es compartido, los nodos de la red deben tomar turnos para acceder al medio, de manera de que todos puedan enviar sus respectivos mensajes.
 
@@ -91,7 +67,7 @@ Cada una de las computadoras de vuelo incluye un clock interno, el cual utiliza 
 
 En la figura, se muestra que cuando la FCC 2 termina de enviar la señal de control a los actuadores (instante $T_n$), la FCC 1 se encuentra intercambiando resultados con la FCC 2. Debido a que la FCC 2 ya pasó dicha tarea, la FCC 1 no recibirá ningún valor de su par y asumirá erróneamente, que la FCC 2 se encuentra en un estado con alguna falla, ya que no responde. Si bien este ejemplo es muy simple, muestra la necesidad de la sincronización entre nodos de la red, siendo el motivo principal, el hecho de que el sistema es de tiempo real.
 
-\subsection*{Arquitectura Del Sistema: \textit{The Time-Triggered Architecture}}
+%\subsection{Arquitectura Del Sistema: \textit{The Time-Triggered Architecture}}
 
 A partir de lo analizado hasta aquí, se enumeran los requerimientos más elementales del sistema:
 
@@ -128,7 +104,7 @@ En la figura \ref{fig:diagrama_TTA} se muestra un esquema de la arquitectura \te
 
 A continuación, se describe brevemente cada uno de los componentes de este tipo de sistema. Para una explicación más detallada, referirse a \cite{kopetz-2011} y \cite{kopetz2003time}.
 
-\subsubsection*{Bus de Comunicaciones}
+%\subsubsection{Bus de Comunicaciones}
 
 El bus de comunicaciones es el medio a través del cual los nodos intercambian información. Como se describió anteriormente, la arquitectura requiere la sincronización de los nodos para una ejecución consistente. Esto quiere decir que como mínimo, los nodos intercambian mensajes utilizados para la sincronización entre estos. Más allá de esto, en un sistema distribuido, lo más común es que haya un intercambio de información constante entre nodos.
 
@@ -154,17 +130,17 @@ En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Commu
 
 Al recibir un mensaje, ocurre algo similar. El software del nodo \textit{pollea} a la CNI en determinado instante de tiempo para obtener el mensaje recibido. Otra forma de implementar esto podría ser a través de una interrupción en el software, es decir, que cuando llege un mensaje nuevo, se dispare una interrupción en el software. El problema con esto es que se le quita determinismo al sistema.
 
-\subsubsection*{Nodos}
+%\subsubsection{Nodos}
 
 Los nodos son la unidad elemental de los sistemas distribuidos, y también de la arquitectura \textit{Time-Triggered}. Estos son los que ejecutan las tareas y le dan vida al sistema. Los nodos se componen generalmente de un procesador (microcontrolador en el caso de este trabajo), un clock local (en este trabajo se implementa con un circuito oscilador con un cristal) una unidad de control de acceso al bus de comunicaciones y el software local al nodo. En la sección anterior además, se mencionó la existencia de un elemento llamado CNI, que comunica al software con el bus. Sumado a esto, el nodo a su vez contiene un scheduler, el cual se describie en la próxima sección.
 
-\subsubsection*{Scheduler}
+%\subsubsection{Scheduler}
 
 El sistema conformado por el conjunto de nodos y las comunicaciones entre ellos, se basa en un esquema de tareas que se encuentra predefinido. Esto se diferencia de sistemas de otras características como puede ser alguno con una interfaz con una persona. El caso más cercano puede ser el de un telófono celular, el cual tiene una pantalla que el usuario puede presionar en distintos lugares para abrir una aplicación, enviar un mensaje, etc. Cuando esto ocurre, el celular debe dar una respuesta casi inmediata. Este tipo de sistemas se llaman \textit{Event-Triggered} y son controlados por los eventos que pueden ocurrir. A priori, se asumen eventos asincrónicos, es decir, que pueden ocurrir en cualquier momento y en cualquier orden. A diferencia de esto, en un sistema \textit{Time-Triggered} los eventos no pueden ocurrir en cualquier momento. Mejor dicho, los eventos pueden ocurrir en cualquier momento, pero el sistema solamente prestará atención a esos eventos en un lapso de tiempo predefinido.
 
 En los sistemas operativos de tiempo real se definen una serie de tareas, las cuales utiliza un scheduler que determina cuál es la próxima tarea que corresponde ejecutar. Un sistema \textit{Time-Triggered} también define su comportamiento a través de tareas. La diferencia está en la estrategia utilizada por el scheduler. En el caso de un RTOS es común encontrar schedulers \textit{preemptive} con un sistema de prioridad. En un sistema \textit{Time-Triggered}, los schedulers pueden ser \textit{preemptive} o bien cooperativos. La ventaja de utilizar un scheduler cooperativo es nuevamente el determinismo en la ejecución de las tareas \cite[p.~247]{pont2008patterns}.
 
-\subsubsection*{Global Time y Sincronización}
+%\subsubsection{Global Time y Sincronización}
 
 De forma de que el funcionamiento del sistema de tiempo real distribuido sea correcto, todos los nodos deben ejecutar sus tareas de forma consistente. Para ello, sus schedulers deben estar sincronizados. Para el caso de este trabajo, cada una de las FCCs debe encontrarse ejecutando la misma tarea al mismo tiempo. De esta forma pueden ejecutarse los algoritmos de votación para realizar tolerancia a fallas de hardware, como ya se describió anteriormente.
 
@@ -199,3 +175,83 @@ Existen muchísimos algoritmos de resincronización. En \cite{anceaume1998perfor
 \end{enumerate}
 
 Para la arquitectura de este trabajo, el primer bloque, \textit{Resynchronization Detect} simplemente consiste en ejecutar una tarea que estará incluida en el scheduling. El segundo bloque es el que realiza el cálculo y puede variar dependiendo de la implementación. Más adelante, se describirá el algoritmo utilizado. Por último, el bloque \textit{Clock Correction}, corresponde a aplicar la corrección al clock local. En general existen dos formas de realizar esto. La primera es pisando el contador existente con el nuevo valor calculado. Este método puede generar inconsistencias en la ejecución de las tareas del nodo \cite[p.~72]{kopetz-2011}. La forma que se prefiere es ir aplicando correcciones sucesivas conforme se van reajustando los clocks. Esto es algo similar a un algoritmo de control, donde se calcula un error y en función de dicho error, se aplica una corrección a la acción de control. En este último caso, la corrección puede implementarse por ejemplo dejando pasar más o menos tiempo para incrementar el contador del clock local.
+
+\subsection{Implementación en Firmware}
+
+El objetivo de esta sección es explicar cómo se implementaron las características del sistema Time-Triggered Architecture. Por ejemplo, cómo se implementó el scheduler, la sincronización y la comunicación entre nodos.
+
+\subsubsection{Scheduler}
+
+\subsubsection{Comunicación entre Nodos}
+
+\subsubsection{Sincronización}
+
+\subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}
+
+El objetivo de esta sección es dar una primera muestra de que lo que se implementó funciona como se dijo que debe funcionar. Para eso, quiero poner capturas de analizador lógico, mostrando que los mensajes se envían en los tiempos configurados y que el intervalo de tiempo entre mensajes se mantiene estable gracias al efecto de la sincronización periódica.
+
+\subsection{Pruebas Realizadas}
+
+Se describe el setting común de las pruebas: Que las 3 placas calculan pitch y roll, luego lo comparten, comparan y se obtienen los residuos. Las fallas se inyectan articialmente. En cada sección se explica la característica de la falla en particular.
+
+\subsubsection{Funcionamiento Sin Fallas}
+
+\subsubsection{Bias en Valores de Giróscopo}
+
+\subsubsection{Saltos Aleatorios en Valores de Giróscopo}
+
+\subsubsection{Medición Constante e Invariante de Acelerómetros y Giróscopos}
+
+\subsubsection{Mediciones Inconsistentes de Acelerómetro}
+
+
+
+
+%\subsection{Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}
+
+% En sistemas de tiempo real para aplicaciones \textit{safety-critical}, es común encontrar sistemas distribuidos con comunicación a través de un bus. Por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{img/red_CAN.png}
+%     \caption{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite{texasSLOA101B}.}
+%     \label{fig:red_CAN}
+% \end{figure}
+
+% Esto presenta una diferencia respecto de lo planteado en \textit{The Byzantine Generals Problem}, ya que la existencia de un bus común a todos los nodos automáticamente elimina la posibilidad de que uno de los miembros de la red pueda enviar información diferente a sus pares. Puede compararse la figura \ref{fig:byzantine_bus_1} con la figura \ref{fig:Byzantine_Generals_Problem_5}.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/byzantine_bus_1.png}
+%     \caption{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.}
+%     \label{fig:byzantine_bus_1}    
+% \end{figure}
+
+% Como contrapartida, debido a que los nodos comparten canal de comunicación, estos deben tomar turnos para enviar la información a sus pares. De otra forma, habría una colisión en el bus y la información nunca llegaría a su destino. Sumado a esto, el bus se convierte en un punto singular de falla, ya que es posible que un problema en el bus deje a los nodos incomunicados.
+
+%{\Large \textbf{{\color{red} ACÁ AGREGAR EJEMPLOS DE USO DE DOBLE BUS. POR EJEMPLO LOS AUTOS CON DOBLE CAN O DOBLE FLEX RAY, EL PAPER QUE USA DOBLE TIME TRIGGERED BUS, ETC}}}
+
+% \subsubsection{Consenso}
+
+% Al igual que como se hizo en la sección \ref{sec:consenso_TMR}, se analiza el problema del consenso para la arquitectura propuesta en esta sección. El ejemplo que se presentó anteriormente fue el necesario para lograr una sincronización entre las FCCs y se mostró que el enviar información distinta a cada computadora de vuelo, puede romper el sincronismo muy fácilmente.
+
+% Para el caso en el que se utiliza un bus de comunicación, como se mencionó, las FCCs deben tomar turnos para utilizar el medio físico. En las próximas secciones se explicará cómo se puede lograr esto, aquí se asume que las FCCs respetan sus turnos para utilizar el medio físico compartido. En la figura \ref{fig:byzantine_bus_2}, la FCC1 accede al medio y envía su valor de \textit{timestamp}. Las demás FCCs reciben el mismo valor, por estar conectadas al mismo bus de comunicación. Luego, las FCC2 y 3 repiten esto mismo. En la figura \ref{fig:byzantine_bus_3} se muestra que todas tienen la misma información respecto de sus pares. Luego por ejemplo, si calculan un promedio, llegarán al mismo resultado y se sincronizarán correctamente.
+
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.34\textwidth}
+%         \includegraphics[width=\textwidth]{img/byzantine_bus_2.png}
+%         \caption{La FCC1 envía su \textit{timestamp} hacia las demás.}
+%         \label{fig:byzantine_bus_2}
+%     \end{subfigure}\hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/byzantine_bus_3.png}
+%         \caption{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit{timestamp} para sincronizarse.}
+%         \label{fig:byzantine_bus_3}
+%     \end{subfigure}
+%     \caption{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit{timestamp}. Luego, todas llegan a un consenso de manera casi trivial.}
+%     \label{}
+% \end{figure}
+
+% A partir de este análisis, se puede ver que para el caso de un sistema de tiempo real con un único bus de comunicaciones, el problema del consenso es mucho más sencillo que lo que se muestra en \textit{The Byzantine Generals Problem}. De todas maneras, lo que se presenta aquí es un primer análisis, ya que se ha asumido que no hay colisiones en el bus y que los nodos se encuentran sincronizados.
+
