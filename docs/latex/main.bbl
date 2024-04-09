@@ -1184,46 +1184,6 @@
     \field{urlyear}{2023}
   \endentry
 
-  \entry{garberoglio2019diseno}{article}{}
-    \name{author}{4}{}{%
-      {{hash=GL}{%
-         family={Garberoglio},
-         familyi={G\bibinitperiod},
-         given={Leonardo},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=PC}{%
-         family={Pose},
-         familyi={P\bibinitperiod},
-         given={Claudio},
-         giveni={C\bibinitperiod},
-      }}%
-      {{hash=MI}{%
-         family={Mas},
-         familyi={M\bibinitperiod},
-         given={Ignacio},
-         giveni={I\bibinitperiod},
-      }}%
-      {{hash=GJI}{%
-         family={Giribet},
-         familyi={G\bibinitperiod},
-         given={Juan\bibnamedelima Ignacio},
-         giveni={J\bibinitperiod\bibinitdelim I\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{GL+1}
-    \strng{fullhash}{GLPCMIGJI1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{1}
-    \field{pages}{29\bibrangedash 38}
-    \field{title}{Dise{\~n}o de un autopiloto para peque{\~n}os veh{\'\i}culos
-  no tripulados}
-    \field{volume}{3}
-    \field{journaltitle}{Elektron}
-    \field{year}{2019}
-  \endentry
-
   \entry{ZLDO1117QG33TA}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{Automotive Compliant 1A Low Dropout Positive Regulator with
