@@ -848,7 +848,7 @@ El circuito completo de la interfaz CAN puede encontrarse en el \nameref{appendi
 
 
 
-\subsubsection{Circuito de Alimentación}
+\subsubsection{Circuito de Alimentación}\label{sec:circuito_de_alimentacion}
 %\subsection{Circuito de Alimentación}
 
 Para alimentar el microcontrolador y los demás componentes, se incluye una fuente de alimentación de $3.3 \ V$. Si bien el uso de una fuente conmutada ofrecería mejores características de eficiencia, se opta por utilizar un circuito con un regulador lineal. El motivo principal es porque se prioriza reducir las dimensiones de la placa y simplificar el diseño. Se incorporó un conector, de manera de poder alimentar la placa utilizando una fuente externa de $5 \ V$, a partir de los cuales se generan los $3.3 \ V$.
@@ -978,24 +978,43 @@ Se coloca un slot para memoria micro SD en la placa, modelo DM3AT-SF-PEJM5 del f
 \subsubsection{Interfaz USB}
 %\subsection{Interfaz USB}
 
-La placa además cuenta con un puerto micro USB B a través del cual también puede alimentarse la placa. Tanto la línea de $5 \ V$ del conector USB, como la del conector de alimentación principal, tienen en serie un diodo schottky. Estos diodos fuerzan a que las corrientes solamente fluyan desde las entradas de $5 \ V$ hacia el regulador. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+Como parte de las funcionalidades básicas para utilización de la computadora de vuelo, se incorpora una interfaz para comunicación USB. Este puerto se incorpora con el objetivo de facilitar el uso de la placa durante las etapas de desarrollo de firmware, donde puede ser necesario hacer muchas pruebas y modificaciones. De esta forma, es posible programar la placa y proveer alimentación a través de un solo cable. La interfaz también puede aprovecharse como un puerto de comunicación más con la computadora de vuelo.
 
-\textbf{{\color{red} COMPLETAR}}
+El microcontrolador utilizado integra un periférico compatible con la especificación USB 2.0 y con la extensión On-The-Go (OTG), el cual permite a pequeños dispositivos funcionar como hosts en el bus USB. Para las aplicaciones que se le quieren dar a la computadora de vuelo, se opta por un uso de modo device. 
 
-\subsubsection{Micro Switch}
-%\subsection{Micro Switch}
+En cuanto a la velocidad de comunicación, el periférico brinda la posibilidad de utilizar tanto una configuración Full-Speed (12 Mb/s) como High-Speed (480 Mb/s). A priori, esta última sería de preferencia, dada la altísima tasa de transferencia, en comparación con la primera. Sin embargo, la utilización de esta última requiere el agregado de un componente adicional para utilizar como interfaz física con el bus USB, denominado ULPI. No sucede lo mismo para el uso de la configuración Full-Speed, para la cual la interfaz física se encuentra completamente integrada. Por una necesidad de mantener un tamaño de placa reducido y teniendo en cuenta que la interfaz USB no se usará para funciones críticas de la computadora de vuelo, se prefirió optar por el uso de una configuración Full-Speed. Cabe aclarar además, que la interfaz física integrada para Full-Speed trae consigo integrado el resistor de pull-up de $1.5 \ k\Omega$ en la línea D+, neceario para el proceso de enumeración del dispositvo, por lo que tampoco fue necesario su incorporación en la placa.
 
-\textbf{{\color{red} COMPLETAR}}
+Se incorpora en la placa un conector micro USB-B. El terminal 4 llamado ID se utiliza para indicar si el dispositivo funcionará como host o device. La computadora de vuelo funcionará siempre en modo device, por lo que este se deja en circuito abierto, tal como indica la especificación USB 2.0.
 
-\subsubsection{LEDs Indicadores}
-%\subsection{LEDs Indicadores}
+%\textbf{{\color{red} AGREGAR IMAGEN DEL POWER ORING}}
 
-\textbf{{\color{red} COMPLETAR}}
+Como fue mencionado, el conector USB se utiliza como otra opción para alimentar la placa. La tensión nominal entregada por un host USB es de $5 \ V$. Para limentar el resto de la placa, se conecta esta entrada al regulador de $3.3 \ V$ que se encuentra en la placa. De forma de evitar que haya conflictos con el conector de alimentación principal mencionado en la sección \ref{sec:circuito_de_alimentacion}, se incorporó un circuito simple formado por dos diodos, como se muestra en la figura \ref{fig:diode_oring}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4
+    \textwidth]{img/diode_oring.png}
+    \caption{Se muestra un esquema como el incluido en la computadora de vuelo, el cual permite la aliemntación de la misma a través de 2 fuentes distintas. {\color{red} REEMPLAZAR ESTA IMAGEN POR UNA DIBUJADA POR MI.}}
+    \label{fig:diode_oring}    
+\end{figure}
+
+Estos diodos fuerzan a que las corrientes solamente fluyan desde las entradas de $5 \ V$ hacia el regulador. Debido a que estos se encuentran en serie con las corrientes de entrada a la placa, se seleccionaron diodos Schottky para tener bajas caídas de tensión, además de reducir la potencia disipada. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}. Si bien existen componentes especiales que permiten cumplir con esta misma funcionalidad con menor caída de tensión e incluso con la capacidad de seleccionar la fuente de alimentación a utilizar, nuevamente se opta por una solución que permita mantener unas dimensiones reducidas de la placa.
+
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Conector para Módulo GPS}
 %\subsection{Conector para Módulo GPS}
 
-\textbf{{\color{red} COMPLETAR}}
+Se provee la posibilidad de incorporar de forma externa un módulo receptor de GPS. Estos entregan mediciones de posición y velocidad a la computadora de vuelo, los cuales se utilizan como mediciones complementarias al INS. Estos módulos además suelen proveer de una funcionalidad extra, llamada señal \textit{Pulse-per-second}(PPS). Esta es una señal con un período de 1 segundo y que se encuentra sincronizada con los relojes atómicos del sistema GPS, los cuales tienen una exactitud de decenas de ns. Esta señal típicamente es utilizada como referencia de tiempo en el sistema de navegación de la computadora de vuelo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/gps.png}
+    \caption{Módulo receptor de GPS. Dentro de la carcasa de plástico se encuentra un chip que procesa las señales de GPS para extraer la información, además de una antena utilizada para recibir la señal proveniente de distintos satélites, típicamente una antena parche de cerámica.}
+    \label{fig:gps}
+\end{figure}
+
+Se proveen de 2 conectores diferentes para uso de este tipo de módulos. Por un lado, se utiliza un conector de la serie DF-13 del fabricante Hirose y por el otro, conectores de tira de pines estándar de 0.1” a 90 grados. En la figura \ref{fig:gps} se muestra un módulo típico de uso en vehículos aéreos de uso comercial, el cual trabaja con una interfaz de comunicación serie. Los conectores incorporados están enfocados al uso de módulos de este tipo, por lo que en el conector pueden verse dos terminales con las etiquetas TX y RX. Estos además están acompañados por un terminal para la señal PPS.
 
 \subsubsection{Conectores para Salidas de PWM}
 %\subsection{Conectores para Salidas de PWM}
@@ -1011,6 +1030,32 @@ La placa además cuenta con un puerto micro USB B a través del cual también pu
 %\subsection{Conector para Control por Radio}
 
 \textbf{{\color{red} COMPLETAR}}
+
+%\subsubsection{Micro Switch}
+\subsubsection{Otras Funcionalidades}
+%\subsection{Micro Switch}
+
+Además del pulsador para la línea de RESET, se incluyen dos pulsadores extra. Estos a priori no tienen una funcionalidad definida, por lo que se incluyen para ser usados según lo requiera la aplicación de la computadora de vuelo.
+
+Una de los posibles usos que se le puede dar a estos pulsadores es el de ejecutar una rutina de calibración de alguno de los sensores, como el magnetómetro externo, el cual se requiere una calibración que involucra un procedimiento manual.
+
+Teniendo presente la necesidad de obtener un diseño de tamaño reducido, se incorporaron pulsadores de 2 terminales, como los que se muestran en la figura \ref{fig:pulsadores}. Cada pulsador se encuentra acompañado de un resistor de pull-up, acompañado de un capacitor de filtrado y un resistor en serie con motivo de filtrar el efecto rebote.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/pulsadores.png}
+    \caption{Pulsadores utilizados para la computadora de vuelo. Las imágenes se extrajeron de la hoja de datos del componente. Se muestran las dimensiones en mm.}
+    \label{fig:pulsadores}    
+\end{figure}
+
+%\textbf{{\color{red} COMPLETAR}}
+
+%\subsubsection{LEDs Indicadores}
+%\subsection{LEDs Indicadores}
+
+Otra de las funcionalidades que se incorporan son una serie de LEDs de distintos colores. En total se incorporaron 8 LEDs, 2 de color azul, 2 de color rojo, 2 de color verde y 2 de color amarillo. Al igual que los pulsadores, estos son de propósito general y su uso dependerá de la aplicación involucrada. 
+
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsection{Desarrollo del PCB}
 
