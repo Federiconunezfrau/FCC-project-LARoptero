@@ -1238,6 +1238,16 @@
     \field{urlyear}{2023}
   \endentry
 
+  \entry{ARM_SWD_connector}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{title}{{Documentation – Arm Developer}}
+    \verb{url}
+    \verb https://developer.arm.com/documentation/ddi0314/h/Serial-Wire-Debug-a
+    \verb nd-JTAG-Trace-Connector/About-the-SWD-and-JTAG-trace-connector?lang=e
+    \verb n
+    \endverb
+  \endentry
+
   \entry{IMUpcb_1}{manual}{}
     \list{organization}{1}{%
       {TDK Invensense}%

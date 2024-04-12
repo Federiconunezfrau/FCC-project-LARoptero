@@ -179,7 +179,14 @@ Para la computadora de vuelo de este trabajo, se buscó tener una longevidad de 
 
 \subsubsection{Requerimientos de Conectores}
 
-La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de módulos externos. Algunos de esos conectores fueron seleccionados por una necesidad de tener compatibilidad con distintos módulos que son comúnmente utilizados con otras computadoras de vuelo. Estos serán mencionados en las secciones correspondientes.
+La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de dispositivos externos a la placa. Por una necesidad de compatibilidad con distintos sensores y módulos que son comúnmente utilizados con otras computadoras de vuelo, se utilizaron 2 tipos de conectores distintos. Estos se muestran en la figura \ref{fig:conectores_dupon_df_13}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/conectores_dupon_df_13.png}
+    \caption{Formato de los conectores utilizados para sensores y módulos externos en la placa. A la izquierda se muestra un conector con formato tira de pines de 0.1” a 90° y a la derecha se muestra un conector de 4 terminales, correspondiente a la serie DF-13 del fabricante Hirose.}
+    \label{fig:conectores_dupon_df_13}
+\end{figure}
 
 \subsection{Circuitos y Componentes Seleccionados}
 
@@ -1019,17 +1026,35 @@ Se proveen de 2 conectores diferentes para uso de este tipo de módulos. Por un 
 \subsubsection{Conectores para Salidas de PWM}
 %\subsection{Conectores para Salidas de PWM}
 
-\textbf{{\color{red} COMPLETAR}}
+Como parte del sistema de control, la computadora de vuelo debe comandar a los actuadores. En vehículos aéreos no tripulados comerciales, es común el uso de motores burshless de corriente continua. Estos se alimentan con una fuente de tensión continua, a través de un driver que genera una salida trifásica. Estos drivers se denominan \textit{Electronic Speed Controller}(ESC). 
 
-\subsubsection{Conector para Programación por SWD}
-%\subsection{Conector para Programación por SWD}
+Haciendo una búsqueda de los distintos tipos de ESC, puede verse que estos ofrecen interfaces de comunicación variadas, siendo la más común el uso de una señal PWM. Es por esto que en la computadora de vuelo se incorpora un conector el cual ofrece 8 salidas para este tipo de señal. Con motivo de tener compatibilidad con drivers comerciales, los conectores incorporados son conectores de tira de pines estándar de 0.1” a 90 grados. Las señales PWM serán generadas a través de los periféricos asociados a los timers del microcontrolador.
 
-\textbf{{\color{red} COMPLETAR}}
+\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEA QUE LA PLACA ENTREGA PWM PERO QUE LA CORRIENTE LA ENTREGA LA BATERÍA}}
 
-\subsubsection{Conector para Control por Radio}
+Además de las 8 salidas para control de los actuadores del vehículo, se incorporaron otras 4 salidas extra en otro conector separado. Este segundo conector está pensado para utilizarse con otros fines, como controlar una serie de servomotores que puedan incorporarse al vehículo.
+
+%\textbf{{\color{red} COMPLETAR}}
+
+\subsubsection{Conectores para Control por Radio}
 %\subsection{Conector para Control por Radio}
 
+Acá hay que explicar el terminal para DSM Spektrum y el de PPM. Hay que mencionar que son dos formas de comandar a la computadora de vuelo mediante un piloto remoto. Explicar el principio de funcionamiento de cada uno: señales, interfaces, módulos, etc. Finalmente para cada uno hay que explicar el por qué del conector (para DSM spektrum es fácil porque en la especificación dice qué conector usar.)
+
+\textbf{{\color{red} ESTARÍA BUENO PONER UN DIBUJO EXPLICANDO LA SEÑAL PPM}}
+
 \textbf{{\color{red} COMPLETAR}}
+
+\subsubsection{Conector para Programación y Debugging por SWD}
+%\subsection{Conector para Programación por SWD}
+
+Con el objetivo de facilitar el desarrollo de firmware para distintas aplicaciones, se incorpora un conector con acceso a los terminales de programación y debugging del microcontrolador. Estos corresponden a una interfaz \textit{Serial Wire Debug} (SWD). A través de esta es posible detener el núcleo del microcontrolador utilizando \textit{breakpoints} y examinar el estado de las variables del programa.
+
+%La interfaz SWD permite la comunicación con un dispositivo de debugging compatible con el protocolo. Para su uso se requiere de un terminal de datos bidireccional, SWDIO, además de una línea de clock, SWCLK, generada por el dispostivo de debugging. Esta última se debe a que se trata de una comunicación sincrónica. Algunas interfaces incorporan una tercera línea denominada SWO. Esta es una línea de comunicación asincrónica unidireccional desde el microcontrolador hacia el dispositivo de debugging. SU funcionamiento equivale a una UART y puede usarse para enviar mensajes a una PC, por ejemplo de valores de variables. El uso de este terminal debe acompañarse con un \textit{Serial Wire Viewer} (SWV).
+
+El protocolo necesita el agregado de unos resistores de pull-up y pull-down en las líneas SWDIO y SWCLK respectivamente. En la hoja de datos se indica que estos se encuentran integrados en el microcontrolador, por lo que se hicieron las conexiones desde el microcontrolador directamente hacia un conector utilizado para comunicación con el dispositivo de debugging. No existe un conector estándar para SWD, aunque sí existe una recomendación por parte de ARM, Samtec FTSH 0,050'', tanto de 10 como de 20 terminales \cite{ARM_SWD_connector}. Por motivos de compatibilidad con el debugger disponible en el momento del desarrollo, se optó por un conector más simple, conformado por tiras de pines estándar de 0.1” verticales. En este mismo conector se incorporan líneas de alimentación y GND, permitiendo la alimentación de la placa, además de una línea de reset, la cual puede ser manejada por el debugger.
+
+%\textbf{{\color{red} COMPLETAR}}
 
 %\subsubsection{Micro Switch}
 \subsubsection{Otras Funcionalidades}
@@ -1053,9 +1078,9 @@ Teniendo presente la necesidad de obtener un diseño de tamaño reducido, se inc
 %\subsubsection{LEDs Indicadores}
 %\subsection{LEDs Indicadores}
 
-Otra de las funcionalidades que se incorporan son una serie de LEDs de distintos colores. En total se incorporaron 8 LEDs, 2 de color azul, 2 de color rojo, 2 de color verde y 2 de color amarillo. Al igual que los pulsadores, estos son de propósito general y su uso dependerá de la aplicación involucrada. 
+Otra de las funcionalidades que se incorporan son una serie de LEDs de distintos colores. En total se incorporaron 8 LEDs, 2 de color azul, 2 de color rojo, 2 de color verde y 2 de color amarillo. Al igual que los pulsadores, estos son de propósito general y su uso dependerá de la aplicación involucrada.
 
-%\textbf{{\color{red} COMPLETAR}}
+Como ya fue mencionado, la computadora de vuelo debe contar con varias interfaces para comunicación con sensores y módulos externos. Para ello, se incorporaron 3 conectores para comunicación UART (además de las ya mencionadas para GPS y para control por radio), 1 para SPI y 2 buses I2C externos.
 
 \subsection{Desarrollo del PCB}
 
