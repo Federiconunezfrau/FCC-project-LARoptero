@@ -88,9 +88,9 @@ Para obtener las mediciones de aceleración y velocidad angular en la computador
 
 Para realizar todos los cálculos involucrados en el INS, se utiliza una unidad de procesamiento. Todas las tareas involucradas en navegación y control de vuelo son ejecutadas de forma periódica por la computadora de vuelo. Se requiere asegurar un determinismo temporal en la ejecución de las tareas, del orden de los milisegundos o decenas de milisegundos. La unidad de procesamiento que mejor se ajusta a las necesidades de este trabajo es un microcontrolador de 32 bits, siendo el principal motivo la gran variedad que pueden encontrarse en el mercado, los cuales ofrecen una muy buena performance por un bajo costo. La gran capacidad de cómputo que ofrecen permite que este además puede realizar otras tareas más, como encargarse de la tolerancia a fallas, el almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
 
-Otro factor importante es el gran nivel de integración que ofrecen, incorporando gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño de dimensiones pequeñas.
+Otro factor importante es el gran nivel de integración que ofrecen, incorporando gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño para la computadora de vuelo de dimensiones pequeñas.
 
-Algunas de las funcionalidades secundarias que se implementan son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos en una memoria externa, tanto de sensores como de datos pertinentes a la misión del vehículo. Además, de manera de ampliar las capacidades, se incorpora una gran variedad de conectores que facilitan la comunicación con dispositivos y sensores externos. Esto le da una gran versatilidad, en el sentido de que permite su utilización en distintas aplicaciones de UAVs y vehículos no tripulados en general.
+Algunas de las funcionalidades secundarias que se implementan son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos en una memoria externa, tanto de sensores como de datos pertinentes a la misión del vehículo. De manera de ampliar las capacidades de uso, se incorpora una gran variedad de conectores que facilitan la comunicación con dispositivos y sensores externos. Esto le da una gran versatilidad, permitiendo su utilización en distintas aplicaciones de UAVs y vehículos no tripulados en general.
 
 %Se aprovechan las distintas interfaces que ofrecen estos componentes para 
 
@@ -1039,11 +1039,38 @@ Además de las 8 salidas para control de los actuadores del vehículo, se incorp
 \subsubsection{Conectores para Control por Radio}
 %\subsection{Conector para Control por Radio}
 
-Acá hay que explicar el terminal para DSM Spektrum y el de PPM. Hay que mencionar que son dos formas de comandar a la computadora de vuelo mediante un piloto remoto. Explicar el principio de funcionamiento de cada uno: señales, interfaces, módulos, etc. Finalmente para cada uno hay que explicar el por qué del conector (para DSM spektrum es fácil porque en la especificación dice qué conector usar.)
+%Acá hay que explicar el terminal para DSM Spektrum y el de PPM. Hay que mencionar que son dos formas de comandar a la computadora de vuelo mediante un piloto remoto. Explicar el principio de funcionamiento de cada uno: señales, interfaces, módulos, etc. Finalmente para cada uno hay que explicar el por qué del conector (para DSM spektrum es fácil porque en la especificación dice qué conector usar.)
 
-\textbf{{\color{red} ESTARÍA BUENO PONER UN DIBUJO EXPLICANDO LA SEÑAL PPM}}
+Como fue mencionado, el vehículo en algunas ocasiones puede ser controlado manualmente por un piloto remoto. Una de las formas de control para vehículos comerciales es a través de un control radio transmisor RC. Estos cuentan con 2 \textit{sticks} a través de los cuales puede guiarse al vehículo manualmente. El movimiento de los \textit{sticks} es interpretado por un circuito que emite las señales moduladas a través de una antena. En el vehículo se monta un receptor, el cual recibe y demodula las señales de radiofrecuencia, para luego entregar los comandos del piloto a la computadora de vuelo.
 
-\textbf{{\color{red} COMPLETAR}}
+La forma más común de comunicación entre el receptor y la computadora de vuelo es 
+%La forma en la que los receptores comunican los comandos del piloto a la computadora de vuelo puede ser de distintas maneras. La más común de ellas es 
+a través de distintas señales del tipo PWM denominadas canales. Cada canal puede indicar un set point distinto del vehículo, por ejemplo pueden tenerse 4 canales para los ángulos \textit{pitch}, \textit{roll}, \textit{yaw} y otro para el empuje vertical del vehículo \cite{garberoglio2019diseno}. Debido a que esto requiere el uso de 4 líneas de comunicación entre el receptor y la computadora de vuelo, se opta por una alternativa similar. %denominada receptor PPM.
+Estos utilizan una señal denominada \textit{Pulse Position Modulation} (PPM) y tiene la ventaja de contener la información de todos los canales en una sola línea de comunicación. En la figura \ref{fig:senial_ppm} pueden verse las características de la señal PPM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/senial_ppm.png}
+    \caption{Ejemplo de una señal PPM para 8 canales {\color{red} REEMPLAZAR ESTA IMAGEN POR UNA DIBUJADA POR MI.}.}
+    \label{fig:senial_ppm}
+\end{figure}
+
+Esta se compone de \textit{frames} de duración 20 ms. En cada \textit{frame} puede haber una cierta cantidad de pulsos de ancho fijo. La información de cada canal se encuentra codificada en el espaciado entre pulsos, el cual puede ser un valor entre $1$ y $2 \ ms$. Un espaciado de $1 \ ms$ representa un valor de 0 \%, mientras que $2 \ ms$, un valor de 100 \%. Estos porcentajes se asocian a los movimientos hechos por el piloto en los \textit{sticks} del radio transmisor. Por ejemplo, en la figura \ref{fig:senial_ppm} el canal 1 tiene una separación entre pulsos de $1.5 \ ms$ (50 \%), mientras que el canal 5, de $1 \ ms$ (0 \%).
+
+En la computadora de vuelo se incluye un conector de tira de pines
+estándar de 0.1” a 90 grados de 3 terminales, 2 de ellos para alimentar el módulo desde la computadora de vuelo y el tercero para la comunicación. Para interpretar la señal se utiliza un periférico timer del microcontrolador y se aprovecha la funcionalidad \textit{Input capture mode}. Cada vez que ocurre un flanco, el periférico captura el estado del timer, almacenándolo en un registro auxiliar. Estos valores pueden recuperarse con una interrupción o utilizando DMA. A partir de la diferencia entre valores consecutivos, puede conocerse el espaciado entre pulsos y por ende recuperar el comando enviado por el piloto.
+
+%Un aspecto negativo es que esto requiere el uso de 4 líneas de comunicación entre el receptor y la computadora de vuelo, por lo que se prefiere evitar el uso de estos receptores.
+
+
+%Se incluye En la placa se incluye un conector para uso de receptores de radio 
+
+
+Otro de los receptores comúnmente utilizados son los del fabricante Spektrum, denominados \textit{Direct Signal Modulation} (DSM). En lugar de generar una señal modulada, estos utilizan una interfaz UART de comunicación serie. Existe una especificación donde se explica el protocolo, el contenido de los mensajes, velocidades, etc. \cite{Spektrum_spec}. De acuerdo a lo indicado en la especificación, en la computadora de vuelo se incluye un conector modelo B3B-ZR-SM4-TF(LF)(SN) del fabricante JST. 
+
+%\textbf{{\color{red} ESTARÍA BUENO PONER UN DIBUJO EXPLICANDO LA SEÑAL PPM}}
+
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Conector para Programación y Debugging por SWD}
 %\subsection{Conector para Programación por SWD}

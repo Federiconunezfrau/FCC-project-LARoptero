@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  12 APR 2024 00:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  14 APR 2024 00:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1089,7 +1089,7 @@ LaTeX Info: Redefining \% on input line 49.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.49 ...iggered Architecture}}{55}{subsection.6.1}
+l.49 ...iggered Architecture}}{56}{subsection.6.1}
                                                   % [1])
 \tf@toc=\write6
 \openout6 = `main.toc'.
@@ -1728,125 +1728,133 @@ Package pdftex.def Info: img/gps.png  used on input line 1019.
 LaTeX Info: Redefining \. on input line 1023.
 LaTeX Info: Redefining \% on input line 1023.
  [49 <./img/diode_oring.png>]
-LaTeX Info: Redefining \. on input line 1043.
-LaTeX Info: Redefining \% on input line 1043.
+LaTeX Info: Redefining \. on input line 1045.
+LaTeX Info: Redefining \% on input line 1045.
  [50 <./img/gps.png (PNG copy)>]
-<img/pulsadores.png, id=976, 465.23813pt x 317.68687pt>
+<img/senial_ppm.png, id=976, 842.14626pt x 226.8475pt>
+File: img/senial_ppm.png Graphic file (type png)
+<use img/senial_ppm.png>
+Package pdftex.def Info: img/senial_ppm.png  used on input line 1053.
+(pdftex.def)             Requested size: 452.96826pt x 122.01468pt.
+LaTeX Info: Redefining \. on input line 1083.
+LaTeX Info: Redefining \% on input line 1083.
+ [51 <./img/senial_ppm.png>]
+<img/pulsadores.png, id=988, 465.23813pt x 317.68687pt>
 File: img/pulsadores.png Graphic file (type png)
 <use img/pulsadores.png>
-Package pdftex.def Info: img/pulsadores.png  used on input line 1071.
+Package pdftex.def Info: img/pulsadores.png  used on input line 1098.
 (pdftex.def)             Requested size: 226.48413pt x 154.65479pt.
-LaTeX Info: Redefining \. on input line 1084.
-LaTeX Info: Redefining \% on input line 1084.
- [51 <./img/pulsadores.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1101--1102
+LaTeX Info: Redefining \. on input line 1126.
+LaTeX Info: Redefining \% on input line 1126.
+ [52 <./img/pulsadores.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1128--1129
 
  []
 
-<img/IMU_recomendaciones_layout.png, id=988, 426.09187pt x 204.01219pt>
+<img/IMU_recomendaciones_layout.png, id=1000, 426.09187pt x 204.01219pt>
 File: img/IMU_recomendaciones_layout.png Graphic file (type png)
 <use img/IMU_recomendaciones_layout.png>
-Package pdftex.def Info: img/IMU_recomendaciones_layout.png  used on input line 1118.
+Package pdftex.def Info: img/IMU_recomendaciones_layout.png  used on input line 1145.
 (pdftex.def)             Requested size: 226.48413pt x 108.44347pt.
-LaTeX Info: Redefining \. on input line 1122.
-LaTeX Info: Redefining \% on input line 1122.
-[52]
-<img/diagrama_en_bloques_computadora_de_vuelo.png, id=999, 914.41624pt x 764.8575pt>
+LaTeX Info: Redefining \. on input line 1160.
+LaTeX Info: Redefining \% on input line 1160.
+[53 <./img/IMU_recomendaciones_layout.png>]
+<img/diagrama_en_bloques_computadora_de_vuelo.png, id=1012, 914.41624pt x 764.8575pt>
 File: img/diagrama_en_bloques_computadora_de_vuelo.png Graphic file (type png)
 <use img/diagrama_en_bloques_computadora_de_vuelo.png>
-Package pdftex.def Info: img/diagrama_en_bloques_computadora_de_vuelo.png  used on input line 1165.
+Package pdftex.def Info: img/diagrama_en_bloques_computadora_de_vuelo.png  used on input line 1192.
 (pdftex.def)             Requested size: 452.96826pt x 378.87988pt.
-LaTeX Info: Redefining \. on input line 1169.
-LaTeX Info: Redefining \% on input line 1169.
- [53 <./img/IMU_recomendaciones_layout.png>])
+LaTeX Info: Redefining \. on input line 1196.
+LaTeX Info: Redefining \% on input line 1196.
+ [54])
 LaTeX Info: Redefining \. on input line 32.
 LaTeX Info: Redefining \% on input line 32.
- [54 <./img/diagrama_en_bloques_computadora_de_vuelo.png>]
+ [55 <./img/diagrama_en_bloques_computadora_de_vuelo.png>]
 \openout2 = `Arquitectura_Propuesta.aux'.
 
  (./Arquitectura_Propuesta.tex
 
-LaTeX Warning: Reference `sec:sincronismo_TMR' on page 55 undefined on input line 39.
+LaTeX Warning: Reference `sec:sincronismo_TMR' on page 56 undefined on input line 39.
 
-<img/task_scheduling_1.png, id=1021, 626.34pt x 552.0625pt>
+<img/task_scheduling_1.png, id=1033, 626.34pt x 552.0625pt>
 File: img/task_scheduling_1.png Graphic file (type png)
 <use img/task_scheduling_1.png>
 Package pdftex.def Info: img/task_scheduling_1.png  used on input line 53.
 (pdftex.def)             Requested size: 317.0764pt x 279.48431pt.
 LaTeX Info: Redefining \. on input line 57.
 LaTeX Info: Redefining \% on input line 57.
-[55
+[56
 
 
 
 ]
-<img/task_scheduling_2.png, id=1032, 604.2575pt x 374.39874pt>
+<img/task_scheduling_2.png, id=1044, 604.2575pt x 374.39874pt>
 File: img/task_scheduling_2.png Graphic file (type png)
 <use img/task_scheduling_2.png>
 Package pdftex.def Info: img/task_scheduling_2.png  used on input line 64.
 (pdftex.def)             Requested size: 317.0764pt x 196.45944pt.
 LaTeX Info: Redefining \. on input line 68.
 LaTeX Info: Redefining \% on input line 68.
- [56 <./img/task_scheduling_1.png>]
+ [57 <./img/task_scheduling_1.png>]
 LaTeX Info: Redefining \. on input line 91.
 LaTeX Info: Redefining \% on input line 91.
- [57 <./img/task_scheduling_2.png>]
-<img/diagrama_TTA.png, id=1054, 877.2775pt x 515.9275pt>
+ [58 <./img/task_scheduling_2.png>]
+<img/diagrama_TTA.png, id=1066, 877.2775pt x 515.9275pt>
 File: img/diagrama_TTA.png Graphic file (type png)
 <use img/diagrama_TTA.png>
 Package pdftex.def Info: img/diagrama_TTA.png  used on input line 98.
 (pdftex.def)             Requested size: 452.96826pt x 266.39447pt.
 LaTeX Info: Redefining \. on input line 106.
 LaTeX Info: Redefining \% on input line 106.
- [58 <./img/diagrama_TTA.png>]
-<img/TDMA_esquema.png, id=1069, 460.72125pt x 357.335pt>
+ [59 <./img/diagrama_TTA.png>]
+<img/TDMA_esquema.png, id=1081, 460.72125pt x 357.335pt>
 File: img/TDMA_esquema.png Graphic file (type png)
 <use img/TDMA_esquema.png>
 Package pdftex.def Info: img/TDMA_esquema.png  used on input line 117.
 (pdftex.def)             Requested size: 317.0764pt x 245.92346pt.
-<img/TTA_Bus.png, id=1071, 447.6725pt x 227.85126pt>
+<img/TTA_Bus.png, id=1083, 447.6725pt x 227.85126pt>
 File: img/TTA_Bus.png Graphic file (type png)
 <use img/TTA_Bus.png>
 Package pdftex.def Info: img/TTA_Bus.png  used on input line 128.
 (pdftex.def)             Requested size: 271.7837pt x 138.33195pt.
 LaTeX Info: Redefining \. on input line 132.
 LaTeX Info: Redefining \% on input line 132.
- [59 <./img/TDMA_esquema.png>]
+ [60 <./img/TDMA_esquema.png>]
 LaTeX Info: Redefining \. on input line 152.
 LaTeX Info: Redefining \% on input line 152.
- [60 <./img/TTA_Bus.png>]
-<img/TTA_resincronizacion.png, id=1093, 645.41125pt x 495.8525pt>
+ [61 <./img/TTA_Bus.png>]
+<img/TTA_resincronizacion.png, id=1105, 645.41125pt x 495.8525pt>
 File: img/TTA_resincronizacion.png Graphic file (type png)
 <use img/TTA_resincronizacion.png>
 Package pdftex.def Info: img/TTA_resincronizacion.png  used on input line 159.
 (pdftex.def)             Requested size: 317.0764pt x 243.59784pt.
-<img/TTA_resincronizacion_building_blocks.png, id=1098, 611.28375pt x 164.615pt>
+<img/TTA_resincronizacion_building_blocks.png, id=1110, 611.28375pt x 164.615pt>
 File: img/TTA_resincronizacion_building_blocks.png Graphic file (type png)
 <use img/TTA_resincronizacion_building_blocks.png>
 Package pdftex.def Info: img/TTA_resincronizacion_building_blocks.png  used on input line 168.
 (pdftex.def)             Requested size: 362.37598pt x 97.58417pt.
 LaTeX Info: Redefining \. on input line 172.
 LaTeX Info: Redefining \% on input line 172.
- [61 <./img/TTA_resincronizacion.png>])
+ [62 <./img/TTA_resincronizacion.png>])
 LaTeX Info: Redefining \. on input line 34.
 LaTeX Info: Redefining \% on input line 34.
- [62 <./img/TTA_resincronizacion_building_blocks.png>]
+ [63 <./img/TTA_resincronizacion_building_blocks.png>]
 LaTeX Info: Redefining \. on input line 34.
 LaTeX Info: Redefining \% on input line 34.
- [63]
+ [64]
 \openout2 = `Tolerancia_a_Fallas.aux'.
 
  (./Tolerancia_a_Fallas.tex
 LaTeX Info: Redefining \. on input line 44.
 LaTeX Info: Redefining \% on input line 44.
- [64
+ [65
 
 
 
 ]
 LaTeX Info: Redefining \. on input line 67.
 LaTeX Info: Redefining \% on input line 67.
- [65]
+ [66]
 File: img/3_4_lockstep_architecture.png Graphic file (type png)
 <use img/3_4_lockstep_architecture.png>
 Package pdftex.def Info: img/3_4_lockstep_architecture.png  used on input line 78.
@@ -1861,14 +1869,14 @@ Package pdftex.def Info: ./img//3_4_loosely_synchronized_dual_processor_architec
 (pdftex.def)             Requested size: 221.95692pt x 204.36328pt.
 LaTeX Info: Redefining \. on input line 100.
 LaTeX Info: Redefining \% on input line 100.
- [66]
+ [67]
 File: ./img//3_5_TMR.png Graphic file (type png)
 <use ./img//3_5_TMR.png>
 Package pdftex.def Info: ./img//3_5_TMR.png  used on input line 109.
 (pdftex.def)             Requested size: 362.37598pt x 110.88701pt.
 LaTeX Info: Redefining \. on input line 115.
 LaTeX Info: Redefining \% on input line 115.
- [67]
+ [68]
 File: img/3_4_2_consenso_1.png Graphic file (type png)
 <use img/3_4_2_consenso_1.png>
 Package pdftex.def Info: img/3_4_2_consenso_1.png  used on input line 124.
@@ -1879,45 +1887,45 @@ Package pdftex.def Info: img/3_5_TMR_2.png  used on input line 139.
 (pdftex.def)             Requested size: 226.48413pt x 100.22324pt.
 LaTeX Info: Redefining \. on input line 143.
 LaTeX Info: Redefining \% on input line 143.
- [68]
-<img/Byzantine_Generals_Problem.png, id=1197, 462.528pt x 231.264pt>
+ [69]
+<img/Byzantine_Generals_Problem.png, id=1209, 462.528pt x 231.264pt>
 File: img/Byzantine_Generals_Problem.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem.png  used on input line 233.
 (pdftex.def)             Requested size: 317.0764pt x 158.54544pt.
 LaTeX Info: Redefining \. on input line 245.
 LaTeX Info: Redefining \% on input line 245.
- [69 <./img/Byzantine_Generals_Problem.png>]
-<img/Byzantine_Generals_Problem_2.png, id=1210, 462.72874pt x 337.26pt>
+ [70 <./img/Byzantine_Generals_Problem.png>]
+<img/Byzantine_Generals_Problem_2.png, id=1222, 462.72874pt x 337.26pt>
 File: img/Byzantine_Generals_Problem_2.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_2.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_2.png  used on input line 270.
 (pdftex.def)             Requested size: 271.7837pt x 198.09138pt.
-<img/Byzantine_Generals_Problem_3.png, id=1212, 709.65125pt x 447.6725pt>
+<img/Byzantine_Generals_Problem_3.png, id=1224, 709.65125pt x 447.6725pt>
 File: img/Byzantine_Generals_Problem_3.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_3.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_3.png  used on input line 279.
 (pdftex.def)             Requested size: 407.66867pt x 257.17743pt.
 LaTeX Info: Redefining \. on input line 283.
 LaTeX Info: Redefining \% on input line 283.
- [70 <./img/Byzantine_Generals_Problem_2.png>]
-<img/Byzantine_Generals_Problem_4.png, id=1223, 372.39125pt x 303.1325pt>
+ [71 <./img/Byzantine_Generals_Problem_2.png>]
+<img/Byzantine_Generals_Problem_4.png, id=1235, 372.39125pt x 303.1325pt>
 File: img/Byzantine_Generals_Problem_4.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_4.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_4.png  used on input line 294.
 (pdftex.def)             Requested size: 226.48413pt x 184.36475pt.
 LaTeX Info: Redefining \. on input line 298.
 LaTeX Info: Redefining \% on input line 298.
- [71 <./img/Byzantine_Generals_Problem_3.png>])
+ [72 <./img/Byzantine_Generals_Problem_3.png>])
 LaTeX Info: Redefining \. on input line 38.
 LaTeX Info: Redefining \% on input line 38.
- [72 <./img/Byzantine_Generals_Problem_4.png>]
+ [73 <./img/Byzantine_Generals_Problem_4.png>]
 \openout2 = `Conclusiones.aux'.
 
  (./Conclusiones.tex)
 LaTeX Info: Redefining \. on input line 40.
 LaTeX Info: Redefining \% on input line 40.
- [73
+ [74
 
 
 
@@ -1927,14 +1935,14 @@ LaTeX Info: Redefining \% on input line 40.
  (./Agradecimientos.tex)
 LaTeX Info: Redefining \. on input line 42.
 LaTeX Info: Redefining \% on input line 42.
- [74
+ [75
 
 
 
 ]
 \openout2 = `Apendices.aux'.
 
- (./Apendices.tex) [75
+ (./Apendices.tex) [76
 
 
 
@@ -1945,16 +1953,16 @@ Overfull \hbox (16.34274pt too wide) in paragraph at lines 46--46
 
 LaTeX Info: Redefining \. on input line 46.
 LaTeX Info: Redefining \% on input line 46.
-[76
+[77
 
 
 ]
 LaTeX Info: Redefining \. on input line 46.
 LaTeX Info: Redefining \% on input line 46.
- [77]
+ [78]
 LaTeX Info: Redefining \. on input line 48.
 LaTeX Info: Redefining \% on input line 48.
- [78] (./main.aux
+ [79] (./main.aux
 LaTeX Info: Redefining \sptext on input line 30.
 LaTeX Info: Redefining \. on input line 30.
 LaTeX Info: Redefining \% on input line 30.
@@ -1969,7 +1977,7 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 89F725EC627AE865AA04F712484F5475;13854.
+(rerunfilecheck)             Checksum: 933D7E17D21BFF42475038A614F426A5;13854.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -1980,18 +1988,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29483 strings out of 478287
- 578037 string characters out of 5849289
- 1120678 words of memory out of 5000000
- 46843 multiletter control sequences out of 15000+600000
+ 29503 strings out of 478287
+ 578662 string characters out of 5849289
+ 1120942 words of memory out of 5000000
+ 46858 multiletter control sequences out of 15000+600000
  488294 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,18n,109p,2019b,2668s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (79 pages, 5128551 bytes).
+Output written on main.pdf (80 pages, 5149498 bytes).
 PDF statistics:
- 1487 PDF objects out of 1728 (max. 8388607)
- 1201 compressed objects within 13 object streams
- 321 named destinations out of 1000 (max. 500000)
- 823 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1503 PDF objects out of 1728 (max. 8388607)
+ 1215 compressed objects within 13 object streams
+ 325 named destinations out of 1000 (max. 500000)
+ 828 words of extra memory for PDF output out of 10000 (max. 10000000)
 

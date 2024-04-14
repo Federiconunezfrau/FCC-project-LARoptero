@@ -1,34 +1,34 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{55}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Arquitectura Propuesta: \textit  {The Time-Triggered Architecture}}{55}{subsection.6.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }}{56}{figure.caption.55}\protected@file@percent }
-\newlabel{fig:task_scheduling_1}{{48}{56}{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }{figure.caption.55}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref  {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }}{57}{figure.caption.56}\protected@file@percent }
-\newlabel{fig:task_scheduling_2}{{49}{57}{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }{figure.caption.56}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit  {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit  {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }}{58}{figure.caption.57}\protected@file@percent }
-\newlabel{fig:diagrama_TTA}{{50}{58}{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }{figure.caption.57}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }}{59}{figure.caption.58}\protected@file@percent }
-\newlabel{fig:TDMA_esquema}{{51}{59}{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }{figure.caption.58}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces Misma imagen que \ref  {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }}{60}{figure.caption.59}\protected@file@percent }
-\newlabel{fig:TTA_Bus}{{52}{60}{Misma imagen que \ref {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }{figure.caption.59}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite [p.~67]{kopetz-2011}.\relax }}{61}{figure.caption.60}\protected@file@percent }
-\newlabel{fig:TTA_resincronizacion}{{53}{61}{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite [p.~67]{kopetz-2011}.\relax }{figure.caption.60}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite {de2013overview}.\relax }}{62}{figure.caption.61}\protected@file@percent }
-\newlabel{fig:TTA_resincronizacion_building_blocks}{{54}{62}{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite {de2013overview}.\relax }{figure.caption.61}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{62}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{62}{subsubsection.6.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Comunicación entre Nodos}{62}{subsubsection.6.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{62}{subsubsection.6.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{62}{subsubsection.6.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{62}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{63}{subsubsection.6.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{63}{subsubsection.6.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{63}{subsubsection.6.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{63}{subsubsection.6.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{63}{subsubsection.6.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{56}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Arquitectura Propuesta: \textit  {The Time-Triggered Architecture}}{56}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }}{57}{figure.caption.56}\protected@file@percent }
+\newlabel{fig:task_scheduling_1}{{49}{57}{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. \relax }{figure.caption.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref  {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }}{58}{figure.caption.57}\protected@file@percent }
+\newlabel{fig:task_scheduling_2}{{50}{58}{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref {fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.\relax }{figure.caption.57}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit  {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit  {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }}{59}{figure.caption.58}\protected@file@percent }
+\newlabel{fig:diagrama_TTA}{{51}{59}{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit {clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit {global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.\relax }{figure.caption.58}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }}{60}{figure.caption.59}\protected@file@percent }
+\newlabel{fig:TDMA_esquema}{{52}{60}{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.\relax }{figure.caption.59}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces Misma imagen que \ref  {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }}{61}{figure.caption.60}\protected@file@percent }
+\newlabel{fig:TTA_Bus}{{53}{61}{Misma imagen que \ref {fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.\relax }{figure.caption.60}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite [p.~67]{kopetz-2011}.\relax }}{62}{figure.caption.61}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion}{{54}{62}{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite [p.~67]{kopetz-2011}.\relax }{figure.caption.61}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \blx@tocontentsinit {0}\cite {de2013overview}.\relax }}{63}{figure.caption.62}\protected@file@percent }
+\newlabel{fig:TTA_resincronizacion_building_blocks}{{55}{63}{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite {de2013overview}.\relax }{figure.caption.62}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{63}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{63}{subsubsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Comunicación entre Nodos}{63}{subsubsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{63}{subsubsection.6.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{63}{subsubsection.6.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{63}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{64}{subsubsection.6.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{64}{subsubsection.6.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{64}{subsubsection.6.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{64}{subsubsection.6.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{64}{subsubsection.6.3.5}\protected@file@percent }
 \@setckpt{Arquitectura_Propuesta}{
-\setcounter{page}{64}
+\setcounter{page}{65}
 \setcounter{equation}{8}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -42,7 +42,7 @@
 \setcounter{subsubsection}{5}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{54}
+\setcounter{figure}{55}
 \setcounter{table}{5}
 \setcounter{parentequation}{5}
 \setcounter{float@type}{4}
@@ -80,7 +80,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{141}
+\setcounter{instcount}{143}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -104,7 +104,7 @@
 \setcounter{parenlevel}{0}
 \setcounter{blx@maxsection}{0}
 \setcounter{blx@maxsegment@0}{0}
-\setcounter{blx@sectionciteorder@0}{141}
+\setcounter{blx@sectionciteorder@0}{143}
 \setcounter{mincomprange}{10}
 \setcounter{maxcomprange}{100000}
 \setcounter{mincompwidth}{1}
