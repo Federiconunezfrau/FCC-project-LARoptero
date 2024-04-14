@@ -1004,24 +1004,6 @@
     \field{year}{2023}
   \endentry
 
-  \entry{zhang2010sensing}{article}{}
-    \name{author}{1}{}{%
-      {{hash=ZK}{%
-         family={Zhang},
-         familyi={Z\bibinitperiod},
-         given={Kai},
-         giveni={K\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{ZK1}
-    \strng{fullhash}{ZK1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Sensing and control of mems accelerometers using Kalman
-  filter}
-    \field{year}{2010}
-  \endentry
-
   \entry{borodacz2022review}{article}{}
     \name{author}{3}{}{%
       {{hash=BK}{%

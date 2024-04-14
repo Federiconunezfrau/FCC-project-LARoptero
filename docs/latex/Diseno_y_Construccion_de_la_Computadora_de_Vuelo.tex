@@ -333,63 +333,76 @@ La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor pri
     \label{fig:IMU_ejes}
 \end{figure}
 
-\textbf{{\color{red} REEMPLAZAR LO QUE SIGUE POR UNA SIMPLE MENCIÓN DE SENSORES MEMS, DESDE ACÁ:}}
+Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se construyen utilizando la tecnología MEMS: \textit{Micro Electro-Mechanical Systems}. Esta consite en utilizar técnicas de fabricación de circuitos integrados para integrar en el silicio partes que móviles que constituyen los sistemas mecánicos de los acelerómetros y giróscopos. Este tipo de sensores tienen la ventaja de que pueden conseguirse por un bajo costo, además de tener encapsulados muy pequeños, permitiendo obtener un diseño de dimensiones reducidas. 
 
-Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se construyen utilizando la tecnología MEMS: \textit{Microelectromechanical Systems}. Utilizando técnicas de fabricación de circuitos integrados, se construyen los acelerómetros y giróscopos, integrando en el silicio partes que son móviles. En la figura \ref{fig:MEMS_acelerometro}, se muestra una imagen tomada con un microscopio electrónico de un acelerómetro MEMS. Lo que se observa en este caso, es que en el mismo silicio se integra una masa llamada \textit{proof-mass}, la cual se encuentra sujeta al sustrato a través de dos resortes.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/MEMS_acelerometro.png}
-    \caption{Fotografía tomada de un acelerómetro construido con tecnología MEMS. La imagen se extrajo de \cite{zhang2010sensing}. }
-    \label{fig:MEMS_acelerometro}    
-\end{figure}
+%En la figura \ref{fig:MEMS_acelerometro}, se muestra una imagen tomada con un microscopio electrónico de un acelerómetro MEMS. Lo que se observa en este caso, es que en el mismo silicio se integra una masa llamada \textit{proof-mass}, la cual se encuentra sujeta al sustrato a través de dos resortes.
 
-Una aceleración sobre el componente genera que la masa del acelerómetro se mueva. Estos desplazamientos producen una variación en la capacidad existente entre el sustrato y la masa, lo que lleva a una variación de la tensión entre ambos. Esta diferencia de potencial variable es medida por un circuito dentro del chip, y que luego se utiliza para generar las mediciones de aceleración.\\
 
-El acelerómetro puede modelarse de manera simple, como un sistema mecánico con una masa, un resorte y un amortiguador \cite{zhang2010sensing}, como se muestra en la figura \ref{fig:acelerometro_modelo}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{img/acelerometro_modelo.png}
-    \caption{Sistema mecánico simplificado del acelerómetro.}
-    \label{fig:acelerometro_modelo}    
-\end{figure}
+%Esta consiste en integrar sistemas mecánicos de dimensiones microscópicas en el mismo silicio del chip, junto el resto del circuito. 
 
-La terna 0 corresponde a una terna inercial, mientras que la terna 1 es no inercial, solidaria al movimiento del acelerómetro. Cabe aclarar que tal como se mencionó, la masa se encuentra sujeta al sustrato solamente a través del resorte. El elemento amortiguador representa pérdidas de energía, causadas por rozamiento con el aire o de la propia estructura electromecánica. Se puede resolver el sistema mecánico, tomando como coordenadas generalizadas $q_1 = X_{IMU}^0$ y $q_2 = X_M^1$. Sin considerar efectos de la gravedad, se llega a la ecuación \eqref{eq:acelerometro_segundo_orden}. Este es un sistema de segundo orden, donde la entrada es la aceleración del acelerómetro y la salida es el desplazamiento de la masa respecto de la terna solidaria al acelerómetro. 
 
-\begin{equation}
-    \ddot{X_M^1} + \frac{b}{m} \dot{X_M^1} + \frac{k}{m} X_M^1 = -\ddot{X_{IMU}^0}
-    \label{eq:acelerometro_segundo_orden}
-\end{equation}
 
-Como resultado interesante, se observa que el sistema es de segundo orden, típicamente con respuesta sub-amortiguada. Algunos fabricantes de estos sensores indican en sus hojas de datos, un valor de frecuencia de resonancia. Este valor resulta de interés ya que si se excita al sensor con frecuencias cercanas a la resonancia, dejará de funcionar como dispositivo para medir la aceleración lineal. Por otro lado, a muy bajas frecuencias se puede despreciar la velocidad de la masa y luego se obtiene una relación directa entre la aceleración del acelerómetro y el desplazamiento de la masa, ecuación \eqref{eq:relacion_aceleracion_despalzamiento}.
+%Utilizando técnicas de fabricación de circuitos integrados, se construyen los acelerómetros y giróscopos, integrando en el silicio partes que son móviles. En la figura \ref{fig:MEMS_acelerometro}, se muestra una imagen tomada con un microscopio electrónico de un acelerómetro MEMS. Lo que se observa en este caso, es que en el mismo silicio se integra una masa llamada \textit{proof-mass}, la cual se encuentra sujeta al sustrato a través de dos resortes.
 
-\begin{subequations}
-	\begin{align}
-        \ddot{X_M^1} &\approx 0\\
-        \dot{X_M^1} &\approx 0\\
-        \frac{k}{m} X_M^1 &\approx -\ddot{X_{IMU}^0}
-	\end{align}
-    \label{eq:relacion_aceleracion_despalzamiento}
-\end{subequations}
+% \textbf{{\color{red} REEMPLAZAR LO QUE SIGUE POR UNA SIMPLE MENCIÓN DE SENSORES MEMS, DESDE ACÁ:}}
 
-El desplazamiento de la masa produce una variación de la capacidad entre esta y el sustrato. Esta capacidad es utilizada para medir una varaición de tensión \cite{zhang2010sensing}. El circuito medido puede modelarse como en la figura \ref{fig:acelerometro_sensado_capacitivo}.
+% Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se construyen utilizando la tecnología MEMS: \textit{Microelectromechanical Systems}. Utilizando técnicas de fabricación de circuitos integrados, se construyen los acelerómetros y giróscopos, integrando en el silicio partes que son móviles. En la figura \ref{fig:MEMS_acelerometro}, se muestra una imagen tomada con un microscopio electrónico de un acelerómetro MEMS. Lo que se observa en este caso, es que en el mismo silicio se integra una masa llamada \textit{proof-mass}, la cual se encuentra sujeta al sustrato a través de dos resortes.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{img/acelerometro_sensado_capacitivo.png}
-    \caption{Circuito equivalente que mide el desplazamiento de la masa. Las tensiones $V1$ y $V2$ representan señales de tensión aplicadas por un circuito externo. El movimiento de la masa modifica la capcidad y por ende la tensión medida.}
-    \label{fig:acelerometro_sensado_capacitivo}    
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/MEMS_acelerometro.png}
+%     \caption{Fotografía tomada de un acelerómetro construido con tecnología MEMS. La imagen se extrajo de \cite{zhang2010sensing}. }
+%     \label{fig:MEMS_acelerometro}    
+% \end{figure}
 
-Se puede resolver este circuito y llegar a que existe una relación lineal entre la tensión $Vo$ y el desplazamiento de la masa $\Delta d$, ecuación \eqref{eq:tension_salida_acelerometro}. En \cite{zhang2010sensing} puede encontrarse la demostración completa. En la ecuación, $d_0$ representa la separación de reposo entre el sensor y el sustrato y $\Delta d$ la variación de la separación.
+% Una aceleración sobre el componente genera que la masa del acelerómetro se mueva. Estos desplazamientos producen una variación en la capacidad existente entre el sustrato y la masa, lo que lleva a una variación de la tensión entre ambos. Esta diferencia de potencial variable es medida por un circuito dentro del chip, y que luego se utiliza para generar las mediciones de aceleración.\\
 
-\begin{equation}
-    V_{o} = \frac{\Delta d}{d_0} V_1
-    \label{eq:tension_salida_acelerometro}
-\end{equation}
+% El acelerómetro puede modelarse de manera simple, como un sistema mecánico con una masa, un resorte y un amortiguador \cite{zhang2010sensing}, como se muestra en la figura \ref{fig:acelerometro_modelo}.
 
-\textbf{{\color{red} HASTA ACÁ}}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{img/acelerometro_modelo.png}
+%     \caption{Sistema mecánico simplificado del acelerómetro.}
+%     \label{fig:acelerometro_modelo}    
+% \end{figure}
+
+% La terna 0 corresponde a una terna inercial, mientras que la terna 1 es no inercial, solidaria al movimiento del acelerómetro. Cabe aclarar que tal como se mencionó, la masa se encuentra sujeta al sustrato solamente a través del resorte. El elemento amortiguador representa pérdidas de energía, causadas por rozamiento con el aire o de la propia estructura electromecánica. Se puede resolver el sistema mecánico, tomando como coordenadas generalizadas $q_1 = X_{IMU}^0$ y $q_2 = X_M^1$. Sin considerar efectos de la gravedad, se llega a la ecuación \eqref{eq:acelerometro_segundo_orden}. Este es un sistema de segundo orden, donde la entrada es la aceleración del acelerómetro y la salida es el desplazamiento de la masa respecto de la terna solidaria al acelerómetro. 
+
+% \begin{equation}
+%     \ddot{X_M^1} + \frac{b}{m} \dot{X_M^1} + \frac{k}{m} X_M^1 = -\ddot{X_{IMU}^0}
+%     \label{eq:acelerometro_segundo_orden}
+% \end{equation}
+
+% Como resultado interesante, se observa que el sistema es de segundo orden, típicamente con respuesta sub-amortiguada. Algunos fabricantes de estos sensores indican en sus hojas de datos, un valor de frecuencia de resonancia. Este valor resulta de interés ya que si se excita al sensor con frecuencias cercanas a la resonancia, dejará de funcionar como dispositivo para medir la aceleración lineal. Por otro lado, a muy bajas frecuencias se puede despreciar la velocidad de la masa y luego se obtiene una relación directa entre la aceleración del acelerómetro y el desplazamiento de la masa, ecuación \eqref{eq:relacion_aceleracion_despalzamiento}.
+
+% \begin{subequations}
+% 	\begin{align}
+%         \ddot{X_M^1} &\approx 0\\
+%         \dot{X_M^1} &\approx 0\\
+%         \frac{k}{m} X_M^1 &\approx -\ddot{X_{IMU}^0}
+% 	\end{align}
+%     \label{eq:relacion_aceleracion_despalzamiento}
+% \end{subequations}
+
+% El desplazamiento de la masa produce una variación de la capacidad entre esta y el sustrato. Esta capacidad es utilizada para medir una varaición de tensión \cite{zhang2010sensing}. El circuito medido puede modelarse como en la figura \ref{fig:acelerometro_sensado_capacitivo}.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{img/acelerometro_sensado_capacitivo.png}
+%     \caption{Circuito equivalente que mide el desplazamiento de la masa. Las tensiones $V1$ y $V2$ representan señales de tensión aplicadas por un circuito externo. El movimiento de la masa modifica la capcidad y por ende la tensión medida.}
+%     \label{fig:acelerometro_sensado_capacitivo}    
+% \end{figure}
+
+% Se puede resolver este circuito y llegar a que existe una relación lineal entre la tensión $Vo$ y el desplazamiento de la masa $\Delta d$, ecuación \eqref{eq:tension_salida_acelerometro}. En \cite{zhang2010sensing} puede encontrarse la demostración completa. En la ecuación, $d_0$ representa la separación de reposo entre el sensor y el sustrato y $\Delta d$ la variación de la separación.
+
+% \begin{equation}
+%     V_{o} = \frac{\Delta d}{d_0} V_1
+%     \label{eq:tension_salida_acelerometro}
+% \end{equation}
+
+% \textbf{{\color{red} HASTA ACÁ}}
 
 %\textbf{{\color{red} COMPLETAR UN ANÁLISIS SIMILAR PARA EL GIRÓSCOPO}}
 
@@ -406,7 +419,7 @@ Se hizo una búsqueda de las distintas alternativas existentes para este tipo de
     \item \textit{Noise}
 \end{itemize}
 
-El primero de ellos, el \textit{Full-scale range} es el rango de medición del sensor. Para los acelerómetros se suele especificar en un rango de $\pm n \times g$, donde $n$ es algún entero y $g$ representa la aceleración de la gravedad. Para los giróscopos, se especifica como $\pm n \times dps$, donde $dps$ significa \textit{degrees-per-second}.\\
+El primero de ellos, el \textit{Full-scale range} es el rango de medición del sensor. Para los acelerómetros se suele especificar en un rango de $\pm n \times g$, donde $n$ es algún entero y $g$ representa la aceleración de la gravedad. Para los giróscopos, se especifica como $\pm n \times dps$, donde $dps$ significa \textit{degrees-per-second}.
 
 El parámetro \textit{Sensitivity} hace referencia a la resolución. En algunas hojas de datos este parámetro puede encontrarse con unidades de $LSB/g$ para los acelerómetros y en $LSB/dps$ para los giróscopos. Este valor puede resultar confuso de entender, ya que lo que informa es la cantidad de bits por $g$ o la cantidad de bits por $dps$. En la figura \ref{fig:ICM_42688_datasheet} se muestra una captura de la hoja de datos del sensor seleccionado, el ICM42688p. 
 
@@ -417,7 +430,7 @@ El parámetro \textit{Sensitivity} hace referencia a la resolución. En algunas 
     \label{fig:ICM_42688_datasheet}    
 \end{figure}
 
-La imagen muestra que el sensor permite seleccionar distintos rangos de escala para las mediciones del acelerómetro. Por ejemplo, si se selecciona el rango $\pm 2g$, la hoja de datos especifica una resolución de $16384 \ LSB/g$. Una mejor forma de entender este parámetro sería si se considera la inversa, es decir, la resolución del ADC. En este caso sería de $61.04 \ 10^{-6} \ g$. Luego para un rango de $\pm 4g$ la resolución es de $8192 \ LSB/g$, es decir, $122.07 \ 10^{-6} \ g$. Este valor es el doble del anterior y tiene sentido dado que se está midiendo un rango mayor de aceleraciones utilizando la misma cantidad de bits, en este caso 16 según lo especificado en la hoja de datos.\\
+La imagen muestra que el sensor permite seleccionar distintos rangos de escala para las mediciones del acelerómetro. Por ejemplo, si se selecciona el rango $\pm 2g$, la hoja de datos especifica una resolución de $16384 \ LSB/g$. Una mejor forma de entender este parámetro sería si se considera la inversa, es decir, la resolución del ADC. En este caso sería de $61.04 \ 10^{-6} \ g$. Luego para un rango de $\pm 4g$ la resolución es de $8192 \ LSB/g$, es decir, $122.07 \ 10^{-6} \ g$. Este valor es el doble del anterior y tiene sentido dado que se está midiendo un rango mayor de aceleraciones utilizando la misma cantidad de bits, en este caso 16 según lo especificado en la hoja de datos.
 
 Para entender los parámetros, \textit{scale factor error}, \textit{offset} y \textit{noise} se plantea un modelo sencillo de medición, tanto para acelerómetros como para giróscopos \cite{borodacz2022review}. Este se presenta en la ecuación \eqref{eq:medicion_vs_real}, donde $S$ es el \textit{scale factor error}, $\omega_b(t)$ es el \textit{offset} el cual es variable con el tiempo, $\eta \sim \mathcal{N}(0,\sigma^2)$, $\omega_m$ es el valor medido y $\omega$ sería la velocidad angular verdadera para el giróscopo.
 
@@ -426,7 +439,7 @@ Para entender los parámetros, \textit{scale factor error}, \textit{offset} y \t
     \label{eq:medicion_vs_real}
 \end{equation}
 
-A su vez, en las hojas de datos se especifica la dependencia de estos parámetros con el tiempo y con la temperatura, como es el caso del \textit{scale factor error}.\\
+A su vez, en las hojas de datos se especifica la dependencia de estos parámetros con el tiempo y con la temperatura, como es el caso del \textit{scale factor error}.
 
 Para tener un criterio de selección del sensor IMU, se siguió el análisis planteado en \cite{borodacz2022review}. Este paper presenta un análisis de los parámetros de los acelerómetros y grióscopos y su impacto en las estimaciones de posición en sistemas de navegación inercial (INS). En este se concluye que los parámetros más importantes para la selección del sensor son:
 
@@ -1142,6 +1155,12 @@ Otra de las funcionalidades que se incorporan son una serie de LEDs de distintos
 Como ya fue mencionado, la computadora de vuelo debe contar con varias interfaces para comunicación con sensores y módulos externos. Para ello, se incorporaron 3 conectores para comunicación UART (además de las ya mencionadas para GPS y para control por radio), 1 para SPI y 2 buses I2C externos.
 
 \subsection{Desarrollo del PCB}
+
+Una vez seleccionados los componentes y definido el circuito esquemático, se pasó al diseño del PCB. En esta sección se explican las consideraciones tenidas en cuenta para el diseño de la placa. Se mencionan criterios generales, además de otros específicos para cada partes del circuito.
+
+%\textbf{{\color{red} COMPLETAR}}
+
+\subsubsection{Definición de las Características del PCB}
 
 \textbf{{\color{red} COMPLETAR}}
 
