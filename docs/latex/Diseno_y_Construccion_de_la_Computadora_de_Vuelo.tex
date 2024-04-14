@@ -322,7 +322,7 @@ Suamdo a las prestaciones, este micocontrolador cuenta con un encapsulado LQFP d
 
 %\textbf{{\color{red} COMPLETAR}}
 
-\subsubsection{Sensor IMU}
+\subsubsection{Sensor IMU}\label{sec:IMU}
 
 La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor principal utilizado por la computadora de vuelo. Este consiste en un circuito integrado que contiene una serie de sensores inerciales, en particular acelerómetros y giróscopos triaxiales. Los acelerómetros se utilizan para realizar mediciones de aceleración lineal y los giróscopos para medir velocidad angular. A partir de estas mediciones, se pueden aplicar distintos algoritmos de procesamiento para obtener una estimación de la posición y orientación del vehículo. Las mediciones de aceleración lineal y de velocidad angular que entrega la IMU son referidas a una terna solidaria al componente, como se muestra en la figura \ref{fig:IMU_ejes}.
 
@@ -1156,32 +1156,53 @@ Como ya fue mencionado, la computadora de vuelo debe contar con varias interface
 
 \subsection{Desarrollo del PCB}
 
-Una vez seleccionados los componentes y definido el circuito esquemático, se pasó al diseño del PCB. En esta sección se explican las consideraciones tenidas en cuenta para el diseño de la placa. Se mencionan criterios generales, además de otros específicos para cada partes del circuito.
+%Una vez seleccionados los componentes y definido el circuito esquemático, se pasó al diseño del PCB.
+En esta sección se explican las consideraciones tenidas en cuenta para el diseño de la placa. Se mencionan criterios generales, además de otros específicos para cada parte del circuito. Finalmente, se presenta el diseño final de la placa.
 
 %\textbf{{\color{red} COMPLETAR}}
 
-\subsubsection{Definición de las Características del PCB}
+\subsubsection{Requerimientos de Manufacturabilidad}\label{sec:requerimientos_manufacturabilidad}
 
-\textbf{{\color{red} COMPLETAR}}
+Como ya fue mencionado en varias ocasiones, uno de los objetivos es lograr un diseño de placa de pequeñas dimensiones. %Por un lado, esto permitiría el uso de la computadora de vuelo en vehículos pequeños, además de abaratar sus costos de fabricación.
+Durante el desarrollo se tuvo presente una limitación para este requerimiento y es el hecho de que solamente se cuenta con la posibilidad de montar todos los componentes sobre una sola cara de la placa. Esto se tuvo en cuenta durante el proceso de routeo, ubicando todos los \textit{footprints} en la cara top.
+%La placa se va a mandar a fabricar, el montaje se hace acá. Por una cuestión de fabricación, deben ir todos los componentes de un solo lado. Estos requerimientos entran en conflicto --> PCB 4 layers.
 
-\subsubsection{Requerimientos de Manufacturabilidad}
 
-\textbf{{\color{red} COMPLETAR}}
+%\textbf{{\color{red} COMPLETAR}}
 
-Acá poner el motivo por el que está todo en una sola cara.
+%Acá poner el motivo por el que está todo en una sola cara.
 
-También justificar el espesor del cobre y las vías pasantes en ves de vías ciegas.
+%También justificar el espesor del cobre y las vías pasantes en vez de vías ciegas.
 
-Justificar tamaño de las pistas, dimensiones de la placa por costos de fabricación.
+%Justificar tamaño de las pistas, dimensiones de la placa por costos de fabricación.
 
-\subsubsection{Requerimientos de layout del sensor IMU}
 
-El sensor IMU tiene ciertos requerimientos particulares que deben cumplirse. En primera instancia se buscó ubicar al componente lo más centrado posible en el PCB. De esta forma, la terna solidaria al sensor coincidirá con la terna solidaria a todo el vehículo en el que se utilice la placa. Esto ahorra cuestiones de cómputo que modifiquen la terna de referencia respsecto de la cual se obtengan las lecturas. \textbf{{\color{red} Completar qué tan corrida quedó la IMU del centro de la placa}}\\
+\subsubsection{Requerimientos de Posicionamiento del Sensor IMU}
 
-Se siguieron una serie de guías y recomendaciones que tienen como objetivo minimizar el estrés sobre el componente \cite{IMUpcb_1} \cite{IMUpcb_2} \cite{IMUpcb_3}. Esto debido a que, como la IMU es un sistema electromecánico, el estrés puede alterar las mediciones que esta realice, o incluso un alto nivel de estrés puede llegar a dañar el componente. Se enumeran algunas de esas recomendaciones:
+Este sensor tiene ciertos requerimientos particulares que deben cumplirse, siendo el más importante la necesidad de ser ubicado en el centro de la placa. Como fue mencionado en la sección \ref{sec:IMU}, todas las mediciones de aceleración y velocidad angular son relativas a una terna solidaria a este. Al centrar el sensor en la placa, luego todas las mediciones también estarán referidas a una terna solidaria a la placa.
+
+%Debido a que la computadora de vuelo suele montarse en el centro del vehículo, al ubicar el componente en el centro de la placa se logra que el origen de la terna solidaria al sensor coincida con la terna solidaria a todo el vehículo. Esto ahorra cuestiones de cómputo que modifiquen la terna de referencia respecto de la cual se obtienen las lecturas.
+
+Durante el desarrollo del layout del PCB, se encontró un impedimento por el que no se logró centrar la IMU en la placa. Esto se debió a la necesidad de que todos los componentes se encuentren ubicados de un solo lado de la placa, tal como se mencionó en la sección \ref{sec:requerimientos_manufacturabilidad}, sumado al gran tamaño del microcontrolador. El ubicar el sensor en el centro de la placa, fuerza a que el microcontrolador quede en uno de los extremos de la placa, lo que dificulta mucho las conexiones de este con el resto de los componentes. Esto se muestra en la figura .
+
+\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEA QUE LA IMU FUERZA A QUE EL MICRO QUEDE DE UN LADO O DEL OTRO DEL CENTRO DE LA PLACA.}}
+
+A pesar de esto, luego de hacer varias iteraciones en el routeo final, el sensor pudo montarse apenas 8 mm desfasado respecto del centro. Este dato debe ser tenido en cuenta a la hora de montar la placa en un vehículo.
+
+
+%Fue muy complicado lograr esto, principalmente porque el microcontrolador es demasiado grande y al poner la IMU exactamente en el medio, me obligaba a que el microcontrolador esté o de un lado o del otro de la IMU. Luego todas las conexiones del microcontrolador con las demás cosas se complicaban mucho. Quedó desfasada 8 mm, en la dimensión más larga de la placa (la placa tiene 90 mm de largo, la IMU está centrada a 36,6 mm del lado dónde están los pines para PWM y a 53,4 mm del lado donde están los conectores CAN y la microSD). 
+
+
+%En primera instancia se buscó ubicar al componente lo más centrado posible en el PCB. D  \textbf{{\color{red} Completar qué tan corrida quedó la IMU del centro de la placa}}
+
+%El sensor IMU tiene ciertos requerimientos particulares que deben cumplirse. En primera instancia se buscó ubicar al componente lo más centrado posible en el PCB. De esta forma, la terna solidaria al sensor coincidirá con la terna solidaria a todo el vehículo en el que se utilice la placa. Esto ahorra cuestiones de cómputo que modifiquen la terna de referencia respsecto de la cual se obtengan las lecturas. \textbf{{\color{red} Completar qué tan corrida quedó la IMU del centro de la placa}}
+
+Como fue mencionado en la sección \ref{sec:IMU}, este sensor es un sistema electromecánico, por lo que el estrés que este sufra puede alterar sus mediciones, o incluso llegar a dañar el componente. Para minimizar estos efectos, se siguieron una serie de guías y recomendaciones de distintas notas de aplicación para montaje de estos sensores sobre PCBs \cite{IMUpcb_1} \cite{IMUpcb_2} \cite{IMUpcb_3}. Se enumeran algunas de esas recomendaciones:
+
+%Se siguieron una serie de guías y recomendaciones que tienen como objetivo minimizar el estrés sobre el componente \cite{IMUpcb_1} \cite{IMUpcb_2} \cite{IMUpcb_3}. Esto debido a que, como la IMU es un sistema electromecánico, el estrés puede alterar las mediciones que esta realice, o incluso un alto nivel de estrés puede llegar a dañar el componente. Se enumeran algunas de esas recomendaciones:
 
 \begin{itemize}
-    \item Montar la IMU lejos de orificios de montaje para el PCB, lejos de orificios para colocar tornillos y lejos de componentes como pulsadores y conectores. Para el caso de un pulsador, por ejemplo, al presionarlo esto genera una presión sobre el PCB. Si la IMU se encuentra muy cerca del pulsador, dicha presión puede llegar a afectar la zona donde se encuentra la IMU, alterando las mediciones. Los orificios deben estar a una distancia de por lo menos 2 mm del sensor.
+    \item Montar el sensor lejos de orificios de montaje para el PCB, lejos de orificios para colocar tornillos y lejos de componentes como pulsadores y conectores. Para el caso de un pulsador, por ejemplo, al presionarlo esto genera una presión sobre el PCB. Si la IMU se encuentra muy cerca del pulsador, dicha presión puede llegar a afectar la zona donde se encuentra la IMU, alterando las mediciones. El uso de pulsadores suele utilizarse para activar rutinas de calibración, por ejemplo de la IMU, del magnetómetro o de otro tipo de sensores. %Los orificios deben estar a una distancia de por lo menos 2 mm del sensor.
     \item Montar la IMU lejos de los bordes del PCB.
     \item No ubicar test points ni conectores debajo de la IMU, es decir, en la otra cara del PCB. El conectar y desconectar continuamente puede dañar el componente.
     \item El layout del circuito debe ser lo más simétrico posible. No es necesario utilizar pistas de un tamaño diferente para las líneas de alimentación, ya que su consumo es muy bajo.
@@ -1189,14 +1210,27 @@ Se siguieron una serie de guías y recomendaciones que tienen como objetivo mini
     \item No ubicar vías debajo del componente. El área debajo de este debe definirse como keepout area.
 \end{itemize}
 
-La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de estas recomendaciones. Lo que se observa es que las pistas del sensor son simétricas. Por más de que algunos terminales de la IMU no se utilicen, se recomienda que el routeo sea simétrico. Durante el proceso de soldadura, el estaño presente en los distintos pads del componente generará una tensión que tratará de atraer al componente hacia este. Si el routeo no es simétrico, es posible que el sensor no quede centrado, lo que resultaría en un grave problema durante el uso de la computadora de vuelo.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{img/IMU_recomendaciones_layout.png}
     \caption{Se muestran dos ejemplos de layout de una IMU. El layout U2 no sigue las recomendaciones mencionadas, mientras que U1 sí. La imagen se extrajo de \cite{IMUpcb_3}.}
     \label{fig:IMU_recomendaciones_layout}
 \end{figure}
+
+La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de estas recomendaciones. Lo que se observa es que las pistas del sensor son simétricas. A pesar de que algunos terminales de la IMU no se utilicen, se recomienda que igualmente sean incluidas en el routeo, solo para mantener la simetría. Durante el proceso de soldadura, el estaño presente en los distintos pads del componente generan una tensión que atrae el componente hacia este. En la figura \ref{fig:IMU_missalignment} se muestra un ejemplo de una IMU rotada respecto de su placa. Si el routeo no es simétrico, es posible que el sensor no quede centrado, lo que resultaría en un problema durante el uso de la computadora de vuelo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{img/IMU_missalignment.png}
+    \caption{Se muestra un ejemplo donde la IMU se encuentra rotada respecto de la placa. En línea punteada los ejes de la terna solidaria al sensor y en línea continua la terna solidaria a la placa. La imagen se extrajo de \cite{IMUpcb_4}.}
+    \label{fig:IMU_missalignment}
+\end{figure}
+
+\subsubsection{Definición de las Características del PCB}
+
+
+
+\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Layout del Regulador Lineal}
 

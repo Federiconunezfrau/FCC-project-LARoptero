@@ -1314,6 +1314,17 @@
     \field{year}{2013}
   \endentry
 
+  \entry{IMUpcb_4}{manual}{}
+    \list{organization}{1}{%
+      {TDK}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{AN-IVS-0002A-00}
+    \field{title}{MEMS Motion Handling and Assembly Guide}
+    \field{month}{10}
+    \field{year}{2013}
+  \endentry
+
   \entry{kopetz1998time}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=KH}{%
