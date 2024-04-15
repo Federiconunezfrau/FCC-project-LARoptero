@@ -41,26 +41,26 @@
 \contentsline {subsection}{\numberline {5.4}Desarrollo del PCB}{50}{subsection.5.4}%
 \contentsline {subsubsection}{\numberline {5.4.1}Requerimientos de Manufacturabilidad}{51}{subsubsection.5.4.1}%
 \contentsline {subsubsection}{\numberline {5.4.2}Requerimientos de Posicionamiento del Sensor IMU}{51}{subsubsection.5.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.3}Definición de las Características del PCB}{52}{subsubsection.5.4.3}%
-\contentsline {subsubsection}{\numberline {5.4.4}Layout del Regulador Lineal}{52}{subsubsection.5.4.4}%
-\contentsline {subsubsection}{\numberline {5.4.5}Comunicación con el Slot para Tarjeta Micro SD}{52}{subsubsection.5.4.5}%
-\contentsline {subsubsection}{\numberline {5.4.6}Comunicación USB}{52}{subsubsection.5.4.6}%
-\contentsline {subsection}{\numberline {5.5}Funcionalidades y Diagrama en Bloques}{53}{subsection.5.5}%
-\contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{54}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Arquitectura Propuesta: \textit {The Time-Triggered Architecture}}{54}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{61}{subsection.6.2}%
-\contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{61}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}Comunicación entre Nodos}{61}{subsubsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{61}{subsubsection.6.2.3}%
-\contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{61}{subsubsection.6.2.4}%
-\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{61}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{62}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{62}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{62}{subsubsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{62}{subsubsection.6.3.4}%
-\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{62}{subsubsection.6.3.5}%
-\contentsline {section}{\numberline {7}Conclusiones}{72}{section.7}%
-\contentsline {section}{\numberline {8}Agradecimientos}{73}{section.8}%
-\contentsline {section}{Apéndices}{74}{section*.80}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{74}{section*.81}%
-\contentsline {section}{Referencias}{75}{section*.82}%
+\contentsline {subsubsection}{\numberline {5.4.3}Características del PCB}{52}{subsubsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.4}Comunicación con el Slot para Tarjeta Micro SD}{55}{subsubsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.5}Comunicación USB}{55}{subsubsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.6}Layout del Regulador Lineal}{55}{subsubsection.5.4.6}%
+\contentsline {subsection}{\numberline {5.5}Funcionalidades y Diagrama en Bloques}{55}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{57}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Arquitectura Propuesta: \textit {The Time-Triggered Architecture}}{57}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{64}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{64}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Comunicación entre Nodos}{64}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{64}{subsubsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{64}{subsubsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{64}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{65}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{65}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{65}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{65}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{65}{subsubsection.6.3.5}%
+\contentsline {section}{\numberline {7}Conclusiones}{75}{section.7}%
+\contentsline {section}{\numberline {8}Agradecimientos}{76}{section.8}%
+\contentsline {section}{Apéndices}{77}{section*.84}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{77}{section*.85}%
+\contentsline {section}{Referencias}{78}{section*.86}%

@@ -1226,25 +1226,122 @@ La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de es
     \label{fig:IMU_missalignment}
 \end{figure}
 
-\subsubsection{Definición de las Características del PCB}
+%\subsubsection{Definición de las Características del PCB}
+
+\subsubsection{Características del PCB}
+
+Dada la gran cantidad de pistas que deben trazarse en toda la placa, se opta por un diseño de PCB de 4 capas. Esta elección simplifica el routeo, ya que se cuenta con una mayor cantidad de capas para pasar pistas, en relación a una configuración típica de 2 capas. En la figura \ref{fig:stackup} se muestra el \textit{stackup} utilizado para el PCB, donde se puede ver que se cuenta con 2 capas de señal, 1 capa de alimentación y 1 capa de retorno GND.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/stackup.png}
+    \caption{Configuración de capas utilizada para el PCB. {\color{red} REEMPLAZAR ESTA IMAGEN POR UNA DIBUJADA POR MI. APROVECHAR Y AGREGAR LAS DIMENSIONES DEL ESPACIADO ENTRE CAPAS, EL ESPESOR DE COBRE Y LOS DIELÉCTRICOS.}}
+    \label{fig:stackup}
+\end{figure}
+
+%\textbf{{\color{red} HABLAR DE LAS BONDADES DE PCB DE 4 CAPAS CON ESTA CONFIGURACIÓN (LIBRO OTT). MENCIONAR EL TEMA DE LAS PISTAS QUE REQUIEREN CIERTA IMPEDANCIA CARACTERÍSTICA}}
+
+% Durante el desarrollo del PCB, se tuvieron en cuenta distintas cuestiones relacionadas a integridad de señal y a compatibilidad electromagnética. En muchos desarrollos de PCBs es común que se sigan una serie de lineamientos que se suelen llamar las ``buenas prácticas''. Muchas veces estas ofrecen soluciones de manera práctica a problemas ya conocidos, por ejemplo para asegurar la integridad de señales digitales.
 
 
 
-\textbf{{\color{red} COMPLETAR}}
+% En este trabajo no se hizo una evaluación formal de estos aspectos en la computadora de vuelo, se siguieron los análisis planteados en el libro \textit{Electromagnetic Compatibility} de Henry Ott \cite{ott2011electromagnetic}.
 
-\subsubsection{Layout del Regulador Lineal}
+La configuración de 4 capas tiene otras ventajas respeto del uso de 2. El circuito de la computadora de vuelo es prácticamente un circuito con señales digitales, por lo que debe darse un cuidado especial, minimizando la impedancia del retorno de corriente. En el caso de un PCB de 4 capas, al tener una capa entera dedicada al retorno, esta ofrecerá una muy baja impedancia para las corrientes de alta frecuencia. En la figura \ref{fig:ground_bounce} se muestra cómo el efecto de la inductancia presente en el retorno de señal, puede generar ruido a través de la conexión a GND en otros componentes. El ejemplo de la figura es con compuertas lógicas, pero aplica igualmente a cualquier circuito digital, por ejemplo a la comunicación entre el microcontrolador y alguno de los sensores.
 
-\textbf{{\color{red} COMPLETAR}}
+%\textbf{{\color{red} AGREGAR UNA IMAGEN ILUSTRATIVA DE CÓMO LA IMPEDANCIA DEL RETORNO GENERA RUIDO EN GND. LA TENGO QUE DIBUJAR YO}}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/ground_bounce.png}
+    \caption{La compuerta lógica 2 mantiene su salida siempre en $0 \ V$, mientras que la compuerta lógica 1 conmuta su salida de estado alto a $0 \ V$. En este momento, se produce una descarga del capacitor $C_{STRAY}$ el cual representa capacidades que pueden ser por ejemplo de la pista que una su salida con la compuerta 3. En ese momento, la corriente circula por la inductancia del retorno, generando una caída de tensión que afecta a la compuerta 2 y a su salida. La imagen se extrajo de \cite[p.~381]{ott2011electromagnetic}.}
+    \label{fig:ground_bounce}
+\end{figure}
+
+%minimizando el ruido que se propaga a otros componentes del circuito a través de la conexión a GND. 
+En el caso de un PCB de 2 capas, es difícil reducir este efecto, ya que no se cuenta con el espacio suficiente. Otra de las ventajas es la disminución de las emisiones radiadas generadas por las caídas de potencial en la inductancia del retorno de señal \cite[p.~477]{ott2011electromagnetic}.
+
+%\textbf{{\color{red} SE PODRÍA INCLUIR UNA IMAGEN ILUSTRATIVA DE CÓMO LA IMPEDANCIA DEL RETORNO GENERA RUIDO}}
+
+%El uso de un PCB de 4 capas tiene muchas otras ventajas asociadas a aspectos de compatibilidad electromagnética, como la disminución de las emisiones radiadas generadas por las caídas de potencial en la inductancia del retorno de señal \cite[p.~477]{ott2011electromagnetic}.
+
+%( Electromagnetic Compatibility de Henry Ott, capítulo 16.4.2.2. ).
+
+
+%Al tratarse de un circuito con señales enteramente digitales, todas ellas presentarán componentes de altas frecuencias, ya sea para comunicación por ejemplo con la Micro SD, como también propias del funcionamiento del microcontrolador. Para altas frecuencias, las corrientes de retorno pueden generar diferencias de potencial producto del paso la corriente por las impedancias del retorno a GND. En la figura  se muestra un ejemplo para una señal digital donde se puede ver el efecto de la caída de tensión en la impedancia del retorno.
+
+
+%En un PCB de 2 capas es difícil reducir este efecto, ya que no se cuenta con el espacio suficiente. En el caso de un PCB de 4 capas, al tener una capa entera dedicada al retorno, esta ofrecerá una muy baja impedancia en el retorno de las corrientes de alta frecuencia, por ende minimizando el ruido que se propaga a otros componentes del circuito, a través de su conexión a GND.
+
+
+%Esto disminuye muchísimo las diferencias de potencial generadas producto del paso de estas corrientes de retorono por la impedancia de GND, con respecto a un PCB de solamente 2 capas. Estas diferencias de potencial se traducen en ruido que se propaga a otros componentes del circuito, a través de su conexión a GND.
+
+%El hecho de disminuir las caidas de tensión en el plano de retorno trae consigo el efecto de disminuir las emisiones radiadas de modo común. Esto se debe a que las diferencias de potencial en el plano de retorno generan emisiones a través de los cables conectados al PCB ( Electromagnetic Compatibility de Henry Ott, capítulo 16.4.2.2. ).
+
+%La ventaja principal es el hecho de contar con planos enteros de alimentación y de retorno. Minimizan las inductancias en el camino de la señal de corriente entregada a los componentes digitales, principalmente el microcontrolador. Esto minimiza el ruido producto de las conmutaciones.
+
+%El uso de un plano de GND permite trabajar con pistas tipo \textit{microstrip} de impedancia característica conocida. Para algunas de las señales de la placa, es necesario que el camino de señal tenga cierta impedancia característica, como es el caso de USB y Micro SD.
+
+
+%Otra de las ventajas es que pueden diseñarse pistas de impedancia controlada de pequeñas dimensiones. Esto se necesario para varias pistas, por ejemplo microSD y USB.
+
+La selección del espaciado entre placas y el espesor de cobre se vieron afectadas por las posibilidades ofrecidas por el fabricante \textit{PCBWay}. Se optó por la opción más económica, correspondiente a las dimensiones de la figura \ref{fig:stackup}.
+
+%\textbf{{\color{red} CAPACITORES DE DESACOPLE EN TODOS LOS COMPONENTES CON MONTAJE CON INDUCTANCIA MÍNIMA.}}
+
+Otra de las técnicas utilizadas para reducir el ruido producto de las corrientes de alta frecuencia en la placa es el agregado de capacitores de desacople, principalmente en el microcontrolador. Estos ofrecen un camino de baja impedancia descargándose y entregando corrientes de alta frecuencia.
+
+%\textbf{{\color{red} MENCIONAR QUE LA PLACA TIENE 3,3V Y 5V Y QUE SE OPTÓ POR UNA PISTA EN LA CAPA TOP, A DIFERENCIA DE UN PLANO.}}
+
+Algunos de los conectores de la computadora de vuelo tienen salidas con tensiones de $5 \ V$ utilizados para alimentar módulos y sensores, como es el caso del receptor GPS. Esta tensión de $5 \ V$ se obtiene directamente desde la tensión de entrada del conector de alimentación de la computadora de vuelo. Para ello, se trazó una pista en la misma cara top, con un ancho mayor al resto de las demás. Esta se muestra en la figura \ref{fig:pista_5V}. Podría haberse incluido un plano con esta tensión en la misma capa que el plano de $3.3 \ V$. Sin embargo, esto hubiera generado que el plano de $3.3 \ V$ se viera afectado, haciendo que este se viera partido, lo que incrementaría la impedancia vista por las corrientes sobre este.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/pista_5V.png}
+    \caption{Se muestra una captura del software KiCad, utilizado para el desarrollo de la placa de la computadora de vuelo. Se resalta la pista de $5 \ V$ en la capa top. A su vez se puede ver la zona naranja la cual corresponde a la capa 3 y que contiene en su totalidad al plano de $3.3 \ V$. El plano de GND se ubica en la capa 2.}
+    \label{fig:pista_5V}
+\end{figure}
+
+
+
+%Si bien la tensión de alimentación de la computadora de vuelo son $3.3 \ V$, algunos de sus conectores entregan tensiones de $5 \ V$ necesarias para aliemntar ciertos módulos y sensores externos, por ejemplo el sensor GPS. Esta tensión se obtiene directamente desde la tensión de entrada del conector de alimentación de la computadora de vuelo.
+
+
+%La tensión de alimentación de la computadora de vuelo son $5 \ V$, la cual se utiliza para alimentar el regulador lineal y generar los $3.3 \ V$. 
+
+
+
+
+
+
+
+Al tener varias capas, el routeo de las pistas traerá una gran cantidad de vías en la placa. Existen distintos tipos de vías que ofrece el fabricante, estas se muestran en la figura \ref{fig:vias_PCB}. Se prefiere evitar el uso de otro tipo de vía que no sea una vía pasante, debido a que de otra forma, incrementaría mucho el costo de fabricación de la placa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/vias_PCB.png}
+    \caption{La vía 1 corresponde a una vía ciega (\textit{blind via}), la 2 corresponde a una \textit{buried via} y la 3 a una vía pasante. El uso de vías ciegas ayuda a reducir el espacio ocupado por un circuito en un PCB, ya que permite colocar componentes por encima de estas. La desventaja que traen es que su uso incrementa mucho el costo de fabricación de la placa, ya que el proceso de manufactura de las mismas es más complejo que el de las vías pasantes.}
+    \label{fig:vias_PCB}
+\end{figure}
+
+
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Comunicación con el Slot para Tarjeta Micro SD}
 
 % Length matching e impedancia característica. Mencionar todo lo que tengo de la especificación de microSD. Tengo muchísimo de esto.
+
+\textbf{{\color{red} MENCIONAR EL TEMA DE LAS PISTAS QUE REQUIEREN CIERTA IMPEDANCIA CARACTERÍSTICA Y CÓMO ES QUE EL STACK DEL PCB AYUDA A TENER DIMENSIONES PEQUEÑAS}}
 
 \textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Comunicación USB}
 
 % Impedancia característica de la pista diferencial, de la especificación.
+
+\textbf{{\color{red} COMPLETAR}}
+
+\subsubsection{Layout del Regulador Lineal}
 
 \textbf{{\color{red} COMPLETAR}}
 
@@ -1278,5 +1375,7 @@ La computadora de vuelo tiene la tarea esencial de adquirir las mediciones de lo
     \caption{Diagrama en bloques de la computadora de vuelo.}
     \label{fig:diagrama_en_bloques_computadora_de_vuelo}
 \end{figure}
+
+\textbf{{\color{red} AGREGAR UNA FOTO DEL PCB, CON FLECHAS INDICANDO DÓNDE ESTÁ CADA COSA}}
 
 \textbf{{\color{red} COMPLETAR}}

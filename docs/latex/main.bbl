@@ -1325,6 +1325,26 @@
     \field{year}{2013}
   \endentry
 
+  \entry{ott2011electromagnetic}{book}{}
+    \name{author}{1}{}{%
+      {{hash=OHW}{%
+         family={Ott},
+         familyi={O\bibinitperiod},
+         given={Henry\bibnamedelima W},
+         giveni={H\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {John Wiley \& Sons}%
+    }
+    \strng{namehash}{OHW1}
+    \strng{fullhash}{OHW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Electromagnetic compatibility engineering}
+    \field{year}{2011}
+  \endentry
+
   \entry{kopetz1998time}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=KH}{%
