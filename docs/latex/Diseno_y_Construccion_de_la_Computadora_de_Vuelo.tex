@@ -669,9 +669,17 @@ En este caso también se tomó como guía el circuito de la hoja de datos del co
 \subsubsection{Magnetómetro}
 %\subsection{Magnetómetro}
 
-El magnetómetro es otro de los sensores complementarios al INS. Este se utiliza para obtener estimaciones del ángulo de \textit{yaw} del vehículo, a partir de mediciones del campo magnético terrestre. Estas mediciones son relativas a una terna solidaria al sensor. Esto se muestra en la figura  . Luego el ángulo de \textit{yaw} puede obtenerse a partir del ángulo entre las componentes en $H_y$ y $H_x$.
+El magnetómetro es otro de los sensores complementarios al INS. Este se utiliza para obtener estimaciones del ángulo de \textit{yaw} del vehículo. %, a partir de mediciones del campo magnético terrestre, relativas a una terna solidaria al sensor
+En la figura \ref{fig:magnetometro_H_tierra} se muestran las componentes del campo magnético terrestre medidas por el sensor. A partir del ángulo entre las componentes en $H_y$ y $H_x$, puede obtenerse el ángulo de \textit{yaw} del vehículo. Si se rota al sensor alrededor de su eje z, la dirección del campo magnético terrestre permanecerá constante. Esto es lo que permite su uso como referencia para obtener el ángulo de \textit{yaw}.
 
-\textbf{{\color{red} AGREGAR UNA IMAGEN DEL CAMPO MAGNÉTICO MEDIDO POR EL MAGNETÓMETRO CON SUS COMPONENTES}}
+%\textbf{{\color{red} AGREGAR UNA IMAGEN DEL CAMPO MAGNÉTICO MEDIDO POR EL MAGNETÓMETRO CON SUS COMPONENTES}}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/magnetometro_H_tierra.png}
+    \caption{Se muestra un ejemplo con la terna solidaria al magnetómetro. Se muestra la dirección del campo magnético de la Tierra y las componentes expresadas en la terna solidaria al sensor, para los ejes x e y.}
+    \label{fig:magnetometro_H_tierra}
+\end{figure}
 
 Para medir las componentes del campo magnético, el sensor utiliza una serie de materiales resistivos que son sensibles al campo magnético aplicado sobre estos. Se colocan 4 resistores en configuración puente de Wheatstone y se estiman las componentes del campo magnético a partir del desbalance de este.
 

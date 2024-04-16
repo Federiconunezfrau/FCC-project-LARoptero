@@ -1469,6 +1469,11 @@ INPUT ./img/MEMS_barometro.png
 INPUT img/MEMS_barometro.png
 INPUT ./img/MEMS_barometro.png
 INPUT ./img/MEMS_barometro.png
+INPUT ./img/magnetometro_H_tierra.png
+INPUT ./img/magnetometro_H_tierra.png
+INPUT img/magnetometro_H_tierra.png
+INPUT ./img/magnetometro_H_tierra.png
+INPUT ./img/magnetometro_H_tierra.png
 INPUT ./img/red_CAN.png
 INPUT ./img/red_CAN.png
 INPUT img/red_CAN.png
