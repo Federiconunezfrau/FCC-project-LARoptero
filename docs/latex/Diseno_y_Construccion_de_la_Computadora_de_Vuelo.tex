@@ -1311,18 +1311,15 @@ Algunos de los conectores de la computadora de vuelo tienen salidas con tensione
 
 
 
+Otro de los aspectos a definir para la fabricación del PCB fueron las vías. Al tener varias capas, el routeo de las pistas trae consigo una gran cantidad de vías en la placa, debido a los cambios de capa y a las conexiones con los planos internos de alimentación y GND. Existen distintos tipos de vías que ofrece el fabricante, entre ellas las vías ciegas, vías enterradas y vías pasantes. %estas se muestran en la figura \ref{fig:vias_PCB}. 
+Se prefiere evitar el uso de otro tipo de vía que no sea una vía pasante, debido a que de otra forma se incrementa mucho el costo de fabricación de la placa, ya que el proceso de manufactura de las vías ciegas y las vías enterradas, es más complejo que el de las vías pasantes.
 
-
-
-
-Al tener varias capas, el routeo de las pistas traerá una gran cantidad de vías en la placa. Existen distintos tipos de vías que ofrece el fabricante, estas se muestran en la figura \ref{fig:vias_PCB}. Se prefiere evitar el uso de otro tipo de vía que no sea una vía pasante, debido a que de otra forma, incrementaría mucho el costo de fabricación de la placa.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{img/vias_PCB.png}
-    \caption{La vía 1 corresponde a una vía ciega (\textit{blind via}), la 2 corresponde a una \textit{buried via} y la 3 a una vía pasante. El uso de vías ciegas ayuda a reducir el espacio ocupado por un circuito en un PCB, ya que permite colocar componentes por encima de estas. La desventaja que traen es que su uso incrementa mucho el costo de fabricación de la placa, ya que el proceso de manufactura de las mismas es más complejo que el de las vías pasantes.}
-    \label{fig:vias_PCB}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{img/vias_PCB.png}
+%     \caption{La vía 1 corresponde a una vía ciega (\textit{blind via}), la 2 corresponde a una \textit{buried via} y la 3 a una vía pasante. El uso de vías ciegas ayuda a reducir el espacio ocupado por un circuito en un PCB, ya que permite colocar componentes por encima de estas. La desventaja que traen es que su uso incrementa mucho el costo de fabricación de la placa, ya que el proceso de manufactura de las mismas es más complejo que el de las vías pasantes.}
+%     \label{fig:vias_PCB}
+% \end{figure}
 
 
 %\textbf{{\color{red} COMPLETAR}}
@@ -1348,6 +1345,9 @@ Se buscó obtener una impedancia característica de $50 \ \Omega$ tanto para las
     \label{fig:microstrip}
 \end{figure}
 
+Con el motivo de reducir la cantidad de pistas con disitintas dimensiones en el PCB, se utilizan estas mismas dimensiones en la mayor parte de las pistas, por ejemplo para la comunicación con los sensores.
+
+
 %\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEAN LAS DIMENSIONES DE LAS MICROSTRIP EN EL PCB}}
 
 %Las dimensiones de pista dan una 
@@ -1366,9 +1366,17 @@ El protocolo de comunicación corresponde a un bus de datos paralelo, donde se u
 
 % Impedancia característica de la pista diferencial, de la especificación.
 
+Otro de los casos donde se tuvieron cuidados especiales en el trazado de las pistas, es para el caso de la comunicación USB. Como se trata de una señal ||diferencial, las pistas que conectan el periférico con el puerto USB de la placa fueron trazadas utilizando una herramienta del software \textit{KiCad} especial para el trazado de este tipo de pistas.
 
+En la especificación Universal Serial Bus Specification Revision 2.0 se indican las impedancias características de modo común y diferencial, de $90 \ \Omega$ y $30 \ \Omega$ respectivamente. No obstante, se permiten unos rangos de tolerancia bastante amplios, del 15 \% y del 30 \% respectivamente. A partir de las características del dieĺectrico del PCB, se definieron las dimeniones del par diferencial utilizado para la comunicación USB:
 
-\textbf{{\color{red} COMPLETAR}}
+\begin{itemize}
+    \item Ancho de pista = $0.254 \ mm$
+    \item Separación entre pistas = $0.254 \ mm$.
+    \item $Z_{0,diff} = 84.5 \ \Omega$
+    \item $Z_{0,comm} = 23.6 \ \Omega$
+\end{itemize} 
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Layout del Regulador Lineal}
 

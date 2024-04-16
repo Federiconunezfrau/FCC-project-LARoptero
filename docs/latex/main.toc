@@ -43,7 +43,7 @@
 \contentsline {subsubsection}{\numberline {5.4.2}Requerimientos de Posicionamiento del Sensor IMU}{51}{subsubsection.5.4.2}%
 \contentsline {subsubsection}{\numberline {5.4.3}Características del PCB}{52}{subsubsection.5.4.3}%
 \contentsline {subsubsection}{\numberline {5.4.4}Comunicación con el Slot para Tarjeta Micro SD}{55}{subsubsection.5.4.4}%
-\contentsline {subsubsection}{\numberline {5.4.5}Comunicación USB}{56}{subsubsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.5}Comunicación USB}{55}{subsubsection.5.4.5}%
 \contentsline {subsubsection}{\numberline {5.4.6}Layout del Regulador Lineal}{56}{subsubsection.5.4.6}%
 \contentsline {subsection}{\numberline {5.5}Funcionalidades y Diagrama en Bloques}{56}{subsection.5.5}%
 \contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{58}{section.6}%
@@ -61,6 +61,6 @@
 \contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{66}{subsubsection.6.3.5}%
 \contentsline {section}{\numberline {7}Conclusiones}{76}{section.7}%
 \contentsline {section}{\numberline {8}Agradecimientos}{77}{section.8}%
-\contentsline {section}{Apéndices}{78}{section*.85}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{78}{section*.86}%
-\contentsline {section}{Referencias}{79}{section*.87}%
+\contentsline {section}{Apéndices}{78}{section*.84}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{78}{section*.85}%
+\contentsline {section}{Referencias}{79}{section*.86}%

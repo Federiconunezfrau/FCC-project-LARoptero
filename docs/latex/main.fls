@@ -1558,11 +1558,6 @@ INPUT ./img/pista_5V.png
 INPUT img/pista_5V.png
 INPUT ./img/pista_5V.png
 INPUT ./img/pista_5V.png
-INPUT ./img/vias_PCB.png
-INPUT ./img/vias_PCB.png
-INPUT img/vias_PCB.png
-INPUT ./img/vias_PCB.png
-INPUT ./img/vias_PCB.png
 INPUT ./img/microstrip_2.png
 INPUT ./img/microstrip_2.png
 INPUT img/microstrip_2.png
