@@ -1345,6 +1345,17 @@
     \field{year}{2011}
   \endentry
 
+  \entry{AN4661}{misc}{}
+    \list{organization}{1}{%
+      {STMicroelectronics}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{{Getting Started with STM32F7 Series MCU Hardware
+  Development}}
+    \field{month}{02}
+    \field{year}{2017}
+  \endentry
+
   \entry{kopetz1998time}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=KH}{%

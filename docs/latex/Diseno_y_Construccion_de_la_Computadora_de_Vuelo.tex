@@ -1331,13 +1331,42 @@ Al tener varias capas, el routeo de las pistas traerá una gran cantidad de vía
 
 % Length matching e impedancia característica. Mencionar todo lo que tengo de la especificación de microSD. Tengo muchísimo de esto.
 
-\textbf{{\color{red} MENCIONAR EL TEMA DE LAS PISTAS QUE REQUIEREN CIERTA IMPEDANCIA CARACTERÍSTICA Y CÓMO ES QUE EL STACK DEL PCB AYUDA A TENER DIMENSIONES PEQUEÑAS}}
+%Se tuvieron algunos cuidados especiales a la hora de realizar el trazado de pistas de la memoria micro SD. En la SD Association se indica que las señales  
 
-\textbf{{\color{red} COMPLETAR}}
+%La especifcación de la SD Association indica valores máximos de capacidad y de inductancia de cada trazo. Durante el trazado de pistas, además de esto, se tuvieron en cuenta una serie de recomendaciones indicadas por el fabricante del microcontrolador, para uso del periférico \cite{AN4661}.
+
+Para trazar las pistas correspondientes a la comunicación con la memoria Micro SD, se tuvieron en cuenta los requerimientos planteados en la especificación de la SD Association. Esta indica valores máximos de capacidad y de inductancia de cada trazo, para mantener la integridad de la señal. Además de esto, se tuvieron en cuenta una serie de recomendaciones indicadas por el fabricante del microcontrolador, para uso del periférico \cite{AN4661}.
+
+%Para trazar las pistas correspondientes a la comunicación con la memoria Micro SD, se tuvieron en cuenta las recomendaciones del fabricante del microcontrolador, para uso del periférico \cite{AN4661}.
+
+Se buscó obtener una impedancia característica de $50 \ \Omega$ tanto para las líneas de datos como para la de comandos y clock. Esto puede lograrse gracias a la selección del \textit{stack-up} del PCB, con planos de GND y de $3.3 \ V$ continuos. De esta manera, las pistas en las capas exteriores son del tipo microstrip, cuya impedancia característica es conocida. En la figura \ref{fig:microstrip} se muestra una imagen con las dimensiones finales de las pistas. La permitividad del dieléctrico se tomó a partir de los datos provistos por el fabricante \textit{PCBWay}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/microstrip_2.png}
+    \caption{Se muestran las dimensiones de las pistas utilizadas para la memoria MicroSD. El alto del dieléctrico y su permitividad, están definidos por la configuración del PCB.}
+    \label{fig:microstrip}
+\end{figure}
+
+%\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEAN LAS DIMENSIONES DE LAS MICROSTRIP EN EL PCB}}
+
+%Las dimensiones de pista dan una 
+
+%Cabe destacar que al definir unas dimensiones de pista con estas características, es posible cumplir con los requerimientos de inductancia y capacitancia, indicados por la SD Association. 
+
+El protocolo de comunicación corresponde a un bus de datos paralelo, donde se utiliza el flanco ascendente del clock como referencia para muestrear el bus. Para que la comunicación funcione adecuadamente, el fabriante del microcontrolador recomienda que el desfasaje entre pistas sea menor a $60 \ ps$. Para lograr esto, se buscó que todas las pistas de datos y de clock tuvieran la misma longitud. Además, se utilizó la misma cantidad de vías en cada pista.
+
+%Otro de los requerimientos importantes para asegurar la integridad de la señal es la paridad en la longitud de las pistas.
+
+%\textbf{{\color{red} MENCIONAR EL TEMA DE LAS PISTAS QUE REQUIEREN CIERTA IMPEDANCIA CARACTERÍSTICA Y CÓMO ES QUE EL STACK DEL PCB AYUDA A TENER DIMENSIONES PEQUEÑAS}}
+
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Comunicación USB}
 
 % Impedancia característica de la pista diferencial, de la especificación.
+
+
 
 \textbf{{\color{red} COMPLETAR}}
 
@@ -1376,6 +1405,6 @@ La computadora de vuelo tiene la tarea esencial de adquirir las mediciones de lo
     \label{fig:diagrama_en_bloques_computadora_de_vuelo}
 \end{figure}
 
-\textbf{{\color{red} AGREGAR UNA FOTO DEL PCB, CON FLECHAS INDICANDO DÓNDE ESTÁ CADA COSA}}
+\textbf{{\color{red} AGREGAR UNA FOTO DEL PCB, CON FLECHAS INDICANDO DÓNDE ESTÁ CADA COSA. DAR LAS DIMENSIONES DE LA PLACA}}
 
 \textbf{{\color{red} COMPLETAR}}
