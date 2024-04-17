@@ -1388,7 +1388,76 @@ En la especificación Universal Serial Bus Specification Revision 2.0 se indican
 
 \subsubsection{Layout del Regulador Lineal}
 
-\textbf{{\color{red} COMPLETAR}}
+%Primero se menciona que para la resistencia térmica del regulador, para altas corrientes el integrado no soportaría.
+
+Previo al trazado de pistas de la placa, se hizo un análisis térmico del regulador lineal. A partir de la hoja de datos \cite{ZLDO1117QG33TA}, se detectó que para una temperatura ambiente de $25$ °C y para corrientes de $500 mA$, puede suceder que el regulador supere su potencia máxima disipable. Si bien este valor de corriente se encuentra sobredimensionado para la placa de este trabajo, debe recordarse que la corriente dependerá en gran medida de los módulos y sensores externos conectados a la computadora de vuelo.
+
+%Segundo, mencionar que en el datasheet se explica que uno puede bajar la resistencia térmica usando un plano de cobre en la misma capa del regulador. Mencionar que se investigaron técnicas para decrementar la resistencia térmica y que el objetivo de hacer esto fue que se prefirió dedicarle un esfuerzo al diseño, en lugar de luego tener que andar corrigiendo cosas sobre el PCB una vez fabricado.
+
+Durante esta etapa del desarrollo del PCB, se encontraron una serie de notas de aplicación las cuales explican técnicas y muestran resultados de la reducción de la resistencia térmica $\theta_{JA}$. Se prefirió dedicarle un esfuerzo al diseño teniendo en cuenta la disipación de calor del regulador, con el objetivo de evitar posibles problemas luego de la fabricación del PCB.
+
+%Tercero, mencionar el artículo de ROHM como que explica cómo se puede hacer.
+En \cite{ROHM_thermal} se muestran resultados del efecto de aplicar distintas modificaciones al layout en el PCB de un integrado. Esto se pude lograr por ejemplo incrementando la zona de cobre que hace contacto directo con el integrado, a través del uso de otras capas del PCB para decrementar todavía más la resistencia térmica y el uso de vías térmicas.
+
+%Cuarto, explicar el proceso llevado a cabo. Aclarar que fue iterativo.
+%4.1: se puso un plano en la misma capa del LDO, de tamaño 211.6250 mm2 (0.328019406 in2). Con esto, según la nota de aplicación de [52], se obtendría una resistencia de 60 °C/W.
+
+%Para decrementar todavía más, se aprovechó la posibilidad de utilizar el mismo plano de 3V3 para disminuir la resistencia térmica. 
+
+En primera medida, se incluyó un plano de cobre en la capa top, de $211 \ mm^2$. Este se puede ver en la figura \ref{fig:plano_cobre_top_ldo}. En la nota de aplicación \cite{AN1028_thermal} se muestran resultados de distintas pruebas utilizando un encapsulado como el de este trabajo, donde se fue incrementando la superficie del plano de cobre en la misma capa del integrado. Esta concluye que para una superficie de $211 \ mm^2$ se obtiene una $\theta_{JA} = 60$ °C/W. Este valor representa una reducción del 43,9 \% respecto del valor reportado en la hoja de datos y en el gráfico de la figura \ref{fig:ldo_potencia_disipable} se puede ver la comparación entre ambos casos de la potencia máxima disipable.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/plano_cobre_top_ldo.png}
+    \caption{Se muestra el layout final del regulador en la cara top. Se agrega un plano de $211 \ mm^2$ en la misma capa para reducir la resistencia térmica. Además, se utilizan una serie de vías para conectar con el plano interno de $3.3 \ V$, permitiendo disipar calor a través de este.}
+    \label{fig:plano_cobre_top_ldo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/ldo_potencia_disipable.png}
+    \caption{Se muestra el efecto de la reducción de la $\theta_{JA}$ en la potencia máxima disipable por el regulador. Esto además permite que este pueda entregar mayores valores de corriente {\color{red} HAY QUE HACER ESTE GRÁFICO USANDO OCTAVE/PYTHON/MATLAB}.}
+    \label{fig:ldo_potencia_disipable}
+\end{figure}
+
+% Esta indica que la potencia máxima disipable por el regulador responde al modelo óhmico térmico de la ecuación \eqref{eq:potencia_disipable_LDO}, donde $T_{j,max} = 125$ °C y $\theta_{JA} = 107$ °C/W. Además, en la ecuación \eqref{eq:potencia_disipada_LDO} se muestra la potencia disipada por el regulador para una dada corriente. El valor constante de $50 \ mW$ corresponde a la potencia disipada por corrientes propias del funcionamiento del regulador.
+
+% \begin{equation}
+%     P_D(T_A) = \frac{T_{j,max} - T_A}{\theta_{JA}}
+%     \label{eq:potencia_disipable_LDO}
+% \end{equation}
+
+% \begin{equation}
+%     P(I_{out}) = 1.7 \ V \ I_{out} + 50 \ mW
+%     \label{eq:potencia_disipada_LDO}
+% \end{equation}
+
+Existen algunas diferencias respecto de las condiciones planteadas en \cite{AN1028_thermal}, ya que allí se utiliza un espesor de cobre de $70 \ \mu m$, mientras que en este trabajo se utilizó un espesor de $35 \ \mu m$. A pesar de esto, los resultados que se muestran en \cite{ROHM_thermal} indican que el cambiar el espesor de $70 \mu m$ a $35 \mu m$ en un PCB 4 capas presenta un incremento menor al 10 \%.
+
+Por otro lado, en la placa de este trabajo se incorporan una serie de vías en el plano, las cuales conectan con la capa de $3.3 \ V$. En otra nota de aplicación de \textit{Texas Instruments} \cite{SLVAE85} se muestra otro estudio junto con resultados donde se aprovechan los planos internos en un PCB de 4 capas. Allí se demuestra que solamente con tener capas de cobre interiores sin la necesidad de estar conectadas al regulador, pueden reducir la $\theta_{JA}$ hasta un 50 \%. Si estos se encuentran conectadas al regulado, la reducción es aún mayor. Para la ubicación de las vías, estas se colocaron inmediatamente debajo del regulador.
+
+%Para un encapsulado SOT-23, la nota de aplicación [53] indica que para un área de 194 mm2 (0,3 in2), el uso de vías térmicas y teniendo planos de cobre en las capas intermedias, la 𝜃JA se reduce un 50%. Se considera que se obtendrá una 𝜃JA de 60 °C/W aproximadamente, para el layout utilizado.
+
+
+%Por otro lado, en la figura \ref{fig:plano_cobre_top_ldo} se puede ver que se incorporaron una serie de vías en el plano, las cuales conectan con la capa de $3.3 \ V$. Esta es otra diferencia, ya que en \cite{AN1028_thermal} solamente se coloca cobre en una sola capa.
+
+%Una salvedad respecto este número, es que en esta utiliza un espesor de cobre de $70 \mu m$, mientras que en  este trabajo se utilizó un espesor de $35 \mu m$. A pesar de ello, en \cite{ROHM_thermal} se muestra que el cambiar el espesor de $70 \mu m$ a $35 \mu m$ en un PCB 4 capas no presenta una variación de más del 10 \%.
+
+
+
+%Esta indica que la potencia máxima disipable por el regulador responde al modelo óhmico térmico de la ecuación \eqref{eq:potencia_disipable_LDO}, donde $T_{j,max} = 125$ °C y $\theta_{JA} = 107$ °C/W. Además, en la ecuación \eqref{eq:potencia_disipada_LDO} se muestra la potencia disipada por el regulador para una dada corriente. El valor constante de $50 \ mW$ corresponde a la potencia disipada por corrientes propias del funcionamiento del regulador.
+
+% \begin{equation}
+%     P_D(T_A) = \frac{T_{j,max} - T_A}{\theta_{JA}}
+%     \label{eq:potencia_disipable_LDO}
+% \end{equation}
+
+% \begin{equation}
+%     P(I_{out}) = 1.7 \ V \ I_{out} + 50 \ mW
+%     \label{eq:potencia_disipada_LDO}
+% \end{equation}
+
+%\textbf{{\color{red} COMPLETAR}}
 
 \subsection{Funcionalidades y Diagrama en Bloques}
 

@@ -1356,6 +1356,41 @@
     \field{year}{2017}
   \endentry
 
+  \entry{ROHM_thermal}{manual}{}
+    \list{organization}{1}{%
+      {ROHM Semiconductor}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{No .65AN002E Rev.001}
+    \field{title}{PCB Layout Thermal Design Guide}
+    \field{month}{06}
+    \field{year}{2022}
+  \endentry
+
+  \entry{AN1028_thermal}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{SNVA036B}
+    \field{title}{AN-1028 Maximum Power Enhancement Techniques for Power
+  Packages (Rev. B)}
+    \field{month}{05}
+    \field{year}{2013}
+  \endentry
+
+  \entry{SLVAE85}{manual}{}
+    \list{organization}{1}{%
+      {Texas Instruments}%
+    }
+    \field{labeltitlesource}{title}
+    \field{number}{SLVAE85}
+    \field{title}{An empirical analysis of the impact of board layout on LDO
+  thermal performance}
+    \field{month}{02}
+    \field{year}{2019}
+  \endentry
+
   \entry{kopetz1998time}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=KH}{%
