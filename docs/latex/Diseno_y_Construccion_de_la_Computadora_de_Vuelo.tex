@@ -1459,7 +1459,9 @@ Por otro lado, en la placa de este trabajo se incorporan una serie de vías en e
 
 %\textbf{{\color{red} COMPLETAR}}
 
-\subsection{Funcionalidades y Diagrama en Bloques}
+%\subsection{Funcionalidades y Diagrama en Bloques}
+
+\subsection{Diagrama en Bloques y PCB Final}
 
 % Acá lo que hago es mencionar cuáles son las necesidades con las que tengo que cumplir con la placa y después muestro un diagrama en bloques. Todavía no doy ningún circuito, es todo a nivel de sistema.
 
@@ -1471,25 +1473,43 @@ Por otro lado, en la placa de este trabajo se incorporan una serie de vías en e
 % LEDs indicadores de propósito general.
 % Pulsadores para debugging y pruebas de propósito general.
 
-La computadora de vuelo tiene la tarea esencial de adquirir las mediciones de los sensores, procesar dichos datos, y realizar el control de los diversos aspectos del vehículo, fundamentalmente de los motores. Las funcionalidades de la computadora de vuelo son las siguientes:
+Teniendo en cuenta todas las consideraciones mencionadas a lo largo de esta sección, se pudo plantear un circuito esquemático y obtener un diseño de PCB. Este último puede encontrarse en el \nameref{appendix:PCB}. A modo de resumen, en la figura \ref{fig:diagrama_en_bloques_computadora_de_vuelo} se muestra un diagrama en bloques de la computadora de vuelo y en la figura \ref{fig:chori_detalle} pla implementación en PCB. Por último, en la figura \ref{fig:choris_4}, se muestran las 3 placas que se enviaron a fabricar para este trabajo.
 
-\begin{enumerate}
-    \item Adquirir datos de sensores.
-    \item Cálculo de la estimación de la pose y de la ley de control.
-    \item Actuación sobre los motores.
-    \item \textbf{{\color{red} FALTA ALGUNA FUNCIONALIDAD DE TOLERANCIA A FALLAS}}
-    \item Control de LEDs indicadores de propósito general.
-    \item Comunicación a través de distintas interfaces, con módulos y sensores externos a la placa.
-    \item Loggeo de datos.
-\end{enumerate}
+%La computadora de vuelo tiene la tarea esencial de adquirir las mediciones de los sensores, procesar dichos datos, y realizar el control de los diversos aspectos del vehículo, fundamentalmente de los motores. Las funcionalidades de la computadora de vuelo son las siguientes:
+
+% \begin{enumerate}
+%     \item Adquirir datos de sensores.
+%     \item Cálculo de la estimación de la pose y de la ley de control.
+%     \item Actuación sobre los motores.
+%     \item \textbf{{\color{red} FALTA ALGUNA FUNCIONALIDAD DE TOLERANCIA A FALLAS}}
+%     \item Control de LEDs indicadores de propósito general.
+%     \item Comunicación a través de distintas interfaces, con módulos y sensores externos a la placa.
+%     \item Loggeo de datos.
+% \end{enumerate}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{img/diagrama_en_bloques_computadora_de_vuelo.png}
+    \includegraphics[width=0.7\textwidth]{img/diagrama_en_bloques_computadora_de_vuelo.png}
     \caption{Diagrama en bloques de la computadora de vuelo.}
     \label{fig:diagrama_en_bloques_computadora_de_vuelo}
 \end{figure}
 
-\textbf{{\color{red} AGREGAR UNA FOTO DEL PCB, CON FLECHAS INDICANDO DÓNDE ESTÁ CADA COSA. DAR LAS DIMENSIONES DE LA PLACA}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/chori_detalle.png}
+    \caption{Se muestra el detalle del PCB de la computadora de vuelo.}
+    \label{fig:chori_detalle}    
+\end{figure}
 
-\textbf{{\color{red} COMPLETAR}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/choris_4.png}
+    \caption{Se muestran las 3 placas enviadas a fabricar para este trabajo.}
+    \label{fig:choris_4}
+\end{figure}
+
+
+
+%\textbf{{\color{red} AGREGAR UNA FOTO DEL PCB, CON FLECHAS INDICANDO DÓNDE ESTÁ CADA COSA. DAR LAS DIMENSIONES DE LA PLACA}}
+
+%\textbf{{\color{red} COMPLETAR}}

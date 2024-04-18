@@ -1583,6 +1583,16 @@ INPUT ./img/diagrama_en_bloques_computadora_de_vuelo.png
 INPUT img/diagrama_en_bloques_computadora_de_vuelo.png
 INPUT ./img/diagrama_en_bloques_computadora_de_vuelo.png
 INPUT ./img/diagrama_en_bloques_computadora_de_vuelo.png
+INPUT ./img/chori_detalle.png
+INPUT ./img/chori_detalle.png
+INPUT img/chori_detalle.png
+INPUT ./img/chori_detalle.png
+INPUT ./img/chori_detalle.png
+INPUT ./img/choris_4.png
+INPUT ./img/choris_4.png
+INPUT img/choris_4.png
+INPUT ./img/choris_4.png
+INPUT ./img/choris_4.png
 INPUT ./Arquitectura_Propuesta.tex
 OUTPUT Arquitectura_Propuesta.aux
 INPUT ./Arquitectura_Propuesta.tex
