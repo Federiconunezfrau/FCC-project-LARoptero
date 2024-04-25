@@ -14,7 +14,7 @@
 
 % En esta sección se muestra que, si el sistema tiene ciertas características, en particular ser un sistema de tiempo real y contar con un bus común a los nodos para las comunicaciones, luego el problema del consenso se simplifica mucho.
 
-En esta sección se presenta la arquitectura de sistema propuesta, para la tarea de tolerancia a fallas. Esta consiste en un sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo. Para demostrar las capacidades de toleranca a fallas, se hicieron una serie de pruebas simulando fallas en un sensor. Además, se describen las características del firmware desarrollado para implementar el sistema propuesto. Finalmente, se muestran los resultados obtenidos sobre las pruebas realizadas.
+En esta sección se presenta la arquitectura de sistema propuesta para la tarea de tolerancia a fallas. Esta consiste en un sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo. Se describen las características del firmware desarrollado para implementar el sistema propuesto. Para demostrar las capacidades de toleranca a fallas, se hicieron una serie de pruebas simulando fallas en un sensor. Finalmente, se muestran los resultados obtenidos sobre las pruebas realizadas.
 
 
 %Para esto, se desarrolló un firmware con una arquitectura de sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo.
@@ -32,85 +32,67 @@ En esta sección se presenta la arquitectura de sistema propuesta, para la tarea
 
 % Para implementar la tolerancia a fallas, se optó por un esquema distribuido, el cual se compone de tres unidades de la CNGC, conectadas entre sí a través del bus CAN, cada una de ellas alimentadas de manera independiente. Una imagen del stack de nodos puede observarse en la Fig. 3. Cada nodo funciona de manera independiente ejecutando exactament
 
-\subsection{Arquitectura Propuesta: \textit{The Time-Triggered Architecture}}
+%\subsection{Arquitectura Propuesta: \textit{The Time-Triggered Architecture}}
+\subsection{Descripción de la Arquitectura Propuesta}
 
 %\subsubsection{Sincronismo de los nodos}
 
-En la sección \ref{sec:sincronismo_TMR} se mencionó la necesidad del sincronismo entre los nodos y que esta se logra a partir de un intercambio de mensajes. Para la arquitectura propuesta, ese intercambio de mensajes se hace a través del mismo bus. Debido a que el medio es compartido, los nodos de la red deben tomar turnos para acceder al medio, de manera de que todos puedan enviar sus respectivos mensajes.
+Como fue explicado en la sección \ref{sec:disenio_computadora_de_vuelo}, la computadora de vuelo se encarga de ejecutar el sistema de navegación para guiar el vehículo en su trayectoria. Este sistema cumple con las características de ser un sistema de tiempo real, ya que tanto los valores de los resultados de cómputo, como el instante de tiempo en el que se obtienen, son de vital importancia para la correcta ejecución de las distintas tareas de control del vehículo. 
+%La computadora de vuelo comprende un sistema de tiempo real. Esto quiere decir que tanto los valores de los resultados de cómputo, como el instante de tiempo en el que se obtienen, son importantes para la correcta ejecución de las distintas tareas. En la sección \ref{sec:disenio_computadora_de_vuelo}
+Por otro lado, en la sección \ref{sec:requerimentos_sistema_tolerancia_fallas} se presentó un análisis de las características que deben tener este tipo de sistemas para poder implementar un mecanismo de tolerancia a fallas utilizando redundancias. A partir de lo presentado hasta aquí, las características elementales de un sistema de tiempo real con tolerancia a fallas se pueden resumir en los siguientes items:
 
-Típicamente, una FCC ejecuta las mismas tareas relacionadas al control del vehículo, de manera periódica \cite{hiergeist2018implementation}:
-
-\begin{enumerate}
-    \item Lectura de los sensores.
-    \item Cálculo de la ley de control.
-    \item Aplicación del resultado a los actuadores.
-\end{enumerate}
-
-Debido a que se trata de un sistema de tiempo real, cada una de las FCCs debe realizar estas tareas en un período de tiempo dado. En la figura \ref{fig:task_scheduling_1} se muestra un gráfico con la secuencia de ejecución periódica de las tareas.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/task_scheduling_1.png}
-    \caption{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. }
-    \label{fig:task_scheduling_1}
-\end{figure}
-
-En un sistema con redundancias, como ya se mencionó, cada una de las FCCs realiza las mismas tareas. Además, estas intercambiarán resultados relacionados a mediciones de sensores y a valores de actuación para los motores con sus pares, justamente para enmascarar y tolerar las fallas. A partir de esto, se desprende que el intercambio de mensajes también corresponde a tareas que deben ejecutarse periódicamente y en un determinado período de tiempo acotado.
-
-Cada una de las computadoras de vuelo incluye un clock interno, el cual utiliza como base para cumplir con los tiempos de ejecución. Cuando se habla del sincronismo entre los nodos de la red, lo que se busca es que las ejecuciones de las N computadoras se encuentren coordinadas. Por ejemplo, en la figura \ref{fig:task_scheduling_2} se muestra un caso para dos computadoras de vuelo cuya ejecución se encuentra desfasada. Es fácil ver que este sistema nunca podrá cumplir con el objetivo de controlar el vuelo del UAV.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/task_scheduling_2.png}
-    \caption{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref{fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.}
-    \label{fig:task_scheduling_2}
-\end{figure}
-
-
-En la figura, se muestra que cuando la FCC 2 termina de enviar la señal de control a los actuadores (instante $T_n$), la FCC 1 se encuentra intercambiando resultados con la FCC 2. Debido a que la FCC 2 ya pasó dicha tarea, la FCC 1 no recibirá ningún valor de su par y asumirá erróneamente, que la FCC 2 se encuentra en un estado con alguna falla, ya que no responde. Si bien este ejemplo es muy simple, muestra la necesidad de la sincronización entre nodos de la red, siendo el motivo principal, el hecho de que el sistema es de tiempo real.
-
-%\subsection{Arquitectura Del Sistema: \textit{The Time-Triggered Architecture}}
-
-A partir de lo analizado hasta aquí, se enumeran los requerimientos más elementales del sistema:
+%En la sección \ref{sec:requerimentos_sistema_tolerancia_fallas} se mencionó que se busca enmascarar fallas que puedan ocurrir, permitiendo continuar con el normal funcionamiento del sistema, a pesar de dicha falla. Para esto, el mecanismo de tolerancia a fallas consiste en el uso de redundancias y la comparación de resultados entre distintas réplicas de hardware. Además, se concluyó que la comparación de resultados se 
 
 \begin{enumerate}
-    \item El sistema es de tiempo real, es decir, se requiere determinismo temporal en la ejecución de las tareas.
-    \item El sistema es redundante, por lo que cada nodo ejecuta las mismas tareas en paralelo y al mismo tiempo.
-    \item El uso del bus de comunicación obliga al uso de un protocolo de acceso al medio físico compartido (el bus) por turnos, que permita que todos los nodos tengan acceso a este.
+    %\item El sistema es de tiempo real, es decir, se requiere determinismo temporal en la ejecución de las tareas.
+    \item Se requiere determinismo temporal en la ejecución de las tareas.
+    \item La tolerancia a fallas se implementa a través de la comparación de resultados de las distintas réplicas.
+    \item Para que el mecanismo de tolerancia a fallas sea efectivo, es necesario comparar resultados que se correspondan temporalmente. Esto implica que cada réplica debe ejecutar las mismas tareas en paralelo y de manera sincronizada.
+    \item Es necesario utilizar un bus para el intercambio de resultados entre réplicas. A su vez, se requiere un acceso al medio por turnos, respetado por todas las réplicas.
 \end{enumerate}
 
-A continuación, se presentan distintas arquitecturas posibles para la implementación y se selecciona una de ellas, la \textit{Time-Triggered Architecture}\cite{kopetz2003time}, cuyas características se ajustan a los requerimientos.
+Una arquitectura que se ajusta a estas características es la de un sistema que ejecuta sus tareas en instantes de tiempo predefinidos, típicamente denominados \textit{Time-Triggered systems} o \textit{Time-Triggered Architecture}. La característica principal de estos sistemas es que presentan un fuerte determinismo temporal, ya que el instante de tiempo en el que se ejecuta cada tarea se vuelve parte del diseño del sistema. Esta característica facilita su uso en sistemas críticos de tiempo real, debido a que su comportamiento es predecible \cite[p.~12]{pont2008patterns}. Pueden encontrarse trabajos \cite{kopetz2003time} \cite{kopetz1998time} y libros \cite{kopetz-2011} \cite{pont2008patterns} que explican formalmente esta arquitectura y sus distintos componentes con más detalle. En esta sección se pretende describir brevemente sus características más importantes.
 
-{\Large \textbf{{\color{red} ACÁ COMENTAR LAS ALTERNATIVAS DE LAS DISTINTAS ARQUITECTURAS, COMO SUPER LOOP, EVEN TRIGGERED CON RTOS, SIN RTOS Y TIME TRIGGERED. COMENTAR POR QUÉ ELIJO TIME TRIGGERED Y DESCARTO LAS DEMÁS. PONER CASOS DE TRABAJOS CON TTA. EN EL PAPER QUE USA TIME TRIGGERED BUSES HAY VARIOS EJEMPLOS }}}
 
-%\subsubsection{The Time-Triggered Architecture}
+%A continuación, se presenta brevemente los componentes y el funcionamiento de la arquitectura para el sistema de este trabajo.
 
-En este tipo de arquitectura, el sistema en cuestión ejecuta sus tareas en instantes de tiempo predefinidos. Estas tareas pueden ser tales como tomar datos de un sensor, enviar un dato a otra parte del sistema o realizar algún cálculo. Este tipo de arquitectura es típicamente utilizada en aplicaciones de tiempo real críticas. {\textbf{{\color{red} PONER EJEMPLOS DE SISTEMAS CRÍTICOS CON TIME TRIGGERED ARCHITECTURE}}}. Esto es porque esta arquitectura vuelve al sistema predecible. Teniendo en cuenta lo mencionado en la sección \ref{subsec:introduccion_al_analisis_de_tolerancia_a_fallas}, que el comportamiento del sistema sea predecible lo vuelve más confiable y por ende más seguro.
+% =================================================
+% Explicación breve de time triggered systems:
+% Set de tareas periódicas que se ejecutan en instantes de tiempo predefinidos. Estas tareas son run-to-completion.
+% Existe un scheduler que se ejecuta en cada réplica, el cual determina cuál es la siguiente tarea a ejecutar. Ese scheduler está controlado por el paso del tiempo, típicamente por la interrupción de un timer. Esta es la única interrupción que se permite en el sistema. El scheduler es cooperative.
+% Las comunicaciones también se incluyen en el scheduling, tanto el envío de mensajes como la recepción. No se permiten las retransmisiones, a menos que sean parte del scheduling predefinido.
+% Debido a que el scheduling es predefinido y se sabe cuándo se debería ejecutar cada tarea, en el eventual caso en el que una tarea no pueda ser ejecutada a tiempo, esto es fácilmente dectable y puede tomarse una acción correctiva.
 
-Existe otro criterio por el cual típicamente se prefiere este tipo de sistemas para aplicaciones de este estilo y tiene que ver con los procesos de validación que deben realizarse frente a entes reguladores. El hecho de tener un sistema cuyo comportamiento es altamente predecible, simplifica mucho su proceso de validación. \textbf{{\color{red} DESARROLLAR ESTA PARTE CON EJEMPLOS Y CITANDO DO-254, ETC}}.
+% El aspecto restante es el de la sincronización, necesaria para ejecutar la tolerancia a fallas adecuadamente. Las características del sistema con scheduler predefinido se prestan a la implementación de la sincronización. Al ejecutar una sincronización de los timers de los schedulers de cada réplica, se está sincronizando la ejecución de las tareas.
 
-A continuación, se presenta brevemente los componentes y el funcionamiento de la arquitectura para el sistema de este trabajo. Pueden encontrarse trabajos\cite{kopetz2003time}\cite{kopetz1998time} y libros\cite{kopetz-2011} que explican formalmente esta arquitectura y sus distintos componentes con más detalle.
+% Con todo esto, se puede enmascarar 1 sola falla simultánea, de cualquiera de las 3 réplicas, en el sistema total.
 
-Como ya se mencionó en las secciones anteriores, el sistema se compone de una serie de \textbf{nodos} interconectados a través de un \textbf{bus de comunicación}. Cada uno de los nodos ejecuta una serie de tareas con un \textbf{scheduling} predefinido por el paso del tiempo.
+En la figura  se muestra un esquema que se corresponde con el mecanismo de funcionamiento de un sistema \textit{time-triggered}, donde se ilustra una simplificación del funcionamiento de la computadora de vuelo. En el instante de tiempo $t_1$ se obtienen mediciones de acelerómetros y giróscopos, en el instante $t_2$ se ejecuta el algoritmo de navegación y en $t_3$ se aplica un nuevo comando sobre los actuadores del vehículo.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/diagrama_TTA.png}
-    \caption{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit{clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit{global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.}
-    \label{fig:diagrama_TTA}
-\end{figure}
+{\Large \textbf{{\color{red} PONER LA IMAGEN DEL SCHEDULER CON EL SET DE TAREAS Y LOS INSTANTES DE TIEMPO PREDEFINIDOS. ESTA IMAGEN TIENE QUE TENER UN RELOJITO QUE EXPLICITE QUE LAS TAREAS SE EJECUTAN GRACIAS AL CLOCK}}}
 
-Para que el comportamiento de los nodos sea consistente, estos deben estar \textbf{sincronizados}. Se define entonces una base de tiempo global a todos los nodos, denominada en la bibliografía \textbf{global time base}\cite[p.~51]{kopetz-2011}. Esta representa a un reloj que no existe físicamente, sino que es un acuerdo entre los nodos del sistema respecto a un reloj al que todos los nodos deben seguirle el ritmo. Para esto último, cada nodo tiene su propio \textbf{reloj local}.
+Este comportamiento se diferencia de sistemas con respuesta a eventos. La gran mayoría de sistemas embebidos emplean estos mecanismos, donde los eventos son capturados a través de interrupciones. Los periféricos de un microcontrolador cuentan con mecanismos para informar al procesador de la ocurrencia de determinado evento, como por ejemplo la recepción de un nuevo byte en una interfaz UART, o el cambio de nivel en una entrada de propósito general GPIO. El hecho de que estos eventos puedan ocurrir en cualquier momento y en cualquier orden, puede comprometer el determinismo temporal. De manera de ilustrar esto, se presenta un ejemplo en la figura . Para el primer caso, la ocurrencia de las interrupciones genera que la tarea del \textit{main} retrase su ejecución. Por el contrario, para el caso \textit{time-triggered}, el orden e instante de tiempo de ejecución se vuelven parte del diseño del sistema, permitiendo que la tarea \textit{main} se complete sin ser interrumpida, logrando cumplir con su timing.
 
-En la figura \ref{fig:diagrama_TTA} se muestra un esquema de la arquitectura \textit{Time Triggered}. Los tres nodos de la imagen, FCC1, FCC2 y FCC3 se encuentran sincronizados ejecutando la tarea \textit{Task 3}. Esta tarea implica que el nodo FCC1 envíe un mensaje por el bus, representado en la imagen por la flecha roja. En cuanto a los nodos FCC2 y FCC3, la \textit{Task 3} les dice que ellos deben escuchar el bus y esperar el mensaje proveniente del FCC1. Esto quiere decir que el comportamiento predefinido por el scheduler también define en qué instantes de tiempo cada nodo puede enviar un mensaje y en qué instantes de tiempo debe recibirlo. Con respecto a esto último, si en el ejemplo de la figura \ref{fig:diagrama_TTA} el nodo FCC1 presenta una falla y no envía el mesanje en el tiempo correspondiente, luego los nodos FCC2 y FCC3 no recibirán nada. Es común encontrar protocolos de comunicación donde este tipo de fallas se resuelven solicitando el reenvío del mensaje. Sin embargo, debido a que el sistema ya tiene un scheduling predefinido, esto no se permite ya que uno a priori no puede saber si habrá que hacer un pedido de reenvío de mensaje o no, lo que puede corromper el scheduling del sistema. Justamente, la \textit{Time-Triggered Architecture} busca que el sistema sea predecible.
+{\Large \textbf{{\color{red} PONER LA IMAGEN TIPO LA DEL LIBRO DE PONT, DE LA SECCIÓN 1.7}}}
 
-A continuación, se describe brevemente cada uno de los componentes de este tipo de sistema. Para una explicación más detallada, referirse a \cite{kopetz-2011} y \cite{kopetz2003time}.
+%En la figura  se considera un ejemplo muy sencillo donde ocurren 2 eventos casi de manera simultánea. A diferencia de esto, en un sistema \textit{time-triggered} las tareas del sistema no pueden ejecutarse en cualquier momento. En la figura se muestra una comparación entre ambos casos. En un sistema \textit{event-triggered}
 
-%\subsubsection{Bus de Comunicaciones}
 
-El bus de comunicaciones es el medio a través del cual los nodos intercambian información. Como se describió anteriormente, la arquitectura requiere la sincronización de los nodos para una ejecución consistente. Esto quiere decir que como mínimo, los nodos intercambian mensajes utilizados para la sincronización entre estos. Más allá de esto, en un sistema distribuido, lo más común es que haya un intercambio de información constante entre nodos.
+%Este comportamiento se diferencia de sistemas con respuesta a eventos, como puede ser una interfaz con una persona, donde el usuario puede interactuar con esta para obtener una respuesta asociada casi inmediata. Este tipo de sistemas se llaman \textit{event-triggered} y son controlados por los eventos que puedan ocurrir en su entorno. A priori, se asumen eventos asincrónicos, es decir, que pueden ocurrir en cualquier momento y en cualquier orden. A diferencia de esto, en un sistema \textit{time-triggered} las tareas del sistema no pueden ejecutarse en cualquier momento. En la figura se muestra una comparación entre ambos casos. En un sistema \textit{event-triggered}
 
-De manera de minimizar las colisiones y favorecer el cumplimiento en el timing del sistema de tiempo real, el envío y recepción de mensajes se implementa por turnos. Esto corresponde a un protocolo de acceso al medio denominado \textit{Time Division Multiple Access} (TDMA). En la figura \ref{fig:TDMA_esquema} se grafica esto para 3 nodos. Este protocolo define en qué instantes de tiempo cada uno de los nodos puede utilizar el medio físico y en cuáles no. Para que no haya colisiones, todos los nodos deben respetar ese timing, el cual se encuentra predefinido. 
+Muchos sistemas controlados por eventos funcionan con sistemas operativos de tiempo real, los cuales disponen de un \textit{scheduler} que elige cuál es la tarea que corresponde ejecutar. Este aspecto también es una característica de los sistemas \textit{time-triggered}, aunque la diferencia se encuentra en la estrategia utilizada. En el caso de un RTOS es común el uso de \textit{schedulers} expropiativos con un sistema de prioridades. En un sistema \textit{time-triggered}, el \textit{scheduler} utiliza un reloj, típicamente implementado con un periférico timer, el cual determina cuál es la tarea a ejecutar. Además, a diferencia de algunos RTOS, no se utiliza el cambio de contexto, sino que cada tarea que se ejecuta, retorna y devuelve el control al \textit{scheduler} para ejecutar la siguiente tarea. Estos aspectos refuerzan el determinismo del sistema, lo que se traduce en un comportamiento predecible y por ende seguro \cite[p.~247]{pont2008patterns}.
+
+%los schedulers pueden ser \textit{preemptive} o bien cooperativos. La ventaja de utilizar un scheduler cooperativo es nuevamente el determinismo en la ejecución de las tareas \cite[p.~247]{pont2008patterns}. Que el \textit{scheduler} sea cooperativo quiere decir que cada tarea cede el control del procesador a la siguiente tarea. Esto se implementa con tareas que se ejecutan y retornan, es decir, no se utilizan métodos como el cambio de contexto, típico de RTOS como FreeRTOS. Nuevamente, el motivo de esta decisión es darle determinismo al sistema. 
+
+
+
+% HABLAR DE QUE LA COMUNICACIÓN SE IMPLEMENTA COMO UNA TAREA MÁS EN EL SCHEDULER
+
+% Las comunicaciones también se incluyen en el scheduling, tanto el envío de mensajes como la recepción. No se permiten las retransmisiones, a menos que sean parte del scheduling predefinido.
+
+En cuanto a la comparación de resultados entre distintas réplicas, estas realizarán la comparación de resultados a través de un bus de comunicaciones. %Este es el medio a través del cual los nodos intercambian información. Como se describió anteriormente, la arquitectura requiere la sincronización de los nodos para una ejecución consistente. Esto quiere decir que como mínimo, los nodos intercambian mensajes utilizados para la sincronización entre estos. Más allá de esto, en un sistema distribuido, lo más común es que haya un intercambio de información constante entre nodos.
+De manera de minimizar las colisiones y favorecer el cumplimiento en el timing del sistema de tiempo real, el envío y recepción de los mensajes se implementa por turnos. La arquitectura que se utiliza facilita la implementación de este mecanismo, por ejemplo a partir del uso de tareas que estén dedicadas a recibir o enviar un mensaje a través del bus. %Esto corresponde a un protocolo de acceso al medio denominado \textit{Time Division Multiple Access} (TDMA).
+En la figura \ref{fig:TDMA_esquema} se muestra un caso para 3 réplicas. Este gráfico tiene una similitud con el gráfico de la figura . Mientras la réplica 1 ejecuta su tarea para enviar un mensaje, las réplicas 2 y 3 ejecutarán una tarea para recibir un mensaje.
 
 \begin{figure}[H]
     \centering
@@ -119,40 +101,40 @@ De manera de minimizar las colisiones y favorecer el cumplimiento en el timing d
     \label{fig:TDMA_esquema}
 \end{figure}
 
-\textbf{{\color{red} ACÁ MENCIONAR ALGUNOS PROTOCOLOS COMO FLEXRAY O TTP/C QUE DE POR SÍ YA EJECUTAN UNA SINCRONIZACIÓN.}}
+%\textbf{{\color{red} ACÁ MENCIONAR ALGUNOS PROTOCOLOS COMO FLEXRAY O TTP/C QUE DE POR SÍ YA EJECUTAN UNA SINCRONIZACIÓN.}}
 
-En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
+%En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
-    \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.}
-    \label{fig:TTA_Bus}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
+%     \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.}
+%     \label{fig:TTA_Bus}
+% \end{figure}
 
-Al recibir un mensaje, ocurre algo similar. El software del nodo \textit{pollea} a la CNI en determinado instante de tiempo para obtener el mensaje recibido. Otra forma de implementar esto podría ser a través de una interrupción en el software, es decir, que cuando llege un mensaje nuevo, se dispare una interrupción en el software. El problema con esto es que se le quita determinismo al sistema.
+%Al recibir un mensaje, ocurre algo similar. El software del nodo \textit{pollea} a la CNI en determinado instante de tiempo para obtener el mensaje recibido. Otra forma de implementar esto podría ser a través de una interrupción en el software, es decir, que cuando llege un mensaje nuevo, se dispare una interrupción en el software. El problema con esto es que se le quita determinismo al sistema.
 
-%\subsubsection{Nodos}
 
-Los nodos son la unidad elemental de los sistemas distribuidos, y también de la arquitectura \textit{Time-Triggered}. Estos son los que ejecutan las tareas y le dan vida al sistema. Los nodos se componen generalmente de un procesador (microcontrolador en el caso de este trabajo), un clock local (en este trabajo se implementa con un circuito oscilador con un cristal) una unidad de control de acceso al bus de comunicaciones y el software local al nodo. En la sección anterior además, se mencionó la existencia de un elemento llamado CNI, que comunica al software con el bus. Sumado a esto, el nodo a su vez contiene un scheduler, el cual se describie en la próxima sección.
 
-%\subsubsection{Scheduler}
+% Debido a que el scheduling es predefinido y se sabe cuándo se debería ejecutar cada tarea, en el eventual caso en el que una tarea no pueda ser ejecutada a tiempo, esto es fácilmente dectable y puede tomarse una acción correctiva.
 
-El sistema conformado por el conjunto de nodos y las comunicaciones entre ellos, se basa en un esquema de tareas que se encuentra predefinido. Esto se diferencia de sistemas de otras características como puede ser alguno con una interfaz con una persona. El caso más cercano puede ser el de un telófono celular, el cual tiene una pantalla que el usuario puede presionar en distintos lugares para abrir una aplicación, enviar un mensaje, etc. Cuando esto ocurre, el celular debe dar una respuesta casi inmediata. Este tipo de sistemas se llaman \textit{Event-Triggered} y son controlados por los eventos que pueden ocurrir. A priori, se asumen eventos asincrónicos, es decir, que pueden ocurrir en cualquier momento y en cualquier orden. A diferencia de esto, en un sistema \textit{Time-Triggered} los eventos no pueden ocurrir en cualquier momento. Mejor dicho, los eventos pueden ocurrir en cualquier momento, pero el sistema solamente prestará atención a esos eventos en un lapso de tiempo predefinido.
+El hecho de que el comportamiento del sistema sea predecible, facilita la tarea de detección del fracaso del cumplimiento con el \textit{timing} de las tareas. Esto puede hacerse en tiempo de ejecución, a partir de verificar si se está cumpliendo con el \textit{scheduling} o no. En la figura  se muestra un ejemplo donde una tarea excede su tiempo de ejecución normal. Si esto no es monitoreado adecuadamente, podría bloquearse la ejecución de la siguiente tarea. Debido a que se conoce qué tarea se está ejecutando y cuál debería ejecutarse, fácilmente puede detectarse el fracaso en la ejecución.
 
-En los sistemas operativos de tiempo real se definen una serie de tareas, las cuales utiliza un scheduler que determina cuál es la próxima tarea que corresponde ejecutar. Un sistema \textit{Time-Triggered} también define su comportamiento a través de tareas. La diferencia está en la estrategia utilizada por el scheduler. En el caso de un RTOS es común encontrar schedulers \textit{preemptive} con un sistema de prioridad. En un sistema \textit{Time-Triggered}, los schedulers pueden ser \textit{preemptive} o bien cooperativos. La ventaja de utilizar un scheduler cooperativo es nuevamente el determinismo en la ejecución de las tareas \cite[p.~247]{pont2008patterns}.
+{\Large \textbf{{\color{red} IMAGEN CON UN TASK OVERRUN}}}
 
-%\subsubsection{Global Time y Sincronización}
+% El aspecto restante es el de la sincronización, necesaria para ejecutar la tolerancia a fallas adecuadamente. Las características del sistema con scheduler predefinido se prestan a la implementación de la sincronización. Al ejecutar una sincronización de los timers de los schedulers de cada réplica, se está sincronizando la ejecución de las tareas.
 
-De forma de que el funcionamiento del sistema de tiempo real distribuido sea correcto, todos los nodos deben ejecutar sus tareas de forma consistente. Para ello, sus schedulers deben estar sincronizados. Para el caso de este trabajo, cada una de las FCCs debe encontrarse ejecutando la misma tarea al mismo tiempo. De esta forma pueden ejecutarse los algoritmos de votación para realizar tolerancia a fallas de hardware, como ya se describió anteriormente.
+% Con todo esto, se puede enmascarar 1 sola falla simultánea, de cualquiera de las 3 réplicas, en el sistema total.
 
-Algunos sistemas distribuidos de tiempo real utilizan un clock maestro, implementado como un nodo de la red al que todos los demás nodos utilizan como referencia. Por ejemplo, la extensión del protocolo automotivo CAN, denominada Time-Triggered CAN (TTCAN) \cite{leen2002ttcan} utiliza esta estrategia. La desventaja de este método es que dicho clock maestro se convierte en un punto singular de falla: si este presenta una falla, habrá un error en la sincronización. 
+% Puntapié para hablar de la sincronización
+Para que no haya colisiones en el bus de comunicaciones, todos los nodos deben respetar el timing, el cual se encuentra predefinido gracias al \textit{scheduler}. Sumado a esto, para que las comparaciones de resultados permitan la detección de fallas, los valores a comparar deben corresponderse temporalmente. Ambas cuestiones se resuelven a partir de la sincronización de los \textit{schedulers} de cada una de las réplicas, la cuál debe ejecutarse de forma periódica.
 
-Otra forma es utilizar una \textit{global time base}\cite[p.~51]{kopetz-2011}. Esta se define como un acuerdo entre los nodos de la red respecto a una base de tiempo a utilizar como referencia. Como ya fue mencionado, cada nodo tiene un reloj interno propio, implementado con un cristal oscilador. Esta base de tiempos global puede implementarse por ejemplo utilizando un contador local. Cada nodo incrementa en uno el valor de esta variable, de forma periódica. Para que los nodos puedan utilizar esta variable como base de tiempos, todos los nodos deben tener el mismo número almacenado en su instancia local de dicha variable, al mismo tiempo.
+El comportamiento de cada una de las réplicas está controlado en última instancia por el \textit{timer} del \textit{scheduler}. Por más que todas las réplicas presenten circuitos osciladores exactamente iguales y de la misma frecuencia, inevitablemente existirá un efecto de \textit{drift}, ya sea por cuestiones mismas de fabricación o por efecto de la temperatura. Esto traerá como consecuencia que los \textit{timers} y por ende los \textit{schedulers} se desfasen a medida que pasa el tiempo. 
+%Este efecto puede verse en la figura  . En el instante inicial, los \textit{schedulers} se encuentran sincronizados, pero debido a las diferencias en los osciladores de cada réplica, al cabo de un tiempo, el sistema perderá el sincronismo y fracasará.
 
-A priori, puede parecer que el hecho de que el valor del contador sea igual en cada nodo al mismo tiempo sea muy exigente. En la implementación, esto no es posible pero tampoco es necesario. Puede existir cierta precisión en la sincronización que dependiendo del hardware y del algoritmo de sincronización, se obtendrá un mejor o peor resultado.
+{\Large \textbf{{\color{red} IMAGEN CON DESINCRONISMO}}}
 
-Luego de ejecutar el algoritmo de sincronización, los clocks de cada nodo quedarán sincronizados con cierta precisión $\Phi$. A medida que pase el tiempo, inevitablemente los clocks de cada nodo comenzarán a desfasarse uno del otro, lo cual incrementará el error. Por consiguiente, la sincronización debe ejecutarse de forma periódica. Esto se grafica en la figura \ref{fig:TTA_resincronizacion}.
+Para solucionar este problema, se requiere ejecutar una resincronización de forma periódica, que corrija el desfasaje entre los \textit{timers} de las réplicas. Al ejecutar esta corrección, los clocks de cada réplica quedarán sincronizados con cierta precisión $\Pi$. A medida que pase el tiempo, inevitablemente estos comenzarán a desfasarse nuevamente hasta que se aplique una nueva correción. Esto se grafica en la figura \ref{fig:TTA_resincronizacion}. Existen muchísimos algoritmos de resincronización, en \cite{anceaume1998performance} se puede encontrar un estudio que compara distintos tipos de algoritmos.
 
 \begin{figure}[H]
     \centering
@@ -161,22 +143,213 @@ Luego de ejecutar el algoritmo de sincronización, los clocks de cada nodo queda
     \label{fig:TTA_resincronizacion}    
 \end{figure}
 
-Existen muchísimos algoritmos de resincronización. En \cite{anceaume1998performance} se puede encontrar un estudio que compara distintos tipos de algoritmos. Un planteo interesante de este trabajo es que los algoritmos de resincronización pueden dividirse en tres bloques básicos, figura \ref{fig:TTA_resincronizacion_building_blocks}, donde lo que varía es la implementación de cada bloque.
+%De forma de que el funcionamiento del sistema de tiempo real distribuido sea correcto, todos los nodos deben ejecutar sus tareas de forma consistente. Para ello, sus schedulers deben estar sincronizados. Para el caso de este trabajo, cada una de las FCCs debe encontrarse ejecutando la misma tarea al mismo tiempo. De esta forma pueden ejecutarse los algoritmos de votación para realizar tolerancia a fallas de hardware, como ya se describió anteriormente.
+
+Algunos sistemas distribuidos de tiempo real utilizan un clock maestro, implementado como un miembro del sistema, al que todos los demás nodos utilizan como referencia. Por ejemplo, la extensión del protocolo automotivo CAN, denominada Time-Triggered CAN (TTCAN) \cite{leen2002ttcan} utiliza esta estrategia. La desventaja de este método es que dicho clock maestro se convierte en un punto singular de falla: si este presenta una falla, habrá un error en la sincronización. 
+
+Otra forma es utilizar una base de tiempos global \cite[p.~51]{kopetz-2011}. Esta se define como un acuerdo entre las réplicas respecto a una base de tiempo común que será utilizada como referencia. Esta puede implementarse por ejemplo utilizando un contador local. Idealmente, para que las réplicas puedan utilizar este contador como base de tiempos, todas ellas deben tener el mismo valor, al mismo tiempo. En la práctica esto no es posible, por el efecto del \textit{drift} mencionado anteriormente y luego existirá cierta precisión en la sincronización, la cual dependerá del hardware y del algoritmo utilizado.
+
+Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistema distribuido puede ilustrarse como en la figura \ref{fig:diagrama_TTA}. Cada una de las réplicas ejecuta una serie de tareas de forma periódica con cierto \textit{timing} definido. Además, existe una base de tiempos común a todas las réplicas, permitiendo la ejecución coordinada y sincronizada. Debido a que la sincronización debe ejecutarse de forma periódica y aprovechando que el \textit{scheduler} trabaja con tareas periódicas, la implementación de la tarea que corrija el desfasaje de cada \textit{timer} puede incluirse como una tarea dentro del \textit{scheduling}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{img/TTA_resincronizacion_building_blocks.png}
-    \caption{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite{de2013overview}.}
-    \label{fig:TTA_resincronizacion_building_blocks}
+    \includegraphics[width=\textwidth]{img/diagrama_TTA.png}
+    \caption{Se muestra un esquema que representa la arquitectura. Cada réplica tiene un \textit{clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente, representado por el reloj azul en el centro. En la imagen, la réplica 1 está enviando un mensaje por el bus, mientras que las demás saben que deben recibir este mensaje.}
+    \label{fig:diagrama_TTA}
 \end{figure}
 
-\begin{enumerate}
-    \item \textit{Resynchronization Detect}: Este bloque está dedicado a detectar e informar al nodo de que se va a ejecutar la resincronización.
-    \item \textit{Remote Clock Estimation}: Este es el bloque que realiza la cuenta del error entre el clock del nodo y la corrección a aplicar.
-    \item \textit{Clock Correction}: Este bloque corresponde a la aplicación de la corrección al clock local.
-\end{enumerate}
+%Una forma de realizar la corrección del \textit{timer} es sobreescribiendo su valor con un nuevo valor calculado a partir del algoritmo de sincronización. Este método puede generar inconsistencias en la ejecución de las tareas del nodo \cite[p.~72]{kopetz-2011}. La forma que se prefiere es ir aplicando correcciones sucesivas conforme se van reajustando los clocks. Esto es algo similar a un algoritmo de control, donde se calcula un error y en función de dicho error, se aplica una corrección a la acción de control. En este último caso, la corrección puede implementarse por ejemplo dejando pasar más o menos tiempo para incrementar el contador del clock local.
 
-Para la arquitectura de este trabajo, el primer bloque, \textit{Resynchronization Detect} simplemente consiste en ejecutar una tarea que estará incluida en el scheduling. El segundo bloque es el que realiza el cálculo y puede variar dependiendo de la implementación. Más adelante, se describirá el algoritmo utilizado. Por último, el bloque \textit{Clock Correction}, corresponde a aplicar la corrección al clock local. En general existen dos formas de realizar esto. La primera es pisando el contador existente con el nuevo valor calculado. Este método puede generar inconsistencias en la ejecución de las tareas del nodo \cite[p.~72]{kopetz-2011}. La forma que se prefiere es ir aplicando correcciones sucesivas conforme se van reajustando los clocks. Esto es algo similar a un algoritmo de control, donde se calcula un error y en función de dicho error, se aplica una corrección a la acción de control. En este último caso, la corrección puede implementarse por ejemplo dejando pasar más o menos tiempo para incrementar el contador del clock local.
+
+%Un planteo interesante de este trabajo es que los algoritmos de resincronización pueden dividirse en tres bloques básicos, figura \ref{fig:TTA_resincronizacion_building_blocks}, donde lo que varía es la implementación de cada bloque.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{img/TTA_resincronizacion_building_blocks.png}
+%     \caption{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite{de2013overview}.}
+%     \label{fig:TTA_resincronizacion_building_blocks}
+% \end{figure}
+
+% \begin{enumerate}
+%     \item \textit{Resynchronization Detect}: Este bloque está dedicado a detectar e informar al nodo de que se va a ejecutar la resincronización.
+%     \item \textit{Remote Clock Estimation}: Este es el bloque que realiza la cuenta del error entre el clock del nodo y la corrección a aplicar.
+%     \item \textit{Clock Correction}: Este bloque corresponde a la aplicación de la corrección al clock local.
+% \end{enumerate}
+
+%Para la arquitectura de este trabajo, el primer bloque, \textit{Resynchronization Detect} simplemente consiste en ejecutar una tarea que estará incluida en el scheduling. El segundo bloque es el que realiza el cálculo y puede variar dependiendo de la implementación. Más adelante, se describirá el algoritmo utilizado. Por último, el bloque \textit{Clock Correction}, corresponde a aplicar la corrección al clock local. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% En la sección \ref{sec:sincronismo_TMR} se mencionó la necesidad del sincronismo entre los nodos y que esta se logra a partir de un intercambio de mensajes. Para la arquitectura propuesta, ese intercambio de mensajes se hace a través del mismo bus. Debido a que el medio es compartido, los nodos de la red deben tomar turnos para acceder al medio, de manera de que todos puedan enviar sus respectivos mensajes.
+
+% Típicamente, una FCC ejecuta las mismas tareas relacionadas al control del vehículo, de manera periódica \cite{hiergeist2018implementation}:
+
+% \begin{enumerate}
+%     \item Lectura de los sensores.
+%     \item Cálculo de la ley de control.
+%     \item Aplicación del resultado a los actuadores.
+% \end{enumerate}
+
+% Debido a que se trata de un sistema de tiempo real, cada una de las FCCs debe realizar estas tareas en un período de tiempo dado. En la figura \ref{fig:task_scheduling_1} se muestra un gráfico con la secuencia de ejecución periódica de las tareas.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/task_scheduling_1.png}
+%     \caption{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. }
+%     \label{fig:task_scheduling_1}
+% \end{figure}
+
+% En un sistema con redundancias, como ya se mencionó, cada una de las FCCs realiza las mismas tareas. Además, estas intercambiarán resultados relacionados a mediciones de sensores y a valores de actuación para los motores con sus pares, justamente para enmascarar y tolerar las fallas. A partir de esto, se desprende que el intercambio de mensajes también corresponde a tareas que deben ejecutarse periódicamente y en un determinado período de tiempo acotado.
+
+% Cada una de las computadoras de vuelo incluye un clock interno, el cual utiliza como base para cumplir con los tiempos de ejecución. Cuando se habla del sincronismo entre los nodos de la red, lo que se busca es que las ejecuciones de las N computadoras se encuentren coordinadas. Por ejemplo, en la figura \ref{fig:task_scheduling_2} se muestra un caso para dos computadoras de vuelo cuya ejecución se encuentra desfasada. Es fácil ver que este sistema nunca podrá cumplir con el objetivo de controlar el vuelo del UAV.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/task_scheduling_2.png}
+%     \caption{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref{fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.}
+%     \label{fig:task_scheduling_2}
+% \end{figure}
+
+
+% En la figura, se muestra que cuando la FCC 2 termina de enviar la señal de control a los actuadores (instante $T_n$), la FCC 1 se encuentra intercambiando resultados con la FCC 2. Debido a que la FCC 2 ya pasó dicha tarea, la FCC 1 no recibirá ningún valor de su par y asumirá erróneamente, que la FCC 2 se encuentra en un estado con alguna falla, ya que no responde. Si bien este ejemplo es muy simple, muestra la necesidad de la sincronización entre nodos de la red, siendo el motivo principal, el hecho de que el sistema es de tiempo real.
+
+% %\subsection{Arquitectura Del Sistema: \textit{The Time-Triggered Architecture}}
+
+% A partir de lo analizado hasta aquí, se enumeran los requerimientos más elementales del sistema:
+
+% \begin{enumerate}
+%     \item El sistema es de tiempo real, es decir, se requiere determinismo temporal en la ejecución de las tareas.
+%     \item El sistema es redundante, por lo que cada nodo ejecuta las mismas tareas en paralelo y al mismo tiempo.
+%     \item El uso del bus de comunicación obliga al uso de un protocolo de acceso al medio físico compartido (el bus) por turnos, que permita que todos los nodos tengan acceso a este.
+% \end{enumerate}
+
+% A continuación, se presentan distintas arquitecturas posibles para la implementación y se selecciona una de ellas, la \textit{Time-Triggered Architecture}\cite{kopetz2003time}, cuyas características se ajustan a los requerimientos.
+
+% {\Large \textbf{{\color{red} ACÁ COMENTAR LAS ALTERNATIVAS DE LAS DISTINTAS ARQUITECTURAS, COMO SUPER LOOP, EVEN TRIGGERED CON RTOS, SIN RTOS Y TIME TRIGGERED. COMENTAR POR QUÉ ELIJO TIME TRIGGERED Y DESCARTO LAS DEMÁS. PONER CASOS DE TRABAJOS CON TTA. EN EL PAPER QUE USA TIME TRIGGERED BUSES HAY VARIOS EJEMPLOS }}}
+
+% %\subsubsection{The Time-Triggered Architecture}
+
+% En este tipo de arquitectura, el sistema en cuestión ejecuta sus tareas en instantes de tiempo predefinidos. Estas tareas pueden ser tales como tomar datos de un sensor, enviar un dato a otra parte del sistema o realizar algún cálculo. Este tipo de arquitectura es típicamente utilizada en aplicaciones de tiempo real críticas. {\textbf{{\color{red} PONER EJEMPLOS DE SISTEMAS CRÍTICOS CON TIME TRIGGERED ARCHITECTURE}}}. Esto es porque esta arquitectura vuelve al sistema predecible. Teniendo en cuenta lo mencionado en la sección \ref{subsec:introduccion_al_analisis_de_tolerancia_a_fallas}, que el comportamiento del sistema sea predecible lo vuelve más confiable y por ende más seguro.
+
+% Existe otro criterio por el cual típicamente se prefiere este tipo de sistemas para aplicaciones de este estilo y tiene que ver con los procesos de validación que deben realizarse frente a entes reguladores. El hecho de tener un sistema cuyo comportamiento es altamente predecible, simplifica mucho su proceso de validación. \textbf{{\color{red} DESARROLLAR ESTA PARTE CON EJEMPLOS Y CITANDO DO-254, ETC}}.
+
+% A continuación, se presenta brevemente los componentes y el funcionamiento de la arquitectura para el sistema de este trabajo. Pueden encontrarse trabajos\cite{kopetz2003time}\cite{kopetz1998time} y libros\cite{kopetz-2011} que explican formalmente esta arquitectura y sus distintos componentes con más detalle.
+
+% Como ya se mencionó en las secciones anteriores, el sistema se compone de una serie de \textbf{nodos} interconectados a través de un \textbf{bus de comunicación}. Cada uno de los nodos ejecuta una serie de tareas con un \textbf{scheduling} predefinido por el paso del tiempo.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{img/diagrama_TTA.png}
+%     \caption{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit{clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit{global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.}
+%     \label{fig:diagrama_TTA}
+% \end{figure}
+
+% Para que el comportamiento de los nodos sea consistente, estos deben estar \textbf{sincronizados}. Se define entonces una base de tiempo global a todos los nodos, denominada en la bibliografía \textbf{global time base}\cite[p.~51]{kopetz-2011}. Esta representa a un reloj que no existe físicamente, sino que es un acuerdo entre los nodos del sistema respecto a un reloj al que todos los nodos deben seguirle el ritmo. Para esto último, cada nodo tiene su propio \textbf{reloj local}.
+
+% En la figura \ref{fig:diagrama_TTA} se muestra un esquema de la arquitectura \textit{Time Triggered}. Los tres nodos de la imagen, FCC1, FCC2 y FCC3 se encuentran sincronizados ejecutando la tarea \textit{Task 3}. Esta tarea implica que el nodo FCC1 envíe un mensaje por el bus, representado en la imagen por la flecha roja. En cuanto a los nodos FCC2 y FCC3, la \textit{Task 3} les dice que ellos deben escuchar el bus y esperar el mensaje proveniente del FCC1. Esto quiere decir que el comportamiento predefinido por el scheduler también define en qué instantes de tiempo cada nodo puede enviar un mensaje y en qué instantes de tiempo debe recibirlo. Con respecto a esto último, si en el ejemplo de la figura \ref{fig:diagrama_TTA} el nodo FCC1 presenta una falla y no envía el mesanje en el tiempo correspondiente, luego los nodos FCC2 y FCC3 no recibirán nada. Es común encontrar protocolos de comunicación donde este tipo de fallas se resuelven solicitando el reenvío del mensaje. Sin embargo, debido a que el sistema ya tiene un scheduling predefinido, esto no se permite ya que uno a priori no puede saber si habrá que hacer un pedido de reenvío de mensaje o no, lo que puede corromper el scheduling del sistema. Justamente, la \textit{Time-Triggered Architecture} busca que el sistema sea predecible.
+
+% A continuación, se describe brevemente cada uno de los componentes de este tipo de sistema. Para una explicación más detallada, referirse a \cite{kopetz-2011} y \cite{kopetz2003time}.
+
+% %\subsubsection{Bus de Comunicaciones}
+
+% El bus de comunicaciones es el medio a través del cual los nodos intercambian información. Como se describió anteriormente, la arquitectura requiere la sincronización de los nodos para una ejecución consistente. Esto quiere decir que como mínimo, los nodos intercambian mensajes utilizados para la sincronización entre estos. Más allá de esto, en un sistema distribuido, lo más común es que haya un intercambio de información constante entre nodos.
+
+% De manera de minimizar las colisiones y favorecer el cumplimiento en el timing del sistema de tiempo real, el envío y recepción de mensajes se implementa por turnos. Esto corresponde a un protocolo de acceso al medio denominado \textit{Time Division Multiple Access} (TDMA). En la figura \ref{fig:TDMA_esquema} se grafica esto para 3 nodos. Este protocolo define en qué instantes de tiempo cada uno de los nodos puede utilizar el medio físico y en cuáles no. Para que no haya colisiones, todos los nodos deben respetar ese timing, el cual se encuentra predefinido. 
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/TDMA_esquema.png}
+%     \caption{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.}
+%     \label{fig:TDMA_esquema}
+% \end{figure}
+
+% \textbf{{\color{red} ACÁ MENCIONAR ALGUNOS PROTOCOLOS COMO FLEXRAY O TTP/C QUE DE POR SÍ YA EJECUTAN UNA SINCRONIZACIÓN.}}
+
+% En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
+%     \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.}
+%     \label{fig:TTA_Bus}
+% \end{figure}
+
+% Al recibir un mensaje, ocurre algo similar. El software del nodo \textit{pollea} a la CNI en determinado instante de tiempo para obtener el mensaje recibido. Otra forma de implementar esto podría ser a través de una interrupción en el software, es decir, que cuando llege un mensaje nuevo, se dispare una interrupción en el software. El problema con esto es que se le quita determinismo al sistema.
+
+% %\subsubsection{Nodos}
+
+% Los nodos son la unidad elemental de los sistemas distribuidos, y también de la arquitectura \textit{Time-Triggered}. Estos son los que ejecutan las tareas y le dan vida al sistema. Los nodos se componen generalmente de un procesador (microcontrolador en el caso de este trabajo), un clock local (en este trabajo se implementa con un circuito oscilador con un cristal) una unidad de control de acceso al bus de comunicaciones y el software local al nodo. En la sección anterior además, se mencionó la existencia de un elemento llamado CNI, que comunica al software con el bus. Sumado a esto, el nodo a su vez contiene un scheduler, el cual se describie en la próxima sección.
+
+% %\subsubsection{Scheduler}
+
+% El sistema conformado por el conjunto de nodos y las comunicaciones entre ellos, se basa en un esquema de tareas que se encuentra predefinido. Esto se diferencia de sistemas de otras características como puede ser alguno con una interfaz con una persona. El caso más cercano puede ser el de un telófono celular, el cual tiene una pantalla que el usuario puede presionar en distintos lugares para abrir una aplicación, enviar un mensaje, etc. Cuando esto ocurre, el celular debe dar una respuesta casi inmediata. Este tipo de sistemas se llaman \textit{Event-Triggered} y son controlados por los eventos que pueden ocurrir. A priori, se asumen eventos asincrónicos, es decir, que pueden ocurrir en cualquier momento y en cualquier orden. A diferencia de esto, en un sistema \textit{Time-Triggered} los eventos no pueden ocurrir en cualquier momento. Mejor dicho, los eventos pueden ocurrir en cualquier momento, pero el sistema solamente prestará atención a esos eventos en un lapso de tiempo predefinido.
+
+% En los sistemas operativos de tiempo real se definen una serie de tareas, las cuales utiliza un scheduler que determina cuál es la próxima tarea que corresponde ejecutar. Un sistema \textit{Time-Triggered} también define su comportamiento a través de tareas. La diferencia está en la estrategia utilizada por el scheduler. En el caso de un RTOS es común encontrar schedulers \textit{preemptive} con un sistema de prioridad. En un sistema \textit{Time-Triggered}, los schedulers pueden ser \textit{preemptive} o bien cooperativos. La ventaja de utilizar un scheduler cooperativo es nuevamente el determinismo en la ejecución de las tareas \cite[p.~247]{pont2008patterns}.
+
+% %\subsubsection{Global Time y Sincronización}
+
+% De forma de que el funcionamiento del sistema de tiempo real distribuido sea correcto, todos los nodos deben ejecutar sus tareas de forma consistente. Para ello, sus schedulers deben estar sincronizados. Para el caso de este trabajo, cada una de las FCCs debe encontrarse ejecutando la misma tarea al mismo tiempo. De esta forma pueden ejecutarse los algoritmos de votación para realizar tolerancia a fallas de hardware, como ya se describió anteriormente.
+
+% Algunos sistemas distribuidos de tiempo real utilizan un clock maestro, implementado como un nodo de la red al que todos los demás nodos utilizan como referencia. Por ejemplo, la extensión del protocolo automotivo CAN, denominada Time-Triggered CAN (TTCAN) \cite{leen2002ttcan} utiliza esta estrategia. La desventaja de este método es que dicho clock maestro se convierte en un punto singular de falla: si este presenta una falla, habrá un error en la sincronización. 
+
+% Otra forma es utilizar una \textit{global time base}\cite[p.~51]{kopetz-2011}. Esta se define como un acuerdo entre los nodos de la red respecto a una base de tiempo a utilizar como referencia. Como ya fue mencionado, cada nodo tiene un reloj interno propio, implementado con un cristal oscilador. Esta base de tiempos global puede implementarse por ejemplo utilizando un contador local. Cada nodo incrementa en uno el valor de esta variable, de forma periódica. Para que los nodos puedan utilizar esta variable como base de tiempos, todos los nodos deben tener el mismo número almacenado en su instancia local de dicha variable, al mismo tiempo.
+
+% A priori, puede parecer que el hecho de que el valor del contador sea igual en cada nodo al mismo tiempo sea muy exigente. En la implementación, esto no es posible pero tampoco es necesario. Puede existir cierta precisión en la sincronización que dependiendo del hardware y del algoritmo de sincronización, se obtendrá un mejor o peor resultado.
+
+% Luego de ejecutar el algoritmo de sincronización, los clocks de cada nodo quedarán sincronizados con cierta precisión $\Phi$. A medida que pase el tiempo, inevitablemente los clocks de cada nodo comenzarán a desfasarse uno del otro, lo cual incrementará el error. Por consiguiente, la sincronización debe ejecutarse de forma periódica. Esto se grafica en la figura \ref{fig:TTA_resincronizacion}.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/TTA_resincronizacion.png}
+%     \caption{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite[p.~67]{kopetz-2011}.}
+%     \label{fig:TTA_resincronizacion}    
+% \end{figure}
+
+% Existen muchísimos algoritmos de resincronización. En \cite{anceaume1998performance} se puede encontrar un estudio que compara distintos tipos de algoritmos. Un planteo interesante de este trabajo es que los algoritmos de resincronización pueden dividirse en tres bloques básicos, figura \ref{fig:TTA_resincronizacion_building_blocks}, donde lo que varía es la implementación de cada bloque.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{img/TTA_resincronizacion_building_blocks.png}
+%     \caption{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite{de2013overview}.}
+%     \label{fig:TTA_resincronizacion_building_blocks}
+% \end{figure}
+
+% \begin{enumerate}
+%     \item \textit{Resynchronization Detect}: Este bloque está dedicado a detectar e informar al nodo de que se va a ejecutar la resincronización.
+%     \item \textit{Remote Clock Estimation}: Este es el bloque que realiza la cuenta del error entre el clock del nodo y la corrección a aplicar.
+%     \item \textit{Clock Correction}: Este bloque corresponde a la aplicación de la corrección al clock local.
+% \end{enumerate}
+
+% Para la arquitectura de este trabajo, el primer bloque, \textit{Resynchronization Detect} simplemente consiste en ejecutar una tarea que estará incluida en el scheduling. El segundo bloque es el que realiza el cálculo y puede variar dependiendo de la implementación. Más adelante, se describirá el algoritmo utilizado. Por último, el bloque \textit{Clock Correction}, corresponde a aplicar la corrección al clock local. En general existen dos formas de realizar esto. La primera es pisando el contador existente con el nuevo valor calculado. Este método puede generar inconsistencias en la ejecución de las tareas del nodo \cite[p.~72]{kopetz-2011}. La forma que se prefiere es ir aplicando correcciones sucesivas conforme se van reajustando los clocks. Esto es algo similar a un algoritmo de control, donde se calcula un error y en función de dicho error, se aplica una corrección a la acción de control. En este último caso, la corrección puede implementarse por ejemplo dejando pasar más o menos tiempo para incrementar el contador del clock local.
 
 \subsection{Implementación en Firmware}
 

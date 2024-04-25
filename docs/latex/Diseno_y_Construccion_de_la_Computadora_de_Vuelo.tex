@@ -1,4 +1,4 @@
-\section{Diseño y Construcción de la Computadora de Vuelo}
+\section{Diseño y Construcción de la Computadora de Vuelo}\label{sec:disenio_computadora_de_vuelo}
 
 % Acá se da una introducción breve de esta sección, es decir, hay que explicar qué es lo que se va a mencionar acá. Se pone en contexto.
 
@@ -287,13 +287,13 @@ Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a f
 
 A pesar del análisis y de las comparaciones entre microcontroladores de la serie STM32H7, la selección del microcontrolador se vio limitada por la disponibilidad de componentes encontrada durante el período de desarrollo del circuito.
 
-\textbf{{\color{red} SE PUEDE SIMPLEMENTE MENCIONAR LA CRISIS DE CHIPS COMO CAUSA DE LA FALTA DE DISPONIBILIDAD.}}
+%\textbf{{\color{red} SE PUEDE SIMPLEMENTE MENCIONAR LA CRISIS DE CHIPS COMO CAUSA DE LA FALTA DE DISPONIBILIDAD.}}
 
 El microcontrolador seleccionado fue el STM32F746ZG. Este cuenta con un procesador ARM-Cortex M7, 1024 kB de memoria flash y 320 kB de memoria SRAM. Un aspecto relevante de este microcontrolador es que cuenta con 2 interfaces para uso de un bus denominado Controller Area Network (CAN), el cual se utilizará para establecer las comunicaciones relevantes a los algoritmos de tolerancia a fallas. La posibilidad de contar con dos de estas interfaces permite implementar un sistema donde este bus no sea un punto singular de falla.
 
 Suamdo a las prestaciones, este micocontrolador cuenta con un encapsulado LQFP de 144 terminales, lo que permite realizar muchas conexiones con sensores y componentes a través de distintas interfaces comunes, como SPI, I2C, además de terminales GPIO comunes para interrupciones y manejo de otros módulos.
 
-\textbf{{\color{red} SE PUEDE EXPLICAR LA SELECCIÓN DE LOS CRISTALES Y EL USO DE LOS CAPACIOTRES DE DESACOPLE, SIGUIENDO LA APP NOTE DE ST.}}
+%\textbf{{\color{red} SE PUEDE EXPLICAR LA SELECCIÓN DE LOS CRISTALES Y EL USO DE LOS CAPACIOTRES DE DESACOPLE, SIGUIENDO LA APP NOTE DE ST.}}
 
 % Mencionar cómo se asignaron los distintos timers para su uso en la aplicación.
 

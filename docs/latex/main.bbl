@@ -1391,6 +1391,26 @@
     \field{year}{2019}
   \endentry
 
+  \entry{pont2008patterns}{book}{}
+    \name{author}{1}{}{%
+      {{hash=PMJ}{%
+         family={Pont},
+         familyi={P\bibinitperiod},
+         given={Michael\bibnamedelima J},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {TTE System, Ltd}%
+    }
+    \strng{namehash}{PMJ1}
+    \strng{fullhash}{PMJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Patterns for time-triggered embedded systems}
+    \field{year}{2008}
+  \endentry
+
   \entry{kopetz1998time}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=KH}{%
@@ -1414,24 +1434,31 @@
     \field{year}{1998}
   \endentry
 
-  \entry{pont2008patterns}{book}{}
-    \name{author}{1}{}{%
-      {{hash=PMJ}{%
-         family={Pont},
+  \entry{anceaume1998performance}{thesis}{}
+    \name{author}{2}{}{%
+      {{hash=AE}{%
+         family={Anceaume},
+         familyi={A\bibinitperiod},
+         given={Emmanuelle},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=PI}{%
+         family={Puaut},
          familyi={P\bibinitperiod},
-         given={Michael\bibnamedelima J},
-         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+         given={Isabelle},
+         giveni={I\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {TTE System, Ltd}%
-    }
-    \strng{namehash}{PMJ1}
-    \strng{fullhash}{PMJ1}
+    \strng{namehash}{AEPI1}
+    \strng{fullhash}{AEPI1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{title}{Patterns for time-triggered embedded systems}
-    \field{year}{2008}
+    \field{title}{Performance evaluation of clock synchronization algorithms}
+    \list{institution}{1}{%
+      {INRIA}%
+    }
+    \field{type}{phdthesis}
+    \field{year}{1998}
   \endentry
 
   \entry{leen2002ttcan}{article}{}
@@ -1462,65 +1489,6 @@
     \field{volume}{26}
     \field{journaltitle}{Microprocessors and Microsystems}
     \field{year}{2002}
-  \endentry
-
-  \entry{anceaume1998performance}{thesis}{}
-    \name{author}{2}{}{%
-      {{hash=AE}{%
-         family={Anceaume},
-         familyi={A\bibinitperiod},
-         given={Emmanuelle},
-         giveni={E\bibinitperiod},
-      }}%
-      {{hash=PI}{%
-         family={Puaut},
-         familyi={P\bibinitperiod},
-         given={Isabelle},
-         giveni={I\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{AEPI1}
-    \strng{fullhash}{AEPI1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Performance evaluation of clock synchronization algorithms}
-    \list{institution}{1}{%
-      {INRIA}%
-    }
-    \field{type}{phdthesis}
-    \field{year}{1998}
-  \endentry
-
-  \entry{de2013overview}{article}{}
-    \name{author}{2}{}{%
-      {{hash=dOJEM}{%
-         prefix={de},
-         prefixi={d\bibinitperiod},
-         family={Oliveira\bibnamedelima Junior},
-         familyi={O\bibinitperiod\bibinitdelim J\bibinitperiod},
-         given={Eloy\bibnamedelima Martins},
-         giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod},
-      }}%
-      {{hash=eSMLdO}{%
-         prefix={e},
-         prefixi={e},
-         family={Souza},
-         familyi={S\bibinitperiod},
-         given={Marcelo Lopes de\bibnamedelima Oliveira},
-         giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim
-  d\bibinitperiod\bibinitdelim O\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {SAE Technical Paper}%
-    }
-    \strng{namehash}{OJEMdSMLdOe1}
-    \strng{fullhash}{OJEMdSMLdOe1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{An Overview of Clock Synchronization Algorithms and their
-  Uses in Aerospace and Automotive Systems}
-    \field{year}{2013}
   \endentry
 
   \entry{wikipedia-contributors-2023}{article}{}
