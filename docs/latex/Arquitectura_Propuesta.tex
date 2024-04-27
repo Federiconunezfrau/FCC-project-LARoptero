@@ -414,23 +414,25 @@ Como se puede ver, la lista de mensajes no almacena ningún aspecto relacionado 
 
 En los resultados que se presentarán más adelante, uno de los tipos de mensaje que se intercambian es acerca de la orientación del vehículo, estimada por cada réplica. Para lograr esto se define una tarea que ejecuta este cálculo y almacena el resultado en la tabla estática antes mencionada. Luego, cuando sea el momento de enviar este dato por el bus CAN, otra tarea consulta la tabla, obtiene la información y envía el mensaje a las demás réplicas. 
 
-En cuanto a la recepción de un mensaje, ocurre algo similar. El firmware obtiene la información del mensaje consultando al periférico durante la ejeución de la tarea correspondiente y almacena el dato en su tabla interna. Más adelante, este dato podrá ser utilizado por otra tarea leyéndolo de la misma.
+Cuando se recibe un mensaje, el firmware obtiene la información de este consultando al periférico durante la ejeución de la tarea correspondiente y almacenando el dato en la tabla interna. Más adelante, este dato podrá ser utilizado por otra tarea leyéndolo de la misma.
 
 % configuración del periférico CAN, identificación del nodo en el campo ID de la trama, configuración de filtros de hardware
 
-Para llevar adelante la comunicación a través del bus CAN, se utilizó el periférico del microcontrolador. Su funcionamiento puede describirse a partir de la figura  . Este cuenta con 3 espacios de memoria llamados mailboxes, donde el programa principal puede depositar mensajes de CAN, para que luego el periférico se encargue de transmitir por el bus. En caso de que la información que se quiera transmitir supere el tamaño máximo de un mensaje CAN, 8 bytes, este deberá partirse en varios mensajes. Para asegurarse de que estos se envíen en el orden correcto, el periférico permite que las mailboxes trabajen como una FIFO, asegurando el orden de los datos enviados.
+Para llevar adelante la comunicación a través del bus CAN, se utilizó el periférico del microcontrolador. Su funcionamiento puede describirse a partir de la figura  . Este se configuró para trabajar en su velocidad más alta, 1 MBit/s. La transmisión de mensajes se administra a través de 3 espacios de memoria presentes en el periférico, llamados mailboxes. Allí, el programa principal puede depositar mensajes de CAN, para que luego el periférico se encargue de transmitirlos por el bus. En caso de que la información que se quiera transmitir supere el tamaño máximo de un mensaje CAN, 8 bytes, este deberá partirse en varios mensajes. Para asegurarse de que estos se envíen en el orden correcto, el periférico permite que las mailboxes trabajen como una FIFO, asegurando el orden de los datos enviados.
 
 {\Large \textbf{{\color{red} ESQUEMA DEL PERIFÉRICO CAN.}}}
 
 Otro aspecto importante es que en caso de no poder inyectar el mensaje en el bus de comunicaciones, en su configuración por defecto el periférico no descartará el mensaje. Este será retenido hasta que pueda ser enviado. Este comportamiento perjudica gravemente el determinismo de las comunicaciones y no puede tolerarse. Es por esto que se deshabilitaron las retransmisiones automáticas y en caso de que la transmisión falle, se descartará el mensaje y se dará aviso al programa principal.
 
-En cuanto a la recepción de mensajes, el funcionamiento es similar. En este caso además existe un mecanismo de filtroado de mensajes indeseados. Como fue mencionado en la sección \ref{sec:interfaz_CAN}, el campo identifier indica el contenido del mensaje CAN. La configuración de filtros permite que solamente se acepten mensajes con determinado valor en su campo identifier.
+En cuanto a la recepción de mensajes, el funcionamiento es similar. En este caso además existe un mecanismo de filtroado de mensajes indeseados. Como fue mencionado en la sección \ref{sec:interfaz_CAN}, el campo identifier indica el contenido del mensaje CAN. La configuración de filtros permite que solamente se acepten mensajes con determinado valor en su campo identifier. Cada vez que se recibe un mensaje, este queda almacenado en otras mailboxes, las cuáles también se configuran para trabajar como FIFO.
 
 % el periférico tiene una funcionalidad para uso de time-triggered communication, pero en una errata dice que no.
 
 Una aclaración importante es que en la hoja de datos del microcontrolador utilizado, se menciona que este contiene el hardware necesario para utilizar el bus CAN con un funcionamiento \textit{time-triggered} \cite[p.~1295]{RM0385}. Sin embargo, el fabricante ST ofrece una errata \cite{STM32F746_errata} donde se aclara que esto no es así. Es por esto que tuvo que utilizarse el timer del scheduler para darle determinismo a la transmisión y recepción de mensajes.
 
 \subsubsection{Sincronización}
+
+
 
 \subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}
 
