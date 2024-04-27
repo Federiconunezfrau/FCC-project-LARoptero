@@ -1512,6 +1512,35 @@
     \field{year}{2008}
   \endentry
 
+  \entry{RM0385}{misc}{}
+    \list{organization}{1}{%
+      {STMicroelectronics}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{{STM32F75xxx and STM32F74xxx advanced Arm®-based 32-bit
+  MCUs.}}
+    \verb{url}
+    \verb https://www.st.com/resource/en/reference_manual/rm0385-stm32f75xxx-an
+    \verb d-stm32f74xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
+    \endverb
+    \field{month}{06}
+    \field{year}{2018}
+  \endentry
+
+  \entry{STM32F746_errata}{misc}{}
+    \list{organization}{1}{%
+      {STMicroelectronics}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{{STM32F74xxx and STM32F75xxx device limitations.}}
+    \verb{url}
+    \verb https://www.st.com/resource/en/errata_sheet/es0290-stm32f74xxx-and-st
+    \verb m32f75xxx-device-limitations-stmicroelectronics.pdf
+    \endverb
+    \field{month}{06}
+    \field{year}{2019}
+  \endentry
+
   \entry{wikipedia-contributors-2023}{article}{}
     \name{author}{1}{}{%
       {{hash=cW}{%

@@ -1617,6 +1617,11 @@ INPUT ./img/diagrama_TTA.png
 INPUT img/diagrama_TTA.png
 INPUT ./img/diagrama_TTA.png
 INPUT ./img/diagrama_TTA.png
+INPUT ./img/TTA_Bus.png
+INPUT ./img/TTA_Bus.png
+INPUT img/TTA_Bus.png
+INPUT ./img/TTA_Bus.png
+INPUT ./img/TTA_Bus.png
 INPUT ./Tolerancia_a_Fallas.tex
 OUTPUT Tolerancia_a_Fallas.aux
 INPUT ./Tolerancia_a_Fallas.tex
@@ -1700,6 +1705,7 @@ INPUT ./Apendices.tex
 INPUT Apendices.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm2074.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx2074.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcti1000.tfm
 INPUT main.aux
 INPUT ./Objetivo.aux
 INPUT Objetivo.aux
@@ -1735,8 +1741,8 @@ INPUT ./main.out
 INPUT ./main.out
 INPUT main.run.xml
 OUTPUT main.run.xml
-INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb

@@ -397,7 +397,38 @@ Una aclaración imporante es que la única interrupción que se ejecuta en todo 
 
 %Explicación de CNI, configuración del periférico CAN, identificación del nodo en el campo ID de la trama, configuración de filtros de hardware, funciones de transmisión y recepción. Tareas genéricas del scheduler que reciben o envían mensajes.
 
+Dado que el comportamiento del sistema se encuentra predefinido, luego los mensajes, su información y sus correspondientes instantes de tiempo en los que se recibirán y en los que se enviarán, también. Para la implementación, se utiliza una lista estática de mensajes definida en tiempo de compilación. Cada entrada de la lista contiene información asociada a un mensaje distinto. Para esto se creó un tipo de dato \textit{CANmsg\_t} con los atributos que se muestran en la figura .
 
+{\Large \textbf{{\color{red} IMAGEN CON LOS CAMPOS DE LA ESTRUCTURA CANMSG\_T.}}}
+
+Como se puede ver, la lista de mensajes no almacena ningún aspecto relacionado a la temporalidad del mensaje. Para ello, la interfaz de comunicación implementada contiene dos métodos, uno para enviar y otro para recibir un mensaje, los cuáles deberán ser llamados en las distintas tareas que se agreguen al scheduler. En la figura  se muestra la interacción entre el bus de comunicaciones y el resto del sistema.
+
+% En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
+    \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1 {\color{red} ESTA IMAGEN SERÁ PARECIDA PERO HAY QUE HACERLA MÁS EXPLÍCITA}.}
+    \label{fig:TTA_Bus}
+\end{figure}
+
+En los resultados que se presentarán más adelante, uno de los tipos de mensaje que se intercambian es acerca de la orientación del vehículo, estimada por cada réplica. Para lograr esto se define una tarea que ejecuta este cálculo y almacena el resultado en la tabla estática antes mencionada. Luego, cuando sea el momento de enviar este dato por el bus CAN, otra tarea consulta la tabla, obtiene la información y envía el mensaje a las demás réplicas. 
+
+En cuanto a la recepción de un mensaje, ocurre algo similar. El firmware obtiene la información del mensaje consultando al periférico durante la ejeución de la tarea correspondiente y almacena el dato en su tabla interna. Más adelante, este dato podrá ser utilizado por otra tarea leyéndolo de la misma.
+
+% configuración del periférico CAN, identificación del nodo en el campo ID de la trama, configuración de filtros de hardware
+
+Para llevar adelante la comunicación a través del bus CAN, se utilizó el periférico del microcontrolador. Su funcionamiento puede describirse a partir de la figura  . Este cuenta con 3 espacios de memoria llamados mailboxes, donde el programa principal puede depositar mensajes de CAN, para que luego el periférico se encargue de transmitir por el bus. En caso de que la información que se quiera transmitir supere el tamaño máximo de un mensaje CAN, 8 bytes, este deberá partirse en varios mensajes. Para asegurarse de que estos se envíen en el orden correcto, el periférico permite que las mailboxes trabajen como una FIFO, asegurando el orden de los datos enviados.
+
+{\Large \textbf{{\color{red} ESQUEMA DEL PERIFÉRICO CAN.}}}
+
+Otro aspecto importante es que en caso de no poder inyectar el mensaje en el bus de comunicaciones, en su configuración por defecto el periférico no descartará el mensaje. Este será retenido hasta que pueda ser enviado. Este comportamiento perjudica gravemente el determinismo de las comunicaciones y no puede tolerarse. Es por esto que se deshabilitaron las retransmisiones automáticas y en caso de que la transmisión falle, se descartará el mensaje y se dará aviso al programa principal.
+
+En cuanto a la recepción de mensajes, el funcionamiento es similar. En este caso además existe un mecanismo de filtroado de mensajes indeseados. Como fue mencionado en la sección \ref{sec:interfaz_CAN}, el campo identifier indica el contenido del mensaje CAN. La configuración de filtros permite que solamente se acepten mensajes con determinado valor en su campo identifier.
+
+% el periférico tiene una funcionalidad para uso de time-triggered communication, pero en una errata dice que no.
+
+Una aclaración importante es que en la hoja de datos del microcontrolador utilizado, se menciona que este contiene el hardware necesario para utilizar el bus CAN con un funcionamiento \textit{time-triggered} \cite[p.~1295]{RM0385}. Sin embargo, el fabricante ST ofrece una errata \cite{STM32F746_errata} donde se aclara que esto no es así. Es por esto que tuvo que utilizarse el timer del scheduler para darle determinismo a la transmisión y recepción de mensajes.
 
 \subsubsection{Sincronización}
 
