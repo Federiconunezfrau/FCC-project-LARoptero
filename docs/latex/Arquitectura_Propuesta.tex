@@ -432,7 +432,25 @@ Una aclaración importante es que en la hoja de datos del microcontrolador utili
 
 \subsubsection{Sincronización}
 
+% Como fue mencionado anteriormente, no se recomienda el uso de un sistema con un clock maestro, debido a que esto convierte a una de las réplicas en un punto singular de falla de todo el sistema. Lo correcto sería implementar un mecanismo donde se llegue a un consenso de la base de tiempos, entre cada réplica. Con motivo de simplificar las pruebas realizadas, en las pruebas realizadas en este trabajo se optó por utilizar una sincronización con un clock mestro. La implementación de un algoritmo distribuido forma parte del trabajo futuro a desarrollar. Lo implementado en este trabajo es suficiente para demostrar que la arquitectura que se propone puede implementarse con el hardware desarrollado.
 
+Como fue mencionado anteriormente, algunos sistemas \textit{time-triggered} utilizan un clock maestro a partir del cual el resto de los miembros del bus toman como referencia para sincronizarse. Por ejemplo, esto corresponde al método de sincronización del protocolo TTCAN. Esto trae como desventaja el hecho de que el clock maestro se convierte en un punto singular de fallas de todo el sistema. 
+
+En este trabajo, con el motivo motivo de simplificar las pruebas realizadas, se utiliza una sincronización con un clock maestro. Dentro del trabajo futuro a realizar, resta implementar un algoritmo distribuido. En este trabajo, es suficiente para demostrar que la arquitectura que se propone puede implementarse con el hardware desarrollado.
+
+% Mencionar que la sincronización se ejecuta como una tarea periódica que se carga en el scheduler como cualquier otra. Dependiendo de si se trata del maestro o el esclavo, la tarea ejecuta una acción distinta. Si es maestro, simplemente envía un mensaje con un determinado ID. Si es esclavo, la tarea lee el mensaje recibido y consulta el valor del timer del scheduler. Luego se compara el valor leído vs el valor esperado. De esta forma es posible saber si la réplica está adelantada o atrasada. Finalmente se corrige la duración del tick actual. Esto es posible gracias a una configuración de un registro del timer. La próxima vez que se ejecuta el scheduler, se vuelve a la duración estándar.
+
+Al igual que el resto de las funcionalidades, la sincronización se ejecuta como una tarea más del scheduler. Dependiendo de si se trata del maestro o del esclavo, la tarea ejecuta una acción distinta. En la figura  se resume el proceso de sincronización entre las réplicas. En el caso del maestro, primero se deja pasar un breve período de tiempo $t_{sync}$ y luego simplemente se envía un mensaje con un determinado ID = 0x01.
+
+% Descripción del método, con un gráfico temporal y la flechita que corrige la duración del tick.
+{\Large \textbf{{\color{red} IMÁGENES CON EL PROCESO DE SINCRONIZACIÓN Y CORRECCIÓN. ACLARAR LOS NOMBRES DE TODAS LAS DURACIONES DE TODOS LOS PERÍODOS DE TIEMPO, PARA QUE SEA BIEN CLARO.}}}
+
+En cuanto a las demás réplicas, cuando estas ejecuten su tarea de sincronización, estarán esperando a recibir el mensaje proveniente del maestro. En ese momento, consultarán el valor del contador del timer utilizado para el scheduler y obtendrán un valor $t_{timestamp}$. A partir de la comparación de este valor contra el valor esperado $t_{sync}$, se obtendrá un error de sincronización, el cual deberán utilizar para corregir sus propios schedulers.
+
+%Finalmente se corrige la duración del tick actual. Esto es posible gracias a una configuración de un registro del timer. La próxima vez que se ejecuta el scheduler, se vuelve a la duración estándar.
+
+Como se muestra en la figura , el paso de corrección se aplica alargando o achicando la duración del tick actual. El periférico del timer utilizado en el microcontrolador de este trabajo permite modificar el valor del registro de overflow, TIMx\_ARR, mientras este se encuentra corriendo. Esto se realiza a partir de setear el bit ARPE = 0 (auto-reload preload bit) en el registro TIMx\_CR1 \cite[p.~745]{RM0385}. El valor a setear en el registro TIMx\_ARR debe ser $t_{tick} + \Delta t_{sync}$, donde $t_{tick}$ es la duración de un tick durante el funcionamiento normal y $\Delta t_{sync} = t_{timestamp} - t_{sync}$.
+Finalmente para retomar el normal funcionamiento, cada réplica debe volver a corregir el valor del registro TIMx\_ARR con el valor nominal de $t_{tick}$. De esto último se encarga el scheduler, en el momento en que se llama al dispatcher en el siguiente tick luego de haber ejecutado la tarea de sincronización.
 
 \subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}
 

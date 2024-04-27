@@ -53,15 +53,15 @@
 \contentsline {subsubsection}{\numberline {6.2.2}Comunicación a Través del Bus}{65}{subsubsection.6.2.2}%
 \contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{66}{subsubsection.6.2.3}%
 \contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{66}{subsubsection.6.2.4}%
-\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{66}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{66}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{66}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{66}{subsubsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{66}{subsubsection.6.3.4}%
-\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{66}{subsubsection.6.3.5}%
-\contentsline {section}{\numberline {7}Conclusiones}{76}{section.7}%
-\contentsline {section}{\numberline {8}Agradecimientos}{77}{section.8}%
-\contentsline {section}{Apéndices}{78}{section*.86}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{78}{section*.87}%
-\contentsline {section}{Apéndice B: PCB Final}{78}{section*.88}%
-\contentsline {section}{Referencias}{79}{section*.89}%
+\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{67}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{67}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{67}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{67}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{67}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{67}{subsubsection.6.3.5}%
+\contentsline {section}{\numberline {7}Conclusiones}{77}{section.7}%
+\contentsline {section}{\numberline {8}Agradecimientos}{78}{section.8}%
+\contentsline {section}{Apéndices}{79}{section*.86}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{79}{section*.87}%
+\contentsline {section}{Apéndice B: PCB Final}{79}{section*.88}%
+\contentsline {section}{Referencias}{80}{section*.89}%
