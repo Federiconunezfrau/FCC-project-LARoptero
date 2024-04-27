@@ -50,18 +50,18 @@
 \contentsline {subsection}{\numberline {6.1}Descripción de la Arquitectura Propuesta}{60}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{63}{subsection.6.2}%
 \contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{64}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}Comunicación entre Nodos}{64}{subsubsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{64}{subsubsection.6.2.3}%
-\contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{64}{subsubsection.6.2.4}%
-\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{64}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{64}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{64}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{64}{subsubsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{64}{subsubsection.6.3.4}%
-\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{64}{subsubsection.6.3.5}%
-\contentsline {section}{\numberline {7}Conclusiones}{74}{section.7}%
-\contentsline {section}{\numberline {8}Agradecimientos}{75}{section.8}%
-\contentsline {section}{Apéndices}{76}{section*.85}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{76}{section*.86}%
-\contentsline {section}{Apéndice B: PCB Final}{76}{section*.87}%
-\contentsline {section}{Referencias}{77}{section*.88}%
+\contentsline {subsubsection}{\numberline {6.2.2}Comunicación a Través del Bus}{65}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{65}{subsubsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{65}{subsubsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{65}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{65}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{65}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{65}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{65}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{65}{subsubsection.6.3.5}%
+\contentsline {section}{\numberline {7}Conclusiones}{75}{section.7}%
+\contentsline {section}{\numberline {8}Agradecimientos}{76}{section.8}%
+\contentsline {section}{Apéndices}{77}{section*.85}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{77}{section*.86}%
+\contentsline {section}{Apéndice B: PCB Final}{77}{section*.87}%
+\contentsline {section}{Referencias}{78}{section*.88}%

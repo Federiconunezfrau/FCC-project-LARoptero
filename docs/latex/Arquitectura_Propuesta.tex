@@ -357,11 +357,47 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 \subsection{Implementación en Firmware}
 
-El objetivo de esta sección es explicar cómo se implementaron las características del sistema Time-Triggered Architecture. Por ejemplo, cómo se implementó el scheduler, la sincronización y la comunicación entre nodos.
+%El objetivo de esta sección es explicar cómo se implementaron las características del sistema Time-Triggered Architecture. Por ejemplo, cómo se implementó el scheduler, la sincronización y la comunicación entre nodos.
+
+%A continuación, se explica cómo se realizó la implementación de las características de la arquitectura mencionada en la sección anterior.
+
+Para realizar pruebas con las computadoras de vuelo, se hizo una implementación en firmware de la arquitectura con las características mencionadas. Para el desarrollo del firmware se utilizó el lenguaje de programación \textit{C}. Además, se utilizaron algunas bibliotecas de terceros en \textit{C++}, por ejemplo para uso del sensor IMU.
+
+El sistema puede describirse a partir del diagrama de flujos de la figura  . Se comienza con una inicialización de los periféricos y sensores conectados, para luego pasar a un estado en el que se espera una orden para comenzar la ejecución del \textit{scheduler}. Esta puede ser a través de un comando externo enviado por el piloto remoto.
+
+{\Large \textbf{{\color{red} IMAGEN DEL DIAGRAMA DE FLUJOS. ACLARAR A PATIR DE DÓNDE SE VUELVE TIME-TRIGGERED. SINO PUEDE SER UN DIAGRAMA MÁS GENÉRICO, CON UN RELOJITO Y UNA LISTA DE TAREAS.}}}
+
+Un aspecto importante a destacar es que previo a la ejecución del scheduler, el sistema no tiene un comportamiento controlado por el tiempo, sino que responde a un sistema del tipo \textit{event-triggered}. Si bien se mencionó que esto tiene algunas características que perjudican la seguridad, el estado previo a la ejecución del \textit{scheduler} corresponde a una inicialización, por lo que no se compormete la seguridad del vehículo. En este estado, el UAV todavía se encuentra en tierra con sus motores apagados esperando una orden para comenzar su misión.
 
 \subsubsection{Scheduler}
 
-\subsubsection{Comunicación entre Nodos}
+%Implementación de la clase del scheduler, implementación de la clase de las tareas, con herencia y creación de tareas particulares. Mención de herencia en C en el estándar ISO bla bla bla.
+
+Para la implementación del \textit{scheduler} se tomó como referencia lo que se propone en \cite{pont2008patterns}. Este se compone de una lista de tareas, un timer y una función que determina cuál es la siguiente tarea a ejecutar (\textit{dispatcher}). Inicialmente la lista se encuentra vacía, permitiendo que se agreguen las tareas pertinentes a la aplicación a ser desarrollada. El \textit{scheduler} requiere que se reserve un periférico timer configurado para generar una interrupción por overflow. Cada vez que esto ocurre, se llama al \textit{dispatcher}, el cual selecciona y ejecuta la siguiente tarea.
+
+Con el objetivo de darle mayor visibilidad al código, es decir que pueda entenderse el flujo de ejecución fácilmente, tanto el scheduler como las tareas se implementaron a partir de estructuras que emulan el comportamiento de una clase del lenguaje de programación \textit{C++}. Además, esto permite la reutilización de código, lo cual se aprovecha sobre todo para la creación de cada una de las tareas. En la figura  se muestra un diagrama de clases que relaciona al scheduler con las tareas a ejecutar. %Esto es otro aspecto que refuerza el objetivo de obtener un sistema cuyo comportamiento sea predecible y por ende seguro.
+
+%Como ya fue mencionado en varias oportunidades, el hecho de que el comportamiento del sistema sea predecible lo vuelve más seguro. 
+
+%Si el código puede leerse fácilmente, entonces puede entenderse el flujo de ejecución fácilmente, entonces es predecible y por ende seguro.
+
+{\Large \textbf{{\color{red} IMAGEN DEL DIAGRAMA DE CLASE. MOSTRAR EL SCHEDULER, LA CLASE TIME TRIGGERED TASK Y LA RELACIÓN DE HERENCIA CON CADA TAREA.}}}
+
+La clase \textit{timeTriggeredTask\_t} contiene una serie de atributos básicos que son aprovechados por el scheduler para determinar sus características temporales, en particular los atributos delay (\textit{mDelayTicks\_}) y período (\textit{mPeriodTicks\_}). Debido a que cada tarea tendrá sus propias características particulares, todas ellas se implementan a partir del uso de herencia. Si bien este aspecto es una característica que se asocia más con el lenguaje \textit{C++}, es posible emularlo en el lenguaje \textit{C} \cite[p.~32]{samek2008practical}.
+
+El tiempo de ejecución puede divirse en intervalos discretos de duración fija, denominados ticks y en cada uno de ellos se llama al dispatcher. En la figura  se muestra un ejemplo de cómo el scheduler realiza la selección de la tarea a ejecutar. Como se mostró anteriormente, cada tarea cuenta con un atributo que indica su delay y su período. Estos atributos se miden en cantidad de ticks y son observos por el scheduler al momento de seleccionar la siguiente tarea a ejecutar.
+
+{\Large \textbf{{\color{red} IMAGEN DE UN EJEMPLO DE SCHEDULER, DONDE SE VEA COMO SE VA DECREMENTANDO EL VALOR DEL ATRIBUTO DELAY Y QUE CUANDO LLEGA A 0 SE EJECUTA. luEGO SE LO VULEV EA CARGAR CON EL PERÍODO PARA LA PRÓXIMA EJECUCIÓN}}}
+
+En cada llamado al dispatcher, se decrementa en 1 el atributo delay de cada tarea de la lista de tareas. Cuando se detecta que una tarea tiene un delay igual a 0, se selecciona la tarea y se la ejecuta. Al finalizar la ejecución, se carga el valor del período de dicha tarea en su atributo delay. De esta forma, queda definido el próximo instante de tiempo en el que será ejecutada nuevamente.
+
+Una aclaración imporante es que la única interrupción que se ejecuta en todo el firmware es la del timer del scheduler. Ninguna de las tareas podrá hacer uso de las interrupciones de los distintos periféricos. Esto es porque, como fue mencionado anteriormente, todas las acciones deben tener un instante de ejecución predefinido con motivo de darle mayor determinismo al sistema.
+
+\subsubsection{Comunicación a Través del Bus}
+
+%Explicación de CNI, configuración del periférico CAN, identificación del nodo en el campo ID de la trama, configuración de filtros de hardware, funciones de transmisión y recepción. Tareas genéricas del scheduler que reciben o envían mensajes.
+
+
 
 \subsubsection{Sincronización}
 

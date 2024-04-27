@@ -1491,6 +1491,27 @@
     \field{year}{2002}
   \endentry
 
+  \entry{samek2008practical}{book}{}
+    \name{author}{1}{}{%
+      {{hash=SM}{%
+         family={Samek},
+         familyi={S\bibinitperiod},
+         given={Miro},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {CRC Press}%
+    }
+    \strng{namehash}{SM1}
+    \strng{fullhash}{SM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Practical UML statecharts in C/C++: event-driven programming
+  for embedded systems}
+    \field{year}{2008}
+  \endentry
+
   \entry{wikipedia-contributors-2023}{article}{}
     \name{author}{1}{}{%
       {{hash=cW}{%
