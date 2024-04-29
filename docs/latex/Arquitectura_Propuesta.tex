@@ -454,11 +454,58 @@ Finalmente para retomar el normal funcionamiento, cada réplica debe volver a co
 
 \subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}
 
-El objetivo de esta sección es dar una primera muestra de que lo que se implementó funciona como se dijo que debe funcionar. Para eso, quiero poner capturas de analizador lógico, mostrando que los mensajes se envían en los tiempos configurados y que el intervalo de tiempo entre mensajes se mantiene estable gracias al efecto de la sincronización periódica.
+% El objetivo de esta sección es dar una primera muestra de que lo que se implementó funciona como se dijo que debe funcionar. Para eso, quiero poner capturas de analizador lógico, mostrando que los mensajes se envían en los tiempos configurados y que el intervalo de tiempo entre mensajes se mantiene estable gracias al efecto de la sincronización periódica.
+
+% La aplicación tiene que ser que se obtienen datos de la IMU y se envían por CAN. Hay que poner una imagen que muestre el timing de las tareas (para esto usar una imagen como la que hice con el script de python). Explicar que la tarea obtiene los datos del sensor, los formatea y los guarda en la tabla. Luego, otra tarea lo envía y en el receptor otra lo recibe y lo almacena internamente.
+
+En esta sección se muestra un ejemplo utilizando las 3 réplicas de la computadora de vuelo, donde cada una de ellas obtiene datos de su correspondiente sensor IMU, de manera sincronizada. Luego, estas envían sus respectivas mediciones a través del bus de comunicaciones. Utilizando un analizador lógico se toman mediciones de los tiempos en el bus y se muestra el efecto de la sincronización.
+
+% Hay que mostrar el funcionamiento sin sincronización, para que se vea que se rompe todo. Para esto, hay que usar una captura de analizador lógico, sí o sí. Acá hacer énfasis en que las placas se van desincronizando periódicamente. Incluso puedo poner un gráfico que releve todos los instantes de tiempo medidos con el analizador lógico. 
+
+Las tareas a ser ejecutadas por el scheduler se muestran en la tabla \ref{tab:schedule_adquisicion_IMU} junto con sus características temporales. La tarea ``Obtener dato IMU'' es la encargada de obtener el dato del sensor, darle formato y almacenarlo en la tabla interna de mensajes de cada réplica. Por otro lado, la tarea ``Enviar dato IMU'' consultará dicha tabla y enviará el mensaje por el bus CAN. Además, se incorporan otras 2 tareas auxiliares. La tarea ``Heartbeat'' simplemente se encarga de parpadear un LED cada 1 segundo, dando una indicación de que el scheduler está funcionando adecuadamente.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \multicolumn{3}{|c|}{Duración Tick = 1 ms}\\
+        \hline
+        Tarea & Período [ticks] & Delay [ticks]\\
+        \hline
+        Heartbeat        & 1000 & 0 \\
+        Watchdog         & 1    & 0 \\ 
+        Obtener dato IMU & 100  & 1 \\
+        Enviar dato IMU  & 100  & 2 \\
+        \hline
+    \end{tabular}
+    \caption{Set de tareas para la adquisición y envío de datos de la IMU para la réplica 1.}
+    \label{tab:schedule_adquisicion_IMU}
+\end{table}
+
+Para detectar cuándo una réplica no cumple con el timing de su set de tareas, se utiliza el periférico independent watchdog (IWDG) del microcontrolador. El timeout configurado es de $1.5 \ ms$. La tarea ``Watchdog'' se ejecuta cada $1 \ ms$ y es la encargada de evitar el reinicio del microcontrolador. En caso de que esto suceda, puede decectarse leyendo un registro del microcontrolador. En dicho caso, simplemente se encederá un LED y se entrará en un modo donde no se ejecutará ninguna acción, denominado fail-silent.
+
+Las tareas de la tabla \ref{tab:schedule_adquisicion_IMU} pueden ubicarse temporalmente en un gráfico como el de la figura \ref{fig:grafico_hyperperiod_adquisicion_IMU}. Por una cuestión de claridad, solamente se muestran los primeros 10 ms de ejecución. 
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/grafico_hyperperiod_adquisicion_IMU.png}
+    \caption{Se muestran los primeros 10 ms de ejecución del scheduler. Existe una diferencia entre las 3 réplicas de 1 tick de separación en la tarea de envío de datos por el bus CAN. En cuanto a la tarea ``Watchdog'', esta se ejecuta en cada tick, evitando que se reinicie el microcontrolador.}
+    \label{fig:grafico_hyperperiod_adquisicion_IMU}
+\end{figure}
+
+{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+
+% Captura de analizador lógico
+% Captura de analizador lógico mostrando que se rompe el schedule
+% Comentar que agregando la sincronización se arregla
+% Captura de analizador lógico mostrando que esta vez el schedule no se rompe
+% Gráfico hecho por mi, mostrando cómo cambia con sincronización vs sin sincronización.
 
 \subsection{Pruebas Realizadas}
 
 Se describe el setting común de las pruebas: Que las 3 placas calculan pitch y roll, luego lo comparten, comparan y se obtienen los residuos. Las fallas se inyectan articialmente. En cada sección se explica la característica de la falla en particular.
+
+Una de las tareas que siempre estará presente es la del INS. En esta sección se muestra un ejemplo de uso de la arquitectura propuesta, donde se utiliza la IMU 
 
 \subsubsection{Funcionamiento Sin Fallas}
 
