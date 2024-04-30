@@ -452,7 +452,7 @@ En cuanto a las demás réplicas, cuando estas ejecuten su tarea de sincronizaci
 Como se muestra en la figura , el paso de corrección se aplica alargando o achicando la duración del tick actual. El periférico del timer utilizado en el microcontrolador de este trabajo permite modificar el valor del registro de overflow, TIMx\_ARR, mientras este se encuentra corriendo. Esto se realiza a partir de setear el bit ARPE = 0 (auto-reload preload bit) en el registro TIMx\_CR1 \cite[p.~745]{RM0385}. El valor a setear en el registro TIMx\_ARR debe ser $t_{tick} + \Delta t_{sync}$, donde $t_{tick}$ es la duración de un tick durante el funcionamiento normal y $\Delta t_{sync} = t_{timestamp} - t_{sync}$.
 Finalmente para retomar el normal funcionamiento, cada réplica debe volver a corregir el valor del registro TIMx\_ARR con el valor nominal de $t_{tick}$. De esto último se encarga el scheduler, en el momento en que se llama al dispatcher en el siguiente tick luego de haber ejecutado la tarea de sincronización.
 
-\subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}
+\subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}\label{sec:tarea_de_ejemplo_adquisicion_datos_IMU}
 
 % El objetivo de esta sección es dar una primera muestra de que lo que se implementó funciona como se dijo que debe funcionar. Para eso, quiero poner capturas de analizador lógico, mostrando que los mensajes se envían en los tiempos configurados y que el intervalo de tiempo entre mensajes se mantiene estable gracias al efecto de la sincronización periódica.
 
@@ -503,21 +503,117 @@ Las tareas de la tabla \ref{tab:schedule_adquisicion_IMU} pueden ubicarse tempor
 
 \subsection{Pruebas Realizadas}
 
-Se describe el setting común de las pruebas: Que las 3 placas calculan pitch y roll, luego lo comparten, comparan y se obtienen los residuos. Las fallas se inyectan articialmente. En cada sección se explica la característica de la falla en particular.
+%Se describe el setting común de las pruebas: Que las 3 placas calculan pitch y roll, luego lo comparten, comparan y se obtienen los residuos. Las fallas se inyectan articialmente. En cada sección se explica la característica de la falla en particular.
 
-Una de las tareas que siempre estará presente es la del INS. En esta sección se muestra un ejemplo de uso de la arquitectura propuesta, donde se utiliza la IMU 
+%Una de las tareas que siempre estará presente es la del INS. En esta sección se muestra un ejemplo de uso de la arquitectura propuesta, donde se utiliza la IMU 
+
+%Para realizar una prueba de las capacidades de tolerancia a fallas del sistema, se implementó un sistema de validación de datos para un sensor en particular, en este caso la IMU, la cual provee datos a la tasa más alta y aporta los datos escenciales para la estabilidad del vehículo. La arquitectura se basa en un principio típicamente usado: considerando que existen tres sensores del mismo tipo y características, se comparan los datos adquiridos de a pares, y aquel sensor que difiera con respecto a los otros dos se considera en falla. [13], [14].
+
+Para demostrar las capacidades de tolerancia a fallas de todo el sistema, se presentan una serie de pruebas realizadas para la detección de fallas en el sensor IMU. Durante la ejecución del scheduler, las réplicas intercambian resultados de estimaciones de los ángulos de pitch y roll, obtenidas a partir de un filtro complementario \cite{Pose2014}. Estas comparan sus resultados con los de sus pares y luego aquella que difiera con respecto a las demás se considera en falla. Utilizando este método y a partir de la arquitectura propuesta, es posible detectar la falla de 1 de las réplicas de forma simultánea.
+
+En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus características temporales y en la figura \ref{fig:grafico_hyperperiod_pruebas_realizadas} se muestra un gráfico temporal. A partir de esta secuencia, cada réplica obtiene una nueva estimación de ángulos de pitch y roll cada 100 ms.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \multicolumn{3}{|c|}{Duración Tick = 1 ms}\\
+        \hline
+        Tarea & Período [ticks] & Delay [ticks]\\
+        \hline
+        Heartbeat                 & 1000 & 0 \\
+        Watchdog                  & 1    & 0 \\ 
+        Obtener dato IMU          & 100  & 1 \\
+        Filtro Complementario     & 100  & 2 \\
+        Enviar pitch y roll       & 100  & 3 \\
+        Recibir pitch y roll de 2 & 100  & 4 \\
+        Recibir pitch y roll de 3 & 100  & 5 \\
+        Calcular residuos         & 100  & 6 \\
+        Enviar residuos           & 100  & 7 \\
+        Recibir residuos de 2     & 100  & 8 \\
+        Recibir residuos de 3     & 100  & 9 \\
+        Sincronización            & 1000 & 450 \\
+        \hline
+    \end{tabular}
+    \caption{Set de tareas correspondiente a la réplica 1, para las pruebas realizadas.}
+    \label{tab:schedule_pruebas_realizadas}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/grafico_hyperperiod_pruebas_realizadas.png}
+    \caption{Se muestran los primeros 12 ms de ejecución del scheduler. Por cuestiones de visualización no se muestra la tarea de sincronización, sin embargo esta se encuentra en el scheduler y se ejecuta cada 1 segundo, con un delay inicial de 450 ms.}
+    \label{fig:grafico_hyperperiod_pruebas_realizadas}
+\end{figure}
+
+% Al igual que el ejemplo presentado en la sección \ref{sec:tarea_de_ejemplo_adquisicion_datos_IMU}, cada una de las réplicas tomará mediciones de su sensor de manera periódica.
+
+
+% Breve mención al filtro complementario.
+Mientras que la tarea ``Obtener dato IMU'' se encarga de consultar al sensor y obtener las mediciones de acelerómetros y giróscopos, la tarea ``Filtro Complementario'' realiza el procesamiento y obtiene una nueva estimación de los ángulos de pitch y roll. Este filtro realiza una estimación combinada, fusionando los datos de los acelerómetros y giróscopos. Se aplica un filtro pasa bajos a la estimación utilizando las mediciones de acelerómetro, debido a que sus mediciones son muy ruidosas. En cuanto a las mediciones de giróscopos, estas poseen un sesgo el cual se agrava por efecto de la integración. Es por esto que se aplica un filtro pasa altos a la estimación por giróscopos. Finalmente, se suman ambos resultados para obtener una mejor estimación, representados por las siguientes ecuaciones, donde $\theta[n]$ es el ángulo de pitch y $\phi[n]$ es el ángulo de roll:
+
+\begin{subequations}
+    \begin{align}
+        \theta[n] &= \alpha \ atan_2(-a_x[n], \sqrt{a_y^2[n]+a_z^2[n]}) + (1 - \alpha) \left( \Delta T \ g_y[n] + \theta[n-1] \right)\\
+        \phi[n] &= \alpha \ atan_2(a_y[n], a_z[n]) + (1 - \alpha) \left( \Delta T \ g_x[n] + \phi [n-1] \right)
+    \end{align}
+\end{subequations}
+
+El valor $\alpha$ es un parámetro de ajuste del filtro, con un valor entre 0 y 1. Para las pruebas realizadas fue configurado con un valor de $0.025$.
+
+% Explicacion de los residuos y cómo sirve para detectar la falla.
+Seguido de esto, hay un período de intercambio de resultados de las estimaciones, a través del bus CAN. Esto corresponde a las tareas ``Enviar pitch y roll'' y ``Recibir pitch y roll'', las cuales permiten que todas las réplicas tengan una copia de las estimaciones de sus pares. Estos resultados se comparan en el tick 6, cuando se ejecuta la tarea ``Calcular residuos''. Se llama residuo a la diferencia entre cualquier par de resultados obtenido por las réplicas. Así, se obtienen 6 residuos, 3 para el ángulo de pitch y 3 para el ángulo de roll:
+
+\begin{subequations}
+    \begin{align}
+        r_{1,2}^\theta[n] &= \left| \ \theta_1[n] - \theta_2[n] \ \right|\\
+        r_{1,2}^\phi[n]   &= \left| \ \phi_1[n]   - \phi_2[n]   \ \right|\\
+        r_{1,3}^\theta[n] &= \left| \ \theta_1[n] - \theta_3[n] \ \right|\\
+        r_{1,3}^\phi[n]   &= \left| \ \phi_1[n]   - \phi_3[n]   \ \right|\\
+        r_{2,3}^\theta[n] &= \left| \ \theta_2[n] - \theta_3[n] \ \right|\\
+        r_{2,3}^\phi[n]   &= \left| \ \phi_2[n]   - \phi_3[n]   \ \right|
+    \end{align}
+\end{subequations}
+
+En caso de que todas las réplicas obtengan resultados consistentes, los residuos tendrán valores cercanos a 0. Estos nunca alcanzarán un valor exactamente 0, debido a diferencias entre los sensores y a errores de cuantización. Por otro lado, si ocurre una falla en una de las IMUs, la estimación del pitch y/o roll de esa réplica divergirá con respecto a las demás. Esto generará que los valores de 2 de los residuos se alejen de cero, indicando cuál es el sensor en falla.
+
+% Mencionar que los residuos se envían por el bus solo para ser loggeados con el analizador lógico para mostrarse acá.
+Con motivo de observar el valor de los residuos, se agrega una tarea ``Enviar residuos'' donde cada réplica envía por el bus CAN los residuos que calcularon. Estos se loggean en una PC, utilizando un analizador lógico el cual registra todos los mensajes intercambiados en el bus CAN.
+
+% Explicar cómo es que se implementa la inyección de falla, brevemente.
+En los resultados que se presentan a continuación, todas las fallas fueron inyectadas de manera artificial, con el objetivo de emular un determinado comportamiento del sensor IMU. La inyección de la falla siempre se aplica en la misma tarea ``Obtener dato IMU'', antes de guardar las mediciones en la tabla de cada réplica.
+
+%Para ello se configuraron los tres nodos de manera idéntica, para adquirir datos de acelerómetros y giróscopos de la IMU a una frecuencia de prueba de 10 Hz. Para evitar la desincronización entre placas, se toma como referencia el reloj del nodo 1, quien envía periódicamente cada 1 s un mensaje a los demás nodos para sincronizar sus relojes. Adquiridos los datos, en cada placa se ejecuta un filtro complementario para estimar los ángulos de roll y pitch, que son las rotaciones de la placa en el eje x que apunta hacia la nariz del vehículo, y en el eje y que apunta hacia la derecha, respectivamente. Luego, cada nodo publica mediante el bus CAN los datos de pitch y roll calculados, con lo cual todos los nodos adquieren la orientación calculada por los demás. Finalmente, cada nodo calcula los residuos entre las estimaciones del pitch de dos nodos como resi,j = |i - r | , i, j = 1, 2, 3, y los residuos de roll de manera análoga. Todos los residuos tendrán valores cercanos a cero en caso que los nodos obtengan mediciones consistentes. Si ocurre una falla en una de las IMUs, la estimación del pitch y/o roll de ese nodo divergirá con respecto a las demás, resultando en dos residuos cuyos valores se alejan de cero, lo cual permitirá conocer cuál es el sensor en falla. En las Figs. 5 y 6 se observa un experimento donde a los 10 s de iniciado, se inyecta un sesgo artificial de 10 ◦ s-1 en la medición del giróscopo en el eje x del nodo 2. Esto causa una estimación del ángulo de roll errónea en el nodo, que resulta en un sesgo constante respecto de los otros dos nodos, mientras que la estimación de pitch no se ve afectada. En el caso de los residuos, los de pitch no se ven afectados por la falla, mientras que los residuos que involucran al nodo 2 divergen rápidamente, permitiendo identificar el origen de la falla.
 
 \subsubsection{Funcionamiento Sin Fallas}
 
+% Mostrar cómo es la prueba con dibujitos, que dura 60 segundos, que se hace a mano y en qué posiciones se orienta durante cuánto tiempo (esto podría ir en la parte de funcionamiento sin fallas quizás)
+
+En este primer caso no se inyectó ninguna falla en las mediciones de la IMU. Se ejecutó el set de tareas antes mencionado durante 60 segundos, orientando a las réplicas siguiendo el esquema de la figura  . Para que la orientación de las réplicas fuera la misma en todo momento, estas se apilaron con una serie de soportes, como se muestra en la figura . Además, el conjunto de placas se montó sobre una base plana facilitando el movimiento y la orientación manual.
+
+{\Large \textbf{{\color{red} FOTO DE LAS PLACAS STACKEADAS EN LA BASE. TIENE QUE SER UNA FOTO PARA MOSTRAR ALGO VIVO, REAL.}}}
+
+{\Large \textbf{{\color{red} IMAGEN CON LAS POSICIONES DE LAS PLACAS. ESTA SÍ PUEDE SER UN 3D.}}}
+
+{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+
+% Acá también graficar resultados de sincronización
+
 \subsubsection{Bias en Valores de Giróscopo}
+
+{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
 
 \subsubsection{Saltos Aleatorios en Valores de Giróscopo}
 
+{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+
 \subsubsection{Medición Constante e Invariante de Acelerómetros y Giróscopos}
+
+{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
 
 \subsubsection{Mediciones Inconsistentes de Acelerómetro}
 
-
+{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
 
 
 %\subsection{Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}

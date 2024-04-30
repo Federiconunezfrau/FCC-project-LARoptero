@@ -1627,6 +1627,11 @@ INPUT ./img/grafico_hyperperiod_adquisicion_IMU.png
 INPUT img/grafico_hyperperiod_adquisicion_IMU.png
 INPUT ./img/grafico_hyperperiod_adquisicion_IMU.png
 INPUT ./img/grafico_hyperperiod_adquisicion_IMU.png
+INPUT ./img/grafico_hyperperiod_pruebas_realizadas.png
+INPUT ./img/grafico_hyperperiod_pruebas_realizadas.png
+INPUT img/grafico_hyperperiod_pruebas_realizadas.png
+INPUT ./img/grafico_hyperperiod_pruebas_realizadas.png
+INPUT ./img/grafico_hyperperiod_pruebas_realizadas.png
 INPUT ./Tolerancia_a_Fallas.tex
 OUTPUT Tolerancia_a_Fallas.aux
 INPUT ./Tolerancia_a_Fallas.tex

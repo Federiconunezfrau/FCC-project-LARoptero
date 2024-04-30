@@ -1541,6 +1541,28 @@
     \field{year}{2019}
   \endentry
 
+  \entry{Pose2014}{book}{}
+    \name{author}{1}{}{%
+      {{hash=PC}{%
+         family={Pose},
+         familyi={P\bibinitperiod},
+         given={Claudio},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Tesis de Grado, Facultad de Ingeniería de la Universidad de Buenos
+  Aires}%
+    }
+    \strng{namehash}{PC1}
+    \strng{fullhash}{PC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Desarrollo de algoritmos de navegación y control para un
+  vehículo aéreo autónomo.}
+    \field{year}{2014}
+  \endentry
+
   \entry{wikipedia-contributors-2023}{article}{}
     \name{author}{1}{}{%
       {{hash=cW}{%

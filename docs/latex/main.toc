@@ -54,14 +54,14 @@
 \contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{66}{subsubsection.6.2.3}%
 \contentsline {subsubsection}{\numberline {6.2.4}Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}{66}{subsubsection.6.2.4}%
 \contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{67}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{68}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{68}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{68}{subsubsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{68}{subsubsection.6.3.4}%
-\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{68}{subsubsection.6.3.5}%
-\contentsline {section}{\numberline {7}Conclusiones}{78}{section.7}%
-\contentsline {section}{\numberline {8}Agradecimientos}{79}{section.8}%
-\contentsline {section}{Apéndices}{80}{section*.88}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{80}{section*.89}%
-\contentsline {section}{Apéndice B: PCB Final}{80}{section*.90}%
-\contentsline {section}{Referencias}{81}{section*.91}%
+\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{69}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{70}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{70}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{70}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{70}{subsubsection.6.3.5}%
+\contentsline {section}{\numberline {7}Conclusiones}{80}{section.7}%
+\contentsline {section}{\numberline {8}Agradecimientos}{81}{section.8}%
+\contentsline {section}{Apéndices}{82}{section*.90}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{82}{section*.91}%
+\contentsline {section}{Apéndice B: PCB Final}{82}{section*.92}%
+\contentsline {section}{Referencias}{83}{section*.93}%
