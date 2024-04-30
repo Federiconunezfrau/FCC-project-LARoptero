@@ -57,11 +57,11 @@
 \contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{69}{subsubsection.6.3.1}%
 \contentsline {subsubsection}{\numberline {6.3.2}Bias en Valores de Giróscopo}{70}{subsubsection.6.3.2}%
 \contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{70}{subsubsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{70}{subsubsection.6.3.4}%
-\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{70}{subsubsection.6.3.5}%
-\contentsline {section}{\numberline {7}Conclusiones}{80}{section.7}%
-\contentsline {section}{\numberline {8}Agradecimientos}{81}{section.8}%
-\contentsline {section}{Apéndices}{82}{section*.90}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{82}{section*.91}%
-\contentsline {section}{Apéndice B: PCB Final}{82}{section*.92}%
-\contentsline {section}{Referencias}{83}{section*.93}%
+\contentsline {subsubsection}{\numberline {6.3.4}Medición Constante e Invariante de Acelerómetros y Giróscopos}{71}{subsubsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Mediciones Inconsistentes de Acelerómetro}{71}{subsubsection.6.3.5}%
+\contentsline {section}{\numberline {7}Conclusiones}{81}{section.7}%
+\contentsline {section}{\numberline {8}Agradecimientos}{82}{section.8}%
+\contentsline {section}{Apéndices}{83}{section*.92}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{83}{section*.93}%
+\contentsline {section}{Apéndice B: PCB Final}{83}{section*.94}%
+\contentsline {section}{Referencias}{84}{section*.95}%

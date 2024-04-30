@@ -1632,6 +1632,16 @@ INPUT ./img/grafico_hyperperiod_pruebas_realizadas.png
 INPUT img/grafico_hyperperiod_pruebas_realizadas.png
 INPUT ./img/grafico_hyperperiod_pruebas_realizadas.png
 INPUT ./img/grafico_hyperperiod_pruebas_realizadas.png
+INPUT ./img/orientaciones_prueba.png
+INPUT ./img/orientaciones_prueba.png
+INPUT img/orientaciones_prueba.png
+INPUT ./img/orientaciones_prueba.png
+INPUT ./img/orientaciones_prueba.png
+INPUT ./img/pruebas_stackeadas.png
+INPUT ./img/pruebas_stackeadas.png
+INPUT img/pruebas_stackeadas.png
+INPUT ./img/pruebas_stackeadas.png
+INPUT ./img/pruebas_stackeadas.png
 INPUT ./Tolerancia_a_Fallas.tex
 OUTPUT Tolerancia_a_Fallas.aux
 INPUT ./Tolerancia_a_Fallas.tex
