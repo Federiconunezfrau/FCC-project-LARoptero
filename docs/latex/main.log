@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  1 MAY 2024 22:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  2 MAY 2024 00:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1851,72 +1851,72 @@ File: img/diagrama_TTA.png Graphic file (type png)
 <use img/diagrama_TTA.png>
 Package pdftex.def Info: img/diagrama_TTA.png  used on input line 206.
 (pdftex.def)             Requested size: 452.96826pt x 273.01732pt.
-LaTeX Info: Redefining \. on input line 422.
-LaTeX Info: Redefining \% on input line 422.
+LaTeX Info: Redefining \. on input line 427.
+LaTeX Info: Redefining \% on input line 427.
  [65 <./img/diagrama_TTA.png>]
-Overfull \hbox (8.32254pt too wide) in paragraph at lines 434--435
-[][]\T1/cmr/bx/n/14.4 IMAGEN DEL DIA-GRA-MA DE CLA-SE. MOS-TRAR EL SCHE-
- []
+<img/class_diagram.png, id=1163, 1220.56pt x 632.3625pt>
+File: img/class_diagram.png Graphic file (type png)
+<use img/class_diagram.png>
+Package pdftex.def Info: img/class_diagram.png  used on input line 436.
+(pdftex.def)             Requested size: 452.96826pt x 234.67484pt.
 
-
-Overfull \hbox (4.80841pt too wide) in paragraph at lines 440--441
+Overfull \hbox (4.80841pt too wide) in paragraph at lines 447--448
 \T1/cmr/bx/n/14.4 VEA CO-MO SE VA DE-CRE-MEN-TAN-DO EL VA-LOR DEL ATRI-
  []
 
-
-Overfull \hbox (35.72818pt too wide) in paragraph at lines 452--453
+LaTeX Info: Redefining \. on input line 451.
+LaTeX Info: Redefining \% on input line 451.
+[66 <./img/class_diagram.png>]
+Overfull \hbox (35.72818pt too wide) in paragraph at lines 459--460
 [][]\T1/cmr/bx/n/14.4 IMAGEN CON LOS CAM-POS DE LA ES-TRUC-TU-RA CANMSG_-
  []
 
-LaTeX Info: Redefining \. on input line 455.
-LaTeX Info: Redefining \% on input line 455.
-[66]
-<img/TTA_Bus.png, id=1169, 447.6725pt x 227.85126pt>
+<img/TTA_Bus.png, id=1173, 447.6725pt x 227.85126pt>
 File: img/TTA_Bus.png Graphic file (type png)
 <use img/TTA_Bus.png>
-Package pdftex.def Info: img/TTA_Bus.png  used on input line 460.
+Package pdftex.def Info: img/TTA_Bus.png  used on input line 467.
 (pdftex.def)             Requested size: 271.7837pt x 138.33195pt.
-LaTeX Info: Redefining \. on input line 488.
-LaTeX Info: Redefining \% on input line 488.
- [67 <./img/TTA_Bus.png>]
-LaTeX Info: Redefining \. on input line 534.
-LaTeX Info: Redefining \% on input line 534.
+LaTeX Info: Redefining \. on input line 482.
+LaTeX Info: Redefining \% on input line 482.
+[67 <./img/TTA_Bus.png>]
+LaTeX Info: Redefining \. on input line 519.
+LaTeX Info: Redefining \% on input line 519.
  [68]
-<img/grafico_hyperperiod_adquisicion_IMU.png, id=1192, 987.2082pt x 491.436pt>
+<img/grafico_hyperperiod_adquisicion_IMU.png, id=1195, 987.2082pt x 491.436pt>
 File: img/grafico_hyperperiod_adquisicion_IMU.png Graphic file (type png)
 <use img/grafico_hyperperiod_adquisicion_IMU.png>
-Package pdftex.def Info: img/grafico_hyperperiod_adquisicion_IMU.png  used on input line 541.
+Package pdftex.def Info: img/grafico_hyperperiod_adquisicion_IMU.png  used on input line 548.
 (pdftex.def)             Requested size: 452.96826pt x 225.4934pt.
-LaTeX Info: Redefining \. on input line 565.
-LaTeX Info: Redefining \% on input line 565.
+LaTeX Info: Redefining \. on input line 554.
+LaTeX Info: Redefining \% on input line 554.
  [69 <./img/grafico_hyperperiod_adquisicion_IMU.png>]
-<img/grafico_hyperperiod_pruebas_realizadas.png, id=1203, 987.2082pt x 491.436pt>
+<img/grafico_hyperperiod_pruebas_realizadas.png, id=1206, 987.2082pt x 491.436pt>
 File: img/grafico_hyperperiod_pruebas_realizadas.png Graphic file (type png)
 <use img/grafico_hyperperiod_pruebas_realizadas.png>
-Package pdftex.def Info: img/grafico_hyperperiod_pruebas_realizadas.png  used on input line 594.
+Package pdftex.def Info: img/grafico_hyperperiod_pruebas_realizadas.png  used on input line 601.
 (pdftex.def)             Requested size: 452.96826pt x 225.4934pt.
-LaTeX Info: Redefining \. on input line 604.
-LaTeX Info: Redefining \% on input line 604.
- [70 <./img/grafico_hyperperiod_pruebas_realizadas.png>]
-<img/orientaciones_prueba.png, id=1213, 1543.26563pt x 883.80188pt>
+LaTeX Info: Redefining \. on input line 605.
+LaTeX Info: Redefining \% on input line 605.
+ [70]
+LaTeX Info: Redefining \. on input line 632.
+LaTeX Info: Redefining \% on input line 632.
+ [71 <./img/grafico_hyperperiod_pruebas_realizadas.png>]
+<img/orientaciones_prueba.png, id=1227, 1543.26563pt x 883.80188pt>
 File: img/orientaciones_prueba.png Graphic file (type png)
 <use img/orientaciones_prueba.png>
-Package pdftex.def Info: img/orientaciones_prueba.png  used on input line 646.
+Package pdftex.def Info: img/orientaciones_prueba.png  used on input line 653.
 (pdftex.def)             Requested size: 362.37598pt x 207.51816pt.
-LaTeX Info: Redefining \. on input line 650.
-LaTeX Info: Redefining \% on input line 650.
- [71]
-<img/pruebas_stackeadas.png, id=1232, 880.03781pt x 497.60907pt>
+<img/pruebas_stackeadas.png, id=1228, 880.03781pt x 497.60907pt>
 File: img/pruebas_stackeadas.png Graphic file (type png)
 <use img/pruebas_stackeadas.png>
-Package pdftex.def Info: img/pruebas_stackeadas.png  used on input line 653.
+Package pdftex.def Info: img/pruebas_stackeadas.png  used on input line 660.
 (pdftex.def)             Requested size: 317.0764pt x 179.28339pt.
-LaTeX Info: Redefining \. on input line 678.
-LaTeX Info: Redefining \% on input line 678.
- [72 <./img/orientaciones_prueba.png> <./img/pruebas_stackeadas.png>])
+LaTeX Info: Redefining \. on input line 664.
+LaTeX Info: Redefining \% on input line 664.
+ [72 <./img/orientaciones_prueba.png>])
 LaTeX Info: Redefining \. on input line 34.
 LaTeX Info: Redefining \% on input line 34.
- [73]
+ [73 <./img/pruebas_stackeadas.png>]
 \openout2 = `Tolerancia_a_Fallas.aux'.
 
  (./Tolerancia_a_Fallas.tex
@@ -1963,7 +1963,7 @@ Package pdftex.def Info: img/3_5_TMR_2.png  used on input line 139.
 LaTeX Info: Redefining \. on input line 143.
 LaTeX Info: Redefining \% on input line 143.
  [78]
-<img/Byzantine_Generals_Problem.png, id=1317, 462.528pt x 231.264pt>
+<img/Byzantine_Generals_Problem.png, id=1321, 462.528pt x 231.264pt>
 File: img/Byzantine_Generals_Problem.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem.png  used on input line 233.
@@ -1971,12 +1971,12 @@ Package pdftex.def Info: img/Byzantine_Generals_Problem.png  used on input line 
 LaTeX Info: Redefining \. on input line 245.
 LaTeX Info: Redefining \% on input line 245.
  [79 <./img/Byzantine_Generals_Problem.png>]
-<img/Byzantine_Generals_Problem_2.png, id=1332, 462.72874pt x 337.26pt>
+<img/Byzantine_Generals_Problem_2.png, id=1336, 462.72874pt x 337.26pt>
 File: img/Byzantine_Generals_Problem_2.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_2.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_2.png  used on input line 270.
 (pdftex.def)             Requested size: 271.7837pt x 198.09138pt.
-<img/Byzantine_Generals_Problem_3.png, id=1334, 709.65125pt x 447.6725pt>
+<img/Byzantine_Generals_Problem_3.png, id=1338, 709.65125pt x 447.6725pt>
 File: img/Byzantine_Generals_Problem_3.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_3.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_3.png  used on input line 279.
@@ -1984,7 +1984,7 @@ Package pdftex.def Info: img/Byzantine_Generals_Problem_3.png  used on input lin
 LaTeX Info: Redefining \. on input line 283.
 LaTeX Info: Redefining \% on input line 283.
  [80 <./img/Byzantine_Generals_Problem_2.png>]
-<img/Byzantine_Generals_Problem_4.png, id=1344, 372.39125pt x 303.1325pt>
+<img/Byzantine_Generals_Problem_4.png, id=1348, 372.39125pt x 303.1325pt>
 File: img/Byzantine_Generals_Problem_4.png Graphic file (type png)
 <use img/Byzantine_Generals_Problem_4.png>
 Package pdftex.def Info: img/Byzantine_Generals_Problem_4.png  used on input line 294.
@@ -2059,7 +2059,7 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 21A8C86C07C958BA841B00B5D9A0AA20;14189.
+(rerunfilecheck)             Checksum: 51AEFBCBD6CC1BA359F2B934BB4E2806;14189.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -2070,18 +2070,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29674 strings out of 478287
- 583913 string characters out of 5849289
- 1126506 words of memory out of 5000000
- 46990 multiletter control sequences out of 15000+600000
+ 29683 strings out of 478287
+ 584123 string characters out of 5849289
+ 1126814 words of memory out of 5000000
+ 46997 multiletter control sequences out of 15000+600000
  488671 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,18n,109p,2019b,2668s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (90 pages, 8401457 bytes).
+Output written on main.pdf (90 pages, 8478299 bytes).
 PDF statistics:
- 1628 PDF objects out of 1728 (max. 8388607)
- 1310 compressed objects within 14 object streams
- 351 named destinations out of 1000 (max. 500000)
- 904 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1632 PDF objects out of 1728 (max. 8388607)
+ 1312 compressed objects within 14 object streams
+ 352 named destinations out of 1000 (max. 500000)
+ 909 words of extra memory for PDF output out of 10000 (max. 10000000)
 
