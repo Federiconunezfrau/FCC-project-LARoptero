@@ -1461,6 +1461,57 @@
     \field{year}{1998}
   \endentry
 
+  \entry{9501400}{article}{}
+    \name{author}{5}{}{%
+      {{hash=ES}{%
+         family={Einspieler},
+         familyi={E\bibinitperiod},
+         given={Sascha},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=RN}{%
+         family={Rathakrishnan},
+         familyi={R\bibinitperiod},
+         given={Nirmal},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=PA}{%
+         family={Prabhakara},
+         familyi={P\bibinitperiod},
+         given={Arpitha},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SB}{%
+         family={Steinwender},
+         familyi={S\bibinitperiod},
+         given={Benjamin},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=EW}{%
+         family={Elmenreich},
+         familyi={E\bibinitperiod},
+         given={Wilfried},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+  \keyw{Synchronization;Clocks;Delays;Jitter;Software;Transceivers;Hardware;Accuracy;clock;controller
+  area network (CAN);real-time;software;synchronization}
+    \strng{namehash}{ES+1}
+    \strng{fullhash}{ESRNPASBEW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1109/TSMC.2021.3096597
+    \endverb
+    \field{number}{7}
+    \field{pages}{4438\bibrangedash 4446}
+    \field{title}{High Accuracy Software-Based Clock Synchronization Over CAN}
+    \field{volume}{52}
+    \field{journaltitle}{IEEE Transactions on Systems, Man, and Cybernetics:
+  Systems}
+    \field{year}{2022}
+  \endentry
+
   \entry{leen2002ttcan}{article}{}
     \name{author}{2}{}{%
       {{hash=LG}{%
