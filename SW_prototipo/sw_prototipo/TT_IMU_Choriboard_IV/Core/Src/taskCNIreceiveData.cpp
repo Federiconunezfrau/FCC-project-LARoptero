@@ -8,11 +8,12 @@
 #include "taskCNIreceiveData.h"
 #include "CNI.h"
 
-void taskCNIreceiveData_constructor(taskCNIreceiveData_t *me, uint32_t delayTicks, uint32_t periodTicks, uint32_t wcetMicroSeconds, uint32_t bcetMicroSeconds, uint32_t handleMsg)
+void taskCNIreceiveData_constructor(taskCNIreceiveData_t *me, uint32_t delayTicks, uint32_t periodTicks, uint32_t wcetMicroSeconds, uint32_t bcetMicroSeconds, uint32_t handleMsg, uint32_t rxTimeout)
 {
 	timeTriggeredTask_constructor(&me->super, (taskHandler_t)&taskCNIreceiveData_update, delayTicks, periodTicks, wcetMicroSeconds, bcetMicroSeconds);
 
 	me->mHandleMsg_ = handleMsg;
+	me->mRxTimeout_ = rxTimeout;
 }
 
 void taskCNIreceiveData_destructor(taskCNIreceiveData_t *me)
@@ -29,7 +30,7 @@ void taskCNIreceiveData_start(taskCNIreceiveData_t *me)
 
 void taskCNIreceiveData_update(taskCNIreceiveData_t *me)
 {
-	CNI_receive_msg(me->mHandleMsg_);
+	CNI_receive_msg(me->mHandleMsg_, me->mRxTimeout_);
 }
 
 

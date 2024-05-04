@@ -8,6 +8,7 @@
 
 #include "CNI.h"
 #include "myUtils.h"
+#include "timeTriggeredSchedulerPublic.h"
 
 /** Cantidad máxima de bytes de datos útiles para la trama CAN */
 #define MAX_LEN_PAYLOAD_CAN 8
@@ -179,12 +180,15 @@ CNI_status_t CNI_send_msg(uint32_t msgHandle)
 }
 
 
-CNI_status_t CNI_receive_msg(uint32_t msgHandle)
+CNI_status_t CNI_receive_msg(uint32_t msgHandle, uint32_t timeout)
 {
 	CAN_RxHeaderTypeDef auxCANrxHeader;
 	serviceID rxMsgServiceID;
 	uint32_t rxNodeID;
 	uint32_t i;
+	uint32_t startTime;
+	uint32_t elapsedTime;
+	bool msgReceived;
 
 	// Chequear si el msgHandle es válido
 	if(msgHandle >= lenCANmsgList)
@@ -201,22 +205,64 @@ CNI_status_t CNI_receive_msg(uint32_t msgHandle)
 	rxMsgServiceID = CANmsgList[msgHandle].mServiceID_;
 	rxNodeID = CANmsgList[msgHandle].mNodeID_;
 
-	while((i < lenCANmsgList) && (CANmsgList[i].mServiceID_ == rxMsgServiceID) && (CANmsgList[i].mNodeID_ == rxNodeID))
+	elapsedTime = 0;
+	msgReceived = false;
+	startTime = timeTriggeredScheduler_get_time();
+
+	while( (msgReceived == false) && ((timeout == 0) || (elapsedTime < timeout)) )
 	{
-		while( (HAL_CAN_GetRxFifoFillLevel(_instance.mHcan_, CAN_RX_FIFO0) == 0) );
-		HAL_CAN_GetRxMessage(_instance.mHcan_, CAN_RX_FIFO0, &auxCANrxHeader, CANmsgList[i].mPayload_);
-		if( (rxMsgServiceID == CAN_MSG_GET_SERVICE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) && (rxNodeID == CAN_MSG_GET_NODE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) )
+		// ¿Llegó algún mensaje nuevo?
+		if(HAL_CAN_GetRxFifoFillLevel(_instance.mHcan_, CAN_RX_FIFO0) > 0)
 		{
-			CANmsgList[i].mLenPayload_ = auxCANrxHeader.DLC;
-			i++;
+			// Se lee el mensaje nuevo
+			HAL_CAN_GetRxMessage(_instance.mHcan_, CAN_RX_FIFO0, &auxCANrxHeader, CANmsgList[i].mPayload_);
+
+			// El STD_ID y nodeID son los correspondientes?
+			if( (rxMsgServiceID == CAN_MSG_GET_SERVICE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) && (rxNodeID == CAN_MSG_GET_NODE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) )
+			{
+				CANmsgList[i].mLenPayload_ = auxCANrxHeader.DLC;
+				i++;
+				if( (i < lenCANmsgList) && (CANmsgList[i].mServiceID_ == rxMsgServiceID) && (CANmsgList[i].mNodeID_ == rxNodeID) )
+				{
+					msgReceived = false;
+				}
+				else
+				{
+					msgReceived = true;
+				}
+			}
+			else
+			{
+				CANmsgList[i].mLenPayload_ = 0;
+			}
 		}
-		else
-		{
-			CANmsgList[i].mLenPayload_ = 0;
-		}
+		elapsedTime = timeTriggeredScheduler_get_time() - startTime;
 	}
 
-	return CNI_OK;
+	if(msgReceived == true)
+	{
+		return CNI_OK;
+	}
+
+	return CNI_MSG_RX_TIMEOUT;
+
+
+//	while((i < lenCANmsgList) && (CANmsgList[i].mServiceID_ == rxMsgServiceID) && (CANmsgList[i].mNodeID_ == rxNodeID))
+//	{
+//		while( (HAL_CAN_GetRxFifoFillLevel(_instance.mHcan_, CAN_RX_FIFO0) == 0) );
+//		HAL_CAN_GetRxMessage(_instance.mHcan_, CAN_RX_FIFO0, &auxCANrxHeader, CANmsgList[i].mPayload_);
+//		if( (rxMsgServiceID == CAN_MSG_GET_SERVICE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) && (rxNodeID == CAN_MSG_GET_NODE_ID_FROM_STD_ID(auxCANrxHeader.StdId)) )
+//		{
+//			CANmsgList[i].mLenPayload_ = auxCANrxHeader.DLC;
+//			i++;
+//		}
+//		else
+//		{
+//			CANmsgList[i].mLenPayload_ = 0;
+//		}
+//	}
+//
+//	return CNI_OK;
 }
 
 CNI_status_t CNI_update_msg_content(uint32_t msgHandle, uint8_t *payload, uint32_t lenPayload)

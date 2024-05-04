@@ -43,6 +43,8 @@
 #define ALPHA_ATTITUDE_ESTIMATOR 0.025
 #define DELTA_T_ATTITUDE_ESTIMATOR_S 0.1
 
+#define TIMEOUT_RX_MSG_ATTITUDE 200
+
 static bool run = false;
 
 void normal_mode_run(void)
@@ -138,15 +140,15 @@ void normal_mode_run(void)
 			HANDLE_MSG_CNI_SEND_ATTITUDE_DATA);
 #if SETTINGS_NODE_ID!=1
 	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData1, DELAY_TASK_CNI_RECEIVE_ATTITUDE_1_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_1_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_1_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_1_US,
-			HANDLE_MSG_CNI_ATTITUDE_1);
+			HANDLE_MSG_CNI_ATTITUDE_1, TIMEOUT_RX_MSG_ATTITUDE);
 #endif
 #if SETTINGS_NODE_ID!=2
 	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData2, DELAY_TASK_CNI_RECEIVE_ATTITUDE_2_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_2_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_2_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_2_US,
-			HANDLE_MSG_CNI_ATTITUDE_2);
+			HANDLE_MSG_CNI_ATTITUDE_2, TIMEOUT_RX_MSG_ATTITUDE);
 #endif
 #if SETTINGS_NODE_ID!=3
 	taskCNIreceiveData_constructor(&taskCNIreceiveAttitudeData3, DELAY_TASK_CNI_RECEIVE_ATTITUDE_3_TICKS_NORMAL, PERIOD_TASK_CNI_RECEIVE_ATTITUDE_3_TICKS_NORMAL, WCET_TASK_CNI_RECEIVE_ATTITUDE_3_US, BCET_TASK_CNI_RECEIVE_ATTITUDE_3_US,
-			HANDLE_MSG_CNI_ATTITUDE_3);
+			HANDLE_MSG_CNI_ATTITUDE_3, TIMEOUT_RX_MSG_ATTITUDE);
 #endif
 // =======================================================
 //================== Comparacion attitude ================
@@ -191,6 +193,10 @@ void normal_mode_run(void)
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCompareAttitudeData);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendCompareAttitudeData);
 	CNI_start();
+
+	//taskIMUgetData_update(&taskIMUgetData);
+	//taskIMUgetData_update(&taskIMUgetData);
+	//taskIMUgetData_update(&taskIMUgetData);
 
 	// Se queda acá esperando hasta que uno presione el botón para comenzar
 	while(!run)

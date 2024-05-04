@@ -1,7 +1,7 @@
-../Core/Src/CNI.cpp:107:6:void CNI_constructor(CAN_HandleTypeDef*)	16	static
-../Core/Src/CNI.cpp:118:6:void CNI_init()	16	static
-../Core/Src/CNI.cpp:129:6:void CNI_start()	8	static
-../Core/Src/CNI.cpp:138:14:CNI_status_t CNI_send_msg(uint32_t)	32	static
-../Core/Src/CNI.cpp:182:14:CNI_status_t CNI_receive_msg(uint32_t)	56	static
-../Core/Src/CNI.cpp:223:14:CNI_status_t CNI_update_msg_content(uint32_t, uint8_t*, uint32_t)	40	static
-../Core/Src/CNI.cpp:268:14:CNI_status_t CNI_get_msg_content(uint32_t, uint8_t*, uint32_t, uint32_t*)	48	static
+../Core/Src/CNI.cpp:108:6:void CNI_constructor(CAN_HandleTypeDef*)	16	static
+../Core/Src/CNI.cpp:119:6:void CNI_init()	16	static
+../Core/Src/CNI.cpp:130:6:void CNI_start()	8	static
+../Core/Src/CNI.cpp:139:14:CNI_status_t CNI_send_msg(uint32_t)	32	static
+../Core/Src/CNI.cpp:183:14:CNI_status_t CNI_receive_msg(uint32_t, uint32_t)	72	static
+../Core/Src/CNI.cpp:268:14:CNI_status_t CNI_update_msg_content(uint32_t, uint8_t*, uint32_t)	40	static
+../Core/Src/CNI.cpp:313:14:CNI_status_t CNI_get_msg_content(uint32_t, uint8_t*, uint32_t, uint32_t*)	48	static

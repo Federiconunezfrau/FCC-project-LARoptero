@@ -1,4 +1,4 @@
-../Core/Src/taskCNIreceiveData.cpp:11:6:void taskCNIreceiveData_constructor(taskCNIreceiveData_t*, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)	1
-../Core/Src/taskCNIreceiveData.cpp:18:6:void taskCNIreceiveData_destructor(taskCNIreceiveData_t*)	1
-../Core/Src/taskCNIreceiveData.cpp:24:6:void taskCNIreceiveData_start(taskCNIreceiveData_t*)	1
-../Core/Src/taskCNIreceiveData.cpp:30:6:void taskCNIreceiveData_update(taskCNIreceiveData_t*)	1
+../Core/Src/taskCNIreceiveData.cpp:11:6:void taskCNIreceiveData_constructor(taskCNIreceiveData_t*, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)	1
+../Core/Src/taskCNIreceiveData.cpp:19:6:void taskCNIreceiveData_destructor(taskCNIreceiveData_t*)	1
+../Core/Src/taskCNIreceiveData.cpp:25:6:void taskCNIreceiveData_start(taskCNIreceiveData_t*)	1
+../Core/Src/taskCNIreceiveData.cpp:31:6:void taskCNIreceiveData_update(taskCNIreceiveData_t*)	1

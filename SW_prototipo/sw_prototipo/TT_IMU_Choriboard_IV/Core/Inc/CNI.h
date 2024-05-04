@@ -30,14 +30,15 @@ typedef enum
 	CNI_OK = 0,
 	CNI_MSG_HANDLE_NOT_VALID,
 	CNI_MSG_HANDLE_TX_NOT_ALLOWED,
-	CNI_MSG_HANDLE_RX_NOT_ALLOWED
+	CNI_MSG_HANDLE_RX_NOT_ALLOWED,
+	CNI_MSG_RX_TIMEOUT
 } CNI_status_t;
 
 void CNI_constructor ( CAN_HandleTypeDef*);
 void CNI_init        ( void );
 void CNI_start       ( void );
 CNI_status_t CNI_send_msg    ( uint32_t );
-CNI_status_t CNI_receive_msg ( uint32_t );
+CNI_status_t CNI_receive_msg ( uint32_t, uint32_t );
 CNI_status_t CNI_update_msg_content ( uint32_t, uint8_t[], uint32_t );
 CNI_status_t CNI_get_msg_content    ( uint32_t, uint8_t[], uint32_t, uint32_t* );
 
