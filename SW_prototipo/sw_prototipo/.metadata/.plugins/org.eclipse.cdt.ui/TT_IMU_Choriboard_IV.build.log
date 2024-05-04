@@ -1,10 +1,10 @@
-15:24:59 **** Incremental Build of configuration Debug for project TT_IMU_Choriboard_IV ****
+17:31:21 **** Incremental Build of configuration Debug for project TT_IMU_Choriboard_IV ****
 make -j8 all 
 arm-none-eabi-size  TT_IMU_Choriboard_IV.elf 
    text	   data	    bss	    dec	    hex	filename
-  44044	    712	   2580	  47336	   b8e8	TT_IMU_Choriboard_IV.elf
+  43988	    712	   2580	  47280	   b8b0	TT_IMU_Choriboard_IV.elf
 Finished building: default.size.stdout
  
 
-15:24:59 Build Finished. 0 errors, 0 warnings. (took 180ms)
+17:31:22 Build Finished. 0 errors, 0 warnings. (took 175ms)
 

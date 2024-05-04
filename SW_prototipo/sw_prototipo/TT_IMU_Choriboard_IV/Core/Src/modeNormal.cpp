@@ -53,7 +53,7 @@ void normal_mode_run(void)
 	taskWatchdog_t          taskWatchdog;
 	taskTimeTriggeredSync_t taskPeriodicSync;
 	taskIMUgetData_t        taskIMUgetData;
-	taskCNIsendData_t       taskCNIsendIMUdata;
+//	taskCNIsendData_t       taskCNIsendIMUdata;
 	taskEstimateAttitude_t  taskEstimateAttitude;
 	taskCNIsendData_t       taskCNIsendAttitudeData;
 	taskCompareAttitude_t   taskCompareAttitudeData;
@@ -129,8 +129,8 @@ void normal_mode_run(void)
 	taskIMUgetData_constructor(&taskIMUgetData, DELAY_TASK_IMU_TICKS_NORMAL, PERIOD_TASK_IMU_TICKS_NORMAL, WCET_TASK_IMU_US, BCET_TASK_IMU_US,
 			&imu, &ledIMUcalibration, HANDLE_MSG_CNI_SEND_IMU_DATA);
 
-	taskCNIsendData_constructor(&taskCNIsendIMUdata, DELAY_TASK_CNI_SEND_IMU_TICKS_NORMAL, PERIOD_TASK_CNI_SEND_IMU_TICKS_NORMAL, WCET_TASK_CNI_SEND_IMU_US, BCET_TASK_CNI_SEND_IMU_US,
-			HANDLE_MSG_CNI_SEND_IMU_DATA);
+//	taskCNIsendData_constructor(&taskCNIsendIMUdata, DELAY_TASK_CNI_SEND_IMU_TICKS_NORMAL, PERIOD_TASK_CNI_SEND_IMU_TICKS_NORMAL, WCET_TASK_CNI_SEND_IMU_US, BCET_TASK_CNI_SEND_IMU_US,
+//			HANDLE_MSG_CNI_SEND_IMU_DATA);
 // =======================================================
 // =================== Datos attitude  ===================
 	taskEstimateAttitude_constructor(&taskEstimateAttitude, DELAY_TASK_ESTIMATE_ATTITUDE_TICKS_NORMAL, PERIOD_TASK_ESTIMATE_ATTITUDE_TICKS_NORMAL, WCET_TASK_ESTIMATE_ATTITUDE_US, BCET_TASK_ESTIMATE_ATTITUDE_US,
@@ -171,14 +171,13 @@ void normal_mode_run(void)
 
 	taskHeartbeat_start(&taskHeartbeat);
 	taskIMUgetData_start(&taskIMUgetData);
-	taskCNIsendData_start(&taskCNIsendIMUdata);
+//	taskCNIsendData_start(&taskCNIsendIMUdata);
 
-
-	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskHeartbeat);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskWatchdog);
-	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskPeriodicSync);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskIMUgetData);
-	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendIMUdata);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskHeartbeat);
+	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskPeriodicSync);
+//	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendIMUdata);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskEstimateAttitude);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskCNIsendAttitudeData);
 #if SETTINGS_NODE_ID!=1
