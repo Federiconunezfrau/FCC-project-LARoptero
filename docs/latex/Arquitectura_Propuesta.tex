@@ -440,48 +440,68 @@ Con el objetivo de darle mayor visibilidad al código, es decir que pueda entend
 
 %{\Large \textbf{{\color{red} IMAGEN DEL DIAGRAMA DE CLASE. MOSTRAR EL SCHEDULER, LA CLASE TIME TRIGGERED TASK Y LA RELACIÓN DE HERENCIA CON CADA TAREA.}}}
 
-La clase \textit{timeTriggeredTask\_t} contiene una serie de atributos básicos que son aprovechados por el scheduler para determinar sus características temporales, en particular los atributos delay (\textit{mDelayTicks\_}) y período (\textit{mPeriodTicks\_}). Debido a que cada tarea tendrá sus propias características particulares, todas ellas se implementan a partir del uso de herencia. Si bien este aspecto es una característica que se asocia más con el lenguaje \textit{C++}, es posible emularlo en el lenguaje \textit{C} \cite[p.~32]{samek2008practical}.
+Todas las tareas del sistema comparten una serie de atributos básicos que son aprovechados por el scheduler para determinar sus características temporales, en particular los atributos delay (\textit{mDelayTicks\_}) y período (\textit{mPeriodTicks\_}). A su vez, cada tarea tiene otras características que la diferencian de las demás. Esto se resuelve a partir de la definición de la clase \textit{timeTriggeredTask\_t}. A partir del uso de herencia, se definen todas las demás tareas. Si bien este aspecto se asocia más con el lenguaje \textit{C++}, es posible emularlo en el lenguaje \textit{C} \cite[p.~32]{samek2008practical}.
 
-El tiempo de ejecución se divide en intervalos discretos de duración fija, denominados ticks y en cada uno de ellos se llama al dispatcher. En la figura  se muestra un ejemplo de cómo el scheduler realiza la selección de la tarea a ejecutar. Como se mostró anteriormente, cada tarea cuenta con un atributo que indica su delay y su período. Estos atributos se miden en cantidad de ticks y son observos por el scheduler al momento de seleccionar la siguiente tarea a ejecutar.
+%La clase \textit{timeTriggeredTask\_t} contiene una serie de atributos básicos que son aprovechados por el scheduler para determinar sus características temporales, en particular los atributos delay (\textit{mDelayTicks\_}) y período (\textit{mPeriodTicks\_}). Debido a que cada tarea tiene sus propias características particulares, todas ellas se implementan a partir del uso de herencia. Si bien este aspecto es una característica que se asocia más con el lenguaje \textit{C++}, es posible emularlo en el lenguaje \textit{C} \cite[p.~32]{samek2008practical}.
 
-{\Large \textbf{{\color{red} IMAGEN DE UN EJEMPLO DE SCHEDULER, DONDE SE VEA COMO SE VA DECREMENTANDO EL VALOR DEL ATRIBUTO DELAY Y QUE CUANDO LLEGA A 0 SE EJECUTA. luEGO SE LO VULEV EA CARGAR CON EL PERÍODO PARA LA PRÓXIMA EJECUCIÓN}}}
+El tiempo de ejecución se divide en intervalos discretos de duración fija. El comienzo de cada intervalo se denomina tick y es allí donde se llama al dispatcher. En la figura \ref{fig:scheduler_implementacion_esquema} se muestra un ejemplo de cómo el scheduler realiza la selección de la tarea a ejecutar. Como se mostró anteriormente, cada tarea cuenta con un atributo que indica su delay y su período. Estos atributos se miden en cantidad de ticks y son observados por el scheduler al momento de seleccionar la siguiente tarea a ejecutar.
 
-En cada llamado al dispatcher, se decrementa en 1 el atributo delay de cada tarea de la lista de tareas. Cuando se detecta que una tarea tiene un delay igual a 0, se selecciona la tarea y se la ejecuta. Al finalizar la ejecución, se carga el valor del período de dicha tarea en su atributo delay. De esta forma, queda definido el próximo instante de tiempo en el que será ejecutada nuevamente.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/scheduler_implementacion_esquema.png}
+    \caption{En cada tick se llama al dispatcher el cual selecciona la tarea a ejectuar. Todas las tareas se almacenan en la lista del atributo mTaskList\_ del scheduler. En la imagen se muestra la evolución de la lista a medida que ocurren los ticks. En cada tick, el atributo mDelayTicks\_ de todas las tareas se decrementa en 1. En caso de que se detecte alguna tarea que alcanza un mDelayTicks\_ = 0, esta es ejecutada. Para finalizar, se vuelve a setear mDelayTicks\_ = mPeriodTicks\_, permitiendo que las tareas puedan volver a ser ejecutadas.}
+    \label{fig:scheduler_implementacion_esquema}
+\end{figure}
 
-Una aclaración imporante es que la única interrupción que se ejecuta en todo el firmware es la del timer del scheduler. Ninguna de las tareas podrá hacer uso de las interrupciones de los distintos periféricos. Esto es porque, como fue mencionado anteriormente, todas las acciones deben tener un instante de ejecución predefinido con motivo de darle mayor determinismo al sistema.
+%{\Large \textbf{{\color{red} IMAGEN DE UN EJEMPLO DE SCHEDULER, DONDE SE VEA COMO SE VA DECREMENTANDO EL VALOR DEL ATRIBUTO DELAY Y QUE CUANDO LLEGA A 0 SE EJECUTA. luEGO SE LO VULEV EA CARGAR CON EL PERÍODO PARA LA PRÓXIMA EJECUCIÓN}}}
+
+%En cada llamado al dispatcher se decrementa en 1 el atributo delay de cada tarea de la lista. Cuando se detecta que una tarea tiene un delay igual a 0, se selecciona la tarea y se la ejecuta. Al finalizar la ejecución, se carga el valor del período de dicha tarea en su atributo delay. De esta forma, queda definido el próximo instante de tiempo en el que será ejecutada nuevamente.
+
+En el ejemplo de la figura \ref{fig:scheduler_implementacion_esquema}, en el primer tick se ejecuta la tarea task1\_t, lo cual corresponde con el llamado a su función update(). Luego en el siguiente tick se ejecutan 2 tareas, task2\_t y task3\_t. En dicho caso, las tareas se ejecutarán una a continuación de la otra. Finalmente en el tercer tick, se ejecuta la función update() de task4\_t.
+
+El tick generado por el scheduler es la única interrupción que se permite en todo el programa. Ninguna de las tareas puede hacer uso de las interrupciones, ya que como fue mencionado anteriormente, todas las acciones deben tener un instante de ejecución predefinido con motivo de preservar el determinismo del sistema.
+
+%Una aclaración imporante es que la única interrupción que se ejecuta en todo el firmware es la del timer del scheduler. Ninguna de las tareas podrá hacer uso de las interrupciones de los distintos periféricos. Esto es porque, como fue mencionado anteriormente, todas las acciones deben tener un instante de ejecución predefinido con motivo de darle determinismo al sistema.
 
 \subsubsection{Comunicación a Través del Bus}
 
 %Explicación de CNI, configuración del periférico CAN, identificación del nodo en el campo ID de la trama, configuración de filtros de hardware, funciones de transmisión y recepción. Tareas genéricas del scheduler que reciben o envían mensajes.
 
-Dado que el comportamiento del sistema se encuentra predefinido, luego los mensajes, su información y sus correspondientes instantes de tiempo en los que se recibirán y en los que se enviarán, también. Para la implementación, se utiliza una lista estática de mensajes definida en tiempo de compilación. Cada entrada de la lista contiene información asociada a un mensaje distinto. Para esto se creó un tipo de dato \textit{CANmsg\_t} con los atributos que se muestran en la figura .
-
-{\Large \textbf{{\color{red} IMAGEN CON LOS CAMPOS DE LA ESTRUCTURA CANMSG\_T.}}}
-
-Como se puede ver, la lista de mensajes no almacena ningún aspecto relacionado a la temporalidad del mensaje. Para ello, la interfaz de comunicación implementada contiene dos métodos, uno para enviar y otro para recibir un mensaje, los cuáles deberán ser llamados en las distintas tareas que se agreguen al scheduler. En la figura  se muestra la interacción entre el bus de comunicaciones y el resto del sistema.
-
-% En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
+Dado que el comportamiento del sistema se encuentra predefinido, luego los mensajes, su información y sus correspondientes instantes de tiempo en los que se recibirán y en los que se enviarán, también lo están. Para la implementación de la comunicación a través del bus CAN, se utiliza una lista estática de mensajes definida en tiempo de compilación. Cada entrada de la lista contiene información asociada a un mensaje distinto. Para esto se creó un tipo de dato CANmsg\_t con los atributos que se muestran en la figura \ref{fig:can_msg_list}. El primer elemento de cada entrada de la lista, mServiceID\_, es un indicador del contenido del mensaje, mientras que mNodeID\_ indica quién es el responsable de enviar ese mensaje. %En la sección \ref{sec:interfaz_CAN} se mostró que el mensaje CAN tiene un campo llamado ID, el cual sirve para informar cuál es el contenido del campo de datos. Para que el bus CAN tenga un funcionamiento correcto, no debe permitirse que dos réplicas inyecten en el bus mensajes que tengan el mismo ID. Con motivo de diferenciar mensajes con mismo contenido pero correspondientes a distintas réplicas, se incluye la información del emisor dentro del campo ID del mensaje.
+%La tabla que almacena estos mensajes se implementa como un array estático de elementos del tipo CANmsg\_t.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
-    \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1 {\color{red} ESTA IMAGEN SERÁ PARECIDA PERO HAY QUE HACERLA MÁS EXPLÍCITA}.}
-    \label{fig:TTA_Bus}
+    \includegraphics[width=0.6\textwidth]{img/can_msg_list.png}
+    \caption{La tarea task1\_t almacena información relevante en formato de mensaje, en la lista CANmsgList[], en una posición conocida por la misma. Luego, la tarea task4\_t lee dicha información y envía el mensaje a través del bus CAN.}
+    \label{fig:can_msg_list}
 \end{figure}
 
-En los resultados que se presentarán más adelante, uno de los tipos de mensaje que se intercambian es acerca de la orientación del vehículo, estimada por cada réplica. Para lograr esto se define una tarea que ejecuta este cálculo y almacena el resultado en la tabla estática antes mencionada. Luego, cuando sea el momento de enviar este dato por el bus CAN, otra tarea consulta la tabla, obtiene la información y envía el mensaje a las demás réplicas. 
+%{\Large \textbf{{\color{red} IMAGEN CON LOS CAMPOS DE LA ESTRUCTURA CANMSG\_T.}}}
 
-Cuando se recibe un mensaje, el firmware obtiene la información de este consultando al periférico durante la ejeución de la tarea correspondiente y almacenando el dato en la tabla interna. Más adelante, este dato podrá ser utilizado por otra tarea leyéndolo de la misma.
+%En la lista no se almacena ningún aspecto relacionado a la temporalidad de los mensajes. Cada tarea debe acceder a la lista para obtener el mensaje y enviarlo cuando sea necesario, o bien recibir un mensaje proveniente de otra réplica y almacenarlo en su tabla. Cabe aclarar que todas las réplicas deben tener definido en firmware una copia exacta de la misma tabla para que el sistema funcione adecuadamente. %En la figura  se muestra la interacción entre el bus de comunicaciones y el resto del sistema.
+
+% En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
+%     \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1 {\color{red} ESTA IMAGEN SERÁ PARECIDA PERO HAY QUE HACERLA MÁS EXPLÍCITA}.}
+%     \label{fig:TTA_Bus}
+% \end{figure}
+
+En la lista no se almacena ningún aspecto relacionado a la temporalidad de los mensajes. Cada tarea debe acceder a la lista para obtener el mensaje y enviarlo cuando sea necesario, o bien recibir un mensaje proveniente de otra réplica y almacenarlo en su lista. Cabe aclarar que todas las réplicas deben tener definido en firmware una copia exacta de la misma tabla para que el sistema funcione adecuadamente. %Por ejemplo, en los resultados que se presentarán más adelante, uno de los tipos de mensaje que se intercambian es acerca de la orientación del vehículo, estimada por cada réplica. Para lograr esto, por un lado se define una tarea que ejecuta este cálculo y almacena el resultado en la lista de mensajes. Cuando sea el momento de enviar este dato por el bus CAN, otra tarea consulta la tabla, obtiene la información y envía el mensaje a las demás réplicas.
+
+%Cuando se recibe un mensaje, el firmware obtiene la información de este consultando al periférico durante la ejeución de la tarea correspondiente y almacenando el dato en la tabla interna. Más adelante, este dato podrá ser utilizado por otra tarea leyéndolo de la misma.
 
 % configuración del periférico CAN, identificación del nodo en el campo ID de la trama, configuración de filtros de hardware
 
-Para llevar adelante la comunicación a través del bus CAN, se utilizó el periférico del microcontrolador. Su funcionamiento puede describirse a partir de la figura  . Este se configuró para trabajar en su velocidad más alta, 1 MBit/s. La transmisión de mensajes se administra a través de 3 espacios de memoria presentes en el periférico, llamados mailboxes. Allí, el programa principal puede depositar mensajes de CAN, para que luego el periférico se encargue de transmitirlos por el bus. En caso de que la información que se quiera transmitir supere el tamaño máximo de un mensaje CAN, 8 bytes, este deberá partirse en varios mensajes. Para asegurarse de que estos se envíen en el orden correcto, el periférico permite que las mailboxes trabajen como una FIFO, asegurando el orden de los datos enviados.
+En cuanto al uso del periférico CAN, este se configuró para trabajar en su velocidad más alta, 1 MBit/s. %La transmisión de mensajes se administra a través de 3 espacios de memoria presentes en el periférico, llamados mailboxes. Allí, el programa principal puede depositar mensajes de CAN, para que luego el periférico se encargue de transmitirlos por el bus. En caso de que la información que se quiera transmitir supere el tamaño máximo de un mensaje CAN, 8 bytes, este deberá partirse en varios mensajes. Para asegurarse de que estos se envíen en el orden correcto, el periférico permite que las mailboxes trabajen como una FIFO, asegurando el orden de los datos enviados.
+%{\Large \textbf{{\color{red} ESQUEMA DEL PERIFÉRICO CAN.}}}
+%Otro aspecto importante es que 
+En su configuración por defecto, en caso de no poder inyectar un mensaje en el bus de comunicaciones, el periférico no descarta el mensaje, sino que lo retiene hasta que pueda ser enviado. Este comportamiento no es aceptable, ya que perjudica gravemente el determinismo de las comunicaciones y no puede tolerarse. Afortunadamente, dentro de las tantas configuraciones, pueden deshabilitarse las retransmisiones automáticas. De esta forma, en caso de que la transmisión falle, el mensaje será descartado y se dará aviso al programa principal.
 
-{\Large \textbf{{\color{red} ESQUEMA DEL PERIFÉRICO CAN.}}}
-
-Otro aspecto importante es que en caso de no poder inyectar el mensaje en el bus de comunicaciones, en su configuración por defecto el periférico no descartará el mensaje. Este será retenido hasta que pueda ser enviado. Este comportamiento perjudica gravemente el determinismo de las comunicaciones y no puede tolerarse. Es por esto que se deshabilitaron las retransmisiones automáticas y en caso de que la transmisión falle, se descartará el mensaje y se dará aviso al programa principal.
-
-En cuanto a la recepción de mensajes, el funcionamiento es similar. En este caso además existe un mecanismo de filtroado de mensajes indeseados. Como fue mencionado en la sección \ref{sec:interfaz_CAN}, el campo identifier indica el contenido del mensaje CAN. La configuración de filtros permite que solamente se acepten mensajes con determinado valor en su campo identifier. Cada vez que se recibe un mensaje, este queda almacenado en otras mailboxes, las cuáles también se configuran para trabajar como FIFO.
+En cuanto a la recepción de mensajes, el funcionamiento es similar. En este caso además existe un mecanismo de filtrado de mensajes indeseados. Como fue mencionado en la sección \ref{sec:interfaz_CAN}, el campo identifier indica el contenido del mensaje CAN. La configuración de filtros permite que solamente se acepten mensajes con determinado valor en su campo identifier. Cada vez que se recibe un mensaje, este queda almacenado en otras mailboxes, las cuáles también se configuran para trabajar como FIFO.
 
 % el periférico tiene una funcionalidad para uso de time-triggered communication, pero en una errata dice que no.
 
@@ -491,23 +511,30 @@ Una aclaración importante es que en la hoja de datos del microcontrolador utili
 
 % Como fue mencionado anteriormente, no se recomienda el uso de un sistema con un clock maestro, debido a que esto convierte a una de las réplicas en un punto singular de falla de todo el sistema. Lo correcto sería implementar un mecanismo donde se llegue a un consenso de la base de tiempos, entre cada réplica. Con motivo de simplificar las pruebas realizadas, en las pruebas realizadas en este trabajo se optó por utilizar una sincronización con un clock mestro. La implementación de un algoritmo distribuido forma parte del trabajo futuro a desarrollar. Lo implementado en este trabajo es suficiente para demostrar que la arquitectura que se propone puede implementarse con el hardware desarrollado.
 
-Como fue mencionado anteriormente, algunos sistemas \textit{time-triggered} utilizan un clock maestro a partir del cual el resto de los miembros del bus toman como referencia para sincronizarse. Por ejemplo, esto corresponde al método de sincronización del protocolo TTCAN. Esto trae como desventaja el hecho de que el clock maestro se convierte en un punto singular de fallas de todo el sistema. 
-
-En este trabajo, con el motivo motivo de simplificar las pruebas realizadas, se utiliza una sincronización con un clock maestro. Dentro del trabajo futuro a realizar, resta implementar un algoritmo distribuido. En este trabajo, es suficiente para demostrar que la arquitectura que se propone puede implementarse con el hardware desarrollado.
+Como fue mencionado anteriormente, algunos sistemas time-triggered utilizan un clock maestro. Por ejemplo, el protocolo TTCAN mencionado en la sección \ref{sec:interfaz_CAN} utiliza este mecanismo para sincronizar a todos los miembros del bus. Si bien esto tiene como desventaja el hecho de que el clock maestro se convierte en un punto singular de fallas de todo el sistema, con el motivo de simplificar las pruebas realizadas, se adopta una sincronización con estas características. Dentro del trabajo futuro a realizar debe implementarse un algoritmo distribuido, que sea más seguro y confiable para el sistema. En este trabajo, el uso de un clock maestro es suficiente para demostrar el funcionamiento de la arquitectura que se propone. %puede implementarse con el hardware desarrollado.
 
 % Mencionar que la sincronización se ejecuta como una tarea periódica que se carga en el scheduler como cualquier otra. Dependiendo de si se trata del maestro o el esclavo, la tarea ejecuta una acción distinta. Si es maestro, simplemente envía un mensaje con un determinado ID. Si es esclavo, la tarea lee el mensaje recibido y consulta el valor del timer del scheduler. Luego se compara el valor leído vs el valor esperado. De esta forma es posible saber si la réplica está adelantada o atrasada. Finalmente se corrige la duración del tick actual. Esto es posible gracias a una configuración de un registro del timer. La próxima vez que se ejecuta el scheduler, se vuelve a la duración estándar.
 
-Al igual que el resto de las funcionalidades, la sincronización se ejecuta como una tarea más del scheduler. Dependiendo de si se trata del maestro o del esclavo, la tarea ejecuta una acción distinta. En la figura  se resume el proceso de sincronización entre las réplicas. En el caso del maestro, primero se deja pasar un breve período de tiempo $t_{sync}$ y luego simplemente se envía un mensaje con un determinado ID = 0x01.
+Al igual que el resto de las funcionalidades, la sincronización se ejecuta como una tarea más del scheduler. Dependiendo de si se trata del maestro o del esclavo, la tarea realiza una acción distinta. En la figura \ref{fig:resincronizacion_implementacion} se resume el proceso de sincronización entre las réplicas.
 
 % Descripción del método, con un gráfico temporal y la flechita que corrige la duración del tick.
-{\Large \textbf{{\color{red} IMÁGENES CON EL PROCESO DE SINCRONIZACIÓN Y CORRECCIÓN. ACLARAR LOS NOMBRES DE TODAS LAS DURACIONES DE TODOS LOS PERÍODOS DE TIEMPO, PARA QUE SEA BIEN CLARO.}}}
+%{\Large \textbf{{\color{red} IMÁGENES CON EL PROCESO DE SINCRONIZACIÓN Y CORRECCIÓN. ACLARAR LOS NOMBRES DE TODAS LAS DURACIONES DE TODOS LOS PERÍODOS DE TIEMPO, PARA QUE SEA BIEN CLARO.}}}
 
-En cuanto a las demás réplicas, cuando estas ejecuten su tarea de sincronización, estarán esperando a recibir el mensaje proveniente del maestro. En ese momento, consultarán el valor del contador del timer utilizado para el scheduler y obtendrán un valor $t_{timestamp}$. A partir de la comparación de este valor contra el valor esperado $t_{sync}$, se obtendrá un error de sincronización, el cual deberán utilizar para corregir sus propios schedulers.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/resincronizacion_implementacion.png}
+    \caption{Se muestra el funcionamiento del mecanismo de resincronización periódica, implementado en firmware. La línea punteada indica el instante de tiempo en el que la réplica 1 envía el mensaje de resincronización a las demás réplicas. Estas toman un timestamp cuando reciben el mensaje y calculan qué tan desfasadas se encuentran respecto del master. Finalmente, aplican la corrección a sus timers.}
+    \label{fig:resincronizacion_implementacion}
+\end{figure}
+
+El proceso comienza cuando la réplica 1 ejecuta su tarea de resincronización, en verde en la figura. En esta tarea, primero se deja pasar un breve período de tiempo $t_{sync}$ y luego simplemente se envía un mensaje con un determinado mServiceID\_ = 0x01. Este período de tiempo es necesario para asegurar que aquellas réplicas que sean más lentas que el maestro, tengan tiempo de entrar en la tarea de resincronización. Este es el caso de la réplica 3 de la figura.
+
+En cuanto a las demás réplicas, cuando estas ejecuten su tarea de sincronización, estarán esperando a recibir el mensaje proveniente del maestro. En ese momento, consultarán el valor del contador del timer utilizado para el scheduler y obtendrán un valor $t_{timestamp}$. A partir de la comparación de este valor contra el valor esperado $t_{sync}$, se obtendrá un error de sincronización, el cual deberán utilizar para corregir sus propios schedulers. En este caso, $\Delta t_2 = t_{timestamp,2} - t_{sync}$ y $\Delta t_3 = t_{timestamp,3} - t_{sync}$, donde $\Delta t_2 > 0$ y $\Delta t_3 < 0$.
 
 %Finalmente se corrige la duración del tick actual. Esto es posible gracias a una configuración de un registro del timer. La próxima vez que se ejecuta el scheduler, se vuelve a la duración estándar.
 
-Como se muestra en la figura , el paso de corrección se aplica alargando o achicando la duración del tick actual. El periférico del timer utilizado en el microcontrolador de este trabajo permite modificar el valor del registro de overflow, TIMx\_ARR, mientras este se encuentra corriendo. Esto se realiza a partir de setear el bit ARPE = 0 (auto-reload preload bit) en el registro TIMx\_CR1 \cite[p.~745]{RM0385}. El valor a setear en el registro TIMx\_ARR debe ser $t_{tick} + \Delta t_{sync}$, donde $t_{tick}$ es la duración de un tick durante el funcionamiento normal y $\Delta t_{sync} = t_{timestamp} - t_{sync}$.
-Finalmente para retomar el normal funcionamiento, cada réplica debe volver a corregir el valor del registro TIMx\_ARR con el valor nominal de $t_{tick}$. De esto último se encarga el scheduler, en el momento en que se llama al dispatcher en el siguiente tick luego de haber ejecutado la tarea de sincronización.
+El paso de corrección se aplica alargando o achicando la duración del tick actual. El periférico del timer utilizado en el microcontrolador de este trabajo permite modificar el valor del registro de overflow, TIMx\_ARR, de forma directa. Esto se realiza a partir de setear el bit ARPE = 0 (auto-reload preload bit) en el registro TIMx\_CR1 \cite[p.~745]{RM0385}. El valor a setear en el registro TIMx\_ARR debe ser $t_{tick} + \Delta t_{sync}$, donde $t_{tick}$ es la duración de un tick durante el funcionamiento normal y $\Delta t_{sync} = t_{timestamp} - t_{sync}$.
+%Finalmente para retomar el normal funcionamiento, cada réplica debe volver a corregir el valor del registro TIMx\_ARR con el valor nominal de $t_{tick}$. De esto último se encarga el scheduler, en el momento en que se llama al dispatcher en el siguiente tick luego de haber ejecutado la tarea de sincronización.
 
 \subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}\label{sec:tarea_de_ejemplo_adquisicion_datos_IMU}
 
