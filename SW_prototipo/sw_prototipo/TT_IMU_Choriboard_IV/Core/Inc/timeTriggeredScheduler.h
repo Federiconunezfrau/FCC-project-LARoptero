@@ -28,7 +28,7 @@ typedef struct
 	timeTriggeredTask_t *mTaskList_[MAX_NUM_TASKS];
 
 	uint32_t mMacroTick_;
-	volatile uint8_t mSyncExecuted_;
+	uint8_t mSyncExecuted_;
 } timeTriggeredScheduler_t;
 
 typedef struct

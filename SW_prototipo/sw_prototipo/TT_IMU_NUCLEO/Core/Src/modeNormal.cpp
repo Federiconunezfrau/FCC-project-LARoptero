@@ -38,7 +38,7 @@ void normal_mode_run(void)
 {
 	taskHeartbeat_t taskHeartbeat;
 	taskWatchdog_t taskWatchdog;
-	taskTimeTriggeredSync_t taskPeriodicSync;
+//	taskTimeTriggeredSync_t taskPeriodicSync;
 //	taskCNIreceiveData_t taskReceiveIMU1;
 //	taskCNIreceiveData_t taskReceiveIMU2;
 //	taskCNIreceiveData_t taskReceiveIMU3;
@@ -70,14 +70,14 @@ void normal_mode_run(void)
 			BCET_TASK_HEARTBEAT_US,
 			&ledHeartbeat);
 
-	taskTimeTriggeredSync_constructor(&taskPeriodicSync,
-			DELAY_TASK_SYNC_TICKS_NORMAL,
-			PERIOD_TASK_SYNC_TICKS_NORMAL,
-			WCET_TASK_SYNC_US,
-			BCET_TASK_SYNC_US,
-			HANDLE_MSG_CNI_SYNC,
-			EXPECTED_SYNC_TIMESTAMP_TICKS,
-			DELAY_SYNC_TICKS);
+//	taskTimeTriggeredSync_constructor(&taskPeriodicSync,
+//			DELAY_TASK_SYNC_TICKS_NORMAL,
+//			PERIOD_TASK_SYNC_TICKS_NORMAL,
+//			WCET_TASK_SYNC_US,
+//			BCET_TASK_SYNC_US,
+//			HANDLE_MSG_CNI_SYNC,
+//			EXPECTED_SYNC_TIMESTAMP_TICKS,
+//			DELAY_SYNC_TICKS);
 
 //	taskUARTsendData_constructor(&taskSendIMUUART1,
 //			DELAY_TASK_SEND_IMU_UART_TICKS_NORMAL,
@@ -132,7 +132,7 @@ void normal_mode_run(void)
 
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskHeartbeat);
 	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskWatchdog);
-	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskPeriodicSync);
+//	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskPeriodicSync);
 //	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskReceiveIMU1);
 //	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskReceiveIMU2);
 //	timeTriggeredScheduler_add_task((timeTriggeredTask_t*)&taskReceiveIMU3);

@@ -5,13 +5,14 @@
 		<item key="DIALOG_Y_ORIGIN" value="395"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="taskPeriodicSync"/>
+		<item key="selection" value="NODE_ID_MASTER"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="NODE_ID_MASTER"/>
 			<item value="taskPeriodicSync"/>
 			<item value="mMacroTick_"/>
 			<item value="randomJump("/>
@@ -26,7 +27,6 @@
 			<item value="read_registers"/>
 			<item value="save_data"/>
 			<item value="IWDG"/>
-			<item value="pUART_CallbackTypeDef"/>
 		</list>
 		<list key="replacehistory">
 		</list>

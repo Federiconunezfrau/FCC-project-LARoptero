@@ -41,9 +41,9 @@
 #define LED_HEARTBEAT_GPIO_PIN  LED2_Pin
 
 #define ALPHA_ATTITUDE_ESTIMATOR 0.025
-#define DELTA_T_ATTITUDE_ESTIMATOR_S 0.1
+#define DELTA_T_ATTITUDE_ESTIMATOR_S 0.01
 
-#define TIMEOUT_RX_MSG_ATTITUDE 200
+#define TIMEOUT_RX_MSG_ATTITUDE 0
 
 static bool run = false;
 
@@ -203,9 +203,6 @@ void normal_mode_run(void)
 		//__asm__("wfi");
 	}
 
-#if IS_MASTER
-	CNI_send_msg(HANDLE_MSG_CNI_SYNC);
-#endif
 	taskWatchdog_start(&taskWatchdog);
 
 	timeTriggeredScheduler_start();
@@ -216,20 +213,10 @@ void normal_mode_run(void)
 	}
 }
 
-#if IS_MASTER
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-    if(GPIO_Pin == USER_Btn_Pin)
-    {
-    	run = true;
-    }
-}
-#else
+
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
 	HAL_CAN_DeactivateNotification(hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
     HAL_NVIC_DisableIRQ(CAN1_RX0_IRQn);
 	run = true;
 }
-
-#endif

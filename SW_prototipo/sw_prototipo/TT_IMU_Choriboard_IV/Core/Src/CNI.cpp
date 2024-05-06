@@ -42,7 +42,7 @@ static CANmsg_t CANmsgList[] =
 {
 	// id    , nodeID   , payload, lenPayload
 	// Mensaje de sincronización
-	{ sync        , 0        , {}     , 0 }, // 0
+	{ sync        , 1        , {}     , 0 }, // 0
 
 	// Mensaje con datos de la IMU enviada por el slave de nodeID = 1
 	{ IMUdata     , 1        , {}     , 0 }, // 1
@@ -86,10 +86,10 @@ static CANmsg_t CANmsgList[] =
 
 static CAN_FilterTypeDef CANfiltersList[] =
 {
-#if !IS_MASTER
+//#if !IS_MASTER
 	// FIltro para recibir el mensaje de sincronización
 	{ CAN_MAKE_FILTER_HIGH(sync)           , 0x0000, 0xFF00, 0x0000, CAN_RX_FIFO0, 0, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK },
-#endif
+//#endif
 	// FIltro para recibir datos crudos de IMUs
 	{ CAN_MAKE_FILTER_HIGH(IMUdata)        , 0x0000, 0xFF00, 0x0000, CAN_RX_FIFO0, 1, CAN_FILTERMODE_IDMASK, CAN_FILTERSCALE_32BIT, CAN_FILTER_ENABLE, SLAVE_START_FILTER_BANK },
 	// FIltro para recibir datos de estimación de altitud
@@ -130,9 +130,7 @@ void CNI_init(void)
 void CNI_start(void)
 {
 	HAL_CAN_Start(_instance.mHcan_);
-#if !IS_MASTER
     HAL_CAN_ActivateNotification(_instance.mHcan_, CAN_IT_RX_FIFO0_MSG_PENDING);
-#endif
 }
 
 
