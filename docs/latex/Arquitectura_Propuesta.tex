@@ -186,7 +186,7 @@ Para solucionar este problema, se requiere la ejecución de una resincronizació
         \caption{La resincronización periódica mantiene el desfasaje en valores controlados.}
         \label{fig:esquema_resincronizacion}
     \end{subfigure}
-       \caption{Se muestra cómo el efecto de la resincronización periódica evita el desfasaje entre réplicas. En el eje horizontal se ubica el paso del tiempo real, mientras que el eje vertical corresponde a los clocks de las 3 réplicas, $c_1(t)$, $c_2(t)$ y $c_3(t)$. En línea punteada se muestra el caso de un clock perfecto sin drift.}
+       \caption{Se muestra como el efecto de la resincronización periódica evita el desfasaje entre réplicas. En el eje horizontal se ubica el paso del tiempo real, mientras que el eje vertical corresponde a los clocks de las 3 réplicas, $c_1(t)$, $c_2(t)$ y $c_3(t)$. En línea punteada se muestra el caso de un clock perfecto sin drift.}
        \label{fig:esquema_desinc_resinc}
 \end{figure}
 
@@ -536,48 +536,48 @@ En cuanto a las demás réplicas, cuando estas ejecuten su tarea de sincronizaci
 El paso de corrección se aplica alargando o achicando la duración del tick actual. El periférico del timer utilizado en el microcontrolador de este trabajo permite modificar el valor del registro de overflow, TIMx\_ARR, de forma directa. Esto se realiza a partir de setear el bit ARPE = 0 (auto-reload preload bit) en el registro TIMx\_CR1 \cite[p.~745]{RM0385}. El valor a setear en el registro TIMx\_ARR debe ser $t_{tick} + \Delta t_{sync}$, donde $t_{tick}$ es la duración de un tick durante el funcionamiento normal y $\Delta t_{sync} = t_{timestamp} - t_{sync}$.
 %Finalmente para retomar el normal funcionamiento, cada réplica debe volver a corregir el valor del registro TIMx\_ARR con el valor nominal de $t_{tick}$. De esto último se encarga el scheduler, en el momento en que se llama al dispatcher en el siguiente tick luego de haber ejecutado la tarea de sincronización.
 
-\subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}\label{sec:tarea_de_ejemplo_adquisicion_datos_IMU}
+% \subsubsection{Tarea de Ejemplo: Adquisición de Datos del Sensor IMU}\label{sec:tarea_de_ejemplo_adquisicion_datos_IMU}
 
-% El objetivo de esta sección es dar una primera muestra de que lo que se implementó funciona como se dijo que debe funcionar. Para eso, quiero poner capturas de analizador lógico, mostrando que los mensajes se envían en los tiempos configurados y que el intervalo de tiempo entre mensajes se mantiene estable gracias al efecto de la sincronización periódica.
+% % El objetivo de esta sección es dar una primera muestra de que lo que se implementó funciona como se dijo que debe funcionar. Para eso, quiero poner capturas de analizador lógico, mostrando que los mensajes se envían en los tiempos configurados y que el intervalo de tiempo entre mensajes se mantiene estable gracias al efecto de la sincronización periódica.
 
-% La aplicación tiene que ser que se obtienen datos de la IMU y se envían por CAN. Hay que poner una imagen que muestre el timing de las tareas (para esto usar una imagen como la que hice con el script de python). Explicar que la tarea obtiene los datos del sensor, los formatea y los guarda en la tabla. Luego, otra tarea lo envía y en el receptor otra lo recibe y lo almacena internamente.
+% % La aplicación tiene que ser que se obtienen datos de la IMU y se envían por CAN. Hay que poner una imagen que muestre el timing de las tareas (para esto usar una imagen como la que hice con el script de python). Explicar que la tarea obtiene los datos del sensor, los formatea y los guarda en la tabla. Luego, otra tarea lo envía y en el receptor otra lo recibe y lo almacena internamente.
 
-En esta sección se muestra un ejemplo utilizando las 3 réplicas de la computadora de vuelo, donde cada una de ellas obtiene datos de su correspondiente sensor IMU, de manera sincronizada. Luego, estas envían sus respectivas mediciones a través del bus de comunicaciones. Utilizando un analizador lógico se toman mediciones de los tiempos en el bus y se muestra el efecto de la sincronización.
+% En esta sección se muestra un ejemplo utilizando las 3 réplicas de la computadora de vuelo, donde cada una de ellas obtiene datos de su correspondiente sensor IMU, de manera sincronizada. Luego, estas envían sus respectivas mediciones a través del bus de comunicaciones. Utilizando un analizador lógico se toman mediciones de los tiempos en el bus y se muestra el efecto de la sincronización.
 
-% Hay que mostrar el funcionamiento sin sincronización, para que se vea que se rompe todo. Para esto, hay que usar una captura de analizador lógico, sí o sí. Acá hacer énfasis en que las placas se van desincronizando periódicamente. Incluso puedo poner un gráfico que releve todos los instantes de tiempo medidos con el analizador lógico. 
+% % Hay que mostrar el funcionamiento sin sincronización, para que se vea que se rompe todo. Para esto, hay que usar una captura de analizador lógico, sí o sí. Acá hacer énfasis en que las placas se van desincronizando periódicamente. Incluso puedo poner un gráfico que releve todos los instantes de tiempo medidos con el analizador lógico. 
 
-Las tareas a ser ejecutadas por el scheduler se muestran en la tabla \ref{tab:schedule_adquisicion_IMU} junto con sus características temporales. La tarea ``Obtener dato IMU'' es la encargada de obtener el dato del sensor, darle formato y almacenarlo en la tabla interna de mensajes de cada réplica. Por otro lado, la tarea ``Enviar dato IMU'' consultará dicha tabla y enviará el mensaje por el bus CAN. Además, se incorporan otras 2 tareas auxiliares. La tarea ``Heartbeat'' simplemente se encarga de parpadear un LED cada 1 segundo, dando una indicación de que el scheduler está funcionando adecuadamente.
+% Las tareas a ser ejecutadas por el scheduler se muestran en la tabla \ref{tab:schedule_adquisicion_IMU} junto con sus características temporales. La tarea ``Obtener dato IMU'' es la encargada de obtener el dato del sensor, darle formato y almacenarlo en la tabla interna de mensajes de cada réplica. Por otro lado, la tarea ``Enviar dato IMU'' consultará dicha tabla y enviará el mensaje por el bus CAN. Además, se incorporan otras 2 tareas auxiliares. La tarea ``Heartbeat'' simplemente se encarga de parpadear un LED cada 1 segundo, dando una indicación de que el scheduler está funcionando adecuadamente.
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|c|c|}
-        \hline
-        \multicolumn{3}{|c|}{Duración Tick = 1 ms}\\
-        \hline
-        Tarea & Período [ticks] & Delay [ticks]\\
-        \hline
-        Heartbeat        & 1000 & 0 \\
-        Watchdog         & 1    & 0 \\ 
-        Obtener dato IMU & 100  & 1 \\
-        Enviar dato IMU  & 100  & 2 \\
-        \hline
-    \end{tabular}
-    \caption{Set de tareas para la adquisición y envío de datos de la IMU para la réplica 1.}
-    \label{tab:schedule_adquisicion_IMU}
-\end{table}
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|l|c|c|}
+%         \hline
+%         \multicolumn{3}{|c|}{Duración Tick = 1 ms}\\
+%         \hline
+%         Tarea & Período [ticks] & Delay [ticks]\\
+%         \hline
+%         Heartbeat        & 1000 & 0 \\
+%         Watchdog         & 1    & 0 \\ 
+%         Obtener dato IMU & 100  & 1 \\
+%         Enviar dato IMU  & 100  & 2 \\
+%         \hline
+%     \end{tabular}
+%     \caption{Set de tareas para la adquisición y envío de datos de la IMU para la réplica 1.}
+%     \label{tab:schedule_adquisicion_IMU}
+% \end{table}
 
-Para detectar cuándo una réplica no cumple con el timing de su set de tareas, se utiliza el periférico independent watchdog (IWDG) del microcontrolador. El timeout configurado es de $1.5 \ ms$. La tarea ``Watchdog'' se ejecuta cada $1 \ ms$ y es la encargada de evitar el reinicio del microcontrolador. En caso de que esto suceda, puede decectarse leyendo un registro del microcontrolador. En dicho caso, simplemente se encederá un LED y se entrará en un modo donde no se ejecutará ninguna acción, denominado fail-silent.
+% Para detectar cuándo una réplica no cumple con el timing de su set de tareas, se utiliza el periférico independent watchdog (IWDG) del microcontrolador. El timeout configurado es de $1.5 \ ms$. La tarea ``Watchdog'' se ejecuta cada $1 \ ms$ y es la encargada de evitar el reinicio del microcontrolador. En caso de que esto suceda, puede decectarse leyendo un registro del microcontrolador. En dicho caso, simplemente se encederá un LED y se entrará en un modo donde no se ejecutará ninguna acción, denominado fail-silent.
 
-Las tareas de la tabla \ref{tab:schedule_adquisicion_IMU} pueden ubicarse temporalmente en un gráfico como el de la figura \ref{fig:grafico_hyperperiod_adquisicion_IMU}. Por una cuestión de claridad, solamente se muestran los primeros 10 ms de ejecución. 
+% Las tareas de la tabla \ref{tab:schedule_adquisicion_IMU} pueden ubicarse temporalmente en un gráfico como el de la figura \ref{fig:grafico_hyperperiod_adquisicion_IMU}. Por una cuestión de claridad, solamente se muestran los primeros 10 ms de ejecución. 
  
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/grafico_hyperperiod_adquisicion_IMU.png}
-    \caption{Se muestran los primeros 10 ms de ejecución del scheduler. Existe una diferencia entre las 3 réplicas de 1 tick de separación en la tarea de envío de datos por el bus CAN. En cuanto a la tarea ``Watchdog'', esta se ejecuta en cada tick, evitando que se reinicie el microcontrolador.}
-    \label{fig:grafico_hyperperiod_adquisicion_IMU}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{img/grafico_hyperperiod_adquisicion_IMU.png}
+%     \caption{Se muestran los primeros 10 ms de ejecución del scheduler. Existe una diferencia entre las 3 réplicas de 1 tick de separación en la tarea de envío de datos por el bus CAN. En cuanto a la tarea ``Watchdog'', esta se ejecuta en cada tick, evitando que se reinicie el microcontrolador.}
+%     \label{fig:grafico_hyperperiod_adquisicion_IMU}
+% \end{figure}
 
-{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+% {\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
 
 % Captura de analizador lógico
 % Captura de analizador lógico mostrando que se rompe el schedule
@@ -593,9 +593,9 @@ Las tareas de la tabla \ref{tab:schedule_adquisicion_IMU} pueden ubicarse tempor
 
 %Para realizar una prueba de las capacidades de tolerancia a fallas del sistema, se implementó un sistema de validación de datos para un sensor en particular, en este caso la IMU, la cual provee datos a la tasa más alta y aporta los datos escenciales para la estabilidad del vehículo. La arquitectura se basa en un principio típicamente usado: considerando que existen tres sensores del mismo tipo y características, se comparan los datos adquiridos de a pares, y aquel sensor que difiera con respecto a los otros dos se considera en falla. [13], [14].
 
-Para demostrar las capacidades de tolerancia a fallas de todo el sistema, se presentan una serie de pruebas realizadas para la detección de fallas en el sensor IMU. Durante la ejecución del scheduler, las réplicas intercambian resultados de estimaciones de los ángulos de pitch y roll, obtenidas a partir de un filtro complementario \cite{Pose2014}. Estas comparan sus resultados con los de sus pares y luego aquella que difiera con respecto a las demás se considera en falla. Utilizando este método y a partir de la arquitectura propuesta, es posible detectar la falla de 1 de las réplicas de forma simultánea.
+Para demostrar las capacidades de todo el sistema, se presentan una serie de pruebas realizadas para la detección de fallas en el sensor IMU. Durante la ejecución del scheduler, las réplicas intercambian resultados de estimaciones de los ángulos de pitch y roll, obtenidas a partir de un filtro complementario \cite{Pose2014}. Estas comparan sus resultados con los de sus pares y luego aquella que difiera con respecto a las demás se considera en falla. Utilizando este método y a partir de la arquitectura propuesta, es posible detectar la falla simultánea de 1 de las réplicas.
 
-En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus características temporales y en la figura \ref{fig:grafico_hyperperiod_pruebas_realizadas} se muestra un gráfico temporal. A partir de esta secuencia, cada réplica obtiene una nueva estimación de ángulos de pitch y roll cada 100 ms.
+En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus características temporales y en la figura \ref{fig:grafico_hyperperiod_pruebas_realizadas} se muestra un gráfico temporal. A partir de esta secuencia, cada réplica obtiene una nueva estimación de ángulos de pitch y roll cada 10 ms.
 
 \begin{table}[H]
     \centering
@@ -607,16 +607,14 @@ En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus
         \hline
         Heartbeat                 & 1000 & 0 \\
         Watchdog                  & 1    & 0 \\ 
-        Obtener dato IMU          & 100  & 1 \\
-        Filtro Complementario     & 100  & 2 \\
-        Enviar pitch y roll       & 100  & 3 \\
-        Recibir pitch y roll de 2 & 100  & 4 \\
-        Recibir pitch y roll de 3 & 100  & 5 \\
-        Calcular residuos         & 100  & 6 \\
-        Enviar residuos           & 100  & 7 \\
-        Recibir residuos de 2     & 100  & 8 \\
-        Recibir residuos de 3     & 100  & 9 \\
-        Sincronización            & 1000 & 450 \\
+        Obtener dato IMU          & 10   & 0 \\
+        Filtro Complementario     & 10   & 0 \\
+        Enviar pitch y roll       & 10   & 1 \\
+        Recibir pitch y roll de 2 & 10   & 2 \\
+        Recibir pitch y roll de 3 & 10   & 3 \\
+        Calcular residuos         & 10   & 4 \\
+        Enviar residuos           & 10   & 5 \\
+        Sincronización            & 1000 & 8 \\
         \hline
     \end{tabular}
     \caption{Set de tareas correspondiente a la réplica 1, para las pruebas realizadas.}
@@ -626,7 +624,7 @@ En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/grafico_hyperperiod_pruebas_realizadas.png}
-    \caption{Se muestran los primeros 12 ms de ejecución del scheduler. Por cuestiones de visualización no se muestra la tarea de sincronización, sin embargo esta se encuentra en el scheduler y se ejecuta cada 1 segundo, con un delay inicial de 450 ms.}
+    \caption{Se muestran los primeros 9 ms de ejecución del scheduler, donde se muestran las tareas de las 3 réplicas.}
     \label{fig:grafico_hyperperiod_pruebas_realizadas}
 \end{figure}
 
@@ -638,7 +636,7 @@ Mientras que la tarea ``Obtener dato IMU'' se encarga de consultar al sensor y o
 
 \begin{subequations}
     \begin{align}
-        \theta[n] &= \alpha \ atan_2(-a_x[n], \sqrt{a_y^2[n]+a_z^2[n]}) + (1 - \alpha) \left( \Delta T \ g_y[n] + \theta[n-1] \right)\\
+        \theta[n] &= \alpha \ atan_2(-a_x[n], a_z[n]) + (1 - \alpha) \left( \Delta T \ g_y[n] + \theta[n-1] \right)\\
         \phi[n] &= \alpha \ atan_2(a_y[n], a_z[n]) + (1 - \alpha) \left( \Delta T \ g_x[n] + \phi [n-1] \right)
     \end{align}
 \end{subequations}
@@ -659,33 +657,24 @@ Seguido de esto, hay un período de intercambio de resultados de las estimacione
     \end{align}
 \end{subequations}
 
-En caso de que todas las réplicas obtengan resultados consistentes, los residuos tendrán valores cercanos a 0. Estos nunca alcanzarán un valor exactamente 0, debido a diferencias entre los sensores y a errores de cuantización. Por otro lado, si ocurre una falla en una de las IMUs, la estimación del pitch y/o roll de esa réplica divergirá con respecto a las demás. Esto generará que los valores de 2 de los residuos se alejen de cero, indicando cuál es el sensor en falla.
+En caso de que todas las réplicas obtengan resultados consistentes, los residuos tendrán valores cercanos a 0. Estos nunca alcanzarán un valor exactamente 0, debido a variaciones entre unidades del mismo sensor, propias del proceso de fabricación, además de errores de cuantización. En caso de que ocurra una falla en una de las IMUs, la estimación del pitch y/o roll de esa réplica divergirá con respecto a las demás. Esto generará que los valores de 2 de los residuos se alejen de cero, indicando cuál es el sensor en falla.
 
 % Mencionar que los residuos se envían por el bus solo para ser loggeados con el analizador lógico para mostrarse acá.
-Con motivo de observar el valor de los residuos, se agrega una tarea ``Enviar residuos'' donde cada réplica envía por el bus CAN los residuos que calcularon. Estos se loggean en una PC, utilizando un analizador lógico el cual registra todos los mensajes intercambiados en el bus CAN.
+Con motivo de observar el valor de los residuos, se agrega una tarea ``Enviar residuos'' donde cada réplica envía por el bus CAN los residuos que calcularon. Utilizando un analizador lógico, se loggean todos los mensajes intercambiados en el bus CAN.
 
-% Explicar cómo es que se implementa la inyección de falla, brevemente.
-En los resultados que se presentan a continuación, todas las fallas fueron inyectadas de manera artificial, con el objetivo de emular un determinado comportamiento del sensor IMU. La inyección de la falla siempre se aplica en la misma tarea ``Obtener dato IMU'', antes de guardar las mediciones en la tabla de cada réplica.
-
-%Para ello se configuraron los tres nodos de manera idéntica, para adquirir datos de acelerómetros y giróscopos de la IMU a una frecuencia de prueba de 10 Hz. Para evitar la desincronización entre placas, se toma como referencia el reloj del nodo 1, quien envía periódicamente cada 1 s un mensaje a los demás nodos para sincronizar sus relojes. Adquiridos los datos, en cada placa se ejecuta un filtro complementario para estimar los ángulos de roll y pitch, que son las rotaciones de la placa en el eje x que apunta hacia la nariz del vehículo, y en el eje y que apunta hacia la derecha, respectivamente. Luego, cada nodo publica mediante el bus CAN los datos de pitch y roll calculados, con lo cual todos los nodos adquieren la orientación calculada por los demás. Finalmente, cada nodo calcula los residuos entre las estimaciones del pitch de dos nodos como resi,j = |i - r | , i, j = 1, 2, 3, y los residuos de roll de manera análoga. Todos los residuos tendrán valores cercanos a cero en caso que los nodos obtengan mediciones consistentes. Si ocurre una falla en una de las IMUs, la estimación del pitch y/o roll de ese nodo divergirá con respecto a las demás, resultando en dos residuos cuyos valores se alejan de cero, lo cual permitirá conocer cuál es el sensor en falla. En las Figs. 5 y 6 se observa un experimento donde a los 10 s de iniciado, se inyecta un sesgo artificial de 10 ◦ s-1 en la medición del giróscopo en el eje x del nodo 2. Esto causa una estimación del ángulo de roll errónea en el nodo, que resulta en un sesgo constante respecto de los otros dos nodos, mientras que la estimación de pitch no se ve afectada. En el caso de los residuos, los de pitch no se ven afectados por la falla, mientras que los residuos que involucran al nodo 2 divergen rápidamente, permitiendo identificar el origen de la falla.
-
-\subsubsection{Funcionamiento Sin Fallas}
-
-% Mostrar cómo es la prueba con dibujitos, que dura 60 segundos, que se hace a mano y en qué posiciones se orienta durante cuánto tiempo (esto podría ir en la parte de funcionamiento sin fallas quizás)
-
-En este primer caso no se inyectó ninguna falla en las mediciones de la IMU. Se ejecutó el set de tareas antes mencionado durante 60 segundos, orientando a las réplicas siguiendo el esquema de la figura \ref{fig:orientaciones_prueba}. Para que la orientación de las réplicas fuera la misma en todo momento, estas se apilaron con una serie de soportes, como se muestra en la figura \ref{fig:pruebas_stackeadas}.
+El set de tareas se ejecuta durante 60 segundos, orientando a las réplicas siguiendo el esquema de la figura \ref{fig:orientaciones_prueba}. Para que la orientación de las réplicas sea la misma en todo momento, estas se apilan con una serie de soportes, como se muestra en la figura \ref{fig:pruebas_stackeadas}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{img/orientaciones_prueba.png}
-    \caption{Durante los primeros 10 segundos, las réplica se mantienen como en la orientación 1. Luego se continua con 2 durante otros 10 segundos, y así sucesivamente hasta finalizar en 6. Cada una de las orientaciones que se muestran corresponden a una rotación de aproximadamente 45$^o$.}
+    \caption{Durante los primeros 10 segundos, las réplicas se orientan como en el caso 1. Luego se continua con el caso 2 durante otros 10 segundos, y así sucesivamente hasta finalizar en el caso 6, donde la placa vuelve a su condición inicial. Cada una de las orientaciones que se muestran corresponden a una rotación de aproximadamente 45$^o$.}
     \label{fig:orientaciones_prueba}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{img/pruebas_stackeadas.png}
-    \caption{Se muestran las 3 réplicas apiladas.}
+    \caption{Se muestran las 3 réplicas apiladas. {\color{red} Esta foto estaría bueno que muestre a las 3 réplicas, pero conectadas al bus CAN y con la Núcleo junto con el analizador lógico. La idea es mostrar algo más "de laboratorio", que se vea que esto está vivo. En esta foto parece una maqueta, algo que se mira y no se toca, cuando no es así.}}
     \label{fig:pruebas_stackeadas}
 \end{figure}
 
@@ -693,25 +682,188 @@ En este primer caso no se inyectó ninguna falla en las mediciones de la IMU. Se
 
 %{\Large \textbf{{\color{red} IMAGEN CON LAS POSICIONES DE LAS PLACAS. ESTA SÍ PUEDE SER UN 3D.}}}
 
-{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+%{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
 
-% Acá también graficar resultados de sincronización
+%Durante la ejecución de la prueba se utilizó un analizador lógico conectado al mismo bus CAN y se loggearon todos los mensajes intercambiados entre las réplicas, tanto las estimaciones de pitch y roll, como los residuos calculados por cada réplica. A continuación, se muestran los resultados de ejecutar el set de tareas de la tabla \ref{tab:schedule_pruebas_realizadas}.
 
-\subsubsection{Bias en Valores de Giróscopo}
+% Explicar cómo es que se implementa la inyección de falla, brevemente.
+Para verificar que se está cumpliendo con los tiempos durante el intercambio de mensajes en el bus CAN, se tomaron capturas de todos los mensajes. En los resultados que se presentan a continuación, todas las fallas fueron inyectadas de manera artificial, con el objetivo de emular un determinado comportamiento del sensor IMU. La inyección de la falla siempre se aplica dentro de la tarea ``Obtener dato IMU'', antes de guardar las mediciones en la tabla de cada réplica.
 
-{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+%Para ello se configuraron los tres nodos de manera idéntica, para adquirir datos de acelerómetros y giróscopos de la IMU a una frecuencia de prueba de 10 Hz. Para evitar la desincronización entre placas, se toma como referencia el reloj del nodo 1, quien envía periódicamente cada 1 s un mensaje a los demás nodos para sincronizar sus relojes. Adquiridos los datos, en cada placa se ejecuta un filtro complementario para estimar los ángulos de roll y pitch, que son las rotaciones de la placa en el eje x que apunta hacia la nariz del vehículo, y en el eje y que apunta hacia la derecha, respectivamente. Luego, cada nodo publica mediante el bus CAN los datos de pitch y roll calculados, con lo cual todos los nodos adquieren la orientación calculada por los demás. Finalmente, cada nodo calcula los residuos entre las estimaciones del pitch de dos nodos como resi,j = |i - r | , i, j = 1, 2, 3, y los residuos de roll de manera análoga. Todos los residuos tendrán valores cercanos a cero en caso que los nodos obtengan mediciones consistentes. Si ocurre una falla en una de las IMUs, la estimación del pitch y/o roll de ese nodo divergirá con respecto a las demás, resultando en dos residuos cuyos valores se alejan de cero, lo cual permitirá conocer cuál es el sensor en falla. En las Figs. 5 y 6 se observa un experimento donde a los 10 s de iniciado, se inyecta un sesgo artificial de 10 ◦ s-1 en la medición del giróscopo en el eje x del nodo 2. Esto causa una estimación del ángulo de roll errónea en el nodo, que resulta en un sesgo constante respecto de los otros dos nodos, mientras que la estimación de pitch no se ve afectada. En el caso de los residuos, los de pitch no se ven afectados por la falla, mientras que los residuos que involucran al nodo 2 divergen rápidamente, permitiendo identificar el origen de la falla.
+
+\subsubsection{Funcionamiento Sin Fallas}
+
+% Mostrar cómo es la prueba con dibujitos, que dura 60 segundos, que se hace a mano y en qué posiciones se orienta durante cuánto tiempo (esto podría ir en la parte de funcionamiento sin fallas quizás)
+
+En este primer caso no se inyectó ninguna falla en las mediciones de la IMU. Aquí se presentan los primeros resultados y se muestra el funcionamiento del sistema conformado por las 3 réplicas.
+
+Para confirmar que el sistema se encuentra funcionando correctamente, lo más importante es verificar que las 3 réplicas ejecutan sus tareas en los tiempos definidos, además de que se encuentran trabajando de manera sincronizada. Para ello, se hicieron distintas mediciones sobre el bus CAN. En primera medida, en la figura  se muestra una captura de la actividad en el bus CAN, utilizando un osciloscopio.
+
+{\Large \textbf{{\color{red} CAPTURA DE OSCILOSCOPIO DEL BUS CAN. TAMBIÉN MOSTRAR CÓMO SE CONECTÓ, QUE SE VEA LA PUNTA DEL OSCILOSCOPIO COLGADA DEL BUS.}}}
+
+Para verificar que las réplicas se encuentran sincronizadas es necesario observar la actividad del bus durante un mayor período de tiempo. Para esto, se hicieron capturas utilizando el analizador lógico. En la figura \ref{fig:resultados_timing_sin_fallas} se muestra un fragmento de 100 ms, donde se pueden ver una serie de mensajes, los cuales se repiten de forma periódica. Estos corresponden a la secuencia que fue definida en el schedule de la tabla \ref{tab:schedule_pruebas_realizadas}.
+
+%Para apreciar mejor el timing de los mensajes en el bus CAN, en la figura \ref{fig:resultados_timing_detalle_sin_fallas} se muestran mediciones de tiempos tomadas a partir del software del analizador lógico.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_timing_sin_fallas_zoom.png}
+    \caption{Captura tomada del software del analizador lógico. Se muestra un fragmento de 100 ms de actividad en el bus CAN. Se muestra un acercamiento de uno de los períodos, donde se destacan todos los mensajes involucrados en el schedule. En rojo, verde y azul se muestran los mensajes correspondientes a la tarea ``Enviar pitch y roll'' de las placas 1, 2 y 3 respectivamente. En celeste, amarillo y rosado, los mensajes correspondientes a la tarea ``Enviar residuos'' para las placas 1, 2 y 3.}
+    \label{fig:resultados_timing_sin_fallas}
+\end{figure}
+
+Utilizando las herramientas que provee el software del analizador lógico, se midieron los intervalos de tiempo entre mensajes. Estos se muestran en la figura \ref{fig:resultados_timing_detalle_sin_fallas}. Comparando los valores medidos contra los valores de la tabla \ref{tab:schedule_pruebas_realizadas}, se verifica que las placas respetan los tiempos de uso del bus
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_timing_detalle_sin_fallas.png}
+    \caption{Utilizando la funcionalidad de markers se midieron los intervalos de tiempo entre los mensajes presentes en el bus CAN. La imagen muestra la misma secuencia de mensajes de la figura \ref{fig:resultados_timing_sin_fallas}. En el apartado Timing Markers se muestran los valores medidos. Se tomó como referencia el primer mensaje, correspondiente a la tarea ``Enviar pitch y roll'' de la placa 1. El último valor muestra que la tarea vuelve a repetirse al cabo de 10 ms.}
+    \label{fig:resultados_timing_detalle_sin_fallas}
+\end{figure}
+
+% Comentar acerca de cómo se armó el gráfico de sincronización.
+Para determinar que las 3 réplicas efectivamente se encuentran funcionando de manera sincronizada, se hizo un análisis similar al de la figura \ref{fig:resultados_timing_detalle_sin_fallas} para los 60 segundos de ejecución del schedule. En la secuencia de mensajes, siempre que la réplica 2 envía un mensaje, esta lo hace 1 ms después que la placa 1, tanto para la tarea ``Enviar pitch y roll'' como ``Enviar residuos''. En cuanto a la réplica 3, esta lo hace 2 ms después que la placa 1. A partir de los datos tomados con el analizador lógico se hizo el gráfico de la figura \ref{fig:resultados_timing_detalle_sin_fallas}, donde se verifica que esto se cumple durante los 60 segundos de ejecución.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_sincronizacion_sin_fallas.png}
+    \caption{En cada gráfico se muestran los intervalos de tiempo, medidos por el analizador lógico, entre mensajes enviados por las réplicas 2 y 3 con respecto a los mensajes enviados por la réplica 1. Los intervalos de tiempo se miden entre mensajes homónimos.}
+    \label{fig:resultados_sincronizacion_sin_fallas}
+\end{figure}
+
+El salto que se muestra en el instante inicial corresponde a la primera sincronización. La forma característica del gráfico tipo ``diente de sierra'' muestra el efecto de la sincronización periódica, donde cada salto abrupto indica una nueva resincronización. Esto ocurre cada 1 segundo, de acuerdo al período de tiempo de la tarea ``Sincronización'', definida en la tabla \ref{tab:schedule_pruebas_realizadas}.
+
+Con motivo de mostrar la necesidad de la sincronización periódica, se repitió la ejecución del scheduler pero removiendo la tarea de sincronización en la réplica 3. Es esperable que en los primeros instantes de ejecución, el sistema funcione normalmente. Sin embargo, debido a que la placa 3 no ajusta su timer, esta se irá desincronizando lentamente. Esto último es lo que se muestra en la figura \ref{fig:resultados_no_sync}. El hecho de que el gráfico sea una recta es debido al efecto del drift, mencionado previamente en la figura \ref{fig:esquema_desinc_resinc}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_no_sync.png}
+    \caption{El hecho de que la réplica 3 no ejecute una sincronización periódica genera que esta no respete los tiempos de uso del bus. Al cabo de 35 segundos el desicrnonismo de la réplica 3 es tal que comienza a perjudicar la comunicación entre las demás réplicas.}
+    \label{fig:resultados_no_sync}
+\end{figure}
+
+La desincronización también se puede ver a partir de la actividad registrada en el bus CAN. En la figura \ref{fig:resultados_timing_detalle_placa_3_no_sync} se muestran 3 fragmentos capturados con el analizador lógico. A medida que pasa el tiempo, los mensajes enviados por la réplica 3 se acercan lentamente a los instantes de tiempo donde se envían los mensajes de la réplica 2. Comparando los valores de los intervalos de tiempo con las etiquetas P1 y P4 de las 3 imágenes, se puede ver que al cabo de 10 s hubo un corriemiento de aproximadamente 150 $\mu$s. Luego, a los 30 s de ejecución el corrimiento alcanza los 470 $\mu$s. En este último caso, el mensaje de la réplica 3 se encuentra próximo a causar una colisión con el de la réplica 2.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_timing_detalle_placa_3_no_sync.png}
+    \caption{Se muestran 3 fragmentos capturados con el analizador lógico. La primera imagen corresponde a los primeros 10 ms de ejecución, la segunda se tomó luego de 10 s y la tercera a los 30 s. En el apartado Timing Markers se muestran las mismas mediciones de la figura \ref{fig:resultados_timing_detalle_sin_fallas}.}
+    \label{fig:resultados_timing_detalle_placa_3_no_sync}
+\end{figure}
+
+Utilizando una serie de scripts desarrollados en el lenguaje de programación Python, se pudo extraer la información de los mensajes capturados con el analizador lógico, correspondientes a las tareas ``Enviar pitch y roll'' y ``Enviar residuos''. En la figura \ref{fig:resultados_pitch_roll_sin_fallas} se grafican los valores de pitch y roll de las 3 placas superpuestas. En la figura \ref{fig:resultados_residuos_pitch_sin_fallas} se muestran los residuos de pitch y en \ref{fig:resultados_residuos_roll_sin_fallas} los residuos de roll.
+
+Debido a que no se inyectaron fallas en esta ejecución, las curvas de pitch y roll se encuentran prácticamente superpuestas, indicando que las 3 réplicas obtuvieron resultados consistentes durante la ejecución. Sin embargo en los gráficos de residuos se puede ver que sí existen ciertas diferencias entre las 3 réplicas, aunque estas se encuentran por debajo de los $0.5^{o}$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_pitch_roll_sin_fallas.png}
+    \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
+    \label{fig:resultados_pitch_roll_sin_fallas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_sin_fallas.png}
+    \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
+    \label{fig:resultados_residuos_pitch_sin_fallas}    
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_roll_sin_fallas.png}
+    \caption{Se muestran los residuos de roll calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\phi}[n]$, el segundo a $r_{1,3}^{\phi}[n]$ y el tercero a $r_{2,3}^{\phi}[n]$.}
+    \label{fig:resultados_residuos_roll_sin_fallas}
+\end{figure}
+
+\subsubsection{Sesgo en Valores de Giróscopo}
+
+En esta sección se repitió la ejecución del scheduling de la tabla \ref{tab:schedule_pruebas_realizadas}, pero inyectando de manera artificial un sesgo de $+10 ^{o}$/s en las mediciones de giróscopo en el eje x, $g_x[n]$, reportadas por la IMU de la réplica 3. Al igual que en la sección anterior, se presentan los gráficos con las estimaciones de pitch y roll, además de los residuos calculados por las 3 réplicas.
+
+La falla se inyectó pasados los 10 segundos de ejecución, por lo que hasta ese instante, los residuos se encuentran en valores similares a los del caso sin fallas. En el momento en el que se inyecta la falla, los residuos $r_{1,3}^{\phi}$ y $r_{2,3}^{\phi}$ rápidamente crecen. Debido a que el residuo $r_{1,2}^{\phi}$ no se ve afectado, es evidente que la réplica 3 se encuentra en falla.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_pitch_roll_bias_giroscopo.png}
+    \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
+    \label{fig:resultados_pitch_roll_bias_giroscopo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_bias_giroscopo.png}
+    \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
+    \label{fig:resultados_residuos_pitch_bias_giroscopo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_roll_bias_giroscopo.png}
+    \caption{Se muestran los residuos de roll calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\phi}[n]$, el segundo a $r_{1,3}^{\phi}[n]$ y el tercero a $r_{2,3}^{\phi}[n]$.}
+    \label{fig:resultados_residuos_roll_bias_giroscopo}
+\end{figure}
+
+%{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
 
 \subsubsection{Saltos Aleatorios en Valores de Giróscopo}
 
-{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+En esta sección se presentan los resultados de aplicar una falla que se manifiesta como saltos aleatorios sobre los valores de giróscopo en el eje x, reportados por la IMU de la réplica 3. Cada cierto período de tiempo, se le aplica un sesgo a la medición de giróscopo en el eje x de la réplica 3. Este período de tiempo, al igual que el valor del sesgo aplicado, se definen de manera aleatoria. Al igual que en el caso anterior, la falla comienza a manifestarse pasados los 10 segundos de ejecución.
 
-\subsubsection{Medición Constante e Invariante de Acelerómetros y Giróscopos}
+La falla de esta sección tiene la particularidad de que se manifiesta durante un período de tiempo muy breve, y luego desaparece. Lo que se destaca de los resultados de esta sección, es el hecho de que la falla igualmente puede detectarse de manera inmediata. Esto es gracias a la arquitectura utilizada, donde todas las tareas tienen sus instantes de ejecución predefinidos.
 
-{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_pitch_roll_saltos_aleatorios.png}
+    \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
+    \label{fig:resultados_pitch_roll_saltos_aleatorios}
+\end{figure}
 
-\subsubsection{Mediciones Inconsistentes de Acelerómetro}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_saltos_aleatorios.png}
+    \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
+    \label{fig:resultados_residuos_pitch_saltos_aleatorios}
+\end{figure}
 
-{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_roll_saltos_aleatorios.png}
+    \caption{Se muestran los residuos de roll calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\phi}[n]$, el segundo a $r_{1,3}^{\phi}[n]$ y el tercero a $r_{2,3}^{\phi}[n]$.}
+    \label{fig:resultados_residuos_roll_saltos_aleatorios}
+\end{figure}
+
+%{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+
+\subsubsection{Medición Invariante de Acelerómetros y Giróscopos}
+
+El modo de falla evaluado aquí es uno donde el sensor IMU de la réplica 3 entrega siempre los mismos valores de mediciones, para los acelerómetros y giróscopos. Al igual que en los casos anteriores, la falla se inyecta a partir de los 10 segundos de ejecución. Es fácil ver en los gráficos de residuos, que la réplica 3 es la que manifiesta la falla.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_pitch_roll_enclavado.png}
+    \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
+    \label{fig:resultados_pitch_roll_enclavado}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_enclavado.png}
+    \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
+    \label{fig:resultados_residuos_pitch_enclavado}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/resultados_residuos_roll_enclavado.png}
+    \caption{Se muestran los residuos de roll calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\phi}[n]$, el segundo a $r_{1,3}^{\phi}[n]$ y el tercero a $r_{2,3}^{\phi}[n]$.}
+    \label{fig:resultados_residuos_roll_enclavado}
+\end{figure}
+
+%{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
+
+%\subsubsection{Mediciones Inconsistentes de Acelerómetro}
+
+%{\Large \textbf{{\color{red} COMPLETAR UNA VEZ QUE LLEGUE EL NUEVO TESTER.}}}
 
 
 %\subsection{Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}
