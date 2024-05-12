@@ -9,23 +9,12 @@
 % Volver a escribir la introducción a la sección
 %A partir de los distintos casos presentados, en esta sección se busca relevar cuáles son las características comunes en sistemas con tolerancia a fallas. Se analizan las distintas alternativas y luego se mencionan los criterios tenidos en cuenta para el desarrollo de la computadora de vuelo. En este trabajo no se define a priori cuál es la arquitectura del sistema en cuanto al uso de redundancias, por lo que la computadora de vuelo debe tener cierta diversidad en cuanto a sus capacidades. 
 
-
-
 El objetivo de esta sección es introducir el uso de redundancias como técnica para incrementar el nivel de seguridad en un sistema. Esta consiste en el uso de varias réplicas de distintos componentes, las cuales realizan las mismas tareas de manera independiente. En caso de que ocurra una falla, el sistema podrá seguir ejecutando su función de manera correcta, utilizando alguna de las demás réplicas. A partir de esto, se presentan las características de sistemas redundantes y los requerimientos que estos deben cumplir para funcionar adecuadamente. Finalmente, se muestra que si el sistema cumple con ciertas características, %en particular funcionar de manera sincronizada y utilizar un bus de comunicaciones, 
 el funcionamiento del mecanismo para tolerar fallas puede simplificarse.
 
 %Sistema de tiempo real, sincronización, uso de un bus de comunicaciones.
 
-
 %Se explica la necesidad de la tolerancia a fallas como una medida para incrementar la seguridad de un sistema. 
-
-
-
-
-
-
-
-
 
 %El objetivo de esta sección es presentar las características tenidas en cuenta para el sistema tolerante a fallas propuesto en este trabajo. 
 
@@ -33,34 +22,43 @@ el funcionamiento del mecanismo para tolerar fallas puede simplificarse.
 
 %Después presento el uso de redundancias como una técnica para la tolerancia a fallas. 
 
-
-
-
-
 \subsection{Características de Sistemas Tolerantes a Fallas}
 
-El objetivo del diseño tolerante a fallas consiste en mejorar la confianza (\textit{Dependability}) del sistema, apuntando a que este pueda seguir ejecutando su función de manera correcta a pesar de la presencia de una cierta cantidad de fallas \cite{nelson1990fault}. De esta última expresión se puede tomar una definición de lo que es un sistema tolerante a fallas.
+El objetivo del diseño tolerante a fallas consiste en mejorar la confiabilidad de un sistema, apuntando a que este pueda ejecutar su función correctamente, a pesar de la presencia de una cierta cantidad de fallas \cite{nelson1990fault}. Tal como lo indica su nombre, un sistema tolerante a fallas es aquel donde una falla no implica necesariamente un fracaso en el funcionamiento. Tampoco quiere decir que no ocurren fallas, sino que por el contrario, se acepta que las fallas pueden ocurrir. Lo que se busca es que el sistema igualmente pueda cumplir con su función de manera correcta.
 
-\begin{mydef}
-    \textbf{Sistema Tolerante a Fallas:} es aquel donde una falla no implica necesariamente un fracaso en el funcionamiento. Un sistema tolerante a fallas no es aquel donde no ocurren fallas, sino que más bien, se acepta que las fallas pueden ocurrir en el sistema, pero lo que se pretende es que el sistema pueda cumplir con su función de igual manera.
-\end{mydef}
+%De esta última expresión se puede tomar una definición de lo que es un sistema tolerante a fallas.
 
-De manera de introducir la nomenclatura que se encuentra en la bibliografía \cite{nelson1990fault}, se definen los siguientes términos:
+% \begin{mydef}
+%     \textbf{Sistema Tolerante a Fallas:} es aquel donde una falla no implica necesariamente un fracaso en el funcionamiento. Un sistema tolerante a fallas no es aquel donde no ocurren fallas, sino que más bien, se acepta que las fallas pueden ocurrir en el sistema, pero lo que se pretende es que el sistema pueda cumplir con su función de igual manera.
+% \end{mydef}
+
+De manera de introducir la nomenclatura que se encuentra en la bibliografía, se definen los siguientes términos:
 
 \begin{itemize}
-    \item Falla (\textit{Fault}): es alguna condición anómala, no esperada.
-    \item Error: ocurre cuando una falla se manifiesta y produce un comportamiento fuera de lo esperado en alguna parte del sistema.
-    \item Fracaso (\textit{Failure}): quiere decir que el sistema no puede cumplir con su función de manera adecuada.
+    \item Falla (\textit{Fault}): Es alguna condición anómala, no esperada.
+    \item Error: Ocurre cuando una falla se manifiesta y produce un comportamiento fuera de lo esperado en alguna parte del sistema.
+    \item Fracaso (\textit{Failure}): Quiere decir que el sistema no puede cumplir con su función de manera adecuada.
 \end{itemize}
 
-Una de las formas de cuantificar la confianza es a través de la fiabilidad del sistema (\textit{Reliability}). Esta se expresa en la ecuación \eqref{eq:Reliability}, y se define como la probabilidad de que el sistema pueda cumplir su función de manera correcta en un intervalo de tiempo $[t_0;t]$, dado que en el instante inicial $t_0$ el sistema podía hacerlo.
+Por ejemplo en un UAV, la información proveniente de los distintos sensores se utiliza para estimar la pose del vehículo. Si un sensor entrega información que no se corresponde con la realidad, luego esto implicará a una \textbf{falla}. Si esta no es detectada y corregida, luego la computadora de vuelo utilizará esta información para realizar los cálculos de estimación, obteniendo una estimación incorrecta de la pose. Esto representa un \textbf{error}. Finalmente, esto causará que tampoco pueda seguir su trayectoria correctamente, lo que implicará un \textbf{fracaso} del sistema.
+
+Se define a la confiabilidad de un sistema como la probabilidad de que este pueda cumplir con su función de manera correcta en un intervalo de tiempo $[t_0;t]$, dado que en el instante inicial $t_0$ podía hacerlo \cite[p.~10]{kopetz-2011}:
 
 \begin{equation}
     R(t) = \mathtt{P}\left( \text{funcionamiento correcto en $t$} | \text{funcionamiento correcto en $t_0$} \right)
     \label{eq:Reliability}
 \end{equation}
 
-Dado que en el intervalo $[t_0;t]$ puede o no ocurrir una falla, la probabilidad de que el sistema pueda cumplir su función en $t$ puede expresarse como en la ecuación \eqref{eq:Reliability_2}. Si no ocurre ninguna falla, luego el sistema podrá seguir cumpliendo su función en $t$. Además, si llegase a ocurrir una falla, pero el sistema tiene la capacidad de tolerarla, luego el sistema de igual manera podrá seguir cumpliendo su función en el instante $t$.
+En el caso en el que se tuviera un sistema sin ningún mecanismo de tolerancia, la ocurrencia de una falla implicaría un funcionamiento incorrecto, es decir un fracaso. Esto quiere decir que la confiabilidad sería exactamente igual a la probabilidad de que no ocurra ninguna falla en el intervalo $[t_0;t]$ \cite{nelson1990fault}. En este caso, la confiabilidad podría expresarse como en la ecuación \eqref{eq:Reliability_3} y la única manera de mejorarla sería incrementando la probabilidad de que no ocurra ninguna falla en el intervalo $[t_0;t]$.
+
+\begin{equation}
+    R(t) = \mathtt{P}\left( \text{no ocurrio ninguna falla en $[t_0;t]$} \right)
+    \label{eq:Reliability_3}
+\end{equation}
+
+Si es posible demostrar que el sistema cumple con un determinado requerimiento de confiabilidad, luego no sería necesario el uso de técnicas de tolerancia a fallas. La manera de hacer esto puede ser por ejemplo, utilizando componentes o módulos de muy buena calidad lo suficientemente confiables \cite{nelson1990fault}. Sin embargo, esto puede ser muy costoso, pensando en que un sistema puede estar compuesto de muchos componentes y cada uno de ellos puede manifestar una gran cantidad de posibles fallas. Sumado a esto, se dificulta la etapa de diseño de un sistema, ya que cualquier error de diseño que no se haya tenido en cuenta puede llegar a causar una falla y por ende un fracaso del sistema.
+
+El uso de técnicas para tolerar fallas representa una actitud más conservadora, ya que se acepta que las fallas pueden ocurrir. Dado que en el intervalo $[t_0;t]$ puede o no ocurrir una falla, la probabilidad de que el sistema pueda cumplir su función en $t$ puede expresarse como en la ecuación \eqref{eq:Reliability_2}. Si no ocurre ninguna falla, luego el sistema podrá seguir cumpliendo su función en $t$. Además, si llegase a ocurrir una falla, pero el sistema tiene la capacidad de tolerarla, luego el sistema de igual manera podrá seguir cumpliendo su función en el instante $t$.
 
 \begin{equation}
     \begin{aligned}
@@ -69,106 +67,208 @@ Dado que en el intervalo $[t_0;t]$ puede o no ocurrir una falla, la probabilidad
     \label{eq:Reliability_2}
 \end{equation}
 
-En el caso en el que se tuviera un sistema que no comprende ningún mecanismo de tolerancia a fallas, luego la fiabilidad sería exactamente igual a la probabilidad de que no ocurra una falla, ya que la ocurrencia de una falla causaría un funcionamiento incorrecto. Esto no necesariamente representa un problema. Si el sistema en cuestión es tal que puede demostrarse que la probabilidad de que no ocurra una falla es lo suficientemente alta, luego no se requeriría el uso de técnicas de tolerancia a fallas.
+La probabilidad de que el sistema funcione correctamente a pesar de la falla, está pesada por la probabilidad de ocurrencia de dicha falla. A partir de esto se desprende que aplicar técnicas de tolerancia a fallas para cada una de las posibles fallas puede resultar exhaustivo, principalmente porque deberían conocerse todas las fallas posibles. Lo que se propone es considerar solo aquellas fallas cuya criticidad es alta. Una de estas correspone al ejemplo antes mencionado, donde una falla de un sensor puede causar el fracaso de la misión del vehículo.
 
-En un sistema donde no hay tolerancia a fallas, la fiabilidad quedaría definida como en la ecuación \eqref{eq:Reliability_3} y la única manera de mejorarla sería incrementando la probabilidad de que no ocurra ninguna falla en el intervalo $[t_0;t]$.
+%A modo de ejemplo, una \textbf{falla en un sensor de la computadora de vuelo puede generar una lectura incorrecta}. En consecuencia, esto decantará en un \textbf{error, es decir, en un cálculo de la ley de control incorrecto}. Finalmente, este error puede llevar al \textbf{fracaso de la misión, por ejemplo si el vehículo no es capaz de seguir una trayectoria dada en tiempo y forma}. Esto da a entender que una falla en un sensor es crítica y que por ende requiere la aplicación de técnicas de tolerancia a fallas.
 
-\begin{equation}
-    R(t) = \mathtt{P}\left( \text{no ocurrio una falla en $[t_0;t]$} \right)
-    \label{eq:Reliability_3}
-\end{equation}
+%Aquí se habla de falla en un sensor como algo general. Un sensor podría fallar de muchas maneras y debido a muchas razones. Por ejemplo, puede dejar de funcionar por un defecto propio del componente, puede entregar lecturas erróneas debido a interferencias electromagnéticas, por efectos de la temperatura, falta de calibración, etc. Cada uno de estos requeriría la aplicación de un mecanismo tolerante a fallas.
 
-La manera de hacer esto puede ser por ejemplo, utilizando componentes o módulos de muy buena calidad, lo suficientemente confiables como para cumplir con los requerimientos de fiabilidad \cite{nelson1990fault}. Sin embargo, esto puede ser muy costoso, pensando en que un sistema puede tener una enorme cantidad de posibles fallas. No solo eso, sino que esto dificulta la etapa de diseño de un sistema, ya que cualquier error de diseño que no se haya tenido en cuenta puede llegar a causar una falla y por ende un fracaso del sistema. Por el contrario, la tolerancia a fallas plantea permitir que las fallas existan, pero aplicando técnicas para tolerarlas.
-
-Volviendo a la ecuación \eqref{eq:Reliability_2}, la probabilidad de que el sistema funcione correctamente a pesar de la falla, está pesada por la probabilidad de ocurrencia de dicha falla. A partir de esto se desprende que aplicar técnicas de tolerancia a fallas para cada una de las posibles fallas puede resultar exhaustivo, principalmente porque deberían conocerse todas las fallas posibles, además de ser algo costoso. Lo que se propone es considerar solo aquellas fallas cuya criticidad es alta.
-
-A modo de ejemplo, una \textbf{falla en un sensor de la computadora de vuelo puede generar una lectura incorrecta}. En consecuencia, esto decantará en un \textbf{error, es decir, en un cálculo de la ley de control incorrecto}. Finalmente, este error puede llevar al \textbf{fracaso de la misión, por ejemplo si el vehículo no es capaz de seguir una trayectoria dada en tiempo y forma}. Esto da a entender que una falla en un sensor es crítica y que por ende requiere la aplicación de técnicas de tolerancia a fallas.
-
-Aquí se habla de falla en un sensor como algo general. Un sensor podría fallar de muchas maneras y debido a muchas razones. Por ejemplo, puede dejar de funcionar por un defecto propio del componente, puede entregar lecturas erróneas debido a interferencias electromagnéticas, por efectos de la temperatura, falta de calibración, etc. Cada uno de estos requeriría la aplicación de un mecanismo tolerante a fallas.
-
-Teniendo en consideración las consecuencias que puede traer el fracaso del sistema en cuestión, resulta adecuado tomar una actitud conservadora y adoptar técnicas de tolerancia a fallas, aceptando que estas pueden ocurrir.
+%Teniendo en consideración las consecuencias que puede traer el fracaso del sistema en cuestión, resulta adecuado tomar una actitud conservadora y adoptar técnicas de tolerancia a fallas, aceptando que estas pueden ocurrir.
 
 \subsection{Uso de Redundancias}
 
-Todos los trabajos y ejemplos presentados en la sección \ref{sec:estado_del_arte} comparten la característica de implementar la tolerancia a fallas utilizando varias copias del mismo elemento de hardware. Estas copias trabajan en paralelo y se comparan los resultados obtenidos por cada una de ellas. Las fallas se detectan cuando ocurre una diferencia en los resultados de las copias. Esta es la principal técnica de tolerancia a fallas \cite{nelson1990fault}\cite{prasad1989fault}\cite{lala1994architectural}\cite{kopetz2003time} y es la que se utilizará en este trabajo. Esto quiere decir, que se replica el hardware en el sistema y cada réplica realiza la misma tarea en paralelo. De esta forma, si una de las réplicas presenta una falla (arbitraria por ejemplo), esta puede detectarse a partir de la comparación con las demás réplicas, o incluso pasar desapercibida. Utilizando la nomenclatura definida en la sección \ref{subsec:introduccion_al_analisis_de_tolerancia_a_fallas}, que una falla pase desapercibida quiere decir que no se manifiesta como un error, sino que esta es contenida. A continuación se presentan algunas arquitecturas redundantes para la tolerancia a fallas.
+%Todos los trabajos y ejemplos presentados en la sección \ref{sec:estado_del_arte} comparten la característica de implementar la tolerancia a fallas utilizando varias copias del mismo elemento de hardware. Estas copias trabajan en paralelo y se comparan los resultados obtenidos por cada una de ellas. Las fallas se detectan cuando ocurre una diferencia en los resultados de las copias. Esta es la principal técnica de tolerancia a fallas \cite{nelson1990fault}\cite{prasad1989fault}\cite{lala1994architectural}\cite{kopetz2003time} y es la que se utilizará en este trabajo. Esto quiere decir, que se replica el hardware en el sistema y cada réplica realiza la misma tarea en paralelo. De esta forma, si una de las réplicas presenta una falla (arbitraria por ejemplo), esta puede detectarse a partir de la comparación con las demás réplicas, o incluso pasar desapercibida. Utilizando la nomenclatura definida en la sección \ref{subsec:introduccion_al_analisis_de_tolerancia_a_fallas}, que una falla pase desapercibida quiere decir que no se manifiesta como un error, sino que esta es contenida. A continuación se presentan algunas arquitecturas redundantes para la tolerancia a fallas.
+
+La detección de una falla en el sistema puede llevarse a cabo de distintas formas. Volviendo sobre el ejemplo antes presentado de la estimación de la pose del vehículo, una forma de detectar la falla podría ser analizando si el valor que entrega el sensor ``tiene sentido''. Para esto último sería necesario definir un algoritmo que pueda discriminar entre un valor entregado por el sensor que ``tiene sentido'' y uno que no. Una forma muy simple podría ser monitoreando que los valores entregados por el sensor se encuentren dentro de cierto rango. Esto sería para el caso de un sensor, aunque se requeriría un mecanismo similar para los demás sensores u otros componentes del sistema.
+
+En un sistema de tiempo real, como lo es el control de vuelo de un vehículo, la computadora de vuelo debe aplicar una nueva acción sobre sus actuadores de manera periódica. Esto impone una restricción en el tiempo de ejecución sobre los algoritmos que detecten las posibles fallas, ya que no deben perjudicar la periodicidad del sistema de control del vehículo.
+
+A su vez, podría ocurrir que la información de los sensores sea correcta, pero que el cálculo de la estimación de la pose o de la ley de control presente un resultado incorrecto. Para tolerar esto, se requerirían otros algoritmos para la detección de estos errores, los cuales también deben tener un tiempo de ejecución que no perjudique la periodicidad del sistema de control del vehíuclo.
+%En caso de que ocurra una falla el mecanismo de detección de fallas implique un algoritmo con un procesamiento, donde por ejemplo se contemple un caso donde el sensor no entregue ningún valor. 
+
+Otra forma de detectar fallas y errores puede ser a partir del uso de redundancias. Esta es la principal técnica de tolerancia a fallas \cite{lala1994architectural}.  Tanto las fallas como los errores pueden detectarse a partir de la comparación de resultados entre réplicas. Esto implica una carga computacional mucho menor, ya que basta con comparar los resultados entre réplicas para detectar las fallas.
+%Esta técnica plantea que, tanto las fallas como los errores pueden detectarse a partir de la comparación de resultados, contra una referencia la cual es considerada correcta. Esto implica una carga computacional mucho menor, ya que no se requieren algoritmos demasiado complejos para detectar las fallas, ya que para esto basta con comparar el resultado obtenido con el resultado de referencia.
+%Este valor de referencia que se asume correcto, se obtiene a partir del uso de varias réplicas de hardware en el sistema. 
+Por ejemplo, podría utilizarse más de un sensor del mismo tipo para tolerar fallas de sensores, o más de una computadora de vuelo, para tolerar errores en los cálculos de la ley de control y en los sistemas de navegación.
+
+Todos los trabajos presentados en la sección \ref{sec:estado_del_arte} comparten la característica de implementar la tolerancia a fallas utilizando varias réplicas del mismo elemento de hardware. A partir de estos se pudo ver que existen muchas configuraciones típicas, algunos utilizan 2 réplicas, otros 3 o incluso 4. Con el objetivo de entender las capacidades de cada una de estas, a continuación se analizan distintas configuraciones redundantes.
 
 \subsubsection{Redundancia Doble}
 
-Una arquitectura simple es la redundancia doble. En este tipo de sistemas, dos nodos de un sistema funcionan en paralelo y comparan sus resultados. La comparación permite detectar si los resultados difieren entre sí, lo que se traduce en que ocurrió un error.
+Una configuración muy simple es la redundancia doble. En este tipo de sistemas se utilizan 2 réplicas las cuales trabajan en paralelo ejecutando las mismas tareas y comparando sus resultados entre sí. La ocurrencia de una falla se detecta cuando ocurre una discrepancia entre los resultados obtenidos por cada una de las réplicas.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/3_4_lockstep_architecture.png}
-    \caption{En la figura de la izquierda, dos sistemas ejecutan las mismas operaciones, mientras que otro sistema externo se encarga de comparar las salidas de ambos para detectar errores. En la figura de la derecha, el bloque comparador se encuentra integrado en el sistema \textit{checker}. La imagen fue extraida de \cite{nelson1990fault}.}
-    \label{fig:3_4_lockstep_architecture}
+    \includegraphics[width=0.4\textwidth]{img/redundancia_doble.png}
+    \caption{Esquema de redundancia doble. La entrada $X(t)$ es utilizada por ambas réplicas y cada una de ellas obtiene una salida $Y_1(t)$ e $Y_2(t)$. Si ocurre que $Y_1(t) \neq Y_2(t)$, luego esto implicará una falla de alguna de las réplicas. }
+    \label{fig:redundancia_doble}
 \end{figure}
 
-Este tipo de arquitectura permite detectar si ocurrió un error, pero no permite identificar de qué nodo proviene el error. En la figura \ref{fig:3_4_lockstep_architecture} se muestran dos configuraciones. La configuración de la derecha puede ser implementada a través de dos CPUs totalmente independientes (a veces denominada \textit{Loosely-Synchronized Dual Processor Architecture}) o a través del uso de un procesador de dos núcleos, donde uno sería el \textit{Master} y otro el \textit{checker}\cite{baleani2003fault}. En esta última, ambos se encuentran sincronizados por estar en el mismo chip y compartir fuente de clock. En la figura \ref{fig:3_4_lockstep_architecture_2} se muestra un esquema de ambos casos.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/3_4_lockstep_architecture.png}
+%     \caption{En la figura de la izquierda, dos sistemas ejecutan las mismas operaciones, mientras que otro sistema externo se encarga de comparar las salidas de ambos para detectar errores. En la figura de la derecha, el bloque comparador se encuentra integrado en el sistema \textit{checker}. La imagen fue extraida de \cite{nelson1990fault}.}
+%     \label{fig:3_4_lockstep_architecture}
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{3_4_lockstep_dual_core.png}
-        \caption{Lockstep dual processor architecture.}
-        \label{fig:3_4_lockstep_dual_core}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{3_4_loosely_synchronized_dual_processor_architecture.png}
-        \caption{Loosely synchronized dual processor architecture.}
-        \label{fig:3_4_loosely_synchronized_dual_processor_architecture}
-    \end{subfigure}
-    \caption{Se muestran dos casos para un sistema con redundancia doble. La imagen fue extraida de \cite{baleani2003fault}.}
-    \label{fig:3_4_lockstep_architecture_2}
-\end{figure}
+Si bien este tipo de arquitectura permite detectar fallas a partir de la comparación de resultados, no es posible identificar cuál de las réplicas fue la que falló. Para lograr esto último, cada una de estas debería ejecutar una rutina para detectar si ellas fueron las que cometieron el error o no \cite{baleani2003fault}. En un sistema de tiempo real, donde existe un requerimiento temporal para obtener un nuevo resultado de la estimación de la pose y de la acción de control sobre los motores, no resulta aceptable que el sistema deba detenerse o retrasar su ejecución para realizar este análisis en pleno vuelo. Debido a esto, esta configuración no se presta para uso en sistemas de tiempo real como el de la computadora de vuelo.
 
-Debido a que no se puede saber cuál de las dos CPUs cometió el error, esta arquitectura plantea que en el caso en el que la comparación entre ambas CPUs genere una discrepancia en los resultados, cada una de ellas deben ejecutar un algoritmo interno, para detectar si ellas fueron las que cometieron el error o no. En \cite{zhang2015dual} y en \cite{SolanoPerez2019} se pueden encontrar proyectos de redundancia doble para UAVs.
+%ya que la rutina de ejecución para la detección de la falla perjudica el requerimiento temporal propio de este tipo de sistemas. No resulta adecuado que el sistema de control de vuelo del vehículo tenga que suspenderse hasta que se pueda detectar cuál de las dos réplicas fue la que presentó la falla.
+
+%En la figura \ref{fig:3_4_lockstep_architecture} se muestran dos configuraciones. La configuración de la derecha puede ser implementada a través de dos CPUs totalmente independientes (a veces denominada \textit{Loosely-Synchronized Dual Processor Architecture}) o a través del uso de un procesador de dos núcleos, donde uno sería el \textit{Master} y otro el \textit{checker}\cite{baleani2003fault}. En esta última, ambos se encuentran sincronizados por estar en el mismo chip y compartir fuente de clock. En la figura \ref{fig:3_4_lockstep_architecture_2} se muestra un esquema de ambos casos.
+
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{3_4_lockstep_dual_core.png}
+%         \caption{Lockstep dual processor architecture.}
+%         \label{fig:3_4_lockstep_dual_core}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{3_4_loosely_synchronized_dual_processor_architecture.png}
+%         \caption{Loosely synchronized dual processor architecture.}
+%         \label{fig:3_4_loosely_synchronized_dual_processor_architecture}
+%     \end{subfigure}
+%     \caption{Se muestran dos casos para un sistema con redundancia doble. La imagen fue extraida de \cite{baleani2003fault}.}
+%     \label{fig:3_4_lockstep_architecture_2}
+% \end{figure}
+
+%Debido a que no se puede saber cuál de las dos CPUs cometió el error, esta arquitectura plantea que en el caso en el que la comparación entre ambas CPUs genere una discrepancia en los resultados, cada una de ellas deben ejecutar un algoritmo interno, para detectar si ellas fueron las que cometieron el error o no. En \cite{zhang2015dual} y en \cite{SolanoPerez2019} se pueden encontrar proyectos de redundancia doble para UAVs.
 
 \subsubsection{Redundancia Triple}
 
-Esta arquitectura puede encontrarse en la literatura con el nombre \textit{Triple Modular Redundant (TMR) Architecture} \cite{baleani2003fault}\cite{nelson1990fault}\cite{prasad1989fault}\cite{lyons1962use}. Esta arquitectura consiste en utilizar tres computadoras en paralelo, las cuales computan los mismos resultados. Luego, se comparan los resultados. Se asume que solamente 1 de las 3 presentará una falla a la vez. En dicho caso, los resultados de dos computadoras serán iguales y la de la tercera será distinto, por lo que solamente se descarta el resultado erróneo. En la figura \ref{fig:3_5_TMR} se muestra un diagrama con la arquitectura TMR. Una diferencia de esta arquitectura respecto de la doble redundancia, es el hecho de que puede detectarse cuál de las computadoras falló y además, no es necesario que todas las computadoras ejecuten una rutina para verificar si cometieron el error o no. Esto resulta especialmente útil en sistemas de tiempo real, donde no puede detenerse el sistema para realizar una verificación interna. Esto se denomina \textit{Fault Masking}.
+Esta arquitectura puede encontrarse en la literatura con el nombre \textit{Triple Modular Redundancy (TMR)} \cite{lyons1962use} y consiste en el uso de 3 réplicas, las cuales computan los mismos resultados en paralelo. En esta configuración se asume que solamente 1 de las 3 réplicas presentará una falla a la vez. A diferencia de la redundancia doble, en esta configuración sí es posible detectar cuál de las réplicas fue la que presentó la falla a partir de la comparación de resultados, ya que solamente 1 de los resultados será distinto a los otros 2.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{3_5_TMR.png}
-    \caption{Arquitectura TMR. La imagen fue extraida de \cite{TMRwebPage}.}
-    \label{fig:3_5_TMR}
+    \includegraphics[width=0.7\textwidth]{TMR.png}
+    \caption{Esquema de redundancia triple. La entrada $X(t)$ es utilizada por las 3 réplicas para obtener sus respectivos resultados $Y_1(t)$, $Y_2(t)$ e $Y_3(t)$. Un bloque denominado árbitro se encarga de seleccionar el valor correcto para la salida $Y(t)$.}
+    \label{fig:TMR}
 \end{figure}
 
-Como indica el texto de la imagen, una cuestión clave de esta arquitectura es el bloque denominado \textit{VOTER}. Debido a que este bloque es el que determina cuál es el resultado correcto, se requiere que la fiabilidad, $R(t)$, de este sea mucho mayor que la de cada computadora de vuelo. Esto se logra a través del uso de hardware más robusto, lo que resulta en que el bloque \textit{VOTER} sea más costos que cada computadora de vuelo. Por ejemplo, cada computadora de vuelo puede comprender un microcontrolador COTS, mientras que el bloque voter puede estar implementado con un ASIC específico para esa aplicación \cite{hiergeist2017internal}. Si bien este bloque tiene una fiabilidad mucho mayor, siempre existe la probabilidad de que ocurra un error en este. En cuyo caso, el error puede decantar en un fracaso, por ejemplo si el \textit{VOTER} elige como resultado correcto, aquel que realmente no lo era.
+%Esto resulta especialmente útil en sistemas de tiempo real, donde no puede detenerse el sistema para realizar una verificación interna. Esto se denomina \textit{Fault Masking}.
 
-\begin{mydef}
-    \textbf{Single-Point Failure}: si la arquitectura del sistema es tal que una parte del sistema X fracasa en cumplir su trabajo dentro del sistema, luego el sistema completo fracasará en cumplir su función. En dicho caso, X es un punto único de falla.
-\end{mydef}
+%En dicho caso, los resultados de dos computadoras serán iguales y la de la tercera será distinto, por lo que solamente se descarta el resultado erróneo. En la figura \ref{fig:3_5_TMR} se muestra un diagrama con la arquitectura TMR. Una diferencia de esta arquitectura respecto de la doble redundancia, es el hecho de que puede detectarse cuál de las computadoras falló y además, no es necesario que todas las computadoras ejecuten una rutina para verificar si cometieron el error o no. Esto resulta especialmente útil en sistemas de tiempo real, donde no puede detenerse el sistema para realizar una verificación interna. Esto se denomina \textit{Fault Masking}.
 
-Una forma de combatir esto es replicar los bloques que realizan la votación \cite{nelson1990fault}\cite{lyons1962use}. De esta manera, también pueden enmascararse errores de los bloques que realizan la votación. La arquitectura sería como la que se muestra en la figura \ref{fig:3_3_2_consenso_1}.
+Como se muestra en la figura \ref{fig:TMR}, además de las 3 réplicas se utiliza un elemento adicional denominado árbitro. Este tiene la tarea de comparar los resultados de las 3 réplicas y determinar cuál es el resultado correcto. De esta manera no solo es posible detectar cuál de las réplicas fue la que falló, sino que además es posible obtener una salida correcta $Y(t)$, sin la necesidad de que el sistema deba deternse a hacer un análisis, algo que sí ocurría en la redundancia doble. Esto resulta especialmente útil en sistemas de tiempo real, donde continuamente debe proveerse una nueva salida del sistema de navegación y de la actuación de los motores. Esto se denomina enmascaramiento de la falla \cite{nelson1990fault}, ya que la falla de una de las réplicas queda cubierta por el valor correcto entregado por las otras 2. Debido a que la selección de la salida correcta $Y(t)$ se ejecuta a través de una votación entre los valores $Y_1(t)$, $Y_2(t)$ e $Y_3(t)$, este bloque también es llamado voter en inglés \cite{lyons1962use}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/3_4_2_consenso_1.png}
-    \caption{Arquitectura TMR con redundancia en los elementos votantes.}
-    \label{fig:3_3_2_consenso_1}
-\end{figure}
+El hecho de que el árbitro sea el que determine cuál es el resultado correcto, necesariamente implica que debe ofrecer una confiabilidad, $R(t)$, mucho mayor que la de cada una de las 3 réplicas. Esto se denomina punto singular de falla, ya que una falla en el árbitro inevitablemente genera un fracaso de todo el sistema. Típicamente el árbitro se constituye por hardware más robusto, volviéndolo más costoso. Por ejemplo, cada réplica puede contener un procesador como un microcontrolador COTS, mientras que el árbitro puede estar implementado con un ASIC específico para esa aplicación \cite{hiergeist2017internal}.
 
-Los tres elementos \textit{Voter} reciben las mismas entradas y en el caso de que ninguno de los \textit{voters} cometa un error, dado que las entradas de los \textit{Voters} son exactamente iguales, luego los tres decidirán por el mismo resultado como el valor correcto.
+% \begin{mydef}
+%     \textbf{Single-Point Failure}: si la arquitectura del sistema es tal que una parte del sistema X fracasa en cumplir su trabajo dentro del sistema, luego el sistema completo fracasará en cumplir su función. En dicho caso, X es un punto único de falla.
+% \end{mydef}
 
-Esta arquitectura es más compleja que las anteriores, ya que requiere una gran cantidad de nodos, 3 FCCs + 3 bloques votantes, dando un total de 6. Además, pensando en que se argumentó que los votantes generalmente son más confiables que las FCCs, la triplicación del bloque \textit{Voter} encarece mucho al UAV.
+Para eliminar este punto singular de falla, sería necesario utilizar varias réplicas del árbitro \cite{nelson1990fault}\cite{lyons1962use}, lo que permitiría enmascarar errores que estos puedan cometer. A priori esto podría parecer inviable, ya que se requeriría una gran cantidad de componentes, 3 computadoras de vuelo + 3 bloques árbitro, solo para poder tolerar la falla de 1 de los componentes. Además, teniendo en cuenta el argumento de que los árbitros generalmente son más costosos que las réplicas individuales, se encarecería mucho el sistema completo.
+
+%Una forma de eliminar el punto singular de falla consiste es utilizar varias réplicas del árbitro \cite{nelson1990fault}\cite{lyons1962use}, lo que permitiría enmascarar errores que estos puedan cometer. La arquitectura sería como la que se muestra en la figura \ref{fig:TMR_triple_arbitro}. Esta arquitectura es más compleja que las anteriores, ya que se requiere una gran cantidad de componentes, 3 computadoras de vuelo + 3 bloques árbitro, dando un total de 6. Además, pensando en que se argumentó que los aárbitros generalmente son más costosos que las réplicas individuales, esto encarecería mucho al sistema completo.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/TMR_triple_arbitro.png}
+%     \caption{Arquitectura TMR con redundancia del árbitro.}
+%     \label{fig:TMR_triple_arbitro}
+% \end{figure}
+
+%Los tres elementos \textit{Voter} reciben las mismas entradas y en el caso de que ninguno de los \textit{voters} cometa un error, dado que las entradas de los \textit{Voters} son exactamente iguales, luego los tres decidirán por el mismo resultado como el valor correcto.
+
+%Esta arquitectura es más compleja que las anteriores, ya que requiere una gran cantidad de nodos, 3 FCCs + 3 bloques votantes, dando un total de 6. Además, pensando en que se argumentó que los votantes generalmente son más confiables que las FCCs, la triplicación del bloque \textit{Voter} encarece mucho al UAV.
 
 %Otra cuestión que aparece en esta arquitectura, es que si bien los votantes generan cada uno un valor de salida, al fin y al cabo será uno solo el valor a utilizar. En la figura \ref{fig:3_3_2_consenso_1}, cada voter tiene su propia salida, pero en algún punto se deberá decidir cuál de las tres salidas es la que se va a utilizar como correcta. Por ejemplo, si el valor de salida es la señal de actuación de un motor, luego los tres resultados del voter deberan enviarse a algún modulo encargado de controlar dicho motor.
 
-Como medida para evitar esto último, los bloques votantes pueden integrarse dentro de cada una de las FCC. Esto quiere decir, que en lugar de tener 3 bloques votantes, las mismas FCC sean las encargadas de realizar la votación. En el artículo \cite{hiergeist2017internal} se propone que los microcontroladores automotivos ofrecen las interfaces necesarias para implementar una red redundante para tolerar fallas. En el artículo \cite{hiergeist2018implementation}, los mismos autores presentan resultados para una arquitectura con redundancia cuádruple, donde los mismos microcontroladores de cada FCC son los encargados de realizar la votación. Para el caso de una arquitectura de redundancia triple, puede diagramarse como en la figura \ref{fig:3_5_TMR_2}.
+Una alternativa podría ser que las mismas réplicas sean las que ejecuten la votación, comparando sus salidas con las de sus pares. Esto es algo que se lleva a cabo en uno de los trabajos presentados en la sección \ref{sec:estado_del_arte}, donde los autores presentan resultados para una arquitectura con redundancia cuádruple, donde los mismos microcontroladores de cada réplica son los encargados de realizar la votación \cite{hiergeist2018implementation}.
+%Como medida para evitar esto último, los bloques votantes pueden integrarse dentro de cada una de las FCC. Esto quiere decir, que en lugar de tener 3 bloques votantes, las mismas FCC sean las encargadas de realizar la votación. 
+%En el artículo \cite{hiergeist2017internal} se propone que los microcontroladores automotivos ofrecen las interfaces necesarias para implementar una red redundante para tolerar fallas. 
+%En el artículo \cite{hiergeist2018implementation}, los mismos autores presentan resultados para una arquitectura con redundancia cuádruple, donde los mismos microcontroladores de cada FCC son los encargados de realizar la votación. 
+Para el caso de una arquitectura de redundancia triple, puede diagramarse como en la figura \ref{fig:TMR_sin_arbitro}.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{img/3_5_TMR_2.png}
+%     \caption{Arquitectura de redundancia trple, donde los bloques votantes son las mismas FCCs. Los votantes se encuentran integrados dentro de cada FCC.}
+%     \label{fig:3_5_TMR_2}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{img/3_5_TMR_2.png}
-    \caption{Arquitectura de redundancia trple, donde los bloques votantes son las mismas FCCs. Los votantes se encuentran integrados dentro de cada FCC.}
-    \label{fig:3_5_TMR_2}
+    \includegraphics[width=0.6\textwidth]{img/TMR_sin_arbitro.png}
+    \caption{Cada una de las réplicas comparte los resultados con sus pares. Luego, cada una de ellas realiza una votación sobre los valores para obtener el resultado correcto y detectar fallas.}
+    \label{fig:TMR_sin_arbitro}
 \end{figure}
 
+Puede encontrarse bibliografía en la que esta configuración, donde cada réplica contiene su propio elemento voter, se define como una característica fundamental de la \textit{Triple Modular Redundancy (TMR)} \cite[p.~156]{kopetz-2011}. Sin embargo, hay otros requerimientos que deben cumplirse para que el sistema funcione de manera exitosa. Uno de ellos es la necesidad de la sincronización entre réplicas, la cual se explica a continuación.
+
+\subsubsection{Necesidad del Sincronismo entre Réplicas}
+%\subsubsection{Sincronismo de los Nodos}
+%\subsection{Sincronismo de los Nodos}
+
+Las tareas de estimación de la pose del vehículo, y de cálculo de la acción de control a aplicar sobre los motores comprenden tareas con requerimientos temporales, ya que periódicamente debe obtenerse un nuevo valor, acorde al estado en el que se encuentra el vehículo. En la figura \ref{fig:evolucion_estados_real_time} se muestra un ejemplo donde $Y(t)$ corresponde a la estimación de la pose del vehículo. El valor de este resultado solo tiene validez durante el intervalo de tiempo $[t;t+1)$. Lo mismo ocurre con todos los siguientes resultados $Y(t+N)$, los cuales solamente serán válidos durante los intervalos $[t+N;t+N+1)$.
+
+%La computadora de vuelo comprende un sistema de tiempo real. Los resultados que se obtienen son sobre variables que tienen validez solamente durante un breve período de tiempo. Esto ocurre tanto para la estimación de la pose del vehículo, como para la acción de control a aplicar sobre los motores. En la figura \ref{fig:evolucion_estados_real_time} se presenta un ejemplo donde $Y(t)$ corresponde a una estimación de la pose del vehículo. El valor de este resultado solo tiene validez durante el intervalo de tiempo $[t;t+1)$. Lo mismo ocurre con todos los siguientes resultados $Y(t+N)$, los cuales solamente serán válidos durante los intervalos $[t+N;t+N+1)$. Cada una de las réplicas del sistema continuamente calcula estos resultados $Y(t)$, $Y(t+1)$, etc, de manera periódica.
+
+%Prácticamente en todos los trabajos que se presentaron en la sección \ref{sec:estado_del_arte} se menciona que las réplicas trabajan de manera sincronizada. Esta necesidad surge debido a que la computadora de vuelo comprende un sistema de tiempo real. Todos los resultados que se obtienen son sobre variables que tienen validez solamente durante un período de tiempo. Esto se representa en la figura \ref{fig:evolucion_estados_real_time}, donde el resultado $Y(t)$ solo es válido durante el intervalo de tiempo $[t;t+1)$. Lo mismo ocurre con todos los resultados $Y(t+N)$, los cuales solamente serán válidos durante los intervalos $[t+N;t+N+1)$. Cada una de las réplicas del sistema continuamente calcula estos resultados $Y(t)$, $Y(t+1)$, etc, de manera periódica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/evolucion_estados_real_time.png}
+    \caption{En cada instante de tiempo $t$, $t+1$ y $t+2$ el vehículo se encuentra en un estado distinto, por lo que el algoritmo de estimación de la pose generará 3 resultados diferentes $Y(t)$, $Y(t+1)$ e $Y(t+2)$. Las entradas $X(t)$, $X(t+1)$ y $X(t+2)$ corresponden a mediciones de los distintos sensores.}
+    \label{fig:evolucion_estados_real_time}
+\end{figure}
+
+Al utilizar varias réplicas de la computadora de vuelo, cada una de estas continuamente calcula estos resultados $Y(t)$, $Y(t+1)$, etc, de manera periódica. Luego, a partir de las comparaciones es que se detectan y se enamscaran las fallas. Para que estas comparaciones tengan sentido, deben llevarse a cabo sobre resultados que se correspondan temporalmente. Esto implica que todas las réplicas deben calcular sus correspondientes resultados $Y_i(t)$ al mismo tiempo.
+
+Cada una de las réplicas ejecuta una serie de tareas para realizar cálculos sobre la estimación de la pose y sobre la acción de control. La manera de asgurar que estas se ejecuten al mismo tiempo es a través de un mecanismo de sincronización. Esto es lo que sucede prácticamente en todos los trabajos que se presentaron en la sección \ref{sec:estado_del_arte} para UAVs.
+
+En la práctica una sincronización perfecta sería algo excesivo. Sin embargo esto no es necesario y puede tolerarse cierta precisión, la cual será más o menos rigurosa dependiendo de las necesidades del sistema.
+
+%Esto implica necesariamente que las réplicas deben trabajar de manera sincronizada. Esto quiere decir que deben llegar al resultado $Y_i(t)$ al mismo tiempo, para luego poder ejecutar las comparaciones sobre todos los resultados.
+
+%Las comparaciones se realizan sobre variables que cambian en el tiempo y que tienen validez solamente durante un período de tiempo. Esto es algo característico de sistemas de tiempo real, ya que un dato de un sensor solamente tendrá validez durante un breve período de tiempo.
+%En las arquitecturas antes presentadas, se menciona que se realiza una comparación de los resultados calculados por cada nodo, para detectar/enmascarar errores. Para que el funcionamiento de esta comparación sea adecuado, los nodos deben estar sincronizados. Esto es un requerimiento para sistemas de tiempo real, como el caso de la computadora de vuelo de un UAV.
+% En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instante $t$, se presenta una nueva medición de un sensor a las tres computadoras de vuelo. Al comienzo de la misión, todas ellas estarán sincronizadas y generarán un resultado del cálculo de la ley de control que corresponde al mismo intervalo de tiempo. Luego, se realiza la votación para elegir el valor correcto. La figura \ref{fig:3_4_1_sincronizacion_2}, muestra lo que sucede al cabo de un período de tiempo. Se presenta una nueva medición de un sensor en el instante $t$. Debido a la desincronización, es posible que las computadoras de vuelo no presenten sus resultados al árbitro a tiempo, por lo que este asumirá que una de las FCCs no presentó ninguna respuesta. Este caso suele estar contemplado dentro de las posibilidades y correpsonde al caso en el que una computadora de vuelo presentó un error y debido a ello no respondió con ningún valor (por ejemplo, se reinició su procesador debido a un \textit{watchdog}). En esos casos el árbitro simplemente asume algún valor por defecto.
+
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_1.png}
+%         \caption{Computadoras de vuelo al inicio de la misión.}
+%         \label{fig:3_4_1_sincronizacion_1}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_2.png}
+%         \caption{Al cabo de un período de tiempo, se desincronizarán.}
+%         \label{fig:3_4_1_sincronizacion_2}
+%     \end{subfigure}
+%     \caption{A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.}
+%     \label{fig:3_4_1_sincronizacion}
+% \end{figure}
+
+% Otra situación que puede presentarse, es que los resultados propuestos por las computadoras de vuelo $Y_1$, $Y_2$ e $Y_3$ correspondan a intervalos de tiempo distintos. Este caso es todavía peor que el anterior, ya que no se encuentra contemplado y el árbitro simplemente realizará la votación asumiendo que el dato es válido.
+
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_3.png}
+%         \caption{Las mismas computadoras de vuelo se encargan de la sincronización.}
+%         \label{fig:3_4_1_sincronizacion_3}
+%     \end{subfigure}
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_4.png}
+%         \caption{En este caso, la sincronización es administrada por el árbitro.}
+%         \label{fig:3_4_1_sincronizacion_4}
+%     \end{subfigure}
+%     \caption{La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.}
+% \end{figure}
+
+% Se concluye que es mandatorio utilizar alguna técnica de sincronización entre los nodos. Como detalle de la figura \ref{fig:3_4_1_sincronizacion_3}, se muestra que la sincronización entre nodos presupone otro canal de comuniación más. Otra forma podría ser relegar la tarea de la sincronización al árbitro, aunque esto nuevamente presenta un punto singular de falla. Como se demostró en esta sección, el sincronismo es un aspecto crítico en el sistema redundante, por lo que se prefiere evitar esto último. Aunque de todas formas quisiera relegarse la sincronización al árbitro, este no solo recibirá mensajes de cada una de las FCCs, sino que además les enviará mensajes. Esto se muestra en la figura \ref{fig:3_4_1_sincronizacion_4}. Puede ocurrir una situación en la que el árbitro entregue valores distintos a cada una de las FCCs, evitando que estas se sincronicen.
+
 %\subsubsection{Consenso}\label{sec:consenso}
-\subsubsection{Necesidad del Consenso entre Nodos}\label{sec:consenso}
+\subsubsection{Necesidad del Consenso entre Réplicas}\label{sec:consenso}
 %\subsection{Consenso}\label{sec:consenso}
 
-Como se mostró en la figura \ref{fig:3_4_1_sincronizacion_3}, las computadoras de vuelo pueden comunicarse entre ellas para lograr una sincronización, por ejemplo compartiendo a sus pares un valor asociado a su propio clock interno. Cada FCC propone un valor distinto y estas buscarán ponerse de acuerdo en un valor único. Para que cada una de ellas llegue a la misma conclusión acerca del valor de clock correcto, si todas ellas ejecutan el mismo algoritmo y poseen los mismos valores de entrada, luego llegarán a la misma conclusión. En la figura \ref{fig:3_4_2_consenso_4} se muestra un caso en el que una de las computadoras de vuelo comparte valores de clock distintos a sus pares.
+%Como se mostró en la figura \ref{fig:3_4_1_sincronizacion_3}, las computadoras de vuelo pueden comunicarse entre ellas para lograr una sincronización, por ejemplo compartiendo a sus pares un valor asociado a su propio clock interno. Cada FCC propone un valor distinto y estas buscarán ponerse de acuerdo en un valor único. Para que cada una de ellas llegue a la misma conclusión acerca del valor de clock correcto, si todas ellas ejecutan el mismo algoritmo y poseen los mismos valores de entrada, luego llegarán a la misma conclusión. En la figura \ref{fig:3_4_2_consenso_4} se muestra un caso en el que una de las computadoras de vuelo comparte valores de clock distintos a sus pares.
+
+La configuración de redundancia triple permite la tolerancia a fallas de 1 de las 3 réplicas. Si todas las réplicas sin fallas ejecutan el mismo algoritmo de votación y estas poseen los mismos valores de entrada $Y_1(t)$, $Y_2(t)$ e $Y_3(t)$, luego llegarán a la misma conclusión acerca del valor correcto $Y(t)$. Lo que se plantea aquí es un escenario como el de la figura , donde una de las réplica entrega valores distintos a sus pares.
+
 
 \begin{figure}[H]
     \centering
@@ -225,48 +325,7 @@ La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso.
 
 %A continuación, se describen algunas de las características detectadas.
 
-\subsubsection{Necesidad del Sincronismo entre Nodos}
-%\subsubsection{Sincronismo de los Nodos}
-%\subsection{Sincronismo de los Nodos}
 
-Prácticamente en todos los trabajos presentados se menciona que los nodos reundantes trabajan de manera sincronizada. Esta necesidad surge debido a que las comparaciones se realizan sobre variables que cambian en el tiempo y que tienen validez solamente durante un período de tiempo. Esto es algo característico de sistemas de tiempo real, ya que un dato de un sensor $X(t)$ solamente tendrá validez durante un breve período de tiempo. 
-%En las arquitecturas antes presentadas, se menciona que se realiza una comparación de los resultados calculados por cada nodo, para detectar/enmascarar errores. Para que el funcionamiento de esta comparación sea adecuado, los nodos deben estar sincronizados. Esto es un requerimiento para sistemas de tiempo real, como el caso de la computadora de vuelo de un UAV.
-En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instante $t$, se presenta una nueva medición de un sensor a las tres computadoras de vuelo. Al comienzo de la misión, todas ellas estarán sincronizadas y generarán un resultado del cálculo de la ley de control que corresponde al mismo intervalo de tiempo. Luego, se realiza la votación para elegir el valor correcto. La figura \ref{fig:3_4_1_sincronizacion_2}, muestra lo que sucede al cabo de un período de tiempo. Se presenta una nueva medición de un sensor en el instante $t$. Debido a la desincronización, es posible que las computadoras de vuelo no presenten sus resultados al árbitro a tiempo, por lo que este asumirá que una de las FCCs no presentó ninguna respuesta. Este caso suele estar contemplado dentro de las posibilidades y correpsonde al caso en el que una computadora de vuelo presentó un error y debido a ello no respondió con ningún valor (por ejemplo, se reinició su procesador debido a un \textit{watchdog}). En esos casos el árbitro simplemente asume algún valor por defecto.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_1.png}
-        \caption{Computadoras de vuelo al inicio de la misión.}
-        \label{fig:3_4_1_sincronizacion_1}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_2.png}
-        \caption{Al cabo de un período de tiempo, se desincronizarán.}
-        \label{fig:3_4_1_sincronizacion_2}
-    \end{subfigure}
-    \caption{A medida que transcurra el tiempo, la desincronización entre FCCs impactará en el sistema redundante.}
-    \label{fig:3_4_1_sincronizacion}
-\end{figure}
-
-Otra situación que puede presentarse, es que los resultados propuestos por las computadoras de vuelo $Y_1$, $Y_2$ e $Y_3$ correspondan a intervalos de tiempo distintos. Este caso es todavía peor que el anterior, ya que no se encuentra contemplado y el árbitro simplemente realizará la votación asumiendo que el dato es válido.
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_3.png}
-        \caption{Las mismas computadoras de vuelo se encargan de la sincronización.}
-        \label{fig:3_4_1_sincronizacion_3}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_4.png}
-        \caption{En este caso, la sincronización es administrada por el árbitro.}
-        \label{fig:3_4_1_sincronizacion_4}
-    \end{subfigure}
-    \caption{La sincronización entre nodos es necesaria para un correcto funcionamiento de las redundancias.}
-\end{figure}
-
-Se concluye que es mandatorio utilizar alguna técnica de sincronización entre los nodos. Como detalle de la figura \ref{fig:3_4_1_sincronizacion_3}, se muestra que la sincronización entre nodos presupone otro canal de comuniación más. Otra forma podría ser relegar la tarea de la sincronización al árbitro, aunque esto nuevamente presenta un punto singular de falla. Como se demostró en esta sección, el sincronismo es un aspecto crítico en el sistema redundante, por lo que se prefiere evitar esto último. Aunque de todas formas quisiera relegarse la sincronización al árbitro, este no solo recibirá mensajes de cada una de las FCCs, sino que además les enviará mensajes. Esto se muestra en la figura \ref{fig:3_4_1_sincronizacion_4}. Puede ocurrir una situación en la que el árbitro entregue valores distintos a cada una de las FCCs, evitando que estas se sincronicen.
 
 
 
