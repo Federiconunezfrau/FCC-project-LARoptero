@@ -698,33 +698,71 @@
     \field{year}{1962}
   \endentry
 
-  \entry{roth2021not}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=RE}{%
-         family={Roth},
-         familyi={R\bibinitperiod},
-         given={Edo},
-         giveni={E\bibinitperiod},
+  \entry{wensley1978sift}{article}{}
+    \name{author}{8}{}{%
+      {{hash=WJH}{%
+         family={Wensley},
+         familyi={W\bibinitperiod},
+         given={John\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
       }}%
-      {{hash=HA}{%
-         family={Haeberlen},
-         familyi={H\bibinitperiod},
-         given={Andreas},
-         giveni={A\bibinitperiod},
+      {{hash=LL}{%
+         family={Lamport},
+         familyi={L\bibinitperiod},
+         given={Leslie},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Goldberg},
+         familyi={G\bibinitperiod},
+         given={Jack},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=GMW}{%
+         family={Green},
+         familyi={G\bibinitperiod},
+         given={Milton\bibnamedelima W},
+         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=LKN}{%
+         family={Levitt},
+         familyi={L\bibinitperiod},
+         given={Karl\bibnamedelima N},
+         giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=MSPM}{%
+         family={Melliar-Smith},
+         familyi={M\bibinithyphendelim S\bibinitperiod},
+         given={Po\bibnamedelima Mo},
+         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=SRE}{%
+         family={Shostak},
+         familyi={S\bibinitperiod},
+         given={Robert\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=WCB}{%
+         family={Weinstock},
+         familyi={W\bibinitperiod},
+         given={Charles\bibnamedelima B},
+         giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
       }}%
     }
-    \list{organization}{1}{%
+    \list{publisher}{1}{%
       {IEEE}%
     }
-    \strng{namehash}{REHA1}
-    \strng{fullhash}{REHA1}
+    \strng{namehash}{WJH+1}
+    \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
-  Applications Symposium (RTAS)}
-    \field{pages}{374\bibrangedash 386}
-    \field{title}{Do Not Overpay for Fault Tolerance!}
-    \field{year}{2021}
+    \field{number}{10}
+    \field{pages}{1240\bibrangedash 1255}
+    \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
+  aircraft control}
+    \field{volume}{66}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1978}
   \endentry
 
   \entry{lamport2019byzantine}{incollection}{}
@@ -792,73 +830,6 @@
     \field{volume}{27}
     \field{journaltitle}{Journal of the ACM (JACM)}
     \field{year}{1980}
-  \endentry
-
-  \entry{wensley1978sift}{article}{}
-    \name{author}{8}{}{%
-      {{hash=WJH}{%
-         family={Wensley},
-         familyi={W\bibinitperiod},
-         given={John\bibnamedelima H},
-         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=LL}{%
-         family={Lamport},
-         familyi={L\bibinitperiod},
-         given={Leslie},
-         giveni={L\bibinitperiod},
-      }}%
-      {{hash=GJ}{%
-         family={Goldberg},
-         familyi={G\bibinitperiod},
-         given={Jack},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=GMW}{%
-         family={Green},
-         familyi={G\bibinitperiod},
-         given={Milton\bibnamedelima W},
-         giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod},
-      }}%
-      {{hash=LKN}{%
-         family={Levitt},
-         familyi={L\bibinitperiod},
-         given={Karl\bibnamedelima N},
-         giveni={K\bibinitperiod\bibinitdelim N\bibinitperiod},
-      }}%
-      {{hash=MSPM}{%
-         family={Melliar-Smith},
-         familyi={M\bibinithyphendelim S\bibinitperiod},
-         given={Po\bibnamedelima Mo},
-         giveni={P\bibinitperiod\bibinitdelim M\bibinitperiod},
-      }}%
-      {{hash=SRE}{%
-         family={Shostak},
-         familyi={S\bibinitperiod},
-         given={Robert\bibnamedelima E},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
-      }}%
-      {{hash=WCB}{%
-         family={Weinstock},
-         familyi={W\bibinitperiod},
-         given={Charles\bibnamedelima B},
-         giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{WJH+1}
-    \strng{fullhash}{WJHLLGJGMWLKNMSPMSREWCB1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{10}
-    \field{pages}{1240\bibrangedash 1255}
-    \field{title}{SIFT: Design and analysis of a fault-tolerant computer for
-  aircraft control}
-    \field{volume}{66}
-    \field{journaltitle}{Proceedings of the IEEE}
-    \field{year}{1978}
   \endentry
 
   \entry{specification1991bosch}{article}{}
@@ -1562,6 +1533,35 @@
     \field{title}{Desarrollo de algoritmos de navegación y control para un
   vehículo aéreo autónomo.}
     \field{year}{2014}
+  \endentry
+
+  \entry{roth2021not}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=RE}{%
+         family={Roth},
+         familyi={R\bibinitperiod},
+         given={Edo},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=HA}{%
+         family={Haeberlen},
+         familyi={H\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{REHA1}
+    \strng{fullhash}{REHA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2021 IEEE 27th Real-Time and Embedded Technology and
+  Applications Symposium (RTAS)}
+    \field{pages}{374\bibrangedash 386}
+    \field{title}{Do Not Overpay for Fault Tolerance!}
+    \field{year}{2021}
   \endentry
 
   \entry{prasad1989fault}{article}{}

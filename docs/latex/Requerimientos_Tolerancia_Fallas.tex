@@ -190,7 +190,7 @@ Para el caso de una arquitectura de redundancia triple, puede diagramarse como e
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/TMR_sin_arbitro.png}
+    \includegraphics[width=0.5\textwidth]{img/TMR_sin_arbitro.png}
     \caption{Cada una de las réplicas comparte los resultados con sus pares. Luego, cada una de ellas realiza una votación sobre los valores para obtener el resultado correcto y detectar fallas.}
     \label{fig:TMR_sin_arbitro}
 \end{figure}
@@ -261,61 +261,117 @@ En la práctica una sincronización perfecta sería algo excesivo. Sin embargo e
 
 % Se concluye que es mandatorio utilizar alguna técnica de sincronización entre los nodos. Como detalle de la figura \ref{fig:3_4_1_sincronizacion_3}, se muestra que la sincronización entre nodos presupone otro canal de comuniación más. Otra forma podría ser relegar la tarea de la sincronización al árbitro, aunque esto nuevamente presenta un punto singular de falla. Como se demostró en esta sección, el sincronismo es un aspecto crítico en el sistema redundante, por lo que se prefiere evitar esto último. Aunque de todas formas quisiera relegarse la sincronización al árbitro, este no solo recibirá mensajes de cada una de las FCCs, sino que además les enviará mensajes. Esto se muestra en la figura \ref{fig:3_4_1_sincronizacion_4}. Puede ocurrir una situación en la que el árbitro entregue valores distintos a cada una de las FCCs, evitando que estas se sincronicen.
 
+Nuevamente, en los trabajos presentados en la sección \ref{sec:estado_del_arte}, la sincronización se ejecuta de manera periódica. Esto quiere decir que cada un determinado período de tiempo, las réplicas reajustan sus clocks. Para esto, cada réplica le entrega a las demás réplicas un valor asociado a su propio clock. Luego, estas buscan ponerse de acuerdo en un valor único. Si todas ellas poseen los mismos valores de entrada y ejecutan el mismo algoritmo, luego llegarán al mismo resultado.
+
+En \cite{wensley1978sift} se presenta un trabajo del desarrollo de una computadora de vuelo con redundancias que utiliza un mecanismo de sincronización como el que se mencionó. Además, se analiza un caso particular, en el que una de las réplicas entrega valores distintos de su propio clock a las demás. Debido a que cada réplica utilizará distintos valores de entrada, luego obtendrá distintos valores de salida, eevitando la posibilidad de lograr una sincronización. Esto genera la necesidad de que haya un consenso entre réplicas para los valores de entrada.
+
+%Esta consiste en una comparación de valores asociados a los clocks de cada réplica. Cada una propone un valor distinto y estas buscarán ponerse de acuerdo en un valor único, el cual luego utilizarán como referencia para sincronizarse. Para que cada una de ellas llegue a la misma conclusión acerca del valor de clock correcto, si todas ellas ejecutan el mismo algoritmo y poseen los mismos valores de entrada, luego llegarán a la misma conclusión. En la figura \ref{fig:3_4_2_consenso_4} se muestra un caso en el que una de las computadoras de vuelo comparte valores de clock distintos a sus pares.
+
 %\subsubsection{Consenso}\label{sec:consenso}
 \subsubsection{Necesidad del Consenso entre Réplicas}\label{sec:consenso}
 %\subsection{Consenso}\label{sec:consenso}
 
 %Como se mostró en la figura \ref{fig:3_4_1_sincronizacion_3}, las computadoras de vuelo pueden comunicarse entre ellas para lograr una sincronización, por ejemplo compartiendo a sus pares un valor asociado a su propio clock interno. Cada FCC propone un valor distinto y estas buscarán ponerse de acuerdo en un valor único. Para que cada una de ellas llegue a la misma conclusión acerca del valor de clock correcto, si todas ellas ejecutan el mismo algoritmo y poseen los mismos valores de entrada, luego llegarán a la misma conclusión. En la figura \ref{fig:3_4_2_consenso_4} se muestra un caso en el que una de las computadoras de vuelo comparte valores de clock distintos a sus pares.
 
-La configuración de redundancia triple permite la tolerancia a fallas de 1 de las 3 réplicas. Si todas las réplicas sin fallas ejecutan el mismo algoritmo de votación y estas poseen los mismos valores de entrada $Y_1(t)$, $Y_2(t)$ e $Y_3(t)$, luego llegarán a la misma conclusión acerca del valor correcto $Y(t)$. Lo que se plantea aquí es un escenario como el de la figura , donde una de las réplica entrega valores distintos a sus pares.
+%La configuración de redundancia triple permite la tolerancia a fallas de 1 de las 3 réplicas. 
+Si todas las réplicas sin fallas poseen los mismos valores de entrada y estas ejecutan el mismo algoritmo de votación, luego llegarán a la misma conclusión acerca de cuál es el valor correcto. Como fue mencionado en la sección anterior, esto es de especial importancia para llevar a cabo la sincronización. 
 
+En las computadoras de vuelo es común incorporar varios de los sensores dentro de la misma réplica. En estos casos, antes de ejecutar una estimación de la pose del vehículo, las réplicas deben primero obtener las mediciones de sus respectivos sensores y luego ponerse de acuerdo, es decir lograr un consesno, acerca de qué valor de sensor utilizar para el cómputo. Lo que ocurre con los sensores es que estos entregan mediciones analógicas, por lo que siempre existirá una diferencia entre distintas réplicas, ya sea por diferencias propias de fabricación, por cuestiones de calibración, etc. Es por esto que se requiere lograr un consenso en un único valor. Otro escenario podría ser que cada una de las réplicas utiliza las mediciones de sus propios sensores para obtener una estimación de la pose y que luego se ejecuta una votación sobre este resultado.
+
+La configuración de triple redundancia, tal y como fue presentada hasta aquí, no resulta efectiva para estos casos donde cada réplica propone un valor y debe llegarse a un consenso. En la figura \ref{fig:TMR_sin_arbitro_consenso_falla} se muestra un ejemplo donde la réplica 1 entrega un valor distinto a cada una de las demás. Este valor podría tratarse de valores de sensores o de resultados de la estimación de la pose. Lo que se observa es que las réplicas 2 y 3 llegan a valores distintos, evitando el consenso.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_4.png}
+%     \caption{La FCC1 entrega un valor distinto de timing a las demás FCCs}.
+%     \label{fig:3_4_2_consenso_4}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_4.png}
-    \caption{La FCC1 entrega un valor distinto de timing a las demás FCCs}.
-    \label{fig:3_4_2_consenso_4}
+    \includegraphics[width=0.8\textwidth]{img/TMR_sin_arbitro_consenso_falla.png}
+    \caption{Las réplicas buscan ponerse de acuerdo en el valor correcto para la estimación de la pose. La réplica 1 manifiesta una falla y entrega un valor diferente a cada una de las demás réplicas. Esto genera que las réplicas 2 y 3, las cuales no manifestaron ninguna falla, lleguen a resultados distintos, evitando así el consenso. En cuanto a la réplica 1, dependiendo de cuál haya sido realmente el valor que haya calculado, esta obtendrá uno u otro resultado.}
+    \label{fig:TMR_sin_arbitro_consenso_falla}
 \end{figure}
 
-En este escenario, la FCC1 entrega dos valores distintos de su clock a las demás FCCs. Cada una de ellas luego realiza un promedio para llegar a un único valor. Lo que se observa es que las FCC2 y FCC3 calcularán un valor promedio distinto, es decir, no se sincronizarán.
-Una posible solución podría ser que las FCCs hagan un nuevo intercambio, con los valores promedio calculados y realicen una votación interna. Esto se muestra en la figura \ref{fig:3_4_2_consenso_5}.
+%Una situación similar puede ocurrir con valores de entrada de sensores. En algunas computadoras de vuelo es común incorporar algunos sensores dentro de la misma réplica. En estos casos, antes de ejecutar una estimación de la pose del vehículo, las réplicas deben primero cada una obtener las mediciones de sus respectivos sensores y luego ponerse de acuerdo, es decir lograr un consesno, acerca de qué valor de sensor utilizar para el cómputo. Lo que ocurre con los sensores es que estos entregan mediciones analógicas, por lo que siempre existirá una diferencia entre distintas réplicas, ya sea por diferencias propias de fabricación, por cuestiones de calibración, etc.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_5.png}
-    \caption{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.}
-    \label{fig:3_4_2_consenso_5}
-\end{figure}
+%En este escenario, la FCC1 entrega dos valores distintos de su clock a las demás FCCs. Cada una de ellas luego realiza un promedio para llegar a un único valor. Lo que se observa es que las FCC2 y FCC3 calcularán un valor promedio distinto, es decir, no se sincronizarán.
 
-Esta última situación, donde la FCC1 nuevamente comparte dos valores distintos a las demás, puede llevar a que las computadoras de vuelo no se sincronicen, algo que como ya se mencionó, es crítico para la correcta ejecución del algoritmo de tolerancia a fallas. Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilidad de que ello suceda. Sin embargo, la situación planteada en esta sección puede tratarse como un tipo de falla de hardware que se manifiesta como comportamientos arbitrarios. Que exista una sincronización entre nodos redundantes implica que estos llegan a un consenso del paso del tiempo y el ritmo al que deben ejecutar sus tareas asignadas. Este consenso resulta crítico para que el sistema pueda detectar fallas correctamente.\\
+Una posible solución podría ser realizar un nuevo intercambio con los valores obtenidos por cada réplica. Si bien esto sí permitiría lograr un consenso, el valor elegido estaría determinado por la réplica que presentó la falla, en este caso la réplica 1. Por otro lado, si esta nuevamente entrega un valor diferente a las réplicas 2 y 3, este nuevo intercambio tampoco servirá para lograr el consenso.
 
-Algunos de los trabajos presentados anteriormente además realizan el algoritmo de votación sin la inclusión de un árbitro. Este caso es idéntico al de la figura \ref{fig:3_4_2_consenso_4}, es decir que el mismo problema del consenso también está presente para las votaciones acerca de resultados de cálculo de ley de control.\\
+% Sin embargo, como se muestra en la figura \ref{fig:3_4_2_consenso_5}.
 
-El modelo de falla que se está considerando representa un comportamiento anómalo arbitrario, es decir, que a priori no se asume nada acerca de la falla. A este tipo de comportamiento se lo denomina falla bizantina o \textit{Byzantine Fault} en inglés y básicamente consiste en asumir que el elemento que manifiesta la falla presenta un comportamiento arbitrario. Por ejemplo, un sensor puede dejar de funcionar repentinamente y no dar más respuesta, puede dejar de enviar respuesta por un período de tiempo y luego volver a funcionar, podría también enviar datos a un microcontrolador pero que esos datos sean incoherentes, etc. El modelo de falla bizantina no asume modos de falla, sino que el comportamiento es arbitrario \cite{roth2021not}\cite{hiergeist2017internal}\cite{lala1994architectural}. El nombre proviene de un problema denominado \textit{The Byzantine Generals Problem}, formalizado en \cite{lamport2019byzantine}. Otros trabajos que tratan el mismo problema son \cite{pease1980reaching} y \cite{wensley1978sift}. Este último, presenta el diseño de una computadora de vuelo tolerante a fallas que utiliza los resultados del \textit{Byzantine Generals Problem} para realizar distintas tareas de redundancia.\\
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_5.png}
+%     \caption{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.}
+%     \label{fig:3_4_2_consenso_5}
+% \end{figure}
+
+%Esta última situación, donde la FCC1 nuevamente comparte dos valores distintos a las demás, puede llevar a que las computadoras de vuelo no se sincronicen, algo que como ya se mencionó, es crítico para la correcta ejecución del algoritmo de tolerancia a fallas. Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilidad de que ello suceda. Sin embargo, la situación planteada en esta sección puede tratarse como un tipo de falla de hardware que se manifiesta como comportamientos arbitrarios. Que exista una sincronización entre nodos redundantes implica que estos llegan a un consenso del paso del tiempo y el ritmo al que deben ejecutar sus tareas asignadas. Este consenso resulta crítico para que el sistema pueda detectar fallas correctamente.
+
+%Algunos de los trabajos presentados anteriormente además realizan el algoritmo de votación sin la inclusión de un árbitro. Este caso es idéntico al de la figura \ref{fig:3_4_2_consenso_4}, es decir que el mismo problema del consenso también está presente para las votaciones acerca de resultados de cálculo de ley de control.
+
+Este problema donde una réplica presenta información confusa se denomina \textit{The Byzantine Generals Problem} y se analiza en \cite{lamport2019byzantine}. Este demuestra que se requieren $3 m + 1$ réplicas para tolerar $m$ que manifiesten este tipo de fallas. Otros de los trabajos que analizan este mismo problema son \cite{pease1980reaching} y \cite{wensley1978sift}. En este último se presenta el diseño de una computadora de vuelo tolerante a fallas que utiliza los resultados del \textit{Byzantine Generals Problem} para alcanzar la sincronización.
+
+%El modelo de falla que se está considerando representa un comportamiento anómalo arbitrario, es decir, que a priori no se asume nada acerca de la falla. A este tipo de comportamiento se lo denomina falla bizantina o \textit{Byzantine Fault} en inglés y básicamente consiste en asumir que el elemento que manifiesta la falla presenta un comportamiento arbitrario. Por ejemplo, un sensor puede dejar de funcionar repentinamente y no dar más respuesta, puede dejar de enviar respuesta por un período de tiempo y luego volver a funcionar, podría también enviar datos a un microcontrolador pero que esos datos sean incoherentes, etc. El modelo de falla bizantina no asume modos de falla, sino que el comportamiento es arbitrario \cite{roth2021not}\cite{hiergeist2017internal}\cite{lala1994architectural}. El nombre proviene de un problema denominado \textit{The Byzantine Generals Problem}, formalizado en \cite{lamport2019byzantine}. Otros trabajos que tratan el mismo problema son \cite{pease1980reaching} y \cite{wensley1978sift}. Este último, presenta el diseño de una computadora de vuelo tolerante a fallas que utiliza los resultados del \textit{Byzantine Generals Problem} para realizar distintas tareas de redundancia.\\
 
 %Una forma de alivianar esta tarea es la de considerar un modelo de falla de hardware más conservador, donde se asume que una falla de hardware consiste en que esta presente un comportamiento anómalo arbitrario, es decir, de cualquier tipo. A este tipo de comportamiento se lo denomina falla bizantina o \textit{Byzantine Fault} en inglés y básicamente consiste en asumir que el elemento que manifiesta la falla presenta un comportamiento arbitrario. Por ejemplo, un sensor puede dejar de funcionar repentinamente y no dar más respuesta, puede dejar de enviar respuesta por un período de tiempo y luego volver a funcionar, podría también enviar datos a un microcontrolador pero que esos datos sean incoherentes, etc. El modelo de falla bizantina no asume modos de falla, sino que el comportamiento es arbitrario \cite{roth2021not}\cite{hiergeist2017internal}\cite{lala1994architectural}. Se define un sistema tolerante a este tipo de fallas.
 
-Se plantea una situación como la de la figura \ref{fig:3_4_2_consenso_4}, pero en este caso se utilizan 4 computadoras de vuelo en lugar de 3. En este caso, las computadoras de vuelo deben sincronizarse. Para lograrlo, ellas comparten un valor de timestamp, que pueden utilizar para ajustar sus clocks. En la figura \ref{fig:Byzantine_Generals_Problem_5} se muestra un escenario en el que una de las computadoras de vuelo presenta una falla tal que le informa un valor distinto a cada una de sus pares.
+En la figura \ref{fig:byzantine_ejemplo_3} se muestra un caso donde la réplica 1 entrega el mismo valor a las réplicas 2 y 4, pero entrega un valor diferente a la 3. A partir de un nuevo intercambio entre las réplicas 2, 3 y 4 puede llegarse a un consenso acerca de un úncio valor correspondiente a la réplica 1. En este caso al tener 3 réplicas que no manifiestan este tipo de fallas, puede hacerse una votación 2 de 3 sin involucrar a la réplica con fallas, es decir a la 1.
+
+
+%Se plantea una situación como la de la figura \ref{fig:3_4_2_consenso_4}, pero en este caso se utilizan 4 computadoras de vuelo en lugar de 3. En este caso, las computadoras de vuelo deben sincronizarse. Para lograrlo, ellas comparten un valor de timestamp, que pueden utilizar para ajustar sus clocks. En la figura \ref{fig:Byzantine_Generals_Problem_5} se muestra un escenario en el que una de las computadoras de vuelo presenta una falla tal que le informa un valor distinto a cada una de sus pares.
+
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.4\textwidth}
+%         \includegraphics[width=\textwidth]{img/byzantine_ejemplo_1.png}
+%         \caption{Intercambio 1.}
+%         \label{fig:byzantine_ejemplo_1}
+%     \end{subfigure}\hfill
+%     \begin{subfigure}[b]{0.55\textwidth}
+%         \includegraphics[width=\textwidth]{img/byzantine_ejemplo_2.png}
+%         \caption{Intercambio 2.}
+%         \label{fig:byzantine_ejemplo_2}
+%     \end{subfigure}
+%     \caption{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit{timestamp}. Luego, todas llegan a un consenso de manera casi trivial.}
+%     \label{}
+% \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{img/Byzantine_Generals_Problem_5.png}
-    \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
-    \label{fig:Byzantine_Generals_Problem_5}
+    \includegraphics[width=\textwidth]{img/byzantine_ejemplo_3.png}
+    \caption{En la primera imagen se muestra que debido a una falla la réplica 1 le entrega un valor distinto a la réplica 3. A partir de un segundo intercambio entre las réplicas sin fallas, puede llegarse a un consenso acerca del valor indicado por la réplica 1.}
+    \label{fig:byzantine_ejemplo_3}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/Byzantine_Generals_Problem_6.png}
-    \caption{Las FCC2, 3 y 4 comparten entre sí lo que les dijo la FCC1 a cada una y llegan a la conclusión de que la información es inconsistente.}
-    \label{fig:Byzantine_Generals_Problem_6}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{img/Byzantine_Generals_Problem_5.png}
+%     \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
+%     \label{fig:Byzantine_Generals_Problem_5}
+% \end{figure}
 
-A través de un segundo intercambio, las FCC 2, 3 y 4 llegan a la conclusión de que el timestamp de la FCC1 no es claro. En este caso, descartan el valor. Luego de hacer todos los intercambios de timestamp, las FCCs podrán aplicar internamente la sincronización, por ejemplo, calculando un promedio de todos los timestamp. \textbf{Dado que todas las FCCs tendrán la misma información de timestamp entregado por las demás FCCs, luego todas llegarán al mismo promedio y se sincronizarán}.\\
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/Byzantine_Generals_Problem_6.png}
+%     \caption{Las FCC2, 3 y 4 comparten entre sí lo que les dijo la FCC1 a cada una y llegan a la conclusión de que la información es inconsistente.}
+%     \label{fig:Byzantine_Generals_Problem_6}
+% \end{figure}
 
-Un aspecto interesante es el hecho de que en el paper original, se hace una analogía entre un nodo redundante con fallas y un nodo traidor, es decir, que busca corromper el consenso de los demás nodos. Esto lo que quiere decir es que las fallas presentadas por las computadoras de vuelo pueden ser justamente de cualquier característica, incluso al extremo de presentar un comportamiento malicioso, con el objetivo de perjudicar al sistema \cite{lala1994architectural}. Esto sienta las bases para la tolerancia a fallas de hardware arbitrarias.\\
+Esta configuración también permite tolerar el caso en el que la réplica 1 entrega un valor diferente a cada una de las otras 3 réplicas. En ese caso, cuando se ejecute el segundo intercambio, al detectar que todos los valores son diferentes, simplemente se ignorará a la réplica 1. Esto podría ser por ejemplo asumiendo algún valor por defecto.
 
-La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso. Para poder tolerar fallas provenientes de 1 FCC se requiere un total de 4 computadoras de vuelo. Además, debe haber una interconexión entre las 4 computadoras y ellas deben intercambiar información continuamente para poder detectar y enmascarar la falla. A todo esto se le debe sumar, la necesidad de la sincronización.\\
+%A través de un segundo intercambio, las FCC 2, 3 y 4 llegan a la conclusión de que el timestamp de la FCC1 no es claro. En este caso, descartan el valor. Luego de hacer todos los intercambios de timestamp, las FCCs podrán aplicar internamente la sincronización, por ejemplo, calculando un promedio de todos los timestamp. \textbf{Dado que todas las FCCs tendrán la misma información de timestamp entregado por las demás FCCs, luego todas llegarán al mismo promedio y se sincronizarán}.\\
+
+%Un aspecto interesante es el hecho de que en el paper original, se hace una analogía entre un nodo redundante con fallas y un nodo traidor, es decir, que busca corromper el consenso de los demás nodos. Esto lo que quiere decir es que las fallas presentadas por las computadoras de vuelo pueden ser justamente de cualquier característica, incluso al extremo de presentar un comportamiento malicioso, con el objetivo de perjudicar al sistema \cite{lala1994architectural}. Esto sienta las bases para la tolerancia a fallas de hardware arbitrarias.\\
+
+%La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso. Para poder tolerar fallas provenientes de 1 FCC se requiere un total de 4 computadoras de vuelo. Además, debe haber una interconexión entre las 4 computadoras y ellas deben intercambiar información continuamente para poder detectar y enmascarar la falla. A todo esto se le debe sumar, la necesidad de la sincronización.\\
+
+Sin dudas el hecho de utilizar 4 réplicas para tolerar solamente la falla de 1 de ellas encarece mucho el sistema. Además, debe haber una interconexión entre las 4 y estas deben realizar 2 intercambios de información por cada nuevo resultado calculado.
+
+Una de las cuestiones que no se menciona en el problema original, es el caso en el que las réplicas constituyen sistemas de tiempo real, algo que sí ocurre con las computadoras de vuelo. Otro de los puntos que caracterizan al problema original, es el hecho de que la comunicación entre las réplicas es 1 a 1. Si el sistema en cuestión tiene la características de ser de tiempo real e implementar una comunicación a través de un bus, luego el problema del consenso puede resolverse de una manera más simple.
 
 %\subsection{Requerimientos Comunes en Sistemas con Redundancias}
 
@@ -325,13 +381,9 @@ La implementación del algoritmo tolerante a fallas arbitrarias resulta costoso.
 
 %A continuación, se describen algunas de las características detectadas.
 
-
-
-
-
 \subsection{Simplificación del Problema}
 
-Una de las cuestiones que no se menciona en el problema original, es el caso en el que los nodos constituyen sistemas de tiempo real. Las computadoras de vuelo deben realizar tareas que requieren determinismo temporal, por ejemplo cálculo de la ley de control, estimación de la pose, etc... En el problema original, los nodos pueden enviar sus mensajes a sus pares en cualquier momento y en cualquier orden. Otro de los puntos que caracterizan al problema original, es el hecho de que la comunicación entre los nodos es 1 a 1. Debido a esto, los traidores pueden entregar información confusa a sus pares para tratar de romper el consenso. Esto es lo que vuelve complejo al problema \cite{lamport2019byzantine} y costosa a su solución \cite{roth2021not}. Si el sistema en cuestión presenta la características de ser de tiempo real e implementar una comunicación a través de un bus, en conjunto, luego el problema del consenso puede simplificarse mucho.\\
+%Una de las cuestiones que no se menciona en el problema original, es el caso en el que los nodos constituyen sistemas de tiempo real. Las computadoras de vuelo deben realizar tareas que requieren determinismo temporal, por ejemplo cálculo de la ley de control, estimación de la pose, etc... En el problema original, los nodos pueden enviar sus mensajes a sus pares en cualquier momento y en cualquier orden. Otro de los puntos que caracterizan al problema original, es el hecho de que la comunicación entre los nodos es 1 a 1. Debido a esto, los traidores pueden entregar información confusa a sus pares para tratar de romper el consenso. Esto es lo que vuelve complejo al problema \cite{lamport2019byzantine} y costosa a su solución \cite{roth2021not}. Si el sistema en cuestión presenta la características de ser de tiempo real e implementar una comunicación a través de un bus, en conjunto, luego el problema del consenso puede simplificarse mucho.\\
 
 En sistemas de tiempo real para aplicaciones \textit{safety-critical}, es común encontrar sistemas distribuidos con comunicación a través de un bus. Esto se mencionó en la sección \ref{sec:estado_del_arte} tanto para el caso del avión como para varios de los ejemplos de UAVs presentados. Esto tambień ocurre por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
 

@@ -17,49 +17,49 @@
 \contentsline {subsubsection}{\numberline {4.2.2}Redundancia Triple}{19}{subsubsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.3}Necesidad del Sincronismo entre Réplicas}{20}{subsubsection.4.2.3}%
 \contentsline {subsubsection}{\numberline {4.2.4}Necesidad del Consenso entre Réplicas}{21}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}Simplificación del Problema}{24}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Diseño y Construcción de la Computadora de Vuelo}{27}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Funcionalidades de la Computadora de Vuelo}{27}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Criterios Generales Para la Selección de Componentes}{28}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Uso de Componentes de Grado Automotriz}{28}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Longevidad}{28}{subsubsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.3}Requerimientos de Conectores}{29}{subsubsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.3}Circuitos y Componentes Seleccionados}{29}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Microcontrolador}{29}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}Sensor IMU}{30}{subsubsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3}Barómetro}{34}{subsubsection.5.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.4}Magnetómetro}{36}{subsubsection.5.3.4}%
-\contentsline {subsubsection}{\numberline {5.3.5}Interfaz de Comunicación CAN}{37}{subsubsection.5.3.5}%
-\contentsline {subsubsection}{\numberline {5.3.6}Circuito de Alimentación}{43}{subsubsection.5.3.6}%
-\contentsline {subsubsection}{\numberline {5.3.7}Micro SD}{44}{subsubsection.5.3.7}%
-\contentsline {subsubsection}{\numberline {5.3.8}Interfaz USB}{45}{subsubsection.5.3.8}%
-\contentsline {subsubsection}{\numberline {5.3.9}Conector para Módulo GPS}{46}{subsubsection.5.3.9}%
-\contentsline {subsubsection}{\numberline {5.3.10}Conectores para Salidas de PWM}{47}{subsubsection.5.3.10}%
-\contentsline {subsubsection}{\numberline {5.3.11}Conectores para Control por Radio}{47}{subsubsection.5.3.11}%
-\contentsline {subsubsection}{\numberline {5.3.12}Conector para Programación y Debugging por SWD}{48}{subsubsection.5.3.12}%
-\contentsline {subsubsection}{\numberline {5.3.13}Otras Funcionalidades}{49}{subsubsection.5.3.13}%
-\contentsline {subsection}{\numberline {5.4}Desarrollo del PCB}{49}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Requerimientos de Manufacturabilidad}{50}{subsubsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}Requerimientos de Posicionamiento del Sensor IMU}{50}{subsubsection.5.4.2}%
-\contentsline {subsubsection}{\numberline {5.4.3}Características del PCB}{51}{subsubsection.5.4.3}%
-\contentsline {subsubsection}{\numberline {5.4.4}Comunicación con el Slot para Tarjeta Micro SD}{54}{subsubsection.5.4.4}%
-\contentsline {subsubsection}{\numberline {5.4.5}Comunicación USB}{54}{subsubsection.5.4.5}%
-\contentsline {subsubsection}{\numberline {5.4.6}Layout del Regulador Lineal}{55}{subsubsection.5.4.6}%
-\contentsline {subsection}{\numberline {5.5}Diagrama en Bloques y PCB Final}{56}{subsection.5.5}%
-\contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{59}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Descripción de la Arquitectura Propuesta}{59}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{64}{subsection.6.2}%
-\contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{64}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}Comunicación a Través del Bus}{66}{subsubsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{67}{subsubsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{68}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{72}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Sesgo en Valores de Giróscopo}{77}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{79}{subsubsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Medición Invariante de Acelerómetros y Giróscopos}{81}{subsubsection.6.3.4}%
-\contentsline {section}{\numberline {7}Conclusiones}{92}{section.7}%
-\contentsline {section}{\numberline {8}Agradecimientos}{93}{section.8}%
-\contentsline {section}{Apéndices}{94}{section*.110}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{94}{section*.111}%
-\contentsline {section}{Apéndice B: PCB Final}{94}{section*.112}%
-\contentsline {section}{Referencias}{95}{section*.113}%
+\contentsline {subsection}{\numberline {4.3}Simplificación del Problema}{23}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Diseño y Construcción de la Computadora de Vuelo}{26}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Funcionalidades de la Computadora de Vuelo}{26}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Criterios Generales Para la Selección de Componentes}{27}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Uso de Componentes de Grado Automotriz}{27}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Longevidad}{27}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Requerimientos de Conectores}{28}{subsubsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.3}Circuitos y Componentes Seleccionados}{28}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Microcontrolador}{28}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Sensor IMU}{29}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Barómetro}{33}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Magnetómetro}{35}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.5}Interfaz de Comunicación CAN}{36}{subsubsection.5.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.6}Circuito de Alimentación}{42}{subsubsection.5.3.6}%
+\contentsline {subsubsection}{\numberline {5.3.7}Micro SD}{43}{subsubsection.5.3.7}%
+\contentsline {subsubsection}{\numberline {5.3.8}Interfaz USB}{44}{subsubsection.5.3.8}%
+\contentsline {subsubsection}{\numberline {5.3.9}Conector para Módulo GPS}{45}{subsubsection.5.3.9}%
+\contentsline {subsubsection}{\numberline {5.3.10}Conectores para Salidas de PWM}{46}{subsubsection.5.3.10}%
+\contentsline {subsubsection}{\numberline {5.3.11}Conectores para Control por Radio}{46}{subsubsection.5.3.11}%
+\contentsline {subsubsection}{\numberline {5.3.12}Conector para Programación y Debugging por SWD}{47}{subsubsection.5.3.12}%
+\contentsline {subsubsection}{\numberline {5.3.13}Otras Funcionalidades}{48}{subsubsection.5.3.13}%
+\contentsline {subsection}{\numberline {5.4}Desarrollo del PCB}{48}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Requerimientos de Manufacturabilidad}{49}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Requerimientos de Posicionamiento del Sensor IMU}{49}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Características del PCB}{50}{subsubsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.4}Comunicación con el Slot para Tarjeta Micro SD}{53}{subsubsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.5}Comunicación USB}{53}{subsubsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.6}Layout del Regulador Lineal}{54}{subsubsection.5.4.6}%
+\contentsline {subsection}{\numberline {5.5}Diagrama en Bloques y PCB Final}{55}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{58}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Descripción de la Arquitectura Propuesta}{58}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{63}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{63}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Comunicación a Través del Bus}{65}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{66}{subsubsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{67}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{71}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Sesgo en Valores de Giróscopo}{76}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{78}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Medición Invariante de Acelerómetros y Giróscopos}{80}{subsubsection.6.3.4}%
+\contentsline {section}{\numberline {7}Conclusiones}{91}{section.7}%
+\contentsline {section}{\numberline {8}Agradecimientos}{92}{section.8}%
+\contentsline {section}{Apéndices}{93}{section*.108}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{93}{section*.109}%
+\contentsline {section}{Apéndice B: PCB Final}{93}{section*.110}%
+\contentsline {section}{Referencias}{94}{section*.111}%
