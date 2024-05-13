@@ -99,7 +99,7 @@ Una configuración muy simple es la redundancia doble. En este tipo de sistemas 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{img/redundancia_doble.png}
+    \includegraphics[width=0.5\textwidth]{img/redundancia_doble.png}
     \caption{Esquema de redundancia doble. La entrada $X(t)$ es utilizada por ambas réplicas y cada una de ellas obtiene una salida $Y_1(t)$ e $Y_2(t)$. Si ocurre que $Y_1(t) \neq Y_2(t)$, luego esto implicará una falla de alguna de las réplicas. }
     \label{fig:redundancia_doble}
 \end{figure}
@@ -197,7 +197,7 @@ Para el caso de una arquitectura de redundancia triple, puede diagramarse como e
 
 Puede encontrarse bibliografía en la que esta configuración, donde cada réplica contiene su propio elemento voter, se define como una característica fundamental de la \textit{Triple Modular Redundancy (TMR)} \cite[p.~156]{kopetz-2011}. Sin embargo, hay otros requerimientos que deben cumplirse para que el sistema funcione de manera exitosa. Uno de ellos es la necesidad de la sincronización entre réplicas, la cual se explica a continuación.
 
-\subsubsection{Necesidad del Sincronismo entre Réplicas}
+\subsubsection{Necesidad del Sincronismo entre Réplicas}\label{sec:necesidad_del_sincronismo}
 %\subsubsection{Sincronismo de los Nodos}
 %\subsection{Sincronismo de los Nodos}
 
@@ -371,7 +371,7 @@ Esta configuración también permite tolerar el caso en el que la réplica 1 ent
 
 Sin dudas el hecho de utilizar 4 réplicas para tolerar solamente la falla de 1 de ellas encarece mucho el sistema. Además, debe haber una interconexión entre las 4 y estas deben realizar 2 intercambios de información por cada nuevo resultado calculado.
 
-Una de las cuestiones que no se menciona en el problema original, es el caso en el que las réplicas constituyen sistemas de tiempo real, algo que sí ocurre con las computadoras de vuelo. Otro de los puntos que caracterizan al problema original, es el hecho de que la comunicación entre las réplicas es 1 a 1. Si el sistema en cuestión tiene la características de ser de tiempo real e implementar una comunicación a través de un bus, luego el problema del consenso puede resolverse de una manera más simple.
+Una de las cuestiones que no se menciona en el problema original, es el caso en el que las réplicas constituyen sistemas de tiempo real, algo que sí ocurre con las computadoras de vuelo. Otro de los puntos que caracterizan al problema original, es el hecho de que la comunicación entre las réplicas es 1 a 1. Si el sistema tiene la características de funcionar de manera sincronizada e implementar una comunicación a través de un bus, luego el problema del consenso puede resolverse de una manera más simple.
 
 %\subsection{Requerimientos Comunes en Sistemas con Redundancias}
 
@@ -385,49 +385,75 @@ Una de las cuestiones que no se menciona en el problema original, es el caso en 
 
 %Una de las cuestiones que no se menciona en el problema original, es el caso en el que los nodos constituyen sistemas de tiempo real. Las computadoras de vuelo deben realizar tareas que requieren determinismo temporal, por ejemplo cálculo de la ley de control, estimación de la pose, etc... En el problema original, los nodos pueden enviar sus mensajes a sus pares en cualquier momento y en cualquier orden. Otro de los puntos que caracterizan al problema original, es el hecho de que la comunicación entre los nodos es 1 a 1. Debido a esto, los traidores pueden entregar información confusa a sus pares para tratar de romper el consenso. Esto es lo que vuelve complejo al problema \cite{lamport2019byzantine} y costosa a su solución \cite{roth2021not}. Si el sistema en cuestión presenta la características de ser de tiempo real e implementar una comunicación a través de un bus, en conjunto, luego el problema del consenso puede simplificarse mucho.\\
 
-En sistemas de tiempo real para aplicaciones \textit{safety-critical}, es común encontrar sistemas distribuidos con comunicación a través de un bus. Esto se mencionó en la sección \ref{sec:estado_del_arte} tanto para el caso del avión como para varios de los ejemplos de UAVs presentados. Esto tambień ocurre por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
+Como se pudo ver en la sección \ref{sec:estado_del_arte}, varios de los trabajos  utilizan un bus para la comunicación entre las réplicas. Esto se presenta tanto en el caso del avión como en varios de los ejemplos de UAVs. También se mostró que una de las computadoras de vuelo comerciales, la de la empresa Embention, utiliza el bus CAN para resolver las comunicaciones entre réplicas con el árbitro. %Esto tambień ocurre por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
+Esto presenta una diferencia con lo planteado en la sección anterior, ya que la existencia de un bus automáticamente elimina la posibilidad de que una de las réplicas pueda entrgar información diferente a sus pares. Puede compararse la figura \ref{fig:TMR_sin_arbitro_consenso_falla} con la figura \ref{fig:TMR_bus}. Siempre que alguna de las réplicas envíe un mensaje a través del bus, este será recibido por todas las réplicas.
+
+%En sistemas de tiempo real para aplicaciones \textit{safety-critical}, es común encontrar sistemas distribuidos con comunicación a través de un bus. Esto se mencionó en la sección \ref{sec:estado_del_arte} tanto para el caso del avión como para varios de los ejemplos de UAVs presentados. Esto tambień ocurre por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{img/red_CAN.png}
+%     \caption{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite{texasSLOA101B}.}
+%     \label{fig:red_CAN}
+% \end{figure}
+
+%Esto presenta una diferencia respecto de lo planteado en \textit{The Byzantine Generals Problem}, ya que la existencia de un bus común a todos los nodos automáticamente elimina la posibilidad de que uno de los miembros de la red pueda enviar información diferente a sus pares. Puede compararse la figura \ref{fig:byzantine_bus_1} con la figura \ref{fig:Byzantine_Generals_Problem_5}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{img/red_CAN.png}
-    \caption{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite{texasSLOA101B}.}
-    \label{fig:red_CAN}
+    \includegraphics[width=0.8\textwidth]{img/TMR_bus.png}
+    \caption{La conexión tipo bus obliga a que la información enviada por cada réplica sea recibida por todas las demas, evitando el envío de información confusa. El mismo valor $Y_1$ será recibido por las réplicas 2 y 3.}
+    \label{fig:TMR_bus}    
 \end{figure}
 
-Esto presenta una diferencia respecto de lo planteado en \textit{The Byzantine Generals Problem}, ya que la existencia de un bus común a todos los nodos automáticamente elimina la posibilidad de que uno de los miembros de la red pueda enviar información diferente a sus pares. Puede compararse la figura \ref{fig:byzantine_bus_1} con la figura \ref{fig:Byzantine_Generals_Problem_5}.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/byzantine_bus_1.png}
+%     \caption{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.}
+%     \label{fig:byzantine_bus_1}    
+% \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/byzantine_bus_1.png}
-    \caption{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.}
-    \label{fig:byzantine_bus_1}    
-\end{figure}
+Si bien el uso de un bus de comunicaciones simplifica el problema del consenso, existen otras cuestiones que deben tenerse en cuenta. Uno de los factores importantes es el hecho de que en esta configuración el bus se vuelve un punto singular de fallas, ya que todas las comunicaciones pasan por este. Para solucionar esto puede utilizarse más de un bus en paralelo, asumiendo que solo uno de ellos podrá fracasar en su funcionamiento al mismo tiempo \cite[p.~157]{kopetz-2011}. Esto es algo que también se pudo ver en los ejemplos de la sección \ref{sec:estado_del_arte}, como en el caso del avión.
 
-Como contrapartida, debido a que los nodos comparten canal de comunicación, estos deben tomar turnos para enviar la información a sus pares. De otra forma, habría una colisión en el bus y la información nunca llegaría a su destino. Sumado a esto, el bus se convierte en un punto singular de falla, ya que es posible que un problema en el bus deje a los nodos incomunicados.\\
+Teniendo en cuenta la necesidad del sincronismo entre las réplicas explicado en la sección \ref{sec:necesidad_del_sincronismo}, la posibilidad de que ocurran colisiones es un problema que puede perjudicar el funcionamiento del mecanismo de tolerancia a fallas. Una colisión puede causar que la información nunca llegue a su destino o bien que llegue con un retraso, por ejemplo si se utiliza un mecanismo de retransmisión para asegurar el envío del mensaje.
+
+La manera de solucionar esto es forzando a que las réplicas deban tomar turnos para enviar un mensaje por el bus. Para lograr este comportamiento, cada una de estas debe saber en qué momentos puede utilizar el bus de comunicaciones para enviar un mensaje y cuándo no. Una vez más, este comportamiento también se encuentra presente en varios de los trabajos presentados en la sección \ref{sec:estado_del_arte}, incluido el ejemplo del avión.
+
+%Esto puede lograrse si las réplicas trabajan de manera sincronizada, algo que ya de por sí es necesario.
+
+
+%estos deben tomar turnos para enviar la información a sus pares. De otra forma, habría una colisión en el bus, lo que puede causar que la información nunca llegue a su destino o que llegue con un retraso, por ejemplo si se utiliza un mecanismo de retransmisión para asegurar el envío del mensaje.
+
+%Como contrapartida, debido a que los nodos comparten canal de comunicación, estos deben tomar turnos para enviar la información a sus pares. De otra forma, habría una colisión en el bus y la información nunca llegaría a su destino. Sumado a esto, el bus se convierte en un punto singular de falla, ya que es posible que un problema en el bus deje a los nodos incomunicados.\\
 
 %\subsubsection{Consenso}
 
-Al igual que como se hizo en la sección \ref{sec:consenso}, se analiza el problema del consenso utilizando un bus. El ejemplo que se presentó anteriormente fue el necesario para lograr una sincronización entre las FCCs y se mostró que el enviar información distinta a cada computadora de vuelo puede romper el sincronismo muy fácilmente.\\
+%Al igual que como se hizo en la sección \ref{sec:consenso}, se analiza el problema del consenso utilizando un bus. El ejemplo que se presentó anteriormente fue el necesario para lograr una sincronización entre las FCCs y se mostró que el enviar información distinta a cada computadora de vuelo puede romper el sincronismo muy fácilmente.\\
 
-Como ya se mencionó, las FCCs deben tomar turnos para utilizar el medio físico. En las próximas secciones se explicará cómo se puede lograr esto, aquí se asume que las FCCs respetan sus turnos para utilizar el medio físico compartido. En la figura \ref{fig:byzantine_bus_2}, la FCC1 accede al medio y envía su valor de timestamp. Las demás FCCs reciben el mismo valor, por estar conectadas al mismo bus de comunicación. Luego, las FCC2 y 3 repiten esto mismo. En la figura \ref{fig:byzantine_bus_3} se muestra que todas tienen la misma información respecto de sus pares. Luego por ejemplo, si calculan un promedio, llegarán al mismo resultado y se sincronizarán correctamente.
+% Como ya se mencionó, las FCCs deben tomar turnos para utilizar el medio físico. En las próximas secciones se explicará cómo se puede lograr esto, aquí se asume que las FCCs respetan sus turnos para utilizar el medio físico compartido. En la figura \ref{fig:byzantine_bus_2}, la FCC1 accede al medio y envía su valor de timestamp. Las demás FCCs reciben el mismo valor, por estar conectadas al mismo bus de comunicación. Luego, las FCC2 y 3 repiten esto mismo. En la figura \ref{fig:byzantine_bus_3} se muestra que todas tienen la misma información respecto de sus pares. Luego por ejemplo, si calculan un promedio, llegarán al mismo resultado y se sincronizarán correctamente.
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.34\textwidth}
-        \includegraphics[width=\textwidth]{img/byzantine_bus_2.png}
-        \caption{La FCC1 envía su \textit{timestamp} hacia las demás.}
-        \label{fig:byzantine_bus_2}
-    \end{subfigure}\hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{img/byzantine_bus_3.png}
-        \caption{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit{timestamp} para sincronizarse.}
-        \label{fig:byzantine_bus_3}
-    \end{subfigure}
-    \caption{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit{timestamp}. Luego, todas llegan a un consenso de manera casi trivial.}
-    \label{}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.34\textwidth}
+%         \includegraphics[width=\textwidth]{img/byzantine_bus_2.png}
+%         \caption{La FCC1 envía su \textit{timestamp} hacia las demás.}
+%         \label{fig:byzantine_bus_2}
+%     \end{subfigure}\hfill
+%     \begin{subfigure}[b]{0.49\textwidth}
+%         \includegraphics[width=\textwidth]{img/byzantine_bus_3.png}
+%         \caption{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit{timestamp} para sincronizarse.}
+%         \label{fig:byzantine_bus_3}
+%     \end{subfigure}
+%     \caption{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit{timestamp}. Luego, todas llegan a un consenso de manera casi trivial.}
+%     \label{}
+% \end{figure}
 
-A partir de este análisis, se puede ver que para el caso de un sistema de tiempo real con un único bus de comunicaciones, el problema del consenso es mucho más sencillo que lo que se muestra en \textit{The Byzantine Generals Problem}. De todas maneras, lo que se presenta aquí es un primer análisis, ya que se ha asumido que no hay colisiones en el bus y que los nodos se encuentran sincronizados. Se concluye que, para que la computadora de vuelo pueda implementar distintos mecanismos de tolerancia a fallas, esta debe contar con una interfaz que le permita la comunicación a través de un bus de comunicaciones.\\
+A partir de este análisis, se puede ver que para el caso de un sistema de tiempo real con un bus de comunicaciones y donde las réplicas funcionan de manera sincronizada, el problema del consenso es más sencillo, ya que no se requiere el uso de 4 réplicas ni tampoco se requiere realizar tantos intercambios de mensajes.
+%que lo que se muestra en \textit{The Byzantine Generals Problem}. De todas maneras, lo que se presenta aquí es un primer análisis, ya que se ha asumido que no hay colisiones en el bus y que los nodos se encuentran sincronizados. 
+De esta manera la configuración de triple redundancia donde las réplicas funcionan de manera sincronizada, implementan una comunicación a través de un bus de comunicaciones y respetan sus turnos para enviar mensajes, permite implementar mecanismos para tolerar una falla simultánea de 1 de las 3 réplicas.
+
+
+%donde Se concluye que, para que la computadora de vuelo pueda implementar distintos mecanismos de tolerancia a fallas, esta debe contar con una interfaz que le permita la comunicación a través de un bus de comunicaciones.
 
 %\subsection{Uso de Componentes COTS}
 

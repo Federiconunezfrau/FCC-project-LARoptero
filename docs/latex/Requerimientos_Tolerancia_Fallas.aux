@@ -16,6 +16,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Cada una de las réplicas comparte los resultados con sus pares. Luego, cada una de ellas realiza una votación sobre los valores para obtener el resultado correcto y detectar fallas.\relax }}{20}{figure.caption.15}\protected@file@percent }
 \newlabel{fig:TMR_sin_arbitro}{{13}{20}{Cada una de las réplicas comparte los resultados con sus pares. Luego, cada una de ellas realiza una votación sobre los valores para obtener el resultado correcto y detectar fallas.\relax }{figure.caption.15}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Necesidad del Sincronismo entre Réplicas}{20}{subsubsection.4.2.3}\protected@file@percent }
+\newlabel{sec:necesidad_del_sincronismo}{{4.2.3}{20}{Necesidad del Sincronismo entre Réplicas}{subsubsection.4.2.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces En cada instante de tiempo $t$, $t+1$ y $t+2$ el vehículo se encuentra en un estado distinto, por lo que el algoritmo de estimación de la pose generará 3 resultados diferentes $Y(t)$, $Y(t+1)$ e $Y(t+2)$. Las entradas $X(t)$, $X(t+1)$ y $X(t+2)$ corresponden a mediciones de los distintos sensores.\relax }}{21}{figure.caption.16}\protected@file@percent }
 \newlabel{fig:evolucion_estados_real_time}{{14}{21}{En cada instante de tiempo $t$, $t+1$ y $t+2$ el vehículo se encuentra en un estado distinto, por lo que el algoritmo de estimación de la pose generará 3 resultados diferentes $Y(t)$, $Y(t+1)$ e $Y(t+2)$. Las entradas $X(t)$, $X(t+1)$ y $X(t+2)$ corresponden a mediciones de los distintos sensores.\relax }{figure.caption.16}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Necesidad del Consenso entre Réplicas}{21}{subsubsection.4.2.4}\protected@file@percent }
@@ -25,18 +26,10 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces En la primera imagen se muestra que debido a una falla la réplica 1 le entrega un valor distinto a la réplica 3. A partir de un segundo intercambio entre las réplicas sin fallas, puede llegarse a un consenso acerca del valor indicado por la réplica 1.\relax }}{23}{figure.caption.18}\protected@file@percent }
 \newlabel{fig:byzantine_ejemplo_3}{{16}{23}{En la primera imagen se muestra que debido a una falla la réplica 1 le entrega un valor distinto a la réplica 3. A partir de un segundo intercambio entre las réplicas sin fallas, puede llegarse a un consenso acerca del valor indicado por la réplica 1.\relax }{figure.caption.18}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Simplificación del Problema}{23}{subsection.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \blx@tocontentsinit {0}\cite {texasSLOA101B}.\relax }}{24}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:red_CAN}{{17}{24}{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite {texasSLOA101B}.\relax }{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }}{24}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:byzantine_bus_1}{{18}{24}{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.\relax }{figure.caption.20}{}}
-\newlabel{fig:byzantine_bus_2}{{19a}{25}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:byzantine_bus_2}{{a}{25}{La FCC1 envía su \textit {timestamp} hacia las demás.\relax }{figure.caption.21}{}}
-\newlabel{fig:byzantine_bus_3}{{19b}{25}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.21}{}}
-\newlabel{sub@fig:byzantine_bus_3}{{b}{25}{Luego de finalizar los intercambios, todas las FCCs llegan al mismo resultado de \textit {timestamp} para sincronizarse.\relax }{figure.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit  {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }}{25}{figure.caption.21}\protected@file@percent }
-\newlabel{}{{19}{25}{Debido a la existencia del bus, las FCCs no pueden mentir acerca de su \textit {timestamp}. Luego, todas llegan a un consenso de manera casi trivial.\relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces La conexión tipo bus obliga a que la información enviada por cada réplica sea recibida por todas las demas, evitando el envío de información confusa. El mismo valor $Y_1$ será recibido por las réplicas 2 y 3.\relax }}{24}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:TMR_bus}{{17}{24}{La conexión tipo bus obliga a que la información enviada por cada réplica sea recibida por todas las demas, evitando el envío de información confusa. El mismo valor $Y_1$ será recibido por las réplicas 2 y 3.\relax }{figure.caption.19}{}}
 \@setckpt{Requerimientos_Tolerancia_Fallas}{
-\setcounter{page}{26}
+\setcounter{page}{25}
 \setcounter{equation}{3}
 \setcounter{enumi}{0}
 \setcounter{enumii}{0}
@@ -50,13 +43,13 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{19}
+\setcounter{figure}{17}
 \setcounter{table}{0}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{4}
 \setcounter{caption@flags}{0}
 \setcounter{continuedfloat}{0}
-\setcounter{subfigure}{2}
+\setcounter{subfigure}{0}
 \setcounter{subtable}{0}
 \setcounter{blindtext}{1}
 \setcounter{Blindtext}{5}
@@ -88,7 +81,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{66}
+\setcounter{instcount}{63}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -112,7 +105,7 @@
 \setcounter{parenlevel}{0}
 \setcounter{blx@maxsection}{0}
 \setcounter{blx@maxsegment@0}{0}
-\setcounter{blx@sectionciteorder@0}{66}
+\setcounter{blx@sectionciteorder@0}{63}
 \setcounter{mincomprange}{10}
 \setcounter{maxcomprange}{100000}
 \setcounter{mincompwidth}{1}
