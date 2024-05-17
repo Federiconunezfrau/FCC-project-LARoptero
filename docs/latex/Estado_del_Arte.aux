@@ -3,19 +3,20 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Estado del Arte}{7}{section.3}\protected@file@percent }
 \newlabel{sec:estado_del_arte}{{3}{7}{Estado del Arte}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{7}{subsection.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Arquitectura del sistema principal de vuelo, conformado por varias computadoras en una configuración redundante. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{8}{figure.caption.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Esquema simplificado del sistema de control de vuelo de un avión. Tanto los comandos enviados por el piloto, como los sensores y los actuadores se encuentran conectados a la computadora de vuelo. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{7}{figure.caption.3}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:Boeing_777_diagrama}{{1}{8}{Arquitectura del sistema principal de vuelo, conformado por varias computadoras en una configuración redundante. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo típico en aviones. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{9}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:diagrama_general_fly_by_wire}{{2}{9}{Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo típico en aviones. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Bus de Comunicaciones}{9}{subsubsection.3.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {yeh1996triple}.\relax }}{10}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:ARINC_629_bus}{{3}{10}{Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \cite {yeh1996triple}.\relax }{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Comparación de Resultados y Tolerancia a Fallas}{10}{subsubsection.3.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }}{11}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:votacion_sensores}{{4}{11}{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }{figure.caption.6}{}}
+\newlabel{fig:avion_FBW}{{1}{7}{Esquema simplificado del sistema de control de vuelo de un avión. Tanto los comandos enviados por el piloto, como los sensores y los actuadores se encuentran conectados a la computadora de vuelo. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo. Tanto los sensores, como los actuadores, los accionamientos del piloto y las computadoras de vuelo presentan redundancias para incrementar el nivel de seguridad. Todas las comunicaciones se llevan a cabo a través de buses de comunicación, los cuales también presentan redundancias. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{9}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:diagrama_general_fly_by_wire}{{2}{9}{Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo. Tanto los sensores, como los actuadores, los accionamientos del piloto y las computadoras de vuelo presentan redundancias para incrementar el nivel de seguridad. Todas las comunicaciones se llevan a cabo a través de buses de comunicación, los cuales también presentan redundancias. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Comparación de Resultados y Tolerancia a Fallas}{9}{subsubsection.3.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }}{10}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:votacion_sensores}{{3}{10}{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Bus de Comunicaciones}{10}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {yeh1996triple}.\relax }}{11}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:ARINC_629_bus}{{4}{11}{Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \cite {yeh1996triple}.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Fallas de Modo Común}{11}{subsubsection.3.1.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{11}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{11}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{12}{subsubsection.3.2.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \blx@tocontentsinit {0}\cite {embention-2023}.\relax }}{12}{figure.caption.7}\protected@file@percent }
 \newlabel{fig:Veronte_Embention}{{5}{12}{Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \cite {embention-2023}.\relax }{figure.caption.7}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{12}{subsubsection.3.2.2}\protected@file@percent }
@@ -67,7 +68,7 @@
 \setcounter{AM@survey}{0}
 \setcounter{Item}{0}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{11}
+\setcounter{bookmark@seq@number}{12}
 \setcounter{nlinenum}{0}
 \setcounter{mydef}{0}
 \setcounter{@pps}{0}
@@ -82,7 +83,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{44}
+\setcounter{instcount}{45}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -106,7 +107,7 @@
 \setcounter{parenlevel}{0}
 \setcounter{blx@maxsection}{0}
 \setcounter{blx@maxsegment@0}{0}
-\setcounter{blx@sectionciteorder@0}{44}
+\setcounter{blx@sectionciteorder@0}{45}
 \setcounter{mincomprange}{10}
 \setcounter{maxcomprange}{100000}
 \setcounter{mincompwidth}{1}

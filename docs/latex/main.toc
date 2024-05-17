@@ -5,10 +5,11 @@
 \contentsline {subsection}{\numberline {2.2}Tolerancia a Fallas y Redundancias}{5}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Estado del Arte}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{7}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Bus de Comunicaciones}{9}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Comparación de Resultados y Tolerancia a Fallas}{10}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.1}Comparación de Resultados y Tolerancia a Fallas}{9}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Bus de Comunicaciones}{10}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Fallas de Modo Común}{11}{subsubsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{11}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{11}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{12}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{12}{subsubsection.3.2.2}%
 \contentsline {section}{\numberline {4}Análisis de Sistemas Tolerantes a Fallas en General}{17}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Características de Sistemas Tolerantes a Fallas}{17}{subsection.4.1}%

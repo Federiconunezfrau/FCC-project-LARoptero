@@ -266,31 +266,62 @@
     \field{year}{1996}
   \endentry
 
-  \entry{kopetz-2011}{book}{}
-    \name{author}{1}{}{%
-      {{hash=KH}{%
-         family={Kopetz},
-         familyi={K\bibinitperiod},
-         given={Hermann},
-         giveni={H\bibinitperiod},
+  \entry{lala1994architectural}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LJH}{%
+         family={Lala},
+         familyi={L\bibinitperiod},
+         given={Jaynarayan\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=HRE}{%
+         family={Harper},
+         familyi={H\bibinitperiod},
+         given={Richard\bibnamedelima E},
+         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {Springer Science+Business Media}%
+      {IEEE}%
     }
-    \strng{namehash}{KH1}
-    \strng{fullhash}{KH1}
+    \strng{namehash}{LJHHRE1}
+    \strng{fullhash}{LJHHRE1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \verb{doi}
-    \verb 10.1007/978-1-4419-8237-7
-    \endverb
-    \field{title}{{Real-Time systems}}
+    \field{number}{1}
+    \field{pages}{25\bibrangedash 40}
+    \field{title}{Architectural principles for safety-critical real-time
+  applications}
+    \field{volume}{82}
+    \field{journaltitle}{Proceedings of the IEEE}
+    \field{year}{1994}
+  \endentry
+
+  \entry{Fulton2014AirborneEH}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=FR}{%
+         family={Fulton},
+         familyi={F\bibinitperiod},
+         given={Randall},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=VRI}{%
+         family={Vandermolen},
+         familyi={V\bibinitperiod},
+         given={R.\bibnamedelima I.},
+         giveni={R\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FRVRI1}
+    \strng{fullhash}{FRVRI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Airborne Electronic Hardware Design Assurance: A
+  Practitioner's Guide to RTCA/DO-254}
     \verb{url}
-    \verb https://doi.org/10.1007/978-1-4419-8237-7
+    \verb https://api.semanticscholar.org/CorpusID:111395313
     \endverb
-    \field{month}{01}
-    \field{year}{2011}
+    \field{year}{2014}
   \endentry
 
   \entry{zhang2020architecture}{article}{}
@@ -585,35 +616,31 @@
     \field{year}{2023}
   \endentry
 
-  \entry{lala1994architectural}{article}{}
-    \name{author}{2}{}{%
-      {{hash=LJH}{%
-         family={Lala},
-         familyi={L\bibinitperiod},
-         given={Jaynarayan\bibnamedelima H},
-         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-      }}%
-      {{hash=HRE}{%
-         family={Harper},
-         familyi={H\bibinitperiod},
-         given={Richard\bibnamedelima E},
-         giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+  \entry{kopetz-2011}{book}{}
+    \name{author}{1}{}{%
+      {{hash=KH}{%
+         family={Kopetz},
+         familyi={K\bibinitperiod},
+         given={Hermann},
+         giveni={H\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {IEEE}%
+      {Springer Science+Business Media}%
     }
-    \strng{namehash}{LJHHRE1}
-    \strng{fullhash}{LJHHRE1}
+    \strng{namehash}{KH1}
+    \strng{fullhash}{KH1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{number}{1}
-    \field{pages}{25\bibrangedash 40}
-    \field{title}{Architectural principles for safety-critical real-time
-  applications}
-    \field{volume}{82}
-    \field{journaltitle}{Proceedings of the IEEE}
-    \field{year}{1994}
+    \verb{doi}
+    \verb 10.1007/978-1-4419-8237-7
+    \endverb
+    \field{title}{{Real-Time systems}}
+    \verb{url}
+    \verb https://doi.org/10.1007/978-1-4419-8237-7
+    \endverb
+    \field{month}{01}
+    \field{year}{2011}
   \endentry
 
   \entry{baleani2003fault}{inproceedings}{}
