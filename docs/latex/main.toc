@@ -7,7 +7,6 @@
 \contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{7}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}Comparación de Resultados y Tolerancia a Fallas}{9}{subsubsection.3.1.1}%
 \contentsline {subsubsection}{\numberline {3.1.2}Bus de Comunicaciones}{10}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Fallas de Modo Común}{11}{subsubsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{11}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{12}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{12}{subsubsection.3.2.2}%

@@ -65,26 +65,47 @@ El hecho de que la probabilidad de falla de los semiconductores no alcance estos
     \label{fig:diagrama_general_fly_by_wire}    
 \end{figure}
 
-Al tener más de una réplicas de cada componente, una falla en alguno de estos no resulta tan crítica, ya que puede utilizarse alguna de las demás réplicas como reemplazo. A continuación se presentan algunas de las características del sistema de control de vuelo con redundancias.
+Al tener más de una réplica de cada componente, una falla en alguno de estos no resulta tan crítica, ya que puede utilizarse alguna de las demás como reemplazo. La forma en que se detecta que ocurrió una falla, es a través de la comparación de resultados entre réplicas, ya que se asume que es muy poco probable que la mayoría de las réplicas presente una falla al mismo tiempo.
 
 \subsubsection{Comparación de Resultados y Tolerancia a Fallas}
 
-El mecanismo de tolerancia a fallas es a través de la comparación entre mediciones de sensores y resultados de cálculo de la ley de control. Si todos los sensores redundantes funcionan adecuadamente, es esperable que estos entreguen mediciones muy similares. Por otro lado, si uno de ellos entrega una medición diferente a la de los otros dos, se asume que este presentó una medición incorrecta. Como resultado de la comparación, se obtiene un único valor el cual es utilizado por el sistema de control. De la misma forma, se realiza una comparación de los resultados del cálculo de la ley de control obtenido por cada una de las computadoras. Una vez que se decide por un único valor, se envía la señal de actuación.
+Los sensores de movimiento que se encuentran en el avión son vitales para mantener la estabilidad del avión. Si cada una de las réplicas funcionan adecuadamente, es esperable que estos entreguen mediciones muy similares. De la misma forma, si uno de ellos entrega una medición diferente a la de los otros, se asume que esto ocurrió debido a una falla.
 
-Existen muchos criterios utilizados para seleccionar los valores de sensores. Un aspecto importante a tener en cuenta es que a pesar de que todos los sensores redundantes funcionen adecuadamente, estos presentarán ciertas diferencias en las mediciones, algo que es esperable teniendo en cuenta cuestiones propias de la construcción de cada sensor, ruido, etc. Esto debe ser tenido en cuenta al momento de realizar las comparaciones.
+Debido a que los sensores realizan mediciones de variables físicas, como aceleración lineal, velocidad angular, etc, es esperable que los resultados que estos presenten tengan algunas diferencias entre réplicas. Esto debe ser tenido en cuenta al momento de realizar las comparaciones. Si se permite que haya diferencias muy grandes, podría darse por bueno un sensor con fallas. Caso contrario, podría determinarse que un sensor ha fallado, cuando en realidad no fue así. Esto requiere un trabajo de análisis de los sensores para determinar límites aceptables \cite{lala1994architectural}.
 
-En \cite[p.~221]{collinson2023introduction} se menciona un algoritmo muy simple. Este consiste en tomar una de las mediciones como referencia y comparar las demás contra esta. En la figura \ref{fig:votacion_sensores} se toma el ángulo $\theta_1$ como referencia, ya que $\theta_3 > \theta_1 > \theta_2$. En caso de que la diferencia $| \theta_1 - \theta_2 |$ ó $| \theta_1 - \theta_3 |$ supere un cierto límite, se asume que el sensor presentó una falla. En el caso de la imagen, la diferencia con el sensor 2 es mucho mayor que con el 3 y se asume que este presentó una falla. El valor que se toma como válido es el valor intermedio, $\theta_1$.
+%En \cite[p.~221]{collinson2023introduction} se menciona un algoritmo muy simple. Este consiste en tomar una de las mediciones como referencia y comparar las demás contra esta. En la figura \ref{fig:votacion_sensores} se toma el ángulo $\theta_1$ como referencia, ya que $\theta_3 > \theta_1 > \theta_2$. En caso de que la diferencia $| \theta_1 - \theta_2 |$ ó $| \theta_1 - \theta_3 |$ supere un cierto límite, se asume que el sensor presentó una falla. En el caso de la imagen, la diferencia con el sensor 2 es mucho mayor que con el 3 y se asume que este presentó una falla. El valor que se toma como válido es el valor intermedio, $\theta_1$.
+
+Una técnica muy simple consiste en tomar una de las mediciones como referencia y comparar las demás contra esta. En la figura \ref{fig:votacion_sensores} se presenta un ejemplo para el caso de 3 valores, $X_1$, $X_2$ y $X_3$. Se toma el valor $X_1$ como referencia, ya que $X_3 > X_1 > X_2$. En caso de que la diferencia $| X_1 - X_2 |$ ó $| X_1 - X_3 |$ supere un cierto límite, se asume que el sensor presentó una falla. En el caso de la imagen, la diferencia con el sensor 2 es mucho mayor que con el 3 y se asume que este presentó una falla.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{img/votacion_sensores.png}
-    \caption{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.}
+    \includegraphics[width=0.6\textwidth]{img/votacion_sensores.png}
+    \caption{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en las próximas iteraciones del lazo de control.}
     \label{fig:votacion_sensores}
 \end{figure}
 
-Este mismo esquema se repite luego del cálculo de la ley de control y de los valores a aplicar sobre cada actuador.
+Luego de recolectar los datos de todos los sensores, las computadores de vuelo redundantes proceden a calcular la ley de control para determinar las acciones a aplicar sobre los actuadores. De la misma forma, estas realizan una comparación de los resultados obtenidos por cada una. En caso de que cada una utilice un valor distinto de sensor como entrada, luego los resultados a los que lleguen no serán iguales, por más que las 3 computadoras de vuelo se encuentren funcionando correctamente. La presencia de términos integrales en los cálculos de las leyes de control, hará que estas diferencias crezcan con el pasar del tiempo. Es por esto que en el momento en que se hacen las comparaciones entre los datos de sensores, las computadoras de vuelo deciden por un único valor a utilizar. Para el caso de la figura \ref{fig:votacion_sensores}, se trata del valor de referencia $X_1$. Este método es utilizado en el avión Boeing 777 \cite{yeh1996triple}. 
 
-{\color{red} MENCIONAR LO DEL PAPER DE BOEING 777 QUE HABLA DEL FUNCIONAMIENTO SINCRONIZADO!}.
+El mismo procedimiento se repite con los resultados de cálculo de la ley de control. Las computadoras de vuelo deciden por un único resultado y luego lo envían a los actuadores del avión, a través de los buses de comunicación presentes en el avión. Estos permiten la comunicación entre los distintos componentes y las computadoras de vuelo.
+
+%Una vez que se decide por un único valor, se envía la señal de actuación.
+
+
+%A partir de la comparación se obtiene un único valor el cual es utilizado por el sistema de control. 
+
+
+
+%De la misma forma, se realiza una comparación de los resultados del cálculo de la ley de control obtenido por cada una de las computadoras. Una vez que se decide por un único valor, se envía la señal de actuación.
+
+%El mecanismo de tolerancia a fallas es a través de la comparación entre mediciones de sensores y resultados de cálculo de la ley de control. Si todos los sensores redundantes funcionan adecuadamente, es esperable que estos entreguen mediciones muy similares. Por otro lado, si uno de ellos entrega una medición diferente a la de los otros dos, se asume que este presentó una medición incorrecta. Como resultado de la comparación, se obtiene un único valor el cual es utilizado por el sistema de control. De la misma forma, se realiza una comparación de los resultados del cálculo de la ley de control obtenido por cada una de las computadoras. Una vez que se decide por un único valor, se envía la señal de actuación.
+
+%Existen muchos criterios utilizados para seleccionar los valores de sensores. Un aspecto importante a tener en cuenta es que a pesar de que todos los sensores redundantes funcionen adecuadamente, estos presentarán ciertas diferencias en las mediciones, algo que es esperable teniendo en cuenta cuestiones propias de la construcción de cada sensor, ruido, etc. Esto debe ser tenido en cuenta al momento de realizar las comparaciones.
+
+%Este mismo esquema se repite luego del cálculo de la ley de control y de los valores a aplicar sobre cada actuador.
+
+%{\color{red} MENCIONAR LO DEL PAPER DE BOEING 777 QUE HABLA DEL FUNCIONAMIENTO SINCRONIZADO!}.
+
+%El control de vuelo comprende un sistema a lazo cerrado, utilizando comandos del piloto y mediciones de sensores, se calculan las acciones a aplicar sobre los actuadores. Esto se repite periódicamente durante todo el vuelo.
 
 \subsubsection{Bus de Comunicaciones}
 
@@ -103,21 +124,21 @@ El hecho de que todas las comunicaciones pasen por el mismo bus lo vuelve un pun
 
 Un aspecto a destacar en el bus de comunicaciones es el método de acceso al medio utilizado, TDMA. El envío y recepción de mensajes se implementa por turnos. Este protocolo define en qué instantes de tiempo cada uno de los nodos puede utilizar el medio físico y en cuáles no. Para que no haya colisiones, todos los nodos deben respetar ese timing, el cual se encuentra predefinido. Esto le da determinismo y claridad al comportamiento del bus y del sistema, ya que a priori puede saberse qué mensaje se estará enviando en cada instante de tiempo. Cualquier otro tipo de comportamiento respresentará una falla. Además, al tratarse de un sistema de tiempo real, no pueden permitirse las retransmisiones, ya que es evidente que se rompería el requerimiento intrínseco de este tipo de sistemas, que es cumplir con la tarea asignada antes de cierto tiempo.
 
-\subsubsection{Fallas de Modo Común}
+%\subsubsection{Fallas de Modo Común}
 
-{\color{red} COMPLETAR}.
+%{\color{red} COMPLETAR}.
 
 \subsection{Redundancias en Sistemas de Control de Vuelo en UAVs}
 
 Es evidente que las consecuencias del fracaso del sistema de control de vuelo en un vehículo aéreo no tripulado, no son las mismas que en un avión comercial. Estos últimos pueden trasladar cientos de personas y realizar vuelos de muchas horas, mientras que en los primeros no hay tripulación ni piloto a bordo del vehículo. Debido a esto, suelen estar construidos con otros requerimientos de seguridad más laxos. Para UAVs de uso militar, la probabilidad de fracaso se encuentra en el orden de $10^{-5} / h$ \cite{zhang2020architecture}\cite[p.~491]{collinson2023introduction}, una diferencia de varios órdenes de magnitud respecto de los aviones comerciales.
 
-Al igual que en aviones de uso comercial y militar, es común el uso de redundancias en UAVs de uso militar. {\color{red} CITAR VARIOS EJEMPLOS}.
+Al igual que en aviones de uso comercial y militar, es común el uso de redundancias en UAVs de uso militar. Por ejemplo en \cite{821966}, se decribe la arquitectura del vehículo Global Hawk de Northrop Grumman. Este funciona con un esquema de redundancia doble, donde ambas computadoras de vuelo trabajan en paralelo. Al igual que en el caso del avión, ambas computadoras comparan sus resultados y siempre utilizan el mismo valor de sensores como entrada para los cálculos de la ley de control. A su vez, se utiliza redundancia doble para los sensores y actuadores.
 
 En el caso de UAVs de uso civil y comercial, el uso de redundancias no es tan común. Sin embargo, existen algunas empresas que comercializan computadoras de vuelo con capacidad de utilizar redundancias. A continuación se mencionan algunas de ellas.
 
 \subsubsection{Computadoras de Vuelo Comerciales}
 
-La empresa Embention comercializa una computadora de vuelo con redundancia triple, con la posibilidad de incorporar una cuarta computadora extra \cite{embention-2023}. Su funcionamiento se basa en que todas las computadoras de vuelo redundantes se comunican con un elemento denominado árbitro. Este ejecuta un algoritmo de votación y selecciona cuál de las tres computadoras de vuelo es la correcta. En la figura \ref{fig:Veronte_Embention} se muestra un diagrama en bloques.
+La empresa Embention comercializa una computadora de vuelo con redundancia triple, con la posibilidad de incorporar una cuarta computadora extra \cite{embention-2023}. En la figura \ref{fig:Veronte_Embention} se muestra su diagrama en bloques. El funcionamiento de esta se basa en que todas las computadoras de vuelo redundantes se comunican con un elemento central, denominado árbitro. Este es el encargado de realizar la tarea de comparación de resultados. Cada una de las computadoras de vuelo tiene incluida toda la electrónica y los sensores para realizar el trabajo de controlar el vuelo del vehículo. Si bien las 3 computadoras de vuelo trabajan en paralelo, en la arquitectura de este sistema solo una de las 3 controla al vehículo en su totalidad. Es el trabajo del árbitro, detectar si la computadora a cargo no es capaz de continuar haciéndolo. En dicho caso, esta puede darle el control a alguna de las otras 2 réplicas.
 
 \begin{figure}[H]
     \centering
@@ -126,47 +147,60 @@ La empresa Embention comercializa una computadora de vuelo con redundancia tripl
     \label{fig:Veronte_Embention}    
 \end{figure}
 
-Un detalle que puede verse en este diagrama en bloques es que las computadoras de vuelo se comunican con el árbitro a través de un bus de comunicación. En el sitio web de este autopiloto se menciona que una de las interfaces de comunicación es un bus CAN doble, el cual además puede usarse para la comunicación con motores y sensores. Esto es similar al caso presentado anteriormente en aviones, donde los módulos se comunican a través de un bus de comunicaciones.
+%Para ello ejecuta un algoritmo de votación y selecciona cuál de las tres computadoras de vuelo es la correcta.
+
+%Este es un elemento presente en muchos sistemas que utilizan redundancias y tiene 
+
+Un detalle que puede verse en este diagrama en bloques es que las computadoras de vuelo se comunican con el árbitro a través de un bus de comunicación. En el sitio web de este autopiloto se menciona que una de las interfaces de comunicación es un bus CAN doble, el cual además puede usarse para la comunicación con actuadores y sensores. Esto es similar al caso presentado anteriormente en aviones, donde los módulos se comunican a través de un bus de comunicaciones.
 
 Vector-600 es una computadora de vuelo con doble redundancia, comercializada por la empresa UAV Navigation \cite{uav-navigation-vector-600}. Esta ofrece redundancia doble en la CPU que realiza los cálculos de actuación y procesamiento de sensores, redundancia doble en la fuente de alimentación y en algunos de los sensores.
 
 La empresa MicroPilot ofrece un autopiloto con redundancia triple, MP21283X \cite{wwwmicropilotcom-no-date}. Este se compone de 3 computadoras de vuelo iguales en hardware y software. Durante su uso, la primera de las computadoras de vuelo se encarga de controlar al vehículo. En caso de que esta presente una falla, el autopiloto cambia y utiliza la segunda computadora. Si esta falla, se pasa a la tercera.
 
-Estas computadoras de vuelo tienen la particularidad de tener precios muy altos, por ejemplo la primera de ellas de Embention tiene un precio entre 23500 \euro{} y 27000 \euro{}. El presente trabajo busca desarrollar una computadora de vuelo con componentes COTS, por lo que este presupuesto excede la capacidad de este trabajo. Pueden encontrarse una gran cantidad de trabajos que abordan el desarrollo de computadoras de vuelo con redundancias y que utilizan componentes COTS. A continuación se mencionan algunos de ellos.
-
 \subsubsection{Casos de Trabajos con Componentes COTS}
 
-En los trabajos \cite{hiergeist2018implementation} y \cite{hiergeist2017internal} los autores presentan una computadora de vuelo redundante, desarrollada con componentes COTS. Esta comprende una redundancia cuádruple utilizando cuatro microcontroladores iguales. Al igual que en el caso del avión comercial y en los autopilotos presentados, la tolerancia a fallas se aborda a partir del intercambio de información. Se utilizan cuatro interfaces SPI, donde en cada una de estas un microcontrolador diferente actúa como master. Los microcontroladores recolectan datos de sensores y realizan un intercambio para ponerse de acuerdo y llegar a un consenso acerca de cuál es el valor correcto. Una vez que esto se decide, se realiza el cálculo de la ley de control. Antes de aplicar el resultado a los motores, se vuelven a comparar resultados para detectar y filtrar fallas. Mientras que en \cite{hiergeist2018implementation} se muestran los resultados, en \cite{hiergeist2017internal} se abordan cuestiones relacionadas al diseño e implementación utilizando componentes COTS. Un aspecto importante de este trabajo es que los cuatro microcontroladores trabajan de manera sincronizada. Los autores mencionan que esto es algo que no puede obviarse, ya que el sistema de control del UAV es un sistema de tiempo real. Para que la tolerancia a fallas funcione adecuadamente, todos los microcontroladores deben procesar datos de sensores que correspondan al mismo ciclo de control. En otras palabras, los 4 nodos de la red redundante realizan la comparación de los datos de sensores al mismo tiempo, realizan el cálculo de la ley de control al mismo tiempo y finalmente vuelven a comparar los resultados al mismo tiempo. En la figura \ref{fig:frame_lock_approach} se muestra un esquema que ejemplifica esto.
+Estas computadoras de vuelo tienen la particularidad de tener precios muy altos, por ejemplo la primera de ellas de Embention tiene un precio entre 23500 \euro{} y 27000 \euro{}. El presente trabajo busca desarrollar una computadora de vuelo con componentes COTS, por lo que este presupuesto excede la capacidad de este trabajo. Pueden encontrarse una gran cantidad de trabajos que abordan el desarrollo de computadoras de vuelo con redundancias y que utilizan componentes COTS.
+
+En los trabajos \cite{hiergeist2018implementation} y \cite{hiergeist2017internal} los autores presentan una computadora de vuelo redundante, desarrollada con componentes COTS. Esta comprende un sistema con redundancia cuádruple, utilizando cuatro microcontroladores iguales. Al igual que en el caso del avión comercial y en los autopilotos presentados, la tolerancia a fallas se aborda a partir del intercambio de información. En la figura \ref{fig:redundancy_SPI} se muestra la confiuración, la cual utiliza 4 interfaces SPI, donde en cada una de estas un microcontrolador diferente actúa como master. Cada uno de estos recolecta datos de sensores y luego se realiza un intercambio para ponerse de acuerdo y llegar a un consenso acerca de cuál es el valor a utilizar. Una vez que esto se decide, se realiza el cálculo de la ley de control. Antes de aplicar el resultado a los motores, se vuelven a comparar resultados para detectar y filtrar fallas. Este es un comportamiento similar al del caso de los aviones presentado anteriormente.
+
+Mientras que en \cite{hiergeist2018implementation} se muestran los resultados, en \cite{hiergeist2017internal} se abordan cuestiones relacionadas al diseño e implementación. Un aspecto importante es que los cuatro microcontroladores trabajan de manera sincronizada. Los autores mencionan que esto es algo que no puede obviarse, ya que el sistema de control del UAV es un sistema de tiempo real. Para que la tolerancia a fallas funcione adecuadamente, todos los microcontroladores deben realizar la comparación de datos de sensores que correspondan al mismo ciclo de control. En otras palabras, los 4 microcontroladores realizan la comparación de los datos de sensores, el cálculo de la ley de control y comparación de los resultados de las acciones de control, al mismo tiempo. %En la figura \ref{fig:frame_lock_approach} se muestra un esquema que ejemplifica esto.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/frame_lock_approach.png}
-    \caption{Imagen que demuestra la sincronización entre 3 microcontroladores que realizan las mismas tareas en paralelo. La imagen se extrajo de \cite{hiergeist2017internal}.}
-    \label{fig:frame_lock_approach}
+    \includegraphics[width=0.7\textwidth]{img/redundancy_SPI.png}
+    \caption{Arquitectura de redundancia cuádruple propuesta en \cite{hiergeist2018implementation}.}
+    \label{fig:redundancy_SPI}
 \end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{img/frame_lock_approach.png}
+%     \caption{Imagen que demuestra la sincronización entre 3 microcontroladores que realizan las mismas tareas en paralelo. La imagen se extrajo de \cite{hiergeist2017internal}.}
+%     \label{fig:frame_lock_approach}
+% \end{figure}
 
 Cabe aclarar que la sincronización que se menciona no tiene nada que ver con los osciladores que utiliza cada microcontrolador para su propio funcionamiento. Lo que se sincroniza es el scheduling de las tareas ejecutadas por cada microcontrolador. Por otro lado, esta sincronización no es perfecta ya que sería algo prácticamente imposible. Se acepta que haya cierto desfasaje que no perjudique demasiado el control del vehículo. En \cite{hiergeist2018implementation} se explica la técnica de sincronización utilizada.
 
-A diferencia del caso del avión, la comunicación en este trabajo no se realiza por medio de un bus, sino que es a través de 4 interfaces SPI. La justificación de los autores es porque pueden alcanzarse tasas de transferencia de hasta 50 MBit/s, muchísimo mayor que en el bus ARINC 629 que era de 2 MBit/s. Como contrapartida, una conexión SPI requiere de las líneas MOSI, MISO, CS y SCK, además del retorno GND ya que la señal eléctrica de SPI es de modo común. La cantidad de conexiones es mucho mayor que en el caso del uso de un bus. Por ejemplo el autopiloto de Embention utiliza el bus CAN, donde solamente se requieren dos cables, CAN-H y CAN-L. Además, SPI no implementa ningún mecanismo para verificar la integridad del mensaje recibido. Otro aspecto negativo es que el uso de SPI no permite integrar más módulos, como sí sucede en el caso del autopiloto de Embention, donde el mismo bus CAN se utiliza para adosar sensores y actuadores diferentes.
+A diferencia del caso del avión, la comunicación en este trabajo no se realiza por medio de un bus, sino que es a través de 4 interfaces SPI. La justificación de los autores es porque pueden alcanzarse tasas de transferencia de hasta 50 MBit/s, muchísimo mayor que los 2 MBit/s del bus ARINC 629. Como contrapartida, una conexión SPI requiere de las líneas MOSI, MISO, CS y SCK, además del retorno GND ya que la señal eléctrica de SPI es de modo común. La cantidad de conexiones es mucho mayor que en el caso del uso de un bus. Por ejemplo el autopiloto de Embention utiliza el bus CAN, donde solamente se requieren dos cables, CAN-H y CAN-L. Además, SPI no implementa ningún mecanismo para verificar la integridad del mensaje recibido. Otro aspecto negativo es que el uso de SPI no permite integrar más módulos, como sí sucede en el caso del autopiloto de Embention, donde el mismo bus CAN se utiliza para adosar sensores y actuadores diferentes.
 
-En el caso del avión, se había mencionado que el acceso al bus de comunicación era gobernado por el tiempo. En este trabajo además la ejecución del lazo de control y la comparación de resultados también es gobernada por el tiempo.
+%En el caso del avión, se había mencionado que el acceso al bus de comunicación era gobernado por el tiempo. En este trabajo además la ejecución del lazo de control y la comparación de resultados también es gobernada por el tiempo.
 
-Otro aspecto interesante de este trabajo es que no hay un único elemento que compare los resultados de cada computadora, sino que todas ellas lo hacen. Esto es algo que realiza el autopilot de la empresa Embention mencionado anteriormente. Los autores argumentan que generalmente cuando se utiliza este tipo de árbitro que decide cuál es la computadora de vuelo correcta, esta debe tener una probabilidad de fracaso muy inferior a cada uno de los nodos redundantes, ya que si este árbitro fracasa, todo el sistema fracasará. Esto se muestra en la figura \ref{fig:falla_arbitro}. El árbitro suele ser de un costo muy elevado, algo que se contradice con el requerimiento de que todo el sistema sea desarrollado con componentes COTS.
+Otro aspecto interesante de este trabajo es que no hay un único elemento que compare los resultados de cada computadora, sino que todas ellas lo hacen. Esto es algo que realiza la computadora de vuelo de la empresa Embention mencionado anteriormente. Los autores argumentan que generalmente cuando se utiliza este tipo de árbitro que decide cuál es la computadora correcta, esta debe tener una probabilidad de fracaso muy inferior a cada una de las réplicas, ya que si este árbitro fracasa, todo el sistema fracasará. Esto se muestra en la figura \ref{fig:falla_arbitro}. El árbitro suele ser de un costo muy elevado, algo que se contradice con el requerimiento de que todo el sistema sea desarrollado con componentes COTS.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{img/falla_arbitro.png}
-    \caption{A pesar de que los 3 módulos redundantes funcionen correctamente, una falla del árbitro se traduce directamente en un error en el sistema. Esto lo vuelve un punto singular de falla.}
+    \caption{A pesar de que las 3 réplicas redundantes funcionan correctamente, una falla del árbitro se traduce directamente en un fracaso del sistema.}
     \label{fig:falla_arbitro}
 \end{figure}
 
 Una cuestión que no se aclara en este trabajo es cómo se aplican las señales de control a los motores del UAV, ni cómo se recolectan los datos de sensores.
 
-En \cite{zhang2020architecture} se presenta otro trabajo desarrollado con componentes COTS. Este también utiliza una arquitectura gobernada por el tiempo. En este trabajo los autores la presentan formalmente con el nombre de \textit{Time-Triggered Architecture}. Esta consiste en que las tareas ejecutadas por el procesador se encuentran predefinidas de forma estática en tiempo de compilación. En este trabajo, al igual que en el caso del avión, se utiliza un bus de comunicación con acceso TDMA, FlexRay \cite{nxpAN12233}. El bus utilizado es doble, para evitar que este sea un punto singular de falla. Al igual que en el trabajo antes mencionado, en este también se implementa una sincronización entre las distintas computadoras de vuelo.
+En \cite{zhang2020architecture} se presenta otro trabajo desarrollado con componentes COTS. Este también utiliza una arquitectura gobernada por el tiempo. En este trabajo los autores la presentan formalmente con el nombre de \textit{Time-Triggered Architecture}. Esta consiste en que las tareas ejecutadas por el procesador se encuentran predefinidas de forma estática en tiempo de compilación. En este trabajo, al igual que en el caso del avión, se utiliza un bus de comunicación con acceso TDMA, FlexRay \cite{nxpAN12233}. El bus utilizado es doble, para cubrir cualquier falla que pueda haber en alguno de estos y al igual que en el trabajo antes mencionado, en este también se implementa una sincronización entre las distintas computadoras de vuelo.
 
-La tolerancia a fallas se realiza a través de la comparación de resultados, como en todos los casos presentados hasta el momento. Un aspecto particular de este trabajo es que además de los nodos que realizan los cálculos de ley de control, se incorporan otros microcontroladores extra que se dedican a procesar datos de sensores y de actuadores. Los autores mencionan que esto se hace para alivianar la cantidad de datos enviados a través del bus de comunicaciones y el procesamiento que deben realizar los nodos que calculan la ley de control. Como aspecto negativo, esto encarece a la computadora de vuelo, ya que se requiere una mayor cantidad de procesadores.
+La tolerancia a fallas se realiza a través de la comparación de resultados, al igual que en todos los casos presentados hasta el momento. Un aspecto particular de este trabajo es que además de las computadoras de vuelo que realizan los cálculos de ley de control, se incorporan otros microcontroladores extra que se dedican a procesar datos de sensores y de actuadores. Los autores mencionan que esto se hace para alivianar la cantidad de datos enviados a través del bus de comunicaciones y el procesamiento que deben realizar las computadoras de vuelo para calcular la ley de control. Como aspecto negativo, esto encarece a todo el vehículo, ya que se requiere una mayor cantidad de procesadores.
 
-La sincronización de los nodos redundantes es algo que se repite en varios trabajos encontrados. En \cite{zhang2015dual} se presenta un desarrollo de una computadora de vuelo para pequeños UAVs, con redundancia doble y sincronización en la ejecución de las tareas. La redundancia también se administra a través de la comparación de entradas de sensores y resultados de cálculos de la ley de control. En la figura  \ref{fig:FCC_dual_FPGA} se muestra un diagrama en bloques. Si bien ambas computadoras trabajan en paralelo, solo una de ellas es la que controla los actuadores. 
+La sincronización es algo que se repite en la mayoría de los trabajos encontrados. En \cite{zhang2015dual} se presenta un desarrollo de una computadora de vuelo para pequeños UAVs, con redundancia doble y sincronización en la ejecución de las tareas. La redundancia también se administra a través de la comparación de entradas de sensores y resultados de cálculos de la ley de control. En la figura \ref{fig:FCC_dual_FPGA} se muestra un diagrama en bloques. Si bien ambas computadoras trabajan en paralelo, solo una de ellas es la que controla los actuadores. 
 
 \begin{figure}[H]
     \centering
@@ -175,11 +209,11 @@ La sincronización de los nodos redundantes es algo que se repite en varios trab
     \label{fig:FCC_dual_FPGA}
 \end{figure}
 
-En caso de que ocurra una discrepancia entre los resultados de ambas, eso indicará que alguna de las dos computadoras cometió un error, pero no se sabrá cuál fue. Luego de ejecutar una serie de rutinas se verifica cuál de las 2 cometió el error y en caso de que sea necesario, se le pasa el control de los actuadores a la computadora de back-up.
+En caso de que ocurra una discrepancia entre los resultados de ambas, eso indicará que alguna de las dos computadoras cometió un error, pero no se sabrá cuál fue. Luego de ejecutar una serie de rutinas se verifica cuál de las 2 cometió el error y en caso de que sea necesario, se le pasa el control de los actuadores a la computadora otra computadora.
 
-Un aspecto negativo de esta configuración es el hecho de que la comparación de resultados no permite identificar cuál de las dos CPUs cometió el error, solamente se puede saber que ocurrió un error. Pensando en que la ejecución del lazo de control es un sistema de tiempo real, sería deseable que a pesar de la falla, el sistema de control pueda seguir ejecutándose. El hecho de tener que ejecutar rutinas para verificar a la computadora fallada presenta un trabajo que perjudica el control del vehículo. Esto es algo que no sucede por ejemplo, si se utilizan 3 computadoras de vuelo en paralelo, ya que si una presenta un dato incorrecto, simplemente puede ignorarse el dato y utilizar los datos de las otras 2 computadoras correctas. Esto se denomina \textit{fault masking} o enmascaramiento de la falla.
+Un aspecto negativo de esta configuración es el hecho de que la comparación de resultados no permite identificar cuál de las dos CPUs cometió el error, solamente se puede saber que ocurrió un error. Pensando en que la ejecución del lazo de control es un sistema de tiempo real, sería deseable que a pesar de la falla, el sistema de control pueda seguir ejecutándose. El hecho de tener que ejecutar rutinas para verificar a la computadora fallada presenta un trabajo que perjudica el control del vehículo. Esto es algo que no sucede por ejemplo, si se utilizan 3 computadoras de vuelo en paralelo, ya que si una presenta un dato incorrecto, simplemente puede ignorarse el dato y utilizar los datos de las otras 2 computadoras correctas. %Esto se denomina \textit{fault masking} o enmascaramiento de la falla.
 
-En \cite{chen2015design} y \cite{wang2008development} pueden encontrarse otros 2 trabajos más que utilizan la sincronización entre los nodos redundantes. El primero de ellos trabaja con redundancia triple y un árbritro que selecciona cuál de los nodos controla los actuadores. El segundo también trabaja con redundancia triple, pero no utiliza un árbitro sino que las tres computadoras realizan la votación y cada una de ellas envía un mensaje a un nodo que se encuentra en el mismo bus y se encarga de controlar el actuador. En la figura \ref{fig:RS_485_sync} se muestra el diagrama en bloques.
+En \cite{chen2015design} y \cite{wang2008development} pueden encontrarse otros 2 trabajos más que utilizan la sincronización entre los nodos redundantes. El primero de ellos trabaja con redundancia triple y un árbritro que selecciona cuál de las réplicas controla los actuadores. El segundo también trabaja con redundancia triple, pero no utiliza un árbitro sino que las tres computadoras realizan la votación y cada una de ellas envía un mensaje a un componente que se encuentra en el mismo bus y se encarga de controlar el actuador. En la figura \ref{fig:RS_485_sync} se muestra el diagrama en bloques.
 
 \begin{figure}[H]
     \centering
@@ -188,18 +222,20 @@ En \cite{chen2015design} y \cite{wang2008development} pueden encontrarse otros 2
     \label{fig:RS_485_sync}
 \end{figure}
 
-En \cite{thesis_redundant_ROS} se presenta un trabajo de tesis en el que no se utiliza una sincronización entre los nodos. Este consiste en la utilización de 2 computadoras de vuelo de fácil acceso comercial, PixHawk \cite{dronecode-foundation-2023}, conectadas a una tercera computadora de vuelo central implementada con una Raspberry Pi que funciona como árbitro. En la figura \ref{fig:ROS_redundancy} se muestra un diagrama en bloques de esta arquitectura. La técnica utilizada consiste en que el árbitro continuamente le pide a ambas computadoras información acerca de su ``estado de salud''. A partir de la información recibida de ambas, el árbitro controla unas llaves implementadas como relés de estado sólido que seleccionan cuál de las 2 comptuadoras será la que controle los motores.
+Hasta aquí, todos los trabajos presentados trabajan con una sincronización entre réplicas. Un caso en el que esto no sucede puede encontrarse en \cite{thesis_redundant_ROS}. Este consiste en la utilización de 2 computadoras de vuelo de fácil acceso comercial, PixHawk \cite{dronecode-foundation-2023}, conectadas a una tercera computadora de vuelo central implementada con una Raspberry Pi que funciona como árbitro. En la figura \ref{fig:ROS_redundancy} se muestra un diagrama en bloques de esta arquitectura.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/ROS_redundancy.png}
-    \caption{Arquitectura de la computadora de vuelo utilizada en \cite{thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit{Electronic Speed Controller} (ESC).}
+    \includegraphics[width=0.8\textwidth]{img/ROS_redundancy.png}
+    \caption{Arquitectura de la computadora de vuelo utilizada en \cite{thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit{Electronic Speed Controller} (ESC). La imagen muestra un solo actuador, pero se utiliza un circuito selector para cada uno de ellos.}
     \label{fig:ROS_redundancy}
 \end{figure}
 
-Un aspecto que no se menciona en este trabajo es cómo se administra el switcheo de los relés. Teniendo en cuenta que este switcheo puede traer consigo un cambio brusco en la señal PWM que ven los actuadores de los motores, habrá un período de reestabilización del lazo de control. Este requiere un análisis detallado que asegure que no se pierda el control del vehículo.
+La técnica utilizada en este caso es diferente respecto de los trabajos anteriores. Esta consiste en que el árbitro constituido por la placa Raspberry Pi, continuamente consulta a ambas computadoras acerca de su ``estado de salud''. Esta consiste una estructura de datos que contiene algunas variables definidas por el mismo sistema que sirven como indicadores para detectar si alguna de las réplicas ha presentado una falla o no. A partir de la información recibida de ambas, el árbitro controla una serie de llaves implementadas como relés de estado sólido que seleccionan cuál de las 2 comptuadoras será la que controle los motores.
+
+Un aspecto que no se menciona en este trabajo es cómo se administra el control de los relés. Teniendo en cuenta la conmutación puede traer consigo un cambio brusco en la señal PWM que ven los actuadores de los motores, habrá un período de reestabilización del lazo de control. Este requiere un análisis detallado para asegurar que no se pierda el control del vehículo.
 
 
 
 
-%\textbf{{\color{red} COMPLETAR}}
+\textbf{{\color{red} Falta darle un cierre que dé pase a la próxima sección}}

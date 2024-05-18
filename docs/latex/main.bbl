@@ -355,6 +355,39 @@
     \field{year}{2020}
   \endentry
 
+  \entry{821966}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=LG}{%
+         family={Loegering},
+         familyi={L\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=ED}{%
+         family={Evans},
+         familyi={E\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \keyw{Aerospace electronics;Aerospace control;Unmanned aerial
+  vehicles;Costs;Analog computers;Real time systems;Software design;Research
+  and development;Reconnaissance;Contracts}
+    \strng{namehash}{LGED1}
+    \strng{fullhash}{LGED1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Gateway to the New Millennium. 18th Digital Avionics
+  Systems Conference. Proceedings (Cat. No.99CH37033)}
+    \verb{doi}
+    \verb 10.1109/DASC.1999.821966
+    \endverb
+    \field{pages}{6.A.1\bibrangedash 6.A.1}
+    \field{title}{The evolution of the Global Hawk and MALD avionics systems}
+    \field{volume}{2}
+    \field{year}{1999}
+  \endentry
+
   \entry{embention-2023}{misc}{}
     \name{author}{1}{}{%
       {{hash=E}{%

@@ -1294,11 +1294,11 @@ INPUT img/Veronte_Embention.png
 INPUT ./img/Veronte_Embention.png
 INPUT ./img/Veronte_Embention.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/eurosym/feymr10.tfm
-INPUT ./img/frame_lock_approach.png
-INPUT ./img/frame_lock_approach.png
-INPUT img/frame_lock_approach.png
-INPUT ./img/frame_lock_approach.png
-INPUT ./img/frame_lock_approach.png
+INPUT ./img/redundancy_SPI.png
+INPUT ./img/redundancy_SPI.png
+INPUT img/redundancy_SPI.png
+INPUT ./img/redundancy_SPI.png
+INPUT ./img/redundancy_SPI.png
 INPUT ./img/falla_arbitro.png
 INPUT ./img/falla_arbitro.png
 INPUT img/falla_arbitro.png
