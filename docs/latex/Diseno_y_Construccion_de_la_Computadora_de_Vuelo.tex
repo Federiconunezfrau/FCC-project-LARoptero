@@ -35,7 +35,7 @@ En esta sección se presentan los criterios tenidos en cuenta para el diseño y 
 
 %El Laboratorio de Automática y Robótica de la FIUBA (LAR) cuenta con plataformas de computadoras de vuelo desarrolladas en el mismo laboratorio, que se utilizan con distintos fines de investigación. Estas computadoras de vuelo han ido incorporando distintas mejoras a lo largo de los años, y se han ido actualizando con nuevos componentes como sensores o microcontroladores. La primera de las versiones cuenta con un microcontrolador ARM Cortex M3, mientras que la última de estas cuenta un ARM Cortex M7 y sensores con mejor rendimiento \cite{garberoglio2019diseno}.
 
-%\begin{figure}[H]
+%\begin{figure}[htb]
 %    \centering
 %    \includegraphics[width=0.5\textwidth]{choriboards_anteriores.png}
 %    \caption{}    
@@ -56,25 +56,30 @@ En esta sección se presentan los criterios tenidos en cuenta para el diseño y 
 
 Un sistema de navegación permite realizar estimaciones de la pose del vehículo, es decir de la posición y orientación. En la figura \ref{fig:angles_drone} se muestra un UAV con una terna solidaria a este. La forma de indicar la orientación del vehículo es a través de los ángulos denominados \textit{yaw}, \textit{pitch} y \textit{roll}. Estos expresan las rotaciones entre la terna solidaria al vehículo en su posición actual, y una terna inercial, fija en el espacio.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{angles_drone.png}
     \caption{Se utiliza una terna solidaria al vehículo para conocer su orientación en el espacio. Los ángulos \textit{yaw}, \textit{pitch} y \textit{roll} indican rotaciones respecto de una terna inercial.}
     \label{fig:angles_drone}    
 \end{figure}
 
-El principal sistema utilizado en UAVs es el sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. Por ejemplo, podrían conocerse los ángulos de la figura \ref{fig:angles_drone} a partir de mediciones de velocidad angular. Estos sistemas no solo se utilizan en UAV sino que también en vehículos tripulados y aviones comerciales.
+El principal sistema utilizado en UAVs es el sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. %Por ejemplo, podrían conocerse los ángulos de la figura \ref{fig:angles_drone} a partir de mediciones de velocidad angular. 
+Estos sistemas se utilizan tanto en UAVs como también en vehículos tripulados y aviones comerciales.
 
 El hecho de integrar las mediciones de velocidad y aceleración en el tiempo, trae consigo que cualquier error de los acelerómetros y los giróscopos decante en errores de posición y de orientación que crecerán con el paso del tiempo a un ritmo acelerado. Típicamente esto se corrige utilizando otro sistema de navegación auxiliar (como por ejemplo a través de GPS) junto con un filtro de Kalman o un sistema equivalente. %En la figura \ref{fig:kalman} se muestra un diagrama en bloques que relaciona al sistema inercial con el sistema auxiliar a través del filtro de Kalman para corregir las salidas del sistema de navegación inercial.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.8\textwidth]{kalman.png}
 %     \caption{Diagrama en bloques del INS junto con un sistema de navegación auxiliar de GPS. Ambos se complementan a partir del filtro de Kalman.}
 %     \label{fig:kalman}
 % \end{figure}
 
-Para obtener las mediciones de aceleración y velocidad angular en la computadora de vuelo, se utilizará una Unidad de Medición Inercial (IMU). Esta comprende acelerómetros y giróscopos triaxiales, los cuales se denominan sensores inerciales. La IMU ofrece una alta tasa de adquisición de datos, en el orden de las decenas de kHz. Esto es de gran importancia para mantener la estabilidad del vehículo, ya que utilizando acelerómetros y giróscopos es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. 
+Para obtener las mediciones de aceleración y velocidad angular en la computadora de vuelo, se utilizará una Unidad de Medición Inercial (IMU). Esta comprende acelerómetros y giróscopos triaxiales, los cuales se denominan sensores inerciales. Utilizando este sensor es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. Gracias a la alta tasa de adquisición de datos que esta ofrece, este sensor es de gran importancia para mantener la estabilidad del vehículo. Estos pueden alcanzar tasas de adquisición del orden de las decenas de kHz, aunque en los vehículos aéreos no tripulados como los de este trabajo se configuran en cientos de Hz, debido a la carga excesiva que supondría para el procesador una tasa de adquisición tan alta.
+
+%Esta ofrece una alta tasa de adquisición de datos, en el orden de las decenas de kHz. Esto es de gran importancia para mantener la estabilidad del vehículo, ya que utilizando acelerómetros y giróscopos es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo.
+
+%Utilizando los acelerómetros y giróscopos de la IMU, es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. Gracias a la alta tasa de adquisición de datos que esta ofrece, este sensor es de gran importancia para mantener la estabilidad del vehículo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -211,18 +216,22 @@ Para la computadora de vuelo de este trabajo, se buscó tener una longevidad de 
 
 \subsubsection{Requerimientos de Conectores}
 
-La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de dispositivos externos a la placa. Por una necesidad de compatibilidad con distintos sensores y módulos que son comúnmente utilizados con otras computadoras de vuelo, se utilizaron 2 tipos de conectores distintos. Estos se muestran en la figura \ref{fig:conectores_dupon_df_13}.
+%La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de dispositivos externos a la placa. Por una necesidad de compatibilidad con distintos sensores y módulos que son comúnmente utilizados con otras computadoras de vuelo, se utilizaron 2 tipos de conectores distintos. Estos se muestran en la figura \ref{fig:conectores_dupon_df_13}.
 
-\begin{figure}[H]
+La computadora de vuelo cuenta con una serie de conectores que permiten el agregado de dispositivos externos a la placa, para extender sus capacidades. Se utilizaron 2 tipos de conectores distintos como los que se muestran en la figura \ref{fig:conectores_dupon_df_13}.
+
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{img/conectores_dupon_df_13.png}
     \caption{Formato de los conectores utilizados para sensores y módulos externos en la placa. A la izquierda se muestra un conector con formato tira de pines de 0.1” a 90° y a la derecha se muestra un conector de 4 terminales, correspondiente a la serie DF-13 del fabricante Hirose.}
     \label{fig:conectores_dupon_df_13}
 \end{figure}
 
+Los conectores de la serie DF-13 se encuentran en muchas computadoras de vuelo comerciales, por lo que es común encontrar en el mercado módulos externos, como dispositivos GPS, que incluyan estos conectores. Por otro lado, para realizar pruebas de laboratorio y ensayos con módulos de hardware experimentales, estos conectores pueden ser un limitante. Debido a esto, se agregan conectores con formato tira de pines.
+
 \subsection{Circuitos y Componentes Seleccionados}
 
-A continuación se describe cada una de las partes del circuito que conforman a la computadora de vuelo. Además de los criterios generales ya mencionados, se mencionan los criterios particulares tenidos en cuenta para cada parte del circuito.
+A continuación se describe cada una de las partes del circuito que conforman a la computadora de vuelo. Además de los criterios generales ya mencionados, se mencionan los criterios particulares tenidos en cuenta para cada parte del circuito. En la sección \nameref{appendix:circuito_esquematico} se encuentra el circuito esquemático completo de la computadora de vuelo.
 
 %\subsection{Circuitos Implementados}
 \subsubsection{Microcontrolador}
@@ -238,9 +247,9 @@ A todas las funcionalidades de la computadora de vuelo, en este trabajo se le su
 
 Se buscó un microcontrolador del mismo fabricante ST, de manera de tener retrocompatibilidad en el desarrollo del firmware con la versión anterior. De esta forma, muchos de los módulos de firmware que ya se encuentran desarrollados pueden reutilizarse en esta nueva versión. Con estos requerimientos, se analizaron las distintas ofertas del mercado. Además de los aspectos mencionados, se tuvieron en cuenta los periféricos presentes en cada modelo, junto con las capacidades de memorias flash y RAM. Se buscó mantener las capacidades de estas memorias en valores similares a las de la versión anterior de la computadora de vuelo.
 
-Como primera opción surgió la posibilidad de seleccionar alguno de los microcontroladores de la serie STM32H7. Estos cuentan con procesadores ARM Cotex-M7, y pueden llegar a velocidades entre 400 MHz y 550 MHz \cite{AN5293}, es decir, pueden llegar hasta a duplicar la performance respecto de la versión anterior de la computadora de vuelo. En la tabla \ref{tab:comparacion_MCUs} se muestran distintos modelos que fueron considerados durante la selección del microcontrolador.
+Como primera opción surgió la posibilidad de seleccionar alguno de los microcontroladores de la serie STM32H7. Estos cuentan con procesadores ARM Cotex-M7, y pueden llegar a velocidades entre 400 MHz y 550 MHz \cite{AN5293}, es decir, pueden llegar hasta a duplicar la performance respecto de la versión anterior de la computadora de vuelo. Además, estos integran una unidad de punto flotante de doble precisión. En la tabla \ref{tab:comparacion_MCUs} se muestran distintos modelos que fueron considerados durante la selección del microcontrolador.
 
-\begin{table}[H]
+\begin{table}[htb]
     \centering
     \begin{tabular}{|c||c|c|c|c|c|c|}
         \hline
@@ -279,13 +288,15 @@ Como primera opción surgió la posibilidad de seleccionar alguno de los microco
 
 Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a frecuencia de operación, memoria flash y RAM. Sumado a esto, la gran mayoría de estos microcontroladores se encuentran dentro del programa \textit{Longevity Commitment} \cite{longevity_ST}. El fabricante ST se compromete a mantener la producción de los componentes que se encuentren dentro de este programa durante un período determinado. Todos los microcontroladores de la tabla \ref{tab:comparacion_MCUs} tienen un periódo de fabricación de 10 años asegurado por ST, finalizando en 01/2033. Este aspecto es de especial interés teniendo en cuenta la posible necesidad futura de fabricar nuevas placas de la computadora de vuelo.
 
-\textbf{{\color{red} COMPLETAR POR QUÉ NO SE ELEIGIÓ UNO AEC-Q100, QUE ES PORQUE NO HABÍA CORTEX M7 DE ST QUE SEA AEC-Q100}}
+%\textbf{{\color{red} COMPLETAR POR QUÉ NO SE ELEIGIÓ UNO AEC-Q100, QUE ES PORQUE NO HABÍA CORTEX M7 DE ST QUE SEA AEC-Q100}}
 
 %\textbf{{\color{red} COMPLETAR LA JUSTIFICACIÓN DE QUE SE ELIGIÓ UN MICROCONTROLADOR DIFERENTE DEBIDO A LA CRISIS Y FALTANTE DE CHIPS}}
 
 % Acá lo importante es decir que se quería elegir un controlador más potente que la choriboard III, algún STM32H7. Mencionar por qué STM32, que es porque ellos vienen trabajando con esos microcontroladores. Luego explicar que debido al faltante y la crisis, se tuvo que elegir otro controlador. También, mencionar que el que se eligió tiene 10 años de garantía de fabricación, lo que favorece la longevidad.
 
-A pesar del análisis y de las comparaciones entre microcontroladores de la serie STM32H7, la selección del microcontrolador se vio limitada por la disponibilidad de componentes encontrada durante el período de desarrollo del circuito.
+A pesar del análisis y de las comparaciones entre microcontroladores de la serie STM32H7, la selección del microcontrolador se vio limitada por la disponibilidad de componentes encontrada durante el período en que se comenzó con la selección de componentes y el desarrollo del circuito, entre octubre y diciembre del 2022.
+
+%Al igual que el resto del circuito, el microcontrolador fue seleccionado durante el período de octubre a diciembre de 2022.
 
 %\textbf{{\color{red} SE PUEDE SIMPLEMENTE MENCIONAR LA CRISIS DE CHIPS COMO CAUSA DE LA FALTA DE DISPONIBILIDAD.}}
 
@@ -326,7 +337,7 @@ Suamdo a las prestaciones, este micocontrolador cuenta con un encapsulado LQFP d
 
 La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor principal utilizado por la computadora de vuelo. Este consiste en un circuito integrado que contiene una serie de sensores inerciales, en particular acelerómetros y giróscopos triaxiales. Los acelerómetros se utilizan para realizar mediciones de aceleración lineal y los giróscopos para medir velocidad angular. A partir de estas mediciones, se pueden aplicar distintos algoritmos de procesamiento para obtener una estimación de la posición y orientación del vehículo. Las mediciones de aceleración lineal y de velocidad angular que entrega la IMU son referidas a una terna solidaria al componente, como se muestra en la figura \ref{fig:IMU_ejes}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.4\textwidth]{img/IMU_ejes.png}
     \caption{Todas las mediciones que entrega el sensor son realtivas a una terna solidaria a este. La imagen se extrajo de \cite{ICM42688pDatasheet}.}
@@ -350,7 +361,7 @@ Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se constru
 
 % Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se construyen utilizando la tecnología MEMS: \textit{Microelectromechanical Systems}. Utilizando técnicas de fabricación de circuitos integrados, se construyen los acelerómetros y giróscopos, integrando en el silicio partes que son móviles. En la figura \ref{fig:MEMS_acelerometro}, se muestra una imagen tomada con un microscopio electrónico de un acelerómetro MEMS. Lo que se observa en este caso, es que en el mismo silicio se integra una masa llamada \textit{proof-mass}, la cual se encuentra sujeta al sustrato a través de dos resortes.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/MEMS_acelerometro.png}
 %     \caption{Fotografía tomada de un acelerómetro construido con tecnología MEMS. La imagen se extrajo de \cite{zhang2010sensing}. }
@@ -361,7 +372,7 @@ Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se constru
 
 % El acelerómetro puede modelarse de manera simple, como un sistema mecánico con una masa, un resorte y un amortiguador \cite{zhang2010sensing}, como se muestra en la figura \ref{fig:acelerometro_modelo}.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{img/acelerometro_modelo.png}
 %     \caption{Sistema mecánico simplificado del acelerómetro.}
@@ -388,7 +399,7 @@ Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se constru
 
 % El desplazamiento de la masa produce una variación de la capacidad entre esta y el sustrato. Esta capacidad es utilizada para medir una varaición de tensión \cite{zhang2010sensing}. El circuito medido puede modelarse como en la figura \ref{fig:acelerometro_sensado_capacitivo}.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{img/acelerometro_sensado_capacitivo.png}
 %     \caption{Circuito equivalente que mide el desplazamiento de la masa. Las tensiones $V1$ y $V2$ representan señales de tensión aplicadas por un circuito externo. El movimiento de la masa modifica la capcidad y por ende la tensión medida.}
@@ -423,7 +434,7 @@ El primero de ellos, el \textit{Full-scale range} es el rango de medición del s
 
 El parámetro \textit{Sensitivity} hace referencia a la resolución. En algunas hojas de datos este parámetro puede encontrarse con unidades de $LSB/g$ para los acelerómetros y en $LSB/dps$ para los giróscopos. Este valor puede resultar confuso de entender, ya que lo que informa es la cantidad de bits por $g$ o la cantidad de bits por $dps$. En la figura \ref{fig:ICM_42688_datasheet} se muestra una captura de la hoja de datos del sensor seleccionado, el ICM42688p. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/ICM_42688_datasheet.png}
     \caption{Extracto de la hoja de datos del sensor ICM42688p. Se muestra parte de las especificaciones para los acelerómetros.}
@@ -452,7 +463,7 @@ Para tener un criterio de selección del sensor IMU, se siguió el análisis pla
 
 Se buscaron modelos de IMUs de distintos fabricantes, para comparar características. Existe una gran cantidad de fabricantes y de componentes para seleccionar. Se buscaron componentes que sean accesibles y que no tengan un costo muy elevado. Existen IMUs de una excelente calidad, pero que tienen precios que no están al alcance (cientos o miles de dólares). Con este criterio, se realizó una comparación entre distintos modelos de sensores. En la tabla \ref{tab:comparacion_IMUs} se muestra una comparación de los distintos sensores considerados. Sumado a esto, se tuvo en consideración otro aspecto que fue mencionado anteriormente, la longevidad del componente.
 
-\begin{table}[H]
+\begin{table}[htb]
     \centering
     \begin{tabular}{|c||c|c|c|c|c|}
         \hline
@@ -463,7 +474,8 @@ Se buscaron modelos de IMUs de distintos fabricantes, para comparar característ
         $\eta_{gyro}$   & \cellcolor{green!25}$2.8 mdps/\sqrt{Hz}$ & $5 mdps/\sqrt{Hz}$ & $3.8 mdps/\sqrt{Hz}$ & $14 mdps/\sqrt{Hz}$ & $5 - 12 mdps/\sqrt{Hz}$\\
         $S_{gyro}$ & \cellcolor{green!25}$0.5 \%$ & $1 \%$ & \cellcolor{green!25}$0.5 \%$ & $1 \%$ & $2 \%$\\
         \hline
-        longevidad & N/A & N/A & 10 años, dic. 2020 & N/A & \cellcolor{green!25}15 años, mayo 2022\\
+        longevidad & N/A & N/A & \makecell{10 años, \\ dic. 2020} & N/A & \cellcolor{green!25}\colorbox{green!25}{\makecell{  15 años, \\ mayo 2022}}\\
+        \hline
         AEC-Q100 & No & No & No & No & \cellcolor{green!25}Sí\\
         \hline       
     \end{tabular}
@@ -475,7 +487,7 @@ Lo primero que llama la atención es el hecho de que muchos de los sensores no e
 
 Durante la selección del sensor hubo otro aspecto importante que se tuvo en cuenta y es el hecho de la compatibilidad con el software desarrollado por el laboratorio, para computadoras de vuelo anteriores a la de este trabajo. La versión anterior contaba con un sensor IMU ICM20602, del fabricante TDK. El laboratorio cuenta con bibliotecas de código ya desarrolladas para este sensor. Este presentó excelentes resultados, lo que sienta un antecedente importante en la selección de componentes del mismo fabricante. En la tabla \ref{tab:comparacion_IMUs_TDK} se muestra una comparación entre el sensor anterior ICM20602 y el sensor seleccionado ICM42688.
 
-\begin{table}[H]
+\begin{table}[htb]
     \centering
     \begin{tabular}{|r||c|c|}
         \hline
@@ -508,11 +520,11 @@ Durante la selección del sensor hubo otro aspecto importante que se tuvo en cue
     \label{tab:comparacion_IMUs_TDK}
 \end{table}
 
-Para el diseño del circuito se siguieron las recomendaciones en la hoja de datos del componente. Este sugiere incluir una serie de capacitores de desacople en los terminales de alimentación del componente. Se elige utilizar una comunicación SPI en modo esclavo, donde el maestro es el microcontrolador, ya que pueden obtenerse mayores velocidades de comunicación, respecto de otros protocolos como I2C. De esta forma se logra una alta tasa de adquisición de datos de acelerómetros y giróscopos. Como ya fue mencionado, esto resulta clave para mantener la estabilidad del vehículo. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+Para el diseño del circuito se siguieron las recomendaciones en la hoja de datos del componente. Este sugiere incluir una serie de capacitores de desacople en los terminales de alimentación del componente. Se elige utilizar una comunicación SPI en modo esclavo, donde el maestro es el microcontrolador, ya que pueden obtenerse mayores velocidades de comunicación, respecto de otros protocolos como I2C. De esta forma se logra una alta tasa de adquisición de datos de acelerómetros y giróscopos. Como ya fue mencionado, esto resulta clave para mantener la estabilidad del vehículo. %El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede comunicarse con el microcontrolador cuando este último le permita hacerlo. Para que la IMU pueda informar el momento en el que se obtuvo una nueva lectura, el sensor dispone de una salida digital la cual puede conectarse a una entrada digital del microcontroldor. Cuando el microcontrolador detecta un cambio de nivel en esta entrada, el mismo procede a solicitar el dato a través de la comunicación SPI. En la figura \ref{fig:IMU_SPI} se muestra un esquema de la conexión entre el controlador y el sensor IMU.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/IMU_SPI.png}
     \caption{Líneas de comunicación entre la IMU y el microcontrolador.}
@@ -525,10 +537,10 @@ Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede co
 El barómetro se utiliza para obtener una estimación precisa de la altitud a la que está operando el UAV, a partir de mediciones de presión. Este es uno de los sensores complementarios al INS que se incorporan en la computadora de vuelo. Al igual que la IMU, el barómetro que se utiliza corresponde a un sensor de tecnología MEMS. En particular, los barómetros MEMS cuentan con un sistema capaz de medir la presión absoluta, es decir respecto al 0 de presión. Estos cuentan con una cavidad integrada dentro del chip que se encuentra (idealmente) a presión 0. %A través de un proceso llamado \textit{anodic bonding} \cite{baro_1}\cite{baro_2} se construye esta cavidad dentro del chip, la cual se encuentra sellada a una presión muy baja, en comparación con las presiones que se esperan medir utilizando el componente.
 Para medir la presión, se coloca una membrana sobre la cavidad. En la figura \ref{fig:MEMS_barometro} se puede apreciar el efecto de la presión externa. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.4\textwidth]{img/MEMS_barometro.png}
-    \caption{Sensores de presión sobre una oblea de silicio \cite{baro_1}.}
+    \caption{Sensores de presión sobre una oblea de silicio. La imagen se extrajo de \cite{baro_1}.}
     \label{fig:MEMS_barometro}
 \end{figure}
 
@@ -544,7 +556,7 @@ Sobre esta membrana se colocan resistores de efecto piezoresistivo en configurac
 
 % Los resistores se conectan en configuración puente de Wheatstone, de manera tal de que la presión comprime a dos de los resistores y estira a los otros dos \cite{baro_3}. En \eqref{eq:barometro_wheatstone} se despeja la relación entre la variación de tensión y la variación de la resistencia. Como se observa, la realación es proporcional.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/barometro_wheatstone.png}
 %     \caption{Puente de Wheatstone conformado por los resistores del sensor de presión. La imagen se extrajo de \cite{baro_3}.}
@@ -628,7 +640,7 @@ Al igual que con el sensor IMU, se hizo una búsqueda de las distintas alternati
     \item \textit{Noise}
 \end{itemize}
 
-Como se puede ver, estos son similares a los de la IMU. Las diferencias se encuentran en los parámetros \textit{Absolute Accuracy}, \textit{Relative Accuracy} y \textit{Solder Drift}.\\
+Como se puede ver, estos son similares a los de la IMU. Las diferencias se encuentran en los parámetros \textit{Absolute Accuracy}, \textit{Relative Accuracy} y \textit{Solder Drift}.
 
 Se puede plantear un mismo modelo de medición según la ecuación \ref{eq:medicion_vs_real} pero para la presión.
 
@@ -637,23 +649,23 @@ Se puede plantear un mismo modelo de medición según la ecuación \ref{eq:medic
     \label{eq:medicion_presion}
 \end{equation}
 
-En el caso de la IMU, el parámetro \textit{scale factor error} se refiere al término $S$ y el \textit{offset} al término $P_b$. En el caso del barómetro, estos valores se encuentran especificados de otra manera. Si se quiere medir una presión $P$, el error de medición será $\Delta P = S \ P + P_b(t) + \eta$. El término $S \ P + P_b(t)$ corresponde al parámetro \textit{absolute accuracy} \cite{baro_4}. Este error es introducido debido a que la cavidad dentro del sensor no se encuentra a presión 0 perfecta, sino que a un pequeño valor \cite{baro_1}. Por otro lado, el término $S \ P$ se lo denomina \textit{relative accuracy}. Este hace referencia a mediciones diferenciales de presión. Algunos barómetros MEMS traen consigo una funcionalidad para realizar una compensación de offset. Esto dejaría como parámetro de interés para mediciones de presión a la \textit{relative accuracy}, la cual hace referencia al error introducido para mediciones de variaciones de presión.\\
+En el caso de la IMU, el parámetro \textit{scale factor error} se refiere al término $S$ y el \textit{offset} al término $P_b$. En el caso del barómetro, estos valores se encuentran especificados de otra manera. Si se quiere medir una presión $P$, el error de medición será $\Delta P = S \ P + P_b(t) + \eta$. El término $S \ P + P_b(t)$ corresponde al parámetro \textit{absolute accuracy} \cite{baro_4}. Este error es introducido debido a que la cavidad dentro del sensor no se encuentra a presión 0 perfecta, sino que a un pequeño valor \cite{baro_1}. Por otro lado, el término $S \ P$ se lo denomina \textit{relative accuracy}. Este hace referencia a mediciones diferenciales de presión. Algunos barómetros MEMS traen consigo una funcionalidad para realizar una compensación de offset. Esto dejaría como parámetro de interés para mediciones de presión a la \textit{relative accuracy}, la cual hace referencia al error introducido para mediciones de variaciones de presión.
 
-El parámetro \textit{solder drfit} se refiere al offset que se introduce por el propio proceso de soldadura \cite{baro_4}. Este offset también puede ser compensado a través de la calibración del barómetro.\\
+El parámetro \textit{solder drfit} se refiere al offset que se introduce por el propio proceso de soldadura \cite{baro_4}. Este offset también puede ser compensado a través de la calibración del barómetro.
 
 Se buscaron modelos de barómetros de distintos fabricantes, para comparar características, teniendo en cuenta la accesibilidad y el bajo costo. En la tabla \ref{tab:comparacion_baros} se muestra una comparación de los distintos barómetros considerados. Sumado a esto, se tuvo en consideración otro aspecto que fue mencionado anteriormente, la longevidad del componente.
 
-\begin{table}[H]
+\begin{table}[htb]
     \centering
-    \begin{tabular}{|c||c|c|c|c|c|c|}
+    \begin{tabular}{|r||c|c|c|c|c|c|}
         \hline
           & BMP390 & BMP581 & ICP-20100 & LPS22HH & ILPS22QSTR & DPS368\\
         \hline
-        Full scale range [hPa] & 300 - 1250 & 300 - 1250 & 260 - 1260 & 260 - 1260 & \cellcolor{green!25}\makecell{260 - 1260 \\ 260 - 4060} & 300 - 1200\\ 
-        absolute acc [hPa] & $\pm 0.5$ & $\pm 0.3$ & \cellcolor{green!25}$\pm 0.2$ & $\pm 0.5$ & $\pm 0.5$ & $\pm 1$\\
-        realtive acc [hPa] & $\pm 0.03$ & $\pm 0.06$ & \cellcolor{green!25}$\pm 0.01$ & $\pm 0.025$ & $\pm 0.015$ & $\pm 0.06$\\
+        FSR [hPa] & 300 - 1250 & 300 - 1250 & 260 - 1260 & 260 - 1260 & \cellcolor{green!25}\colorbox{green!25}{\makecell{260 - 1260 \\ 260 - 4060}} & 300 - 1200\\ 
+        Abs. Acc. [hPa] & $\pm 0.5$ & $\pm 0.3$ & \cellcolor{green!25}$\pm 0.2$ & $\pm 0.5$ & $\pm 0.5$ & $\pm 1$\\
+        Rel. Acc. [hPa] & $\pm 0.03$ & $\pm 0.06$ & \cellcolor{green!25}$\pm 0.01$ & $\pm 0.025$ & $\pm 0.015$ & $\pm 0.06$\\
         \hline
-        longevidad & N/A & N/A & N/A & N/A & \cellcolor{green!25}\makecell{10 años \\ enero 2023} & N/A \\
+        longevidad & N/A & N/A & N/A & N/A & \cellcolor{green!25}\colorbox{green!25}{\makecell{10 años \\ enero 2023}} & N/A \\
         \hline
         %AEC-Q100 & No & No & No & No & No & No\\
         %\hline       
@@ -664,7 +676,7 @@ Se buscaron modelos de barómetros de distintos fabricantes, para comparar carac
 
 Las dos alternativas que se evaluaron son los sensores ICP-20100 y el ILPS22QSTR. El primero de ellos presenta las \textit{absolute accuracy} y \textit{relative accuracy} más bajas de entre todas las opciones evaluadas. El sensor ILPS22QSTR presenta características similares y además tiene la particularidad de que el fabricante garantiza su fabricación por 10 años, hasta enero de 2033 \cite{baro_5}. Finalmente el sensor seleccionado fue este último.
 
-En este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C tiene un funcionamiento más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de la IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma peródica. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+En este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C tiene un funcionamiento más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de la IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma peródica. %El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 \subsubsection{Magnetómetro}
 %\subsection{Magnetómetro}
@@ -674,7 +686,7 @@ En la figura \ref{fig:magnetometro_H_tierra} se muestran las componentes del cam
 
 %\textbf{{\color{red} AGREGAR UNA IMAGEN DEL CAMPO MAGNÉTICO MEDIDO POR EL MAGNETÓMETRO CON SUS COMPONENTES}}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.3\textwidth]{img/magnetometro_H_tierra.png}
     \caption{Se muestra un ejemplo con la terna solidaria al magnetómetro. Se muestra la dirección del campo magnético de la Tierra y las componentes expresadas en la terna solidaria al sensor, para los ejes x e y.}
@@ -696,14 +708,14 @@ Para la selección del componente se hicieron comparaciones de las característi
 
 Se buscaron modelos de magnetómetros disponibles. Al igual que con el resto de componentes, se redujo la búsqueda a aquellos que sean de bajo costo. En la tabla  se muestra una comparativa de los modelos considerados para la selección final.
 
-\begin{table}[H]
+\begin{table}[htb]
     \centering
-    \begin{tabular}{|c||c|c|c|c|}
+    \begin{tabular}{|r||c|c|c|c|}
         \hline
           & HMC5883L & BMM150 & RM3100 & MMC5983MA\\
         \hline
         %Full scale range [uT] & \makecell{$\pm$88;130;190;250;\\400;470;560;810} & \makecell{x,y: $\pm$1200;\\z: $\pm$2000} & $\pm$800 & $\pm$800\\
-        Scale Factor Error & $\pm$0,1 \% @ $\pm$200 uT & 1\% & $\pm$0,5\% @ $\pm$200 uT & \cellcolor{green!25}0,1\% @ $\pm$400uT\\
+        Scale Factor Error & $\pm$0,1 \% @ $\pm$200 uT & 1\% & \makecell{$\pm$0,5\% \\ @ $\pm$200 uT} & \cellcolor{green!25}0,1\% @ $\pm$400uT\\
         \hline
         \makecell{Scale Factor Error\\Over Temp} & \makecell{0.3\%/C \\@ -40°C - 125 °C} & N/A & N/A & \cellcolor{green!25}\makecell{0.07 \%/°C \\@ -40°C - 105°C}\\
         \hline
@@ -711,7 +723,7 @@ Se buscaron modelos de magnetómetros disponibles. Al igual que con el resto de 
         \hline
         Offset Over Temp & N/A & N/A & N/A & \cellcolor{green!25}\makecell{$\pm$2nT/°C \\@ -40°C - 105°C}\\
         \hline
-        Noise & \makecell{200 nT \\@ FSR = $\pm$88 uT} & \makecell{300 nT @ 25°C,\\ ODR = 20 Hz} & \cellcolor{green!25}30 nT & \makecell{40nT @ ODR = 50 Hz\\60 nT @ ODR = 100 Hz\\80 nT @ ODR = 200 Hz\\120 nT @ ODR = 400 Hz}\\
+        Noise & \makecell{200 nT \\@ FSR = $\pm$88 uT} & \makecell{300 nT @ 25°C,\\ ODR = 20 Hz} & \cellcolor{green!25}30 nT & \makecell{40nT, ODR = 50 Hz\\60 nT, ODR = 100 Hz\\80 nT, ODR = 200 Hz\\120 nT, ODR = 400 Hz}\\
         \hline
         AEC-Q100 & No & No & No & \cellcolor{green!25}Sí\\
         \hline
@@ -729,7 +741,7 @@ El efecto del campo magnético producido por los motores del UAV afectan las med
 
 % Como fue mencionado, la computadora de vuelo cuenta con la capacidad de conexión a un bus CAN. La especificación original del protocolo \cite{specification1991bosch} incluye dentro de sus definiciones, la capa física. Cada nodo de un bus CAN se conecta a este a través de 2 cables, los cuales llevan la señal diferencial. Esto se muestra en la figura \ref{fig:conxeion_al_bus_CAN}. Todo el bus CAN se compone de 2 cables que llevan los mensajes a todos los nodos de la red. Esto es así debido a que el bus CAN originalmente fue diseñado para utilizarse en automóviles y reemplazar la enorme cantidad de conexiones entre módulos. El hecho de que se trate de una señal diferencial hace que la comunicación sea robusta, reduciendo las emisiones electromagnéticas generadas por este. A su vez, es común que el bus sea cableado como un par trenzado, lo que atenúa señales de modo común, producto de cualquier acoplamiento. 
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{img/conxeion_al_bus_CAN.png}
 %     \caption{La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \cite{AN228}.}
@@ -756,7 +768,7 @@ El protocolo CAN fue desarrollado para ser usado en la industria automotriz, com
 
 A diferencia de otros protocolos típicos en sistemas embebidos como I2C o SPI, el protocolo CAN no tiene el formato maestro-esclavo. La comunicación se da entre miembros del bus denominados nodos, los cuales se encuentran conectados a los mismos 2 cables. Esto se muestra en la figura \ref{fig:red_CAN_2}. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/red_CAN.png}
     \caption{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. El bus CAN se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite{texasSLOA101B}.}
@@ -767,24 +779,27 @@ La impedancia característica del bus debe ser de $120 \ \Omega$. Es común agre
 
 La información enviada por los nodos a través de estos 2 cables es en formato de señal diferencial, lo que vuelve robusta a la comunicación, reduciendo las emisiones electromagnéticas generadas por este. A su vez, es común que el bus sea cableado como un par trenzado, lo que atenúa señales de modo común, producto de cualquier acoplamiento.
 
-\textbf{{\color{red} AGREGAR UNA IMAGEN DE OCSILOCSOPIO DONDE SE VEAN LAS SEÑALES DIFERENCIALES DE CAN.}}
+%\textbf{{\color{red} AGREGAR UNA IMAGEN DE OCSILOCSOPIO DONDE SE VEAN LAS SEÑALES DIFERENCIALES DE CAN.}}
 
 El protocolo CAN define dos estados para el bus, \textit{recessive} y \textit{dominant}. Cuando no hay actividad en el bus, tanto la línea de CAN-H como la de CAN-L se encuentran a la misma tensión constante. Esto corresponde al estado \textit{recessive} y equivale a un 1 lógico. Cuando se quiere enviar un 0 lógico, el transciever del nodo transmisor fija la tensión de las líneas CAN-H y CAN-L de tal forma de generar una tensión diferencial $V_{CAN-H} - V_{CAN-L} \geq 1,5 V$. Esto se muestra en la figura \ref{fig:CAN_recessive_dominant}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/CAN_recessive_dominant.png}
-    \caption{Se muestran los estados recessive y dominant del bus CAN y sus equivalentes lógicos.}
+    \caption{Se muestran los estados recessive y dominant del bus CAN y sus equivalentes lógicos. La imagen se extrajo de \cite{AN228}.}
     \label{fig:CAN_recessive_dominant}    
 \end{figure}
 
 Los nodos solamente actúan sobre el bus cuando quieren fijar un estado \textit{dominant}. Cuando se quiere fijar un estado \textit{recessive}, no se actúa sobre el bus ya que este es su estado por defecto. Esto permite que varios nodos puedan actuar al mismo tiempo. En caso de que esto suceda, el estado \textit{dominant} (de allí su nombre) predominará sobre el estado \textit{recessive}.
 
-Existen muchas versiones del protocolo CAN, en este trabajo se utiliza la versión CAN High Speed. Esta define una velocidad máxima de transferencia de 1 Mbps, para un bus de hasta 40 m de longitud y 30 nodos conectados. Se recomienda que la conexión entre cada nodo y el bus no sea de más de 30 cm. El hecho de poder contar con hasta 30 nodos expande las posibilidades de uso, más allá de ser el medio principal de comunicación utilizado para el sistema redundante. Por ejemplo, distintos sensores o incluso actuadores como los motores del vehículo podrían conectarse al bus. {\color{red} Acá tendría que agregar alguna referencia a este uso del bus CAN}.
+Existen muchas versiones del protocolo CAN, en este trabajo se utiliza la versión CAN High Speed. Esta define una velocidad máxima de transferencia de 1 Mbps, para un bus de hasta 40 m de longitud y 30 nodos conectados. Se recomienda que la conexión entre cada nodo y el bus no sea de más de 30 cm. El hecho de poder contar con hasta 30 nodos expande las posibilidades de uso, más allá de ser el medio principal de comunicación utilizado para el sistema redundante. Por ejemplo en \cite{GPS_CAN} puede encontrarse un módulo receptor GPS con una interfaz de comunicación CAN y en \cite{ardupilot_ESC_CAN}, un listado de módulos comerciales de actuadores para motores con esta misma interfaz. %De esta manera, los distintos sensores o incluso actuadores como los motores del vehículo podrían conectarse al bus. Pueden encontrarse distintos
+
+
+%{\color{red} Acá tendría que agregar alguna referencia a este uso del bus CAN}.
 
 %Cada nodo de un bus CAN se conecta a este a través de 2 cables, los cuales llevan la señal diferencial. Esto se muestra en la figura \ref{fig:conxeion_al_bus_CAN}. Todo el bus CAN se compone de 2 cables que llevan los mensajes a todos los nodos de la red. 
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{img/conxeion_al_bus_CAN.png}
 %     \caption{La conexión de un nodo al bus es a través de 2 cables que llevan dos señales, CAN-H y CAN-L. La imagen se extrajo de \cite{AN228}.}
@@ -801,7 +816,7 @@ En la figura \ref{fig:red_CAN_2} se muestra que cada nodo se compone de 2 elemen
 
 Una trama del protocolo CAN se comopone de varios campos. Además, se definen 2 tipos de tramas, estándar, figura \ref{fig:CAN_frame_standard} y extended, figura \ref{fig:CAN_frame_extended}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/CAN_frame_standard.png}
     \caption{Se muestran los campos de una trama CAN estándar. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite{texasSLOA101B}.}
@@ -822,7 +837,7 @@ Una trama del protocolo CAN se comopone de varios campos. Además, se definen 2 
     \item IFS: Espacio antes de enviar la próxima trama, de 7 bits. 
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/CAN_frame_extended.png}
     \caption{Se muestran los campos de una trama CAN extendida. Debajo de cada campo se indica la cantidad de bits. La imagen se extrajo de \cite{texasSLOA101B}.}
@@ -848,7 +863,7 @@ En el eventual caso en que más de un nodo detecte el medio sin uso, estos inten
 
 En la figura \ref{fig:CAN_arbitration} se muestra un ejemplo donde se resuelve una colisión. Tanto el nodo 1 como el nodo 2 quieren utilizar el bus CAN. Ambos comienzan a inyectar su ID correspondiente. En algún momento, ocurre una discrepancia entre el ID inyectado por ambos nodos. Aquel con el campo dominant, es decir 0, gana y completa su transmisión, en este caso el nodo 2. El nodo 1 que quiso enviar un 1 por su lado, detecta un 0. Esto genera que detenga su transmisión, dejando que los demás nodos utilicen el medio.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{img/CAN_arbitration.png}
     \caption{Mecanismo para la detección de colisiones. El nodo 2 gana por prioridad y completa su transmisión, mientras que el nodo 1 deja de usar el bus, aguardando a que el nodo 2 finalice.}
@@ -857,7 +872,7 @@ En la figura \ref{fig:CAN_arbitration} se muestra un ejemplo donde se resuelve u
 
 %En las figuras \ref{fig:CAN_frame_standard} y \ref{fig:CAN_frame_extended} se puede ver que las tramas tienen un campo CRC, el cual es utilizado para que el receptor pueda verificar la integridad del mensaje. Además, se muestra otro campo, el ACK. Cada vez que un nodo recibe un mensaje correctamente, este sobreescribe el bit de ACK con un dominant, es decir un 0.\\
 
-El protocolo CAN de por sí, no cuenta con un acceso al medio controlado por el tiempo, sino que es dominado por eventos (\textit{event-triggered}), ya que varios nodos pueden iniciar la transmisión de un mensaje en cualquier momento. En el estándar ISO 11898-4\cite{ISO11898_4} se define una extensión del protocolo CAN denominada \textit{Time-Triggered CAN} (TTCAN). Esta justamente fue desarrollada con el objetivo de utilizar el protocolo en aplicaciones de alta confiabilidad. Para ello, TTCAN incorpora un mecanismo de comunicación entre nodos a través de un scheduling estático, el cual es respetado por todos. A cada mensaje del scheduling se le asigna una ventana de tiempo y el mismo se repite de forma periódica.\\
+El protocolo CAN de por sí, no cuenta con un acceso al medio controlado por el tiempo, sino que es dominado por eventos (\textit{event-triggered}), ya que varios nodos pueden iniciar la transmisión de un mensaje en cualquier momento. En el estándar ISO 11898-4\cite{ISO11898_4} se define una extensión del protocolo CAN denominada \textit{Time-Triggered CAN} (TTCAN). Esta justamente fue desarrollada con el objetivo de utilizar el protocolo en aplicaciones de alta confiabilidad. Para ello, TTCAN incorpora un mecanismo de comunicación entre nodos a través de un scheduling estático, el cual es respetado por todos. A cada mensaje del scheduling se le asigna una ventana de tiempo y el mismo se repite de forma periódica.
 
 %Al utilizar un scheduling estático, se evitan las colisiones y las retransmisiones. Teniendo en cuenta que se trata de sistemas de alta confiabilidad, una colisión en el bus puede traer consigo el retraso en la transmisión de mensajes críticos para el desempeño del sistema y la seguridad. El scheduling de los mensajes y los tiempos en que estos se envían pasan a formar parte del diseño del sistema.
 
@@ -866,7 +881,7 @@ El protocolo CAN de por sí, no cuenta con un acceso al medio controlado por el 
 
 %En la figura \ref{fig:microcontrolador_transciever} se muestra la comunicación entre transciever, controller y el bus. Cuando se quiere transferir un mensaje a través del bus CAN, el periférico envía un mensaje a través del terminal CAN TX. El transciever lo recibe y lo convierte en una señal diferencial para inyectarlo en el bus. Cuando el nodo recibe un mensaje del bus CAN, el transciever es el que interactúa con el bus y genera una señal de modo común, la cual es enviada a través del terminal CAN RX al microcontrolador.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{img/microcontrolador_transciever.png}    
 %     \caption{El periférico embebido en el microcontrolador, a través del transciever, puede interactuar con el bus CAN.}
@@ -877,30 +892,37 @@ El protocolo CAN de por sí, no cuenta con un acceso al medio controlado por el 
 
 %La interfaz CAN se compone del transciever, su comunicación con el microcontrolador y el conector.
 
-El micronotrolador seleccionado para la computadora de vuelo, cuenta con 2 \textit{controller} embebido, el periférico bxCAN \cite{STM32F746ZG}. Cada uno de ellos cuenta con 2 líneas de comunicación con el transciever, CAN TX y CAN RX, las cuales se utilizan para enviar y recibir las señales de modo común al \textit{trasnciever}. En cuanto a este útlimo, se trata de un componente que es ampliamente utilizado en la electrónica automotriz, por lo que hay mucha disponibilidad. Existen transcievers que utilizan distintos niveles de tensión en sus salidas. La gran mayoría de los componentes de la computadora de vuelo utilizan tensiones de 3,3 V para su funcionamiento, por lo que se buscó algún componente que pueda trabajar con este nivel de tensión. El componente seleccionado es el SN65HVD230 de Texas Instruments \cite{SN65VHD230}, el cual es compatible con la especificación de capa física de CAN, ISO 11898-2. En la figura \ref{fig:microcontrolador_transciever} se muestra la comunicación del microcontrolador con el bus CAN a través del \textit{transciever}. Este cuenta con una protección por exceso de tempertura, donde el componente pone sus salidas CAN-H y CAN-L en alta impdeancia, de manera de no perturbar al resto de los nodos. Además, cuenta con una funcionalidad que permite detectar si el transciever fue desconectado del bus, fijando un estado alto constante en su salida RX hacia el \textit{controller}, informándole de la situación.
+El micronotrolador seleccionado para la computadora de vuelo, cuenta con 2 \textit{controller} embebido, el periférico bxCAN \cite{STM32F746ZG}. Cada uno de ellos cuenta con 2 líneas de comunicación con el transciever, CAN TX y CAN RX, las cuales se utilizan para enviar y recibir las señales de modo común al \textit{trasnciever}. En cuanto a este útlimo, se trata de un componente que es ampliamente utilizado en la electrónica automotriz, por lo que hay mucha disponibilidad. Existen transcievers que utilizan distintos niveles de tensión en sus salidas. La gran mayoría de los componentes de la computadora de vuelo utilizan tensiones de 3,3 V para su funcionamiento, por lo que se buscó algún componente que pueda trabajar con este nivel de tensión. El componente seleccionado es el SN65HVD230 de Texas Instruments \cite{SN65VHD230}, el cual es compatible con la especificación de capa física de CAN, ISO 11898-2. En la figura \ref{fig:microcontrolador_transciever} el circuito utilizado, el cual permite la comunicación del microcontrolador con el bus CAN.
+%En la figura \ref{fig:microcontrolador_transciever} se muestra la comunicación del microcontrolador con el bus CAN a través del \textit{transciever}. 
+El transciever cuenta con una protección por exceso de tempertura, donde el componente pone sus salidas CAN-H y CAN-L en alta impdeancia, de manera de no perturbar al resto de los nodos. Además, cuenta con una funcionalidad que permite detectar si este fue desconectado del bus, fijando un estado alto constante en su salida RX hacia el \textit{controller}, informándole de la situación.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=0.5\textwidth]{img/microcontrolador_transciever.png}    
-    \caption{Se muestran las conexiones entre el \textit{controller} embebido en el microcontroldaor y el \textit{transciever}, a través de las líneas CAN TX y CAN RX. {\color{red} CAMBIAR ESTA IMAGEN POR UNA MÁS CLARA Y PROLIJA}}
+    \includegraphics[width=\textwidth]{img/microcontrolador_transciever_circuito.png}    
+    \caption{Se muestra el circuito interfaz con el bus CAN. El periférico CAN embebido en el microcontrolador se comunica con el transciever a través de las líneas CAN TX y CAN RX. Este genera la señal diferencia y la inyecta en el bus.}
     \label{fig:microcontrolador_transciever}
 \end{figure}
 
-Como se muestra en la figura \ref{fig:microcontrolador_transciever}, el \textit{transciever} cuenta con un terminal \textit{Rs} que permite controlar el tiempo de crecimiento y de decrecimiento de las líneas CAN-H y CAN-L. Al realentizar el tiempo de crecimiento en las líneas CAN-H y CAN-L, se atenúa el contenido armónico de las más altas frecuencias, disminuyendo emisiones. Por ejemplo, si se coloca un resistor de $10 \ k\Omega$ en el terminal 8 denominado \textit{Rs}, la hoja de datos indica un slew-rate de $15 \ V / \mu s$.
+En cuanto al circuito implementado se tomaron como punto de partida las recomendaciones de la hoja de datos del trasnciever SN65HVD230. Como se muestra en la figura \ref{fig:microcontrolador_transciever}, se agregó un resistor a tierra en el terminal \textit{Rs}. A través de este terminal puede controlarse el tiempo de crecimiento y de decrecimiento de las líneas CAN-H y CAN-L. Por ejemplo, si se coloca un resistor de $10 \ k\Omega$ en el terminal 8 denominado \textit{Rs}, la hoja de datos indica un slew-rate de $15 \ V / \mu s$. Además, se agregaron resistores en serie con las líneas de CAN RX y CAN TX, es decir, en las pistas que llevan las señales que van desde el controller al transciever y viceversa. Esto se hizo como medida preventiva para amortiguar las señales, en caso de que estas presenten sobrepicos en las conmutaciones. A priori se fijan en $0 \ \Omega$ y se modificarán de ser necesario. Por último, se agregaron capacitores de desacople en las líneas de alimentación.
+%El circuito completo de la interfaz CAN puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+
+%Este recomienda el agregado de capacitores de desacople en las líneas de alimentación.
+
+%el \textit{transciever} cuenta con un terminal \textit{Rs} que permite controlar el tiempo de crecimiento y de decrecimiento de las líneas CAN-H y CAN-L. Al realentizar el tiempo de crecimiento en las líneas CAN-H y CAN-L, se atenúa el contenido armónico de las más altas frecuencias, disminuyendo emisiones. Por ejemplo, si se coloca un resistor de $10 \ k\Omega$ en el terminal 8 denominado \textit{Rs}, la hoja de datos indica un slew-rate de $15 \ V / \mu s$.
 
 La especificación de la capa física de CAN no indica un conector a utilizar. Se buscó seleccionar alguno que no ocupe demasiado espacio al ser montado en el PCB. En \cite{CiAconnector} se mencionan algunas recomendaciones de conectores. Este es un documento publicado por la organización internacional sin fines de lucro, \textit{CAN in Automation}, que se dedica a publicar recomendaciones y especificaciones relacionadas al uso del bus CAN. Dentro de las opciones que da este documento, se buscó alguno que tenga dimensiones razonables a lo requerido para la placa. De entre todas las opciones se seleccionó el conector que corresponde a la especificación de un protocolo CAN desarrollado para ser usado en drones, DroneCAN \cite{DroneCAN}, el conector JST GH 4. Por cuestiones de disponibilidad, se seleccionó otro componente similar a este y que es del mismo fabricante de otros de los conectores utilizados para la computadora de vuelo, correspondiente a la serie DF-13 del fabricante Hirose. Este puede ver en la figura \ref{fig:conector_CAN}. Se utilizaron dos de estos conectores, uno por cada \textit{transciever}. Al ser de pequeñas dimensiones, la inclusión de ambos conectores no ocupa demasiado espacio en la placa.
 
 %\textbf{{\color{red} AGREGAR UNA IMAGEN DEL CONECTOR DF13 DE CAN.}}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.2\textwidth]{img/conector_CAN.jpg}    
     \caption{Se muestra el conector utilizado para las interfaces CAN. El mismo cuenta con 3 terminales, de los cuales 2 de se utilizaron para la señal CAN diferencia. El terminal restante corresponde al GND de la placa.}
     \label{fig:conector_CAN}
 \end{figure}
 
-En cuanto al circuito implementado, se tomaron como punto de partida las recomendaciones de la hoja de datos del trasnciever SN65HVD230. Este recomienda el agregado de capacitores de desacople en las líneas de alimentación. %Además, se agregaron resistores en serie con las líneas de CAN RX y CAN TX, es decir, en las pistas que llevan las señales que van desde el controller al transciever y viceversa. Esto se hizo como medida preventiva para amortiguar las señales, en caso de que estas presenten sobrepicos en las conmutaciones. A priori se fijan en $0 \ \Omega$ y se modificarán de ser necesario.
-El circuito completo de la interfaz CAN puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+%En cuanto al circuito implementado, se tomaron como punto de partida las recomendaciones de la hoja de datos del trasnciever SN65HVD230. Este recomienda el agregado de capacitores de desacople en las líneas de alimentación. %Además, se agregaron resistores en serie con las líneas de CAN RX y CAN TX, es decir, en las pistas que llevan las señales que van desde el controller al transciever y viceversa. Esto se hizo como medida preventiva para amortiguar las señales, en caso de que estas presenten sobrepicos en las conmutaciones. A priori se fijan en $0 \ \Omega$ y se modificarán de ser necesario.
+%El circuito completo de la interfaz CAN puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 %\textbf{{\color{red} COMPLETAR EL ANÁLISIS DEL MODELO DE PARÁMETROS CONCENTRADOS, PARA LAS PISTAS CAN-TX Y CAN-RX, PARA CALCULAR EL EVENTUAL RESISTOR EN SERIE.}}
 
@@ -917,7 +939,7 @@ Para alimentar el microcontrolador y los demás componentes, se incluye una fuen
 
 El circuito implementado se comprende del regulador lineal, junto con capacitores de entrada y de salida. Por cuestiones de confiabilidad, se buscó un componente que sea de grado automotriz. Además, se buscó utilizar un encapsulado SOT-223-3, figura \ref{fig:sot_223_3}. Estos componentes son de fácil acceso en el mercado local, lo que facilita el armado final de la placa.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.3\textwidth]{img/sot_223_3.png}
     \caption{Encapsulado SOT-223-3 seleccionado para el regulador lineal. El terminal de mayor tamaño se encuentra conectado al terminal de tensión de salida, $3.3 \ V$.}
@@ -940,7 +962,7 @@ Para compensar el circuito adecuadamente, es importante seleccionar un capacitor
 
 %Por otro lado, este capacitor también es utilizado para la compensación del regulador \cite{TOSHIBALDO}. En la figura \ref{fig:LDO_diagrama_bloques} se muestra un diagrama en bloques simplificado para un regulador lineal, donde puede verse que se trata de un sistema a lazo cerrado.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/LDO_diagrama_bloques.png}
 %     \caption{Diagrama en bloques de un regulador lineal. Este se compone de un transistor de paso, un amplificador de error, una tensión de referencia y un bloque realimentador, formado por $R_1$ y $R_2$. En el diagrama además se muestra $R_L$ que simboliza una carga resistiva y dos capacitores $C_o$ y $C_b$. Estos elementos forman un circuito a lazo cerrado que estabiliza la tensión de salida $V_{out}$.}
@@ -949,7 +971,7 @@ Para compensar el circuito adecuadamente, es importante seleccionar un capacitor
 
 %Para analizar la ganancia de lazo, se plantea el esquema de realimentación en la figura \ref{fig:LDO_esquema_realimentacion}. Para el transistor de paso, se utiliza su modelo de pequeña señal. 
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.8\textwidth]{img/LDO_esquema_realimentacion.png}
 %     \caption{Circuito equivalente para analizar la realimentación del regulador lineal. La tensión $v_{in}$ se pasiva ya que se analiza el circuito en el punto de operación.}
@@ -979,7 +1001,7 @@ Para compensar el circuito adecuadamente, es importante seleccionar un capacitor
 %     \label{eq:LDO_ganancia_lazo}
 % \end{equation}
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/LDO_ganancia_lazo_1.png}
 %     \caption{Se muestra un gráfico representativo de la ganancia de lazo de un LDO. En rojo se destaca cómo varía la ganancia de lazo con el agregado de un polo y un cero.}
@@ -1011,7 +1033,7 @@ La memoria se compone de una interfaz eléctrica, un controlador interno, una se
 
 El protocolo que se define en este estándar tiene el formato master-slave, en este caso el master será el microcontrolador de la computadora de vuelo. En la figura \ref{fig:SD_bus_conexiones} se muestra un esquema con las conexiones entre el master y la memoria.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/SD_bus_conexiones.png}
     \caption{Esquema circuital de la conexión entre el SD host y una memoria SD, tal y como lo indica la especificación de la SD Association. {\color{red} ESTA IMAGEN NO PUEDE QUEDAR, TENGO QUE DIBUJAR UNA SIMILAR YO}.}
@@ -1028,7 +1050,7 @@ El periférico del microcontrolador es compatible con la versión 2.0 de la SD A
 %El periférico del microcontrolador es compatible con La especificación de la SD Association, en su versión 2.0indica que un host que puede comunicarse con una SDHC, también puede comunicarse con una SDSC, pero no al revés. El microcontrolador de la placa cuenta con una interfaz compatible con la versión 2.0 de la SD Association, la cual solamente define las SDSC y SDHC. En consecuencia, la computadora de vuelo solamente podrá utilizar tarjetas de hasta 32 GB, correspondientes a las SDHC.
 
 % Indicar el mecanismo para detectar la SD.
-Se coloca un slot para memoria micro SD en la placa, modelo DM3AT-SF-PEJM5 del fabricante Hirose. Además de las líneas de comunicación ya mencionadas, este posee un terminal extra que permite detectar si se insertó una memoria SD. Este terminal funciona como una llave mecánica que se conecta a GND cuando se inserta la memoria en el slot. A través de la conexión con un GPIO del microcontrolador, se puede detectar la inserción de la memoria micro SD, para luego inicializar la comunicación. Al igual que el resto de componentes, el circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+Se coloca un slot para memoria micro SD en la placa, modelo DM3AT-SF-PEJM5 del fabricante Hirose. Además de las líneas de comunicación ya mencionadas, este posee un terminal extra que permite detectar si se insertó una memoria SD. Este terminal funciona como una llave mecánica que se conecta a GND cuando se inserta la memoria en el slot. A través de la conexión con un GPIO del microcontrolador, se puede detectar la inserción de la memoria micro SD, para luego inicializar la comunicación. %Al igual que el resto de componentes, el circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 % Velocidades de la micro SD
 %La especificación de la SD Association indica que un host que puede comunicarse con una SDHC, también puede comunicarse con una SDSC, pero no al revés. El microcontrolador de la placa cuenta con una interfaz compatible con la versión 2.0 de la SD Association, la cual solamente define las SDSC y SDHC. En consecuencia, la computadora de vuelo solamente podrá utilizar tarjetas de hasta 32 GB, correspondientes a las SDHC.
@@ -1050,40 +1072,44 @@ Se incorpora en la placa un conector micro USB-B. El terminal 4 llamado ID se ut
 
 Como fue mencionado, el conector USB se utiliza como otra opción para alimentar la placa. La tensión nominal entregada por un host USB es de $5 \ V$. Para limentar el resto de la placa, se conecta esta entrada al regulador de $3.3 \ V$ que se encuentra en la placa. De forma de evitar que haya conflictos con el conector de alimentación principal mencionado en la sección \ref{sec:circuito_de_alimentacion}, se incorporó un circuito simple formado por dos diodos, como se muestra en la figura \ref{fig:diode_oring}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=0.4
-    \textwidth]{img/diode_oring.png}
-    \caption{Se muestra un esquema como el incluido en la computadora de vuelo, el cual permite la aliemntación de la misma a través de 2 fuentes distintas. {\color{red} REEMPLAZAR ESTA IMAGEN POR UNA DIBUJADA POR MI.}}
+    \includegraphics[width=\textwidth]{img/diode_oring.png}
+    \caption{Se muestra el circuito esquemático junto con los diodos Schottky que permiten la alimentación a través de 2 fuentes distintas.}
     \label{fig:diode_oring}    
 \end{figure}
 
-Estos diodos fuerzan a que las corrientes solamente fluyan desde las entradas de $5 \ V$ hacia el regulador. Debido a que estos se encuentran en serie con las corrientes de entrada a la placa, se seleccionaron diodos Schottky para tener bajas caídas de tensión, además de reducir la potencia disipada. El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}. Si bien existen componentes especiales que permiten cumplir con esta misma funcionalidad con menor caída de tensión e incluso con la capacidad de seleccionar la fuente de alimentación a utilizar, nuevamente se opta por una solución que permita mantener unas dimensiones reducidas de la placa.
+Estos diodos fuerzan a que las corrientes solamente circulen desde las entradas de $5 \ V$ hacia el regulador. Debido a que estos se encuentran en serie con las corrientes de entrada a la placa, se seleccionaron diodos Schottky para tener bajas caídas de tensión, además de reducir la potencia disipada. %El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}. 
+Si bien existen componentes especiales que permiten cumplir con esta misma funcionalidad con menor caída de tensión e incluso con la capacidad de seleccionar la fuente de alimentación a utilizar, nuevamente se opta por una solución que permita mantener unas dimensiones reducidas de la placa.
 
 %\textbf{{\color{red} COMPLETAR}}
 
 \subsubsection{Conector para Módulo GPS}
 %\subsection{Conector para Módulo GPS}
 
-Se provee la posibilidad de incorporar de forma externa un módulo receptor de GPS. Estos entregan mediciones de posición y velocidad a la computadora de vuelo, los cuales se utilizan como mediciones complementarias al INS. Estos módulos además suelen proveer de una funcionalidad extra, llamada señal \textit{Pulse-per-second}(PPS). Esta es una señal con un período de 1 segundo y que se encuentra sincronizada con los relojes atómicos del sistema GPS, los cuales tienen una exactitud de decenas de ns. Esta señal típicamente es utilizada como referencia de tiempo en el sistema de navegación de la computadora de vuelo.
+Se provee la posibilidad de incorporar de forma externa un módulo receptor GPS. Estos entregan mediciones de posición y velocidad a la computadora de vuelo, las cuales se utilizan como mediciones complementarias al INS. Estos módulos además suelen proveer de una funcionalidad extra, llamada señal \textit{Pulse-per-second}(PPS). Esta es una señal con un período de 1 segundo y que se encuentra sincronizada con los relojes atómicos del sistema GPS, los cuales tienen una exactitud de decenas de ns. Esto permite que la PPS señal sea utilizada como referencia de tiempo en el sistema de navegación de la computadora de vuelo.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{img/gps.png}
     \caption{Módulo receptor de GPS. Dentro de la carcasa de plástico se encuentra un chip que procesa las señales de GPS para extraer la información, además de una antena utilizada para recibir la señal proveniente de distintos satélites, típicamente una antena parche de cerámica.}
     \label{fig:gps}
 \end{figure}
 
-Se proveen de 2 conectores diferentes para uso de este tipo de módulos. Por un lado, se utiliza un conector de la serie DF-13 del fabricante Hirose y por el otro, conectores de tira de pines estándar de 0.1” a 90 grados. En la figura \ref{fig:gps} se muestra un módulo típico de uso en vehículos aéreos de uso comercial, el cual trabaja con una interfaz de comunicación serie. Los conectores incorporados están enfocados al uso de módulos de este tipo, por lo que en el conector pueden verse dos terminales con las etiquetas TX y RX. Estos además están acompañados por un terminal para la señal PPS.
+La placa incluye 2 conectores diferentes para uso de este tipo de módulos. Por un lado, se utiliza un conector de la serie DF-13 del fabricante Hirose y por el otro, conectores de tira de pines estándar de 0.1” a 90 grados. Ambos conectores están enfocados al uso de módulos con comunicación serie, por lo que el conector tiene 2 terminales, TX y RX, además de un terminal para la señal PPS.
+
+El receptor GPS suele montarse en elevación en el vehículo para favorecer la recepción de la señal. Otros de los sensores que también suelen ubicarse en elevación son los magnetómetros. Esto se hace para evitar la influencia en las mediciones de los campos magnéticos generados por los motores del vehículo. Debido a esto, algunos módulos GPS además incluyen consigo un magnetómetro integrado y traen consigo 2 conectores como se muestra en la figura \ref{fig:gps}, uno para la señal GPS y otro para la comunicación con el magnetómetro.  
+
+%se muestra un módulo típico de uso en vehículos aéreos de uso comercial, el cual trabaja con una interfaz de comunicación serie. Los conectores incorporados están enfocados al uso de módulos de este tipo, por lo que en el conector pueden verse dos terminales con las etiquetas TX y RX. Estos además están acompañados por un terminal para la señal PPS.
 
 \subsubsection{Conectores para Salidas de PWM}
 %\subsection{Conectores para Salidas de PWM}
 
-Como parte del sistema de control, la computadora de vuelo debe comandar a los actuadores. En vehículos aéreos no tripulados comerciales, es común el uso de motores burshless de corriente continua. Estos se alimentan con una fuente de tensión continua, a través de un driver que genera una salida trifásica. Estos drivers se denominan \textit{Electronic Speed Controller}(ESC). 
+Como parte del sistema de control, la computadora de vuelo debe comandar a los actuadores. En vehículos aéreos no tripulados comerciales, es común el uso de motores burshless de corriente continua. Estos se alimentan con una fuente de tensión continua, a través de un driver que genera una salida trifásica. Estos drivers se denominan \textit{Electronic Speed Controller} (ESC). 
 
-Haciendo una búsqueda de los distintos tipos de ESC, puede verse que estos ofrecen interfaces de comunicación variadas, siendo la más común el uso de una señal PWM. Es por esto que en la computadora de vuelo se incorpora un conector el cual ofrece 8 salidas para este tipo de señal. Con motivo de tener compatibilidad con drivers comerciales, los conectores incorporados son conectores de tira de pines estándar de 0.1” a 90 grados. Las señales PWM serán generadas a través de los periféricos asociados a los timers del microcontrolador.
+Haciendo una búsqueda de los distintos tipos de ESC, puede verse que estos ofrecen interfaces de control, siendo la más común el uso de una señal PWM. Es por esto que en la computadora de vuelo se incorpora un conector el cual ofrece 8 salidas para este tipo de señal. En este caso particular, los drivers comerciales no utilizan terminales DF-13 como en otros casos, por lo que solamente se incluyen conectores de tira de pines estándar de 0.1” a 90 grados. Las señales PWM serán generadas a través de los periféricos asociados a los timers del microcontrolador.
 
-\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEA QUE LA PLACA ENTREGA PWM PERO QUE LA CORRIENTE LA ENTREGA LA BATERÍA}}
+%\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEA QUE LA PLACA ENTREGA PWM PERO QUE LA CORRIENTE LA ENTREGA LA BATERÍA}}
 
 Además de las 8 salidas para control de los actuadores del vehículo, se incorporaron otras 4 salidas extra en otro conector separado. Este segundo conector está pensado para utilizarse con otros fines, como controlar una serie de servomotores que puedan incorporarse al vehículo.
 
@@ -1098,13 +1124,13 @@ Como fue mencionado, el vehículo en algunas ocasiones puede ser controlado manu
 
 La forma más común de comunicación entre el receptor y la computadora de vuelo es 
 %La forma en la que los receptores comunican los comandos del piloto a la computadora de vuelo puede ser de distintas maneras. La más común de ellas es 
-a través de distintas señales del tipo PWM denominadas canales. Cada canal puede indicar un set point distinto del vehículo, por ejemplo pueden tenerse 4 canales para los ángulos \textit{pitch}, \textit{roll}, \textit{yaw} y otro para el empuje vertical del vehículo \cite{garberoglio2019diseno}. Debido a que esto requiere el uso de 4 líneas de comunicación entre el receptor y la computadora de vuelo, se opta por una alternativa similar. %denominada receptor PPM.
+a través de distintas señales del tipo PWM denominadas canales. Cada canal puede indicar un set point distinto del vehículo, por ejemplo pueden tenerse 4 canales para los ángulos \textit{pitch}, \textit{roll}, \textit{yaw} y otro para el empuje vertical del vehículo \cite{garberoglio2019diseno}. Debido a que esto requiere el uso de 4 líneas de comunicación entre el receptor y la computadora de vuelo, se opta por una alternativa más sencilla. %denominada receptor PPM.
 Estos utilizan una señal denominada \textit{Pulse Position Modulation} (PPM) y tiene la ventaja de contener la información de todos los canales en una sola línea de comunicación. En la figura \ref{fig:senial_ppm} pueden verse las características de la señal PPM.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{img/senial_ppm.png}
-    \caption{Ejemplo de una señal PPM para 8 canales {\color{red} REEMPLAZAR ESTA IMAGEN POR UNA DIBUJADA POR MI.}.}
+    \includegraphics[width=0.9\textwidth]{img/senial_ppm_mia.png}
+    \caption{Ejemplo de una señal PPM para 8 canales.}
     \label{fig:senial_ppm}
 \end{figure}
 
@@ -1146,7 +1172,7 @@ Una de los posibles usos que se le puede dar a estos pulsadores es el de ejecuta
 
 Teniendo presente la necesidad de obtener un diseño de tamaño reducido, se incorporaron pulsadores de 2 terminales, como los que se muestran en la figura \ref{fig:pulsadores}. Cada pulsador se encuentra acompañado de un resistor de pull-up, acompañado de un capacitor de filtrado y un resistor en serie con motivo de filtrar el efecto rebote.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{img/pulsadores.png}
     \caption{Pulsadores utilizados para la computadora de vuelo. Las imágenes se extrajeron de la hoja de datos del componente. Se muestran las dimensiones en mm.}
@@ -1187,13 +1213,31 @@ Durante el desarrollo se tuvo presente una limitación para este requerimiento y
 
 \subsubsection{Requerimientos de Posicionamiento del Sensor IMU}
 
-Este sensor tiene ciertos requerimientos particulares que deben cumplirse, siendo el más importante la necesidad de ser ubicado en el centro de la placa. Como fue mencionado en la sección \ref{sec:IMU}, todas las mediciones de aceleración y velocidad angular son relativas a una terna solidaria a este. Al centrar el sensor en la placa, luego todas las mediciones también estarán referidas a una terna solidaria a la placa.
+Como fue mencionado en la sección \ref{sec:IMU}, todas las mediciones de aceleración y velocidad angular son relativas a una terna solidaria al sensor. La IMU se ubica cerca del centro de masa del vehículo para que las mediciones además estén referidas a una terna solidaria a este. Debido a que la computadora de vuelo suele ubicarse en el centro del vehículo, es importante que este sensor sea montado en el centro de la placa.
+
+
+%La IMU suele ubicarse en el centro del vehículo para que sus mediciones además estén referidas a una terna solidaria al centro de masa de este. Debido a que la computadora de vuelo suele ubicarse en el centro del vehículo, es importante que el sensor sea montado en el centro de la placa.
+
+%centrar el sensor en la placa, luego todas las mediciones también estarán referidas a una terna solidaria a la placa.
+
+%Para que estas mediciones además estén referidas a una terna solidaria al centro de masa del vehículo, el sensor se ubica cerca de este.
+
+
+%Al montar el sensor en el centro del vehículo, luego todas las mediciones del sensor también estarán referidas a una terna solidaria al centro de masa de este.
+
+
+%, la IMU deberá coincidir con el centro de masa de este.
+
+%Este sensor tiene ciertos requerimientos particulares que deben cumplirse, siendo el más importante la necesidad de ser ubicado en el centro de la placa.  Al centrar el sensor en la placa, luego todas las mediciones también estarán referidas a una terna solidaria a la placa.
 
 %Debido a que la computadora de vuelo suele montarse en el centro del vehículo, al ubicar el componente en el centro de la placa se logra que el origen de la terna solidaria al sensor coincida con la terna solidaria a todo el vehículo. Esto ahorra cuestiones de cómputo que modifiquen la terna de referencia respecto de la cual se obtienen las lecturas.
 
-Durante el desarrollo del layout del PCB, se encontró un impedimento por el que no se logró centrar la IMU en la placa. Esto se debió a la necesidad de que todos los componentes se encuentren ubicados de un solo lado de la placa, tal como se mencionó en la sección \ref{sec:requerimientos_manufacturabilidad}, sumado al gran tamaño del microcontrolador. El ubicar el sensor en el centro de la placa, fuerza a que el microcontrolador quede en uno de los extremos de la placa, lo que dificulta mucho las conexiones de este con el resto de los componentes. Esto se muestra en la figura .
+Durante el desarrollo del layout del PCB, se encontró un impedimento por el que no se logró centrar la IMU en la placa. Esto se debió a la necesidad de que todos los componentes se encuentren ubicados de un solo lado de la placa, tal como se mencionó en la sección \ref{sec:requerimientos_manufacturabilidad}, sumado al gran tamaño del microcontrolador. El ubicar el sensor en el centro de la placa, fuerza a que el microcontrolador quede en uno de los extremos, lo que dificulta mucho las conexiones de este con el resto de los componentes. Esto además quita espacio necesario para ubicar la gran cantidad de conectores, los cuales deben ubicarse en los extremos de la placa.
 
-\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEA QUE LA IMU FUERZA A QUE EL MICRO QUEDE DE UN LADO O DEL OTRO DEL CENTRO DE LA PLACA.}}
+
+%Esto se muestra en la figura .
+
+%\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEA QUE LA IMU FUERZA A QUE EL MICRO QUEDE DE UN LADO O DEL OTRO DEL CENTRO DE LA PLACA.}}
 
 A pesar de esto, luego de hacer varias iteraciones en el routeo final, el sensor pudo montarse apenas 8 mm desfasado respecto del centro. Este dato debe ser tenido en cuenta a la hora de montar la placa en un vehículo.
 
@@ -1218,7 +1262,7 @@ Como fue mencionado en la sección \ref{sec:IMU}, este sensor es un sistema elec
     \item No ubicar vías debajo del componente. El área debajo de este debe definirse como keepout area.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{img/IMU_recomendaciones_layout.png}
     \caption{Se muestran dos ejemplos de layout de una IMU. El layout U2 no sigue las recomendaciones mencionadas, mientras que U1 sí. La imagen se extrajo de \cite{IMUpcb_3}.}
@@ -1227,7 +1271,7 @@ Como fue mencionado en la sección \ref{sec:IMU}, este sensor es un sistema elec
 
 La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de estas recomendaciones. Lo que se observa es que las pistas del sensor son simétricas. A pesar de que algunos terminales de la IMU no se utilicen, se recomienda que igualmente sean incluidas en el routeo, solo para mantener la simetría. Durante el proceso de soldadura, el estaño presente en los distintos pads del componente generan una tensión que atrae el componente hacia este. En la figura \ref{fig:IMU_missalignment} se muestra un ejemplo de una IMU rotada respecto de su placa. Si el routeo no es simétrico, es posible que el sensor no quede centrado, lo que resultaría en un problema durante el uso de la computadora de vuelo.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.4\textwidth]{img/IMU_missalignment.png}
     \caption{Se muestra un ejemplo donde la IMU se encuentra rotada respecto de la placa. En línea punteada los ejes de la terna solidaria al sensor y en línea continua la terna solidaria a la placa. La imagen se extrajo de \cite{IMUpcb_4}.}
@@ -1238,12 +1282,12 @@ La imagen de la figura \ref{fig:IMU_recomendaciones_layout} resume algunas de es
 
 \subsubsection{Características del PCB}
 
-Dada la gran cantidad de pistas que deben trazarse en toda la placa, se opta por un diseño de PCB de 4 capas. Esta elección simplifica el routeo, ya que se cuenta con una mayor cantidad de capas para pasar pistas, en relación a una configuración típica de 2 capas. En la figura \ref{fig:stackup} se muestra el \textit{stackup} utilizado para el PCB, donde se puede ver que se cuenta con 2 capas de señal, 1 capa de alimentación y 1 capa de retorno GND.
+Dada la gran cantidad de pistas que deben trazarse en toda la placa, se opta por un diseño de PCB de 4 capas. Esta elección simplifica el routeo, ya que se cuenta con una mayor cantidad de capas para pasar pistas, en relación a una configuración típica de 2 capas. En la figura \ref{fig:stackup} se muestra el \textit{stackup} utilizado para el PCB.%, donde se puede ver que se cuenta con 2 capas de señal, 1 capa de alimentación y 1 capa de retorno GND.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/stackup.png}
-    \caption{Configuración de capas utilizada para el PCB. {\color{red} REEMPLAZAR ESTA IMAGEN POR UNA DIBUJADA POR MI. APROVECHAR Y AGREGAR LAS DIMENSIONES DEL ESPACIADO ENTRE CAPAS, EL ESPESOR DE COBRE Y LOS DIELÉCTRICOS.}}
+    \caption{Configuración de capas utilizada para el PCB.}
     \label{fig:stackup}
 \end{figure}
 
@@ -1259,7 +1303,7 @@ La configuración de 4 capas tiene otras ventajas respeto del uso de 2. El circu
 
 %\textbf{{\color{red} AGREGAR UNA IMAGEN ILUSTRATIVA DE CÓMO LA IMPEDANCIA DEL RETORNO GENERA RUIDO EN GND. LA TENGO QUE DIBUJAR YO}}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/ground_bounce.png}
     \caption{La compuerta lógica 2 mantiene su salida siempre en $0 \ V$, mientras que la compuerta lógica 1 conmuta su salida de estado alto a $0 \ V$. En este momento, se produce una descarga del capacitor $C_{STRAY}$ el cual representa capacidades que pueden ser por ejemplo de la pista que una su salida con la compuerta 3. En ese momento, la corriente circula por la inductancia del retorno, generando una caída de tensión que afecta a la compuerta 2 y a su salida. La imagen se extrajo de \cite[p.~381]{ott2011electromagnetic}.}
@@ -1303,7 +1347,7 @@ Otra de las técnicas utilizadas para reducir el ruido producto de las corriente
 
 Algunos de los conectores de la computadora de vuelo tienen salidas con tensiones de $5 \ V$ utilizados para alimentar módulos y sensores, como es el caso del receptor GPS. Esta tensión de $5 \ V$ se obtiene directamente desde la tensión de entrada del conector de alimentación de la computadora de vuelo. Para ello, se trazó una pista en la misma cara top, con un ancho mayor al resto de las demás. Esta se muestra en la figura \ref{fig:pista_5V}. Podría haberse incluido un plano con esta tensión en la misma capa que el plano de $3.3 \ V$. Sin embargo, esto hubiera generado que el plano de $3.3 \ V$ se viera afectado, haciendo que este se viera partido, lo que incrementaría la impedancia vista por las corrientes sobre este.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/pista_5V.png}
     \caption{Se muestra una captura del software KiCad, utilizado para el desarrollo de la placa de la computadora de vuelo. Se resalta la pista de $5 \ V$ en la capa top. A su vez se puede ver la zona naranja la cual corresponde a la capa 3 y que contiene en su totalidad al plano de $3.3 \ V$. El plano de GND se ubica en la capa 2.}
@@ -1322,7 +1366,7 @@ Algunos de los conectores de la computadora de vuelo tienen salidas con tensione
 Otro de los aspectos a definir para la fabricación del PCB fueron las vías. Al tener varias capas, el routeo de las pistas trae consigo una gran cantidad de vías en la placa, debido a los cambios de capa y a las conexiones con los planos internos de alimentación y GND. Existen distintos tipos de vías que ofrece el fabricante, entre ellas las vías ciegas, vías enterradas y vías pasantes. %estas se muestran en la figura \ref{fig:vias_PCB}. 
 Se prefiere evitar el uso de otro tipo de vía que no sea una vía pasante, debido a que de otra forma se incrementa mucho el costo de fabricación de la placa, ya que el proceso de manufactura de las vías ciegas y las vías enterradas, es más complejo que el de las vías pasantes.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.8\textwidth]{img/vias_PCB.png}
 %     \caption{La vía 1 corresponde a una vía ciega (\textit{blind via}), la 2 corresponde a una \textit{buried via} y la 3 a una vía pasante. El uso de vías ciegas ayuda a reducir el espacio ocupado por un circuito en un PCB, ya que permite colocar componentes por encima de estas. La desventaja que traen es que su uso incrementa mucho el costo de fabricación de la placa, ya que el proceso de manufactura de las mismas es más complejo que el de las vías pasantes.}
@@ -1344,12 +1388,26 @@ Para trazar las pistas correspondientes a la comunicación con la memoria Micro 
 
 %Para trazar las pistas correspondientes a la comunicación con la memoria Micro SD, se tuvieron en cuenta las recomendaciones del fabricante del microcontrolador, para uso del periférico \cite{AN4661}.
 
-Se buscó obtener una impedancia característica de $50 \ \Omega$ tanto para las líneas de datos como para la de comandos y clock. Esto puede lograrse gracias a la selección del \textit{stack-up} del PCB, con planos de GND y de $3.3 \ V$ continuos. De esta manera, las pistas en las capas exteriores son del tipo microstrip, cuya impedancia característica es conocida. En la figura \ref{fig:microstrip} se muestra una imagen con las dimensiones finales de las pistas. La permitividad del dieléctrico se tomó a partir de los datos provistos por el fabricante \textit{PCBWay}.
+Se buscó obtener una impedancia característica de $50 \ \Omega$ tanto para las líneas de datos como para la de comandos y clock. Gracias a la elección del \textit{stack-up} del PCB, con planos de GND y de $3.3 \ V$ continuos, las pistas de las capas exteriores son del tipo microstrip, cuya impedancia característica es conocida.
 
-\begin{figure}[H]
+La altura y la permitividad del dieléctrico se encuentran fijados por el fabricante \textit{PCBWay}, por lo que el parámetro fue el ancho de pista. Para determinar su valor, se utilizaron las aproximaciones presentadas en \cite[p.~825]{balanis2016antenna} y que se muestran en \eqref{eq:Z0_microstrip}. En la figura \ref{fig:microstrip} se muestra una imagen con las dimensiones finales de las pistas.
+
+\begin{subequations}
+    \begin{align}
+        Z_0 &= \begin{dcases*}
+            \frac{60}{\sqrt{\epsilon_{reff}}} \ ln\left[ \frac{8h}{W} + \frac{W}{4h} \right] & , $\frac{W}{h} \leq 1$\\
+            \frac{120 \pi}{\sqrt{\epsilon_{reff}} \left[ \frac{W}{h} + 1.393 + 0.667 \ ln\left(  \frac{W}{h} + 1.444 \right) \right]} & , $\frac{W}{h} > 1$
+        \end{dcases*}\\
+        \epsilon_{reff} &= \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2} \left[ 1 + 12 \frac{h}{W} \right]^{-1/2}
+    \end{align}
+    \label{eq:Z0_microstrip}
+\end{subequations}
+
+
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{img/microstrip_2.png}
-    \caption{Se muestran las dimensiones de las pistas utilizadas para la memoria MicroSD. El alto del dieléctrico y su permitividad, están definidos por la configuración del PCB.}
+    \caption{Se muestran las dimensiones de las pistas utilizadas para la memoria MicroSD. La altura del dieléctrico $h$ y su permitividad $\epsilon_r$, están definidos por la configuración del PCB.}
     \label{fig:microstrip}
 \end{figure}
 
@@ -1406,17 +1464,17 @@ En \cite{ROHM_thermal} se muestran resultados del efecto de aplicar distintas mo
 
 En primera medida, se incluyó un plano de cobre en la capa top, de $211 \ mm^2$. Este se puede ver en la figura \ref{fig:plano_cobre_top_ldo}. En la nota de aplicación \cite{AN1028_thermal} se muestran resultados de distintas pruebas utilizando un encapsulado como el de este trabajo, donde se fue incrementando la superficie del plano de cobre en la misma capa del integrado. Esta concluye que para una superficie de $211 \ mm^2$ se obtiene una $\theta_{JA} = 60$ °C/W. Este valor representa una reducción del 43,9 \% respecto del valor reportado en la hoja de datos y en el gráfico de la figura \ref{fig:ldo_potencia_disipable} se puede ver la comparación entre ambos casos de la potencia máxima disipable.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{img/plano_cobre_top_ldo.png}
     \caption{Se muestra el layout final del regulador en la cara top. Se agrega un plano de $211 \ mm^2$ en la misma capa para reducir la resistencia térmica. Además, se utilizan una serie de vías para conectar con el plano interno de $3.3 \ V$, permitiendo disipar calor a través de este.}
     \label{fig:plano_cobre_top_ldo}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
-    \includegraphics[width=0.6\textwidth]{img/ldo_potencia_disipable.png}
-    \caption{Se muestra el efecto de la reducción de la $\theta_{JA}$ en la potencia máxima disipable por el regulador. Esto además permite que este pueda entregar mayores valores de corriente {\color{red} HAY QUE HACER ESTE GRÁFICO USANDO OCTAVE/PYTHON/MATLAB}.}
+    \includegraphics[width=\textwidth]{img/ldo_potencia_disipable_2.png}
+    \caption{Se muestra la comparativa del valor indicado en el datasheet $\theta_{JA} = 107^o C/W$ con el valor de $\theta_{JA} = 60^o C/W$. Este último es un valor que se toma de referencia, a partir de los resultados extraidos de las distintas notas de aplicaicón consultadas. Esto además permite que el regulador pueda entregar mayores valores de corriente, los cual es necesario debido a la gran cantidad de módulos y sensores que pueden adosarse a la computadora de vuelo a través de sus conectores.}
     \label{fig:ldo_potencia_disipable}
 \end{figure}
 
@@ -1432,9 +1490,9 @@ En primera medida, se incluyó un plano de cobre en la capa top, de $211 \ mm^2$
 %     \label{eq:potencia_disipada_LDO}
 % \end{equation}
 
-Existen algunas diferencias respecto de las condiciones planteadas en \cite{AN1028_thermal}, ya que allí se utiliza un espesor de cobre de $70 \ \mu m$, mientras que en este trabajo se utilizó un espesor de $35 \ \mu m$. A pesar de esto, los resultados que se muestran en \cite{ROHM_thermal} indican que el cambiar el espesor de $70 \mu m$ a $35 \mu m$ en un PCB 4 capas presenta un incremento menor al 10 \%.
+Existen algunas diferencias respecto de las condiciones planteadas en \cite{AN1028_thermal}, ya que allí se utiliza un espesor de cobre de $70 \ \mu m$, mientras que en este trabajo se utilizó un espesor de $35 \ \mu m$. A pesar de esto, los resultados que se muestran en \cite{ROHM_thermal} indican que el usar un espesor de $35 \mu m$ en lugar de $70 \mu m$ en un PCB 4 capas, representa un incremento inferior al 10 \%.
 
-Por otro lado, en la placa de este trabajo se incorporan una serie de vías en el plano, las cuales conectan con la capa de $3.3 \ V$. En otra nota de aplicación de \textit{Texas Instruments} \cite{SLVAE85} se muestra otro estudio junto con resultados donde se aprovechan los planos internos en un PCB de 4 capas. Allí se demuestra que solamente con tener capas de cobre interiores sin la necesidad de estar conectadas al regulador, pueden reducir la $\theta_{JA}$ hasta un 50 \%. Si estos se encuentran conectadas al regulado, la reducción es aún mayor. Para la ubicación de las vías, estas se colocaron inmediatamente debajo del regulador.
+Por otro lado, en la placa de este trabajo se incorporan una serie de vías en el plano, las cuales conectan con la capa de $3.3 \ V$. En otra nota de aplicación de \textit{Texas Instruments} \cite{SLVAE85} se muestra otro estudio junto con resultados donde se aprovechan los planos internos en un PCB de 4 capas. Allí se demuestra que solamente con tener capas de cobre interiores sin la necesidad de estar conectadas al regulador, pueden reducir la $\theta_{JA}$ hasta un 50 \%. Si estos se encuentran conectadas al regulador, la reducción es aún mayor. Para la ubicación de las vías, estas se colocaron inmediatamente debajo del regulador.
 
 %Para un encapsulado SOT-23, la nota de aplicación [53] indica que para un área de 194 mm2 (0,3 in2), el uso de vías térmicas y teniendo planos de cobre en las capas intermedias, la 𝜃JA se reduce un 50%. Se considera que se obtendrá una 𝜃JA de 60 °C/W aproximadamente, para el layout utilizado.
 
@@ -1487,21 +1545,21 @@ Teniendo en cuenta todas las consideraciones mencionadas a lo largo de esta secc
 %     \item Loggeo de datos.
 % \end{enumerate}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/diagrama_en_bloques_computadora_de_vuelo.png}
     \caption{Diagrama en bloques de la computadora de vuelo.}
     \label{fig:diagrama_en_bloques_computadora_de_vuelo}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/chori_detalle.png}
     \caption{Se muestra el detalle del PCB de la computadora de vuelo.}
     \label{fig:chori_detalle}    
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/choris_4.png}
     \caption{Se muestran las 3 placas enviadas a fabricar para este trabajo.}

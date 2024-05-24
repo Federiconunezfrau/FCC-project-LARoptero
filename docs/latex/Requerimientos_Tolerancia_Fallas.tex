@@ -97,14 +97,14 @@ Todos los trabajos presentados en la sección \ref{sec:estado_del_arte} comparte
 
 Una configuración muy simple es la redundancia doble. En este tipo de sistemas se utilizan 2 réplicas las cuales trabajan en paralelo ejecutando las mismas tareas y comparando sus resultados entre sí. La ocurrencia de una falla se detecta cuando ocurre una discrepancia entre los resultados obtenidos por cada una de las réplicas.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{img/redundancia_doble.png}
     \caption{Esquema de redundancia doble. La entrada $X(t)$ es utilizada por ambas réplicas y cada una de ellas obtiene una salida $Y_1(t)$ e $Y_2(t)$. Si ocurre que $Y_1(t) \neq Y_2(t)$, luego esto implicará una falla de alguna de las réplicas. }
     \label{fig:redundancia_doble}
 \end{figure}
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/3_4_lockstep_architecture.png}
 %     \caption{En la figura de la izquierda, dos sistemas ejecutan las mismas operaciones, mientras que otro sistema externo se encarga de comparar las salidas de ambos para detectar errores. En la figura de la derecha, el bloque comparador se encuentra integrado en el sistema \textit{checker}. La imagen fue extraida de \cite{nelson1990fault}.}
@@ -117,7 +117,7 @@ Si bien este tipo de arquitectura permite detectar fallas a partir de la compara
 
 %En la figura \ref{fig:3_4_lockstep_architecture} se muestran dos configuraciones. La configuración de la derecha puede ser implementada a través de dos CPUs totalmente independientes (a veces denominada \textit{Loosely-Synchronized Dual Processor Architecture}) o a través del uso de un procesador de dos núcleos, donde uno sería el \textit{Master} y otro el \textit{checker}\cite{baleani2003fault}. En esta última, ambos se encuentran sincronizados por estar en el mismo chip y compartir fuente de clock. En la figura \ref{fig:3_4_lockstep_architecture_2} se muestra un esquema de ambos casos.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \begin{subfigure}[b]{0.49\textwidth}
 %         \includegraphics[width=\textwidth]{3_4_lockstep_dual_core.png}
@@ -139,7 +139,7 @@ Si bien este tipo de arquitectura permite detectar fallas a partir de la compara
 
 Esta arquitectura puede encontrarse en la literatura con el nombre \textit{Triple Modular Redundancy (TMR)} \cite{lyons1962use} y consiste en el uso de 3 réplicas, las cuales computan los mismos resultados en paralelo. En esta configuración se asume que solamente 1 de las 3 réplicas presentará una falla a la vez. A diferencia de la redundancia doble, en esta configuración sí es posible detectar cuál de las réplicas fue la que presentó la falla a partir de la comparación de resultados, ya que solamente 1 de los resultados será distinto a los otros 2.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{TMR.png}
     \caption{Esquema de redundancia triple. La entrada $X(t)$ es utilizada por las 3 réplicas para obtener sus respectivos resultados $Y_1(t)$, $Y_2(t)$ e $Y_3(t)$. Un bloque denominado árbitro se encarga de seleccionar el valor correcto para la salida $Y(t)$.}
@@ -162,7 +162,7 @@ Para eliminar este punto singular de falla, sería necesario utilizar varias ré
 
 %Una forma de eliminar el punto singular de falla consiste es utilizar varias réplicas del árbitro \cite{nelson1990fault}\cite{lyons1962use}, lo que permitiría enmascarar errores que estos puedan cometer. La arquitectura sería como la que se muestra en la figura \ref{fig:TMR_triple_arbitro}. Esta arquitectura es más compleja que las anteriores, ya que se requiere una gran cantidad de componentes, 3 computadoras de vuelo + 3 bloques árbitro, dando un total de 6. Además, pensando en que se argumentó que los aárbitros generalmente son más costosos que las réplicas individuales, esto encarecería mucho al sistema completo.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/TMR_triple_arbitro.png}
 %     \caption{Arquitectura TMR con redundancia del árbitro.}
@@ -181,14 +181,14 @@ Una alternativa podría ser que las mismas réplicas sean las que ejecuten la vo
 %En el artículo \cite{hiergeist2018implementation}, los mismos autores presentan resultados para una arquitectura con redundancia cuádruple, donde los mismos microcontroladores de cada FCC son los encargados de realizar la votación. 
 Para el caso de una arquitectura de redundancia triple, puede diagramarse como en la figura \ref{fig:TMR_sin_arbitro}.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{img/3_5_TMR_2.png}
 %     \caption{Arquitectura de redundancia trple, donde los bloques votantes son las mismas FCCs. Los votantes se encuentran integrados dentro de cada FCC.}
 %     \label{fig:3_5_TMR_2}
 % \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{img/TMR_sin_arbitro.png}
     \caption{Cada una de las réplicas comparte los resultados con sus pares. Luego, cada una de ellas realiza una votación sobre los valores para obtener el resultado correcto y detectar fallas.}
@@ -207,7 +207,7 @@ Las tareas de estimación de la pose del vehículo, y de cálculo de la acción 
 
 %Prácticamente en todos los trabajos que se presentaron en la sección \ref{sec:estado_del_arte} se menciona que las réplicas trabajan de manera sincronizada. Esta necesidad surge debido a que la computadora de vuelo comprende un sistema de tiempo real. Todos los resultados que se obtienen son sobre variables que tienen validez solamente durante un período de tiempo. Esto se representa en la figura \ref{fig:evolucion_estados_real_time}, donde el resultado $Y(t)$ solo es válido durante el intervalo de tiempo $[t;t+1)$. Lo mismo ocurre con todos los resultados $Y(t+N)$, los cuales solamente serán válidos durante los intervalos $[t+N;t+N+1)$. Cada una de las réplicas del sistema continuamente calcula estos resultados $Y(t)$, $Y(t+1)$, etc, de manera periódica.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/evolucion_estados_real_time.png}
     \caption{En cada instante de tiempo $t$, $t+1$ y $t+2$ el vehículo se encuentra en un estado distinto, por lo que el algoritmo de estimación de la pose generará 3 resultados diferentes $Y(t)$, $Y(t+1)$ e $Y(t+2)$. Las entradas $X(t)$, $X(t+1)$ y $X(t+2)$ corresponden a mediciones de los distintos sensores.}
@@ -226,7 +226,7 @@ En la práctica una sincronización perfecta sería algo excesivo. Sin embargo e
 %En las arquitecturas antes presentadas, se menciona que se realiza una comparación de los resultados calculados por cada nodo, para detectar/enmascarar errores. Para que el funcionamiento de esta comparación sea adecuado, los nodos deben estar sincronizados. Esto es un requerimiento para sistemas de tiempo real, como el caso de la computadora de vuelo de un UAV.
 % En la figura \ref{fig:3_4_1_sincronizacion} se muestra un ejemplo. En el instante $t$, se presenta una nueva medición de un sensor a las tres computadoras de vuelo. Al comienzo de la misión, todas ellas estarán sincronizadas y generarán un resultado del cálculo de la ley de control que corresponde al mismo intervalo de tiempo. Luego, se realiza la votación para elegir el valor correcto. La figura \ref{fig:3_4_1_sincronizacion_2}, muestra lo que sucede al cabo de un período de tiempo. Se presenta una nueva medición de un sensor en el instante $t$. Debido a la desincronización, es posible que las computadoras de vuelo no presenten sus resultados al árbitro a tiempo, por lo que este asumirá que una de las FCCs no presentó ninguna respuesta. Este caso suele estar contemplado dentro de las posibilidades y correpsonde al caso en el que una computadora de vuelo presentó un error y debido a ello no respondió con ningún valor (por ejemplo, se reinició su procesador debido a un \textit{watchdog}). En esos casos el árbitro simplemente asume algún valor por defecto.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \begin{subfigure}[b]{0.49\textwidth}
 %         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_1.png}
@@ -244,7 +244,7 @@ En la práctica una sincronización perfecta sería algo excesivo. Sin embargo e
 
 % Otra situación que puede presentarse, es que los resultados propuestos por las computadoras de vuelo $Y_1$, $Y_2$ e $Y_3$ correspondan a intervalos de tiempo distintos. Este caso es todavía peor que el anterior, ya que no se encuentra contemplado y el árbitro simplemente realizará la votación asumiendo que el dato es válido.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \begin{subfigure}[b]{0.49\textwidth}
 %         \includegraphics[width=\textwidth]{img/3_4_1_sincronizacion_3.png}
@@ -280,14 +280,14 @@ En las computadoras de vuelo es común incorporar varios de los sensores dentro 
 
 La configuración de triple redundancia, tal y como fue presentada hasta aquí, no resulta efectiva para estos casos donde cada réplica propone un valor y debe llegarse a un consenso. En la figura \ref{fig:TMR_sin_arbitro_consenso_falla} se muestra un ejemplo donde la réplica 1 entrega un valor distinto a cada una de las demás. Este valor podría tratarse de valores de sensores o de resultados de la estimación de la pose. Lo que se observa es que las réplicas 2 y 3 llegan a valores distintos, evitando el consenso.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_4.png}
 %     \caption{La FCC1 entrega un valor distinto de timing a las demás FCCs}.
 %     \label{fig:3_4_2_consenso_4}
 % \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/TMR_sin_arbitro_consenso_falla.png}
     \caption{Las réplicas buscan ponerse de acuerdo en el valor correcto para la estimación de la pose. La réplica 1 manifiesta una falla y entrega un valor diferente a cada una de las demás réplicas. Esto genera que las réplicas 2 y 3, las cuales no manifestaron ninguna falla, lleguen a resultados distintos, evitando así el consenso. En cuanto a la réplica 1, dependiendo de cuál haya sido realmente el valor que haya calculado, esta obtendrá uno u otro resultado.}
@@ -302,7 +302,7 @@ Una posible solución podría ser realizar un nuevo intercambio con los valores 
 
 % Sin embargo, como se muestra en la figura \ref{fig:3_4_2_consenso_5}.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/3_4_2_consenso_5.png}
 %     \caption{Luego de calcular los promedios, las FCCs intercambian sus resultados. Nuevamente, la FCC1 comete una falla en el envío del dato.}
@@ -324,7 +324,7 @@ En la figura \ref{fig:byzantine_ejemplo_3} se muestra un caso donde la réplica 
 
 %Se plantea una situación como la de la figura \ref{fig:3_4_2_consenso_4}, pero en este caso se utilizan 4 computadoras de vuelo en lugar de 3. En este caso, las computadoras de vuelo deben sincronizarse. Para lograrlo, ellas comparten un valor de timestamp, que pueden utilizar para ajustar sus clocks. En la figura \ref{fig:Byzantine_Generals_Problem_5} se muestra un escenario en el que una de las computadoras de vuelo presenta una falla tal que le informa un valor distinto a cada una de sus pares.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \begin{subfigure}[b]{0.4\textwidth}
 %         \includegraphics[width=\textwidth]{img/byzantine_ejemplo_1.png}
@@ -340,21 +340,21 @@ En la figura \ref{fig:byzantine_ejemplo_3} se muestra un caso donde la réplica 
 %     \label{}
 % \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/byzantine_ejemplo_3.png}
     \caption{En la primera imagen se muestra que debido a una falla la réplica 1 le entrega un valor distinto a la réplica 3. A partir de un segundo intercambio entre las réplicas sin fallas, puede llegarse a un consenso acerca del valor indicado por la réplica 1.}
     \label{fig:byzantine_ejemplo_3}
 \end{figure}
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.5\textwidth]{img/Byzantine_Generals_Problem_5.png}
 %     \caption{Debido a una falla, la computadora de vuelo 1 le entrega valores distintos de timestamp a las demás.}
 %     \label{fig:Byzantine_Generals_Problem_5}
 % \end{figure}
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/Byzantine_Generals_Problem_6.png}
 %     \caption{Las FCC2, 3 y 4 comparten entre sí lo que les dijo la FCC1 a cada una y llegan a la conclusión de que la información es inconsistente.}
@@ -390,7 +390,7 @@ Esto presenta una diferencia con lo planteado en la sección anterior, ya que la
 
 %En sistemas de tiempo real para aplicaciones \textit{safety-critical}, es común encontrar sistemas distribuidos con comunicación a través de un bus. Esto se mencionó en la sección \ref{sec:estado_del_arte} tanto para el caso del avión como para varios de los ejemplos de UAVs presentados. Esto tambień ocurre por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=\textwidth]{img/red_CAN.png}
 %     \caption{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite{texasSLOA101B}.}
@@ -399,14 +399,14 @@ Esto presenta una diferencia con lo planteado en la sección anterior, ya que la
 
 %Esto presenta una diferencia respecto de lo planteado en \textit{The Byzantine Generals Problem}, ya que la existencia de un bus común a todos los nodos automáticamente elimina la posibilidad de que uno de los miembros de la red pueda enviar información diferente a sus pares. Puede compararse la figura \ref{fig:byzantine_bus_1} con la figura \ref{fig:Byzantine_Generals_Problem_5}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/TMR_bus.png}
     \caption{La conexión tipo bus obliga a que la información enviada por cada réplica sea recibida por todas las demas, evitando el envío de información confusa. El mismo valor $Y_1$ será recibido por las réplicas 2 y 3.}
     \label{fig:TMR_bus}    
 \end{figure}
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/byzantine_bus_1.png}
 %     \caption{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.}
@@ -432,7 +432,7 @@ La manera de solucionar esto es forzando a que las réplicas deban tomar turnos 
 
 % Como ya se mencionó, las FCCs deben tomar turnos para utilizar el medio físico. En las próximas secciones se explicará cómo se puede lograr esto, aquí se asume que las FCCs respetan sus turnos para utilizar el medio físico compartido. En la figura \ref{fig:byzantine_bus_2}, la FCC1 accede al medio y envía su valor de timestamp. Las demás FCCs reciben el mismo valor, por estar conectadas al mismo bus de comunicación. Luego, las FCC2 y 3 repiten esto mismo. En la figura \ref{fig:byzantine_bus_3} se muestra que todas tienen la misma información respecto de sus pares. Luego por ejemplo, si calculan un promedio, llegarán al mismo resultado y se sincronizarán correctamente.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \begin{subfigure}[b]{0.34\textwidth}
 %         \includegraphics[width=\textwidth]{img/byzantine_bus_2.png}

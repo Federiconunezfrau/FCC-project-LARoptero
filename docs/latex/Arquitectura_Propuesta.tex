@@ -71,7 +71,7 @@ En la figura \ref{fig:esquema_time_triggered_architecture} se muestra un esquema
 
 %{\Large \textbf{{\color{red} PONER LA IMAGEN DEL SCHEDULER CON EL SET DE TAREAS Y LOS INSTANTES DE TIEMPO PREDEFINIDOS. ESTA IMAGEN TIENE QUE TENER UN RELOJITO QUE EXPLICITE QUE LAS TAREAS SE EJECUTAN GRACIAS AL CLOCK}}}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/esquema_time_triggered_architecture.png}
     \caption{Esquema del sistema time-triggered. Dentro de las especificaciones de cada tarea se encuentran sus características temporales. Estas son utilizadas por un dispatcher, para saber en qué momento deben ser ejecutadas. Para el ejemplo de esta imagen, la secuencia de ejecución es periódica. Primero se obtienen datos del sensor IMU. Estos datos se utilizan en la tarea 2 para ejecutar algoritmos de estimación y control del vehículo. Finalmente, la nueva señal de control calculada en la tarea 2, se aplica a los motores en la tarea 3. El ciclo se repite periódicamente.}
@@ -86,7 +86,7 @@ Un caso común es el de los sensores MEMS, los cuales suelen integrar un mecanis
 
 %De manera de ilustrar esto, se presenta un ejemplo en la figura . Para el primer caso, la ocurrencia de las interrupciones genera que la tarea main retrase su ejecución. Por el contrario, para el caso \textit{time-triggered}, el orden e instantes de tiempo de ejecución se vuelven parte del diseño del sistema, permitiendo que la tarea main se complete sin ser interrumpida, logrando cumplir con su timing.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/esquema_event_triggered_architecture.png}
     \caption{Mismo set de tareas que en la figura \ref{fig:esquema_time_triggered_architecture}, pero con una arquitectura event-triggered. La interrupción genera que se ejecute la tarea 1. Debido a que las interrupciones pueden ocurrir en cualquier momento, se puede ver afectado el timing del sistema. Teniendo en cuenta que se trata de un sistema de tiempo real, esto no es aceptable y debe tratarse de una forma controlada, por ejemplo a través de una arquitectura time-triggered.}
@@ -114,7 +114,7 @@ En cuanto a la comparación de resultados entre distintas réplicas, estas reali
 De manera de minimizar las colisiones y favorecer el cumplimiento en el timing del sistema de tiempo real, el envío y recepción de los mensajes se implementa por turnos. La arquitectura que se utiliza facilita la implementación de este mecanismo, por ejemplo a partir del uso de tareas que estén dedicadas a recibir o enviar un mensaje a través del bus. %Esto corresponde a un protocolo de acceso al medio denominado \textit{Time Division Multiple Access} (TDMA).
 En la figura \ref{fig:TDMA_esquema} se muestra un caso para 3 réplicas. Este gráfico tiene una similitud con el gráfico de la figura \ref{fig:esquema_time_triggered_architecture}. Mientras la réplica 1 ejecuta su tarea para enviar un mensaje, las réplicas 2 y 3 ejecutan una tarea para recibir ese mensaje. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{img/TDMA_esquema.png}
     \caption{El ejemplo muestra como las 3 réplicas pueden compartir el bus de comuncaciones. Cada una de ellas sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo recibirán un mensaje. Para que esto funcione adecuadamente, las réplicas deben estar sincronizados.}
@@ -125,7 +125,7 @@ En la figura \ref{fig:TDMA_esquema} se muestra un caso para 3 réplicas. Este gr
 
 %En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
 %     \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.}
@@ -142,7 +142,7 @@ El hecho de que el comportamiento del sistema sea predecible facilita la tarea d
 
 %{\Large \textbf{{\color{red} IMAGEN CON UN TASK OVERRUN}}}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{img/task_overrun.png}
     \caption{La tarea 5 bloquea la ejecución de la 6, evitando que se cumpla el scheduling. Mientras se ejecuta la tarea 5, se llama al dispatcher para ejecutar la siguiente, tarea 6. Gracias a que el dispatcher conoce el estado de las tareas, este detecta que la tarea 5 no ha finalizado su ejecución y por ende que no se ha respetado el scheduling.}
@@ -164,14 +164,14 @@ El comportamiento de cada una de las réplicas está controlado en última insta
 
 Para solucionar este problema, se requiere la ejecución de una resincronización periódica. El desfasaje entre los clocks de cada réplica irá creciendo conforme pase el tiempo. En la figura \ref{fig:esquema_desincronizacion} se muestra un ejemplo donde cada réplica tiene un drift $\rho$ distinto. Una forma de corrección puede ser como la que se muestra en la figura \ref{fig:esquema_resincronizacion}. Al corregir el offset entre clocks periódicamente puede controlarse el desfasaje, manteniéndolo en niveles aceptables. Las réplicas quedarán sincronizados con cierta precisión $\Pi$. Existen muchísimos algoritmos de resincronización, en \cite{anceaume1998performance} se puede encontrar un estudio que compara distintos tipos de algoritmos. En \cite{9501400} puede encontrarse un trabajo donde se implementa una sincronización entre distintos miembros de un bus CAN, donde no solo se hace una corrección del desfasaje, sino que además se corrige la velocidad de cada clock, obteniendo una precisión inferior a 1 $\mu$s.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/TTA_resincronizacion.png}
 %     \caption{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite[p.~67]{kopetz-2011}.{\color{red} ACÁ PONER UNA IMAGEN HECHA POR MÍ} }
 %     \label{fig:TTA_resincronizacion}
 % \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
@@ -201,7 +201,7 @@ Otra forma es utilizar una base de tiempos global \cite[p.~51]{kopetz-2011}. Est
 Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistema distribuido puede ilustrarse como en la figura \ref{fig:diagrama_TTA}. Cada una de las réplicas ejecuta una serie de tareas de forma periódica con cierto \textit{timing} definido. Además, existe una base de tiempos común a todas las réplicas, permitiendo la ejecución coordinada y sincronizada. Debido a que la sincronización debe ejecutarse de forma periódica y aprovechando las características del \textit{scheduler}, la implementación de la tarea que corrija el desfasaje de cada clock puede incluirse como una tarea dentro del \textit{scheduling}.
 
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/diagrama_TTA.png}
     \caption{Se muestra un esquema que representa la arquitectura. Cada réplica tiene un \textit{clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente, representado por el reloj azul en el centro. En la imagen, la réplica 1 se encuentra enviando un mensaje por el bus. Al mismo tiempo, las réplicas 2 y 3 ejecutan una tarea que corresponde a recibir un mensaje y almacenarlo en memoria.}
@@ -217,7 +217,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 %Un planteo interesante de este trabajo es que los algoritmos de resincronización pueden dividirse en tres bloques básicos, figura \ref{fig:TTA_resincronizacion_building_blocks}, donde lo que varía es la implementación de cada bloque.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.8\textwidth]{img/TTA_resincronizacion_building_blocks.png}
 %     \caption{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite{de2013overview}.}
@@ -275,7 +275,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 % Debido a que se trata de un sistema de tiempo real, cada una de las FCCs debe realizar estas tareas en un período de tiempo dado. En la figura \ref{fig:task_scheduling_1} se muestra un gráfico con la secuencia de ejecución periódica de las tareas.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/task_scheduling_1.png}
 %     \caption{El eje horizontal representa el paso del tiempo. Las barras de colores representan el tiempo dedicado a ejecutar cada tarea, como la lectura de sensores, cálculo de la ley de control, etc., de forma periódica. En la imagen se puede ver que las FCC 1, FCC 2, ..., FCC N se encuentran sincronizadas ya que realizan las tareas al mismo tiempo. }
@@ -286,7 +286,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 % Cada una de las computadoras de vuelo incluye un clock interno, el cual utiliza como base para cumplir con los tiempos de ejecución. Cuando se habla del sincronismo entre los nodos de la red, lo que se busca es que las ejecuciones de las N computadoras se encuentren coordinadas. Por ejemplo, en la figura \ref{fig:task_scheduling_2} se muestra un caso para dos computadoras de vuelo cuya ejecución se encuentra desfasada. Es fácil ver que este sistema nunca podrá cumplir con el objetivo de controlar el vuelo del UAV.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/task_scheduling_2.png}
 %     \caption{Se muestra un ejemplo para dos FCCs. A diferencia de la figura \ref{fig:task_scheduling_1}, las FCC 1 y la FCC 2 se encuentran desincronizadas.}
@@ -320,7 +320,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 % Como ya se mencionó en las secciones anteriores, el sistema se compone de una serie de \textbf{nodos} interconectados a través de un \textbf{bus de comunicación}. Cada uno de los nodos ejecuta una serie de tareas con un \textbf{scheduling} predefinido por el paso del tiempo.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=\textwidth]{img/diagrama_TTA.png}
 %     \caption{Se muestra un esquema que representa la arquitectura. Cada nodo tiene un \textit{clock} local, funcionando a partir de su propio cristal. Todos estos a su vez se sincronizan periódicamente con el \textit{global time}, representado por el reloj azul en el centro. En la imagen, el nodo 1 está enviando un mensaje por el bus. Los demás nodos saben previamente que deben esperar este mensaje.}
@@ -339,7 +339,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 % De manera de minimizar las colisiones y favorecer el cumplimiento en el timing del sistema de tiempo real, el envío y recepción de mensajes se implementa por turnos. Esto corresponde a un protocolo de acceso al medio denominado \textit{Time Division Multiple Access} (TDMA). En la figura \ref{fig:TDMA_esquema} se grafica esto para 3 nodos. Este protocolo define en qué instantes de tiempo cada uno de los nodos puede utilizar el medio físico y en cuáles no. Para que no haya colisiones, todos los nodos deben respetar ese timing, el cual se encuentra predefinido. 
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/TDMA_esquema.png}
 %     \caption{El ejemplo muestra como los 3 nodos pueden compartir el bus de comuncaciones. Cada uno de ellos sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo no deben hacerlo y solamente pueden escuchar el bus. Para que esto funcione adecuadamente, los nodos deben estar sincronizados.}
@@ -350,7 +350,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 % En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
 %     \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1.}
@@ -381,7 +381,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 % Luego de ejecutar el algoritmo de sincronización, los clocks de cada nodo quedarán sincronizados con cierta precisión $\Phi$. A medida que pase el tiempo, inevitablemente los clocks de cada nodo comenzarán a desfasarse uno del otro, lo cual incrementará el error. Por consiguiente, la sincronización debe ejecutarse de forma periódica. Esto se grafica en la figura \ref{fig:TTA_resincronizacion}.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.7\textwidth]{img/TTA_resincronizacion.png}
 %     \caption{El eje horizontal representa el paso del tiempo físico y el eje vertical el avance de cada clock local a cada nodo. El valor $R_{int}$ corresponde al período de resincronización. La imagen se extrajo de \cite[p.~67]{kopetz-2011}.}
@@ -390,7 +390,7 @@ Tomando todas los aspectos mencionados hasta aquí, el funcionamiento del sistem
 
 % Existen muchísimos algoritmos de resincronización. En \cite{anceaume1998performance} se puede encontrar un estudio que compara distintos tipos de algoritmos. Un planteo interesante de este trabajo es que los algoritmos de resincronización pueden dividirse en tres bloques básicos, figura \ref{fig:TTA_resincronizacion_building_blocks}, donde lo que varía es la implementación de cada bloque.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.8\textwidth]{img/TTA_resincronizacion_building_blocks.png}
 %     \caption{Tres bloques que comprenden un algoritmo de resincronización. La imagen se extrajo de \cite{de2013overview}.}
@@ -431,7 +431,7 @@ Con el objetivo de darle mayor visibilidad al código, es decir que pueda entend
 
 %Si el código puede leerse fácilmente, entonces puede entenderse el flujo de ejecución fácilmente, entonces es predecible y por ende seguro.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/class_diagram.png}
     \caption{Diagrama de clases. La lista de tareas del scheduler se implementa como un arreglo de punteros. Cada una de las tareas del scheduler se crea a partir de una tarea base, \textit{timeTriggeredTask\_t}. Se muestra a modo de ejemplo la tarea encargada de ejecutar la resincronización.}
@@ -446,7 +446,7 @@ Todas las tareas del sistema comparten una serie de atributos básicos que son a
 
 El tiempo de ejecución se divide en intervalos discretos de duración fija. El comienzo de cada intervalo se denomina tick y es allí donde se llama al dispatcher. En la figura \ref{fig:scheduler_implementacion_esquema} se muestra un ejemplo de cómo el scheduler realiza la selección de la tarea a ejecutar. Como se mostró anteriormente, cada tarea cuenta con un atributo que indica su delay y su período. Estos atributos se miden en cantidad de ticks y son observados por el scheduler al momento de seleccionar la siguiente tarea a ejecutar.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.9\textwidth]{img/scheduler_implementacion_esquema.png}
     \caption{En cada tick se llama al dispatcher el cual selecciona la tarea a ejectuar. Todas las tareas se almacenan en la lista del atributo mTaskList\_ del scheduler. En la imagen se muestra la evolución de la lista a medida que ocurren los ticks. En cada tick, el atributo mDelayTicks\_ de todas las tareas se decrementa en 1. En caso de que se detecte alguna tarea que alcanza un mDelayTicks\_ = 0, esta es ejecutada. Para finalizar, se vuelve a setear mDelayTicks\_ = mPeriodTicks\_, permitiendo que las tareas puedan volver a ser ejecutadas.}
@@ -470,7 +470,7 @@ El tick generado por el scheduler es la única interrupción que se permite en t
 Dado que el comportamiento del sistema se encuentra predefinido, luego los mensajes, su información y sus correspondientes instantes de tiempo en los que se recibirán y en los que se enviarán, también lo están. Para la implementación de la comunicación a través del bus CAN, se utiliza una lista estática de mensajes definida en tiempo de compilación. Cada entrada de la lista contiene información asociada a un mensaje distinto. Para esto se creó un tipo de dato CANmsg\_t con los atributos que se muestran en la figura \ref{fig:can_msg_list}. El primer elemento de cada entrada de la lista, mServiceID\_, es un indicador del contenido del mensaje, mientras que mNodeID\_ indica quién es el responsable de enviar ese mensaje. %En la sección \ref{sec:interfaz_CAN} se mostró que el mensaje CAN tiene un campo llamado ID, el cual sirve para informar cuál es el contenido del campo de datos. Para que el bus CAN tenga un funcionamiento correcto, no debe permitirse que dos réplicas inyecten en el bus mensajes que tengan el mismo ID. Con motivo de diferenciar mensajes con mismo contenido pero correspondientes a distintas réplicas, se incluye la información del emisor dentro del campo ID del mensaje.
 %La tabla que almacena estos mensajes se implementa como un array estático de elementos del tipo CANmsg\_t.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{img/can_msg_list.png}
     \caption{La tarea task1\_t almacena información relevante en formato de mensaje, en la lista CANmsgList[], en una posición conocida por la misma. Luego, la tarea task4\_t lee dicha información y envía el mensaje a través del bus CAN.}
@@ -483,7 +483,7 @@ Dado que el comportamiento del sistema se encuentra predefinido, luego los mensa
 
 % En \cite{kopetz2003time} se define un elemento del nodo denominado \textit{Communication Network Interface}(CNI). Esta es una interfaz entre el software del nodo y el acceso al medio físico. Utilizando el protocolo de acceso al medio TDMA, el software del nodo \textit{pushea} un mensaje a la CNI. Es esta última la que se encarga de administrar los tiempos de envío y recepción. Es decir, mientras el nodo continua con sus tareas, la CNI se encarga de cumplir con el timing del envío del mensaje.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/TTA_Bus.png}
 %     \caption{Misma imagen que \ref{fig:byzantine_bus_2}. Se muestra el detalle de los nodos, en el nodo FCC1 {\color{red} ESTA IMAGEN SERÁ PARECIDA PERO HAY QUE HACERLA MÁS EXPLÍCITA}.}
@@ -520,7 +520,7 @@ Al igual que el resto de las funcionalidades, la sincronización se ejecuta como
 % Descripción del método, con un gráfico temporal y la flechita que corrige la duración del tick.
 %{\Large \textbf{{\color{red} IMÁGENES CON EL PROCESO DE SINCRONIZACIÓN Y CORRECCIÓN. ACLARAR LOS NOMBRES DE TODAS LAS DURACIONES DE TODOS LOS PERÍODOS DE TIEMPO, PARA QUE SEA BIEN CLARO.}}}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/resincronizacion_implementacion.png}
     \caption{Se muestra el funcionamiento del mecanismo de resincronización periódica, implementado en firmware. La línea punteada indica el instante de tiempo en el que la réplica 1 envía el mensaje de resincronización a las demás réplicas. Estas toman un timestamp cuando reciben el mensaje y calculan qué tan desfasadas se encuentran respecto del master. Finalmente, aplican la corrección a sus timers.}
@@ -570,7 +570,7 @@ El paso de corrección se aplica alargando o achicando la duración del tick act
 
 % Las tareas de la tabla \ref{tab:schedule_adquisicion_IMU} pueden ubicarse temporalmente en un gráfico como el de la figura \ref{fig:grafico_hyperperiod_adquisicion_IMU}. Por una cuestión de claridad, solamente se muestran los primeros 10 ms de ejecución. 
  
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=\textwidth]{img/grafico_hyperperiod_adquisicion_IMU.png}
 %     \caption{Se muestran los primeros 10 ms de ejecución del scheduler. Existe una diferencia entre las 3 réplicas de 1 tick de separación en la tarea de envío de datos por el bus CAN. En cuanto a la tarea ``Watchdog'', esta se ejecuta en cada tick, evitando que se reinicie el microcontrolador.}
@@ -621,7 +621,7 @@ En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus
     \label{tab:schedule_pruebas_realizadas}
 \end{table}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/grafico_hyperperiod_pruebas_realizadas.png}
     \caption{Se muestran los primeros 9 ms de ejecución del scheduler, donde se muestran las tareas de las 3 réplicas.}
@@ -664,14 +664,14 @@ Con motivo de observar el valor de los residuos, se agrega una tarea ``Enviar re
 
 El set de tareas se ejecuta durante 60 segundos, orientando a las réplicas siguiendo el esquema de la figura \ref{fig:orientaciones_prueba}. Para que la orientación de las réplicas sea la misma en todo momento, estas se apilan con una serie de soportes, como se muestra en la figura \ref{fig:pruebas_stackeadas}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/orientaciones_prueba.png}
     \caption{Durante los primeros 10 segundos, las réplicas se orientan como en el caso 1. Luego se continua con el caso 2 durante otros 10 segundos, y así sucesivamente hasta finalizar en el caso 6, donde la placa vuelve a su condición inicial. Cada una de las orientaciones que se muestran corresponden a una rotación de aproximadamente 45$^o$.}
     \label{fig:orientaciones_prueba}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/pruebas_stackeadas.png}
     \caption{Se muestran las 3 réplicas apiladas. {\color{red} Esta foto estaría bueno que muestre a las 3 réplicas, pero conectadas al bus CAN y con la Núcleo junto con el analizador lógico. La idea es mostrar algo más "de laboratorio", que se vea que esto está vivo. En esta foto parece una maqueta, algo que se mira y no se toca, cuando no es así.}}
@@ -705,7 +705,7 @@ Para verificar que las réplicas se encuentran sincronizadas es necesario observ
 
 %Para apreciar mejor el timing de los mensajes en el bus CAN, en la figura \ref{fig:resultados_timing_detalle_sin_fallas} se muestran mediciones de tiempos tomadas a partir del software del analizador lógico.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_timing_sin_fallas_zoom.png}
     \caption{Captura tomada del software del analizador lógico. Se muestra un fragmento de 100 ms de actividad en el bus CAN. Se muestra un acercamiento de uno de los períodos, donde se destacan todos los mensajes involucrados en el schedule. En rojo, verde y azul se muestran los mensajes correspondientes a la tarea ``Enviar pitch y roll'' de las placas 1, 2 y 3 respectivamente. En celeste, amarillo y rosado, los mensajes correspondientes a la tarea ``Enviar residuos'' para las placas 1, 2 y 3.}
@@ -714,7 +714,7 @@ Para verificar que las réplicas se encuentran sincronizadas es necesario observ
 
 Utilizando las herramientas que provee el software del analizador lógico, se midieron los intervalos de tiempo entre mensajes. Estos se muestran en la figura \ref{fig:resultados_timing_detalle_sin_fallas}. Comparando los valores medidos contra los valores de la tabla \ref{tab:schedule_pruebas_realizadas}, se verifica que las placas respetan los tiempos de uso del bus
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_timing_detalle_sin_fallas.png}
     \caption{Utilizando la funcionalidad de markers se midieron los intervalos de tiempo entre los mensajes presentes en el bus CAN. La imagen muestra la misma secuencia de mensajes de la figura \ref{fig:resultados_timing_sin_fallas}. En el apartado Timing Markers se muestran los valores medidos. Se tomó como referencia el primer mensaje, correspondiente a la tarea ``Enviar pitch y roll'' de la placa 1. El último valor muestra que la tarea vuelve a repetirse al cabo de 10 ms.}
@@ -724,7 +724,7 @@ Utilizando las herramientas que provee el software del analizador lógico, se mi
 % Comentar acerca de cómo se armó el gráfico de sincronización.
 Para determinar que las 3 réplicas efectivamente se encuentran funcionando de manera sincronizada, se hizo un análisis similar al de la figura \ref{fig:resultados_timing_detalle_sin_fallas} para los 60 segundos de ejecución del schedule. En la secuencia de mensajes, siempre que la réplica 2 envía un mensaje, esta lo hace 1 ms después que la placa 1, tanto para la tarea ``Enviar pitch y roll'' como ``Enviar residuos''. En cuanto a la réplica 3, esta lo hace 2 ms después que la placa 1. A partir de los datos tomados con el analizador lógico se hizo el gráfico de la figura \ref{fig:resultados_timing_detalle_sin_fallas}, donde se verifica que esto se cumple durante los 60 segundos de ejecución.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_sincronizacion_sin_fallas.png}
     \caption{En cada gráfico se muestran los intervalos de tiempo, medidos por el analizador lógico, entre mensajes enviados por las réplicas 2 y 3 con respecto a los mensajes enviados por la réplica 1. Los intervalos de tiempo se miden entre mensajes homónimos.}
@@ -735,7 +735,7 @@ El salto que se muestra en el instante inicial corresponde a la primera sincroni
 
 Con motivo de mostrar la necesidad de la sincronización periódica, se repitió la ejecución del scheduler pero removiendo la tarea de sincronización en la réplica 3. Es esperable que en los primeros instantes de ejecución, el sistema funcione normalmente. Sin embargo, debido a que la placa 3 no ajusta su timer, esta se irá desincronizando lentamente. Esto último es lo que se muestra en la figura \ref{fig:resultados_no_sync}. El hecho de que el gráfico sea una recta es debido al efecto del drift, mencionado previamente en la figura \ref{fig:esquema_desinc_resinc}. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_no_sync.png}
     \caption{El hecho de que la réplica 3 no ejecute una sincronización periódica genera que esta no respete los tiempos de uso del bus. Al cabo de 35 segundos el desicrnonismo de la réplica 3 es tal que comienza a perjudicar la comunicación entre las demás réplicas.}
@@ -744,7 +744,7 @@ Con motivo de mostrar la necesidad de la sincronización periódica, se repitió
 
 La desincronización también se puede ver a partir de la actividad registrada en el bus CAN. En la figura \ref{fig:resultados_timing_detalle_placa_3_no_sync} se muestran 3 fragmentos capturados con el analizador lógico. A medida que pasa el tiempo, los mensajes enviados por la réplica 3 se acercan lentamente a los instantes de tiempo donde se envían los mensajes de la réplica 2. Comparando los valores de los intervalos de tiempo con las etiquetas P1 y P4 de las 3 imágenes, se puede ver que al cabo de 10 s hubo un corriemiento de aproximadamente 150 $\mu$s. Luego, a los 30 s de ejecución el corrimiento alcanza los 470 $\mu$s. En este último caso, el mensaje de la réplica 3 se encuentra próximo a causar una colisión con el de la réplica 2.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_timing_detalle_placa_3_no_sync.png}
     \caption{Se muestran 3 fragmentos capturados con el analizador lógico. La primera imagen corresponde a los primeros 10 ms de ejecución, la segunda se tomó luego de 10 s y la tercera a los 30 s. En el apartado Timing Markers se muestran las mismas mediciones de la figura \ref{fig:resultados_timing_detalle_sin_fallas}.}
@@ -755,21 +755,21 @@ Utilizando una serie de scripts desarrollados en el lenguaje de programación Py
 
 Debido a que no se inyectaron fallas en esta ejecución, las curvas de pitch y roll se encuentran prácticamente superpuestas, indicando que las 3 réplicas obtuvieron resultados consistentes durante la ejecución. Sin embargo en los gráficos de residuos se puede ver que sí existen ciertas diferencias entre las 3 réplicas, aunque estas se encuentran por debajo de los $0.5^{o}$.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_pitch_roll_sin_fallas.png}
     \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
     \label{fig:resultados_pitch_roll_sin_fallas}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_sin_fallas.png}
     \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
     \label{fig:resultados_residuos_pitch_sin_fallas}    
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_residuos_roll_sin_fallas.png}
     \caption{Se muestran los residuos de roll calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\phi}[n]$, el segundo a $r_{1,3}^{\phi}[n]$ y el tercero a $r_{2,3}^{\phi}[n]$.}
@@ -782,21 +782,21 @@ En esta sección se repitió la ejecución del scheduling de la tabla \ref{tab:s
 
 La falla se inyectó pasados los 10 segundos de ejecución, por lo que hasta ese instante, los residuos se encuentran en valores similares a los del caso sin fallas. En el momento en el que se inyecta la falla, los residuos $r_{1,3}^{\phi}$ y $r_{2,3}^{\phi}$ rápidamente crecen. Debido a que el residuo $r_{1,2}^{\phi}$ no se ve afectado, es evidente que la réplica 3 se encuentra en falla.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_pitch_roll_bias_giroscopo.png}
     \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
     \label{fig:resultados_pitch_roll_bias_giroscopo}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_bias_giroscopo.png}
     \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
     \label{fig:resultados_residuos_pitch_bias_giroscopo}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_residuos_roll_bias_giroscopo.png}
     \caption{Se muestran los residuos de roll calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\phi}[n]$, el segundo a $r_{1,3}^{\phi}[n]$ y el tercero a $r_{2,3}^{\phi}[n]$.}
@@ -811,21 +811,21 @@ En esta sección se presentan los resultados de aplicar una falla que se manifie
 
 La falla de esta sección tiene la particularidad de que se manifiesta durante un período de tiempo muy breve, y luego desaparece. Lo que se destaca de los resultados de esta sección, es el hecho de que la falla igualmente puede detectarse de manera inmediata. Esto es gracias a la arquitectura utilizada, donde todas las tareas tienen sus instantes de ejecución predefinidos.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_pitch_roll_saltos_aleatorios.png}
     \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
     \label{fig:resultados_pitch_roll_saltos_aleatorios}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_saltos_aleatorios.png}
     \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
     \label{fig:resultados_residuos_pitch_saltos_aleatorios}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_residuos_roll_saltos_aleatorios.png}
     \caption{Se muestran los residuos de roll calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\phi}[n]$, el segundo a $r_{1,3}^{\phi}[n]$ y el tercero a $r_{2,3}^{\phi}[n]$.}
@@ -838,14 +838,14 @@ La falla de esta sección tiene la particularidad de que se manifiesta durante u
 
 El modo de falla evaluado aquí es uno donde el sensor IMU de la réplica 3 entrega siempre los mismos valores de mediciones, para los acelerómetros y giróscopos. Al igual que en los casos anteriores, la falla se inyecta a partir de los 10 segundos de ejecución. Es fácil ver en los gráficos de residuos, que la réplica 3 es la que manifiesta la falla.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_pitch_roll_enclavado.png}
     \caption{Se muestran los resultados de las estimaciones de pitch y roll para las 3 placas. Los gráficos se encuentran prácticamente superpuestos todo el tiempo, ya que no hubo fallas en la ejecución.}
     \label{fig:resultados_pitch_roll_enclavado}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_residuos_pitch_enclavado.png}
     \caption{Se muestran los residuos de pitch calculados por cada placa, superpuestos. El primer gráfico corresponde a $r_{1,2}^{\theta}[n]$, el segundo a $r_{1,3}^{\theta}[n]$ y el tercero a $r_{2,3}^{\theta}[n]$.}
@@ -870,7 +870,7 @@ El modo de falla evaluado aquí es uno donde el sensor IMU de la réplica 3 entr
 
 % En sistemas de tiempo real para aplicaciones \textit{safety-critical}, es común encontrar sistemas distribuidos con comunicación a través de un bus. Por ejemplo en los automóviles, los nodos que se encuentran repartidos por todo el vehículo se comunican a través de redes como CAN\cite{specification1991bosch} o FlexRay\cite{nxpAN12233}. Todos los nodos de la red se encuentran conectados al mismo bus de comunicación, por lo que cuando un nodo envía un mensaje a través del bus, todos los demás nodos reciben el mismo mensaje.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=\textwidth]{img/red_CAN.png}
 %     \caption{Todos los nodos se encuentran conectados al mismo bus de comunicaciones. En el caso del bus CAN, se compone de dos cables, CAN-H y CAN-L, terminados en sus extremos por resistencias de adaptación. La imagen se extrajo de \cite{texasSLOA101B}.}
@@ -879,7 +879,7 @@ El modo de falla evaluado aquí es uno donde el sensor IMU de la réplica 3 entr
 
 % Esto presenta una diferencia respecto de lo planteado en \textit{The Byzantine Generals Problem}, ya que la existencia de un bus común a todos los nodos automáticamente elimina la posibilidad de que uno de los miembros de la red pueda enviar información diferente a sus pares. Puede compararse la figura \ref{fig:byzantine_bus_1} con la figura \ref{fig:Byzantine_Generals_Problem_5}.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics[width=0.6\textwidth]{img/byzantine_bus_1.png}
 %     \caption{En este caso, la conexión tipo bus no permite el envío de información diferente a los demás miembros. La FCC1 envía el valor $t_1$ y todos sus pares reciben el mismo valor.}
@@ -896,7 +896,7 @@ El modo de falla evaluado aquí es uno donde el sensor IMU de la réplica 3 entr
 
 % Para el caso en el que se utiliza un bus de comunicación, como se mencionó, las FCCs deben tomar turnos para utilizar el medio físico. En las próximas secciones se explicará cómo se puede lograr esto, aquí se asume que las FCCs respetan sus turnos para utilizar el medio físico compartido. En la figura \ref{fig:byzantine_bus_2}, la FCC1 accede al medio y envía su valor de \textit{timestamp}. Las demás FCCs reciben el mismo valor, por estar conectadas al mismo bus de comunicación. Luego, las FCC2 y 3 repiten esto mismo. En la figura \ref{fig:byzantine_bus_3} se muestra que todas tienen la misma información respecto de sus pares. Luego por ejemplo, si calculan un promedio, llegarán al mismo resultado y se sincronizarán correctamente.
 
-% \begin{figure}[H]
+% \begin{figure}[htb]
 %     \centering
 %     \begin{subfigure}[b]{0.34\textwidth}
 %         \includegraphics[width=\textwidth]{img/byzantine_bus_2.png}

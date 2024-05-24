@@ -13,7 +13,7 @@ A su vez, se presentan trabajos y computadoras de vuelo comerciales para UAVs qu
 %En aviónica, el sistema de control de vuelo es sin dudas un sistema crítico.
 Los sistemas de control de vuelo en aviones originalmente se encontraban constituidos por sistemas mecánicos muy complejos. Con el pasar de los años estos comenzaron a ser reemplazados por sistemas electrónicos, denominados \textit{fly-by-wire}. Fueron introducidos en vuelos comerciales en el Airbus 320 en 1987 y el Boeing 777 en 1994 \cite{FBWNASA}, con el objetivo de alivianar la carga del avión y mejorar su rendimiento en cuanto al consumo de combustible. Su nombre deriva del hecho de que la acción del piloto no se aplica de manera directa sobre el avión, ya que todas las acciones pasan por un sistema electrónico que se encarga del control de vuelo. Todas las señales de sensores y de comandos son transmitidas eléctricamente desde y hacia una computadora de vuelo.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/avion_FBW.png}
     \caption{Esquema simplificado donde se muestran los componentes del sistema de control de vuelo de un avión. Tanto los comandos enviados por el piloto, como los sensores y los actuadores se encuentran conectados a la computadora de vuelo. La imagen se extrajo de \cite{collinson2023introduction}.}
@@ -58,7 +58,7 @@ El hecho de que la probabilidad de falla de los semiconductores no alcance estos
 
 %En la figura \ref{fig:diagrama_general_fly_by_wire} se muestra un diagrama que representa de forma general la comunicación entre los distintos elementos del sistema de control de vuelo. En este se puede ver la redundancia de buses, sensores, actudaores y computadoras de vuelo.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/diagrama_general_fly_by_wire.png}
     \caption{Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo. Tanto los sensores, como los actuadores, los accionamientos del piloto y las computadoras de vuelo presentan redundancias para incrementar el nivel de seguridad. Todas las comunicaciones se llevan a cabo a través de buses de comunicación, los cuales también presentan redundancias. La imagen se extrajo de \cite{collinson2023introduction}.}
@@ -76,7 +76,7 @@ Debido a que estos toman mediciones de variables físicas, como aceleración lin
 
 Una técnica muy simple consiste en tomar una de las mediciones como referencia y comparar las demás contra esta. En la figura \ref{fig:votacion_sensores} se presenta un ejemplo para el caso de 3 valores, $X_1$, $X_2$ y $X_3$. Se toma el valor $X_1$ como referencia, ya que $X_3 > X_1 > X_2$. En caso de que la diferencia $| X_1 - X_2 |$ ó $| X_1 - X_3 |$ supere un cierto límite, se asume que el sensor presentó una falla. En el caso de la imagen, la diferencia con el sensor 2 es mucho mayor que con el 3 y se asume que este presentó una falla.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.6\textwidth]{img/votacion_sensores.png}
     \caption{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en las próximas iteraciones del lazo de control.}
@@ -112,7 +112,7 @@ Hasta principios de los años 70s, la comunicación entre los distintos módulos
 
 La comunicación serial a través del bus utiliza un acceso al medio compartido dominado por el tiempo, \textit{time-division multiple acces} (TDMA). Siguiendo con el caso del avión Boeing 777, el protocolo utilizado es el ARINC 629. Este funciona sin un nodo master y permite una conexión de hasta 120 nodos. Solamente uno de ellos puede acceder al medio físico a la vez, lo cual se define por el acceso al medio dominado por el tiempo. El medio de transmisión es un par trenzado, con una velocidad de 2 Mbit/s. A continuación, en la figura \ref{fig:ARINC_629_bus} se muestra el bus ARINC 629.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/ARINC_629_bus.png}
     \caption{Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \cite{yeh1996triple}.}
@@ -139,7 +139,7 @@ En el caso de UAVs de uso civil y comercial, el uso de redundancias no es tan co
 
 La empresa Embention comercializa una computadora de vuelo con redundancia triple, con la posibilidad de incorporar una cuarta computadora extra \cite{embention-2023}. En la figura \ref{fig:Veronte_Embention} se muestra su diagrama en bloques. El funcionamiento de esta se basa en que todas las computadoras de vuelo redundantes se comunican con un elemento central, denominado árbitro. Este es el encargado de realizar la tarea de comparación de resultados. Cada una de las computadoras de vuelo tiene incluida toda la electrónica y los sensores para realizar el trabajo de controlar el vuelo del vehículo. Si bien las 3 computadoras de vuelo trabajan en paralelo, en la arquitectura de este sistema solo una controla al vehículo en su totalidad. Es el trabajo del árbitro, detectar si la computadora a cargo no es capaz de continuar haciéndolo. En dicho caso, esta puede darle el control a alguna de las otras 2 réplicas.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/Veronte_Embention.png}
     \caption{Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \cite{embention-2023}.}
@@ -165,7 +165,7 @@ En los artículos \cite{hiergeist2018implementation} y \cite{hiergeist2017intern
 %Mientras que en \cite{hiergeist2018implementation} se muestran los resultados, en \cite{hiergeist2017internal} se abordan cuestiones relacionadas al diseño e implementación. 
 Un aspecto no menor es que los cuatro microcontroladores trabajan de manera sincronizada. Los autores mencionan que esto es algo que no puede obviarse, ya que el sistema de control del UAV es un sistema de tiempo real. Para que la tolerancia a fallas funcione adecuadamente, todos los microcontroladores deben realizar la comparación de datos de sensores que correspondan al mismo ciclo de control. En otras palabras, los 4 microcontroladores realizan la comparación de los datos de sensores, el cálculo de la ley de control y comparación de los resultados de las acciones de control, al mismo tiempo. %En la figura \ref{fig:frame_lock_approach} se muestra un esquema que ejemplifica esto.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/redundancy_SPI.png}
     \caption{Arquitectura de redundancia cuádruple propuesta en \cite{hiergeist2018implementation}.}
@@ -187,7 +187,7 @@ A diferencia del caso del avión, la comunicación en este trabajo no se realiza
 
 Otro aspecto interesante de este trabajo es que no hay un único elemento que compare los resultados de cada computadora, sino que todas ellas lo hacen. Esto es algo que realiza la computadora de vuelo de la empresa Embention mencionado anteriormente. Los autores argumentan que el árbitro debe tener una probabilidad de fracaso muy inferior a cada una de las réplicas, ya que si este fracasa, todo el sistema lo hará. Esto se muestra en la figura \ref{fig:falla_arbitro}. El árbitro suele ser de un costo muy elevado, algo que se contradice con el requerimiento de que todo el sistema sea desarrollado con componentes COTS.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{img/falla_arbitro.png}
     \caption{A pesar de que las 3 réplicas redundantes funcionan correctamente, una falla del árbitro se traduce directamente en un fracaso del sistema.}
@@ -204,7 +204,7 @@ La tolerancia a fallas se realiza a través de la comparación de resultados, al
 
 La sincronización es algo que se repite en la mayoría de los trabajos encontrados. En \cite{zhang2015dual} se presenta un desarrollo de una computadora de vuelo para pequeños UAVs, con redundancia doble y sincronización en la ejecución de las tareas. La redundancia también se administra a través de la comparación de entradas de sensores y resultados de cálculos de la ley de control. En la figura \ref{fig:FCC_dual_FPGA} se muestra un diagrama en bloques. Si bien ambas computadoras trabajan en paralelo, solo una de ellas es la que controla los actuadores. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{img/FCC_dual_FPGA.png}
     \caption{Diagrama en bloques del sistema de redundancia doble. Las CPU1 y CPU2 comparan sus resultados y envían sus salidas al bloque \textit{Output control}. A través de un bloque árbitro se selecciona a cuál de las dos CPU será la que controle los actuadores. La imagen se extrajo de \cite{zhang2015dual}.}
@@ -217,16 +217,16 @@ Un aspecto negativo de esta configuración es el hecho de que la comparación de
 
 En \cite{chen2015design} y \cite{wang2008development} pueden encontrarse otros 2 trabajos más que trabajan de manera sincronizada. El primero de ellos utiliza redundancia triple y un árbritro que selecciona cuál de las réplicas controla los actuadores. El segundo también trabaja con redundancia triple, pero no utiliza un árbitro sino que las tres computadoras realizan la votación y cada una de ellas envía un mensaje a los componentes que se encargan de controlar a los actuadores, los cuales se encuentran en el mismo bus. En la figura \ref{fig:RS_485_sync} se muestra el diagrama en bloques.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/RS_485_sync.png}
-    \caption{Diagrama en bloques del sistema redundante de \cite{wang2008development}. Cada uno de los nodos tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit{Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.}
+    \caption{Diagrama en bloques del sistema redundante de \cite{wang2008development}. Cada una de las réplicas tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit{Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.}
     \label{fig:RS_485_sync}
 \end{figure}
 
 Hasta aquí, todos los trabajos presentados implementan una sincronización entre réplicas. Un caso en el que esto no sucede puede encontrarse en \cite{thesis_redundant_ROS}. Este consiste en la utilización de 2 computadoras de vuelo de fácil acceso comercial denominadas PixHawk \cite{dronecode-foundation-2023}, conectadas a una tercera computadora de vuelo central implementada con una placa de desarrollo Raspberry Pi, que funciona como árbitro. En la figura \ref{fig:ROS_redundancy} se muestra un diagrama en bloques de esta arquitectura.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/ROS_redundancy.png}
     \caption{Arquitectura de la computadora de vuelo utilizada en \cite{thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit{Electronic Speed Controller} (ESC). La imagen muestra un solo actuador, pero se utiliza un circuito selector para cada uno de ellos.}
