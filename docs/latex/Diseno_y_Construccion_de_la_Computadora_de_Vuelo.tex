@@ -31,7 +31,8 @@ En esta sección se presentan los criterios tenidos en cuenta para el diseño y 
 
 %\textbf{{\color{red} COMPLETAR}}
 
-\subsection{Funcionalidades de la Computadora de Vuelo}
+%\subsection{Funcionalidades de la Computadora de Vuelo}
+\subsection{Antecedentes en el Desarrollo de la Computadora de Vuelo}
 
 %El Laboratorio de Automática y Robótica de la FIUBA (LAR) cuenta con plataformas de computadoras de vuelo desarrolladas en el mismo laboratorio, que se utilizan con distintos fines de investigación. Estas computadoras de vuelo han ido incorporando distintas mejoras a lo largo de los años, y se han ido actualizando con nuevos componentes como sensores o microcontroladores. La primera de las versiones cuenta con un microcontrolador ARM Cortex M3, mientras que la última de estas cuenta un ARM Cortex M7 y sensores con mejor rendimiento \cite{garberoglio2019diseno}.
 
@@ -54,7 +55,11 @@ En esta sección se presentan los criterios tenidos en cuenta para el diseño y 
 % Tesis de Tournour
 %Uno de los sistemas de navegación utilizados son los sistemas inerciales (INS por sus siglas en inglés). Estos sistemas resuelven las ecuaciones inerciales de la navegación integrando la información de los sensores. Los sensores inerciales utilizados comúnmente son los acelerómetros, para medir aceleraciones, y los giróscopos, para medir velocidades angulares. Existe una amplia variedad de sensores inerciales, pero dados los requerimientos de la aplicación en Vehículo Aéreo No Tripulado (VANT)s los que mejor se adaptan son los sensores microelectromecánicos o MEMS (del inglés Microelectromechanical MEMS Systems). Estos sensores permiten medir una amplia variedad de magnitudes, con las ventajas de su bajo costo, bajo peso, su pequeño tamaño, y su amplio ancho de banda (1kHz aprox.). En la Figura 1.2 se puede observar dos de estos sensores.
 
-Un sistema de navegación permite realizar estimaciones de la pose del vehículo, es decir de la posición y orientación. En la figura \ref{fig:angles_drone} se muestra un UAV con una terna solidaria a este. La forma de indicar la orientación del vehículo es a través de los ángulos denominados \textit{yaw}, \textit{pitch} y \textit{roll}. Estos expresan las rotaciones entre la terna solidaria al vehículo en su posición actual, y una terna inercial, fija en el espacio.
+La computadora de vuelo desarrollada en este trabajo se enmarca dentro del Laboratorio de Automática y Robótica de la FIUBA (LAR). Este ha desarrollado plataformas de computadoras de vuelo en el pasado, con el fin de llevar adelante distintos trabajos de investigación. Estas se encuentran enfocadas a realizar las tareas de estimación de la pose del vehículo, para lo cual integran una serie de sensores de movimiento, como acelerómetros y giróscopos triaxiales. Además, cuentan con una amplia variedad de interfaces para el agregado de otros sensores externos, permitiendo que sean utilizadas en una gran variedad de aplicaciones.
+
+Para realizar la estimación de la pose, se ha utilizado un sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. Debido a que el efecto de la integración de mediciones en el tiempo trae consigo que cualquier error de los acelerómetros y los giróscopos decante en errores de posición y de orientación que crecerán con el paso del tiempo a un ritmo acelerado típicamente esto se corrige utilizando otro sistema de navegación auxiliar (como por ejemplo a través de GPS) junto con un filtro de Kalman o un sistema equivalente.
+
+Para obtener las mediciones de aceleración y velocidad angular en la computadora de vuelo, se utilizará una Unidad de Medición Inercial (IMU). Esta comprende acelerómetros y giróscopos triaxiales, los cuales se denominan sensores inerciales. Gracias a la alta tasa de adquisición de datos que esta ofrece, este sensor es de gran importancia para mantener la estabilidad del vehículo. Estos pueden alcanzar tasas de adquisición del orden de las decenas de kHz, aunque en los vehículos aéreos no tripulados como los de este trabajo se configuran en cientos de Hz, debido a la carga excesiva que supondría para el procesador una tasa de adquisición tan alta.
 
 \begin{figure}[htb]
     \centering
@@ -63,39 +68,60 @@ Un sistema de navegación permite realizar estimaciones de la pose del vehículo
     \label{fig:angles_drone}    
 \end{figure}
 
-El principal sistema utilizado en UAVs es el sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. %Por ejemplo, podrían conocerse los ángulos de la figura \ref{fig:angles_drone} a partir de mediciones de velocidad angular. 
-Estos sistemas se utilizan tanto en UAVs como también en vehículos tripulados y aviones comerciales.
+Utilizando la IMU es posible estimar la orientación del vehículo. En la figura \ref{fig:angles_drone} se muestra un UAV con una terna solidaria a este. La forma de indicar la orientación del vehículo es a través de los ángulos denominados \textit{yaw}, \textit{pitch} y \textit{roll}. Estos expresan las rotaciones entre la terna solidaria al vehículo en su posición actual, y una terna inercial, fija en el espacio. Si bien para realizar una estimación de los ángulos de \textit{pitch} y \textit{roll} basta con utilizar una IMU, para estimar el ángulo de \textit{yaw} es necesario el uso de un sensor diferente, un magnetómetro. 
 
-El hecho de integrar las mediciones de velocidad y aceleración en el tiempo, trae consigo que cualquier error de los acelerómetros y los giróscopos decante en errores de posición y de orientación que crecerán con el paso del tiempo a un ritmo acelerado. Típicamente esto se corrige utilizando otro sistema de navegación auxiliar (como por ejemplo a través de GPS) junto con un filtro de Kalman o un sistema equivalente. %En la figura \ref{fig:kalman} se muestra un diagrama en bloques que relaciona al sistema inercial con el sistema auxiliar a través del filtro de Kalman para corregir las salidas del sistema de navegación inercial.
+La adquisición de los datos de los sensores es llevada a cabo por un microcontrolador presente en la computadora de vuelo. Todas los cálculos involucrados en la navegación y el control del vehículo son ejecutadas de forma periódica y requieren un gran determinismo temporal, del orden de los milisegundos o decenas de milisegundos.
+
+
+
+
+
+
+
+
+
+% Un sistema de navegación permite realizar estimaciones de la pose del vehículo, es decir de la posición y orientación. En la figura \ref{fig:angles_drone} se muestra un UAV con una terna solidaria a este. La forma de indicar la orientación del vehículo es a través de los ángulos denominados \textit{yaw}, \textit{pitch} y \textit{roll}. Estos expresan las rotaciones entre la terna solidaria al vehículo en su posición actual, y una terna inercial, fija en el espacio.
 
 % \begin{figure}[htb]
 %     \centering
-%     \includegraphics[width=0.8\textwidth]{kalman.png}
-%     \caption{Diagrama en bloques del INS junto con un sistema de navegación auxiliar de GPS. Ambos se complementan a partir del filtro de Kalman.}
-%     \label{fig:kalman}
+%     \includegraphics[width=0.5\textwidth]{angles_drone.png}
+%     \caption{Se utiliza una terna solidaria al vehículo para conocer su orientación en el espacio. Los ángulos \textit{yaw}, \textit{pitch} y \textit{roll} indican rotaciones respecto de una terna inercial.}
+%     \label{fig:angles_drone}    
 % \end{figure}
 
-Para obtener las mediciones de aceleración y velocidad angular en la computadora de vuelo, se utilizará una Unidad de Medición Inercial (IMU). Esta comprende acelerómetros y giróscopos triaxiales, los cuales se denominan sensores inerciales. Utilizando este sensor es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. Gracias a la alta tasa de adquisición de datos que esta ofrece, este sensor es de gran importancia para mantener la estabilidad del vehículo. Estos pueden alcanzar tasas de adquisición del orden de las decenas de kHz, aunque en los vehículos aéreos no tripulados como los de este trabajo se configuran en cientos de Hz, debido a la carga excesiva que supondría para el procesador una tasa de adquisición tan alta.
+% El principal sistema utilizado en UAVs es el sistema de navegación inercial (INS). Este consiste en realizar estimaciones de posición y orientación a partir de integrar en el tiempo mediciones de aceleración y velocidad de rotación del vehículo. %Por ejemplo, podrían conocerse los ángulos de la figura \ref{fig:angles_drone} a partir de mediciones de velocidad angular. 
+% Estos sistemas se utilizan tanto en UAVs como también en vehículos tripulados y aviones comerciales.
 
-%Esta ofrece una alta tasa de adquisición de datos, en el orden de las decenas de kHz. Esto es de gran importancia para mantener la estabilidad del vehículo, ya que utilizando acelerómetros y giróscopos es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo.
+% El hecho de integrar las mediciones de velocidad y aceleración en el tiempo, trae consigo que cualquier error de los acelerómetros y los giróscopos decante en errores de posición y de orientación que crecerán con el paso del tiempo a un ritmo acelerado. Típicamente esto se corrige utilizando otro sistema de navegación auxiliar (como por ejemplo a través de GPS) junto con un filtro de Kalman o un sistema equivalente. %En la figura \ref{fig:kalman} se muestra un diagrama en bloques que relaciona al sistema inercial con el sistema auxiliar a través del filtro de Kalman para corregir las salidas del sistema de navegación inercial.
 
-%Utilizando los acelerómetros y giróscopos de la IMU, es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. Gracias a la alta tasa de adquisición de datos que esta ofrece, este sensor es de gran importancia para mantener la estabilidad del vehículo.
+% % \begin{figure}[htb]
+% %     \centering
+% %     \includegraphics[width=0.8\textwidth]{kalman.png}
+% %     \caption{Diagrama en bloques del INS junto con un sistema de navegación auxiliar de GPS. Ambos se complementan a partir del filtro de Kalman.}
+% %     \label{fig:kalman}
+% % \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para obtener las mediciones de aceleración y velocidad angular en la computadora de vuelo, se utilizará una Unidad de Medición Inercial (IMU). Esta comprende acelerómetros y giróscopos triaxiales, los cuales se denominan sensores inerciales. Utilizando este sensor es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. Gracias a la alta tasa de adquisición de datos que esta ofrece, este sensor es de gran importancia para mantener la estabilidad del vehículo. Estos pueden alcanzar tasas de adquisición del orden de las decenas de kHz, aunque en los vehículos aéreos no tripulados como los de este trabajo se configuran en cientos de Hz, debido a la carga excesiva que supondría para el procesador una tasa de adquisición tan alta.
 
-% El sistema de navegación inercial requiere que se resuelvan muchas ecuaciones. Para eso se incorpora una unidad de procesamiento:
-%
-% Por qué se usa un microcontrolador COTS?
-% - Bajo costo
-% - Tamaño reducido.
-% - La gran cantidad de interfaces que integran.
-% - Necesidad de una respuesta con determinismo temporal.
+% %Esta ofrece una alta tasa de adquisición de datos, en el orden de las decenas de kHz. Esto es de gran importancia para mantener la estabilidad del vehículo, ya que utilizando acelerómetros y giróscopos es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo.
 
-Para realizar todos los cálculos involucrados en el INS, se utiliza una unidad de procesamiento. Todas las tareas involucradas en navegación y control de vuelo son ejecutadas de forma periódica por la computadora de vuelo. Se requiere asegurar un determinismo temporal en la ejecución de las tareas, del orden de los milisegundos o decenas de milisegundos. La unidad de procesamiento que mejor se ajusta a las necesidades de este trabajo es un microcontrolador de 32 bits, siendo el principal motivo la gran variedad que pueden encontrarse en el mercado, los cuales ofrecen una muy buena performance por un bajo costo. La gran capacidad de cómputo que ofrecen permite que este además puede realizar otras tareas más, como encargarse de la tolerancia a fallas, el almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
+% %Utilizando los acelerómetros y giróscopos de la IMU, es posible estimar los ángulos de \textit{pitch} y \textit{roll} del vehículo. Gracias a la alta tasa de adquisición de datos que esta ofrece, este sensor es de gran importancia para mantener la estabilidad del vehículo.
 
-%Otro factor importante es el gran nivel de integración que ofrecen, incorporando gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño para la computadora de vuelo de dimensiones pequeñas.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Algunas de las funcionalidades secundarias que se implementan son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos en una memoria externa, tanto de sensores como de datos pertinentes a la misión del vehículo. De manera de ampliar las capacidades de uso, se incorpora una gran variedad de conectores que facilitan la comunicación con dispositivos y sensores externos. Esto le da una gran versatilidad, permitiendo su utilización en distintas aplicaciones de UAVs y vehículos no tripulados en general.
+% % El sistema de navegación inercial requiere que se resuelvan muchas ecuaciones. Para eso se incorpora una unidad de procesamiento:
+% %
+% % Por qué se usa un microcontrolador COTS?
+% % - Bajo costo
+% % - Tamaño reducido.
+% % - La gran cantidad de interfaces que integran.
+% % - Necesidad de una respuesta con determinismo temporal.
+
+% Para realizar todos los cálculos involucrados en el INS, se utiliza una unidad de procesamiento. Todas las tareas involucradas en navegación y control de vuelo son ejecutadas de forma periódica por la computadora de vuelo. Se requiere asegurar un determinismo temporal en la ejecución de las tareas, del orden de los milisegundos o decenas de milisegundos. La unidad de procesamiento que mejor se ajusta a las necesidades de este trabajo es un microcontrolador de 32 bits, siendo el principal motivo la gran variedad que pueden encontrarse en el mercado, los cuales ofrecen una muy buena performance por un bajo costo. La gran capacidad de cómputo que ofrecen permite que este además puede realizar otras tareas más, como encargarse de la tolerancia a fallas, el almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
+
+% %Otro factor importante es el gran nivel de integración que ofrecen, incorporando gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño para la computadora de vuelo de dimensiones pequeñas.
+
+% Algunas de las funcionalidades secundarias que se implementan son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos en una memoria externa, tanto de sensores como de datos pertinentes a la misión del vehículo. De manera de ampliar las capacidades de uso, se incorpora una gran variedad de conectores que facilitan la comunicación con dispositivos y sensores externos. Esto le da una gran versatilidad, permitiendo su utilización en distintas aplicaciones de UAVs y vehículos no tripulados en general.
 
 %Se aprovechan las distintas interfaces que ofrecen estos componentes para 
 
@@ -158,7 +184,9 @@ Algunas de las funcionalidades secundarias que se implementan son el control de 
 % -Breve Intro
 %El Laboratorio de Automática y Robótica de la FIUBA (LAR) cuenta con plataformas de computadoras de vuelo desarrolladas en el mismo laboratorio, que se utilizan con distintos fines de investigación. Estas computadoras de vuelo han ido incorporando distintas mejoras a lo largo de los años, y se han ido actualizando con nuevos componentes como sensores o microcontroladores. La primera de las versiones cuenta con un microcontrolador ARM Cortex M3, mientras que la última de estas cuenta un ARM Cortex M7 y sensores con mejor rendimiento [3]. El LAR plantea diseñar un vehículo multi-rotor de seis rotores, con capacidad de tolerancia a fallas. En este contexto, en el presente trabajo se quiere diseñar una computadora de vuelo que incorpore sensores de orientación y posición redundantes, con el objetivo de implementar técnicas de tolerancia a fallas a partir de redundancias de hardware.
 
-El Laboratorio de Automática y Robótica de la FIUBA (LAR), laboratorio en el que se enmarca este trabajo, ha desarrollado distintas plataformas de computadoras de vuelo, las cuales se utilizan con distintos fines de investigación. A lo largo de los años se han ido incorporando distintas mejoras y actualizando con nuevos componentes, como sensores o microcontroladores. En total se han desarrollado 4 versiones, siendo la más reciente la que se presenta en este trabajo.
+%El Laboratorio de Automática y Robótica de la FIUBA (LAR), laboratorio en el que se enmarca este trabajo, ha desarrollado distintas plataformas de computadoras de vuelo, las cuales se utilizan con distintos fines de investigación. 
+
+%A lo largo de los años se han ido incorporando distintas mejoras y actualizando con nuevos componentes, como sensores o microcontroladores. En total se han desarrollado 4 versiones, siendo la más reciente la desarrollada en este trabajo.
 
 % -Choriboard I y II: 2013 y 2015
 % Paper de JAR: La primera versión (año 2013) y segunda (año 2015) de la Choriboard [1], [2] fueron desarrolladas como prototipos para cumplir las funciones básicas de adquisición de datos, navegación y control en vehı́culos autónomos, y para ser conectadas a computadoras de alta performance para el procesamiento de datos.
@@ -167,14 +195,33 @@ El Laboratorio de Automática y Robótica de la FIUBA (LAR), laboratorio en el q
 
 %La primera versión de la Choriboard fue diseñada sobre una placa de 93x93mm, con suficiente espacio entre los diversos componentes para permitir la verificación de errores de diseño. Para la segunda versión, el factor de forma fue tomado en cuenta, y se redujeron las dimensiones de la placa a 100x60mm, como puede observarse en la figura 1.
 
-La primera versión fue desarrollada en el año 2013 \cite{Pose2014}. Esta utiliza como unidad de procesamiento un microcontrolador ARM Cortex M3, modelo LPC1769, el cual cuenta con un clock de hasta 120 MHz. Como aspecto negativo, no cuenta con unidad de punto flotante integrada. En cuanto a los sensores, se incluye una IMU modelo MPU6000, un barómetro BMP085 y un magnetómetro HMC5883, todos ellos fuera de fabricación hoy en día. Se utilizó una fuente de alimentación conmutada con una salida de $5 \ V$, $3 \ A$, junto con un regulador lineal para generar la tensión de $3.3 \ V$ necesaria para alimentar el microcontrolador y los sensores. La fuente ofrece un amplio rango de entrada, entre $7$ y $30 \ V$, permitiendo que pueda alimentarse directamente con las mismas baterías del vehículo. La placa de esta computadora de vuelo se muestra en la figura \ref{fig:Choriboard_1}. Esta tiene unas dimensiones de 93x93 mm y cuenta con una serie de conectores que permiten adosar otros sensores y módulos, además de los actuadores para los motores los cuales se controlan con señales PWM generadas por el microcontrolador.
+A lo largo de los años se han ido incorporando distintas mejoras y actualizando con nuevos componentes, como sensores o microcontroladores. En total se han desarrollado 4 versiones, siendo la más reciente la desarrollada en este trabajo. La primera fue desarrollada en el año 2013 \cite{Pose2014}. Esta utiliza un microcontrolador ARM Cortex M3, modelo LPC1769, el cual cuenta con un clock de hasta 120 MHz. Como aspecto negativo, no cuenta con unidad de punto flotante integrada. En cuanto a los sensores, se incluye una IMU modelo MPU6000, un barómetro BMP085 y un magnetómetro HMC5883, todos ellos fuera de fabricación hoy en día. Se utilizó una fuente de alimentación conmutada con una salida de $5 \ V$, $3 \ A$, junto con un regulador lineal para generar la tensión de $3.3 \ V$ necesaria para alimentar el microcontrolador y los sensores. La fuente ofrece un amplio rango de entrada, entre $7$ y $30 \ V$, permitiendo que pueda alimentarse directamente con las mismas baterías del vehículo. La placa de esta computadora de vuelo se muestra en la figura \ref{fig:Choriboard_1}. Esta tiene unas dimensiones de 93x93 mm y cuenta con una serie de conectores que permiten adosar otros sensores y módulos, además de los actuadores para los motores los cuales se controlan con señales PWM generadas por el microcontrolador.
+
+% \begin{figure}[htb]
+%     \centering
+%     %\includegraphics[width=0.4\textwidth]{img/Choriboard_1.png}
+%     \includesvg[scale=1.0, inkscapelatex=false]{Choriboard_1}
+%     \caption{Primera versión de la computadora de vuelo del LAR.}
+%     \label{fig:Choriboard_1}
+% \end{figure}
 
 \begin{figure}[htb]
     \centering
-    %\includegraphics[width=0.4\textwidth]{img/Choriboard_1.png}
-    \includesvg[scale=1.0, inkscapelatex=false]{Choriboard_1}
-    \caption{Primera versión de la computadora de vuelo del LAR.}
-    \label{fig:Choriboard_1}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includesvg[scale=1.0, inkscapelatex=false]{Choriboard_1}
+        \caption{Versión 1, 2013.}
+        \label{fig:Choriboard_1}
+    \end{subfigure}
+    %\hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includesvg[scale=0.8, inkscapelatex=false]{Choriboard_2}
+        \caption{Versión 2, 2015.}
+        \label{fig:Choriboard_2}
+    \end{subfigure}
+       \caption{Versiones 1 y 2 de la computadora de vuelo desarrollada en el LAR.  }
+       \label{fig:choriboards_1_2_3}
 \end{figure}
 
 La figura \ref{fig:Choriboard_2} muestra la segunda versión de la computadora de vuelo. La misma se desarrolló en el año 2015 y tuvo como objetivo obtener una placa con dimensiones más reducidas respecto de la primera versión, siendo finalmente de 100x60 mm. Se mantuvieron todos los componentes utilizados en la placa, a excepción del magnetómetro, el cual fue removido de esta. Esta decisión se debió a que en la primera versión, este sensor quedó prácticamente inutilizable debido a que sus mediciones se veían fuertemente afectadas por los campos magnéticos generados por los motores del vehículo. En esta segunda versión, el magnetómetro debe adosarse a alguno de los conectores que ofrece la placa, para el agregado de otros módulos y sensores externos.
@@ -187,13 +234,13 @@ La figura \ref{fig:Choriboard_2} muestra la segunda versión de la computadora d
 %     \label{fig:choriboard_1_y_2}
 % \end{figure}
 
-\begin{figure}[htb]
-    \centering
-    %\includegraphics[width=0.4\textwidth]{img/Choriboard_1.png}
-    \includesvg[scale=0.8, inkscapelatex=false]{Choriboard_2}
-    \caption{Segunda versión de la computadora de vuelo del LAR.}
-    \label{fig:Choriboard_2}
-\end{figure}
+% \begin{figure}[htb]
+%     \centering
+%     %\includegraphics[width=0.4\textwidth]{img/Choriboard_1.png}
+%     \includesvg[scale=0.8, inkscapelatex=false]{Choriboard_2}
+%     \caption{Segunda versión de la computadora de vuelo del LAR.}
+%     \label{fig:Choriboard_2}
+% \end{figure}
 
 % -Choriboard III: 2018
 % Paper de JAR: La tercera versión [3] fue diseñada con el fin de reducir al máximo el tamaño y peso ası́ como modernizar el micro-controlador y algunos sensores.
