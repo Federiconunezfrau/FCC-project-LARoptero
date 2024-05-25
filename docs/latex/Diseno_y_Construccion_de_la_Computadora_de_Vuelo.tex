@@ -93,7 +93,7 @@ Para obtener las mediciones de aceleración y velocidad angular en la computador
 
 Para realizar todos los cálculos involucrados en el INS, se utiliza una unidad de procesamiento. Todas las tareas involucradas en navegación y control de vuelo son ejecutadas de forma periódica por la computadora de vuelo. Se requiere asegurar un determinismo temporal en la ejecución de las tareas, del orden de los milisegundos o decenas de milisegundos. La unidad de procesamiento que mejor se ajusta a las necesidades de este trabajo es un microcontrolador de 32 bits, siendo el principal motivo la gran variedad que pueden encontrarse en el mercado, los cuales ofrecen una muy buena performance por un bajo costo. La gran capacidad de cómputo que ofrecen permite que este además puede realizar otras tareas más, como encargarse de la tolerancia a fallas, el almacenamiento de datos y otras tareas relacionadas a la misión del vehículo.
 
-Otro factor importante es el gran nivel de integración que ofrecen, incorporando gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño para la computadora de vuelo de dimensiones pequeñas.
+%Otro factor importante es el gran nivel de integración que ofrecen, incorporando gran variedad y cantidad de periféricos e interfaces de comunicación. Esto favorece la posibilidad de obtener un diseño para la computadora de vuelo de dimensiones pequeñas.
 
 Algunas de las funcionalidades secundarias que se implementan son el control de LEDs indicadores de propósito general y la capacidad de almacenamiento de datos en una memoria externa, tanto de sensores como de datos pertinentes a la misión del vehículo. De manera de ampliar las capacidades de uso, se incorpora una gran variedad de conectores que facilitan la comunicación con dispositivos y sensores externos. Esto le da una gran versatilidad, permitiendo su utilización en distintas aplicaciones de UAVs y vehículos no tripulados en general.
 
@@ -153,6 +153,58 @@ Algunas de las funcionalidades secundarias que se implementan son el control de 
 % switches para distintas funcionalidades
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Versiones anteriores desarrolladas por el LAR
+% -Breve Intro
+%El Laboratorio de Automática y Robótica de la FIUBA (LAR) cuenta con plataformas de computadoras de vuelo desarrolladas en el mismo laboratorio, que se utilizan con distintos fines de investigación. Estas computadoras de vuelo han ido incorporando distintas mejoras a lo largo de los años, y se han ido actualizando con nuevos componentes como sensores o microcontroladores. La primera de las versiones cuenta con un microcontrolador ARM Cortex M3, mientras que la última de estas cuenta un ARM Cortex M7 y sensores con mejor rendimiento [3]. El LAR plantea diseñar un vehículo multi-rotor de seis rotores, con capacidad de tolerancia a fallas. En este contexto, en el presente trabajo se quiere diseñar una computadora de vuelo que incorpore sensores de orientación y posición redundantes, con el objetivo de implementar técnicas de tolerancia a fallas a partir de redundancias de hardware.
+
+El Laboratorio de Automática y Robótica de la FIUBA (LAR), laboratorio en el que se enmarca este trabajo, ha desarrollado distintas plataformas de computadoras de vuelo, las cuales se utilizan con distintos fines de investigación. A lo largo de los años se han ido incorporando distintas mejoras y actualizando con nuevos componentes, como sensores o microcontroladores. En total se han desarrollado 4 versiones, siendo la más reciente la que se presenta en este trabajo.
+
+% -Choriboard I y II: 2013 y 2015
+% Paper de JAR: La primera versión (año 2013) y segunda (año 2015) de la Choriboard [1], [2] fueron desarrolladas como prototipos para cumplir las funciones básicas de adquisición de datos, navegación y control en vehı́culos autónomos, y para ser conectadas a computadoras de alta performance para el procesamiento de datos.
+
+% Paper Chori III: Ambas computadoras comparten los mismos componentes. El microcontrolador es un procesador ARM Cortex M3 LPC1769 sin unidad de punto flotante, con un clock de hasta 120MHz y 150 DMPIS (Drystone Millions of Instructions per Second). Utilizaban una IMU MPU6000 y el barómetro usado es un BMP180. La versión 1 tenía un magnetómetro integrado en el PCB. Ambas versiones incluian una fuente de switching con amplio rango de entrada, de 5V 3A. Esto se hizo así para poder alimentar la placa directamente con las baterías de LiPo del drone. Luego se adosa un LDO de 3,3 V. La actuación sobre los motores se hace a través de señales PWM conectadas a actuadores tipo ESC, con conectores de tiras de pines.
+
+%La primera versión de la Choriboard fue diseñada sobre una placa de 93x93mm, con suficiente espacio entre los diversos componentes para permitir la verificación de errores de diseño. Para la segunda versión, el factor de forma fue tomado en cuenta, y se redujeron las dimensiones de la placa a 100x60mm, como puede observarse en la figura 1.
+
+La primera versión fue desarrollada en el año 2013 \cite{Pose2014}. Esta utiliza como unidad de procesamiento un microcontrolador ARM Cortex M3, modelo LPC1769, el cual cuenta con un clock de hasta 120 MHz. Como aspecto negativo, no cuenta con unidad de punto flotante integrada. En cuanto a los sensores, se incluye una IMU modelo MPU6000, un barómetro BMP085 y un magnetómetro HMC5883, todos ellos fuera de fabricación hoy en día. Se utilizó una fuente de alimentación conmutada con una salida de $5 \ V$, $3 \ A$, junto con un regulador lineal para generar la tensión de $3.3 \ V$ necesaria para alimentar el microcontrolador y los sensores. La fuente ofrece un amplio rango de entrada, entre $7$ y $30 \ V$, permitiendo que pueda alimentarse directamente con las mismas baterías del vehículo. La placa de esta computadora de vuelo se muestra en la figura \ref{fig:Choriboard_1}. Esta tiene unas dimensiones de 93x93 mm y cuenta con una serie de conectores que permiten adosar otros sensores y módulos, además de los actuadores para los motores los cuales se controlan con señales PWM generadas por el microcontrolador.
+
+\begin{figure}[htb]
+    \centering
+    %\includegraphics[width=0.4\textwidth]{img/Choriboard_1.png}
+    \includesvg[scale=1.0, inkscapelatex=false]{Choriboard_1}
+    \caption{Primera versión de la computadora de vuelo del LAR.}
+    \label{fig:Choriboard_1}
+\end{figure}
+
+La figura \ref{fig:Choriboard_2} muestra la segunda versión de la computadora de vuelo. La misma se desarrolló en el año 2015 y tuvo como objetivo obtener una placa con dimensiones más reducidas respecto de la primera versión, siendo finalmente de 100x60 mm. Se mantuvieron todos los componentes utilizados en la placa, a excepción del magnetómetro, el cual fue removido de esta. Esta decisión se debió a que en la primera versión, este sensor quedó prácticamente inutilizable debido a que sus mediciones se veían fuertemente afectadas por los campos magnéticos generados por los motores del vehículo. En esta segunda versión, el magnetómetro debe adosarse a alguno de los conectores que ofrece la placa, para el agregado de otros módulos y sensores externos.
+
+% \begin{figure}[htb]
+%     \centering
+%     %\includegraphics[width=0.3\textwidth]{img/choriboard_1_y_2.png}
+%     \includesvg[scale=1.0, inkscapelatex=true]{choriboard_1_y_2}
+%     \caption{fghfghfhfa}
+%     \label{fig:choriboard_1_y_2}
+% \end{figure}
+
+\begin{figure}[htb]
+    \centering
+    %\includegraphics[width=0.4\textwidth]{img/Choriboard_1.png}
+    \includesvg[scale=0.8, inkscapelatex=false]{Choriboard_2}
+    \caption{Segunda versión de la computadora de vuelo del LAR.}
+    \label{fig:Choriboard_2}
+\end{figure}
+
+% -Choriboard III: 2018
+% Paper de JAR: La tercera versión [3] fue diseñada con el fin de reducir al máximo el tamaño y peso ası́ como modernizar el micro-controlador y algunos sensores.
+
+% Paper Chori III: La tercera versión fue diseñada con 2 objetivos, por un lado reducir el tamaño y el peso lo más que se pueda y por el otro, actualizar el modelo del microcontrolador y de los sensores, para mejorar el rendimiento y reemplazar dispositivos obsoletos. Se actualizó a un microcontrolador ARM Cortex M7 STM32F722, puede llegar hasta 2016 MHz, tiene unidad de punto flotante integrada y permite realizar 462 DMIPS, el triple que la verrsión anterior.
+
+En el año 2018 se desarrolló la tercera versión de las computadoras de vuelo del LAR \cite{garberoglio2019diseno}. Uno de los objetivos en esta versión fue reducir todavía más las dimensiones de la placa. Para lograr esto, una de las decisiones fue remover la fuente conmutada y en su lugar dejar un conector para una fuente externa de $5 \ V$. Además de esto, todos los conectores con formato tira de pines fueron reemplazados por otros con dimensiones más pequeñas y de montaje superficial. Como segundo objetivo, se buscó actualizar tanto el microcontrolador como los sensores, para mejorar el rendimiento y reemplazar los componentes obsoletos de las versiones 1 y 2. Comenzando por el microcontrolador, este fue reemplazado por un ARM Cortex-M7, modelo STM32F722, el cual puede trabajar a 216 MHz, además de integrar una unidad de punto flotante. En cuanto a los sensores, estos fueron reemplazados por modelos con mejores características. La IMU se reemplazó por un sensor más actual del mismo fabricante, el ICM20602 y en cuanto al barómetro, se utilizó el modelo MS5611 de TE Connectivty, el cual cuenta con 24 bits de resolución. En esta versión además se incluyeron otras funcionalidades nuevas que no estaban presentes en las versiones anteriores. Se incluyó un conector mini USB con el objetivo de utilizarse como interfaz de comunicación serie que permita alcanzar velocidades superiores a las de una UART. También se incluyó la posibilidad de usar una memoria microSD, con el objetivo de almacenar datos pertinentes a la misión del vehículo.
+
+% -Necesidad de la Choriboard IV y objetivos de esta nueva versión.
+% Paper de JAR: En esta nueva versión, además de la actualización de diversos componentes, y considerando aplicaciones a vehı́culos aéreos autónomos, se propone una estructura de redundancia para lograr una computadora de vuelo que permita obtener tolerancia a fallas en hardware y sensores de navegación.
+La cuarta versión de la computadora de vuelo es la que se presenta en este trabajo. Uno de los objetivos, al igual que en la versión 3, fue actualizar los sensores por otros de mejores prestaciones y el microcontrolador por uno con mejor rendimiento. También se hicieron modificaciones en cuanto a los conectores utilizados. Como ya fue mencionado, el objetivo principal de esta nueva computadora de vuelo es poder ser utilizada para aplicar algoritmos de tolerancia a fallas a partir de redundancias. Para ello se incorpora en esta versión, 2 interfaces de comunicación dedicadas a esta tarea y que permiten la comunicación entre varias réplicas la misma placa. A lo largo de las siguientes secciones se describen los criterios tenidos en cuenta para el desarrollo de la placa.
 
 \subsection{Criterios Generales Para la Selección de Componentes}
 
@@ -271,9 +323,9 @@ Como primera opción surgió la posibilidad de seleccionar alguno de los microco
         \hline
         CAN & 1 & \cellcolor{green!25}3 & 2 & \cellcolor{green!25}3 & \cellcolor{green!25}3\\
         \hline
-        ADC & 3x12b, 24ch & \makecell{2x16b, 22 ch; \\ 1x12b, 12 ch} & \cellcolor{green!25}\makecell{3x16b, \\ 16/28/32ch} & \makecell{1x12b, 12ch \\ 2x16b, 18ch} & \makecell{1x12b, 12ch \\ 2x16b, 16ch}\\
+        ADC & 3x12b, 24ch & \makecell{2x16b, 22 ch; \\ 1x12b, 12 ch} & \cellcolor{green!25}\colorbox{green!25}{\makecell{3x16b, \\ 16/28/32ch}} & \makecell{1x12b, 12ch \\ 2x16b, 18ch} & \makecell{1x12b, 12ch \\ 2x16b, 16ch}\\
         \hline
-        Timers & \makecell{18: 16b x 16, \\ 32b x 2} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} & \makecell{14: 16b x 12, \\ 32b x 2} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} &\cellcolor{green!25} \makecell{21: 16b x 17, \\ 32b x 4}\\
+        Timers & \makecell{18: 16b x 16, \\ 32b x 2} & \cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}} & \makecell{14: 16b x 12, \\ 32b x 2} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} &\cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}}\\
         \hline
         SDMMC & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2\\
         \hline
@@ -717,11 +769,11 @@ Se buscaron modelos de magnetómetros disponibles. Al igual que con el resto de 
         %Full scale range [uT] & \makecell{$\pm$88;130;190;250;\\400;470;560;810} & \makecell{x,y: $\pm$1200;\\z: $\pm$2000} & $\pm$800 & $\pm$800\\
         Scale Factor Error & $\pm$0,1 \% @ $\pm$200 uT & 1\% & \makecell{$\pm$0,5\% \\ @ $\pm$200 uT} & \cellcolor{green!25}0,1\% @ $\pm$400uT\\
         \hline
-        \makecell{Scale Factor Error\\Over Temp} & \makecell{0.3\%/C \\@ -40°C - 125 °C} & N/A & N/A & \cellcolor{green!25}\makecell{0.07 \%/°C \\@ -40°C - 105°C}\\
+        \makecell{Scale Factor Error\\Over Temp} & \makecell{0.3\%/C \\@ -40°C - 125 °C} & N/A & N/A & \cellcolor{green!25}\colorbox{green!25}{\makecell{0.07 \%/°C \\@ -40°C - 105°C}}\\
         \hline
         Offset @25°C & N/A & \cellcolor{green!25}$\pm$ 40 uT & N/A & $\pm$50 uT\\
         \hline
-        Offset Over Temp & N/A & N/A & N/A & \cellcolor{green!25}\makecell{$\pm$2nT/°C \\@ -40°C - 105°C}\\
+        Offset Over Temp & N/A & N/A & N/A & \cellcolor{green!25}\colorbox{green!25}{\makecell{$\pm$2nT/°C \\@ -40°C - 105°C}}\\
         \hline
         Noise & \makecell{200 nT \\@ FSR = $\pm$88 uT} & \makecell{300 nT @ 25°C,\\ ODR = 20 Hz} & \cellcolor{green!25}30 nT & \makecell{40nT, ODR = 50 Hz\\60 nT, ODR = 100 Hz\\80 nT, ODR = 200 Hz\\120 nT, ODR = 400 Hz}\\
         \hline
@@ -1036,7 +1088,7 @@ El protocolo que se define en este estándar tiene el formato master-slave, en e
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{img/SD_bus_conexiones.png}
-    \caption{Esquema circuital de la conexión entre el SD host y una memoria SD, tal y como lo indica la especificación de la SD Association. {\color{red} ESTA IMAGEN NO PUEDE QUEDAR, TENGO QUE DIBUJAR UNA SIMILAR YO}.}
+    \caption{Esquema circuital de la conexión entre el SD host y una memoria SD, tal y como lo indica la especificación de la SD Association. Se recomienda el agregado de resistores de pull up en las líneas de datos y CMD para fijar un valor de tensión en estas líneas cuando no hay una memoria presente.}
     \label{fig:SD_bus_conexiones}
 \end{figure}
 
