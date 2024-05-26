@@ -210,30 +210,6 @@
     \field{year}{2014}
   \endentry
 
-  \entry{nelson1990fault}{article}{}
-    \name{author}{1}{}{%
-      {{hash=NVP}{%
-         family={Nelson},
-         familyi={N\bibinitperiod},
-         given={Victor\bibnamedelima P.},
-         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {IEEE}%
-    }
-    \strng{namehash}{NVP1}
-    \strng{fullhash}{NVP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{number}{7}
-    \field{pages}{19\bibrangedash 25}
-    \field{title}{Fault-tolerant computing: Fundamental concepts}
-    \field{volume}{23}
-    \field{journaltitle}{Computer}
-    \field{year}{1990}
-  \endentry
-
   \entry{FBWNASA}{misc}{}
     \field{labeltitlesource}{title}
     \field{title}{{Fly-by-Wire Systems Enable Safer, More Efficient Flight |
@@ -647,6 +623,30 @@
     \endverb
     \field{month}{06}
     \field{year}{2023}
+  \endentry
+
+  \entry{nelson1990fault}{article}{}
+    \name{author}{1}{}{%
+      {{hash=NVP}{%
+         family={Nelson},
+         familyi={N\bibinitperiod},
+         given={Victor\bibnamedelima P.},
+         giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{NVP1}
+    \strng{fullhash}{NVP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{7}
+    \field{pages}{19\bibrangedash 25}
+    \field{title}{Fault-tolerant computing: Fundamental concepts}
+    \field{volume}{23}
+    \field{journaltitle}{Computer}
+    \field{year}{1990}
   \endentry
 
   \entry{kopetz-2011}{book}{}
