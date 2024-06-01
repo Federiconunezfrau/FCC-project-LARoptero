@@ -58,8 +58,7 @@
 \contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{76}{subsubsection.6.3.3}%
 \contentsline {subsubsection}{\numberline {6.3.4}Medición Invariante de Acelerómetros y Giróscopos}{77}{subsubsection.6.3.4}%
 \contentsline {section}{\numberline {7}Conclusiones}{80}{section.7}%
-\contentsline {section}{\numberline {8}Agradecimientos}{81}{section.8}%
-\contentsline {section}{Apéndices}{82}{section*.90}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{82}{section*.91}%
-\contentsline {section}{Apéndice B: PCB Final}{87}{section*.92}%
-\contentsline {section}{Referencias}{89}{section*.93}%
+\contentsline {section}{Apéndices}{81}{section*.90}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{81}{section*.91}%
+\contentsline {section}{Apéndice B: PCB Final}{86}{section*.92}%
+\contentsline {section}{Referencias}{88}{section*.93}%
