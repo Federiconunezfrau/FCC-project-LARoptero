@@ -220,6 +220,13 @@ A lo largo de los años se han ido incorporando distintas mejoras y actualizando
         \caption{Versión 2, 2015.}
         \label{fig:Choriboard_2}
     \end{subfigure}
+    %\hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{img/Choriboard_3.jpg}
+        \caption{Versión 3, 2018.}
+        \label{fig:Choriboard_3}
+    \end{subfigure}
        \caption{Versiones 1 y 2 de la computadora de vuelo desarrollada en el LAR.  }
        \label{fig:choriboards_1_2_3}
 \end{figure}
@@ -247,7 +254,7 @@ La figura \ref{fig:Choriboard_2} muestra la segunda versión de la computadora d
 
 % Paper Chori III: La tercera versión fue diseñada con 2 objetivos, por un lado reducir el tamaño y el peso lo más que se pueda y por el otro, actualizar el modelo del microcontrolador y de los sensores, para mejorar el rendimiento y reemplazar dispositivos obsoletos. Se actualizó a un microcontrolador ARM Cortex M7 STM32F722, puede llegar hasta 2016 MHz, tiene unidad de punto flotante integrada y permite realizar 462 DMIPS, el triple que la verrsión anterior.
 
-En el año 2018 se desarrolló la tercera versión de las computadoras de vuelo del LAR \cite{garberoglio2019diseno}. Uno de los objetivos en esta versión fue reducir todavía más las dimensiones de la placa. Para lograr esto, una de las decisiones fue remover la fuente conmutada y en su lugar dejar un conector para una fuente externa de $5 \ V$. Además de esto, todos los conectores con formato tira de pines fueron reemplazados por otros con dimensiones más pequeñas y de montaje superficial. Como segundo objetivo, se buscó actualizar tanto el microcontrolador como los sensores, para mejorar el rendimiento y reemplazar los componentes obsoletos de las versiones 1 y 2. Comenzando por el microcontrolador, este fue reemplazado por un ARM Cortex-M7, modelo STM32F722, el cual puede trabajar a 216 MHz, además de integrar una unidad de punto flotante. En cuanto a los sensores, estos fueron reemplazados por modelos con mejores características. La IMU se reemplazó por un sensor más actual del mismo fabricante, el ICM20602 y en cuanto al barómetro, se utilizó el modelo MS5611 de TE Connectivty, el cual cuenta con 24 bits de resolución. En esta versión además se incluyeron otras funcionalidades nuevas que no estaban presentes en las versiones anteriores. Se incluyó un conector mini USB con el objetivo de utilizarse como interfaz de comunicación serie que permita alcanzar velocidades superiores a las de una UART. También se incluyó la posibilidad de usar una memoria microSD, con el objetivo de almacenar datos pertinentes a la misión del vehículo.
+En el año 2018 se desarrolló la tercera versión de las computadoras de vuelo del LAR \cite{garberoglio2019diseno}. Uno de los objetivos en esta versión fue reducir todavía más las dimensiones de la placa. Para lograr esto, una de las decisiones fue remover la fuente conmutada y en su lugar dejar un conector para una fuente externa de $5 \ V$. Además de esto, todos los conectores con formato tira de pines fueron reemplazados por otros con dimensiones más pequeñas y de montaje superficial. A partir de esto se obtuvo la placa que se muestra en la figura \ref{fig:Choriboard_3}, la cual cuenta con unas dimensiones de 80x60 mm. Como segundo objetivo, se buscó actualizar tanto el microcontrolador como los sensores, para mejorar el rendimiento y reemplazar los componentes obsoletos de las versiones 1 y 2. Comenzando por el microcontrolador, este fue reemplazado por un ARM Cortex-M7, modelo STM32F722, el cual puede trabajar a 216 MHz, además de integrar una unidad de punto flotante. En cuanto a los sensores, estos fueron reemplazados por modelos con mejores características. La IMU se reemplazó por un sensor más actual del mismo fabricante, el ICM20602 y en cuanto al barómetro, se utilizó el modelo MS5611 de TE Connectivty, el cual cuenta con 24 bits de resolución. En esta versión además se incluyeron otras funcionalidades nuevas que no estaban presentes en las versiones anteriores. Se incluyó un conector mini USB con el objetivo de utilizarse como interfaz de comunicación serie que permita alcanzar velocidades superiores a las de una UART. También se incluyó la posibilidad de usar una memoria microSD, con el objetivo de almacenar datos pertinentes a la misión del vehículo.
 
 % -Necesidad de la Choriboard IV y objetivos de esta nueva versión.
 % Paper de JAR: En esta nueva versión, además de la actualización de diversos componentes, y considerando aplicaciones a vehı́culos aéreos autónomos, se propone una estructura de redundancia para lograr una computadora de vuelo que permita obtener tolerancia a fallas en hardware y sensores de navegación.
@@ -1631,7 +1638,7 @@ Por otro lado, en la placa de este trabajo se incorporan una serie de vías en e
 % LEDs indicadores de propósito general.
 % Pulsadores para debugging y pruebas de propósito general.
 
-Teniendo en cuenta todas las consideraciones mencionadas a lo largo de esta sección, se pudo plantear un circuito esquemático y obtener un diseño de PCB. Este último puede encontrarse en el \nameref{appendix:PCB}. A modo de resumen, en la figura \ref{fig:diagrama_en_bloques_computadora_de_vuelo} se muestra un diagrama en bloques de la computadora de vuelo y en la figura \ref{fig:chori_detalle} pla implementación en PCB. Por último, en la figura \ref{fig:choris_4}, se muestran las 3 placas que se enviaron a fabricar para este trabajo.
+Teniendo en cuenta todas las consideraciones mencionadas a lo largo de esta sección, se pudo plantear un circuito esquemático y obtener un diseño de PCB. Este último puede encontrarse en el \nameref{appendix:PCB}. A modo de resumen, en la figura \ref{fig:diagrama_en_bloques_computadora_de_vuelo} se muestra un diagrama en bloques de la computadora de vuelo y en la figura \ref{fig:chori_detalle} la implementación en PCB, con dimensiones de 90x60 mm. Por último, en la figura \ref{fig:choris_4}, se muestran las 3 placas que se enviaron a fabricar para este trabajo. Utilizando los orificios métrica 3 de los 4 extremos de las placas, estas pueden apilarse con el objetivo de facilitar el montaje en conjunto dentro del vehículo.
 
 %La computadora de vuelo tiene la tarea esencial de adquirir las mediciones de los sensores, procesar dichos datos, y realizar el control de los diversos aspectos del vehículo, fundamentalmente de los motores. Las funcionalidades de la computadora de vuelo son las siguientes:
 
@@ -1659,12 +1666,21 @@ Teniendo en cuenta todas las consideraciones mencionadas a lo largo de esta secc
     \label{fig:chori_detalle}    
 \end{figure}
 
+% \begin{figure}[htb]
+%     \centering
+%     \includegraphics[width=\textwidth]{img/choris_4.png}
+%     \caption{Se muestran las 3 placas enviadas a fabricar para este trabajo.}
+%     \label{fig:choris_4}
+% \end{figure}
+
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{img/choris_4.png}
+    \includegraphics[width=\textwidth]{img/pruebas_stackeadas.png}
     \caption{Se muestran las 3 placas enviadas a fabricar para este trabajo.}
     \label{fig:choris_4}
 \end{figure}
+
+
 
 
 

@@ -671,12 +671,21 @@ El set de tareas se ejecuta durante 60 segundos, orientando a las réplicas sigu
     \label{fig:orientaciones_prueba}
 \end{figure}
 
+% \begin{figure}[!t]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/pruebas_stackeadas.png}
+%     \caption{Se muestran las 3 réplicas apiladas. {\color{red} Esta foto estaría bueno que muestre a las 3 réplicas, pero conectadas al bus CAN y con la Núcleo junto con el analizador lógico. La idea es mostrar algo más "de laboratorio", que se vea que esto está vivo. En esta foto parece una maqueta, algo que se mira y no se toca, cuando no es así.}}
+%     \label{fig:pruebas_stackeadas}
+% \end{figure}
+
 \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.7\textwidth]{img/pruebas_stackeadas.png}
-    \caption{Se muestran las 3 réplicas apiladas. {\color{red} Esta foto estaría bueno que muestre a las 3 réplicas, pero conectadas al bus CAN y con la Núcleo junto con el analizador lógico. La idea es mostrar algo más "de laboratorio", que se vea que esto está vivo. En esta foto parece una maqueta, algo que se mira y no se toca, cuando no es así.}}
+    \includegraphics[width=\textwidth]{img/placas_stack_analizador_logico.jpg}
+    \caption{Las 3 placas apiladas se montaron en conjunto sobre una base, para realizar las pruebas de estimación de los ángulos de pitch y roll. Se utilizó una placa externa conectada al mismo bus CAN para enviar comandos a las 3 réplicas, por ejemplo para comenzar la ejecución del sistema sincronizado. Todas las comunicaciones se loggearon a través del uso de un analizador lógico.}
     \label{fig:pruebas_stackeadas}
 \end{figure}
+
+
 
 %{\Large \textbf{{\color{red} FOTO DE LAS PLACAS STACKEADAS EN LA BASE. TIENE QUE SER UNA FOTO PARA MOSTRAR ALGO VIVO, REAL.}}}
 
@@ -697,9 +706,38 @@ Para verificar que se está cumpliendo con los tiempos durante el intercambio de
 
 En este primer caso no se inyectó ninguna falla en las mediciones de la IMU. Aquí se presentan los primeros resultados y se muestra el funcionamiento del sistema conformado por las 3 réplicas.
 
-Para confirmar que el sistema se encuentra funcionando correctamente, lo más importante es verificar que las 3 réplicas ejecutan sus tareas en los tiempos definidos, además de que se encuentran trabajando de manera sincronizada. Para ello, se hicieron distintas mediciones sobre el bus CAN. En primera medida, en la figura  se muestra una captura de la actividad en el bus CAN, utilizando un osciloscopio.
+%Para confirmar que el sistema se encuentra funcionando correctamente, lo más importante es verificar que las 3 réplicas ejecutan sus tareas en los tiempos definidos, además de que se encuentran trabajando de manera sincronizada. Para ello, se hicieron distintas mediciones sobre el bus CAN. En primera medida, en la figura  se muestra una captura de la actividad en el bus CAN, utilizando un osciloscopio.
 
-{\Large \textbf{{\color{red} CAPTURA DE OSCILOSCOPIO DEL BUS CAN. TAMBIÉN MOSTRAR CÓMO SE CONECTÓ, QUE SE VEA LA PUNTA DEL OSCILOSCOPIO COLGADA DEL BUS.}}}
+Se hicieron distintas mediciones sobre el bus CAN para verificar el funcionamiento de las comunicaciones. Utilizando un osciloscopio, se tomaron mediciones sobre las señales presentes en el bus, utilizando 2 canales diferentes para medir ambas líneas, CAN-H y CAN-L. 
+
+En la figura \ref{fig:mensaje_1_CANH} se muestra una captura de osciloscopio, donde se puede ver el comportamiento diferencial de las líneas CAN-L en verde y CAN-H en amarillo. Como era de esperarse, en los intervalos de tiempo anterior y posterior al mensaje, las líneas CAN-H y CAN-L se encuentran en el mismo valor, aproximadamente $2.0 \ V$, correspondiente al estado recessive. Durante el envío del mensaje CAN, ambas líneas trabajan de forma diferencial. Para marcar un estado dominant en el bus, CAN-H alcanza un valor aproximado de $2.6 \ V$ y CAN-L un valor de  $0,6 \ V$, dando una tensión diferencial de $2,0 \ V$.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\textwidth]{img/placas_con_osciloscopio.jpeg}
+    \caption{El canal 1 del osciloscopio se utilizó para medir CAN-L y el canal 2 para CAN-H.}
+    \label{fig:placas_con_osciloscopio}
+\end{figure}
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\textwidth]{img/mensaje_1_CANH.png}
+    \caption{Se muestra una captura de la actividad en el bus CAN. La curva verde correpsonde a CAN-L y la amarilla a CAN-H.}
+    \label{fig:mensaje_1_CANH}
+\end{figure}
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[width=\textwidth]{img/mensaje_1_diff.png}
+    \caption{Se muestra la tensión diferencial entre CAN-H y CAN-L, para las señales de la figura \ref{fig:mensaje_1_CANH}.}
+    \label{fig:mensaje_1_diff}
+\end{figure}
+
+Un aspecto que puede verse en ambas señales es la presencia de sobrepicos durante las transiciones de nivel. Esto ocurre tanto en CAN-H como en CAN-L y sucede cuando hay un cambio de recessive a dominant y viceversa. El hecho de que este comportamiento afecte a ambas líneas por igual no presenta un problema para las comunicaciones, ya que la información útil se encuentra contenida en la señal diferencial. Para observar esta última, se utilizaron las funcionalidades del osciloscopio y se obtuvo la figura \ref{fig:mensaje_1_diff}. En esta imagen se puede ver que los estados recessive y dominant se encuentran dentro de los rangos definidos por la figura \ref{fig:CAN_recessive_dominant}.
+
+Otro de los aspectos que puede llamar la atención corresponde al último estado dominant en el mensaje de la figura \ref{fig:mensaje_1_CANH}, ya que la línea CAN-H alcanza un nivel de tensión superior, de $3 \ V$. Este fragmento del mensaje corresponde al campo ACK de la figura \ref{fig:CAN_frame_standard} y no es controlado por el emisor del mensaje, sino que por todos los receptores presentes en el bus. Cada nodo del bus CAN que recibe el mensaje fija un estado dominant en el bus, por lo que es razonable que si todos los demás nodos fijan un valor dominant al mismo tiempo, las tensiones que se hagan presente durante este fragmento del mensaje sean superiores para CAN-H. Para las mediciones que se tomaron, este comportamiento solo se manifestó en CAN-H, pero podría suceder algo similar para CAN-L, donde este alcance valores de tensión inferiores. Este comportamiento también puede verse manifestado en la captura diferencial de la figura \ref{fig:mensaje_1_diff}. Si bien el valor de tensión es superior, el fragmento ACK de la señal diferencial alcanza un valor de $2.5 \ V$ e igualmente se encuentra dentro del rango indicado por la figura \ref{fig:CAN_recessive_dominant}.
+
+%{\Large \textbf{{\color{red} CAPTURA DE OSCILOSCOPIO DEL BUS CAN. TAMBIÉN MOSTRAR CÓMO SE CONECTÓ, QUE SE VEA LA PUNTA DEL OSCILOSCOPIO COLGADA DEL BUS.}}}
 
 Para verificar que las réplicas se encuentran sincronizadas es necesario observar la actividad del bus durante un mayor período de tiempo. Para esto, se hicieron capturas utilizando el analizador lógico. En la figura \ref{fig:resultados_timing_sin_fallas} se muestra un fragmento de 100 ms, donde se pueden ver una serie de mensajes, los cuales se repiten de forma periódica. Estos corresponden a la secuencia que fue definida en el schedule de la tabla \ref{tab:schedule_pruebas_realizadas}.
 
