@@ -33,17 +33,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define LEN_UART_BUFFER_SIZE 256
-
-#define TIMEOUT_UART_TX_S 100
-
-#define POS_LENGTH_RX_BUFFER 0
-#define POS_CMD_ID_RX_BUFFER 1
-
-#define GET_MSG_LEN(buffer)(buffer[POS_LENGTH_RX_BUFFER])
-#define GET_MSG_CMD(buffer)(buffer[POS_CMD_ID_RX_BUFFER])
-
-#define CMD_CAN_SEND_START_MSG 0x01
+#define MY_NODE_ID 3
+#define CAN_MSG_MAKE_STD_ID_TX(serviceID)((serviceID<<3)|MY_NODE_ID)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -54,32 +45,24 @@
 /* Private variables ---------------------------------------------------------*/
 CAN_HandleTypeDef hcan;
 
-UART_HandleTypeDef huart2;
-
 /* USER CODE BEGIN PV */
-static volatile uint8_t newCanMsgs = 0;
-static volatile uint8_t newUARTmsg = 0;
-
-static uint8_t UARTrxBuffer[64];
-
-
-// Mensaje para inicializar el TTscheduler
-static uint8_t CANmsgSync[] = {};
-static CAN_TxHeaderTypeDef CANmsgSyncHeader;
+CAN_TxHeaderTypeDef txHeader;
+uint8_t txData[8] = {0x5B, 0xDC, 0x82, 0xBF, 0x09, 0x5B, 0xFB, 0x3F};
+uint32_t txMailbox;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_CAN_Init(void);
-static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
+
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void make_uart_msg(CANmsg_t *canMsg, uint8_t *uartBuffer, uint32_t *lenUartBuffer);
+
 /* USER CODE END 0 */
 
 /**
@@ -89,35 +72,6 @@ void make_uart_msg(CANmsg_t *canMsg, uint8_t *uartBuffer, uint32_t *lenUartBuffe
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  circ_buffer<CANmsg_t, 30> bufferCanMsgs;
-  uint32_t i;
-  uint32_t fifoFillLevel;
-  CAN_RxHeaderTypeDef rxHeader;
-  uint8_t rxData[MAX_LEN_PAYLOAD_CAN];
-  CANmsg_t canMsg;
-  uint8_t uartBuffer[LEN_UART_BUFFER_SIZE];
-  uint32_t lenUartBuffer = 0;
-
-  uint8_t msgLen;
-  uint8_t msgCmd;
-  uint32_t txMailbox;
-
-  CANmsgSyncHeader.DLC = 0;
-  CANmsgSyncHeader.ExtId = 0;
-  CANmsgSyncHeader.IDE = CAN_ID_STD;
-  CANmsgSyncHeader.RTR = CAN_RTR_DATA;
-  CANmsgSyncHeader.TransmitGlobalTime = DISABLE;
-  CANmsgSyncHeader.StdId = 0x00000008;
-
-  uint8_t accelX[] = {0x00, 0x00, 0x2C, 0xBC};
-  uint8_t accelY[] = {0x00, 0x00, 0x80, 0x3C};
-  uint8_t accelZ[] = {0x00, 0x48, 0x80, 0x3F};
-  uint8_t gyroX[] = {0x00, 0xD0, 0x04, 0xBF};
-  uint8_t gyroY[] = {0x00, 0x3A, 0x9D, 0xBF};
-  uint8_t gyroZ[] = {0x00, 0xC0, 0xDA, 0x3D};
-
-  float accelX_f, accelY_f, accelZ_f;
-  float gyroX_f, gyroY_f, gyroZ_f;
 
   /* USER CODE END 1 */
 
@@ -140,21 +94,17 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_CAN_Init();
-  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+  txHeader.DLC = 8;
+  txHeader.ExtId = 0;
+  txHeader.IDE = CAN_ID_STD;
+  txHeader.RTR = CAN_RTR_DATA;
+  txHeader.TransmitGlobalTime = DISABLE;
+  txHeader.StdId = CAN_MSG_MAKE_STD_ID_TX(0x03);
+
   HAL_CAN_Start(&hcan);
-  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
-
-  HAL_UART_Receive_IT(&huart2, UARTrxBuffer, 1);
-
-  // Prueba de convertir arreglo de uint8_t en un float
-  memcpy(&accelX_f, accelX, 4);
-  memcpy(&accelY_f, accelY, 4);
-  memcpy(&accelZ_f, accelZ, 4);
-  memcpy(&gyroX_f, gyroX, 4);
-  memcpy(&gyroY_f, gyroY, 4);
-  memcpy(&gyroZ_f, gyroZ, 4);
+  HAL_CAN_AddTxMessage(&hcan, &txHeader, txData, &txMailbox);
 
   /* USER CODE END 2 */
 
@@ -165,50 +115,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if(newCanMsgs)
-	  {
-		  newCanMsgs = 0;
-		  i = 0;
-		  fifoFillLevel = HAL_CAN_GetRxFifoFillLevel(&hcan, CAN_RX_FIFO0);
-		  while(i < fifoFillLevel)
-		  {
-			  HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rxHeader, rxData);
-			  if( CANmsg_make_from_raw_data(&canMsg, rxData, rxHeader.DLC, rxHeader.StdId) == true )
-			  {
-				  bufferCanMsgs.write(canMsg);
-			  }
-			  i++;
-		  }
-		  HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
-	  }
+	  HAL_Delay(100);
 
-	  if(!bufferCanMsgs.is_empty())
-	  {
-		  bufferCanMsgs.read(&canMsg);
-		  make_uart_msg(&canMsg, uartBuffer, &lenUartBuffer);
-		  HAL_UART_Transmit(&huart2, uartBuffer, lenUartBuffer, TIMEOUT_UART_TX_S);
-	  }
-
-	  if(newUARTmsg)
-	  {
-		newUARTmsg = 0;
-		msgLen = GET_MSG_LEN(UARTrxBuffer);
-
-		if(msgLen > 1)
-		{
-			HAL_UART_Receive(&huart2, &UARTrxBuffer[1], msgLen-1, 100);
-			msgCmd = GET_MSG_CMD(UARTrxBuffer);
-
-			switch(msgCmd)
-			{
-				case CMD_CAN_SEND_START_MSG:
-					HAL_CAN_AddTxMessage(&hcan, &CANmsgSyncHeader, CANmsgSync, &txMailbox);
-
-					break;
-			}
-		}
-		HAL_UART_Receive_IT(&huart2, UARTrxBuffer, 1);
-	  }
   }
   /* USER CODE END 3 */
 }
@@ -301,39 +209,6 @@ static void MX_CAN_Init(void)
 }
 
 /**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART2_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART2_Init 0 */
-
-  /* USER CODE END USART2_Init 0 */
-
-  /* USER CODE BEGIN USART2_Init 1 */
-
-  /* USER CODE END USART2_Init 1 */
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART2_Init 2 */
-
-  /* USER CODE END USART2_Init 2 */
-
-}
-
-/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -352,28 +227,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-void make_uart_msg(CANmsg_t *canMsg, uint8_t *uartBuffer, uint32_t *lenUartBuffer)
-{
-	memcpy(uartBuffer, &canMsg->stdID, 4);
-	memcpy(&uartBuffer[4], &canMsg->lenPayload, 4);
-	memcpy(&uartBuffer[8], canMsg->payload, canMsg->lenPayload);
-	uartBuffer[canMsg->lenPayload + 8] = '\r';
-	uartBuffer[canMsg->lenPayload + 9] = '\n';
-
-	(*lenUartBuffer) = canMsg->lenPayload + 10;
-}
-
-void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
-{
-	newCanMsgs = 1;
-	HAL_CAN_DeactivateNotification(hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
-}
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	newUARTmsg = 1;
-}
 
 /* USER CODE END 4 */
 

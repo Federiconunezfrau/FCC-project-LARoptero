@@ -13,14 +13,14 @@
 #define BIAS_ACCEL_Z 0.5
 #define BIAS_ACCEL_X 0.5
 
-#define MIN_RND_TICK_FAULT_INJECT 20
-#define MAX_RND_TICK_FAULT_INJECT 100
+#define MIN_RND_TICK_FAULT_INJECT 200
+#define MAX_RND_TICK_FAULT_INJECT 1000
 
 #define DELAY_REMOVE_FAULT_INJECTION 10000
 
 static std::default_random_engine generator;
 static std::uniform_int_distribution<uint32_t> randomInt(MIN_RND_TICK_FAULT_INJECT, MAX_RND_TICK_FAULT_INJECT);
-static std::uniform_int_distribution<int32_t> randomJump(-10,10);
+static std::uniform_int_distribution<int32_t> randomJump(-1000,1000);
 
 void faultInjectorIMUbias_constructor(faultInjectorIMUbias_t *me, uint32_t initialDelay)
 {

@@ -1,4 +1,4 @@
-20:49:41 **** Build of configuration Debug for project TT_IMU_Choriboard_IV ****
+23:42:50 **** Build of configuration Debug for project TT_IMU_Choriboard_IV ****
 make -j8 all 
 arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o"
 arm-none-eabi-gcc "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F746xx -c -I../Core/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.o"
@@ -59,15 +59,15 @@ Finished building target: TT_IMU_Choriboard_IV.elf
 arm-none-eabi-size  TT_IMU_Choriboard_IV.elf 
 arm-none-eabi-objdump -h -S TT_IMU_Choriboard_IV.elf  > "TT_IMU_Choriboard_IV.list"
    text	   data	    bss	    dec	    hex	filename
-  43756	    712	   2580	  47048	   b7c8	TT_IMU_Choriboard_IV.elf
+  43772	    712	   2580	  47064	   b7d8	TT_IMU_Choriboard_IV.elf
 Finished building: default.size.stdout
  
 Finished building: TT_IMU_Choriboard_IV.list
  
-20:49:49 **** Incremental Build of configuration Debug for project TT_IMU_Choriboard_IV ****
+23:42:59 **** Incremental Build of configuration Debug for project TT_IMU_Choriboard_IV ****
 make -j8 all 
 arm-none-eabi-size  TT_IMU_Choriboard_IV.elf 
    text	   data	    bss	    dec	    hex	filename
-  43756	    712	   2580	  47048	   b7c8	TT_IMU_Choriboard_IV.elf
+  43772	    712	   2580	  47064	   b7d8	TT_IMU_Choriboard_IV.elf
 Finished building: default.size.stdout
  

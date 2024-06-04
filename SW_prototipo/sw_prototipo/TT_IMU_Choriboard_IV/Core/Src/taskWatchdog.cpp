@@ -14,8 +14,10 @@ void taskWatchdog_constructor(taskWatchdog_t *me, uint32_t delayTicks, uint32_t 
 
 	me->mHiwdg_->Instance = IWDG;
 	me->mHiwdg_->Init.Prescaler = IWDG_PRESCALER_4;
+	//me->mHiwdg_->Init.Prescaler = IWDG_PRESCALER_8;
 	me->mHiwdg_->Init.Window = 4095;
 	me->mHiwdg_->Init.Reload = 9;
+	//me->mHiwdg_->Init.Reload = 4;
 }
 
 void taskWatchdog_destructor(taskWatchdog_t *me)

@@ -16,7 +16,7 @@
 
 // FAULT INJECTION MID AIR ========================
 #define SIMULATE_FAULT_IMU 0
-#define INITIAL_DELAY_MID_AIR 100
+#define INITIAL_DELAY_MID_AIR 1000
 
 #if SIMULATE_FAULT_IMU == 1
 static faultInjectorIMUbias_t _faultInjector;
