@@ -1,0 +1,19 @@
+../Core/Src/main.cpp:151:5:int main()	80	static
+../Core/Src/main.cpp:283:6:void SystemClock_Config()	88	static
+../Core/Src/main.cpp:333:13:void MX_CAN1_Init()	8	static
+../Core/Src/main.cpp:370:13:void MX_ETH_Init()	8	static
+../Core/Src/main.cpp:419:13:void MX_TIM3_Init()	40	static
+../Core/Src/main.cpp:464:13:void MX_USART3_UART_Init()	8	static
+../Core/Src/main.cpp:499:13:void MX_GPIO_Init()	56	static
+../Core/Src/main.cpp:557:6:void Error_Handler()	4	static,ignoring_inline_asm
+../Core/Inc/circ_buffer.h:59:1:circ_buffer<bufferDataType, bufferSize, sizeDataType>::circ_buffer() [with bufferDataType = unsigned char; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Inc/circ_buffer.h:59:1:circ_buffer<bufferDataType, bufferSize, sizeDataType>::circ_buffer() [with bufferDataType = CANmsg_t; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Inc/circ_buffer.h:59:1:circ_buffer<bufferDataType, bufferSize, sizeDataType>::circ_buffer() [with bufferDataType = PCIFmsg_t; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Inc/circ_buffer.h:70:6:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::write(bufferDataType) [with bufferDataType = PCIFmsg_t; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	32	static
+../Core/Inc/circ_buffer.h:70:6:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::write(bufferDataType) [with bufferDataType = unsigned char; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Inc/circ_buffer.h:148:6:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::is_empty() [with bufferDataType = CANmsg_t; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Inc/circ_buffer.h:148:6:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::is_empty() [with bufferDataType = PCIFmsg_t; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Inc/circ_buffer.h:148:6:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::is_empty() [with bufferDataType = unsigned char; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Inc/circ_buffer.h:96:6:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::read(bufferDataType*) [with bufferDataType = unsigned char; long unsigned int bufferSize = 128; sizeDataType = short unsigned int]	16	static
+../Core/Src/main.cpp:566:1:void __static_initialization_and_destruction_0(int, int)	16	static
+../Core/Src/main.cpp:566:1:cpp)	8	static

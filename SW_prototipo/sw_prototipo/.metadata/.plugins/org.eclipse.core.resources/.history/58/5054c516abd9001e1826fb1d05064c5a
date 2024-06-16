@@ -1,0 +1,18 @@
+/*
+ * attitudeEstimator.h
+ *
+ *  Created on: Mar 3, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_ATTITUDEESTIMATOR_H_
+#define INC_ATTITUDEESTIMATOR_H_
+
+
+typedef struct
+{
+	float alpha;
+} attitudeEstimator_t;
+
+
+#endif /* INC_ATTITUDEESTIMATOR_H_ */

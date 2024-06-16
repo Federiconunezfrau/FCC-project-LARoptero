@@ -1,0 +1,14 @@
+../Core/Inc/timeTriggeredUART.h:21:3:timeTriggeredUART_t::timeTriggeredUART_t()	1
+../Core/Src/timeTriggeredUART.cpp:17:6:void timeTriggeredUART_constructor(UART_HandleTypeDef*, uint8_t)	1
+../Core/Src/timeTriggeredUART.cpp:23:17:TTUART_status_t timeTriggeredUART_add_to_queue(uint8_t, uint8_t, uint8_t*)	4
+../Core/Src/timeTriggeredUART.cpp:49:17:TTUART_status_t timeTriggeredUART_send()	3
+../Core/Inc/utils.hpp:67:9:circ_buffer<bufferDataType, bufferSize, sizeDataType>::circ_buffer() [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	1
+../Core/Inc/utils.hpp:161:14:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::is_full() [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	1
+../Core/Inc/utils.hpp:185:22:sizeDataType circ_buffer<bufferDataType, bufferSize, sizeDataType>::copy_from(bufferDataType*, sizeDataType) [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	3
+../Core/Inc/utils.hpp:156:14:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::is_empty() [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	1
+../Core/Inc/utils.hpp:129:18:uint32_t circ_buffer<bufferDataType, bufferSize, sizeDataType>::get_size() [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	1
+../Core/Inc/utils.hpp:167:22:sizeDataType circ_buffer<bufferDataType, bufferSize, sizeDataType>::copy_to(bufferDataType*, sizeDataType) [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	3
+../Core/Inc/utils.hpp:78:14:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::write(bufferDataType) [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	5
+../Core/Inc/utils.hpp:104:14:bool circ_buffer<bufferDataType, bufferSize, sizeDataType>::read(bufferDataType*) [with bufferDataType = unsigned char; long unsigned int bufferSize = 256; sizeDataType = short unsigned int]	4
+../Core/Src/timeTriggeredUART.cpp:71:1:void __static_initialization_and_destruction_0(int, int)	3
+../Core/Src/timeTriggeredUART.cpp:71:1:cpp)	1

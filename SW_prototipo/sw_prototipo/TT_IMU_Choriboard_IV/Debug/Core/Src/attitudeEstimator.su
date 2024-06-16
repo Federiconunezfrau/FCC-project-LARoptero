@@ -1,0 +1,4 @@
+../Core/Src/attitudeEstimator.cpp:15:6:void attitudeEstimator_constructor(float, float)	16	static
+../Core/Src/attitudeEstimator.cpp:31:6:void attitudeEstimator_set_imu_data(IMUData)	12	static
+../Core/Src/attitudeEstimator.cpp:38:6:void attitudeEstimator_update()	24	static
+../Core/Src/attitudeEstimator.cpp:53:6:void attitudeEstimator_read_data(attitudeData_t*)	16	static

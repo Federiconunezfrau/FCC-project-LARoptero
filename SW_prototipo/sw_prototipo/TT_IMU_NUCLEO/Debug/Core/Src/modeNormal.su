@@ -1,0 +1,2 @@
+../Core/Src/modeNormal.cpp:37:6:void normal_mode_run()	200	static
+../Core/Src/modeNormal.cpp:165:6:void HAL_GPIO_EXTI_Callback(uint16_t)	16	static

@@ -1,0 +1,26 @@
+/*
+ * taskEstimateAttitude.h
+ *
+ *  Created on: Mar 3, 2024
+ *      Author: fede
+ */
+
+#ifndef INC_TASKESTIMATEATTITUDE_H_
+#define INC_TASKESTIMATEATTITUDE_H_
+
+#include "timeTriggeredTask.h"
+
+typedef struct
+{
+	timeTriggeredTask_t super;
+	uint32_t mHandleMsg_;
+} taskEstimateAttitude_t;
+
+void taskEstimateAttitude_constructor ( taskEstimateAttitude_t *, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t );
+void taskEstimateAttitude_destructor  ( taskEstimateAttitude_t * );
+void taskEstimateAttitude_start       ( taskEstimateAttitude_t * );
+void taskEstimateAttitude_update      ( taskEstimateAttitude_t * );
+
+
+
+#endif /* INC_TASKESTIMATEATTITUDE_H_ */

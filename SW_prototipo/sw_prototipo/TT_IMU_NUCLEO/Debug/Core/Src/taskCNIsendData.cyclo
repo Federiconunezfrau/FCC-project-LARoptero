@@ -1,0 +1,4 @@
+../Core/Src/taskCNIsendData.cpp:11:6:void taskCNIsendData_constructor(taskCNIsendData_t*, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)	1
+../Core/Src/taskCNIsendData.cpp:18:6:void taskCNIsendData_destructor(taskCNIsendData_t*)	1
+../Core/Src/taskCNIsendData.cpp:24:6:void taskCNIsendData_start(taskCNIsendData_t*)	1
+../Core/Src/taskCNIsendData.cpp:30:6:void taskCNIsendData_update(taskCNIsendData_t*)	1

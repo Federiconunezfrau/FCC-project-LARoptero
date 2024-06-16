@@ -1,0 +1,4 @@
+../Core/Src/taskHeartbeat.cpp:10:6:void taskHeartbeat_constructor(taskHeartbeat_t*, uint32_t, uint32_t, uint32_t, uint32_t, STM32::gpio*)	32	static
+../Core/Src/taskHeartbeat.cpp:16:6:void taskHeartbeat_destructor(taskHeartbeat_t*)	16	static
+../Core/Src/taskHeartbeat.cpp:22:6:void taskHeartbeat_start(taskHeartbeat_t*)	16	static
+../Core/Src/taskHeartbeat.cpp:27:6:void taskHeartbeat_update(taskHeartbeat_t*)	16	static
