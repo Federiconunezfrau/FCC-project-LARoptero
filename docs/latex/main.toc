@@ -1,72 +1,64 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Objetivo}{3}{section.1}%
-\contentsline {section}{\numberline {2}Introducción}{4}{section.2}%
-\contentsline {section}{\numberline {3}Estado del Arte}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{5}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Bus de Comunicaciones}{7}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Comparación de Resultados y Tolerancia a Fallas}{8}{subsubsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{8}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{8}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{9}{subsubsection.3.2.2}%
-\contentsline {section}{\numberline {4}Requerimientos de un Sistema con Tolerancia a Fallas}{13}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Requerimientos Comunes en Sistemas con Redundancias}{13}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Sincronismo de los Nodos}{13}{subsubsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.2}Consenso}{14}{subsubsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.2}Simplificación del Problema}{17}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Uso de Componentes COTS}{18}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Selección del Bus de Comunicaciones de la Computadora de Vuelo}{18}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Descripción del Protocolo CAN}{18}{subsubsection.4.4.1}%
-\contentsline {section}{\numberline {5}Diseño y Construcción de la Computadora de Vuelo}{21}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Funcionalidades y Diagrama en Bloques}{21}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Criterios Generales Para la Selección de Componentes}{22}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Uso de Componentes de Grado Automotriz}{22}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Requerimientos de Conectores}{22}{subsubsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.3}Microcontrolador}{22}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Selección del Componente}{22}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}Requerimientos del Componente}{23}{subsubsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3}Cristal Externo}{23}{subsubsection.5.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.4}Cristal para RTC}{23}{subsubsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.4}Sensor IMU}{23}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Barómetro}{28}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Magnetómetro}{31}{subsection.5.6}%
-\contentsline {subsubsection}{\numberline {5.6.1}Interfaz de Comunicación CAN}{32}{subsubsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.7}Interfaz de Comunicación CAN}{32}{subsection.5.7}%
-\contentsline {subsection}{\numberline {5.8}Circuito de Alimentación}{33}{subsection.5.8}%
-\contentsline {subsection}{\numberline {5.9}Micro SD}{36}{subsection.5.9}%
-\contentsline {subsection}{\numberline {5.10}Interfaz USB}{36}{subsection.5.10}%
-\contentsline {subsection}{\numberline {5.11}Micro Switch}{37}{subsection.5.11}%
-\contentsline {subsection}{\numberline {5.12}LEDs Indicadores}{37}{subsection.5.12}%
-\contentsline {subsection}{\numberline {5.13}Conector para Módulo GPS}{37}{subsection.5.13}%
-\contentsline {subsection}{\numberline {5.14}Conectores para Salidas de PWM}{37}{subsection.5.14}%
-\contentsline {subsection}{\numberline {5.15}Conector para Programación por SWD}{37}{subsection.5.15}%
-\contentsline {subsection}{\numberline {5.16}Conector para Control por Radio}{37}{subsection.5.16}%
-\contentsline {subsection}{\numberline {5.17}Desarrollo del PCB}{37}{subsection.5.17}%
-\contentsline {subsubsection}{\numberline {5.17.1}Requerimientos de Manufacturabilidad}{37}{subsubsection.5.17.1}%
-\contentsline {subsubsection}{\numberline {5.17.2}Requerimientos de layout del sensor IMU}{37}{subsubsection.5.17.2}%
-\contentsline {subsubsection}{\numberline {5.17.3}Layout del Regulador Lineal}{38}{subsubsection.5.17.3}%
-\contentsline {subsubsection}{\numberline {5.17.4}Comunicación con el Slot para Tarjeta Micro SD}{38}{subsubsection.5.17.4}%
-\contentsline {subsubsection}{\numberline {5.17.5}Comunicación USB}{38}{subsubsection.5.17.5}%
-\contentsline {section}{\numberline {6}Demostración del Funcionamiento de la Computadora de Vuelo}{39}{section.6}%
-\contentsline {section}{\numberline {7}Diseño Tolerante a Fallas de Hardware RE ACOMODAR EN OTRA SECCIÓN}{40}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Introducción al Análisis de Tolerancia a Fallas}{40}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Causales de Fallas de Hardware y Modelo de Fallas Arbitrarias}{41}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Tolerancia a Fallas a Partir de Redundancias}{41}{subsection.7.3}%
-\contentsline {subsubsection}{\numberline {7.3.1}Redundancia Doble}{42}{subsubsection.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.2}Redundancia Triple}{43}{subsubsection.7.3.2}%
-\contentsline {subsection}{\numberline {7.4}Redundancia Cuádruple: \textit {The Byzantine Generals Problem}}{44}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Presentación del Problema}{44}{subsubsection.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.4.2}Solución al Problema}{45}{subsubsection.7.4.2}%
-\contentsline {subsubsection}{\numberline {7.4.3}Relación del Problema con la Tolerancia a Fallas}{47}{subsubsection.7.4.3}%
-\contentsline {section}{\numberline {8}Arquitectura de Redundancia Propuesta RE ACOMODAR EN OTRA SECCIÓN}{48}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Simplificación del Problema de Tolerancia a Fallas Arbitrarias de Hardware}{48}{subsection.8.1}%
-\contentsline {subsubsection}{\numberline {8.1.1}Sincronismo de los nodos}{48}{subsubsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.2}Arquitectura Del Sistema: \textit {The Time-Triggered Architecture}}{49}{subsection.8.2}%
-\contentsline {subsubsection}{\numberline {8.2.1}Bus de Comunicaciones}{51}{subsubsection.8.2.1}%
-\contentsline {subsubsection}{\numberline {8.2.2}Nodos}{52}{subsubsection.8.2.2}%
-\contentsline {subsubsection}{\numberline {8.2.3}Scheduler}{52}{subsubsection.8.2.3}%
-\contentsline {subsubsection}{\numberline {8.2.4}Global Time y Sincronización}{52}{subsubsection.8.2.4}%
-\contentsline {section}{\numberline {9}Conclusiones}{55}{section.9}%
-\contentsline {section}{\numberline {10}Agradecimientos}{56}{section.10}%
-\contentsline {section}{Apéndices}{57}{section*.62}%
-\contentsline {section}{Apéndice A: Circuito Esquemático}{57}{section*.63}%
-\contentsline {section}{Referencias}{58}{section*.64}%
+\contentsline {section}{\numberline {1}Objetivo}{4}{section.1}%
+\contentsline {section}{\numberline {2}Introducción}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Computadora de Vuelo}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Tolerancia a Fallas y Redundancias}{6}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Estado del Arte}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{8}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Comparación de Resultados y Tolerancia a Fallas}{9}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Bus de Comunicaciones}{10}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{12}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{12}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{13}{subsubsection.3.2.2}%
+\contentsline {section}{\numberline {4}Análisis de Sistemas Tolerantes a Fallas en General}{17}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Características de Sistemas Tolerantes a Fallas}{17}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Uso de Redundancias}{18}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Redundancia Doble}{18}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Redundancia Triple}{19}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Necesidad del Sincronismo entre Réplicas}{20}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Necesidad del Consenso entre Réplicas}{21}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Simplificación del Problema}{23}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Diseño y Construcción de la Computadora de Vuelo}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Antecedentes en el Desarrollo de la Computadora de Vuelo}{25}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Criterios Generales Para la Selección de Componentes}{27}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Uso de Componentes de Grado Automotriz}{27}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Longevidad}{28}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Requerimientos de Conectores}{28}{subsubsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.3}Circuitos y Componentes Seleccionados}{28}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Microcontrolador}{29}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Sensor IMU}{30}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Barómetro}{33}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Magnetómetro}{35}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.5}Interfaz de Comunicación CAN}{36}{subsubsection.5.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.6}Circuito de Alimentación}{41}{subsubsection.5.3.6}%
+\contentsline {subsubsection}{\numberline {5.3.7}Micro SD}{42}{subsubsection.5.3.7}%
+\contentsline {subsubsection}{\numberline {5.3.8}Interfaz USB}{44}{subsubsection.5.3.8}%
+\contentsline {subsubsection}{\numberline {5.3.9}Conector para Módulo GPS}{45}{subsubsection.5.3.9}%
+\contentsline {subsubsection}{\numberline {5.3.10}Conectores para Salidas de PWM}{45}{subsubsection.5.3.10}%
+\contentsline {subsubsection}{\numberline {5.3.11}Conectores para Control por Radio}{46}{subsubsection.5.3.11}%
+\contentsline {subsubsection}{\numberline {5.3.12}Conector para Programación y Debugging por SWD}{47}{subsubsection.5.3.12}%
+\contentsline {subsubsection}{\numberline {5.3.13}Otras Funcionalidades}{47}{subsubsection.5.3.13}%
+\contentsline {subsection}{\numberline {5.4}Desarrollo del PCB}{48}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Requerimientos de Manufacturabilidad}{48}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Requerimientos de Posicionamiento del Sensor IMU}{48}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Características del PCB}{49}{subsubsection.5.4.3}%
+\contentsline {subsubsection}{\numberline {5.4.4}Comunicación con el Slot para Tarjeta Micro SD}{51}{subsubsection.5.4.4}%
+\contentsline {subsubsection}{\numberline {5.4.5}Comunicación USB}{52}{subsubsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.6}Layout del Regulador Lineal}{53}{subsubsection.5.4.6}%
+\contentsline {subsection}{\numberline {5.5}Diagrama en Bloques y PCB Final}{54}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Implementación del Sistema Tolerante a Fallas}{57}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Descripción de la Arquitectura Propuesta}{57}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Implementación en Firmware}{61}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Scheduler}{62}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Comunicación a Través del Bus}{63}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Sincronización}{64}{subsubsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.3}Pruebas Realizadas}{65}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Funcionamiento Sin Fallas}{67}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Sesgo en Valores de Giróscopo}{74}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Saltos Aleatorios en Valores de Giróscopo}{76}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Medición Invariante de Acelerómetros y Giróscopos}{77}{subsubsection.6.3.4}%
+\contentsline {section}{\numberline {7}Conclusiones}{80}{section.7}%
+\contentsline {section}{Apéndices}{81}{section*.90}%
+\contentsline {section}{Apéndice A: Circuito Esquemático}{81}{section*.91}%
+\contentsline {section}{Apéndice B: PCB Final}{86}{section*.92}%
+\contentsline {section}{Referencias}{88}{section*.93}%

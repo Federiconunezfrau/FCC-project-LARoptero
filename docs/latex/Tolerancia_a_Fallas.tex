@@ -1,6 +1,6 @@
-\section{Diseño Tolerante a Fallas de Hardware RE ACOMODAR EN OTRA SECCIÓN}
+\section*{Diseño Tolerante a Fallas de Hardware RE ACOMODAR EN OTRA SECCIÓN}
 
-\subsection{Introducción al Análisis de Tolerancia a Fallas}\label{subsec:introduccion_al_analisis_de_tolerancia_a_fallas}
+\subsection*{Introducción al Análisis de Tolerancia a Fallas}\label{subsec:introduccion_al_analisis_de_tolerancia_a_fallas}
 
 En los últimos años se ha incrementado mucho la presencia de UAVs en espacio aéreo civil. Debido a esto, se plantea que los UAVs deberían presentar características que permitan un funcionamiento correcto, tolerante a fallas. Como consecuencias posibles, el hecho de volar en espacio aéreo civil puede llegar a causar daño físico a personas, si es que un vehículo presenta una falla y por ejemplo pierde el control. Otra de las posibles consecuencias tiene que ver con los costos que puede ocasionar una falla en una misión relacionada a una actividad laboral. El hecho de tener que repetir la misión puede traer mayores costos para la actividad en cuestión.
 
@@ -51,7 +51,7 @@ A modo de ejemplo, una \textbf{falla en un sensor de la computadora de vuelo pue
 
 Aquí se habla de falla en un sensor como algo general. Un sensor podría fallar de muchas maneras y debido a muchas razones. Por ejemplo, puede dejar de funcionar por un defecto propio del componente, puede entregar lecturas erróneas debido a interferencias electromagnéticas, por efectos de la temperatura, falta de calibración, etc. Cada uno de estos requeriría la aplicación de un mecanismo tolerante a fallas.
 
-\subsection{Causales de Fallas de Hardware y Modelo de Fallas Arbitrarias}
+\subsection*{Causales de Fallas de Hardware y Modelo de Fallas Arbitrarias}
 
 Uno de los métodos para aplicar mecanismos de tolerancia a fallas consiste en hacer un análisis de los posibles modos de falla. Un ejemplo es el del análisis \textit{Failure Modes and Effects Analysis} (FMEA). Este consiste en realizar un análisis exhaustivo de los posibles modos de falla más probables y sus posibles efectos en el sistema. En función de este análisis, se toman medidas para tolerar las fallas más críticas. El objetivo de este tipo de análisis suele ser demostrar ante alguna autoridad ceritifcante, que la confianza del sistema se mantiene por encima de cierto valor. Este tipo de análisis suele consumir mucho tiempo y esfuerzo, lo que se traduce en un mayor costo del desarrollo \cite{lala1994architectural}.
 
@@ -65,11 +65,11 @@ Dado que no se asume un modo de falla del hardware, no se requiere un análisis 
 
 A priori, puede parecer que desarrollar un sistema tolerante a fallas arbitrarias representa un trabajo sumamente complejo. La manera de implementar un sistema tolerante a fallas bizantinas es a través del uso de redundancias. Este resultado se toma a partir de un problema teórico denominado \textit{The Byzantine Generals Problem} \cite{lamport2019byzantine}, el cual se presentará más adelante.
 
-\subsection{Tolerancia a Fallas a Partir de Redundancias}
+\subsection*{Tolerancia a Fallas a Partir de Redundancias}
 
 La principal técnica de tolerancia a fallas es el uso de redundancias \cite{nelson1990fault}\cite{prasad1989fault}\cite{lala1994architectural}\cite{kopetz2003time}. Esto quiere decir, que se replica el hardware en el sistema y cada réplica realiza la misma tarea en paralelo. De esta forma, si una de las réplicas presenta una falla (arbitraria por ejemplo), esta puede detectarse a partir de la comparación con las demás réplicas, o incluso pasar desapercibida. Utilizando la nomenclatura definida en la sección \ref{subsec:introduccion_al_analisis_de_tolerancia_a_fallas}, que una falla pase desapercibida quiere decir que no se manifiesta como un error, sino que esta es contenida. A continuación se presentan algunas arquitecturas redundantes para la tolerancia a fallas.
 
-\subsubsection{Redundancia Doble}
+\subsubsection*{Redundancia Doble}
 
 Una arquitectura simple es la redundancia doble. En este tipo de sistemas, dos nodos de un sistema funcionan en paralelo y comparan sus resultados. La comparación permite detectar si los resultados difieren entre sí, lo que se traduce en que ocurrió un error.
 
@@ -100,7 +100,7 @@ Este tipo de arquitectura permite detectar si ocurrió un error, pero no permite
 
 Debido a que no se puede saber cuál de las dos CPUs cometió el error, esta arquitectura plantea que en el caso en el que la comparación entre ambas CPUs genere una discrepancia en los resultados, cada una de ellas deben ejecutar un algoritmo interno, para detectar si ellas fueron las que cometieron el error o no. En \cite{zhang2015dual} y en \cite{SolanoPerez2019} se pueden encontrar proyectos de redundancia doble para UAVs.
 
-\subsubsection{Redundancia Triple}
+\subsubsection*{Redundancia Triple}
 
 Esta arquitectura puede encontrarse en la literatura con el nombre \textit{Triple Modular Redundant (TMR) Architecture} \cite{baleani2003fault}\cite{nelson1990fault}\cite{prasad1989fault}\cite{lyons1962use}. Esta arquitectura consiste en utilizar tres computadoras en paralelo, las cuales computan los mismos resultados. Luego, se comparan los resultados. Se asume que solamente 1 de las 3 presentará una falla a la vez. En dicho caso, los resultados de dos computadoras serán iguales y la de la tercera será distinto, por lo que solamente se descarta el resultado erróneo. En la figura \ref{fig:3_5_TMR} se muestra un diagrama con la arquitectura TMR. Una diferencia de esta arquitectura respecto de la doble redundancia, es el hecho de que puede detectarse cuál de las computadoras falló y además, no es necesario que todas las computadoras ejecuten una rutina para verificar si cometieron el error o no. Esto resulta especialmente útil en sistemas de tiempo real, donde no puede detenerse el sistema para realizar una verificación interna. Esto se denomina \textit{Fault Masking}.
 
@@ -218,11 +218,11 @@ Como medida para evitar esto último, los bloques votantes pueden integrarse den
 
 % Podría argumentarse que es demasiado pesimista pensar que la FCC1 puede producir la misma falla 2 veces de manera consecutiva, ya que existe una baja probabilidad de que ello suceda. Sin embargo, la situación planteada en esta sección puede tratarse como un tipo de falla antes mencionado, la falla bizantina, ya que contempla fallas de hardware que se manifiestan como comportamientos arbitrarios. El ejemplo presentado en esta sección, se corresponde con un comportamiento arbitrario.
 
-\subsection{Redundancia Cuádruple: \textit{The Byzantine Generals Problem}}
+\subsection*{Redundancia Cuádruple: \textit{The Byzantine Generals Problem}}
 
 En las secciones anteriores se habla de un modelo de falla de hardware arbitraria, denominada falla bizantina. El nombre proviene de un problema denominado \textit{The Byzantine Generals Problem}, formalizado en \cite{lamport2019byzantine}. Este paper plantea un escenario que sirve como base para el análisis de fallas arbitrarias. En esta sección, se presenta brevemente el problema y su relación con la tolerancia a fallas. El análisis completo puede encontrarse en el trabajo original \cite{lamport2019byzantine}. Otros trabajos que tratan el mismo problema son \cite{pease1980reaching} y \cite{wensley1978sift}. Este último, presenta el diseño de una computadora de vuelo tolerante a fallas que utiliza los resultados del \textit{Byzantine Generals Problem} para realizar distintas tareas de redundancia.
 
-\subsubsection{Presentación del Problema}
+\subsubsection*{Presentación del Problema}
 
 El secenario que se plantea es el siguiente: un grupo de generales, cada uno liderando su respectivo ejército, se encuentran rodeando una ciudad enemiga. Todos los generales deben ponerse de acuerdo, respecto de si la mejor decisión es atacar la ciudad o retirarse. Independientemente de cuál sea la decisión, todos deben tomar la misma decisión. 
 
@@ -261,7 +261,7 @@ Cada general vota por atacar o por retirarse, y la decisión final será la que 
 
 Esto llevará a que el General 1 ataque mientras que el General 2 se retire. El error fue causado por la presencia del traidor, el General 3.
 
-\subsubsection{Solución al Problema}
+\subsubsection*{Solución al Problema}
 
 El paper plantea una solución para este problema, pero que solamente es válida en el caso en el que se tienen $m$ traidores y al menos $3m + 1$ generales en total. En la figura \ref{fig:Byzantine_Generals_Problem_2} se muestra un caso para 4 generales y 1 traidor. El General 1 es el traidor y le envía información diferente a cada general.
 
@@ -283,7 +283,7 @@ Como fue mencionado, para llegar a una decisión común, todos los generales deb
 
 Al lado de cada General, se muestra un vector que contiene los mensajes informados por los otros Generales, respecto del voto del General 1. Lo que se muestra es que en este caso, los Generales leales logran ponerse de acuerdo en que el General 1 dijo ``Atacar'', es decir, llegan a un consenso. Para continuar con el algoritmo, se debe repetir el mismo procedimiento de intercambio de mensajes para los otros tres generales. Al finalizar todos los intercambios de mensajes, los Generales leales tendrán la misma información respecto a los votos de sus pares y llegarán a la misma decisión final.
 
-\subsubsection{Relación del Problema con la Tolerancia a Fallas}
+\subsubsection*{Relación del Problema con la Tolerancia a Fallas}
 
 Si bien el análisis del problema se plantea como un juego, la motivación surge de realizar un análisis de tolerancia a fallas a partir de redundancias. En \cite{wensley1978sift}, los mismos autores de \textit{The Byzantine Generals Problem} presentan un trabajo de diseño y análisis de una computadora de vuelo tolerante a fallas. Este es anterior a la formalización del problema, pero menciona que la necesidad del consenso entre cada nodo de la red redundante, es un requerimiento para aplicar los mecanismos de tolerancia a fallas correctamente.
 

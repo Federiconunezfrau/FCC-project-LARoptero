@@ -7,11 +7,8 @@ A level-1 auxiliary file: Introduccion.aux
 A level-1 auxiliary file: Estado_del_Arte.aux
 A level-1 auxiliary file: Requerimientos_Tolerancia_Fallas.aux
 A level-1 auxiliary file: Diseno_y_Construccion_de_la_Computadora_de_Vuelo.aux
-A level-1 auxiliary file: Demostracion_del_Funcionamiento_de_la_Computadora_de_Vuelo.aux
-A level-1 auxiliary file: Tolerancia_a_Fallas.aux
 A level-1 auxiliary file: Arquitectura_Propuesta.aux
 A level-1 auxiliary file: Conclusiones.aux
-A level-1 auxiliary file: Agradecimientos.aux
 A level-1 auxiliary file: Apendices.aux
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
@@ -28,50 +25,50 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 13820 items from 5000.
+Reallocated field_info (elt_size=4) to 15640 items from 5000.
 Database file #1: main-blx.bib
 Database file #2: bib_file.bib
 Biblatex version: 3.17
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 63 entries,
+You've used 76 entries,
             6399 wiz_defined-function locations,
-            1539 strings with 17988 characters,
-and the built_in function-call counts, 318347 in all, are:
-= -- 23497
-> -- 5393
-< -- 1615
-+ -- 8288
-- -- 2296
-* -- 19727
-:= -- 31345
+            1598 strings with 20734 characters,
+and the built_in function-call counts, 381877 in all, are:
+= -- 28485
+> -- 6001
+< -- 1965
++ -- 10009
+- -- 2475
+* -- 23244
+:= -- 37379
 add.period$ -- 0
-call.type$ -- 63
-change.case$ -- 946
-chr.to.int$ -- 219
-cite$ -- 124
-duplicate$ -- 33283
-empty$ -- 30904
-format.name$ -- 2308
-if$ -- 66117
+call.type$ -- 76
+change.case$ -- 1202
+chr.to.int$ -- 249
+cite$ -- 150
+duplicate$ -- 40618
+empty$ -- 37174
+format.name$ -- 2624
+if$ -- 79275
 int.to.chr$ -- 0
-int.to.str$ -- 144
+int.to.str$ -- 170
 missing$ -- 0
-newline$ -- 1322
-num.names$ -- 2153
-pop$ -- 21070
+newline$ -- 1595
+num.names$ -- 2495
+pop$ -- 25577
 preamble$ -- 1
-purify$ -- 1156
+purify$ -- 1453
 quote$ -- 0
-skip$ -- 9474
+skip$ -- 11190
 stack$ -- 0
-substring$ -- 41880
-swap$ -- 6981
-text.length$ -- 1086
-text.prefix$ -- 1
+substring$ -- 50427
+swap$ -- 8387
+text.length$ -- 1250
+text.prefix$ -- 4
 top$ -- 1
-type$ -- 2123
+type$ -- 2565
 warning$ -- 0
-while$ -- 3570
+while$ -- 4316
 width$ -- 0
-write$ -- 1260
+write$ -- 1520

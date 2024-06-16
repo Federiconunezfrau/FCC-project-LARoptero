@@ -126,7 +126,8 @@
   year={1978},
   publisher={IEEE}
 }
-@article{wikipedia-contributors-2023,
+
+article{wikipedia-contributors-2023,
 	author = {Wikipedia contributors},
 	journal = {Wikipedia},
 	month = {7},
@@ -291,7 +292,7 @@
 }
 
 @article{zhang2020architecture,
-  title={Architecture design of distributed redundant flight control computer based on time-triggered buses for UAVs},
+  title={{Architecture design of distributed redundant flight control computer based on time-triggered buses for UAVs}},
   author={Zhang, Xunying and Zhao, Xiaodong},
   journal={IEEE Sensors Journal},
   volume={21},
@@ -369,10 +370,69 @@ institution = {International Organization for Standardization}
 	year = {2022},
 }
 
+@misc{AN4661,
+  organization = "STMicroelectronics", 
+	month = {02},
+	title = {{Getting Started with STM32F7 Series MCU Hardware Development}},
+	year = {2017},
+}
+
 @misc{longevity_ST,
 	title = {{Product Longevity - STMicroelectronics}},
 	url = {https://www.st.com/content/st_com/en/about/quality-and-reliability/product-longevity.html#10-year-longevity},
 }
+
+@book{samek2008practical,
+  title={Practical UML statecharts in C/C++: event-driven programming for embedded systems},
+  author={Samek, Miro},
+  year={2008},
+  publisher={CRC Press}
+}
+
+@book{Pose2014,
+  title={Desarrollo de algoritmos de navegación y control para un vehículo aéreo autónomo.},
+  author={Claudio Pose},
+  publisher={Tesis de Grado, Facultad de Ingeniería de la Universidad de Buenos Aires},
+  year={2014}
+}
+
+@ARTICLE{9501400,
+  author={Einspieler, Sascha and Rathakrishnan, Nirmal and Prabhakara, Arpitha and Steinwender, Benjamin and Elmenreich, Wilfried},
+  journal={IEEE Transactions on Systems, Man, and Cybernetics: Systems}, 
+  title={High Accuracy Software-Based Clock Synchronization Over CAN}, 
+  year={2022},
+  volume={52},
+  number={7},
+  pages={4438-4446},
+  keywords={Synchronization;Clocks;Delays;Jitter;Software;Transceivers;Hardware;Accuracy;clock;controller area network (CAN);real-time;software;synchronization},
+  doi={10.1109/TSMC.2021.3096597}
+}
+
+@inproceedings{Fulton2014AirborneEH,
+  title={Airborne Electronic Hardware Design Assurance: A Practitioner's Guide to RTCA/DO-254},
+  author={Randall Fulton and R. I. Vandermolen},
+  year={2014},
+  url={https://api.semanticscholar.org/CorpusID:111395313}
+}
+
+@INPROCEEDINGS{821966,
+  author={Loegering, G. and Evans, D.},
+  booktitle={Gateway to the New Millennium. 18th Digital Avionics Systems Conference. Proceedings (Cat. No.99CH37033)}, 
+  title={The evolution of the Global Hawk and MALD avionics systems}, 
+  year={1999},
+  volume={2},
+  number={},
+  pages={6.A.1-6.A.1},
+  keywords={Aerospace electronics;Aerospace control;Unmanned aerial vehicles;Costs;Analog computers;Real time systems;Software design;Research and development;Reconnaissance;Contracts},
+  doi={10.1109/DASC.1999.821966}}
+
+@book{balanis2016antenna,
+  title={Antenna theory: analysis and design},
+  author={Balanis, Constantine A},
+  year={2016},
+  publisher={John wiley \& sons}
+}
+
 
 =======================================================================
 Datasheets de components:
@@ -385,6 +445,23 @@ STM32F746ZG
 	year = {2016},
 	url = {https://www.st.com/en/microcontrollers-microprocessors/stm32f746zg.html#documentation},
 }
+
+@misc{RM0385,
+  organization = "STMicroelectronics", 
+	month = {06},
+	title = {{STM32F75xxx and STM32F74xxx advanced Arm®-based 32-bit MCUs.}},
+	year = {2018},
+	url = {https://www.st.com/resource/en/reference_manual/rm0385-stm32f75xxx-and-stm32f74xxx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf},
+}
+
+@misc{STM32F746_errata,
+  organization = "STMicroelectronics", 
+	month = {06},
+	title = {{STM32F74xxx and STM32F75xxx device limitations.}},
+	year = {2019},
+	url = {https://www.st.com/resource/en/errata_sheet/es0290-stm32f74xxx-and-stm32f75xxx-device-limitations-stmicroelectronics.pdf},
+}
+
 
 IMU ICM42688
 @misc{ICM42688pDatasheet,
@@ -416,6 +493,14 @@ IMU ICM42688
     number        = "APP 5604",
     year          =  2013,
     month         =  3
+}
+
+@manual{IMUpcb_4,
+    organization  = "TDK",
+    title         = "MEMS Motion Handling and Assembly Guide",
+    number        = "AN-IVS-0002A-00",
+    year          =  2013,
+    month         =  10
 }
 
 Barómetro
@@ -507,8 +592,98 @@ Regulador lineal
     month         =  4
 }
 
+@manual{ROHM_thermal,
+    organization  = "ROHM Semiconductor",
+    title         = "PCB Layout Thermal Design Guide",
+    number        = "No .65AN002E Rev.001",
+    year          =  2022,
+    month         =  6
+}
+
+@manual{AN1028_thermal,
+    organization  = "Texas Instruments",
+    title         = "AN-1028 Maximum Power Enhancement Techniques for Power Packages (Rev. B)",
+    number        = "SNVA036B",
+    year          =  2013,
+    month         =  5
+}
+
+@manual{SLVAE85,
+    organization  = "Texas Instruments",
+    title         = "An empirical analysis of the impact of board layout on LDO thermal performance",
+    number        = "SLVAE85",
+    year          =  2019,
+    month         =  2
+}
+
 @online{HolybroPM02PowerModule,
   title = {Holybro PM02 V3 Power Module},
   url = {https://docs.px4.io/main/en/power_module/holybro_pm02.html},
   urldate = {2023-09-13}
+}
+
+@inproceedings{adams2011survey,
+  title={A survey of unmanned aerial vehicle (UAV) usage for imagery collection in disaster research and management},
+  author={Adams, Stuart M and Friedland, Carol J},
+  booktitle={9th international workshop on remote sensing for disaster response},
+  volume={8},
+  pages={1--8},
+  year={2011}
+}
+
+@article{villa2016overview,
+  title={An overview of small unmanned aerial vehicles for air quality measurements: Present applications and future prospectives},
+  author={Villa, Tommaso Francesco and Gonzalez, Felipe and Miljievic, Branka and Ristovski, Zoran D and Morawska, Lidia},
+  journal={Sensors},
+  volume={16},
+  number={7},
+  pages={1072},
+  year={2016},
+  publisher={MDPI}
+}
+
+@article{mcgonigle2008unmanned,
+  title={Unmanned aerial vehicle measurements of volcanic carbon dioxide fluxes},
+  author={McGonigle, AJS and Aiuppa, A and Giudice, G and Tamburello, G and Hodson, AJ and Gurrieri, S},
+  journal={Geophysical research letters},
+  volume={35},
+  number={6},
+  year={2008},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{luque2014power,
+  title={Power line inspection via an unmanned aerial system based on the quadrotor helicopter},
+  author={Luque-Vega, Luis F and Castillo-Toledo, Bernardino and Loukianov, Alexander and Gonzalez-Jimenez, Luis Enrique},
+  booktitle={MELECON 2014-2014 17th IEEE Mediterranean electrotechnical conference},
+  pages={393--397},
+  year={2014},
+  organization={IEEE}
+}
+
+@misc{ARM_SWD_connector,
+	title = {{Documentation – Arm Developer}},
+	url = {https://developer.arm.com/documentation/ddi0314/h/Serial-Wire-Debug-and-JTAG-Trace-Connector/About-the-SWD-and-JTAG-trace-connector?lang=en},
+}
+
+@misc{Spektrum_spec,
+	title = {{Specification for Spektrum Remote Receiver Interfacing}},
+	url = {https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf},
+}
+
+@book{ott2011electromagnetic,
+  title={Electromagnetic compatibility engineering},
+  author={Ott, Henry W},
+  year={2011},
+  publisher={John Wiley \& Sons}
+}
+
+@misc{GPS_CAN,
+	title = {{DroneCAN M8N GPS}},
+	url = {https://holybro.com/products/dronecan-m8n-gps},
+}
+
+@misc{ardupilot_ESC_CAN,
+	title = {{DroneCAN ESCs — Copter  documentation}},
+	url = {https://ardupilot.org/copter/docs/common-uavcan-escs.html},
 }

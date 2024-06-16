@@ -1,36 +1,37 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Estado del Arte}{5}{section.3}\protected@file@percent }
-\newlabel{sec:estado_del_arte}{{3}{5}{Estado del Arte}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{5}{subsection.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Arquitectura del sistema principal de vuelo, conformado por varias computadoras en una configuración redundante. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{5}{figure.caption.3}\protected@file@percent }
+\providecommand{\transparent@use}[1]{}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Estado del Arte}{8}{section.3}\protected@file@percent }
+\newlabel{sec:estado_del_arte}{{3}{8}{Estado del Arte}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Redundancias en Sistemas de Control de Vuelo en Aviones}{8}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Esquema simplificado donde se muestran los componentes del sistema de control de vuelo de un avión. Tanto los comandos enviados por el piloto, como los sensores y los actuadores se encuentran conectados a la computadora de vuelo. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{8}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:Boeing_777_diagrama}{{1}{5}{Arquitectura del sistema principal de vuelo, conformado por varias computadoras en una configuración redundante. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo típico en aviones. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{6}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:diagrama_general_fly_by_wire}{{2}{6}{Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo típico en aviones. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Bus de Comunicaciones}{7}{subsubsection.3.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {yeh1996triple}.\relax }}{7}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:ARINC_629_bus}{{3}{7}{Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \cite {yeh1996triple}.\relax }{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Comparación de Resultados y Tolerancia a Fallas}{8}{subsubsection.3.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }}{8}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:votacion_sensores}{{4}{8}{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en próximas mediciones o informar al piloto.\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{8}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{8}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \blx@tocontentsinit {0}\cite {embention-2023}.\relax }}{9}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:Veronte_Embention}{{5}{9}{Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \cite {embention-2023}.\relax }{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{9}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Imagen que demuestra la sincronización entre 3 microcontroladores que realizan las mismas tareas en paralelo. La imagen se extrajo de \blx@tocontentsinit {0}\cite {hiergeist2017internal}.\relax }}{10}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:frame_lock_approach}{{6}{10}{Imagen que demuestra la sincronización entre 3 microcontroladores que realizan las mismas tareas en paralelo. La imagen se extrajo de \cite {hiergeist2017internal}.\relax }{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A pesar de que los 3 módulos redundantes funcionen correctamente, una falla del árbitro se traduce directamente en un error en el sistema. Esto lo vuelve un punto singular de falla.\relax }}{11}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:falla_arbitro}{{7}{11}{A pesar de que los 3 módulos redundantes funcionen correctamente, una falla del árbitro se traduce directamente en un error en el sistema. Esto lo vuelve un punto singular de falla.\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Diagrama en bloques del sistema de redundancia doble. Las CPU1 y CPU2 comparan sus resultados y envían sus salidas al bloque \textit  {Output control}. A través de un bloque árbitro se selecciona a cuál de las dos CPU será la que controle los actuadores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {zhang2015dual}.\relax }}{11}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:FCC_dual_FPGA}{{8}{11}{Diagrama en bloques del sistema de redundancia doble. Las CPU1 y CPU2 comparan sus resultados y envían sus salidas al bloque \textit {Output control}. A través de un bloque árbitro se selecciona a cuál de las dos CPU será la que controle los actuadores. La imagen se extrajo de \cite {zhang2015dual}.\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Diagrama en bloques del sistema redundante de \blx@tocontentsinit {0}\cite {wang2008development}. Cada uno de los nodos tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit  {Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.\relax }}{12}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:RS_485_sync}{{9}{12}{Diagrama en bloques del sistema redundante de \cite {wang2008development}. Cada uno de los nodos tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit {Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.\relax }{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Arquitectura de la computadora de vuelo utilizada en \blx@tocontentsinit {0}\cite {thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit  {Electronic Speed Controller} (ESC).\relax }}{12}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:ROS_redundancy}{{10}{12}{Arquitectura de la computadora de vuelo utilizada en \cite {thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit {Electronic Speed Controller} (ESC).\relax }{figure.caption.12}{}}
+\newlabel{fig:avion_FBW}{{1}{8}{Esquema simplificado donde se muestran los componentes del sistema de control de vuelo de un avión. Tanto los comandos enviados por el piloto, como los sensores y los actuadores se encuentran conectados a la computadora de vuelo. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Comparación de Resultados y Tolerancia a Fallas}{9}{subsubsection.3.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo. Tanto los sensores, como los actuadores, los accionamientos del piloto y las computadoras de vuelo presentan redundancias para incrementar el nivel de seguridad. Todas las comunicaciones se llevan a cabo a través de buses de comunicación, los cuales también presentan redundancias. La imagen se extrajo de \blx@tocontentsinit {0}\cite {collinson2023introduction}.\relax }}{10}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:diagrama_general_fly_by_wire}{{2}{10}{Se muestra de manera general las conexiones entre los distintos elementos del sistema de control de vuelo. Tanto los sensores, como los actuadores, los accionamientos del piloto y las computadoras de vuelo presentan redundancias para incrementar el nivel de seguridad. Todas las comunicaciones se llevan a cabo a través de buses de comunicación, los cuales también presentan redundancias. La imagen se extrajo de \cite {collinson2023introduction}.\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Bus de Comunicaciones}{10}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en las próximas iteraciones del lazo de control.\relax }}{11}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:votacion_sensores}{{3}{11}{La comparación entre 3 sensores da como resultado que el sensor 2 presentó una falla. En consecuencia deberá tomarse una acción, por ejemplo ignorar al sensor en las próximas iteraciones del lazo de control.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {yeh1996triple}.\relax }}{11}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:ARINC_629_bus}{{4}{11}{Se muestra un bus ARINC 629 con 2 nodos conectados. Este consiste en un par trenzado, con terminaciones en los extremos para evitar reflexiones. La conexión de los nodos al bus no es directa si no que se utilizan acopladores. La imagen se extrajo de \cite {yeh1996triple}.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Redundancias en Sistemas de Control de Vuelo en UAVs}{12}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Computadoras de Vuelo Comerciales}{12}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \blx@tocontentsinit {0}\cite {embention-2023}.\relax }}{12}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:Veronte_Embention}{{5}{12}{Diagrama en bloques del autopiloto Veronte de la empresa Embention. La imagen se extrajo de \cite {embention-2023}.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Casos de Trabajos con Componentes COTS}{13}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Arquitectura de redundancia cuádruple propuesta en \blx@tocontentsinit {0}\cite {hiergeist2018implementation}.\relax }}{13}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:redundancy_SPI}{{6}{13}{Arquitectura de redundancia cuádruple propuesta en \cite {hiergeist2018implementation}.\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A pesar de que las 3 réplicas redundantes funcionan correctamente, una falla del árbitro se traduce directamente en un fracaso del sistema.\relax }}{14}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:falla_arbitro}{{7}{14}{A pesar de que las 3 réplicas redundantes funcionan correctamente, una falla del árbitro se traduce directamente en un fracaso del sistema.\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Diagrama en bloques del sistema de redundancia doble. Las CPU1 y CPU2 comparan sus resultados y envían sus salidas al bloque \textit  {Output control}. A través de un bloque árbitro se selecciona cuál de las dos CPU será la que controle los actuadores. La imagen se extrajo de \blx@tocontentsinit {0}\cite {zhang2015dual}.\relax }}{15}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:FCC_dual_FPGA}{{8}{15}{Diagrama en bloques del sistema de redundancia doble. Las CPU1 y CPU2 comparan sus resultados y envían sus salidas al bloque \textit {Output control}. A través de un bloque árbitro se selecciona cuál de las dos CPU será la que controle los actuadores. La imagen se extrajo de \cite {zhang2015dual}.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Diagrama en bloques del sistema redundante de \blx@tocontentsinit {0}\cite {wang2008development}. Cada una de las réplicas tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit  {Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.\relax }}{16}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:RS_485_sync}{{9}{16}{Diagrama en bloques del sistema redundante de \cite {wang2008development}. Cada una de las réplicas tiene sus propios sensores, la única comunicación que se realiza a través del bus CCDL (\textit {Cross-Communication Data Link}) es para realizar la comparación de resultados y la votación.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Arquitectura de la computadora de vuelo utilizada en \blx@tocontentsinit {0}\cite {thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit  {Electronic Speed Controller} (ESC). La imagen muestra un solo actuador, pero se utiliza un circuito selector para cada uno de ellos.\relax }}{16}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:ROS_redundancy}{{10}{16}{Arquitectura de la computadora de vuelo utilizada en \cite {thesis_redundant_ROS}. El árbitro selecciona cuál de las dos señales PWM se utiliza para controlar el \textit {Electronic Speed Controller} (ESC). La imagen muestra un solo actuador, pero se utiliza un circuito selector para cada uno de ellos.\relax }{figure.caption.11}{}}
 \@setckpt{Estado_del_Arte}{
-\setcounter{page}{13}
+\setcounter{page}{17}
 \setcounter{equation}{0}
 \setcounter{enumi}{0}
 \setcounter{enumii}{0}
@@ -67,8 +68,10 @@
 \setcounter{AM@survey}{0}
 \setcounter{Item}{0}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{9}
+\setcounter{bookmark@seq@number}{11}
 \setcounter{nlinenum}{0}
+\setcounter{svg@param@lastpage}{0}
+\setcounter{svg@param@currpage}{-1}
 \setcounter{mydef}{0}
 \setcounter{@pps}{0}
 \setcounter{@ppsavesec}{0}
@@ -82,7 +85,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{39}
+\setcounter{instcount}{44}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}
@@ -106,7 +109,7 @@
 \setcounter{parenlevel}{0}
 \setcounter{blx@maxsection}{0}
 \setcounter{blx@maxsegment@0}{0}
-\setcounter{blx@sectionciteorder@0}{39}
+\setcounter{blx@sectionciteorder@0}{44}
 \setcounter{mincomprange}{10}
 \setcounter{maxcomprange}{100000}
 \setcounter{mincompwidth}{1}
