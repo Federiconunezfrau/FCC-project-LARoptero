@@ -1,0 +1,17 @@
+\frametitle{Vehículos Autónomos}
+\begin{itemize}
+		%\item Teniendo en cuenta la relevancia que han tomado en zonas civiles, resulta mandatorio asegurar cierto grado de confiabilidad en su funcionamiento.
+		\item Cada vez tienen mayor presencia en zonas civiles.
+		\item La incorporación de drones permite realizar tareas costosas,  riesgosas o críticas de forma segura.
+		\item Teniendo esto en cuenta, la \textbf{confiabilidad} es un aspecto que toma mayor relevancia.
+	\end{itemize}
+    \begin{exampleblock}{Código \LaTeX}
+	    \\documentclass\{article\}
+	    {\\author\{Perez García\}}
+	    {\\title\{Introducción a \\LaTeX\}}
+	    {\\date\{\\today\}}
+	    \\begin\{document\}
+	    {\\maketitle}
+	    ¡Bienvenidos a \\LaTeX!
+	    \\end\{document\}
+    \end{exampleblock}

@@ -1,0 +1,123 @@
+\subsection{GPS}
+%% ========================================================
+% \begin{frame}{GPS: Global Positioning System}
+% \begin{columns}
+%     \column{0.6\textwidth}
+%         \begin{itemize}           
+%             \item Sistema satelital: 32 satélites a 20200 km, órbita de 11 hs y 58 minutos, \textit{Space Segment}.
+%             \item Estimar \textbf{posición} y \textbf{velocidad} de un usuario, en la superficie de la Tierra.
+%             \item Exactitud de posición en el orden de las decenas de metros.
+%             \item También sirve para obtener con exactitud, una \textbf{referencia temporal}.
+%             \item GPS es mantenido por EE.UU. Existen otros, como GLONASS (Rusia), Galileo (UE), Beidou (China).
+%         \end{itemize}
+
+%     \column{0.4\textwidth}
+%             \includegraphics[width=\textwidth]{img/constelacion_GPS.jpg}
+% \end{columns}
+% \end{frame}
+%% ========================================================
+\begin{frame}{Señales de GPS}
+\begin{columns}
+    \column{0.5\textwidth}
+        \begin{itemize}
+            \item<2-> Sistema satelital: 32 satélites a 20200 km, órbita de 11 hs y 58 minutos.
+            \item<3-> Cada satélite emite señales en distintas frecuencias, en banda L (1 GHz - 2 GHz).
+            \item<4-> L1: $1575.42$ MHz, L2: $1227.60$ MHz y L5: $1176.45$ MHz.
+            \item<5-> En cada banda se modulan \textbf{códigos}, algunos de uso civil (abiertos) y otros de uso militar (encriptados).
+        \end{itemize}
+
+    \column{0.5\textwidth}
+        \onslide<1->\includegraphics[width=\textwidth]{img/satelite_L1_L2.png}
+        
+\end{columns}    
+\end{frame}
+%% ========================================================
+% \begin{frame}{Estimación de la Distancia al Satélite}
+
+% \begin{itemize}
+%     \item El código C/A (coarse/acquisition) es el típico utilizado por dispositivos comerciales (Ej.: celulares).
+%     \item Se emite en L1, $1575.42$ MHz.
+%     \item Secuencia de bits pseudo-aleatoria, única para cada satélite.
+% \end{itemize}
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{img/correlacion_CA.png}
+%     \caption{El receptor demodula la señal y obtiene el código. A su vez, genera una réplica local. A través de la correlación entre ambas, obtiene el \textit{delay} desde que salió la señal del satélite hasta que llega al receptor. Finalmente, utilizando la velocidad de la luz, estima la distancia al satélite.}
+%     \label{fig:my_label}
+% \end{figure}
+% \end{frame}
+
+%% ========================================================          
+% \begin{frame}{Estimación de la Posición}
+
+% \begin{itemize}
+%     \item Repitiendo esto con 3 satélites de la constelación, se estima la posición.
+%     \item Si se utiliza un cuarto satélite, se puede mejorar la estimación.
+% \end{itemize}
+
+% \begin{center}
+%     \includegraphics[width=\textwidth]{img/trilateration.png}
+% \end{center}
+% \end{frame}
+
+%% ======================================================== 
+\subsection{Requerimientos de la Antena Receptora}
+
+\begin{frame}{Frecuencia de Operación: 1575,42 MHz}
+
+\begin{itemize}
+    \item<1-> Frecuencia de operación: para hacer una estimación de la posición, la antena deberá recibir señales en banda L1: $\mathbf{1575.42 \ MHz}$.
+    \item<2-> La banda L2 también contiene un código de uso comercial.
+    \item<3-> Se elige utilizar una sola frecuencia de operación, para simplificar el diseño.
+\end{itemize}
+\begin{center}
+    \onslide<4->\includegraphics[width=0.7\textwidth]{img/bandas_GNSS.png}
+\end{center}
+
+\end{frame}
+
+%% ======================================================== 
+\begin{frame}{Ancho de Banda}
+
+\begin{itemize}
+    \item<1-> Información útil: código C/A y código P.
+    \item<2-> El código P tiene la mayor parte de su energía en una \textbf{banda de aproximadamente} $\mathbf{30}$ \textbf{MHz}.
+\end{itemize}
+\begin{center}
+    \onslide<3->\includegraphics[width=0.5\textwidth]{img/ancho_de_banda.png}
+\end{center}
+
+\begin{center}
+\onslide<4->\textbf{A priori no se consideró el ancho de banda como un aspecto de diseño de la antena.}
+\end{center}
+\end{frame}
+
+%% ======================================================== 
+\begin{frame}{Directividad}
+
+\begin{itemize}
+    \item<1-> Recibir señales de al menos 4 satélites al mismo tiempo.
+    \item<2-> Diagrama de radiación \textbf{omni-direccional}.
+\end{itemize}
+
+\begin{center}
+\onslide<3->\includegraphics[width=0.7\textwidth]{img/requerimiento_diagrama_radiacion.png}
+\end{center}
+
+\end{frame}
+
+%% ======================================================== 
+\begin{frame}{ROE}
+
+\begin{center}
+   Para la frecuencia de operación, se pide lograr una buena adaptación: 
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+    ROE < 2
+\end{center}
+
+\end{frame}

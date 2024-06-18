@@ -1,0 +1,146 @@
+\documentclass[10pt]{beamer}
+
+%% ============================================
+%% Preámbulo con los paquetes utilizados
+\usepackage[spanish]{babel} % Idioma
+\usepackage[utf8]{inputenc} % Codificación
+\usepackage{pgfpages}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+%\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{multimedia}
+\usepackage{hyperref}
+
+\setbeamertemplate{footline}[frame number]
+
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{itemize items}[square]
+
+%\setbeamercolor{block body alerted}{bg=alerted text.fg!10}
+%\setbeamercolor{block title alerted}{bg=alerted text.fg!20}
+\setbeamercolor{block body}{bg=structure!10}
+\setbeamercolor{block title}{bg=structure!20}
+%\setbeamercolor{block body example}{bg=green!10}
+%\setbeamercolor{block title example}{bg=green!20}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+%% ============================================
+%% Definiciones para la primer diapositiva
+%\title{Diseño y Construcción de una Computadora de Vuelo para Vehículos Autónomos con Tolerancia a Fallas}
+%\date{COMPLETAR}
+%\author[Federico Ignacio Nuñez Frau]{Federico Ignacio Nuñez Frau\\[1ex]  {\small Director: Dr. Ing. Claudio Pose (FIUBA)}\\ {\small Co-Director: Ing. Leonardo Garberoglio (UTN-FRSN)}}
+%\author{Federico Ignacio Nuñez Frau (98211)}
+%\titlegraphic{\includegraphics[width=0.3\textwidth]{img/logo-fiuba.png}}
+% \titlegraphic{
+% \begin{tikzpicture}[overlay,remember picture]
+% \node[] at (3, 0){
+%   \includegraphics[width=0.2\linewidth]{img/logo-fiuba.png}};
+%   \end{tikzpicture}
+%   }
+
+% \makeatletter
+% \setbeamertemplate{title page}[default][left,colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+% \makeatother
+
+\makeatletter
+\newcommand\titlegraphicii[1]{\def\inserttitlegraphicii{#1}}
+\titlegraphicii{}
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\hfill\inserttitlegraphicii\par}
+  \end{centering}
+  %\vfill
+}
+\makeatother
+\author[Federico Ignacio Nuñez Frau]{Federico Ignacio Nuñez Frau - 98211\\[1ex]  {\small Director: Dr. Ing. Claudio Pose (FIUBA)}\\ {\small Co-Director: Ing. Leonardo Garberoglio (UTN-FRSN)}}
+\title[]{Diseño y Construcción de una Computadora de Vuelo para Vehículos Autónomos con Tolerancia a Fallas}
+\date{DD/MM/2024}
+\titlegraphic{\includegraphics[width=0.23\linewidth]{img/logo-fiuba.png}}
+%\titlegraphicii{\includegraphics[height=1cm,width=2cm]{logo2}}
+
+%% ============================================
+%% Comienzo del documento
+\begin{document}
+
+%% Carátula
+\begin{frame}
+  \titlepage
+  % \small
+  %   Director:\\[0,1cm]
+  %   Dr. Ing. Claudio Pose (FIUBA) \\[0.25cm]
+  %   Co-Director:\\[0,1cm]
+  %   Ing. Leonardo Garberoglio (UTN-FRSN) \\[0.25cm]
+\end{frame}
+
+%% Contenidos de la presentación
+\begin{frame}{Contenidos}
+  \tableofcontents
+\end{frame}
+
+% \begin{frame}{Ejemplo de cómo embeber un video}
+%   \centering
+%   \movie[externalviewer]{\includegraphics[width=\textwidth, keepaspectratio]{img/cavidad.png}}{vid/AON.mp4}
+% \end{frame}
+
+\input{Introduccion_y_Motivacion.tex}
+
+\input{Estado_del_Arte.tex}
+
+\input{Sistemas_Tolerantes_A_Fallas.tex}
+
+\input{Disenio_y_Construccion.tex}
+
+\input{Sistema_Implementado.tex}
+
+\input{Resultados.tex}
+
+\input{Conclusiones.tex}
+
+\input{Gracias.tex}
+
+% \section{Antena Elegida}
+% \input{antena_elegida.tex}
+
+% \section{Funcionamiento de la Antena Parche}
+% \input{explicacion_antena_parche.tex}
+
+% \section{Diseño Propuesto}
+% \input{diseno_propuesto.tex}
+
+% \section{Resultados}
+% \input{resultados.tex}
+
+% \section{Conclusiones}
+% \input{conclusiones.tex}
+
+\end{document}
+
+

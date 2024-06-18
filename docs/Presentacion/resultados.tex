@@ -1,0 +1,216 @@
+\subsection{Mediciones}
+
+\begin{frame}{Medición de la ROE}
+\begin{itemize}
+    \item<1-> Medición del parámetro $s_{11}$ utilizando el VNA:
+\end{itemize}
+    \begin{center}
+        \onslide<2->\includegraphics[width=\textwidth]{img/medicion_s11.png}
+    \end{center}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Medición de la ROE}
+\begin{itemize}
+    \item Carta de Smith: entre {\color{red}1,2 GHz} y {\color{green}1,9 GHz}.
+\end{itemize}
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{img/s11_mediciones_smith.png}
+\end{center}
+    
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Medición de la ROE}
+ \begin{itemize}
+    \item Impedancia de antena, parte real e imaginaria:
+\end{itemize}
+\begin{center}
+    \includegraphics[width=\textwidth]{img/impedancia_mediciones.png}
+\end{center}   
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Medición de la ROE}
+\begin{itemize}
+    \item<1-> Error en la resonancia de $1.62 \ MHz$
+    \item<4-> Este error se traduce en un error en $L$ de $\approx 0.05 \ mm$
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{columns}
+    \column{0.5\textwidth}
+        \onslide<2->\includegraphics[width=\textwidth]{img/medicion_ROE.png}
+    \column{0.5\textwidth}
+        \onslide<3->\includegraphics[width=\textwidth]{img/medicion_ROE_zoom.png}
+\end{columns}    
+\end{frame}
+
+%% ========================================================
+\begin{frame}{ROE: Simulación vs Medición}
+
+\begin{itemize}
+    \item<2-> Coincidencia en la resonancia.
+    \item<3-> La adaptación es más marcada en la simulación.
+    \item<4-> Existe otra frecuencia de resonancia en la simulación.
+\end{itemize}
+
+\begin{center}
+    \onslide<1->\includegraphics[width=\textwidth]{img/ROE_medicion_vs_simulacion.png}
+\end{center}
+    
+\end{frame}
+
+%% ========================================================
+\begin{frame}{ROE: Simulación vs Medición}
+
+\begin{itemize}
+    \item Tomando ROE = 2 como límite.
+    \item BW $\approx 35 \ MHz$.
+    \item El BW es mayor respecto de la simulación, $25 \ MHz$.
+    \item El valor obtenido es adecuado para GPS.
+\end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{ROE: Simulación vs Medición}
+
+\begin{itemize}
+    \item Segunda resonancia en simulación
+    \item Corresponde al modo $TM^{x}_{001}$
+    \item $f_{mnp} = \frac{1}{2 \pi \sqrt{\mu \varepsilon}}\sqrt{\left( \frac{m \pi}{h} \right)^2 + \left( \frac{n \pi}{L} \right)^2 + \left( \frac{p \pi}{W} \right)^2 }$
+    \item $f_{001} = \frac{1}{2 \sqrt{\mu \varepsilon}} \frac{1}{W} = 1.27 \ GHz$
+\end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama de Radiación}
+
+\begin{itemize}
+    \item<1-> Se montó el banco de mediciones.
+\end{itemize}
+
+\begin{center}
+    \onslide<2->\includegraphics[width=0.9\textwidth]{img/banco_medicion_diagrama_radiacion.png}
+\end{center}
+
+\begin{itemize}
+    \item<3-> Analizador de espectros: Zero-Span.
+    \item<4-> Reflexiones y señales indeseadas que afectan la medición.
+    \item<5-> Se normalizan los datos relevados con el analizador de espectros.
+\end{itemize}
+
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama de Radiación 1}
+    \begin{columns}
+        \column{0.4\textwidth}
+            \includegraphics[width=\textwidth]{img/corte_XZ.png}
+        \column{0.6\textwidth}
+            \includegraphics[width=\textwidth]{img/medicion_diagrama_rad_XZ.png}
+    \end{columns}
+    \begin{itemize}
+        \item $HPBW_{-3dB} \approx 74^{\circ}$
+    \end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama de Radiación 2}
+    \begin{columns}
+        \column{0.4\textwidth}
+            \includegraphics[width=\textwidth]{img/corte_YZ.png}
+        \column{0.6\textwidth}
+            \includegraphics[width=\textwidth]{img/medicion_diagrama_rad_YZ.png}
+    \end{columns}
+    \begin{itemize}
+        \item $HPBW_{-3dB} \approx 76^{\circ}$
+    \end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Comparación con Simulación}
+\begin{itemize}
+    \item En {\color{blue}azul} se muestra la medición.
+    \item En {\color{red}rojo} la simulación.
+    \item Mayor \textit{backscattering} en la medición.
+\end{itemize}
+\begin{columns}
+    \column{0.4\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_XZ.png}
+    \column{0.6\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_XZ_medicion_vs_simulacion.png}
+\end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Comparación con Simulación}
+\begin{itemize}
+    \item En {\color{blue}azul} se muestra la medición.
+    \item En {\color{red}rojo} la simulación.
+    \item El \textit{backscattering} es prácticamente coincidente.
+\end{itemize}
+\begin{columns}
+    \column{0.4\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_YZ.png}
+    \column{0.6\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_YZ_medicion_vs_simulacion.png}
+\end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama XZ}
+
+\begin{itemize}
+    \item<1-> Se muestra la posición de la antena en la medición.
+    \item<3-> En esta posición, $\theta = 0^{\circ}$.
+    \item<4-> La flecha indica el sentido en que rota la antena, en la medición.
+\end{itemize}
+
+\begin{center}
+    \onslide<2->\includegraphics[width=0.6\textwidth]{img/setup_0_grados.png}
+\end{center}
+    
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama XZ}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{img/setup_0_grados_flecha.png}
+\end{center}
+
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama XZ}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{img/setup_120_grados_flecha.png}
+\end{center}
+
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama XZ}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{img/setup_180_grados_flecha.png}
+\end{center}
+
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama XZ}
+\begin{columns}
+    \column{0.5\textwidth}
+        \begin{itemize}
+            \item La presencia del adaptador SMA-N impacta en la medición del corte XZ.
+            \item No sucede lo mismo en el corte YZ.
+            \item El conector se encuentra hacia abajo siempre.
+        \end{itemize}
+    \column{0.5\textwidth}
+            \includegraphics[width=\textwidth]{img/setup_0_grados_YZ.png}
+\end{columns}
+\end{frame}

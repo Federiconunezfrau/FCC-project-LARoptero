@@ -1,0 +1,262 @@
+\subsection{Dimensiones de la Antena}
+%% ========================================================
+\begin{frame}{Ancho $W$}
+    \begin{itemize}
+        \item<1-> Se utilizó la expresión del libro de Balanis.
+        \item<2-> Este dimensionamiento da un buen rendimiento de la antena.
+    \end{itemize}
+
+    \begin{center}
+        \onslide<3->$W = \frac{c_0}{2 \ f_{010}} \sqrt{\frac{2}{\varepsilon_r+1}}$
+    \end{center}
+
+    \begin{itemize}
+        \item<4-> Utilizando $f_{010} = 1575.42 \ MHz$ y $\varepsilon_r = 4.4 \Rightarrow W = 57.92 \ mm$
+    \end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Longitud $L$}
+
+    \begin{itemize}
+        \item<1-> La longitud se despeja a partir de la ecuación de la frecuencia de resonancia del parche: $f_{010} = \frac{1}{2 \sqrt{\mu \epsilon}} \frac{1}{L}$
+        \item<2-> Modelo de Cavidad, se asume que las líneas de campo son verticales dentro del parche.
+        \item<3-> Fenómeno de \textit{fringing}:
+    \end{itemize}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \begin{itemize}
+                \item<4-> $f_{010} = \frac{1}{2 \sqrt{\mu \epsilon}} \frac{1}{L + 2 \Delta L}$
+                \item<5-> $L = \frac{c_0}{2 \ f_{010} \sqrt{\varepsilon_{r,eff}}} - 2 \Delta L$
+                \item<6-> Se utiliza la expresión del libro de Balanis para $\Delta L$.
+                \item<7-> $L = 44.92 \ mm$
+            \end{itemize}
+        \column{0.5\textwidth}
+            \onslide<3->\includegraphics[width=\textwidth]{img/fringing.png}
+    \end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Dimensiones del Plano de tierra}
+    \begin{itemize}
+        \item Se toma como extensión del plano de tierra: $\lambda/4$.
+    \end{itemize}
+
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{img/extensiones_plano_tierra.png}
+    \end{center}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Inserción del Microstrip en el Parche}
+
+\begin{columns}
+    \column{0.5\textwidth}
+        \begin{itemize}
+            \item<1-> $y_0 = arccos\left( \sqrt{\frac{50 \Omega}{R_{in}(y_0 = 0)}} \right) \frac{L}{\pi}$
+            \item<2-> $R_{in}(y_0 = 0)$ se calcula aproximadamente. 
+            \item<3-> El valor de $y_0$ se modificará hasta lograr la adaptación justa.
+        \end{itemize}
+    \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/parche_hendidura.png}
+\end{columns}
+\end{frame}
+
+%% ========================================================
+\subsection{Simulaciones}
+\begin{frame}{Primera Simulación en FEKO}
+    \begin{itemize}
+        \item<1-> Simulación con las dimensiones calculadas.
+        \item<2-> Se hace la simulación del parámetro $s_{11}$ en FEKO.
+    \end{itemize}
+    \begin{columns}
+        \column{0.4\textwidth}
+            \begin{itemize}
+                \item<3-> $W = 57.92 \ mm$
+                \item<3-> $L = 44.92 \ mm$
+                \item<3-> $y_0 = 16 \ mm$
+            \end{itemize}
+        \column{0.6\textwidth}
+            \includegraphics[width=\textwidth]{img/FEKO_dimensiones_teoricas.png}
+    \end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Primera Simulación: ROE}
+
+\begin{itemize}
+    \item Se exportan los datos del parámetro $s_{11}$, para graficar la ROE:
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=\textwidth]{img/ROE_dimensiones_teoricas.png}
+\end{center}
+
+\begin{itemize}
+    \item<2-> Corregir resonancia: $6.3 \ MHz$ $\Rightarrow$ modificar $L$.
+    \item<3-> Mejorar la adaptación, ROE muy grande $\Rightarrow$ modificar $y_0$.
+\end{itemize}
+    
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Primera Simulación: ROE}
+    \begin{itemize}[<+->]
+        \item Para corregir las dimensiones, se hicieron modificaciones manuales.
+        \item Se observó que las dimensiones calculadas de forma teórica requieren modificaciones de unos pocos milímetros.
+        \item Se utilizó la herramienta de optimización de FEKO.
+    \end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Primera Simulación: ROE}
+    \begin{itemize}
+        \item<1-> Modificar $y_0$ también modifica la resonancia:
+    \end{itemize}
+    \vspace{1cm}
+    \begin{columns}
+        \column{0.5\textwidth}
+            \onslide<3->\includegraphics[width=\textwidth]{img/ROE_vs_L.png}
+        \column{0.5\textwidth}
+            \onslide<2->\includegraphics[width=\textwidth]{img/ROE_vs_y0.png}
+    \end{columns}
+    
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Primera Simulación: ROE}
+    \begin{columns}
+        \column{0.4\textwidth}
+             \begin{itemize}
+                \item Optimización doble, utilizando FEKO.
+                \item Se ajustan ambos parámetros al mismo tiempo.
+                \item Lograr la mejor adaptación, a la frecuencia deseada.
+                \item<2-> $L = 45.16 \ mm$
+                \item<2-> $y_0 = 14.23 \ mm$
+            \end{itemize}
+        \column{0.6\textwidth}
+            \includegraphics[width=\textwidth]{img/resultados_optimizacion_doble.png}
+    \end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Primera Simulación: ROE}
+\begin{itemize}
+    \item<1-> Se repite la simulación con las modificaciones:
+\end{itemize}
+    \begin{center}
+        \onslide<2->\includegraphics[width=\textwidth]{img/ROE_dimensiones_optimas.png}
+    \end{center}
+
+    \begin{itemize}
+        \item<3-> $L_{teorico} = 44.92 \ mm \Rightarrow L_{optimo} = 45.16 \ mm$
+        \item<4-> $y_{0,teorico} = 16 \ mm \Rightarrow y_{0,optimo} = 14,23 \ mm$
+    \end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Diagrama de Radiación 3D}
+\begin{itemize}
+    \item<1-> Diagrama de Radiación 3D normalizado, directividad.
+    \item<2-> $f = 1575.42 \ MHz$
+    \item<3-> Mínimo: $-22.85 \ dBi$
+\end{itemize}
+    \begin{center}
+        \onslide<4->\includegraphics[width=0.7\textwidth]{img/diagrama_3D.png}
+    \end{center}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Corte del Diagrama de Radiación 1}
+\begin{columns}
+    \column{0.4\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_XZ.png}
+    \column{0.6\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_XZ_simulacion.png}
+\end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Corte del Diagrama de Radiación 2}
+\begin{columns}
+    \column{0.4\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_YZ.png}
+    \column{0.6\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_YZ_simulacion.png}
+\end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Comparación con el Modelo de Cavidad}
+\begin{columns}
+    \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_XZ_simulacion_vs_teoria.png}
+    \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/corte_YZ_simulacion_vs_teoria.png}
+\end{columns}
+\begin{itemize}
+    \item<2-> Se observa el efecto del plano de tierra finito.
+    \item<3-> Con este diseño, se pasa a la construcción de la antena.
+\end{itemize}
+\end{frame}
+
+%% ========================================================
+\subsection{Construcción de la Antena}
+\begin{frame}{Dimensiones para la Construcción de la Antena}
+    \begin{itemize}
+        \item<1-> En las simulaciones se vio que un cambio de unos milímetros afecta bastante la frecuencia de resonancia y la adaptación.
+        \item<2-> Es difícil construir una antena con una longitud exacta de $L=45.16 \ mm$!
+        \item<3-> Se hará una juste manual, tanto de $L$ como de $y_0$, por prueba y error, hasta lograr resultados aceptables.
+    \end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Dimensiones para la Construcción de la Antena}
+    \begin{itemize}
+        \item<1-> Software \textit{KiCad PCB Editor} para diseño de la antena.
+    \end{itemize}
+\begin{columns}
+    \column{0.45\textwidth}
+        \begin{itemize}
+            \item<3-> $L_{opt} = 45.16 \ mm$
+            \item<3-> $L_{PCB} = 42 \ mm < L_{opt}$
+        \end{itemize}
+        \vspace{1cm}
+        \begin{itemize}
+            \item<4-> $y_{0,opt} = 14.23 \ mm$
+            \item<4-> $y_{0,PCB} = 17 \ mm > y_{0,opt}$
+        \end{itemize}
+    \column{0.55\textwidth}
+        \onslide<2->\includegraphics[width=\textwidth]{img/PCB_kicad.png}
+\end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Antena Construida}
+
+\begin{itemize}
+    \item<1-> Se construyó la antena en un PCB doble faz, FR4.
+    \item<2-> Construcción con el método del planchado.
+    \item<3-> Se soldó un conector SMA hembra en el borde del PCB.
+\end{itemize}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Antena Construida}
+\begin{columns}
+    \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/foto_parche_pcb.jpeg}
+    \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/foto_parche_pcb_atras.jpeg}
+\end{columns}
+\end{frame}
+
+%% ========================================================
+\begin{frame}{Antena Construida}
+\begin{columns}
+    \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/foto_parche_pcb_perspectiva.jpeg}
+    \column{0.5\textwidth}
+        \includegraphics[width=\textwidth]{img/foto_parche_pcb_conector.jpeg}
+\end{columns}
+\end{frame}
