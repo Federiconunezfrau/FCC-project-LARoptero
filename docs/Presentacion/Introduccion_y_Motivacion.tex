@@ -3,16 +3,16 @@
 % ==============================================
 \begin{frame}{Vehículos Autónomos}
 	\begin{itemize}
-		\item Los vehículos autónomos no cuentan con una tripulación ni un piloto a bordo. Estos son comandados de forma remota, o bien tienen la capacidad de hacerlo por sí solos.
-		\item Gran variedad de sensores + computadora central = sistema de navegación y reconocimiento del entorno.
+		\item <2->Los vehículos autónomos no cuentan con una tripulación ni un piloto a bordo. Estos son comandados de forma remota, o bien tienen la capacidad de hacerlo por sí solos.
+		\item <3->Gran variedad de sensores + computadora central = sistema de navegación y reconocimiento del entorno.
 	\end{itemize}
 	\begin{center}
 		\resizebox{\textwidth}{!}{%
-			\includegraphics[height=3cm]{img/uav_2.jpg}%
+			\onslide<4->\includegraphics[height=3cm]{img/uav_2.jpg}%
 			\quad
-			\includegraphics[height=3cm]{img/ASV_leo.png}%
+			\onslide<4->\includegraphics[height=3cm]{img/ASV_leo.png}%
 			\quad
-			\includegraphics[height=3cm]{img/movil_robot.png}%
+			\onslide<4->\includegraphics[height=3cm]{img/movil_robot.png}%
 		}
 	\end{center}
 \end{frame}
@@ -21,12 +21,12 @@
 	\begin{columns}
     \column{0.5\textwidth}
         \begin{itemize}
-            \item Originalmente desarrollados para uso en aplicaciones militares.
-            \item Desarrollo y mantenimiento menos costoso frente a vehículos tripulados.
-            \item Motivación: Realizar tareas que de otra forma pondrían en riesgo a la tripulación.
+            \item<1->Originalmente desarrollados para uso en aplicaciones militares.
+            \item<3->Desarrollo y mantenimiento menos costoso frente a vehículos tripulados.
+            \item<4->Motivación: Realizar tareas que de otra forma pondrían en riesgo a la tripulación.
         \end{itemize}
     \column{0.5\textwidth}
-            \includegraphics[width=\textwidth]{img/dron_militar_1}
+            \onslide<2->\includegraphics[width=\textwidth]{img/dron_militar_1}
 	\end{columns}
 \end{frame}
 
@@ -62,9 +62,9 @@
 
 \begin{frame}{Vehículos Autónomos}
 	\begin{itemize}
-		\item Cada vez tienen mayor presencia en zonas civiles.
-		\item La incorporación de drones permite realizar tareas costosas,  riesgosas o críticas de forma segura.
-		\item Teniendo esto en cuenta, la confiabilidad es un aspecto que toma mayor relevancia.
+		\item<1->Cada vez tienen mayor presencia en zonas civiles.
+		\item<2->La incorporación de drones permite realizar tareas costosas,  riesgosas o críticas de forma segura.
+		\item<3->Teniendo esto en cuenta, la confiabilidad es un aspecto que toma mayor relevancia.
 		\item {COMPLETAR CON EJEMPLOS DE ACCIDENTES DE DRONES}
 	\end{itemize}
 \end{frame}
@@ -88,29 +88,55 @@
 \end{frame}
 
 \begin{frame}{Computadora de Vuelo}
-
+	\begin{columns}
+		\column{0.39\textwidth}
+			\begin{itemize}
+				\item <2->Se encarga de ejecutar los algoritmos de guiado, navegación y control para estabilizar el vehículo y guiarlo en su trayectoria.
+				\item <3->Adquiere datos de los sensores del vehículo.
+				\item <4->Actúa sobre los motores.
+				\item <5->La computadora de vuelo es el elemento central en un vehículo aéreo no tripulado.
+			\end{itemize}
+		\column{0.6\textwidth}
+			\begin{overprint}
+				\onslide<2>\includegraphics[width=\textwidth]{img/drone_actuadores_sensores_1.png}
+				\onslide<3>\includegraphics[width=\textwidth]{img/drone_actuadores_sensores_2.png}
+				\onslide<4>\includegraphics[width=\textwidth]{img/drone_actuadores_sensores.png}
+				\onslide<5>\includegraphics[width=\textwidth]{img/drone_actuadores_sensores.png}
+			\end{overprint}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Vehículos Autónomos}
+% ==============================================
+\begin{frame}{Tolerancia a Fallas}
 	\begin{itemize}
-		%\item Teniendo en cuenta la relevancia que han tomado en zonas civiles, resulta mandatorio asegurar cierto grado de confiabilidad en su funcionamiento.
-		\item Cada vez tienen mayor presencia en zonas civiles.
-		\item La incorporación de drones permite realizar tareas costosas,  riesgosas o críticas de forma segura.
-		\item Teniendo esto en cuenta, la \textbf{confiabilidad} es un aspecto que toma mayor relevancia.
+		\item<1->Cada vez tienen mayor presencia en zonas civiles.
+		%\item La incorporación de drones permite realizar tareas costosas,  riesgosas o críticas de forma segura.
+		\item<2->Teniendo esto en cuenta, la \textbf{confiabilidad} es un aspecto que toma mayor relevancia.
+		\item<3->En vehículos aéreos como aviones comerciales y militares se utilizan técnicas de \textbf{tolerancia a fallas}.
+		\item<5->También en drones de uso militar.
 	\end{itemize}
-    \begin{block}{Confiabilidad}
-    	Probabilidad de que un sistema pueda cumplir con su función de manera correcta en un intervalo de tiempo $\left[t_0;t\right]$, dado que sí podía hacerlo en $t_0$.
-    \end{block}
+    %\begin{block}{Confiabilidad}
+    %	Probabilidad de que un sistema pueda cumplir con su función de manera correcta en un intervalo de tiempo $\left[t_0;t\right]$, dado que sí podía hacerlo en $t_0$.
+    %\end{block}
     \begin{columns}
     	\column{0.4\textwidth}
-			\includegraphics[width=\textwidth]{img/avion_comercial.jpg}
+			\onslide<4->\includegraphics[width=\textwidth]{img/avion_comercial.jpg}
     	\column{0.6\textwidth}
             \begin{itemize}
-            	\item El aspecto más importante en aviones comerciales: $10^{-9}/h$ de vuelo.
-            	\item Aviones militares: $10^{-7}/h$ de vuelo.
-            	\item Drones militares: $10^{-5}/h$ de vuelo.
-            	\item ¿\underline{Drones civiles/comerciales}?
+            	\item<6->El aspecto más importante en aviones comerciales: $10^{-9}/h$ de vuelo.
+            	\item<7->Aviones militares: $10^{-7}/h$ de vuelo.
+            	\item<8->Drones militares: $10^{-5}/h$ de vuelo.
+            	\item<9->¿\underline{Drones civiles/comerciales}?
             \end{itemize}
     \end{columns}
 \end{frame}
 
+% ==============================================
+\begin{frame}{Objetivos}
+	\begin{enumerate}
+		\item \textbf{Estudiar} las características de los sistemas con tolerancia a fallas aplicados en vehículos aéreos, tanto tripulados como no tripulados.
+		\item \textbf{Entender} los requerimientos para implementar un sistema con tolerancia a fallas.
+		\item \textbf{Diseñar} una computadora de vuelo para vehículos aéreos no tripulados, para ser enviada a fabricar.
+		\item \textbf{Desarrollar} un firmware que demuestre la capacidad de ser utilizada en un sistema con tolerancia a fallas.
+	\end{enumerate}
+\end{frame}
