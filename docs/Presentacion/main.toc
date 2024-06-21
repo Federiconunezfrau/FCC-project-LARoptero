@@ -2,6 +2,6 @@
 \beamer@sectionintoc {1}{Introducción y Motivación}{3}{0}{1}
 \beamer@sectionintoc {2}{Sistemas Tolerantes a Fallas}{35}{0}{2}
 \beamer@sectionintoc {3}{Diseño y Construcción de la Computadora de Vuelo}{59}{0}{3}
-\beamer@sectionintoc {4}{Sistema Implementado}{60}{0}{4}
-\beamer@sectionintoc {5}{Resultados}{61}{0}{5}
-\beamer@sectionintoc {6}{Conclusiones}{62}{0}{6}
+\beamer@sectionintoc {4}{Sistema Implementado}{97}{0}{4}
+\beamer@sectionintoc {5}{Resultados}{98}{0}{5}
+\beamer@sectionintoc {6}{Conclusiones}{99}{0}{6}

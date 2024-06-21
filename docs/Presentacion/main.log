@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  20 JUN 2024 19:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  21 JUN 2024 19:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1800,12 +1800,318 @@ Package pdftex.def Info: img/requerimiento_sincronismo.png  used on input line
  <./img/requerimiento_bus.png> <./img/requerimiento_sincronismo.png>]) (./Disen
 io_y_Construccion.tex [59
 
-]) (./Sistema_Implementado.tex
-[60
+] [60
 
-]) (./Resultados.tex [61
+] [61
 
-]) (./Conclusiones.tex [62
+] [62
+
+] [63
+
+] [64
+
+]
+<img/antecedentes_1.png, id=1933, 1708.3825pt x 604.2575pt>
+File: img/antecedentes_1.png Graphic file (type png)
+<use img/antecedentes_1.png>
+Package pdftex.def Info: img/antecedentes_1.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+<img/antecedentes_2.png, id=1934, 1708.3825pt x 604.2575pt>
+File: img/antecedentes_2.png Graphic file (type png)
+<use img/antecedentes_2.png>
+Package pdftex.def Info: img/antecedentes_2.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+<img/antecedentes_3.png, id=1935, 1708.3825pt x 604.2575pt>
+File: img/antecedentes_3.png Graphic file (type png)
+<use img/antecedentes_3.png>
+Package pdftex.def Info: img/antecedentes_3.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+<img/antecedentes_4.png, id=1936, 1708.3825pt x 604.2575pt>
+File: img/antecedentes_4.png Graphic file (type png)
+<use img/antecedentes_4.png>
+Package pdftex.def Info: img/antecedentes_4.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+
+[65
+
+]
+File: img/antecedentes_1.png Graphic file (type png)
+<use img/antecedentes_1.png>
+Package pdftex.def Info: img/antecedentes_1.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_2.png Graphic file (type png)
+<use img/antecedentes_2.png>
+Package pdftex.def Info: img/antecedentes_2.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_3.png Graphic file (type png)
+<use img/antecedentes_3.png>
+Package pdftex.def Info: img/antecedentes_3.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_4.png Graphic file (type png)
+<use img/antecedentes_4.png>
+Package pdftex.def Info: img/antecedentes_4.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+ [66
+
+ <./img/antecedentes_1.png>]
+File: img/antecedentes_1.png Graphic file (type png)
+<use img/antecedentes_1.png>
+Package pdftex.def Info: img/antecedentes_1.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_2.png Graphic file (type png)
+<use img/antecedentes_2.png>
+Package pdftex.def Info: img/antecedentes_2.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_3.png Graphic file (type png)
+<use img/antecedentes_3.png>
+Package pdftex.def Info: img/antecedentes_3.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_4.png Graphic file (type png)
+<use img/antecedentes_4.png>
+Package pdftex.def Info: img/antecedentes_4.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+ [67
+
+ <./img/antecedentes_2.png>]
+File: img/antecedentes_1.png Graphic file (type png)
+<use img/antecedentes_1.png>
+Package pdftex.def Info: img/antecedentes_1.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_2.png Graphic file (type png)
+<use img/antecedentes_2.png>
+Package pdftex.def Info: img/antecedentes_2.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_3.png Graphic file (type png)
+<use img/antecedentes_3.png>
+Package pdftex.def Info: img/antecedentes_3.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_4.png Graphic file (type png)
+<use img/antecedentes_4.png>
+Package pdftex.def Info: img/antecedentes_4.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+ [68
+
+ <./img/antecedentes_3.png>]
+File: img/antecedentes_1.png Graphic file (type png)
+<use img/antecedentes_1.png>
+Package pdftex.def Info: img/antecedentes_1.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_2.png Graphic file (type png)
+<use img/antecedentes_2.png>
+Package pdftex.def Info: img/antecedentes_2.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_3.png Graphic file (type png)
+<use img/antecedentes_3.png>
+Package pdftex.def Info: img/antecedentes_3.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+File: img/antecedentes_4.png Graphic file (type png)
+<use img/antecedentes_4.png>
+Package pdftex.def Info: img/antecedentes_4.png  used on input line 26.
+(pdftex.def)             Requested size: 344.19536pt x 121.7345pt.
+ [69
+
+ <./img/antecedentes_4.png>]
+<img/Choriboard_IV.png, id=2078, 560.0925pt x 377.91188pt>
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+<img/cosito_2_V4.png, id=2079, 501.875pt x 100.375pt>
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [70
+
+ <./img/Choriboard_IV.png> <./img/cosito_2_V4.png>]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [71
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [72
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [73
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [74
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [75
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [76
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [77
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [78
+
+]
+File: img/Choriboard_IV.png Graphic file (type png)
+<use img/Choriboard_IV.png>
+Package pdftex.def Info: img/Choriboard_IV.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+File: img/cosito_2_V4.png Graphic file (type png)
+<use img/cosito_2_V4.png>
+Package pdftex.def Info: img/cosito_2_V4.png  used on input line 49.
+(pdftex.def)             Requested size: 137.67604pt x 27.53505pt.
+ [79
+
+]
+<img/microcontrolador.png, id=2357, 560.0925pt x 377.91188pt>
+File: img/microcontrolador.png Graphic file (type png)
+<use img/microcontrolador.png>
+Package pdftex.def Info: img/microcontrolador.png  used on input line 71.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+
+[80
+
+ <./img/microcontrolador.png>]
+File: img/microcontrolador.png Graphic file (type png)
+<use img/microcontrolador.png>
+Package pdftex.def Info: img/microcontrolador.png  used on input line 71.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+ [81
+
+]
+File: img/microcontrolador.png Graphic file (type png)
+<use img/microcontrolador.png>
+Package pdftex.def Info: img/microcontrolador.png  used on input line 71.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+ [82
+
+]
+File: img/microcontrolador.png Graphic file (type png)
+<use img/microcontrolador.png>
+Package pdftex.def Info: img/microcontrolador.png  used on input line 71.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+ [83
+
+]
+File: img/microcontrolador.png Graphic file (type png)
+<use img/microcontrolador.png>
+Package pdftex.def Info: img/microcontrolador.png  used on input line 71.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+ [84
+
+]
+File: img/microcontrolador.png Graphic file (type png)
+<use img/microcontrolador.png>
+Package pdftex.def Info: img/microcontrolador.png  used on input line 71.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+ [85
+
+]
+File: img/microcontrolador.png Graphic file (type png)
+<use img/microcontrolador.png>
+Package pdftex.def Info: img/microcontrolador.png  used on input line 71.
+(pdftex.def)             Requested size: 137.67604pt x 92.89195pt.
+ [86
+
+]
+<img/IMU.png, id=2550, 560.0925pt x 377.91188pt>
+File: img/IMU.png Graphic file (type png)
+<use img/IMU.png>
+Package pdftex.def Info: img/IMU.png  used on input line 100.
+(pdftex.def)             Requested size: 172.09767pt x 116.11926pt.
+ [87
+
+ <./img/IMU.png>] [88
+
+]
+<img/icm42688p.png, id=2607, 401.5pt x 358.33875pt>
+File: img/icm42688p.png Graphic file (type png)
+<use img/icm42688p.png>
+Package pdftex.def Info: img/icm42688p.png  used on input line 135.
+(pdftex.def)             Requested size: 68.83801pt x 61.43622pt.
+ [89
+
+ <./img/icm42688p.png>] [90
+
+] [91
+
+] [92
+
+] [93
+
+] [94
+
+] [95
+
+] [96
+
+])
+(./Sistema_Implementado.tex [97
+
+]) (./Resultados.tex [98
+
+]) (./Conclusiones.tex
+[99
 
 ]) (./Gracias.tex)
 \tf@nav=\write6
@@ -1817,8 +2123,7 @@ io_y_Construccion.tex [59
 \tf@snm=\write8
 \openout8 = `main.snm'.
 
-
-(./main.aux
+ (./main.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
@@ -1826,10 +2131,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BD6F1A9F4B2970C693D73B683BEEFCAF;1024.
  ) 
 Here is how much of TeX's memory you used:
- 28597 strings out of 478287
- 570882 string characters out of 5849289
- 820995 words of memory out of 5000000
- 46055 multiletter control sequences out of 15000+600000
+ 28771 strings out of 478287
+ 573588 string characters out of 5849289
+ 821995 words of memory out of 5000000
+ 46146 multiletter control sequences out of 15000+600000
  497393 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,122p,384b,606s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1841,10 +2146,10 @@ type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8
 a.pfb>
-Output written on main.pdf (62 pages, 5158776 bytes).
+Output written on main.pdf (99 pages, 8876338 bytes).
 PDF statistics:
- 1970 PDF objects out of 2073 (max. 8388607)
- 1761 compressed objects within 18 object streams
- 131 named destinations out of 1000 (max. 500000)
- 531 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3019 PDF objects out of 3580 (max. 8388607)
+ 2745 compressed objects within 28 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 576 words of extra memory for PDF output out of 10000 (max. 10000000)
 
