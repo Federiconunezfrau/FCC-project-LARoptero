@@ -14,7 +14,7 @@
 
 % En esta sección se muestra que, si el sistema tiene ciertas características, en particular ser un sistema de tiempo real y contar con un bus común a los nodos para las comunicaciones, luego el problema del consenso se simplifica mucho.
 
-En esta sección se presenta la arquitectura de sistema propuesta para la tarea de tolerancia a fallas. Esta consiste en un sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo. Se describen las características del firmware desarrollado para implementar el sistema propuesto. Para demostrar las capacidades de toleranca a fallas, se hicieron una serie de pruebas emulando fallas en un sensor. Finalmente, se muestran los resultados obtenidos sobre las pruebas realizadas.
+En esta sección se presenta la arquitectura de sistema propuesta para la tarea de tolerancia a fallas. Esta consiste en un sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo. Se describen las características del firmware desarrollado para implementar el sistema propuesto. Para demostrar las capacidades de tolerancia a fallas, se hicieron una serie de pruebas emulando fallas en un sensor. Finalmente, se muestran los resultados obtenidos sobre las pruebas realizadas.
 
 
 %Para esto, se desarrolló un firmware con una arquitectura de sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo.
@@ -39,7 +39,7 @@ En esta sección se presenta la arquitectura de sistema propuesta para la tarea 
 
 Como fue explicado en la sección \ref{sec:disenio_computadora_de_vuelo}, la computadora de vuelo se encarga de ejecutar el sistema de navegación para guiar el vehículo en su trayectoria. Este sistema cumple con las características de ser de tiempo real, ya que tanto los valores de los resultados de cómputo, como el instante de tiempo en el que se obtienen, son de vital importancia para la correcta ejecución de las distintas tareas de control del vehículo. 
 %La computadora de vuelo comprende un sistema de tiempo real. Esto quiere decir que tanto los valores de los resultados de cómputo, como el instante de tiempo en el que se obtienen, son importantes para la correcta ejecución de las distintas tareas. En la sección \ref{sec:disenio_computadora_de_vuelo}
-Por otro lado, en la sección \ref{sec:requerimentos_sistema_tolerancia_fallas} se hizo un análisis de las características que deben tener este tipo de sistemas para poder implementar un mecanismo de tolerancia a fallas utilizando redundancias. A partir de lo presentado hasta aquí, las características elementales de un sistema de tiempo real con tolerancia a fallas se pueden resumir en los siguientes items:
+Por otro lado, en la sección \ref{sec:requerimentos_sistema_tolerancia_fallas} se hizo un análisis de las características que deben tener este tipo de sistemas para poder implementar un mecanismo de tolerancia a fallas utilizando redundancias. A partir de lo presentado hasta aquí, las características elementales de un sistema de tiempo real con tolerancia a fallas se pueden resumir en los siguientes ítems:
 
 %En la sección \ref{sec:requerimentos_sistema_tolerancia_fallas} se mencionó que se busca enmascarar fallas que puedan ocurrir, permitiendo continuar con el normal funcionamiento del sistema, a pesar de dicha falla. Para esto, el mecanismo de tolerancia a fallas consiste en el uso de redundancias y la comparación de resultados entre distintas réplicas de hardware. Además, se concluyó que la comparación de resultados se 
 
@@ -82,7 +82,7 @@ En la figura \ref{fig:esquema_time_triggered_architecture} se muestra un esquema
 
 La gran mayoría de sistemas embebidos emplean mecanismos que trabajan a partir de ejecutar una respuesta frente a eventos, como por ejemplo a través del uso de interrupciones. Los periféricos de un microcontrolador cuentan con mecanismos para informar al procesador de la ocurrencia de determinado evento, como por ejemplo la recepción de un nuevo byte en una interfaz UART, o el cambio de nivel en una entrada de propósito general GPIO. El hecho de que estos eventos puedan ocurrir en cualquier momento y en cualquier orden, puede comprometer el determinismo temporal. 
 
-Un caso común es el de los sensores MEMS, los cuales suelen integrar un mecanismo para avisar al microcontrolador que hay nuevos datos de acelerómetros y giróscopos disponibles, a traveś de uno de sus terminales. Este se puede conectar a un GPIO del microcontrolador y configurar una interrupción por flanco ascendente. El set de tareas de la figura \ref{fig:esquema_time_triggered_architecture} puede estructurarse para incluir esta interrupción, como se muestra en la figura \ref{fig:esquema_event_triggered_architecture}. En este ejemplo puede verse que la tarea de control de motores se retrasa debido a esta interrupción. En el caso time-triggered, el orden e instantes de tiempo de ejecución se vuelven parte del diseño del sistema, evitando que las tareas se retrasen y puedan cumplir con su timing.
+Un caso común es el de los sensores MEMS, los cuales suelen integrar un mecanismo para avisar al microcontrolador que hay nuevos datos de acelerómetros y giróscopos disponibles, a través de uno de sus terminales. Este se puede conectar a un GPIO del microcontrolador y configurar una interrupción por flanco ascendente. El set de tareas de la figura \ref{fig:esquema_time_triggered_architecture} puede estructurarse para incluir esta interrupción, como se muestra en la figura \ref{fig:esquema_event_triggered_architecture}. En este ejemplo puede verse que la tarea de control de motores se retrasa debido a esta interrupción. En el caso time-triggered, el orden e instantes de tiempo de ejecución se vuelven parte del diseño del sistema, evitando que las tareas se retrasen y puedan cumplir con su timing.
 
 %De manera de ilustrar esto, se presenta un ejemplo en la figura . Para el primer caso, la ocurrencia de las interrupciones genera que la tarea main retrase su ejecución. Por el contrario, para el caso \textit{time-triggered}, el orden e instantes de tiempo de ejecución se vuelven parte del diseño del sistema, permitiendo que la tarea main se complete sin ser interrumpida, logrando cumplir con su timing.
 
@@ -117,7 +117,7 @@ En la figura \ref{fig:TDMA_esquema} se muestra un caso para 3 réplicas. Este gr
 \begin{figure}[!t]
     \centering
     \includegraphics[width=0.6\textwidth]{img/TDMA_esquema.png}
-    \caption{El ejemplo muestra como las 3 réplicas pueden compartir el bus de comuncaciones. Cada una de ellas sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo recibirán un mensaje. Para que esto funcione adecuadamente, las réplicas deben estar sincronizados.}
+    \caption{El ejemplo muestra como las 3 réplicas pueden compartir el bus de comunicaciones. Cada una de ellas sabe en qué instante de tiempo enviar un mensaje y en qué instantes de tiempo recibirán un mensaje. Para que esto funcione adecuadamente, las réplicas deben estar sincronizados.}
     \label{fig:TDMA_esquema}
 \end{figure}
 
@@ -417,7 +417,7 @@ Para realizar pruebas con las computadoras de vuelo, se hizo una implementación
 
 Se comienza con una inicialización de los periféricos y sensores conectados, para luego pasar a un estado en el que se espera una orden para comenzar la ejecución del scheduler. Esto puede ser a través de un comando externo enviado por el piloto remoto, algún mensaje por el bus CAN, o cualquier otro mecanismo.
 %{\Large \textbf{{\color{red} IMAGEN DEL DIAGRAMA DE FLUJOS. ACLARAR A PATIR DE DÓNDE SE VUELVE TIME-TRIGGERED. SINO PUEDE SER UN DIAGRAMA MÁS GENÉRICO, CON UN RELOJITO Y UNA LISTA DE TAREAS.}}}
-Es importante destacar que esto ocurre previo a la ejecución del scheduler, por lo que el sistema no tiene un comportamiento controlado por el tiempo. Previo a su ejecución, este se comporta como un sistema del tipo \textit{event-triggered}. Si bien se mencionó que esto tiene algunas características que perjudican la seguridad, el estado previo a la ejecución del scheduler corresponde a una inicialización, por lo que no se compormete la seguridad del vehículo. En este estado, el UAV todavía se encuentra en tierra con sus motores apagados esperando una orden para comenzar su misión.
+Es importante destacar que esto ocurre previo a la ejecución del scheduler, por lo que el sistema no tiene un comportamiento controlado por el tiempo. Previo a su ejecución, este se comporta como un sistema del tipo \textit{event-triggered}. Si bien se mencionó que esto tiene algunas características que perjudican la seguridad, el estado previo a la ejecución del scheduler corresponde a una inicialización, por lo que no se compromete la seguridad del vehículo. En este estado, el UAV todavía se encuentra en tierra con sus motores apagados esperando una orden para comenzar su misión.
 
 \subsubsection{Scheduler}
 
@@ -449,7 +449,7 @@ El tiempo de ejecución se divide en intervalos discretos de duración fija. El 
 \begin{figure}[!t]
     \centering
     \includegraphics[width=0.9\textwidth]{img/scheduler_implementacion_esquema.png}
-    \caption{En cada tick se llama al dispatcher el cual selecciona la tarea a ejectuar. Todas las tareas se almacenan en la lista del atributo mTaskList\_ del scheduler. En la imagen se muestra la evolución de la lista a medida que ocurren los ticks. En cada tick, el atributo mDelayTicks\_ de todas las tareas se decrementa en 1. En caso de que se detecte alguna tarea que alcanza un mDelayTicks\_ = 0, esta es ejecutada. Para finalizar, se vuelve a setear mDelayTicks\_ = mPeriodTicks\_, permitiendo que las tareas puedan volver a ser ejecutadas.}
+    \caption{En cada tick se llama al dispatcher el cual selecciona la tarea a ejecutar. Todas las tareas se almacenan en la lista del atributo mTaskList\_ del scheduler. En la imagen se muestra la evolución de la lista a medida que ocurren los ticks. En cada tick, el atributo mDelayTicks\_ de todas las tareas se decrementa en 1. En caso de que se detecte alguna tarea que alcanza un mDelayTicks\_ = 0, esta es ejecutada. Para finalizar, se vuelve a setear mDelayTicks\_ = mPeriodTicks\_, permitiendo que las tareas puedan volver a ser ejecutadas.}
     \label{fig:scheduler_implementacion_esquema}
 \end{figure}
 
@@ -638,7 +638,7 @@ Mientras que la tarea ``Obtener dato IMU'' se encarga de consultar al sensor y o
 
 \begin{subequations}
     \begin{align}
-        \theta[n] &= \alpha \ atan_2(-a_x[n], a_z[n]) + (1 - \alpha) \left( \Delta T \ g_y[n] + \theta[n-1] \right)\\
+        \theta[n] &= \alpha \ atan_2(-a_x[n], \sqrt{a_y^2[n] + a_z^2[n]}) + (1 - \alpha) \left( \Delta T \ g_y[n] + \theta[n-1] \right)\\
         \phi[n] &= \alpha \ atan_2(a_y[n], a_z[n]) + (1 - \alpha) \left( \Delta T \ g_x[n] + \phi [n-1] \right)
     \end{align}
 \end{subequations}
@@ -724,7 +724,7 @@ En la figura \ref{fig:mensaje_1_CANH} se muestra una captura de osciloscopio, do
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/mensaje_1_CANH.png}
-    \caption{Se muestra una captura de la actividad en el bus CAN. La curva verde correpsonde a CAN-L y la amarilla a CAN-H.}
+    \caption{Se muestra una captura de la actividad en el bus CAN. La curva verde corresponde a CAN-L y la amarilla a CAN-H.}
     \label{fig:mensaje_1_CANH}
 \end{figure}
 
@@ -780,7 +780,7 @@ Con motivo de mostrar la necesidad de la sincronización periódica, se repitió
     \label{fig:resultados_no_sync}
 \end{figure}
 
-La desincronización también se puede ver a partir de la actividad registrada en el bus CAN. En la figura \ref{fig:resultados_timing_detalle_placa_3_no_sync} se muestran 3 fragmentos capturados con el analizador lógico. A medida que pasa el tiempo, los mensajes enviados por la réplica 3 se acercan lentamente a los instantes de tiempo donde se envían los mensajes de la réplica 2. Comparando los valores de los intervalos de tiempo con las etiquetas P1 y P4 de las 3 imágenes, se puede ver que al cabo de 10 s hubo un corriemiento de aproximadamente 150 $\mu$s. Luego, a los 30 s de ejecución el corrimiento alcanza los 470 $\mu$s. En este último caso, el mensaje de la réplica 3 se encuentra próximo a causar una colisión con el de la réplica 2.
+La desincronización también se puede ver a partir de la actividad registrada en el bus CAN. En la figura \ref{fig:resultados_timing_detalle_placa_3_no_sync} se muestran 3 fragmentos capturados con el analizador lógico. A medida que pasa el tiempo, los mensajes enviados por la réplica 3 se acercan lentamente a los instantes de tiempo donde se envían los mensajes de la réplica 2. Comparando los valores de los intervalos de tiempo con las etiquetas P1 y P4 de las 3 imágenes, se puede ver que al cabo de 10 s hubo un corrimiento de aproximadamente 150 $\mu$s. Luego, a los 30 s de ejecución el corrimiento alcanza los 470 $\mu$s. En este último caso, el mensaje de la réplica 3 se encuentra próximo a causar una colisión con el de la réplica 2.
 
 \begin{figure}[!t]
     \centering
