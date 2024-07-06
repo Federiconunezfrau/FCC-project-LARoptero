@@ -14,7 +14,7 @@
 
 % En esta sección se muestra que, si el sistema tiene ciertas características, en particular ser un sistema de tiempo real y contar con un bus común a los nodos para las comunicaciones, luego el problema del consenso se simplifica mucho.
 
-En esta sección se presenta la arquitectura de sistema propuesta para la tarea de tolerancia a fallas. Esta consiste en un sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo. Se describen las características del firmware desarrollado para implementar el sistema propuesto. Para demostrar las capacidades de toleranca a fallas, se hicieron una serie de pruebas simulando fallas en un sensor. Finalmente, se muestran los resultados obtenidos sobre las pruebas realizadas.
+En esta sección se presenta la arquitectura de sistema propuesta para la tarea de tolerancia a fallas. Esta consiste en un sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo. Se describen las características del firmware desarrollado para implementar el sistema propuesto. Para demostrar las capacidades de toleranca a fallas, se hicieron una serie de pruebas emulando fallas en un sensor. Finalmente, se muestran los resultados obtenidos sobre las pruebas realizadas.
 
 
 %Para esto, se desarrolló un firmware con una arquitectura de sistema distribuido, conformado por las tres computadoras de vuelo construidas para este trabajo.
@@ -162,7 +162,7 @@ El comportamiento de cada una de las réplicas está controlado en última insta
 
 %{\Large \textbf{{\color{red} IMAGEN CON DESINCRONISMO}}}
 
-Para solucionar este problema, se requiere la ejecución de una resincronización periódica. El desfasaje entre los clocks de cada réplica irá creciendo conforme pase el tiempo. En la figura \ref{fig:esquema_desincronizacion} se muestra un ejemplo donde cada réplica tiene un drift $\rho$ distinto. Una forma de corrección puede ser como la que se muestra en la figura \ref{fig:esquema_resincronizacion}. Al corregir el offset entre clocks periódicamente puede controlarse el desfasaje, manteniéndolo en niveles aceptables. Las réplicas quedarán sincronizados con cierta precisión $\Pi$. Existen muchísimos algoritmos de resincronización, en \cite{anceaume1998performance} se puede encontrar un estudio que compara distintos tipos de algoritmos. En \cite{9501400} puede encontrarse un trabajo donde se implementa una sincronización entre distintos miembros de un bus CAN, donde no solo se hace una corrección del desfasaje, sino que además se corrige la velocidad de cada clock, obteniendo una precisión inferior a 1 $\mu$s.
+Para solucionar este problema, se requiere la ejecución de una resincronización periódica. El desfasaje entre los clocks de cada réplica irá creciendo conforme pase el tiempo. En la figura \ref{fig:esquema_desincronizacion} se muestra un ejemplo donde cada réplica tiene un drift $\rho$ distinto. Una forma de corrección puede ser como la que se muestra en la figura \ref{fig:esquema_resincronizacion}. Al corregir el offset entre clocks periódicamente puede controlarse el desfasaje, manteniéndolo en niveles aceptables. Las réplicas quedarán sincronizados con cierta precisión $\Pi$. Existen muchísimos algoritmos de resincronización, en \cite{anceaume1998performance} se puede encontrar un estudio que compara distintos tipos de algoritmos. En \cite{9501400} puede encontrarse un trabajo donde se implementa una sincronización entre distintos miembros de un bus CAN, donde no solo se hace una corrección del desfasaje, sino que además se corrige la velocidad de cada clock, obteniendo una precisión por debajo de 1 $\mu$s.
 
 % \begin{figure}[!t]
 %     \centering
@@ -585,7 +585,8 @@ El paso de corrección se aplica alargando o achicando la duración del tick act
 % Captura de analizador lógico mostrando que esta vez el schedule no se rompe
 % Gráfico hecho por mi, mostrando cómo cambia con sincronización vs sin sincronización.
 
-\subsection{Pruebas Realizadas}
+%\subsection{Pruebas Realizadas}
+\subsection{Demostración Experimental}
 
 %Se describe el setting común de las pruebas: Que las 3 placas calculan pitch y roll, luego lo comparten, comparan y se obtienen los residuos. Las fallas se inyectan articialmente. En cada sección se explica la característica de la falla en particular.
 
@@ -593,9 +594,10 @@ El paso de corrección se aplica alargando o achicando la duración del tick act
 
 %Para realizar una prueba de las capacidades de tolerancia a fallas del sistema, se implementó un sistema de validación de datos para un sensor en particular, en este caso la IMU, la cual provee datos a la tasa más alta y aporta los datos escenciales para la estabilidad del vehículo. La arquitectura se basa en un principio típicamente usado: considerando que existen tres sensores del mismo tipo y características, se comparan los datos adquiridos de a pares, y aquel sensor que difiera con respecto a los otros dos se considera en falla. [13], [14].
 
-Para demostrar las capacidades de todo el sistema, se presentan una serie de pruebas realizadas para la detección de fallas en el sensor IMU. Durante la ejecución del scheduler, las réplicas intercambian resultados de estimaciones de los ángulos de pitch y roll, obtenidas a partir de un filtro complementario \cite{Pose2014}. Estas comparan sus resultados con los de sus pares y luego aquella que difiera con respecto a las demás se considera en falla. Utilizando este método y a partir de la arquitectura propuesta, es posible detectar la falla simultánea de 1 de las réplicas.
+Para demostrar las capacidades de todo el sistema, se presentan una serie de pruebas realizadas para la detección de fallas en el sensor IMU. Durante la ejecución del scheduler, las réplicas intercambian resultados de estimaciones de los ángulos de pitch y roll, obtenidas a partir de un filtro complementario \cite{Pose2014}. Estas comparan sus resultados con los de sus pares y luego aquella que difiera con respecto a las demás se considera en falla. Utilizando este método y a partir de la arquitectura propuesta, es posible detectar la falla %simultánea de 1 de las réplicas.
+de 1 de las 3 réplicas a la vez.
 
-En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus características temporales y en la figura \ref{fig:grafico_hyperperiod_pruebas_realizadas} se muestra un gráfico temporal. A partir de esta secuencia, cada réplica obtiene una nueva estimación de ángulos de pitch y roll cada 10 ms.
+En la tabla \ref{tab:schedule_pruebas_realizadas} se muestran las tareas con sus características temporales y en la figura \ref{fig:grafico_hyperperiod_pruebas_realizadas} se muestra un gráfico temporal. A partir de esta secuencia, la frecuencia de adquisición de datos de la IMU es de 100 Hz, suficiente para detectar las fallas. Utilizando las mediciones obtenidas, cada réplica calcula una nueva estimación de los ángulos de pitch y roll cada 10 ms.
 
 \begin{table}[H]
     \centering
@@ -664,7 +666,7 @@ Con motivo de observar el valor de los residuos, se agrega una tarea ``Enviar re
 
 El set de tareas se ejecuta durante 60 segundos, orientando a las réplicas siguiendo el esquema de la figura \ref{fig:orientaciones_prueba}. Para que la orientación de las réplicas sea la misma en todo momento, estas se apilan con una serie de soportes, como se muestra en la figura \ref{fig:pruebas_stackeadas}.
 
-\begin{figure}[!t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{img/orientaciones_prueba.png}
     \caption{Durante los primeros 10 segundos, las réplicas se orientan como en el caso 1. Luego se continua con el caso 2 durante otros 10 segundos, y así sucesivamente hasta finalizar en el caso 6, donde la placa vuelve a su condición inicial. Cada una de las orientaciones que se muestran corresponden a una rotación de aproximadamente 45$^o$.}
@@ -678,7 +680,7 @@ El set de tareas se ejecuta durante 60 segundos, orientando a las réplicas sigu
 %     \label{fig:pruebas_stackeadas}
 % \end{figure}
 
-\begin{figure}[!t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/placas_stack_analizador_logico.jpg}
     \caption{Las 3 placas apiladas se montaron en conjunto sobre una base, para realizar las pruebas de estimación de los ángulos de pitch y roll. Se utilizó una placa externa conectada al mismo bus CAN para enviar comandos a las 3 réplicas, por ejemplo para comenzar la ejecución del sistema sincronizado. Todas las comunicaciones se loggearon a través del uso de un analizador lógico.}
@@ -712,28 +714,28 @@ Se hicieron distintas mediciones sobre el bus CAN para verificar el funcionamien
 
 En la figura \ref{fig:mensaje_1_CANH} se muestra una captura de osciloscopio, donde se puede ver el comportamiento diferencial de las líneas CAN-L en verde y CAN-H en amarillo. Como era de esperarse, en los intervalos de tiempo anterior y posterior al mensaje, las líneas CAN-H y CAN-L se encuentran en el mismo valor, aproximadamente $2.0 \ V$, correspondiente al estado recessive. Durante el envío del mensaje CAN, ambas líneas trabajan de forma diferencial. Para marcar un estado dominant en el bus, CAN-H alcanza un valor aproximado de $2.6 \ V$ y CAN-L un valor de  $0,6 \ V$, dando una tensión diferencial de $2,0 \ V$.
 
-\begin{figure}[!t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/placas_con_osciloscopio.jpeg}
     \caption{El canal 1 del osciloscopio se utilizó para medir CAN-L y el canal 2 para CAN-H.}
     \label{fig:placas_con_osciloscopio}
 \end{figure}
 
-\begin{figure}[!t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/mensaje_1_CANH.png}
     \caption{Se muestra una captura de la actividad en el bus CAN. La curva verde correpsonde a CAN-L y la amarilla a CAN-H.}
     \label{fig:mensaje_1_CANH}
 \end{figure}
 
-\begin{figure}[!t]
+Un aspecto que puede verse en ambas señales es la presencia de sobrepicos durante las transiciones de nivel. Esto ocurre tanto en CAN-H como en CAN-L y sucede cuando hay un cambio de recessive a dominant y viceversa. El hecho de que este comportamiento afecte a ambas líneas por igual no presenta un problema para las comunicaciones, ya que la información útil se encuentra contenida en la señal diferencial. Para observar esta última, se utilizaron las funcionalidades del osciloscopio y se obtuvo la figura \ref{fig:mensaje_1_diff}. En esta imagen se puede ver que los estados recessive y dominant se encuentran dentro de los rangos definidos por la figura \ref{fig:CAN_recessive_dominant}.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/mensaje_1_diff.png}
     \caption{Se muestra la tensión diferencial entre CAN-H y CAN-L, para las señales de la figura \ref{fig:mensaje_1_CANH}.}
     \label{fig:mensaje_1_diff}
 \end{figure}
-
-Un aspecto que puede verse en ambas señales es la presencia de sobrepicos durante las transiciones de nivel. Esto ocurre tanto en CAN-H como en CAN-L y sucede cuando hay un cambio de recessive a dominant y viceversa. El hecho de que este comportamiento afecte a ambas líneas por igual no presenta un problema para las comunicaciones, ya que la información útil se encuentra contenida en la señal diferencial. Para observar esta última, se utilizaron las funcionalidades del osciloscopio y se obtuvo la figura \ref{fig:mensaje_1_diff}. En esta imagen se puede ver que los estados recessive y dominant se encuentran dentro de los rangos definidos por la figura \ref{fig:CAN_recessive_dominant}.
 
 Otro de los aspectos que puede llamar la atención corresponde al último estado dominant en el mensaje de la figura \ref{fig:mensaje_1_CANH}, ya que la línea CAN-H alcanza un nivel de tensión superior, de $3 \ V$. Este fragmento del mensaje corresponde al campo ACK de la figura \ref{fig:CAN_frame_standard} y no es controlado por el emisor del mensaje, sino que por todos los receptores presentes en el bus. Cada nodo del bus CAN que recibe el mensaje fija un estado dominant en el bus, por lo que es razonable que si todos los demás nodos fijan un valor dominant al mismo tiempo, las tensiones que se hagan presente durante este fragmento del mensaje sean superiores para CAN-H. Para las mediciones que se tomaron, este comportamiento solo se manifestó en CAN-H, pero podría suceder algo similar para CAN-L, donde este alcance valores de tensión inferiores. Este comportamiento también puede verse manifestado en la captura diferencial de la figura \ref{fig:mensaje_1_diff}. Si bien el valor de tensión es superior, el fragmento ACK de la señal diferencial alcanza un valor de $2.5 \ V$ e igualmente se encuentra dentro del rango indicado por la figura \ref{fig:CAN_recessive_dominant}.
 
@@ -741,18 +743,18 @@ Otro de los aspectos que puede llamar la atención corresponde al último estado
 
 Para verificar que las réplicas se encuentran sincronizadas es necesario observar la actividad del bus durante un mayor período de tiempo. Para esto, se hicieron capturas utilizando el analizador lógico. En la figura \ref{fig:resultados_timing_sin_fallas} se muestra un fragmento de 100 ms, donde se pueden ver una serie de mensajes, los cuales se repiten de forma periódica. Estos corresponden a la secuencia que fue definida en el schedule de la tabla \ref{tab:schedule_pruebas_realizadas}.
 
+Utilizando las herramientas que provee el software del analizador lógico, se midieron los intervalos de tiempo entre mensajes. Estos se muestran en la figura \ref{fig:resultados_timing_detalle_sin_fallas}. Comparando los valores medidos contra los valores de la tabla \ref{tab:schedule_pruebas_realizadas}, se verifica que las placas respetan los tiempos de uso del bus.
+
 %Para apreciar mejor el timing de los mensajes en el bus CAN, en la figura \ref{fig:resultados_timing_detalle_sin_fallas} se muestran mediciones de tiempos tomadas a partir del software del analizador lógico.
 
-\begin{figure}[!t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_timing_sin_fallas_zoom.png}
     \caption{Captura tomada del software del analizador lógico. Se muestra un fragmento de 100 ms de actividad en el bus CAN. Se muestra un acercamiento de uno de los períodos, donde se destacan todos los mensajes involucrados en el schedule. En rojo, verde y azul se muestran los mensajes correspondientes a la tarea ``Enviar pitch y roll'' de las placas 1, 2 y 3 respectivamente. En celeste, amarillo y rosado, los mensajes correspondientes a la tarea ``Enviar residuos'' para las placas 1, 2 y 3.}
     \label{fig:resultados_timing_sin_fallas}
 \end{figure}
 
-Utilizando las herramientas que provee el software del analizador lógico, se midieron los intervalos de tiempo entre mensajes. Estos se muestran en la figura \ref{fig:resultados_timing_detalle_sin_fallas}. Comparando los valores medidos contra los valores de la tabla \ref{tab:schedule_pruebas_realizadas}, se verifica que las placas respetan los tiempos de uso del bus
-
-\begin{figure}[!t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/resultados_timing_detalle_sin_fallas.png}
     \caption{Utilizando la funcionalidad de markers se midieron los intervalos de tiempo entre los mensajes presentes en el bus CAN. La imagen muestra la misma secuencia de mensajes de la figura \ref{fig:resultados_timing_sin_fallas}. En el apartado Timing Markers se muestran los valores medidos. Se tomó como referencia el primer mensaje, correspondiente a la tarea ``Enviar pitch y roll'' de la placa 1. El último valor muestra que la tarea vuelve a repetirse al cabo de 10 ms.}
@@ -760,7 +762,7 @@ Utilizando las herramientas que provee el software del analizador lógico, se mi
 \end{figure}
 
 % Comentar acerca de cómo se armó el gráfico de sincronización.
-Para determinar que las 3 réplicas efectivamente se encuentran funcionando de manera sincronizada, se hizo un análisis similar al de la figura \ref{fig:resultados_timing_detalle_sin_fallas} para los 60 segundos de ejecución del schedule. En la secuencia de mensajes, siempre que la réplica 2 envía un mensaje, esta lo hace 1 ms después que la placa 1, tanto para la tarea ``Enviar pitch y roll'' como ``Enviar residuos''. En cuanto a la réplica 3, esta lo hace 2 ms después que la placa 1. A partir de los datos tomados con el analizador lógico se hizo el gráfico de la figura \ref{fig:resultados_timing_detalle_sin_fallas}, donde se verifica que esto se cumple durante los 60 segundos de ejecución. El salto que se muestra en el instante inicial corresponde a la primera sincronización. La forma característica del gráfico tipo ``diente de sierra'' muestra el efecto de la sincronización periódica, donde cada salto abrupto indica una nueva resincronización. Esto ocurre cada 1 segundo, de acuerdo al período de tiempo de la tarea ``Sincronización'', definida en la tabla \ref{tab:schedule_pruebas_realizadas}.
+Para determinar que las 3 réplicas efectivamente se encuentran funcionando de manera sincronizada, se hizo un análisis similar al de la figura \ref{fig:resultados_timing_detalle_sin_fallas} para los 60 segundos de ejecución del schedule. En la secuencia de mensajes, siempre que la réplica 2 envía un mensaje, esta lo hace 1 ms después que la placa 1, tanto para la tarea ``Enviar pitch y roll'' como ``Enviar residuos''. En cuanto a la réplica 3, esta lo hace 2 ms después que la placa 1. A partir de los datos tomados con el analizador lógico se hizo el gráfico de la figura \ref{fig:resultados_sincronizacion_sin_fallas}, donde se verifica que esto se cumple durante los 60 segundos de ejecución. El salto que se muestra en el instante inicial corresponde a la primera sincronización. La forma característica del gráfico tipo ``diente de sierra'' muestra el efecto de la sincronización periódica, donde cada salto abrupto indica una nueva resincronización. Esto ocurre cada 1 segundo, de acuerdo al período de tiempo de la tarea ``Sincronización'', definida en la tabla \ref{tab:schedule_pruebas_realizadas}.
 
 \begin{figure}[!t]
     \centering
