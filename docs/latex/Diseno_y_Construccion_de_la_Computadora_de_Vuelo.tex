@@ -275,7 +275,7 @@ Un sistema de alta confiabilidad trae consigo un costo mayor en su desarrollo y 
 
 En la búsqueda de distintas alternativas, se encontró que existen componentes que cuentan con una calificación denominada AEC-Q100. Esta calificación creada por el \textit{Automotive Electronics Council} (AEC) define una serie de requerimientos que debe cumplir un componente para garantizar que este se encuentra apto para uso en electrónica automotriz. 
 %Teniendo en cuenta que en los últimos años ha crecido mucho la cantidad de equipos de electrónica en estos vehículos, un fracaso en cualquiera de ellos puede afectar el funcionamiento del automóvil.
-Los componentes dentro del vehículo se ven sometidos a distintas condiciones de temperatura, humedad, etc., por lo que para considerarse aptos, estos deben garantizar un correcto funcionamiento bajo distintas condiciones. Los requierimientos definidos por el AEC en la especificación AEC-Q100: \textit{Failure Mechanism Based Stress Test Qualification for Integrated Circuits In Automotive Applications} definen una serie de pruebas de estrés de componentes para demostrar la confiabilidad de los mismos.
+Los componentes dentro del vehículo se ven sometidos a distintas condiciones de temperatura, humedad, etc., por lo que para considerarse aptos, estos deben garantizar un correcto funcionamiento bajo distintas condiciones. Los requerimientos definidos por el AEC en la especificación AEC-Q100: \textit{Failure Mechanism Based Stress Test Qualification for Integrated Circuits In Automotive Applications} definen una serie de pruebas de estrés de componentes para demostrar la confiabilidad de los mismos.
 
 Teniendo en cuenta que esta calificación otorga un grado de confiabilidad superior, además del hecho de que estos no representan una gran diferencia económica respecto de aquellos de uso comercial, en aquellos casos en los que fue posible se optó por la selección de componentes con esta calificación.
 
@@ -356,31 +356,68 @@ Se buscó un microcontrolador del mismo fabricante ST, de manera de tener retroc
 
 Como primera opción surgió la posibilidad de seleccionar alguno de los microcontroladores de la serie STM32H7. Estos cuentan con procesadores ARM Cotex-M7, y pueden llegar a velocidades entre 400 MHz y 550 MHz \cite{AN5293}, es decir, pueden llegar hasta a duplicar la performance respecto de la versión anterior de la computadora de vuelo. Además, estos integran una unidad de punto flotante de doble precisión. En la tabla \ref{tab:comparacion_MCUs} se muestran distintos modelos que fueron considerados durante la selección del microcontrolador.
 
+% \begin{table}[htb]
+%     \centering
+%     \begin{tabular}{|c||c|c|c|c|c|c|}
+%         \hline
+%                         & STM32F722 & STM32H723ZG & STM32H743 & STM32H753 & STM32H735ZG \\
+%         \hline
+%         Flash [kB] & 512 & 1024 & \cellcolor{green!25}1024/2048 & \cellcolor{green!25}2048 & 1024\\
+%         \hline
+%         SRAM [kB]  & 256 & 564 & \cellcolor{green!25}1024 & \cellcolor{green!25}1024 & 564\\
+%         \hline
+%         Freq [MHz] & 216 & \cellcolor{green!25}550 & 480 & 480 & \cellcolor{green!25}550\\
+%         \hline
+%         UART & 4 & \cellcolor{green!25}6 & 4 & \cellcolor{green!25}6 & \cellcolor{green!25}6\\
+%         \hline
+%         USART & 4 & \cellcolor{green!25}5 & 4 & \cellcolor{green!25}5 & \cellcolor{green!25}5\\
+%         \hline
+%         SPI & 5 & \cellcolor{green!25}6 & \cellcolor{green!25}5/6 & \cellcolor{green!25}6 & \cellcolor{green!25}6\\
+%         \hline
+%         I2C & 3 & \cellcolor{green!25}5 & 4 & 4 & \cellcolor{green!25}5\\
+%         \hline
+%         CAN & 1 & \cellcolor{green!25}3 & 2 & \cellcolor{green!25}3 & \cellcolor{green!25}3\\
+%         \hline
+%         ADC & 3x12b, 24ch & \makecell{2x16b, 22 ch; \\ 1x12b, 12 ch} & \cellcolor{green!25}\colorbox{green!25}{\makecell{3x16b, \\ 16/28/32ch}} & \makecell{1x12b, 12ch \\ 2x16b, 18ch} & \makecell{1x12b, 12ch \\ 2x16b, 16ch}\\
+%         \hline
+%         Timers & \makecell{18: 16b x 16, \\ 32b x 2} & \cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}} & \makecell{14: 16b x 12, \\ 32b x 2} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} &\cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}}\\
+%         \hline
+%         SDMMC & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2\\
+%         \hline
+%         longevidad & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033 & \cellcolor{green!25}01/2033\\
+%         \hline
+%         AEC-Q100 & No & No & No & No & No\\
+%         \hline       
+%     \end{tabular}
+%     \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del mircocontrolador. En verde se destaca el componente que tiene las mejores características para cada fila. El modelo STM32F722 corresponde al modelo utilizado en la versión anterior de la computadora de vuelo.}
+%     \label{tab:comparacion_MCUs}
+% \end{table}
+
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|c||c|c|c|c|c|c|}
+    \begin{tabular}{|c||c|c|c|c|c|}
         \hline
-                        & STM32F722 & STM32H723ZG & STM32H743 & STM32H753 & STM32H735ZG \\
+                        & STM32F722 & STM32H723ZG & STM32H753 & STM32H735ZG & STM32F746ZG \\
         \hline
-        Flash [kB] & 512 & 1024 & \cellcolor{green!25}1024/2048 & \cellcolor{green!25}2048 & 1024\\
+        Flash [kB] & 512 & 1024 & \cellcolor{green!25}2048 & 1024 & 1024\\
         \hline
-        SRAM [kB]  & 256 & 564 & \cellcolor{green!25}1024 & \cellcolor{green!25}1024 & 564\\
+        SRAM [kB]  & 256 & 564 & \cellcolor{green!25}1024 & 564 & 320\\
         \hline
-        Freq [MHz] & 216 & \cellcolor{green!25}550 & 480 & 480 & \cellcolor{green!25}550\\
+        Freq [MHz] & 216 & \cellcolor{green!25}550 & 480 & \cellcolor{green!25}550 & 216\\
         \hline
-        UART & 4 & \cellcolor{green!25}6 & 4 & \cellcolor{green!25}6 & \cellcolor{green!25}6\\
+        UART & 4 & \cellcolor{green!25}6 & \cellcolor{green!25}6 & \cellcolor{green!25}6 & 4\\
         \hline
-        USART & 4 & \cellcolor{green!25}5 & 4 & \cellcolor{green!25}5 & \cellcolor{green!25}5\\
+        USART & 4 & \cellcolor{green!25}5 & \cellcolor{green!25}5 & \cellcolor{green!25}5 & 4\\
         \hline
-        SPI & 5 & \cellcolor{green!25}6 & \cellcolor{green!25}5/6 & \cellcolor{green!25}6 & \cellcolor{green!25}6\\
+        SPI & 5 & \cellcolor{green!25}6 & \cellcolor{green!25}6 & \cellcolor{green!25}6 & \cellcolor{green!25}6\\
         \hline
-        I2C & 3 & \cellcolor{green!25}5 & 4 & 4 & \cellcolor{green!25}5\\
+        I2C & 3 & \cellcolor{green!25}5  & 4 & \cellcolor{green!25}5 & 4\\
         \hline
-        CAN & 1 & \cellcolor{green!25}3 & 2 & \cellcolor{green!25}3 & \cellcolor{green!25}3\\
+        CAN & 1 & \cellcolor{green!25}3 & \cellcolor{green!25}3 & \cellcolor{green!25}3 & 2\\
         \hline
-        ADC & 3x12b, 24ch & \makecell{2x16b, 22 ch; \\ 1x12b, 12 ch} & \cellcolor{green!25}\colorbox{green!25}{\makecell{3x16b, \\ 16/28/32ch}} & \makecell{1x12b, 12ch \\ 2x16b, 18ch} & \makecell{1x12b, 12ch \\ 2x16b, 16ch}\\
+        ADC & 3x12b, 24ch & \cellcolor{green!25}\colorbox{green!25}{\makecell{2x16b, 22 ch; \\ 1x12b, 12 ch}} & \makecell{1x12b, 12ch \\ 2x16b, 18ch} & \makecell{1x12b, 12ch \\ 2x16b, 16ch} & 3x12b, 24ch\\
         \hline
-        Timers & \makecell{18: 16b x 16, \\ 32b x 2} & \cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}} & \makecell{14: 16b x 12, \\ 32b x 2} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} &\cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}}\\
+        Timers & \makecell{18: 16b x 16, \\ 32b x 2} & \cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}} & \cellcolor{green!25}\makecell{21: 16b x 17, \\ 32b x 4} &\cellcolor{green!25}\colorbox{green!25}{\makecell{21: 16b x 17, \\ 32b x 4}} & \makecell{18: 16b x 13, \\ 32b x 2}\\
         \hline
         SDMMC & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2 & \cellcolor{green!25}2\\
         \hline
@@ -389,11 +426,11 @@ Como primera opción surgió la posibilidad de seleccionar alguno de los microco
         AEC-Q100 & No & No & No & No & No\\
         \hline       
     \end{tabular}
-    \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del mircocontrolador. En verde se destaca el componente que tiene las mejores características para cada fila. El modelo STM32F722 corresponde al modelo utilizado en la versión anterior de la computadora de vuelo.}
+    \caption{Se muestra la comparación de las distintas alternativas que fueron tenidas en cuenta para la selección del mircocontrolador. En verde se destaca el componente que tiene las mejores características para cada fila. El modelo STM32F722 corresponde al modelo utilizado en la versión anterior de la computadora de vuelo. En la columna 5 se muestra el modelo utilizado en este trabajo.}
     \label{tab:comparacion_MCUs}
 \end{table}
 
-Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a frecuencia de operación, memoria flash y RAM. Sumado a esto, la gran mayoría de estos microcontroladores se encuentran dentro del programa \textit{Longevity Commitment} \cite{longevity_ST}. El fabricante ST se compromete a mantener la producción de los componentes que se encuentren dentro de este programa durante un período determinado. Todos los microcontroladores de la tabla \ref{tab:comparacion_MCUs} tienen un periódo de fabricación de 10 años asegurado por ST, finalizando en 01/2033. Este aspecto es de especial interés teniendo en cuenta la posible necesidad futura de fabricar nuevas placas de la computadora de vuelo.
+Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a frecuencia de operación, memoria flash y RAM. Sumado a esto, la gran mayoría de estos microcontroladores se encuentran dentro del programa \textit{Longevity Commitment} \cite{longevity_ST}. El fabricante ST se compromete a mantener la producción de los componentes que se encuentren dentro de este programa durante un período determinado. Todos los microcontroladores de la tabla \ref{tab:comparacion_MCUs} tienen un período de fabricación de 10 años asegurado por ST, finalizando en 01/2033. Este aspecto es de especial interés teniendo en cuenta la posible necesidad futura de fabricar nuevas placas de la computadora de vuelo.
 
 %\textbf{{\color{red} COMPLETAR POR QUÉ NO SE ELEIGIÓ UNO AEC-Q100, QUE ES PORQUE NO HABÍA CORTEX M7 DE ST QUE SEA AEC-Q100}}
 
@@ -401,15 +438,12 @@ Todos los microcontroladores de la serie STM32H7 presentan mejoras en cuanto a f
 
 % Acá lo importante es decir que se quería elegir un controlador más potente que la choriboard III, algún STM32H7. Mencionar por qué STM32, que es porque ellos vienen trabajando con esos microcontroladores. Luego explicar que debido al faltante y la crisis, se tuvo que elegir otro controlador. También, mencionar que el que se eligió tiene 10 años de garantía de fabricación, lo que favorece la longevidad.
 
-A pesar del análisis y de las comparaciones entre microcontroladores de la serie STM32H7, la selección del microcontrolador se vio limitada por la disponibilidad de componentes encontrada durante el período en que se comenzó con la selección de componentes y el desarrollo del circuito, entre octubre y diciembre del 2022.
+A pesar del análisis y de las comparaciones entre microcontroladores de la serie STM32H7, la selección se vio limitada por la disponibilidad encontrada durante el período en que se comenzó con la selección de componentes y el desarrollo del circuito, entre octubre y diciembre del 2022. %Al igual que el resto del circuito, el microcontrolador fue seleccionado durante el período de octubre a diciembre de 2022.
+Finalmente, el microcontrolador seleccionado fue el STM32F746ZG. Este cuenta con un procesador ARM-Cortex M7, 1024 kB de memoria flash y 320 kB de memoria SRAM. Un aspecto relevante de este microcontrolador es que cuenta con 2 interfaces para uso de un bus denominado Controller Area Network (CAN), el cual se utilizará para establecer las comunicaciones relevantes a los algoritmos de tolerancia a fallas. La posibilidad de contar con dos de estas interfaces permite implementar un sistema donde este bus no sea un punto singular de falla.
 
-%Al igual que el resto del circuito, el microcontrolador fue seleccionado durante el período de octubre a diciembre de 2022.
+Si bien el microcontrolador seleccionado no ofrece la misma performance respecto de aquellos de la serie H7, este cuenta con un encapsulado LQFP de 144 terminales, lo que permite realizar muchas más conexiones con sensores y componentes, respecto de la versión anterior, el cual contaba con un encapsulado LQFP de 100 terminales. Por otro lado, el microcontrolador utilizado es compatible y puede ser directamente reemplazado por otros del mismo fabricante ST. Esto permitió que una vez restablecida la oferta de microcontroladores, pudiera ser reemplazado por otro modelo, STM32F777ZIT6, el cual cuenta con unidad de punto flotante de doble precisión.
 
-%\textbf{{\color{red} SE PUEDE SIMPLEMENTE MENCIONAR LA CRISIS DE CHIPS COMO CAUSA DE LA FALTA DE DISPONIBILIDAD.}}
-
-El microcontrolador seleccionado fue el STM32F746ZG. Este cuenta con un procesador ARM-Cortex M7, 1024 kB de memoria flash y 320 kB de memoria SRAM. Un aspecto relevante de este microcontrolador es que cuenta con 2 interfaces para uso de un bus denominado Controller Area Network (CAN), el cual se utilizará para establecer las comunicaciones relevantes a los algoritmos de tolerancia a fallas. La posibilidad de contar con dos de estas interfaces permite implementar un sistema donde este bus no sea un punto singular de falla.
-
-Suamdo a las prestaciones, este micocontrolador cuenta con un encapsulado LQFP de 144 terminales, lo que permite realizar muchas conexiones con sensores y componentes a través de distintas interfaces comunes, como SPI, I2C, además de terminales GPIO comunes para interrupciones y manejo de otros módulos.
+%Suamdo a las prestaciones, este micocontrolador cuenta con un encapsulado LQFP de 144 terminales, lo que permite realizar muchas conexiones con sensores y componentes a través de distintas interfaces comunes, como SPI, I2C, además de terminales GPIO comunes para interrupciones y manejo de otros módulos.
 
 %\textbf{{\color{red} SE PUEDE EXPLICAR LA SELECCIÓN DE LOS CRISTALES Y EL USO DE LOS CAPACIOTRES DE DESACOPLE, SIGUIENDO LA APP NOTE DE ST.}}
 
@@ -447,11 +481,11 @@ La unidad de medición inercial, IMU por sus siglas en inglés, es el sensor pri
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.4\textwidth]{img/IMU_ejes.png}
-    \caption{Todas las mediciones que entrega el sensor son realtivas a una terna solidaria a este. La imagen se extrajo de \cite{ICM42688pDatasheet}.}
+    \caption{Todas las mediciones que entrega el sensor son relativas a una terna solidaria a este. La imagen se extrajo de \cite{ICM42688pDatasheet}.}
     \label{fig:IMU_ejes}
 \end{figure}
 
-Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se construyen utilizando la tecnología MEMS: \textit{Micro Electro-Mechanical Systems}. Esta consite en utilizar técnicas de fabricación de circuitos integrados para integrar en el silicio partes que móviles que constituyen los sistemas mecánicos de los acelerómetros y giróscopos. Este tipo de sensores tienen la ventaja de que pueden conseguirse por un bajo costo, además de tener encapsulados muy pequeños, permitiendo obtener un diseño de dimensiones reducidas. 
+Los acelerómetros y giróscopos de la IMU utilizada en este trabajo, se construyen utilizando la tecnología MEMS: \textit{Micro Electro-Mechanical Systems}. Esta consiste en utilizar técnicas de fabricación de circuitos integrados para integrar en el silicio partes que móviles que constituyen los sistemas mecánicos de los acelerómetros y giróscopos. Este tipo de sensores tienen la ventaja de que pueden conseguirse por un bajo costo, además de tener encapsulados muy pequeños, permitiendo obtener un diseño de dimensiones reducidas. 
 
 
 %En la figura \ref{fig:MEMS_acelerometro}, se muestra una imagen tomada con un microscopio electrónico de un acelerómetro MEMS. Lo que se observa en este caso, es que en el mismo silicio se integra una masa llamada \textit{proof-mass}, la cual se encuentra sujeta al sustrato a través de dos resortes.
@@ -550,14 +584,14 @@ El parámetro \textit{Sensitivity} hace referencia a la resolución. En algunas 
 
 La imagen muestra que el sensor permite seleccionar distintos rangos de escala para las mediciones del acelerómetro. Por ejemplo, si se selecciona el rango $\pm 2g$, la hoja de datos especifica una resolución de $16384 \ LSB/g$. Una mejor forma de entender este parámetro sería si se considera la inversa, es decir, la resolución del ADC. En este caso sería de $61.04 \ 10^{-6} \ g$. Luego para un rango de $\pm 4g$ la resolución es de $8192 \ LSB/g$, es decir, $122.07 \ 10^{-6} \ g$. Este valor es el doble del anterior y tiene sentido dado que se está midiendo un rango mayor de aceleraciones utilizando la misma cantidad de bits, en este caso 16 según lo especificado en la hoja de datos.
 
-Para entender los parámetros, \textit{scale factor error}, \textit{offset} y \textit{noise} se plantea un modelo sencillo de medición, tanto para acelerómetros como para giróscopos \cite{borodacz2022review}. Este se presenta en la ecuación \eqref{eq:medicion_vs_real}, donde $S$ es el \textit{scale factor error}, $\omega_b(t)$ es el \textit{offset} el cual es variable con el tiempo, $\eta \sim \mathcal{N}(0,\sigma^2)$, $\omega_m$ es el valor medido y $\omega$ sería la velocidad angular verdadera para el giróscopo.
+Para entender los parámetros, \textit{scale factor error}, \textit{offset} y \textit{noise} se plantea un modelo sencillo de medición, tanto para acelerómetros como para giróscopos \cite{borodacz2022review}. Este se presenta en la ecuación \eqref{eq:medicion_vs_real}, donde $S$ es el \textit{scale factor error}, $\omega_b(t)$ es el \textit{offset}, $\eta \sim \mathcal{N}(0,\sigma^2)$, $\omega_m$ es el valor medido y $\omega$ sería la velocidad angular verdadera para el giróscopo.
 
 \begin{equation}
     \omega_m = (1+S)\omega + \omega_b (t) + \eta
     \label{eq:medicion_vs_real}
 \end{equation}
 
-A su vez, en las hojas de datos se especifica la dependencia de estos parámetros con el tiempo y con la temperatura, como es el caso del \textit{scale factor error}.
+A su vez, en las hojas de datos se especifica la dependencia de estos parámetros con el tiempo y con la temperatura, como es el caso del \textit{scale factor error} y el del \textit{offset}. Este último generalmente presenta un corrimiento gradual con el tiempo y corresponde a la especificación \textit{offset vs time}, o también llamada \textit{bias instability}.
 
 Para tener un criterio de selección del sensor IMU, se siguió el análisis planteado en \cite{borodacz2022review}. Este paper presenta un análisis de los parámetros de los acelerómetros y grióscopos y su impacto en las estimaciones de posición en sistemas de navegación inercial (INS). En este se concluye que los parámetros más importantes para la selección del sensor son:
 
@@ -592,7 +626,7 @@ Se buscaron modelos de IMUs de distintos fabricantes, para comparar característ
 
 Lo primero que llama la atención es el hecho de que muchos de los sensores no especifican todos sus parámetros. Una sola de las alternativas consideradas tiene disponible toda la información en su hoja de datos. Esto dificulta mucho la selección de un componente. A priori, se seleccionó el sensor ASM330LHHX por el hecho de ser el único que ofrece toda la información en su hoja de datos, además de ser de grado automotriz y tener una longevidad garantizada de 15 años. Teniendo en cuenta aspectos de confiabilidad, resulta esencial el hecho de conocer los parámetros del sensor.
 
-Durante la selección del sensor hubo otro aspecto importante que se tuvo en cuenta y es el hecho de la compatibilidad con el software desarrollado por el laboratorio, para computadoras de vuelo anteriores a la de este trabajo. La versión anterior contaba con un sensor IMU ICM20602, del fabricante TDK. El laboratorio cuenta con bibliotecas de código ya desarrolladas para este sensor. Este presentó excelentes resultados, lo que sienta un antecedente importante en la selección de componentes del mismo fabricante. En la tabla \ref{tab:comparacion_IMUs_TDK} se muestra una comparación entre el sensor anterior ICM20602 y el sensor seleccionado ICM42688.
+Durante la selección del sensor hubo otro aspecto importante que se tuvo en cuenta y es el hecho de la compatibilidad con el software desarrollado por el laboratorio, para computadoras de vuelo anteriores a la de este trabajo. La versión anterior contaba con un sensor IMU ICM20602, del fabricante TDK, para el cual el laboratorio cuenta con bibliotecas de código ya desarrolladas. Este presentó excelentes resultados, lo que sienta un antecedente importante en la selección de componentes del mismo fabricante. Es por esto que finalmente el sensor seleccionado fue el ICM42688. En la tabla \ref{tab:comparacion_IMUs_TDK} se puede encontrar una comparación con el sensor utilizado en la versión anterior de la computadora de vuelo.% y el sensor seleccionado ICM42688.
 
 \begin{table}[htb]
     \centering
@@ -629,7 +663,10 @@ Durante la selección del sensor hubo otro aspecto importante que se tuvo en cue
 
 Para el diseño del circuito se siguieron las recomendaciones en la hoja de datos del componente. Este sugiere incluir una serie de capacitores de desacople en los terminales de alimentación del componente. Se elige utilizar una comunicación SPI en modo esclavo, donde el maestro es el microcontrolador, ya que pueden obtenerse mayores velocidades de comunicación, respecto de otros protocolos como I2C. De esta forma se logra una alta tasa de adquisición de datos de acelerómetros y giróscopos. Como ya fue mencionado, esto resulta clave para mantener la estabilidad del vehículo. %El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
-Dado que el sensor IMU es un esclavo en la comunicación SPI, este solo puede comunicarse con el microcontrolador cuando este último le permita hacerlo. Para que la IMU pueda informar el momento en el que se obtuvo una nueva lectura, el sensor dispone de una salida digital la cual puede conectarse a una entrada digital del microcontroldor. Cuando el microcontrolador detecta un cambio de nivel en esta entrada, el mismo procede a solicitar el dato a través de la comunicación SPI. En la figura \ref{fig:IMU_SPI} se muestra un esquema de la conexión entre el controlador y el sensor IMU.
+Dado que el sensor IMU es un dispositivo esclavo en la comunicación SPI, este solo puede comunicarse con el microcontrolador cuando este último le permita hacerlo. Para que la IMU pueda informar el momento en el que se obtuvo una nueva lectura sin que el microcontrolador deba estar consultándole constantemente, el sensor dispone de una salida digital de interrupción. En la figura \ref{fig:IMU_SPI} se muestra un esquema de la conexión entre el controlador y el sensor IMU.
+
+
+%la cual puede conectarse a una entrada digital del microcontroldor. Cuando el microcontrolador detecta un cambio de nivel en esta entrada, el mismo procede a solicitar el dato a través de la comunicación SPI. En la figura \ref{fig:IMU_SPI} se muestra un esquema de la conexión entre el controlador y el sensor IMU.
 
 \begin{figure}[htb]
     \centering
@@ -783,7 +820,7 @@ Se buscaron modelos de barómetros de distintos fabricantes, para comparar carac
 
 Las dos alternativas que se evaluaron son los sensores ICP-20100 y el ILPS22QSTR. El primero de ellos presenta las \textit{absolute accuracy} y \textit{relative accuracy} más bajas de entre todas las opciones evaluadas. El sensor ILPS22QSTR presenta características similares y además tiene la particularidad de que el fabricante garantiza su fabricación por 10 años, hasta enero de 2033 \cite{baro_5}. Finalmente el sensor seleccionado fue este último.
 
-En este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C tiene un funcionamiento más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de la IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma peródica. %El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
+En este caso también se tomó como guía el circuito de la hoja de datos del componente. La interfaz de comunicación seleccionada es I2C. Se prefiere utilizar I2C en lugar de SPI ya que puede aprovecharse el uso del mismo bus al que se conecta el barómetro, para conectar otros sensores y dispositivos. De esta manera, se ahorra la cantidad de pistas y conexiones en el diseño del PCB. Si bien I2C tiene un funcionamiento más lento que SPI, las mediciones del barómetro no son tan críticas como las de la IMU. Este sensor, a diferencia de la IMU, no cuenta con una línea de interrupción, por lo que los datos deben obtenerse por \textit{polling} de forma periódica. %El circuito completo puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 \subsubsection{Magnetómetro}
 %\subsection{Magnetómetro}
@@ -839,9 +876,9 @@ Se buscaron modelos de magnetómetros disponibles. Al igual que con el resto de 
     \label{tab:comparacion_mags}
 \end{table}
 
-El modelo RM3100 es el que posee el nivel más bajo de ruido. Este componente se utiliza en computadoras de vuelo comerciales, pero además fue utilizado con éxito en el proyceto Artemis de la NASA. A pesar de las bondades que ofrece, el costo de este componente en el momento de la selección era entre 5 a 10 veces superior con respecto a los otros. Finalmente el sensor elegido fue el modelo MMC5983MA. Este es el único de todas las alternativas consideradas que contiene información de todos los parámetros. Además de tener unas muy buenas características, el mismo es de grado automotriz, lo que le da todavía más robustez.
+El modelo RM3100 es el que posee el nivel más bajo de ruido. Este componente se utiliza en computadoras de vuelo comerciales, pero además fue utilizado con éxito en el proyecto Artemis de la NASA. A pesar de las bondades que ofrece, el costo de este componente en el momento de la selección era entre 5 a 10 veces superior con respecto a los otros. Finalmente el sensor elegido fue el modelo MMC5983MA. Este es el único de todas las alternativas consideradas que contiene información de todos los parámetros. Además de tener unas muy buenas características, el mismo es de grado automotriz, lo que le da todavía mayor robustez. 
 
-El efecto del campo magnético producido por los motores del UAV afectan las mediciones del sensor, volviéndolo prácticamente inutilizable para la navegación del vehículo. Para evitar este problema, el magnetómetro se montará en una posición elevada respecto de la computadora de vuelo. Esto quiere decir que este sensor no se montará sobre la placa, sino que se conectará como un sensor externo, utilizando alguno de los concetores de la placa.
+El efecto del campo magnético producido por los motores del UAV afectan las mediciones del sensor, volviéndolo prácticamente inutilizable para la navegación del vehículo. Para evitar este problema, el magnetómetro debe ser montado en una posición elevada respecto de la computadora de vuelo. El sensor seleccionado se provee en una placa de desarrollo, algo que es especialmente útil en este caso, permitiendo que pueda montarse externamente a través de alguno de los conectores de la placa.
 
 \subsubsection{Interfaz de Comunicación CAN}\label{sec:interfaz_CAN}
 %\subsection{Interfaz de Comunicación CAN}
@@ -871,7 +908,7 @@ Como ya fue mencionado, la computadora de vuelo requiere que la comunicación en
 
 %\subsubsection{Descripción del Protocolo CAN}
 
-El protocolo CAN fue desarrollado para ser usado en la industria automotriz, como bus de comunicación que conecta distintos módulos dentro de un automóvil. El objetivo de su desarrollo fue similiar al motivo por el cual se desarrolló el bus ARINC 629 en aviones, reemplazar la gran cantidad de cables dentro del vehículo por un bus simple. El protocolo se corresponde con el modelo OSI y la especificación original define las capas física y de enlace.
+El protocolo CAN fue desarrollado para ser usado en la industria automotriz, como bus de comunicación que conecta distintos módulos dentro de un automóvil. El objetivo de su desarrollo fue similar al motivo por el cual se desarrolló el bus ARINC 629 en aviones, reemplazar la gran cantidad de cables dentro del vehículo por un bus simple. El protocolo se corresponde con el modelo OSI y la especificación original define las capas física y de enlace.
 
 A diferencia de otros protocolos típicos en sistemas embebidos como I2C o SPI, el protocolo CAN no tiene el formato maestro-esclavo. La comunicación se da entre miembros del bus denominados nodos, los cuales se encuentran conectados a los mismos 2 cables. Esto se muestra en la figura \ref{fig:red_CAN_2}. 
 
@@ -921,7 +958,7 @@ En la figura \ref{fig:red_CAN_2} se muestra que cada nodo se compone de 2 elemen
 
 % Formato de la tama CAN
 
-Una trama del protocolo CAN se comopone de varios campos. Además, se definen 2 tipos de tramas, estándar, figura \ref{fig:CAN_frame_standard} y extended, figura \ref{fig:CAN_frame_extended}.
+Una trama del protocolo CAN se compone de varios campos. Además, se definen 2 tipos de tramas, estándar, figura \ref{fig:CAN_frame_standard} y extended, figura \ref{fig:CAN_frame_extended}.
 
 \begin{figure}[htb]
     \centering
@@ -962,7 +999,7 @@ La trama extended mantiene los mismos campos pero incorpora otros 2 más:
 
 
 %CAN es un protocolo donde no hay un nodo master, sino que todos pueden utilizar el medio para transmitir mensajes, 
-Debido a que no existe un nodo que sea maestro, todos los miembros del bus pueden iniciar la transmisión de un mensaje. El método de acceso al medio se denomina \textit{Carrer Sense Multiple Access with Collision Detection and Arbitration on Message Priority} (CSMA/CD+AMP). Antes de transmitir un mensaje, el nodo sensa el bus y en caso de que esté libre, intenta utilizarlo para transmitir un mensaje.
+Debido a que no existe un nodo que sea maestro, todos los miembros del bus pueden iniciar la transmisión de un mensaje. El método de acceso al medio se denomina \textit{Carrier Sense Multiple Access with Collision Detection and Arbitration on Message Priority} (CSMA/CD+AMP). Antes de transmitir un mensaje, el nodo sensa el bus y en caso de que esté libre, intenta utilizarlo para transmitir un mensaje.
 
 %En caso de que más de un nodo quiera enviar un mensaje a la vez, esto llevará a una colisión. El protocolo tiene un método para solucionar las colisiones sin tener pérdida de mensajes.
 
@@ -999,9 +1036,9 @@ El protocolo CAN de por sí, no cuenta con un acceso al medio controlado por el 
 
 %La interfaz CAN se compone del transciever, su comunicación con el microcontrolador y el conector.
 
-El micronotrolador seleccionado para la computadora de vuelo, cuenta con 2 \textit{controller} embebido, el periférico bxCAN \cite{STM32F746ZG}. Cada uno de ellos cuenta con 2 líneas de comunicación con el transciever, CAN TX y CAN RX, las cuales se utilizan para enviar y recibir las señales de modo común al \textit{trasnciever}. En cuanto a este útlimo, se trata de un componente que es ampliamente utilizado en la electrónica automotriz, por lo que hay mucha disponibilidad. Existen transcievers que utilizan distintos niveles de tensión en sus salidas. La gran mayoría de los componentes de la computadora de vuelo utilizan tensiones de 3,3 V para su funcionamiento, por lo que se buscó algún componente que pueda trabajar con este nivel de tensión. El componente seleccionado es el SN65HVD230 de Texas Instruments \cite{SN65VHD230}, el cual es compatible con la especificación de capa física de CAN, ISO 11898-2. En la figura \ref{fig:microcontrolador_transciever} el circuito utilizado, el cual permite la comunicación del microcontrolador con el bus CAN.
+El microcontrolador seleccionado para la computadora de vuelo, cuenta con 2 \textit{controller} embebido, el periférico bxCAN \cite{STM32F746ZG}. Cada uno de ellos cuenta con 2 líneas de comunicación con el transciever, CAN TX y CAN RX, las cuales se utilizan para enviar y recibir las señales de modo común al \textit{trasnciever}. En cuanto a este último, se trata de un componente que es ampliamente utilizado en la electrónica automotriz, por lo que hay mucha disponibilidad. Existen transcievers que utilizan distintos niveles de tensión en sus salidas. La gran mayoría de los componentes de la computadora de vuelo utilizan tensiones de 3,3 V para su funcionamiento, por lo que se buscó algún componente que pueda trabajar con este nivel de tensión. El componente seleccionado es el SN65HVD230 de Texas Instruments \cite{SN65VHD230}, el cual es compatible con la especificación de capa física de CAN, ISO 11898-2. En la figura \ref{fig:microcontrolador_transciever} el circuito utilizado, el cual permite la comunicación del microcontrolador con el bus CAN.
 %En la figura \ref{fig:microcontrolador_transciever} se muestra la comunicación del microcontrolador con el bus CAN a través del \textit{transciever}. 
-El transciever cuenta con una protección por exceso de tempertura, donde el componente pone sus salidas CAN-H y CAN-L en alta impdeancia, de manera de no perturbar al resto de los nodos. Además, cuenta con una funcionalidad que permite detectar si este fue desconectado del bus, fijando un estado alto constante en su salida RX hacia el \textit{controller}, informándole de la situación.
+El transciever cuenta con una protección por exceso de temperatura, donde el componente pone sus salidas CAN-H y CAN-L en alta impedancia, de manera de no perturbar al resto de los nodos. Además, cuenta con una funcionalidad que permite detectar si este fue desconectado del bus, fijando un estado alto constante en su salida RX hacia el \textit{controller}, informándole de la situación.
 
 \begin{figure}[htb]
     \centering
@@ -1010,7 +1047,7 @@ El transciever cuenta con una protección por exceso de tempertura, donde el com
     \label{fig:microcontrolador_transciever}
 \end{figure}
 
-En cuanto al circuito implementado se tomaron como punto de partida las recomendaciones de la hoja de datos del trasnciever SN65HVD230. Como se muestra en la figura \ref{fig:microcontrolador_transciever}, se agregó un resistor a tierra en el terminal \textit{Rs}. A través de este terminal puede controlarse el tiempo de crecimiento y de decrecimiento de las líneas CAN-H y CAN-L. Por ejemplo, si se coloca un resistor de $10 \ k\Omega$ en el terminal 8 denominado \textit{Rs}, la hoja de datos indica un slew-rate de $15 \ V / \mu s$. Además, se agregaron resistores en serie con las líneas de CAN RX y CAN TX, es decir, en las pistas que llevan las señales que van desde el controller al transciever y viceversa. Esto se hizo como medida preventiva para amortiguar las señales, en caso de que estas presenten sobrepicos en las conmutaciones. A priori se fijan en $0 \ \Omega$ y se modificarán de ser necesario. Por último, se agregaron capacitores de desacople en las líneas de alimentación.
+En cuanto al circuito implementado se tomaron como punto de partida las recomendaciones de la hoja de datos del transciever SN65HVD230. Como se muestra en la figura \ref{fig:microcontrolador_transciever}, se agregó un resistor a tierra en el terminal \textit{Rs}. A través de este terminal puede controlarse el tiempo de crecimiento y de decrecimiento de las líneas CAN-H y CAN-L. Por ejemplo, si se coloca un resistor de $10 \ k\Omega$ en el terminal 8 denominado \textit{Rs}, la hoja de datos indica un slew-rate de $15 \ V / \mu s$. Además, se agregaron resistores en serie con las líneas de CAN RX y CAN TX, es decir, en las pistas que llevan las señales que van desde el controller al transciever y viceversa. Esto se hizo como medida preventiva para amortiguar las señales, en caso de que estas presenten sobrepicos en las conmutaciones. A priori se fijan en $0 \ \Omega$ y se modificarán de ser necesario. Por último, se agregaron capacitores de desacople en las líneas de alimentación.
 %El circuito completo de la interfaz CAN puede encontrarse en el \nameref{appendix:circuito_esquematico}.
 
 %Este recomienda el agregado de capacitores de desacople en las líneas de alimentación.
@@ -1059,7 +1096,7 @@ Se siguió el circuito recomendado por la hoja de datos del fabricante, donde se
 
 En cuanto al capacitor de salida, se tuvo en cuenta el hecho de que este es utilizado para la compensación del regulador \cite{TOSHIBALDO}. Al tratarse de un circuito a lazo cerrado, debe asegurar su estabilidad para tener un correcto funcionamiento. El mecanismo de compensación es a través de un compensador en adelanto, formados por dos capacitores de salida $C_o$ y $C_b$, junto con $R_o$, la ESR del capacitor $C_o$. Este compensador incrementa el margen de fase, evitando las respuestas oscilatorias por parte del regulador.
 
-Para compensar el circuito adecuadamente, es importante seleccionar un capacitor $C_o$ con una ESR que no sea ni muy baja ni muy alta \cite{SLVA072}. Para ello, el fabricante recomienda un valor de ESR entre $0.05 \ \Omega$ y $0.5 \  \Omega$, de un valor de por lo menos $4.7 \ \mu F$. Los capacitores MLCC típicamente tienen ESR muy bajas, del orden de unos pocos $m \Omega$. Debido a esto, se selecciona un capacitor de tantalio para el capacitor de salida  $C_o$ \cite{AN1482}. Estos suelen excibir una ESR mayor a la de los MLCC. %El componente seleccionado es el T491A106K016ATAUTO de KEMET.
+Para compensar el circuito adecuadamente, es importante seleccionar un capacitor $C_o$ con una ESR que no sea ni muy baja ni muy alta \cite{SLVA072}. Para ello, el fabricante recomienda un valor de ESR entre $0.05 \ \Omega$ y $0.5 \  \Omega$, de un valor de por lo menos $4.7 \ \mu F$. Los capacitores MLCC típicamente tienen ESR muy bajas, del orden de unos pocos $m \Omega$. Debido a esto, se selecciona un capacitor de tantalio para el capacitor de salida  $C_o$ \cite{AN1482}. Estos suelen exhibir una ESR mayor a la de los MLCC. %El componente seleccionado es el T491A106K016ATAUTO de KEMET.
 
 %Al agregar los capacitores de salida $C_o$ y $C_b$, se forma un compensador en adelanto que incrementa el margen de fase. De este gráfico se desprende que si la resistencia ESR del capacitor de salida $C_o$ es muy pequeña, luego tanto el polo en $1/(C_b R_o)$ como el cero $1/(C_o R_o)$ se desplazan hacia la derecha en frecuencia y no funcionan como compensador en adelanto. Por otro lado, si la ESR es muy grande, el polo y el cero se desplazan a la izquierda y tampoco funcionarán como compensador \cite{SLVA072}. De aquí se desprende el hecho de que la elección del valor de ESR debe ser adecuada.
 
@@ -1171,13 +1208,13 @@ Como parte de las funcionalidades básicas para utilización de la computadora d
 
 El microcontrolador utilizado integra un periférico compatible con la especificación USB 2.0 y con la extensión On-The-Go (OTG), el cual permite a pequeños dispositivos funcionar como hosts en el bus USB. Para las aplicaciones que se le quieren dar a la computadora de vuelo, se opta por un uso de modo device. 
 
-En cuanto a la velocidad de comunicación, el periférico brinda la posibilidad de utilizar tanto una configuración Full-Speed (12 Mb/s) como High-Speed (480 Mb/s). A priori, esta última sería de preferencia, dada la altísima tasa de transferencia, en comparación con la primera. Sin embargo, la utilización de esta última requiere el agregado de un componente adicional para utilizar como interfaz física con el bus USB, denominado ULPI. No sucede lo mismo para el uso de la configuración Full-Speed, para la cual la interfaz física se encuentra completamente integrada. Por una necesidad de mantener un tamaño de placa reducido y teniendo en cuenta que la interfaz USB no se usará para funciones críticas de la computadora de vuelo, se prefirió optar por el uso de una configuración Full-Speed. Cabe aclarar además, que la interfaz física integrada para Full-Speed trae consigo integrado el resistor de pull-up de $1.5 \ k\Omega$ en la línea D+, neceario para el proceso de enumeración del dispositvo, por lo que tampoco fue necesario su incorporación en la placa.
+En cuanto a la velocidad de comunicación, el periférico brinda la posibilidad de utilizar tanto una configuración Full-Speed (12 Mb/s) como High-Speed (480 Mb/s). A priori, esta última sería de preferencia, dada la altísima tasa de transferencia, en comparación con la primera. Sin embargo, la utilización de esta última requiere el agregado de un componente adicional para utilizar como interfaz física con el bus USB, denominado ULPI. No sucede lo mismo para el uso de la configuración Full-Speed, para la cual la interfaz física se encuentra completamente integrada. Por una necesidad de mantener un tamaño de placa reducido y teniendo en cuenta que la interfaz USB no se usará para funciones críticas de la computadora de vuelo, se prefirió optar por el uso de una configuración Full-Speed. Cabe aclarar además, que la interfaz física integrada para Full-Speed trae consigo integrado el resistor de pull-up de $1.5 \ k\Omega$ en la línea D+, necesario para el proceso de enumeración del dispositivo, por lo que tampoco fue necesario su incorporación en la placa.
 
 Se incorpora en la placa un conector micro USB-B. El terminal 4 llamado ID se utiliza para indicar si el dispositivo funcionará como host o device. La computadora de vuelo funcionará siempre en modo device, por lo que este se deja en circuito abierto, tal como indica la especificación USB 2.0.
 
 %\textbf{{\color{red} AGREGAR IMAGEN DEL POWER ORING}}
 
-Como fue mencionado, el conector USB se utiliza como otra opción para alimentar la placa. La tensión nominal entregada por un host USB es de $5 \ V$. Para limentar el resto de la placa, se conecta esta entrada al regulador de $3.3 \ V$ que se encuentra en la placa. De forma de evitar que haya conflictos con el conector de alimentación principal mencionado en la sección \ref{sec:circuito_de_alimentacion}, se incorporó un circuito simple formado por dos diodos, como se muestra en la figura \ref{fig:diode_oring}.
+Como fue mencionado, el conector USB se utiliza como otra opción para alimentar la placa. La tensión nominal entregada por un host USB es de $5 \ V$. Para alimentar el resto de la placa, se conecta esta entrada al regulador de $3.3 \ V$ que se encuentra en la placa. De forma de evitar que haya conflictos con el conector de alimentación principal mencionado en la sección \ref{sec:circuito_de_alimentacion}, se incorporó un circuito simple formado por dos diodos, como se muestra en la figura \ref{fig:diode_oring}.
 
 \begin{figure}[htb]
     \centering
@@ -1518,7 +1555,7 @@ La altura y la permitividad del dieléctrico se encuentran fijados por el fabric
     \label{fig:microstrip}
 \end{figure}
 
-Con el motivo de reducir la cantidad de pistas con disitintas dimensiones en el PCB, se utilizan estas mismas dimensiones en la mayor parte de las pistas, por ejemplo para la comunicación con los sensores.
+Con el motivo de reducir la cantidad de pistas con distintas dimensiones en el PCB, se utilizan estas mismas dimensiones en la mayor parte de las pistas, por ejemplo para la comunicación con los sensores.
 
 
 %\textbf{{\color{red} PONER UNA IMAGEN DONDE SE VEAN LAS DIMENSIONES DE LAS MICROSTRIP EN EL PCB}}
@@ -1527,7 +1564,7 @@ Con el motivo de reducir la cantidad de pistas con disitintas dimensiones en el 
 
 %Cabe destacar que al definir unas dimensiones de pista con estas características, es posible cumplir con los requerimientos de inductancia y capacitancia, indicados por la SD Association. 
 
-El protocolo de comunicación corresponde a un bus de datos paralelo, donde se utiliza el flanco ascendente del clock como referencia para muestrear el bus. Para que la comunicación funcione adecuadamente, el fabriante del microcontrolador recomienda que el desfasaje entre pistas sea menor a $60 \ ps$. Para lograr esto, se buscó que todas las pistas de datos y de clock tuvieran la misma longitud. Además, se utilizó la misma cantidad de vías en cada pista.
+El protocolo de comunicación corresponde a un bus de datos paralelo, donde se utiliza el flanco ascendente del clock como referencia para muestrear el bus. Para que la comunicación funcione adecuadamente, el fabricante del microcontrolador recomienda que el desfasaje entre pistas sea menor a $60 \ ps$. Para lograr esto, se buscó que todas las pistas de datos y de clock tuvieran la misma longitud. Además, se utilizó la misma cantidad de vías en cada pista.
 
 %Otro de los requerimientos importantes para asegurar la integridad de la señal es la paridad en la longitud de las pistas.
 
@@ -1539,9 +1576,9 @@ El protocolo de comunicación corresponde a un bus de datos paralelo, donde se u
 
 % Impedancia característica de la pista diferencial, de la especificación.
 
-Otro de los casos donde se tuvieron cuidados especiales en el trazado de las pistas, es para el caso de la comunicación USB. Como se trata de una señal ||diferencial, las pistas que conectan el periférico con el puerto USB de la placa fueron trazadas utilizando una herramienta del software \textit{KiCad} especial para el trazado de este tipo de pistas.
+Otro de los casos donde se tuvieron cuidados especiales en el trazado de las pistas, es para el caso de la comunicación USB. Como se trata de una señal diferencial, las pistas que conectan el periférico con el puerto USB de la placa fueron trazadas utilizando una herramienta del software \textit{KiCad} especial para el trazado de este tipo de pistas.
 
-En la especificación Universal Serial Bus Specification Revision 2.0 se indican las impedancias características de modo común y diferencial, de $90 \ \Omega$ y $30 \ \Omega$ respectivamente. No obstante, se permiten unos rangos de tolerancia bastante amplios, del 15 \% y del 30 \% respectivamente. A partir de las características del dieĺectrico del PCB, se definieron las dimeniones del par diferencial utilizado para la comunicación USB:
+En la especificación Universal Serial Bus Specification Revision 2.0 se indican las impedancias características de modo común y diferencial, de $90 \ \Omega$ y $30 \ \Omega$ respectivamente. No obstante, se permiten unos rangos de tolerancia bastante amplios, del 15 \% y del 30 \% respectivamente. A partir de las características del dieléctrico del PCB, se definieron las dimensiones del par diferencial utilizado para la comunicación USB:
 
 \begin{itemize}
     \item Ancho de pista = $0.254 \ mm$
@@ -1581,7 +1618,7 @@ En primera medida, se incluyó un plano de cobre en la capa top, de $211 \ mm^2$
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{img/ldo_potencia_disipable_2.png}
-    \caption{Se muestra la comparativa del valor indicado en el datasheet $\theta_{JA} = 107^o C/W$ con el valor de $\theta_{JA} = 60^o C/W$. Este último es un valor que se toma de referencia, a partir de los resultados extraidos de las distintas notas de aplicaicón consultadas. Esto además permite que el regulador pueda entregar mayores valores de corriente, los cual es necesario debido a la gran cantidad de módulos y sensores que pueden adosarse a la computadora de vuelo a través de sus conectores.}
+    \caption{Se muestra la comparativa del valor indicado en el datasheet $\theta_{JA} = 107^o C/W$ con el valor de $\theta_{JA} = 60^o C/W$. Este último es un valor que se toma de referencia, a partir de los resultados extraídos de las distintas notas de aplicación consultadas. Esto además permite que el regulador pueda entregar mayores valores de corriente, los cual es necesario debido a la gran cantidad de módulos y sensores que pueden adosarse a la computadora de vuelo a través de sus conectores.}
     \label{fig:ldo_potencia_disipable}
 \end{figure}
 
