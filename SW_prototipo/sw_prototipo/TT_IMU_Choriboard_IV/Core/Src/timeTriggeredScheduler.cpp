@@ -6,6 +6,7 @@
  */
 
 #include "timeTriggeredScheduler.h"
+#include "timeTriggeredSchedulerPublic.h"
 #include "CNI.h"
 
 static timeTriggeredScheduler_t _instance;
@@ -55,38 +56,9 @@ void timeTriggeredScheduler_dispatch(void)
 	uint32_t i;
 	timeTriggeredTask_t *task;
 
-	__disable_irq();
-	if(_instance.mTicks_ > 0)
+	while(1)
 	{
-		_instance.mTicks_--;
-		updateRequired = 1;
-#if !IS_MASTER
-		if(_instance.mSyncExecuted_ == 1)
-		{
-			_instance.mSyncExecuted_ = 0;
-			__HAL_TIM_SET_AUTORELOAD(_instance.mTimer_, _instance.mMacroTick_);
-		}
-#endif
-	}
-
-	__enable_irq();
-
-	while(updateRequired)
-	{
-		for(i = 0; i < MAX_NUM_TASKS; i++)
-		{
-			if((task = _instance.mTaskList_[i]))
-			{
-				if( (--(task->mDelayTicks_)) == 0 )
-				{
-					(*(task->mTaskHandler_))(task);
-					task->mDelayTicks_ = task->mPeriodTicks_;
-				}
-			}
-		}
-
 		__disable_irq();
-
 		if(_instance.mTicks_ > 0)
 		{
 			_instance.mTicks_--;
@@ -99,14 +71,45 @@ void timeTriggeredScheduler_dispatch(void)
 			}
 #endif
 		}
-		else
-		{
-			updateRequired = 0;
-		}
-
 		__enable_irq();
+
+		while(updateRequired)
+		{
+			for(i = 0; i < MAX_NUM_TASKS; i++)
+			{
+				if((task = _instance.mTaskList_[i]))
+				{
+					if( (--(task->mDelayTicks_)) == 0 )
+					{
+						(*(task->mTaskHandler_))(task);
+						task->mDelayTicks_ = task->mPeriodTicks_;
+					}
+				}
+			}
+
+			__disable_irq();
+
+			if(_instance.mTicks_ > 0)
+			{
+				_instance.mTicks_--;
+				updateRequired = 1;
+#if !IS_MASTER
+				if(_instance.mSyncExecuted_ == 1)
+				{
+					_instance.mSyncExecuted_ = 0;
+					__HAL_TIM_SET_AUTORELOAD(_instance.mTimer_, _instance.mMacroTick_);
+				}
+#endif
+			}
+			else
+			{
+				updateRequired = 0;
+			}
+			__enable_irq();
+		}
+		//__asm__("wfi");
+		while(_instance.mTicks_ == 0);
 	}
-	__asm__("wfi");
 }
 
 TTschStatus_t timeTriggeredScheduler_add_task(timeTriggeredTask_t *task)
@@ -153,7 +156,7 @@ void taskTimeTriggeredSync_update(taskTimeTriggeredSync_t *me)
 	uint32_t deltaTime;
 
 	// Espero a que me llegue el mensaje de sincronización
-	if( CNI_receive_msg(me->mHandleMsg_) == CNI_OK )
+	if( CNI_receive_msg(me->mHandleMsg_, 0) == CNI_OK )
 	{
 		// Tomo un timestamp del mensaje recibido
 		timestamp = __HAL_TIM_GET_COUNTER(_instance.mTimer_);
@@ -189,4 +192,9 @@ void taskTimeTriggeredSync_update(taskTimeTriggeredSync_t *me)
 	// Envío el mensaje de sync
 	CNI_send_msg(me->mHandleMsg_);
 #endif
+}
+
+uint32_t timeTriggeredScheduler_get_time(void)
+{
+	return __HAL_TIM_GET_COUNTER(_instance.mTimer_);
 }

@@ -1,4 +1,4 @@
 ../Core/Src/taskWatchdog.cpp:10:6:void taskWatchdog_constructor(taskWatchdog_t*, uint32_t, uint32_t, uint32_t, uint32_t, IWDG_HandleTypeDef*)	32	static
-../Core/Src/taskWatchdog.cpp:21:6:void taskWatchdog_destructor(taskWatchdog_t*)	16	static
-../Core/Src/taskWatchdog.cpp:26:6:void taskWatchdog_start(taskWatchdog_t*)	16	static
-../Core/Src/taskWatchdog.cpp:31:6:void taskWatchdog_update(taskWatchdog_t*)	16	static
+../Core/Src/taskWatchdog.cpp:23:6:void taskWatchdog_destructor(taskWatchdog_t*)	16	static
+../Core/Src/taskWatchdog.cpp:28:6:void taskWatchdog_start(taskWatchdog_t*)	16	static
+../Core/Src/taskWatchdog.cpp:33:6:void taskWatchdog_update(taskWatchdog_t*)	16	static

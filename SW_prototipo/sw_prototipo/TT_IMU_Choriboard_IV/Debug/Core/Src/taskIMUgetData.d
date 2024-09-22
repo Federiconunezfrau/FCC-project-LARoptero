@@ -38,7 +38,8 @@ Core/Src/taskIMUgetData.o: ../Core/Src/taskIMUgetData.cpp \
  ../Core/Inc/handler_spi.hpp ../Core/Inc/handler_i2c.hpp \
  ../Core/Inc/port.hpp ../Core/Inc/spi.h ../Core/Inc/main.h \
  ../Core/Inc/attitudeEstimator.h ../Core/Inc/CNI.h ../Core/Inc/can.h \
- ../Core/Inc/config.h
+ ../Core/Inc/config.h ../Core/Inc/faultInjectionIMU.h \
+ ../Core/Inc/stateMachine.h ../Core/Inc/signal.h
 ../Core/Inc/taskIMUgetData.h:
 ../Core/Inc/timeTriggeredTask.h:
 ../Core/Inc/icm42688.hpp:
@@ -88,3 +89,6 @@ Core/Src/taskIMUgetData.o: ../Core/Src/taskIMUgetData.cpp \
 ../Core/Inc/CNI.h:
 ../Core/Inc/can.h:
 ../Core/Inc/config.h:
+../Core/Inc/faultInjectionIMU.h:
+../Core/Inc/stateMachine.h:
+../Core/Inc/signal.h:

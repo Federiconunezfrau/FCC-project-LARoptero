@@ -14,9 +14,10 @@ typedef struct
 {
 	timeTriggeredTask_t super;
 	uint32_t mHandleMsg_;
+	uint32_t mRxTimeout_;
 } taskCNIreceiveData_t;
 
-void taskCNIreceiveData_constructor ( taskCNIreceiveData_t *, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t );
+void taskCNIreceiveData_constructor ( taskCNIreceiveData_t *, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t );
 void taskCNIreceiveData_destructor  ( taskCNIreceiveData_t * );
 void taskCNIreceiveData_start       ( taskCNIreceiveData_t * );
 void taskCNIreceiveData_update      ( taskCNIreceiveData_t * );

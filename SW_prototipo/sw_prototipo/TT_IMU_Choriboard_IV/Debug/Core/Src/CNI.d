@@ -31,7 +31,8 @@ Core/Src/CNI.o: ../Core/Src/CNI.cpp ../Core/Inc/CNI.h ../Core/Inc/can.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
- ../Core/Inc/config.h ../Core/Inc/myUtils.h
+ ../Core/Inc/config.h ../Core/Inc/myUtils.h \
+ ../Core/Inc/timeTriggeredSchedulerPublic.h
 ../Core/Inc/CNI.h:
 ../Core/Inc/can.h:
 ../Core/Inc/main.h:
@@ -69,3 +70,4 @@ Core/Src/CNI.o: ../Core/Src/CNI.cpp ../Core/Inc/CNI.h ../Core/Inc/can.h \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
 ../Core/Inc/config.h:
 ../Core/Inc/myUtils.h:
+../Core/Inc/timeTriggeredSchedulerPublic.h:
